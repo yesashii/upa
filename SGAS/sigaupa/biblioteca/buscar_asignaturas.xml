@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="btn_busca_asignaturas">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 
+    <botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>abrir()</funcion>
+	</botones> 
+    <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	
+	<botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <formulario>edicion</formulario>
+         <url>eliminar_asignatura.asp</url>
+    </botones>
+	
+    <botones nombre="enviar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Enviar</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.formu)</funcion>
+	</botones> 
+	
+    <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones>
+ </parametro>
+ <parametro formulario="form_busca_asig"
+ clave="asig_ccod" variable="m" 
+ mensajeError="No hay Asignaturas que coincidan con el criterio de búsqueda" 
+ colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" 
+ editar="true" eliminar="true" agregar="true" nuevaVentana="false"
+  paginaEdicion="editar_asignatura.asp?asig_ccod=%asig_ccod%" maxLista="10" nroRegistros="10" anchoTabla="98%">
+   <campos nombre="asig_ccod">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Código</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+ <campos nombre="asig_tdesc">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Nombre</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+ <campos nombre="asig_nhoras">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Horas Asignadas</descripcion> 
+	  <alineamiento>center</alineamiento> 
+  </campos>
+ <campos nombre="asig_fini_vigencia">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Fecha Inicio</descripcion> 
+	  <alineamiento>center</alineamiento> 
+  </campos>
+ <campos nombre="asig_ffin_vigencia">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Fecha Termino</descripcion> 
+	  <alineamiento>center</alineamiento> 
+  </campos>
+ <campos nombre="easi_tdesc">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Estado</descripcion> 
+	  <alineamiento>center</alineamiento> 
+  </campos>
+ <campos nombre="tasg_tdesc">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Regimen</descripcion> 
+	  <alineamiento>center</alineamiento> 
+  </campos>
+   <campos nombre="duas_tdesc">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Duración</descripcion> 
+	  <alineamiento>center</alineamiento> 
+  </campos>
+  <campos nombre="asig_nnivel_ayudante">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Max. Nivel Ayudante</descripcion> 
+	  <alineamiento>center</alineamiento> 
+  </campos>
+  <campos nombre="clas_tdesc">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Tipo</descripcion> 
+	  <alineamiento>center</alineamiento> 
+  </campos>
+  <campos nombre="area">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Área</descripcion> 
+	  <alineamiento>center</alineamiento> 
+  </campos>
+  <campos nombre="credito">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Créditos</descripcion> 
+	  <alineamiento>center</alineamiento> 
+  </campos>
+  </parametro>
+
+</Parametros>

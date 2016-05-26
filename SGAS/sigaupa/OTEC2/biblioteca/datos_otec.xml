@@ -1,0 +1,441 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="siguiente">
+         <tipoTexto>SIGUIENTE</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>pactacion_cargo.asp</url>
+         <funcionValidacion>Validar(document.edicion);</funcionValidacion>
+      </botones>
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>ValidaBusqueda();</funcionValidacion>
+      </botones>
+      <botones nombre="calcular">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Calcular</texto>
+         <accion>GUARDAR</accion>
+         <formulario>pactacion</formulario>
+         <url>proc_calcular_pactacion.asp</url>
+         <funcionValidacion>ValidarPactacion();</funcionValidacion>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+      <botones nombre="aceptar_pactacion">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>detalle_pactacion</formulario>
+		 <funcionValidacion>ValidarCuotasPago();</funcionValidacion>
+         <url>proc_generar_pactacion.asp</url>
+         <soloUnClick>TRUE</soloUnClick>
+         <mensajeConfirmacion>¿Está seguro que desea generar este cargo?</mensajeConfirmacion>
+      </botones> 
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+      </botones>
+	  <botones nombre="cerrar">
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>	
+   </parametro>
+
+ <parametro formulario="busqueda" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>LN-N</id>
+      </campos>
+      <campos nombre="tipo_persona">
+         <descripcion>tipo</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>(select 1 as codigo_persona,'PERSONA' as tipo_persona union select 2 as codigo_persona,'EMPRESA' as tipo_persona union select 3 as codigo_persona,'OTIC' as tipo_persona) a</destino>
+         <union>codigo_persona</union>
+         <salida>tipo_persona</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>False</anulable>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+
+ <parametro formulario="cargo" variable="cargo"  anchoTabla="100%" nroRegistros="20" maxLista="10" editar="True" 
+ paginaEdicion="detalle_postulacion.asp?tipo=%tipo%&amp;norc_empresa=%num_oc%&amp;pers_ncorr=%pers_ncorr%&amp;dgso_ncorr=%dgso_ncorr%" nuevaVentana="True"  
+   eliminar="TRUE" clave="dcur_ncorr" seleccionarTodo="False" mensajeError="No existen postulaciones para este usuario" >
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tipo">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>	  
+      <campos nombre="fpot_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tdet_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="num_oc">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="monto_matricula">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="monto_arancel">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="dgso_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pote_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="epot_ccod">
+         <descripcion>Estado</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>estados_postulacion_otec</destino>
+         <union>epot_ccod</union>
+         <salida>epot_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <anulable>TRUE</anulable>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="num_oc_2">
+         <descripcion>O.C.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="alumnos">
+         <descripcion>N° Alumnos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="dcur_tdesc">
+         <descripcion>Nombre Curso / Diplomado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <caracteres>15</caracteres>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+      <campos nombre="ofot_nmatricula">
+         <descripcion>Monto Matricula</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ofot_narancel">
+         <descripcion>Monto Arancel</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="monto_total">
+         <descripcion>Monto Total</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="financia_empresa">
+         <descripcion>Empresa Financia</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+		 <sinclick>falso</sinclick>
+      </campos>
+      <campos nombre="financia_otic">
+         <descripcion>Otic Financia</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="ventana">
+         <descripcion>Ver factura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <NoIrA>N</NoIrA>
+      </campos>
+   </parametro>
+
+
+<parametro formulario="detalle_cargo" variable="detalle"  anchoTabla="100%" nroRegistros="20" maxLista="10"  
+clave="dcur_ncorr" seleccionarTodo="False" mensajeError="No existen postulaciones para este usuario" >
+
+      <campos nombre="rut_empresa">
+         <descripcion>Rut Empresa</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="empresa">
+         <descripcion>Nombre Empresa</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+      <campos nombre="rut_otic">
+         <descripcion>Rut Otic</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="otic">
+         <descripcion>Nombre Otic</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+
+<parametro formulario="detalle_postulantes" variable="detalles"  anchoTabla="100%" nroRegistros="20" maxLista="10"  
+clave="dcur_ncorr" seleccionarTodo="False" mensajeError="No existen postulantes para este curso/diplomado" >
+      <campos nombre="rut_alumno">
+         <descripcion>Rut alumno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="pers_tnombre">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+      <campos nombre="pers_tape_paterno">
+         <descripcion>A. Paterno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="pers_tape_materno">
+         <descripcion>A. Materno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+
+
+ <parametro formulario="cargo_mostrar" anchoTabla="100%" variable="pactacion">
+      <tablas nombre="sim_pactaciones" accion="M"/>
+      <campos nombre="comp_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="inst_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tcom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tdet_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="spac_mneto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="spac_mdescuento">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="spac_mpactacion">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="dcur_tdesc">
+         <descripcion>Nombre Curso / Diplomado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <caracteres>15</caracteres>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+      <campos nombre="c_arancel">
+         <descripcion>Arancel Nominal x Programa</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+       <campos nombre="c_comp_mdescuento">
+         <descripcion>Descuento asociado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="c_comp_mdocumento">
+         <descripcion>Total a pactar</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+
+<parametro formulario="forma_pactacion" anchoTabla="100%" variable="forma_pactacion">
+      <tablas nombre="sim_forma_pactaciones" accion="M"/>
+      <campos nombre="comp_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ting_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pers_ncorr_codeudor">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="butiliza">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <objeto>CHECKBOX</objeto>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <alineamiento>CENTER</alineamiento>
+         <onClick>butiliza_click(this);</onClick>
+      </campos>
+      <campos nombre="c_ting_ccod">
+         <descripcion>&amp;nbsp;</descripcion>
+         <tipo>SELECT</tipo>
+         <permiso>LECTURA</permiso>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+      </campos>
+      <campos nombre="sfpa_ncuotas_">
+         <descripcion>Nº Cuotas</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>(select distinct tcom_ccod, ting_ccod, stpa_ncuotas, stpa_ncuotas as ncuotas from stipos_pagos order by tcom_ccod, ting_ccod, stpa_ncuotas)</destino>
+         <union>stpa_ncuotas</union>
+         <salida>ncuotas</salida>
+         <permiso>OCULTO</permiso>
+         <id>TO-N</id>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="sfpa_ncuotas">
+         <descripcion>Nº Cuotas</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>NU-N</id>
+         <caracteres>3</caracteres>
+         <maxCaracteres>2</maxCaracteres>
+      </campos>
+      <campos nombre="sfpa_mmonto">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>TO-N</id>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <onBlur>sfpa_mmonto_blur(this);</onBlur>
+      </campos>
+      <campos nombre="sfpa_finicio_pago">
+         <descripcion>F. Inicio Pago</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-N</id>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="sfpa_nfrecuencia">
+         <descripcion>Frec.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>5</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>EP-N</id>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="sfpa_ndocto_inicial">
+         <descripcion>Nº Docto. Inicial</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-N</id>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="sfpa_tctacte">
+         <descripcion>Cuenta Corriente / Rut- O.C.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>15</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+         <id>TO-S</id>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="banc_ccod">
+         <descripcion>Banco</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>bancos</destino>
+         <union>banc_ccod</union>
+         <salida>banc_tdesc</salida>
+         <orden>banc_tdesc asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione banco</mensajeNulo>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="plaz_ccod">
+         <descripcion>Plaza</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>plazas</destino>
+         <union>plaz_ccod</union>
+         <salida>plaz_tdesc</salida>
+         <orden>plaz_ccod asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione plaza</mensajeNulo>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="sfpa_mtasa_interes">
+         <descripcion>% Interés</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <id>NU-N</id>
+      </campos>
+   </parametro>
+
+</Parametros>

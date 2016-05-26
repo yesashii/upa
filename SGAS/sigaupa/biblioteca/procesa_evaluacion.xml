@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+<parametro formulario="agregar_eval"  variable="m"  editar="true" 
+		 eliminar="true" agregar="true" nuevaVentana="false"  
+		 maxLista="10" nroRegistros="10">
+	<tablas nombre="calificaciones_seccion" accion="M" />				
+	</parametro>
+</Parametros>
+
+

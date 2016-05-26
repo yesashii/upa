@@ -1,0 +1,1158 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+         <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>salir()</funcion>
+      </botones>
+      <botones nombre="buscar">
+		  <tipoTexto>BUSCAR</tipoTexto>
+		  <accion>BUSCAR</accion>
+		  <formulario>buscador</formulario>
+ 	  </botones>
+	  <botones nombre="excel">
+        <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>BUSCAR</accion>
+		 <url>javascript:alert();</url>
+         <formulario>buscador</formulario>
+     </botones>
+   </parametro>
+ 
+ 
+   	<parametro formulario="busqueda" variable="busqueda">
+	   	<campos nombre="cod_opcion">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<union>cod_opcion</union>
+			<salida>opcion</salida>
+			<anulable>TRUE</anulable>
+			<mensajeNulo>Seleccione opcion de indicadores</mensajeNulo>
+			<script>onChange="cambiar_ano(this.value);"</script>
+			<id>TO-N</id>
+	   	</campos>
+	   <campos nombre="v_anos">
+		   <tipo>SELECT</tipo>
+		   <permiso>LECTURAESCRITURA</permiso>
+		   <union>v_anos</union>
+		   <salida>anos_tdesc</salida>
+		   <anulable>TRUE</anulable>
+		   <mensajeNulo>Seleccione Año para analizar</mensajeNulo>
+		   <id>TO-S</id>
+	   </campos>
+	   <campos nombre="v_anos2">
+		   <tipo>SELECT</tipo>
+		   <permiso>LECTURAESCRITURA</permiso>
+		   <union>v_anos</union>
+		   <salida>anos_tdesc</salida>
+		   <anulable>TRUE</anulable>
+		   <mensajeNulo>Seleccione Año para analizar</mensajeNulo>
+		   <id>TO-S</id>
+	   </campos>
+   	</parametro>
+ 
+ 	 <parametro formulario="matriculados_loce" mensajeError="No existen datos de matriculados en carreras LOCE" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a"  nroRegistros="100" maxLista="100" >  
+		<campos nombre="sede">
+			<descripcion>Sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			<descripcion>Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			<descripcion>Jornada</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="factor_carrera">
+			<descripcion>Alumnos Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="Total_facultad">
+			<descripcion>Total Facultad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="porcentaje_participacion_facultad">
+			<descripcion>Indicador Facultad(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="porcentaje_participacion_universidad">
+			<descripcion>Indicador Universidad(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+	  
+	  <parametro formulario="matriculados_no_loce" mensajeError="No existen datos de matriculados en carreras de pregrado" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a"  nroRegistros="100" maxLista="100" >  
+		<campos nombre="sede">
+			<descripcion>Sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			<descripcion>Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			<descripcion>Jornada</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="factor_carrera">
+			<descripcion>Alumnos Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="Total_facultad">
+			<descripcion>Total Facultad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="porcentaje_participacion_facultad">
+			<descripcion>Indicador Facultad(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="total_universidad">
+			<descripcion>Total Universidad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="porcentaje_participacion_universidad">
+			<descripcion>Indicador Universidad(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+	  
+	  <parametro formulario="postulantes" mensajeError="No existen datos de postulantes seleccionados" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a"  nroRegistros="100" maxLista="10" >  
+		<campos nombre="sede">
+			<descripcion>Sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			<descripcion>Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			<descripcion>Jornada</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="matriculados">
+			<descripcion>Nivel de concentración de Matrícula</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="total_aprobados">
+			<descripcion>Seleccionados</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="total_postulantes">
+			<descripcion>Total Postulantes</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="porcentaje_seleccion">
+			<descripcion>Indicador(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+	  
+	  <parametro formulario="vacantes" mensajeError="No existen datos de vacantes por carreras" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a"  nroRegistros="100" maxLista="10" >  
+		<campos nombre="sede">
+			<descripcion>Sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			<descripcion>Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			<descripcion>Jornada</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="matriculados">
+			<descripcion>Matriculados</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="vacantes">
+			<descripcion>Vacantes</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="Demanda">
+			<descripcion>Indicador(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+	  <parametro formulario="alumnos_nuevos" mensajeError="No existen datos de alumnos nuevos por carreras" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a"  nroRegistros="100" maxLista="10" >  
+		<campos nombre="sede">
+			<descripcion>Sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			<descripcion>Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			<descripcion>Jornada</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="total_carrera">
+			<descripcion>Total Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="total_hombres_carrera">
+			<descripcion>Total Hombres</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="porc_hombres">
+			<descripcion>Indicador Hombres(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="total_mujeres_carrera">
+			<descripcion>Total Mujeres</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="porc_mujeres">
+			<descripcion>Indicador Mujeres(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="total_extranjeros_carrera">
+			<descripcion>Total Extranjeros</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="porc_extranjeros">
+			<descripcion>Indicador Extranjeros(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+	  
+	  <parametro formulario="formacion_fundamental" mensajeError="No existen datos de asignaturas de formación fundamental por carreras" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a"  nroRegistros="100" maxLista="10" >  
+		<campos nombre="sede">
+			<descripcion>Sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			<descripcion>Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			<descripcion>Jornada</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="total_asignaturas">
+			<descripcion>Total Asignaturas</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="total_FF">
+			<descripcion>Total Formación Fundamental</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+	  
+	  <parametro formulario="desercion" mensajeError="No existen datos de alumnos nuevos por carreras" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a"  nroRegistros="100" maxLista="10" >  
+		<campos nombre="sede">
+			<descripcion>Sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			<descripcion>Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			<descripcion>Jornada</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="total_alumnos_carrera">
+			<descripcion>Total Matr.</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="total_abandonos_carrera">
+			<descripcion>Abandonos</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="total_retiros_carrera">
+			<descripcion>Retiros</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="total_eliminados_carrera">
+			<descripcion>Eliminados</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="total_cambios_carrera">
+			<descripcion>Cambios</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="porcentaje">
+			<descripcion>Indicador(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	</parametro>
+
+	<parametro formulario="otros_indicadores" mensajeError="No se datos para los criterios de busqueda" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a" >  
+		<campos nombre="nombre_docente">
+			<descripcion>Nombre Docente</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="grado">
+			<descripcion>Grado Academico</descripcion>
+			<tipo>RESUMEN</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+	  </parametro>
+	<parametro formulario="formulario_vacio" mensajeError="No se datos para los criterios de busqueda" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a" >  
+		<campos nombre="nombre_docente">
+			<descripcion>Nombre Docente</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="grado">
+			<descripcion>Grado Academico</descripcion>
+			<tipo>RESUMEN</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+	  </parametro> 
+	 <parametro formulario="botonera_curricular">
+		<botones nombre="buscar"> 
+		  <tipoTexto>BUSCAR</tipoTexto>
+		  <accion>JAVASCRIPT</accion>
+		  <funcion>enviar(document.buscador)</funcion>
+		</botones> 	
+		<botones nombre="lanzadera"> 
+			<tipoTexto>SALIR</tipoTexto>
+			<accion>NAVEGAR</accion>
+			<url>../lanzadera/lanzadera.asp</url>
+		</botones>
+		 <botones nombre="excel">
+			<tipoTexto>DEFINIR</tipoTexto>
+			 <texto>Excel</texto>
+			 <accion>NAVEGAR</accion>
+			 <formulario>edicion</formulario>
+		 </botones>
+     </parametro>
+	 <parametro formulario="busqueda_curricular" variable="busqueda">
+  		 <listas nombre="lBusqueda">
+		    <item clave="anos_ccod" valor="anos_ccod" />
+			<item clave="sede_ccod" valor="sede_tdesc" />
+			<item clave="carr_ccod" valor="carr_tdesc" />
+			<item clave="jorn_ccod" valor="jorn_tdesc" />
+			<item clave="asig_ccod" valor="asig_tdesc" />
+		</listas>
+		<campos nombre="anos_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="sede_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="jorn_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="asig_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+     <campos nombre="todas">
+         <descripcion>Todas</descripcion>
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <objeto>CHECKBOX</objeto>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+      </campos>
+	  <campos nombre="sin_alumnos">
+         <descripcion>Sin Alumnos</descripcion>
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <objeto>CHECKBOX</objeto>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+      </campos>
+	 <campos nombre="sin_cerrar">
+         <descripcion>Sin Cerrar</descripcion>
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <objeto>CHECKBOX</objeto>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+      </campos> 
+  </parametro> 
+  <parametro formulario="f_asignaturas" clave="secc_ccod"  variable="secciones" 
+      colorSeleccionado="#CCCCCC" colorResaltado="#999999" nroRegistros="100" maxLista="100" 
+	  paginaEdicion="" eliminar="FALSE" 
+      seleccionarTodo="FALSE"  anchoTabla="100%" editar="FALSE"  nuevaVentana="FALSE" 
+	  mensajeError="No se encontraron asignaturas...">	
+	<campos nombre="peri_tdesc">
+	    <descripcion>Periodo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>	
+	<campos nombre="asignatura">
+	    <descripcion>Asignatura</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>	 
+	 <campos nombre="secc_tdesc">
+	    <descripcion>Sección</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="nive_ccod">
+	    <descripcion>Nivel</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="estado">
+	    <descripcion>Estado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	</campos>
+	<campos nombre="cant_alumnos">
+	    <descripcion>N°Alumnos</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	</campos>	
+	<campos nombre="porc_aprobados">
+	    <descripcion>indicador Aprobación(%)</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	</campos>
+	<campos nombre="porc_reprobados">
+	    <descripcion>indicador Reprobación(%)</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	</campos>
+	<campos nombre="porc_faltantes">
+	    <descripcion>indicador Faltantes(%)</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	</campos>
+	<campos nombre="promedio">
+	    <descripcion>Promedio</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	</campos>
+ </parametro> 
+ <parametro formulario="listado_alumnos" mensajeError="No existen alumnos en esta condición" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a"  nroRegistros="10" maxLista="10" >  
+		<campos nombre="rut">
+			<descripcion>Rut</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="nombres">
+			<descripcion>Nombre</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="apellidos">
+			<descripcion>Apellidos</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="ano_ingreso">
+			<descripcion>Año de Ingreso</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+	<parametro formulario="seleccionados_facultad" mensajeError="..." 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a"  nroRegistros="10" maxLista="10" >  
+		<campos nombre="facu_tdesc">
+			<descripcion>Facultad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="total_aprobados">
+			<descripcion>Seleccionados</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="total_postulantes">
+			<descripcion>Total Postulantes</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="indicador">
+			<descripcion>Indicador(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+	  
+	  <parametro formulario="demanda_facultad" mensajeError="..." 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a"  nroRegistros="10" maxLista="10" >  
+		<campos nombre="facu_tdesc">
+			<descripcion>Facultad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="matriculados">
+			<descripcion>Matriculados</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="vacantes">
+			<descripcion>Vacantes</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="indicador">
+			<descripcion>Indicador(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+	  
+	  <parametro formulario="nuevos_facultad" mensajeError="..." 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a"  nroRegistros="10" maxLista="10" >  
+		<campos nombre="facu_tdesc">
+			<descripcion>Facultad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="total_carreras">
+			<descripcion>Total Carreras</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="hombres">
+			<descripcion>Total Hombres</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="indicador_hombres">
+			<descripcion>Indicador Hombres(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="mujeres">
+			<descripcion>Total Mujeres</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="indicador_mujeres">
+			<descripcion>Indicador Mujeres(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="extranjeros">
+			<descripcion>Total Extranjeros</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="indicador_extranjeros">
+			<descripcion>Indicador Extranjeros(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+	  <parametro formulario="desercion_facultad" mensajeError="..." 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a"  nroRegistros="10" maxLista="10" >  
+		<campos nombre="facu_tdesc">
+			<descripcion>Facultad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="total_carreras">
+			<descripcion>Total Carreras</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="abandonos">
+			<descripcion>Total Abandonos</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="indicador_abandonos">
+			<descripcion>Porcentaje Abandonos(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="retiros">
+			<descripcion>Total Retiros</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="indicador_retiros">
+			<descripcion>Porcentaje Retiros(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="eliminados">
+			<descripcion>Total Eliminados</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="indicador_eliminados">
+			<descripcion>Porcentaje Eliminados(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="cambios">
+			<descripcion>Total Cambios</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="indicador_cambios">
+			<descripcion>Porcentaje Cambios(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="indicador_totales">
+			<descripcion>Indicador Facultad(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+	  <parametro formulario="loce_facultad" mensajeError="..." 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a"  nroRegistros="10" maxLista="10" >  
+		<campos nombre="facu_tdesc">
+			<descripcion>Facultad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="en_loce">
+			<descripcion>Matriculados LOCE</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="total_facultad">
+			<descripcion>Matriculados Facultad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="indicador">
+			<descripcion>Indicador(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+	  
+	   <parametro formulario="no_loce_facultad" mensajeError="..." 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a"  nroRegistros="10" maxLista="10" >  
+		<campos nombre="facu_tdesc">
+			<descripcion>Facultad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="total_facultad">
+			<descripcion>Matriculados Facultad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="total_universidad">
+			<descripcion>Matriculados Universidad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="indicador">
+			<descripcion>Indicador Univ.(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+	  
+	  <parametro formulario="titulacion_oportuna" mensajeError="No existen datos de titulaciones oportunas en los datos seleccionados" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a"  nroRegistros="100" maxLista="100" >  
+		<campos nombre="ano_consulta">
+			<descripcion>Año</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			<descripcion>Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			<descripcion>Jornada</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="cant_semestres">
+			<descripcion>N° Semestres</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="titulados_hasta">
+			<descripcion>Titulados hasta</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="activos_consulta">
+			<descripcion>Total Matriculados</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="titulados_a_tiempo_temp">
+			<descripcion>Titulados a Tiempo</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="indicador">
+			<descripcion>Indicador (%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+	  <parametro formulario="titulacion_oportuna_facultad" mensajeError="..." 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a"  nroRegistros="10" maxLista="10" >  
+		<campos nombre="facu_tdesc">
+			<descripcion>Facultad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="activos">
+			<descripcion>Total Matriculados</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="titulados">
+			<descripcion>Titulados a Tiempo</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="indicador">
+			<descripcion>Indicador(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+	   <parametro formulario="promedio_titulacion" mensajeError="No existen datos de promedios de titulaciones en los datos seleccionados" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a"  nroRegistros="100" maxLista="100" >  
+		<campos nombre="ano_consulta">
+			<descripcion>Año</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			<descripcion>Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="duracion">
+			<descripcion>Duración</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="activos_consulta">
+			<descripcion>Total Matriculados</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="titulados_a_la_fecha">
+			<descripcion>Titulados a la Fecha</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="indicador">
+			<descripcion>Indicador (N°Sem.)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+	  
+	  <parametro formulario="vacantes_ofertas" mensajeError="No existen datos de vacantes por carreras" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a"  nroRegistros="100" maxLista="10" >  
+		<campos nombre="sede">
+			<descripcion>Sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			<descripcion>Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			<descripcion>Jornada</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="nuevos">
+			<descripcion>Matriculados Nuevos</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="vacantes_nuevos">
+			<descripcion>Vacantes Nuevos</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="indicador_nuevos">
+			<descripcion>Indicador N.(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="antiguos">
+			<descripcion>Matriculados Antiguos</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="vacantes_antiguos">
+			<descripcion>Vacantes Antiguos</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="indicador_antiguos">
+			<descripcion>Indicador A.(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+	  
+	  <parametro formulario="demanda_ofertas_facultad" mensajeError="..." 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a"  nroRegistros="10" maxLista="10" >  
+		<campos nombre="facultad">
+			<descripcion>Facultad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="nuevos">
+			<descripcion>Matriculados Nuevos</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="vacantes_nuevos">
+			<descripcion>Vacantes Nuevos</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="indicador_nuevos">
+			<descripcion>Indicador N.(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="antiguos">
+			<descripcion>Matriculados Antiguos</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="vacantes_antiguos">
+			<descripcion>Vacantes Antiguos</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="indicador_antiguos">
+			<descripcion>Indicador A.(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+
+	  <parametro formulario="demanda_ofertas_sede" mensajeError="..." 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a"  nroRegistros="10" maxLista="10" >  
+		<campos nombre="sede">
+			<descripcion>Sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="nuevos">
+			<descripcion>Matriculados Nuevos</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="vacantes_nuevos">
+			<descripcion>Vacantes Nuevos</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="indicador_nuevos">
+			<descripcion>Indicador N.(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="antiguos">
+			<descripcion>Matriculados Antiguos</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="vacantes_antiguos">
+			<descripcion>Vacantes Antiguos</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="indicador_antiguos">
+			<descripcion>Indicador A.(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+
+
+
+	  <parametro formulario="procedencia_municipal" mensajeError="No existen datos de procedencia de colegios municipales" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a"  nroRegistros="100" maxLista="100" >  
+		<campos nombre="sede">
+			<descripcion>Sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			<descripcion>Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			<descripcion>Jornada</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="cantidad">
+			<descripcion>Alumnos Municipales</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="total_carrera">
+			<descripcion>Total Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="porcentaje_procedencia">
+			<descripcion>Indicador Municipal(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+
+	  <parametro formulario="procedencia_municipal_facu" mensajeError="No existen datos de procedencia de colegios municipales" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a"  nroRegistros="100" maxLista="100" >  
+		<campos nombre="facultad">
+			<descripcion>Sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="cantidad">
+			<descripcion>Alumnos Municipales</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="total_facultad">
+			<descripcion>Total Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="porcentaje_procedencia">
+			<descripcion>Indicador Municipal(%)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+	  
+</Parametros>

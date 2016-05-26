@@ -1,0 +1,237 @@
+<Parametros>
+  <parametro formulario="botonera">
+     <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+	 <botones nombre="cancelar"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>CERRAR</accion>
+	 </botones>
+	 <botones nombre="buscar"> 
+        <tipoTexto>BUSCAR</tipoTexto>
+	    <accion>BUSCAR</accion>
+	    <formulario>buscador</formulario>
+		<soloUnClick>TRUE</soloUnClick>
+	 </botones>
+	 <botones nombre="nueva"> 
+        <tipoTexto>AGREGAR</tipoTexto>
+	    <accion>AGREGAR</accion>
+	    <posicionX>100</posicionX>
+	    <posicionY>50</posicionY>
+	    <ancho>750</ancho>
+	    <alto>400</alto>	   
+	 </botones>
+	 <botones nombre="agregar">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Guardar</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+		 <url>proc_asignar_beneficio.asp</url>
+      </botones>
+	<botones nombre="cerrar">
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+		 <funcion>CerrarActualizar();</funcion>
+    </botones>
+	<botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+    </botones>
+  </parametro>
+ 
+ <parametro formulario="f_busqueda" variable="busqueda">
+   <campos nombre="carr_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>carreras</destino> 
+	  <union>carr_ccod</union>
+	  <salida>CARR_TDESC</salida>
+      <orden>CARR_TDESC asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Todas</mensajeNulo>
+	  <mensajeVacio>Todas</mensajeVacio>
+	  <!--<script>onchange="cargar();"</script>-->
+	  <id>TO-S</id>
+   </campos>
+  </parametro>
+  
+   <parametro formulario="f_postulaciones" nroRegistros="10" nuevaVentanaAncho="550"
+    paginaEdicion="Asignar_beneficio.asp?pobe_ncorr=%pobe_ncorr%" nuevaVentanaAlto="400" 
+    eliminar="FALSE" clave="pobe_ncorr" maxLista="10" mensajeError="No se encontraron postulaciones a becas  en esta carrera para el periodo"
+	seleccionarTodo="TRUE"  anchoTabla="100%" editar="TRUE"  nuevaVentana="TRUE" variable="becas" >
+      <tablas nombre="postulacion_becas" accion="M"/>
+      <campos nombre="rut">
+	    <descripcion>Rut</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="postulante">
+	    <descripcion>Alumno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="carrera">
+	    <descripcion>Carrera</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="ingresos">
+	    <descripcion> Ingresos </descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+		<formato>MONEDA</formato>
+	 </campos>
+	 <campos nombre="capacidad">
+	    <descripcion>Capacidad Pago</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+		<formato>MONEDA</formato>
+	 </campos>	
+	 <campos nombre="nresolucion">
+	    <descripcion>Nº Resolución</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>	
+	 <campos nombre="fecha_obtencion">
+	    <descripcion>Fecha</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="matricula">
+	    <descripcion>Matricula</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+		<formato>MONEDA</formato>
+	 </campos>
+	 <campos nombre="arancel">
+	    <descripcion>Arancel</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+		<formato>MONEDA</formato>
+	 </campos>
+	 <campos nombre="porcentaje">
+	    <descripcion>Porcentaje Asignado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>	 
+   </parametro>
+   
+   <parametro formulario="f_nueva" variable="especialidades">
+    <tablas nombre="especialidades" accion="M"/>
+	 <campos nombre="carr_ccod">
+	 	<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="espe_tdesc">
+	 	<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>60</caracteres>
+	    <maxCaracteres>100</maxCaracteres>
+	    <id>TO-N</id>		
+	 </campos>
+	 <campos nombre="espe_nduracion">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>3</caracteres>
+	    <maxCaracteres>2</maxCaracteres>
+	    <id>NU-N</id>		
+	 </campos>
+	 <campos nombre="ttit_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>tipos_titulos</destino> 
+	  <union>ttit_ccod</union>
+	  <salida>ttit_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Tipo de Titulo</mensajeNulo>	 
+	  <id>TO-N</id>
+   </campos>
+   <campos nombre="espe_ttitulo">
+	 	<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>60</caracteres>
+	    <maxCaracteres>100</maxCaracteres>
+	    <id>TO-N</id>		
+	 </campos>
+	 <campos nombre="espe_fini_vigencia">
+	 	<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>12</caracteres>
+	    <maxCaracteres>10</maxCaracteres>
+	    <id>FE-S</id>		
+	 </campos>
+   <campos nombre="espe_bexamen_adm">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+   </campos>
+   <campos nombre="eesp_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>estados_de_especialidad</destino> 
+	  <union>eesp_ccod</union>
+	  <salida>eesp_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Tipo de Titulo</mensajeNulo>	 
+	  <id>TO-N</id>
+   </campos>			 
+ </parametro>
+ <parametro formulario="datos_asignacion" variable="beca" editar="false"  eliminar="true" 
+   paginaEdicion="" nuevaVentana="FALSE" clave="pobe_ncorr" 
+   anchoTabla="100%" mensajeError="">
+   <tablas nombre="postulacion_becas" accion="M"/>
+      	<campos nombre="pobe_ncorr">
+				<tipo>INPUT</tipo>
+				<permiso>OCULTO</permiso>
+	    </campos>
+		<campos nombre="pobe_nresolucion">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <descripcion>Resolución</descripcion>
+			 <caracteres>10</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>NU-S</id>
+		  </campos>
+		  <campos nombre="pobe_nporcentaje_asignado">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <descripcion>Porcentaje</descripcion>
+			 <caracteres>5</caracteres>
+			 <maxCaracteres>3</maxCaracteres>
+			 <id>NU-N</id>
+			 <script>onChange="validaValor(this.value);"</script>
+		  </campos>
+		  <campos nombre="pobe_fobtencion">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <descripcion>Fecha</descripcion>
+			 <caracteres>12</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>FE-N</id>
+		  </campos>
+		  <campos nombre="pobe_tsistesis">
+				<descripcion>Sintesis</descripcion>
+			    <tipo>TEXTAREA</tipo>
+			    <permiso>LECTURAESCRITURA</permiso>
+			    <filas>5</filas>
+			    <caracteres>50</caracteres>
+			    <id>TO-N</id>
+		  </campos>
+	</parametro>
+
+   
+ </Parametros>

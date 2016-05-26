@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="botonera">
+    <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+   <botones nombre="excel">
+       <tipoTexto>DEFINIR</tipoTexto>
+	   <texto>Excel</texto>
+       <accion>NAVEGAR</accion>	   
+   </botones>
+   <botones nombre="imprimir">
+       <tipoTexto>DEFINIR</tipoTexto>
+	   <texto>Imprimir</texto>
+       <accion>GUARDAR</accion>
+	   <formulario>edicion</formulario>	
+	   <target>_BLANK</target>   
+   </botones>
+   <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	  <soloUnClick>TRUE</soloUnClick>
+   </botones>
+	<botones nombre="cerrar_actualizar"> 
+      <tipoTexto>SALIR</tipoTexto>
+      <accion>JAVASCRIPT</accion>
+	 <funcion>salir();</funcion>	   
+	</botones>
+	<botones nombre="agregar_envio"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>AGREGAR</accion>
+	  <posicionX>200</posicionX>
+	  <posicionY>200</posicionY>
+	  <ancho>418</ancho>
+	  <alto>200</alto>
+	  <url>castigos_nuevo.asp?folio_envio=NUEVO</url>
+	 </botones>
+	 <botones nombre="guardar_nuevo_envio"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>proc_castigos_nuevo.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>
+	<botones nombre="cancelar"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+	<botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>ELIMINAR</accion>
+	  <formulario>edicion</formulario>
+	</botones>
+	<botones nombre="enviar_folio"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Castigar Documentos</texto>
+	  <accion>GUARDAR</accion>
+	  <formulario>edicion</formulario>
+	  <funcionValidacion>validar_deposito_enviado(document.edicion);</funcionValidacion>
+	</botones>
+	<botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+    </botones>
+	 <botones nombre="agregar_letras"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>AGREGAR</accion>
+	  <posicionX>100</posicionX>
+	  <posicionY>50</posicionY>
+	  <ancho>750</ancho>
+	  <alto>600</alto>
+	 </botones>
+	 <botones nombre="guardar_letras"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>proc_depositos_tarjetas_buscar.asp</url>
+	  <formulario>edicion</formulario>
+	  <soloUnClick>TRUE</soloUnClick>
+	</botones>  
+ </parametro>
+
+ <parametro formulario="f_enviar" clave="envi_ncorr"  variable="envios" >
+    <tablas nombre="envios" accion="M"/>
+</parametro>
+
+ <parametro formulario="busqueda_envios" variable="busqueda">
+   <campos nombre="envi_ncorr">
+     <tipo>INPUT</tipo>
+     <permiso>LECTURAESCRITURA</permiso>
+     <caracteres>10</caracteres>
+     <maxCaracteres>8</maxCaracteres>
+    </campos>
+   	<campos nombre="inen_ccod">
+		  <tipo>SELECT</tipo>
+		  <destino>instituciones_envio</destino> 
+		  <union>inen_ccod</union>
+		  <salida>inen_tdesc</salida>
+		  <filtro>tine_ccod=2</filtro>
+		  <permiso>LECTURAESCRITURA</permiso>
+		  <anulable>true</anulable>
+		  <mensajeNulo>Seleccione Notaria</mensajeNulo>
+	</campos>
+	<campos nombre="envi_fenvio">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+	</campos>
+	<campos nombre="eenv_ccod">
+	     <tipo>SELECT</tipo>
+		 <destino>estados_envio</destino>
+		 <union>eenv_ccod</union>
+		 <salida>eenv_tdesc</salida>
+		 <orden>eenv_ccod asc</orden>
+		 <filtro>eenv_ccod in (1, 5)</filtro>
+		 <anulable>TRUE</anulable>
+		 <mensajeNulo>Todos</mensajeNulo>
+		 <permiso>LECTURAESCRITURA</permiso>
+	</campos>
+   	<campos nombre="ccte_ccod">
+		  <tipo>SELECT</tipo>
+		  <destino>cuentas_corrientes</destino> 
+		  <union>ccte_ccod</union>
+		  <salida>ccte_tdesc</salida>
+		  <filtro>inen_ccod=18</filtro>
+		  <permiso>LECTURAESCRITURA</permiso>
+		  <anulable>true</anulable>
+		  <mensajeNulo>Seleccione Cuenta</mensajeNulo>
+	</campos>	
+  </parametro>
+ 
+  <parametro formulario="f_envios" clave="envi_ncorr"  variable="envios" 
+         colorSeleccionado="#CCCCCC" colorResaltado="#999999" nroRegistros="15" maxLista="10" 
+	     paginaEdicion="castigos_agregar1.asp?folio_envio=%envi_ncorr%" eliminar="TRUE" 
+         seleccionarTodo="TRUE"  anchoTabla="100%" editar="TRUE"  nuevaVentana="FALSE" 
+		 mensajeError="No se encontraron envios...">
+	 <tablas nombre="envios" accion="B"/>
+	 
+       <campos nombre="c_envi_ncorr">
+	    <descripcion>Folio Envio</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<ancho>50</ancho>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	  <campos nombre="eenv_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+     </campos>
+	 <campos nombre="c2_envi_ncorr">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+     <campos nombre="eenv_tdesc">
+	    <descripcion>Estado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	  <campos nombre="envi_tdescripcion">
+         <descripcion>Descripcion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+     </campos>
+	 <campos nombre="inen_tdesc">
+	    <descripcion>Institucion</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	  <campos nombre="ccte_tdesc">
+         <descripcion>Cuenta Castigo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	 <campos nombre="envi_fenvio">
+	    <descripcion>Fecha</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="cant_doc">
+	    <descripcion>Documentos</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	   <campos nombre="total">
+         <descripcion>Total</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+      </campos>
+ </parametro>
+ 
+  <parametro formulario="f_nuevo" variable="envio">
+   <tablas nombre="envios" accion="M"/>
+   <campos nombre="envi_ncorr">
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>
+   </campos>
+   <campos nombre="envi_fenvio">
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>
+	  <caracteres>12</caracteres>
+	  <maxCaracteres>10</maxCaracteres>
+   </campos>
+   <campos nombre="eenv_ccod">
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>
+	  <caracteres>12</caracteres>
+	  <maxCaracteres>10</maxCaracteres>
+   </campos>
+   <campos nombre="tenv_ccod">
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>
+	  <caracteres>12</caracteres>
+	  <maxCaracteres>10</maxCaracteres>
+   </campos>
+
+   <campos nombre="inen_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>instituciones_envio</destino> 
+	  <union>inen_ccod</union>
+	  <salida>inen_tdesc</salida>
+	  <filtro>inen_ccod in (18)</filtro>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Institucion</mensajeNulo>
+	  <id>TO-N</id>
+	  <script>onChange="CargarEspecialidades(this.form, this.value)"</script>
+	</campos>
+	 <campos nombre="ccte_ccod">
+         <tipo>SELECT</tipo>
+         <destino>(SELECT -1 AS ccte_ccod, 'Seleccione Cuenta Contable' AS blanco) a</destino>
+         <union>ccte_ccod</union>
+         <salida>blanco</salida>
+		 <orden>a.blanco</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+      </campos>
+  </parametro>
+
+  <parametro formulario="f_detalle_envio" clave="envi_ncorr"  variable="detalle_envios" 
+         colorSeleccionado="#CCCCCC" colorResaltado="#999999" nroRegistros="12" maxLista="10" 
+	     eliminar="TRUE" seleccionarTodo="TRUE"  anchoTabla="100%"
+		 mensajeError="No se encontraron registros..." resumen = "TRUE">
+		 
+	 <tablas nombre="detalle_envios" accion="B"/> 
+	 
+	 <campos nombre="ting_ccod">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="ding_ndocto">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="ingr_ncorr">
+	    <descripcion>ingr</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="edin_ccod">
+	    <descripcion>C Estado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 
+	 <campos nombre="numero_pagare">
+	    <descripcion>Nº Documento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+   <campos nombre="c_ting_ccod">
+	  <descripcion>Tipo Docto</descripcion>
+      <tipo>SELECT</tipo>
+	  <destino>tipos_ingresos</destino> 
+	  <union>ting_ccod</union>
+	  <salida>ting_tdesc</salida>
+	  <permiso>LECTURA</permiso>
+	  <anulable>true</anulable>
+	 </campos>  	 
+	<campos nombre="edin_tdesc">
+	    <descripcion>Estado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="rut_alumno">
+	    <descripcion>Rut Alumno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="rut_apoderado">
+	    <descripcion>Rut Apoderado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	  <campos nombre="nombre_apoderado">
+	    <descripcion>Apoderado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+	 </campos>
+	  <campos nombre="ding_fdocto"> 
+	    <descripcion>F. Vencimiento</descripcion>
+		<formato>FECHA</formato>
+		<permiso>LECTURA</permiso>
+	 </campos>  
+	<campos nombre="ding_mdocto">
+	    <descripcion>Monto</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>RIGHT</alineamiento>
+		<formato>MONEDA</formato>
+		<resumen>SUMA</resumen>		
+	 </campos>
+ </parametro>
+
+ <parametro formulario="busqueda_letras" variable="busqueda">
+   <campos nombre="sede_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>sedes</destino> 
+	  <union>sede_ccod</union>
+	  <salida>sede_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Sede</mensajeNulo>
+	 </campos>
+   <campos nombre="ting_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>tipos_ingresos</destino> 
+	  <union>ting_ccod</union>
+	  <salida>ting_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <filtro>ting_ccod in (3,4,14,38)</filtro>
+	 </campos>
+	<campos nombre="inicio">
+     <tipo>INPUT</tipo>
+     <permiso>LECTURAESCRITURA</permiso>
+     <caracteres>12</caracteres>
+     <maxCaracteres>10</maxCaracteres>
+	 <id>FE-S</id>
+    </campos>
+	<campos nombre="termino">
+     <tipo>INPUT</tipo>
+     <permiso>LECTURAESCRITURA</permiso>
+     <caracteres>12</caracteres>
+     <maxCaracteres>10</maxCaracteres>
+	 <id>FE-S</id>
+    </campos>
+	<campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+     <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+	  <campos nombre="code_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="code_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+    <campos nombre="ding_ndocto">
+       <tipo>INPUT</tipo>
+       <permiso>LECTURAESCRITURA</permiso>
+       <caracteres>12</caracteres>
+       <maxCaracteres>10</maxCaracteres>
+	   <id>NU-S</id>
+    </campos>
+  <campos nombre="edin_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>estados_detalle_ingresos</destino> 
+	  <union>edin_ccod</union>
+	  <salida>edin_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <filtro>edin_ccod in (1,7,8,11,13,14,19,49,50,52,53,54)</filtro>
+	  <mensajeNulo>Seleccione Estado Documento</mensajeNulo>
+	 </campos>
+	 <campos nombre="ting_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>tipos_ingresos</destino> 
+	  <union>ting_ccod</union>
+	  <salida>ting_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <filtro>ting_ccod in (13,51)</filtro>
+	  <mensajeNulo>Seleccione Tarjeta</mensajeNulo>
+	 </campos>
+	<campos nombre="ding_tcuenta_corriente">
+       <tipo>INPUT</tipo>
+       <permiso>LECTURAESCRITURA</permiso>
+       <caracteres>12</caracteres>
+       <maxCaracteres>10</maxCaracteres>
+	   <id>NU-S</id>
+    </campos>
+
+  </parametro> 
+<parametro formulario="f_letras" clave="envi_ncorr"  variable="letras" 
+    colorSeleccionado="#CCCCCC" colorResaltado="#999999" nroRegistros="10" maxLista="10" 
+    eliminar="TRUE" seleccionarTodo="TRUE"  anchoTabla="100%" editar="FALSE"  nuevaVentana="FALSE" 
+	mensajeError="No se encontraron documentos para castigar...">
+	<tablas nombre="detalle_envios" accion="M"/>
+	<tablas nombre="detalle_ingresos" accion="M"/>
+	
+	 <campos nombre="ting_ccod">
+	    <descripcion>tipo envio</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	<campos nombre="ding_ndocto">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="ingr_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="edin_ccod">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="numero_documento">
+	    <descripcion>Nº Documento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<ancho>50</ancho>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="ting_tdesc">
+	 	<descripcion>Tipo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+     <campos nombre="edin_tdesc">
+	    <descripcion>Estado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	<campos nombre="rut_alumno">
+	    <descripcion>Rut Alumno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="rut_apoderado">
+	    <descripcion>Rut Apoderado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="ding_fdocto">
+	    <descripcion>F. Vencimiento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="ding_mdetalle">
+	    <descripcion>Monto</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>RIGHT</alineamiento>
+		<formato>MONEDA</formato>
+	 </campos>
+	 <campos nombre="envio">
+	    <descripcion>Enviar</descripcion>
+		<tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>OCULTO</permiso>
+		 <alineamiento>CENTER</alineamiento>
+	</campos>	
+   </parametro>
+   
+   <parametro  colorResaltado="#999999" colorSeleccionado="#CCCCCC" 
+		 paginaEdicion="Envios_Notaria_MLetra.asp?folio_envio=%envi_ncorr%&amp;rut_apoderado=%code_nrut%&amp;rut_alumno=%r_alumno%" 
+		 nuevaVentanaAlto="400" formulario="f_detalle_agrupado"  nroRegistros="15" nuevaVentanaAncho="600" eliminar="FALSE" maxLista="10" 
+		 clave="envi_ncorr"	 mensajeError="No se encontraron registros" seleccionarTodo="FALSE" 
+		 editar="TRUE"  anchoTabla="100%" nuevaVentana="TRUE"  variable="detalle_agrupado">
+	  <campos nombre="rut_alumno">
+	    <descripcion>Rut Alumno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="rut_apoderado">
+	    <descripcion>Rut Apoderado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	  <campos nombre="code_nrut">
+	    <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="r_alumno">
+	    <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	  <campos nombre="nombre_apoderado">
+	    <descripcion>Apoderado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	<campos nombre="documentos">
+	    <descripcion>Documentos</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+ </parametro>
+
+<parametro formulario="f_detalle_letras" clave="envi_ncorr"  variable="detalle_letras" 
+         colorSeleccionado="#CCCCCC" colorResaltado="#999999" nroRegistros="15" maxLista="10" 
+	     anchoTabla="95%" mensajeError="No se encontraron registros">
+	 <campos nombre="ding_ndocto">
+	    <descripcion>Letra</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="edin_tdesc">
+	    <descripcion>Estado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="ingr_fpago">
+	    <descripcion>F Emision</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>		
+	 </campos>
+	 <campos nombre="ding_fdocto">
+	    <descripcion>F Vencimiento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>		
+	 </campos>
+	 <campos nombre="ding_mdocto">
+	    <descripcion>Monto</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>RIGHT</alineamiento>
+		<formato>MONEDA</formato>		
+	 </campos>
+ </parametro>
+ 
+<parametro formulario="excel" clave="envi_ncorr"  variable="excel" 
+		 mensajeError="No se encontraron registros..." >
+	 <tablas nombre="detalle_envios" accion="B"/> 
+	 <campos nombre="c_ding_ndocto">
+	    <descripcion>Letra</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	<campos nombre="edin_tdesc">
+	    <descripcion>Estado Letra</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="rut_alumno">
+	    <descripcion>Rut Alumno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="rut_apoderado">
+	    <descripcion>Rut Apoderado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	  <campos nombre="nombre_apoderado">
+	    <descripcion>Apoderado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+	 </campos>
+	 <campos nombre="ingr_fpago">
+	    <descripcion>F Emision</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	<campos nombre="ding_mdocto">
+	    <descripcion>Monto</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>RIGHT</alineamiento>
+		<formato>MONEDA</formato>		
+	 </campos>
+ </parametro>
+ 
+     <parametro formulario="f_tarjetas_convalidacion" clave="ingr_ncorr"  variable="tarjetas" >
+		 <campos nombre="ding_tcuenta_corriente">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		 </campos>
+   </parametro>
+
+ 
+ 
+</Parametros>

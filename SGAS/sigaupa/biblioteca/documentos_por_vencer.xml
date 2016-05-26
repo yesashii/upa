@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  
+	<botones nombre="excel">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Excel</texto>
+      </botones>
+   
+   </parametro>
+   <parametro formulario="busqueda" variable="b" columnas="3" >
+ 
+	   <campos nombre="mes_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+		 <script>onchange='javascript:dibujar(document.editar);'</script>			
+	    <mensajeNulo>Seleccione un Mes</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>meses </destino>
+		 <union>mes_ccod</union>
+         <salida>mes_tdesc</salida>
+		 
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="anos_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+		<script>onchange='javascript:dibujar(document.editar);'</script>			
+	    <mensajeNulo>Seleccione un año</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>anos</destino>
+		 <filtro>anos_ccod > 2007 </filtro>
+         <union>anos_ccod</union>
+         <salida>anos_ccod</salida>
+		 <orden>anos_tdesc asc</orden>
+		 <id>NU-N</id>
+      </campos>
+	 
+	  
+   </parametro>
+   
+ 
+   
+</Parametros>

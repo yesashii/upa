@@ -1,0 +1,41 @@
+<Parametros>
+  <parametro formulario="botonera">
+     <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+	  <botones nombre="excel"> 
+       <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Excel</texto>
+		<accion>JAVASCRIPT</accion>
+		<funcion>abrir(2, this.form);</funcion>	
+	</botones>
+	 <botones nombre="imprimir"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Imprimir</texto>
+		<accion>JAVASCRIPT</accion>
+		<funcion>abrir(1, this.form);</funcion>		
+	</botones>	
+  </parametro>
+  
+ <parametro formulario="filtros" variable="busqueda">
+    <campos nombre="sede_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>sedes</destino> 
+	  <union>sede_ccod</union>
+	  <salida>sede_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>false</anulable>
+	  <mensajeNulo>Todas</mensajeNulo>	 
+	 </campos>
+	 <campos nombre="fin">
+     <tipo>INPUT</tipo>
+     <permiso>LECTURAESCRITURA</permiso>
+     <caracteres>12</caracteres>
+     <maxCaracteres>10</maxCaracteres>
+     <id>FE-N</id>
+	</campos>
+	</parametro>
+ 
+ </Parametros>

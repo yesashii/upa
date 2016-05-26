@@ -1,0 +1,815 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+<%
+'response.Flush()
+'for each k in request.QueryString()
+'	response.Write(k&"<br>")
+'next
+
+pers_ncorr = request.QueryString("personas[0][pers_ncorr]")
+tipo_postulante = session("r_tipo_postulante") 
+
+set conectar = new cConexion
+conectar.inicializar "upacifico"
+
+set negocio = new cnegocio
+negocio.inicializa conectar
+
+resto_titulo = ""
+if tipo_postulante = "1" then
+	resto_titulo = " pregrado o Postgrado"
+elseif tipo_postulante = "2" then
+	resto_titulo = " extensión"
+elseif tipo_postulante = "3" then
+	resto_titulo = " prospecto extensión"
+end if
+
+
+set pagina = new CPagina
+
+set errores 	= new cErrores
+
+set botonera =  new CFormulario
+botonera.carga_parametros "detalle_postulacion_new.xml","botonera"
+
+tituloPag = "Detalle postulación "&resto_titulo
+
+
+pagina.Titulo = tituloPag
+periodo=negocio.ObtenerPeriodoAcademico("POSTULACION")
+anio = conectar.consultaUno("select anos_ccod from periodos_academicos where cast(peri_ccod as varchar)='"&periodo&"'")
+
+set f_postulaciones = new cformulario
+f_postulaciones.carga_parametros "detalle_postulacion_new.xml","f_detalle"
+f_postulaciones.inicializar conectar
+
+if tipo_postulante = "2" then
+	set f_postulaciones = new cformulario
+	f_postulaciones.carga_parametros "detalle_postulacion_new.xml","f_detalle_otec"
+	f_postulaciones.inicializar conectar
+end if
+
+if tipo_postulante = "3" then
+	set f_postulaciones = new cformulario
+	f_postulaciones.carga_parametros "detalle_postulacion_new.xml","f_detalle_prospecto"
+	f_postulaciones.inicializar conectar
+end if
+
+
+if pers_ncorr <> "" then
+
+consulta =  "  select a.post_ncorr,b.ofer_ncorr,protic.initcap(d.sede_tdesc) as sede,protic.initcap(f.carr_tdesc) + ' (' + case g.jorn_ccod when 1 then 'D' else 'V' end + ')' as carrera,protic.initcap(g.jorn_tdesc) as jornada," & vbCrLf &_
+			" (select case count(*) when 0 then 'No' else 'Sí' end  from alumnos alu where a.post_ncorr=alu.post_ncorr and b.ofer_ncorr = alu.ofer_ncorr and emat_ccod = 1) as matriculado, " & vbCrLf &_
+			" case isnull(b.eepo_ccod,1) when 2 then '<font color=''#2d5bc7''><strong>' +protic.initcap(h.eepo_tdesc)+ '</strong></font>' " & vbCrLf &_
+			" when 7 then '<font color=''#0ea02f''><strong>' +protic.initcap(h.eepo_tdesc)+ '</strong></font>' " & vbCrLf &_
+			" when 3 then '<font color=''#f54415''><strong>' +protic.initcap(h.eepo_tdesc)+ '</strong></font>' " & vbCrLf &_
+			" else protic.initcap(h.eepo_tdesc) end as estado_examen,lower(isnull(b.dpos_tobservacion,'')) as observacion_examen, " & vbCrLf &_
+			" isnull(i.obpo_tobservacion,'') as obpo_tobservacion,isnull(i.eopo_ccod,1) as eopo_ccod, protic.trunc(fecha_llamado) as fecha_llamado,   " & vbCrLf &_
+			" protic.trunc(fecha_entrevista) as fecha_entrevista, htes_ccod,(select htes_hinicio from horarios_test tt where tt.htes_ccod=i.htes_ccod) hora_entrevista,fecha_asignacion_carrera   " & vbCrLf &_
+			" from postulantes a join detalle_postulantes b " & vbCrLf &_
+			"    on a.post_ncorr=b.post_ncorr  " & vbCrLf &_
+			" join ofertas_academicas c " & vbCrLf &_
+			"    on b.ofer_ncorr=c.ofer_ncorr " & vbCrLf &_
+			" join sedes d " & vbCrLf &_
+			"    on c.sede_ccod=d.sede_ccod" & vbCrLf &_
+			" join especialidades e " & vbCrLf &_
+		    "    on c.espe_ccod=e.espe_ccod " & vbCrLf &_
+			" join carreras f " & vbCrLf &_
+			"    on e.carr_ccod=f.carr_ccod " & vbCrLf &_
+			" join jornadas g " & vbCrLf &_
+		    "    on c.jorn_ccod=g.jorn_ccod " & vbCrLf &_
+			" join estado_examen_postulantes h  " & vbCrLf &_
+		    "    on b.eepo_ccod=h.eepo_ccod and h.eepo_ccod not in (3)" & vbCrLf &_
+			" left outer join observaciones_postulacion i " & vbCrLf &_
+			"    on b.post_ncorr = i.post_ncorr and b.ofer_ncorr = i.ofer_ncorr    " & vbCrLf &_
+			" where cast(a.pers_ncorr as varchar)='"&pers_ncorr&"' " & vbCrLf &_
+		    " and cast(a.peri_ccod as varchar)='"&periodo&"'"
+
+	if tipo_postulante = "2" then
+	consulta =  " select a.pote_ncorr,a.dgso_ncorr, protic.initcap(e.sede_tdesc) as sede, protic.initCap(f.dcur_tdesc) as carrera, " & vbCrLf &_
+				" '--' as jornada, " & vbCrLf &_
+				" case a.epot_ccod when 4 then 'Sí' else 'No' end as matriculado, " & vbCrLf &_
+				" case isnull(h.eepo_ccod,1) when 2 then '<font color=''#2d5bc7''><strong>' +protic.initcap(i.eepo_tdesc)+ '</strong></font>'  " & vbCrLf &_
+				" when 7 then '<font color=''#0ea02f''><strong>' +protic.initcap(i.eepo_tdesc)+ '</strong></font>'  " & vbCrLf &_
+				" when 3 then '<font color=''#f54415''><strong>' +protic.initcap(i.eepo_tdesc)+ '</strong></font>'  " & vbCrLf &_
+				" else protic.initcap(i.eepo_tdesc) end as estado_examen,lower(isnull(h.dpos_tobservacion,'')) as observacion_examen, " & vbCrLf &_
+				" isnull(g.obpo_tobservacion,'') as obpo_tobservacion,isnull(g.eopo_ccod,1) as eopo_ccod, " & vbCrLf &_
+				" protic.trunc(g.fecha_llamado) as fecha_llamado,    " & vbCrLf &_
+				" protic.trunc(g.fecha_entrevista) as fecha_entrevista, " & vbCrLf &_
+				" g.htes_ccod,(select tt.htes_hinicio from horarios_test tt where tt.htes_ccod=g.htes_ccod) hora_entrevista,a.AUDI_FMODIFICACION as fecha_asignacion_carrera " & vbCrLf &_
+				" from postulacion_otec a join datos_generales_secciones_otec b " & vbCrLf &_
+				"        on a.dgso_ncorr=b.dgso_ncorr " & vbCrLf &_
+				" join ofertas_otec c " & vbCrLf &_
+				"        on b.dgso_ncorr=c.dgso_ncorr " & vbCrLf &_
+				" join personas d " & vbCrLf &_
+				"        on a.pers_ncorr=d.pers_ncorr " & vbCrLf &_
+				" join sedes e " & vbCrLf &_
+				"        on b.sede_ccod = e.sede_ccod " & vbCrLf &_
+				" join diplomados_cursos f " & vbCrLf &_
+				"        on b.dcur_ncorr = f.dcur_ncorr " & vbCrLf &_
+				" left outer join observaciones_postulacion_otec g " & vbCrLf &_
+				"        on a.pote_ncorr=g.pote_ncorr and a.dgso_ncorr=g.dgso_ncorr " & vbCrLf &_
+				" left outer join detalle_postulacion_otec h " & vbCrLf &_
+				"        on a.pote_ncorr=h.pote_ncorr and a.dgso_ncorr=h.dgso_ncorr " & vbCrLf &_
+				" left outer join estado_examen_postulantes i " & vbCrLf &_
+				"	     on h.eepo_ccod=i.eepo_ccod " & vbCrLf &_
+				" where cast(c.anio_admision as varchar)='"&anio&"' " & vbCrLf &_
+				" and cast(a.pers_ncorr as varchar)='"&pers_ncorr&"' and a.epot_ccod <> 5  " 
+	end if
+	
+	if tipo_postulante = "3" then
+	consulta =  " select a.id, '' as sede, a.curso as carrera, " & vbCrLf &_
+				" '--' as jornada, " & vbCrLf &_
+				" 'No' as matriculado, " & vbCrLf &_
+				" '' as estado_examen,a.consulta as observacion_examen, " & vbCrLf &_
+				" isnull(b.obpo_tobservacion,'') as obpo_tobservacion,isnull(b.eopo_ccod,1) as eopo_ccod, " & vbCrLf &_
+				" protic.trunc(b.fecha_llamado) as fecha_llamado, " & vbCrLf &_   
+				" protic.trunc(b.fecha_entrevista) as fecha_entrevista, " & vbCrLf &_
+				" b.htes_ccod,(select tt.htes_hinicio from horarios_test tt where tt.htes_ccod=b.htes_ccod) hora_entrevista,a.fecha_ingreso as fecha_asignacion_carrera " & vbCrLf &_
+				" from [ASPT].[dbo].[PROSPECTOS] a left outer join [ASPT].[dbo].[observaciones_prospectos] b " & vbCrLf &_
+				" 	on a.id = b.id " & vbCrLf &_
+				" where cast(datepart(year,a.Fecha_ingreso) as varchar) = '"&anio&"'  " & vbCrLf &_
+				" and len(cast(apellido as varchar) + ' ' + cast(nombre as varchar)) > 5 " & vbCrLf &_
+				" and cast(rut as varchar) not like '%http%' " & vbCrLf &_   
+				" and cast(a.id as varchar) = '"&pers_ncorr&"' " 
+	end if
+
+
+'response.Write("<pre>"&consulta&"</pre>")
+end if
+
+f_postulaciones.Consultar consulta & " order by fecha_asignacion_carrera asc"
+cantidad_lista=f_postulaciones.nroFilas
+
+
+
+
+
+nombre_alumno = conectar.consultaUno("select protic.initCap(pers_tnombre + ' ' + pers_tape_paterno + ' ' +pers_tape_materno) from personas_postulante where cast(pers_ncorr as varchar)='"&pers_ncorr&"'")
+rut_alumno = conectar.consultaUno("select cast(pers_nrut as varchar) + '-' + pers_xdv from personas_postulante where cast(pers_ncorr as varchar)='"&pers_ncorr&"'")
+fono_alumno = conectar.consultaUno("select pers_tfono from personas_postulante where cast(pers_ncorr as varchar)='"&pers_ncorr&"'")
+celular_alumno = conectar.consultaUno("select pers_tcelular from personas_postulante where cast(pers_ncorr as varchar)='"&pers_ncorr&"'")
+email_alumno = conectar.consultaUno("select lower(pers_temail) from personas_postulante where cast(pers_ncorr as varchar)='"&pers_ncorr&"'")
+direccion_alumno = conectar.consultaUno("select protic.obtener_direccion_letra('"&pers_ncorr&"',1,'CNPB')")
+comuna_alumno = conectar.consultaUno("select protic.obtener_direccion_letra('"&pers_ncorr&"',1,'C-C')")
+nombre   = conectar.consultauno("SELECT protic.initCap(pers_tnombre) FROM personas_postulante WHERE cast(pers_ncorr as varchar) = '"&pers_ncorr&"'")
+puntaje_psu  = conectar.consultauno("SELECT max(cast( (isnull(post_npaa_verbal,0) + isnull(post_npaa_matematicas,0)) / 2 as decimal(5,2)) ) FROM postulantes WHERE cast(pers_ncorr as varchar) = '"&pers_ncorr&"' and cast(peri_ccod as varchar)='"&periodo&"'")
+
+if tipo_postulante = "3" then
+	nombre_alumno = conectar.consultaUno("select protic.initCap(cast(nombre as varchar)+ ' ' + cast(apellido as varchar)) from [ASPT].[dbo].[PROSPECTOS] where cast(id as varchar)='"&pers_ncorr&"'")
+	rut_alumno = conectar.consultaUno("select cast(Rut as varchar)  from [ASPT].[dbo].[PROSPECTOS] where cast(id as varchar)='"&pers_ncorr&"'")
+	fono_alumno = conectar.consultaUno("select cast(Telefono as varchar) from [ASPT].[dbo].[PROSPECTOS] where cast(id as varchar)='"&pers_ncorr&"'")
+	celular_alumno = conectar.consultaUno("select cast(Celular as varchar) from [ASPT].[dbo].[PROSPECTOS] where cast(id as varchar)='"&pers_ncorr&"'")
+	email_alumno = conectar.consultaUno("select lower(cast(Email as varchar)) from [ASPT].[dbo].[PROSPECTOS] where cast(id as varchar)='"&pers_ncorr&"'")
+	direccion_alumno = ""
+	comuna_alumno = ""
+	nombre   = conectar.consultauno("SELECT protic.initCap(cast(nombre as varchar)) from [ASPT].[dbo].[PROSPECTOS] where cast(id as varchar)='"&pers_ncorr&"'")
+	puntaje_psu  = ""
+end if
+
+
+rut_agente = negocio.obtenerUsuario
+pers_ncorr_agente   = conectar.consultauno("SELECT pers_ncorr FROM personas WHERE cast(pers_nrut as varchar) = '"&rut_agente&"'")
+email_agente   = conectar.consultauno("SELECT pers_temail FROM agentes_postulacion WHERE cast(pers_ncorr as varchar) = '"&pers_ncorr_agente&"'")
+if esVacio(email_agente) then
+	email_agente   = conectar.consultauno("SELECT pers_temail FROM admi_agentes_postulacion WHERE cast(pers_ncorr as varchar) = '"&pers_ncorr_agente&"'")
+end if
+contenido_mensaje = "mailto:"+email_alumno+"?cc="+email_agente+"&subject=Universidad del Pacífico&body=Hola "+nombre+" %0D%0A %0D%0A"
+'response.Write(contenido_mensaje)
+
+set f_historico = new cformulario
+f_historico.carga_parametros "detalle_postulacion_new.xml","f_historico_postulaciones"
+f_historico.inicializar conectar
+
+if pers_ncorr <> "" then
+
+consulta_historico = "Select * from ("  & vbCrLf &_
+            "  select distinct a.post_ncorr,b.ofer_ncorr, " & vbCrLf &_
+			" protic.initcap(d.sede_tdesc) +' : '+ protic.initcap(f.carr_tdesc) + case g.jorn_ccod when 1 then ' (D)' else ' (V)' end as escuela, " & vbCrLf &_
+			" (select case count(*) when 0 then 'No' else 'Sí' end  from alumnos alu where a.post_ncorr=alu.post_ncorr and b.ofer_ncorr = alu.ofer_ncorr and emat_ccod = 1) as matriculado, " & vbCrLf &_
+			" protic.initcap(h.eepo_tdesc) as estado_examen,isnull(i.obpo_tobservacion,'') as obpo_tobservacion, eopo_tdesc as estado, isnull(protic.trunc(fecha_llamado),'') as fecha_llamado,   " & vbCrLf &_
+			" protic.trunc(i.audi_fmodificacion) as fecha_modificacion,i.audi_fmodificacion, protic.trunc(i.fecha_entrevista) + '<br>' + htes_hinicio as entrevista " & vbCrLf &_
+			" from postulantes a join detalle_postulantes b " & vbCrLf &_
+			"    on a.post_ncorr=b.post_ncorr  " & vbCrLf &_
+			" join ofertas_academicas c " & vbCrLf &_
+			"    on b.ofer_ncorr=c.ofer_ncorr " & vbCrLf &_
+			" join sedes d " & vbCrLf &_
+			"    on c.sede_ccod=d.sede_ccod" & vbCrLf &_
+			" join especialidades e " & vbCrLf &_
+			"    on c.espe_ccod=e.espe_ccod " & vbCrLf &_
+			" join carreras f " & vbCrLf &_
+			"    on e.carr_ccod=f.carr_ccod " & vbCrLf &_
+			" join jornadas g " & vbCrLf &_
+			"    on c.jorn_ccod=g.jorn_ccod " & vbCrLf &_
+			" join estado_examen_postulantes h  " & vbCrLf &_
+			"    on b.eepo_ccod=h.eepo_ccod and h.eepo_ccod not in (3)" & vbCrLf &_
+			" join observaciones_postulacion i " & vbCrLf &_
+			"    on b.post_ncorr = i.post_ncorr and b.ofer_ncorr = i.ofer_ncorr    " & vbCrLf &_
+			" join estado_observaciones_postulacion j" & vbCrLf &_
+			"    on j.eopo_ccod   = i.eopo_ccod" & vbCrLf &_
+			" left outer join horarios_test k " & vbCrLf &_
+			"    on i.htes_ccod = k.htes_ccod " & vbCrLf &_
+			" where cast(a.pers_ncorr as varchar)='"&pers_ncorr&"' " & vbCrLf &_
+			" and cast(a.peri_ccod as varchar)='"&periodo&"'" & vbCrLf &_
+			" UNION "  & vbCrLf &_
+			" select distinct a.post_ncorr,b.ofer_ncorr, " & vbCrLf &_
+			" protic.initcap(d.sede_tdesc) +' : '+ protic.initcap(f.carr_tdesc) + case g.jorn_ccod when 1 then ' (D)' else ' (V)' end as escuela, " & vbCrLf &_
+			" (select case count(*) when 0 then 'No' else 'Sí' end  from alumnos alu where a.post_ncorr=alu.post_ncorr and b.ofer_ncorr = alu.ofer_ncorr and emat_ccod = 1) as matriculado, " & vbCrLf &_
+			" protic.initcap(h.eepo_tdesc) as estado_examen,isnull(i.obpo_tobservacion,'') as obpo_tobservacion, eopo_tdesc as estado, isnull(protic.trunc(fecha_llamado),'') as fecha_llamado,   " & vbCrLf &_
+			" protic.trunc(i.audi_fmodificacion) as fecha_modificacion,i.audi_fmodificacion, protic.trunc(i.fecha_entrevista) + '<br>' + htes_hinicio as entrevista " & vbCrLf &_
+			" from postulantes a join detalle_postulantes b " & vbCrLf &_
+			"    on a.post_ncorr=b.post_ncorr  " & vbCrLf &_
+			" join ofertas_academicas c " & vbCrLf &_
+			"    on b.ofer_ncorr=c.ofer_ncorr " & vbCrLf &_
+			" join sedes d " & vbCrLf &_
+			"    on c.sede_ccod=d.sede_ccod" & vbCrLf &_
+			" join especialidades e " & vbCrLf &_
+			"    on c.espe_ccod=e.espe_ccod " & vbCrLf &_
+			" join carreras f " & vbCrLf &_
+			"    on e.carr_ccod=f.carr_ccod " & vbCrLf &_
+			" join jornadas g " & vbCrLf &_
+			"    on c.jorn_ccod=g.jorn_ccod " & vbCrLf &_
+			" join estado_examen_postulantes h  " & vbCrLf &_
+			"    on b.eepo_ccod=h.eepo_ccod and h.eepo_ccod not in (3)" & vbCrLf &_
+			" join observaciones_postulacion_log i " & vbCrLf &_
+			"    on b.post_ncorr = i.post_ncorr and b.ofer_ncorr = i.ofer_ncorr    " & vbCrLf &_
+			" join estado_observaciones_postulacion j" & vbCrLf &_
+			"    on j.eopo_ccod   = i.eopo_ccod" & vbCrLf &_
+			" left outer join horarios_test k " & vbCrLf &_
+			"    on i.htes_ccod = k.htes_ccod " & vbCrLf &_ 
+			" where cast(a.pers_ncorr as varchar)='"&pers_ncorr&"' " & vbCrLf &_
+			" and cast(a.peri_ccod as varchar)='"&periodo&"'" & vbCrLf &_
+			" ) table1 order by audi_fmodificacion desc"
+
+
+	if tipo_postulante = "2" then
+	consulta_historico =  " Select * from (" & vbCrLf &_
+	                      " select distinct a.pote_ncorr as post_ncorr,a.dgso_ncorr as ofer_ncorr, " & vbCrLf &_
+	                      "  protic.initcap(e.sede_tdesc) +' : '+  protic.initCap(f.dcur_tdesc) as escuela, " & vbCrLf &_
+		  				  " case a.epot_ccod when 4 then 'Sí' else 'No' end as matriculado, " & vbCrLf &_
+				          " protic.initcap(i.eepo_tdesc) as estado_examen,isnull(g.obpo_tobservacion,'') as obpo_tobservacion,eopo_tdesc as estado, " & vbCrLf &_
+				          " isnull(protic.trunc(g.fecha_llamado),'') as fecha_llamado,    " & vbCrLf &_
+                          " protic.trunc(g.audi_fmodificacion) as fecha_modificacion,g.audi_fmodificacion, " & vbCrLf &_
+						  " protic.trunc(g.fecha_entrevista) + '<br>' + htes_hinicio as entrevista " & vbCrLf &_
+						  " from postulacion_otec a join datos_generales_secciones_otec b " & vbCrLf &_
+						  "        on a.dgso_ncorr=b.dgso_ncorr " & vbCrLf &_
+						  " join ofertas_otec c " & vbCrLf &_
+						  "        on b.dgso_ncorr=c.dgso_ncorr " & vbCrLf &_
+						  " join personas d " & vbCrLf &_
+						  "        on a.pers_ncorr=d.pers_ncorr " & vbCrLf &_
+						  " join sedes e " & vbCrLf &_
+						  "        on b.sede_ccod = e.sede_ccod " & vbCrLf &_
+						  " join diplomados_cursos f " & vbCrLf &_
+						  "        on b.dcur_ncorr = f.dcur_ncorr " & vbCrLf &_
+						  " join observaciones_postulacion_otec g " & vbCrLf &_
+						  "        on a.pote_ncorr=g.pote_ncorr and a.dgso_ncorr=g.dgso_ncorr " & vbCrLf &_
+						  " left outer join detalle_postulacion_otec h " & vbCrLf &_
+						  "        on a.pote_ncorr=h.pote_ncorr and a.dgso_ncorr=h.dgso_ncorr " & vbCrLf &_
+						  " left outer join estado_examen_postulantes i " & vbCrLf &_
+						  "	     on h.eepo_ccod=i.eepo_ccod " & vbCrLf &_
+						  " join estado_observaciones_postulacion j" & vbCrLf &_
+						  "    on g.eopo_ccod   = j.eopo_ccod" & vbCrLf &_
+						  " left outer join horarios_test k " & vbCrLf &_
+					 	  "    on g.htes_ccod = k.htes_ccod " & vbCrLf &_ 
+						  " where cast(c.anio_admision as varchar)='"&anio&"' " & vbCrLf &_
+						  " and cast(a.pers_ncorr as varchar)='"&pers_ncorr&"' " & vbCrLf &_
+						  " UNION " & vbCrLf &_
+						  " select distinct a.pote_ncorr as post_ncorr,a.dgso_ncorr as ofer_ncorr, " & vbCrLf &_
+	                      "  protic.initcap(e.sede_tdesc) +' : '+  protic.initCap(f.dcur_tdesc) as escuela, " & vbCrLf &_
+		  				  " case a.epot_ccod when 4 then 'Sí' else 'No' end as matriculado, " & vbCrLf &_
+				          " protic.initcap(i.eepo_tdesc) as estado_examen,isnull(g.obpo_tobservacion,'') as obpo_tobservacion,eopo_tdesc as estado, " & vbCrLf &_
+				          " isnull(protic.trunc(g.fecha_llamado),'') as fecha_llamado,    " & vbCrLf &_
+                          " protic.trunc(g.audi_fmodificacion) as fecha_modificacion,g.audi_fmodificacion, " & vbCrLf &_
+						  " protic.trunc(g.fecha_entrevista) + '<br>' + htes_hinicio as entrevista " & vbCrLf &_
+						  " from postulacion_otec a join datos_generales_secciones_otec b " & vbCrLf &_
+						  "        on a.dgso_ncorr=b.dgso_ncorr " & vbCrLf &_
+						  " join ofertas_otec c " & vbCrLf &_
+						  "        on b.dgso_ncorr=c.dgso_ncorr " & vbCrLf &_
+						  " join personas d " & vbCrLf &_
+						  "        on a.pers_ncorr=d.pers_ncorr " & vbCrLf &_
+						  " join sedes e " & vbCrLf &_
+						  "        on b.sede_ccod = e.sede_ccod " & vbCrLf &_
+						  " join diplomados_cursos f " & vbCrLf &_
+						  "        on b.dcur_ncorr = f.dcur_ncorr " & vbCrLf &_
+						  " join observaciones_postulacion_log_otec g " & vbCrLf &_
+						  "        on a.pote_ncorr=g.pote_ncorr and a.dgso_ncorr=g.dgso_ncorr " & vbCrLf &_
+						  " left outer join detalle_postulacion_otec h " & vbCrLf &_
+						  "        on a.pote_ncorr=h.pote_ncorr and a.dgso_ncorr=h.dgso_ncorr " & vbCrLf &_
+						  " left outer join estado_examen_postulantes i " & vbCrLf &_
+						  "	     on h.eepo_ccod=i.eepo_ccod " & vbCrLf &_
+						  " join estado_observaciones_postulacion j" & vbCrLf &_
+						  "    on g.eopo_ccod   = j.eopo_ccod" & vbCrLf &_
+						  " left outer join horarios_test k " & vbCrLf &_
+					 	  "    on g.htes_ccod = k.htes_ccod " & vbCrLf &_ 
+						  " where cast(c.anio_admision as varchar)='"&anio&"' " & vbCrLf &_
+						  " and cast(a.pers_ncorr as varchar)='"&pers_ncorr&"' "& vbCrLf &_
+			              " ) table1 order by audi_fmodificacion desc " 
+	end if
+	
+	if tipo_postulante = "3" then
+	consulta_historico =  " Select * from (" & vbCrLf &_
+	                      " select a.id, " & vbCrLf &_
+						  "	cast(a.curso AS VARCHAR(200)) as escuela, " & vbCrLf &_
+						  "	'N/A' as matriculado, " & vbCrLf &_
+						  "	'N/A' as estado_examen,isnull(obpo_tobservacion,cast(a.consulta AS VARCHAR(300))) as obpo_tobservacion,c.eopo_tdesc as estado, " & vbCrLf &_
+						  "	isnull(protic.trunc(b.fecha_llamado),'') as fecha_llamado, " & vbCrLf &_
+						  "	protic.trunc(b.audi_fmodificacion) as fecha_modificacion,b.audi_fmodificacion, " & vbCrLf &_
+						  "	protic.trunc(b.fecha_entrevista) + '<br>' + d.htes_hinicio as entrevista " & vbCrLf &_
+						  "	from [ASPT].[dbo].[PROSPECTOS] a left outer join [ASPT].[dbo].[observaciones_prospectos] b " & vbCrLf &_
+						  "		on a.id = b.id " & vbCrLf &_
+						  "	left outer join estado_observaciones_postulacion c " & vbCrLf &_
+						  "		on b.eopo_ccod   = c.eopo_ccod  " & vbCrLf &_
+						  "	left outer join horarios_test d  " & vbCrLf &_
+						  "		on b.htes_ccod = d.htes_ccod      " & vbCrLf &_
+						  "	where cast(datepart(year,a.Fecha_ingreso) as varchar) = '"&anio&"'  " & vbCrLf &_
+						  "	and len(cast(apellido as varchar) + ' ' + cast(nombre as varchar)) > 5 " & vbCrLf &_
+						  "	and cast(rut as varchar) not like '%http%'    " & vbCrLf &_
+						  "	and cast(a.id as varchar) = '"&pers_ncorr&"' " & vbCrLf &_
+						  "	UNION " & vbCrLf &_
+						  "	select a.id,  " & vbCrLf &_
+						  "	cast(a.curso AS VARCHAR(200)) as escuela,  " & vbCrLf &_
+						  "	'N/A' as matriculado,  " & vbCrLf &_
+						  "	'N/A' as estado_examen,isnull(obpo_tobservacion,cast(a.consulta AS VARCHAR(300))) as obpo_tobservacion,c.eopo_tdesc as estado,  " & vbCrLf &_ 
+						  "	isnull(protic.trunc(b.fecha_llamado),'') as fecha_llamado, " & vbCrLf &_
+						  "	protic.trunc(b.audi_fmodificacion) as fecha_modificacion,b.audi_fmodificacion, " & vbCrLf &_ 
+						  "	protic.trunc(b.fecha_entrevista) + '<br>' + d.htes_hinicio as entrevista  " & vbCrLf &_
+						  "	from [ASPT].[dbo].[PROSPECTOS] a left outer join [ASPT].[dbo].[observaciones_prospectos_log] b " & vbCrLf &_
+						  "		on a.id = b.id " & vbCrLf &_
+						  "	left outer join estado_observaciones_postulacion c " & vbCrLf &_
+						  "		on b.eopo_ccod   = c.eopo_ccod  " & vbCrLf &_
+						  "	left outer join horarios_test d  " & vbCrLf &_
+						  "		on b.htes_ccod = d.htes_ccod  " & vbCrLf &_
+						  "	where cast(datepart(year,a.Fecha_ingreso) as varchar) = '"&anio&"'  " & vbCrLf &_
+						  "	and len(cast(apellido as varchar) + ' ' + cast(nombre as varchar)) > 5 " & vbCrLf &_
+						  "	and cast(rut as varchar) not like '%http%'    " & vbCrLf &_
+						  "	and cast(a.id as varchar) = '"&pers_ncorr&"' "& vbCrLf &_
+			              " ) table1 order by audi_fmodificacion desc " 
+	end if
+
+'response.Write("<pre>"&consulta_historico&"</pre>")
+end if
+
+f_historico.Consultar consulta_historico
+'RESPONSE.End()
+anos_ccod = conectar.consultaUno("select anos_ccod from periodos_academicos where cast(peri_ccod as varchar)='"&periodo&"'")
+plec_ccod = conectar.consultaUno("select plec_ccod from periodos_academicos where cast(peri_ccod as varchar)='"&periodo&"'")
+
+if plec_ccod = "1" then
+ proxima_admision = anos_ccod&"- 2do Semestre"
+else
+ anos_ccod =  cint(anos_ccod) + 1
+ proxima_admision = anos_ccod &"- 1er Semestre"
+end if
+
+%>
+<html>
+<head>
+<title>detalle postulaciones</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../estilos/estilos.css" rel="stylesheet" type="text/css">
+<link href="../estilos/tabla.css" rel="stylesheet" type="text/css">
+
+<script language="JavaScript" src="../biblioteca/tabla.js"></script>
+<script language="JavaScript" src="../biblioteca/funciones.js"></script>
+<script language="JavaScript" src="../biblioteca/validadores.js"></script>
+
+<script language="JavaScript">
+
+function ver_resumen()
+{
+//alert("muestra historico de notas");
+self.open('<%=url_carga%>','notas','width=700px, height=550px, scrollbars=yes, resizable=yes')
+}
+function evaluar_indicador(campo)
+{
+	var indice = extrae_indice(campo.name);
+	var valor = campo.value;
+	if (valor == "16")
+	{
+		document.edicion.elements["alumnos["+indice+"][fecha_entrevista]"].id="FE-N";
+		document.edicion.elements["alumnos["+indice+"][fecha_entrevista]"].disabled=false;
+		document.edicion.elements["alumnos["+indice+"][hora_entrevista]"].id="TO-N";
+		document.edicion.elements["alumnos["+indice+"][hora_entrevista]"].disabled=false;
+		
+	}
+	else
+	{
+		document.edicion.elements["alumnos["+indice+"][fecha_entrevista]"].id="FE-S";
+		document.edicion.elements["alumnos["+indice+"][fecha_entrevista]"].value="";
+		document.edicion.elements["alumnos["+indice+"][fecha_entrevista]"].disabled=true;
+		document.edicion.elements["alumnos["+indice+"][hora_entrevista]"].id="TO-S";
+		document.edicion.elements["alumnos["+indice+"][hora_entrevista]"].disabled=true;
+	}
+	
+	if (valor == "39")
+	{
+		document.edicion.elements["alumnos["+indice+"][obpo_tobservacion]"].value = "";
+		document.edicion.elements["alumnos["+indice+"][obpo_tobservacion]"].focus();
+	}
+	
+	if (valor == "34")
+	{
+		document.edicion.elements["alumnos["+indice+"][obpo_tobservacion]"].value = "CAE-PSU-Crédito-Otra / Carrera-Otra";
+		document.edicion.elements["alumnos["+indice+"][obpo_tobservacion]"].focus();
+	}
+	
+	if (valor == "36")
+	{
+		document.edicion.elements["alumnos["+indice+"][obpo_tobservacion]"].value = "Envió Mail - Volver a Llamar";
+		document.edicion.elements["alumnos["+indice+"][obpo_tobservacion]"].focus();
+	}
+	
+	if (valor == "40")
+	{
+		document.edicion.elements["alumnos["+indice+"][obpo_tobservacion]"].value = '<%=proxima_admision%>';
+		document.edicion.elements["alumnos["+indice+"][obpo_tobservacion]"].focus();
+	}
+	
+}
+function  extrae_indice(cadena){
+	var posicion1 = cadena.indexOf("[",0)+1;
+	var posicion2 = cadena.indexOf("]",0);
+	var indice=cadena.substring(posicion1, posicion2);
+	return indice;
+}
+function enviar_email(oferta,postulacion)
+ {
+ 	window.open("http://admision.upacifico.cl/postulacion/www/envia_agenda_entrevista.php?post_ncorr="+postulacion+"&ofer_ncorr="+oferta,"1","width=300,height=80");
+ }
+function asignar_horario(campo)
+{
+	var nombre_campo = campo.name;
+	var indice = extrae_indice(campo.name);
+	var fecha_e = document.edicion.elements["alumnos["+indice+"][fecha_entrevista]"].value;
+	var oferta_a = document.edicion.elements["alumnos["+indice+"][ofer_ncorr]"].value;
+	var campo2 = "alumnos["+indice+"][htes_ccod]";
+	if (isFecha(fecha_e))
+	{
+	  window.open('buscador_horarios.asp?campo='+nombre_campo+"&campo2="+campo2+"&ofer_ncorr="+oferta_a+"&fecha_entrevista="+fecha_e,'pop10','width=600,height=400,scrollbars=yes,resizable=yes');
+    }
+	else
+	{
+		alert("Error:La fecha ingresada no es correcta.\n(Formato: dd/mm/aaaa)");
+		document.edicion.elements["alumnos["+indice+"][fecha_entrevista]"].value="";
+		document.edicion.elements["alumnos["+indice+"][fecha_entrevista]"].focus();
+	}
+}
+function revisa_asignacion(campo)
+{
+	var nombre_campo = campo.name;
+	var horario = campo.value;
+	var horario_asignado = "";
+	var indice = extrae_indice(campo.name);
+	var htes_ccod = document.edicion.elements["alumnos["+indice+"][htes_ccod]"].value;
+
+	switch (horario)
+	{
+		case "08:00": horario_asignado="1";
+		break;
+		case "08:30": horario_asignado="2";
+		break;
+		case "09:00": horario_asignado="3";
+		break;
+		case "09:30": horario_asignado="4";
+		break;
+		case "10:00": horario_asignado="5";
+		break;
+		case "10:30": horario_asignado="6";
+		break;
+		case "11:00": horario_asignado="7";
+		break;
+		case "11:30": horario_asignado="8";
+		break;
+		case "12:00": horario_asignado="9";
+		break;
+		case "12:30": horario_asignado="10";
+		break;
+		case "13:00": horario_asignado="11";
+		break;
+		case "13:30": horario_asignado="12";
+		break;
+		case "14:00": horario_asignado="13";
+		break;
+		case "14:30": horario_asignado="14";
+		break;
+		case "15:00": horario_asignado="15";
+		break;
+		case "15:30": horario_asignado="16";
+		break;
+		case "16:00": horario_asignado="17";
+		break;
+		case "16:30": horario_asignado="18";
+		break;
+		case "17:00": horario_asignado="19";
+		break;
+		case "17:30": horario_asignado="20";
+		break;
+		case "18:00": horario_asignado="21";
+		break;
+		case "18:30": horario_asignado="22";
+		break;
+		case "19:00": horario_asignado="23";
+		break;
+		case "19:30": horario_asignado="24";
+		break;
+		case "20:00": horario_asignado="25";
+		break;
+		default: horario_asignado="";
+	}
+	
+	if (htes_ccod != horario_asignado)
+	{
+		alert("El horario debe ingresarse haciendo clic en el cuadro de texto y no directamente por teclado");
+		campo.value = "";
+	}
+}
+</script>
+
+</head>
+<body bgcolor="#D8D8DE" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../imagenes/botones/buscar_f2.gif','../images/bot_deshabilitar_f2.gif','../images/agregar2_f2_p.gif','../__base/im&amp;#225;genes/marco1_r3_c2_f2.gif');MM_preloadImages('../__base/im&amp;#225;genes/marco1_r3_c4_f2.gif');MM_preloadImages('../__base/im&amp;#225;genes/marco1_r3_c6_f2.gif');MM_preloadImages('../__base/im&amp;#225;genes/marco1_r3_c8_f2.gif');MM_preloadImages('../imagenes/botones/cargar_f2.gif','../imagenes/botones/continuar_f2.gif')" onBlur="revisaVentana();">
+<table width="750" height="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="62" valign="top"><img src="../imagenes/vineta2_r1_c1.gif" width="750" height="62" border="0"></td>
+  </tr>
+  <%pagina.DibujarEncabezado()%>  
+  <tr>
+    <td valign="top" bgcolor="#EAEAEA">
+	<br>
+	<br>
+	<table width="97%"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#D8D8DE">
+      <tr>
+        <td width="9" height="8"><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+        <td height="8" background="../imagenes/top_r1_c2.gif"></td>
+        <td width="7" height="8"><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+      </tr>
+      <tr>
+        <td width="9" background="../imagenes/izq.gif">&nbsp;</td>
+        <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+                <td>
+                  <%'pagina.dibujartitulopagina %>
+                </td>
+          </tr>
+          <tr>
+            <td height="2" background="../imagenes/top_r3_c2.gif"></td>
+          </tr>
+          <tr>
+            <td><div align="center">
+                    <p align="left">&nbsp; </p>
+                    <table width="100%" border="0">
+                      <%if RegistrosN > 0 then%>
+                      <tr> 
+                        <td align="center">&nbsp; </td>
+                      </tr>
+                      <%end if%>
+                      <tr> 
+                        <td align="center"><strong>
+                        <%pagina.DibujarSubtitulo pagina.titulo%>
+</strong></td>
+                      </tr>
+                    </table>
+                    <form name="edicion">
+                      <table width="100%" cellpadding="0" cellspacing="0">
+						<tr>
+							<td width="50%" align="left">
+								<table width="98%" align="center">
+									<tr>
+									  <td width="10%"><strong>Nombre</strong></td>
+									  <td width="3%"><strong>:</strong></td>
+									  <td><%=nombre_alumno%></td>
+									</tr>
+									<tr>
+									  <td width="10%"><strong>Rut</strong></td>
+									  <td width="3%"><strong>:</strong></td>
+									  <td><%=rut_alumno%></td>
+									</tr>
+									<tr>
+									  <td width="10%"><strong>Fono</strong></td>
+									  <td width="3%"><strong>:</strong></td>
+									  <td><%=fono_alumno%>  ---> <strong>Celular : </strong><%=celular_alumno%></td>
+									</tr>
+									<tr>
+									  <td width="10%"><strong>E-mail</strong></td>
+									  <td width="3%"><strong>:</strong></td>
+									  <td><%=email_alumno%></td>
+									</tr>
+									<tr>
+									  <td width="10%"><strong>direcci&oacute;n</strong></td>
+									  <td width="3%"><strong>:</strong></td>
+									  <td><%=direccion_alumno%></td>
+									</tr>
+									<tr>
+									  <td width="10%"><strong>Ciudad</strong></td>
+									  <td width="3%"><strong>:</strong></td>
+									  <td><%=comuna_alumno%></td>
+									</tr>
+									<tr bgcolor="#66FF66">
+									  <td width="10%"><strong>PSU</strong></td>
+									  <td width="3%" ><strong>:</strong></td>
+									  <td><%=puntaje_psu%></td>	
+									</tr>
+								</table>
+							</td>
+							<td width="50%" align="center">
+								<table width="98%" cellpadding="0" cellspacing="0">
+									<tr><td colspan="3" align="center" bgcolor="#0066FF"><font color="#FFFFFF" size="3"><strong>Envio de Email</strong></font></td></tr>
+									<tr>
+										<td width="50%" align="center"><% botonera.agregaBotonParam "email_no_vino_a_entrevista","url","email_tipo.asp?tipo=1&pers_ncorr="+pers_ncorr
+										                                  botonera.dibujaboton("email_no_vino_a_entrevista") %></td>
+										<td width="50%" align="left"><%   botonera.agregaBotonParam "email_no_contesta","url","email_tipo.asp?tipo=2&pers_ncorr="+pers_ncorr 
+										                                  botonera.dibujaboton("email_no_contesta") %></td>
+									</tr>
+									<tr>
+									    <td width="50%" align="center"><%botonera.agregaBotonParam "email_pocas_matriculas","url","email_tipo.asp?tipo=3&pers_ncorr="+pers_ncorr 
+										                                 botonera.dibujaboton("email_pocas_matriculas") %></td>
+										<td width="50%" align="left"><% botonera.agregaBotonParam "email_dato_mal_ingresado","url","email_tipo.asp?tipo=4&pers_ncorr="+pers_ncorr
+										                                botonera.dibujaboton("email_dato_mal_ingresado") %></td>
+									</tr>
+									<tr>
+										<td width="50%" align="center"><% botonera.agregaBotonParam "email_credito_aval_aprobado","url","email_tipo.asp?tipo=5&pers_ncorr="+pers_ncorr
+										                                  botonera.dibujaboton("email_credito_aval_aprobado") %></td>
+										<td width="50%" align="left"><% botonera.agregaBotonParam "email_credito_rechazado_1","url","email_tipo.asp?tipo=6&pers_ncorr="+pers_ncorr
+										                                botonera.dibujaboton("email_credito_rechazado_1") %></td>
+									</tr>
+									<tr>
+										<td width="50%" align="center"><%botonera.agregaBotonParam "email_credito_rechazado_2","url","email_tipo.asp?tipo=7&pers_ncorr="+pers_ncorr 
+										                                 botonera.dibujaboton("email_credito_rechazado_2") %></td>
+										<td width="50%" align="left"><% botonera.agregaBotonParam "email_regiones","url","email_tipo.asp?tipo=8&pers_ncorr="+pers_ncorr
+										                                botonera.dibujaboton("email_regiones") %></td>
+									</tr>
+									<tr>
+										<td colspan="2" align="center" bgcolor="#0066FF"><font color="#FFFFFF"><a href="<%=contenido_mensaje%>">Enviar mensaje Personalizado</a></font></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+					<table width="98%" align="center">
+						<tr>
+						  <td align="center" colspan="3">&nbsp;</td>
+						</tr>
+						<tr>
+						  <td align="center" colspan="3">
+						  		<script language='javaScript1.2'> 
+								         colores = Array(3);   colores[0] = ''; 
+								         colores[1] = '#FFECC6'; colores[2] = '#FFECC6'; 
+								</script>
+								<table class="v1" width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#999999" bgcolor="#ADADAD" id="tb_alumnos">
+									<tr bgcolor='#C4D7FF' bordercolor='#999999'>
+										<th><font color='#333333'>Sede</font></th>
+										<th><font color='#333333'>Carrera</font></th>
+										<th><font color='#333333'>Estado Test</font></th>
+										<th><font color='#333333'>Matriculado</font></th>
+										<th width="31">&nbsp;</th>
+									</tr>
+									<%f_postulaciones.primero
+									  posicion = 0
+									  preferencia = 1
+									  while f_postulaciones.siguiente%>
+									<tr bgcolor="#FFFFFF"><%f_postulaciones.dibujaCampo("ofer_ncorr")%>
+									                      <%f_postulaciones.dibujaCampo("post_ncorr")%>
+                                                          <%f_postulaciones.dibujaCampo("dgso_ncorr")%>
+									                      <%f_postulaciones.dibujaCampo("pote_ncorr")%>
+                                                          <%f_postulaciones.dibujaCampo("id")%>
+														  <%'debemos ver si el alumno selecciono que viene a entrevista para desbloquear o bloquear los cuadros
+															   eopo_ccod = f_postulaciones.obtenerValor("eopo_ccod")
+															   ofer_ncorr_a = f_postulaciones.obtenerValor("ofer_ncorr")
+															   post_ncorr_a = f_postulaciones.obtenerValor("post_ncorr")
+															   dgso_ncorr_a = f_postulaciones.obtenerValor("dgso_ncorr")
+															   pote_ncorr_a = f_postulaciones.obtenerValor("pote_ncorr")
+															   'response.Write("<br>"&dgso_ncorr_a&" "&pote_ncorr_a)
+															   observacion_examen = f_postulaciones.obtenerValor("observacion_examen")
+															   if eopo_ccod = "16" then
+																	f_postulaciones.agregaCampoParam "fecha_entrevista","id","FE-N"
+																	f_postulaciones.agregaCampoParam "fecha_entrevista","deshabilitado","false"
+																	f_postulaciones.agregaCampoParam "hora_entrevista","id","TO-N"
+																	f_postulaciones.agregaCampoParam "hora_entrevista","deshabilitado","false"		
+															   else
+																	f_postulaciones.agregaCampoParam "fecha_entrevista","id","FE-S"
+																	f_postulaciones.agregaCampoParam "fecha_entrevista","deshabilitado","true"
+																	f_postulaciones.agregaCampoParam "hora_entrevista","id","TO-S"
+																	f_postulaciones.agregaCampoParam "hora_entrevista","deshabilitado","true"
+															   end if	
+															%>
+                                       <td class='noclick' bgcolor='#C4D7FF'><font color="#990000"><strong><%f_postulaciones.dibujaCampo("sede")%></strong></font></td>
+									   <td class='noclick' bgcolor='#C4D7FF'><font color="#990000"><strong><%f_postulaciones.dibujaCampo("carrera")%></strong></font></td>
+									   <td class='noclick' bgcolor='#C4D7FF'><font color="#990000"><strong><%f_postulaciones.dibujaCampo("estado_examen")%></strong></font></td>
+									   <td class='noclick' bgcolor='#C4D7FF'><font color="#990000"><strong><%f_postulaciones.dibujaCampo("matriculado")%></strong></font></td>
+									   <td class='noclick' bgcolor='#C4D7FF' width="31">
+									    <div align="center">
+											<%if eopo_ccod = "16" and tipo_postulante <> "3" then%>
+													<a href="javascript:enviar_email(<%=ofer_ncorr_a%>,<%=post_ncorr_a%>)"><img width="31" height="31" src="../imagenes/Webmail.png" title="Enviar notificación por email" border="0"></a>
+											<%else%>
+													&nbsp;
+											<%end if%>
+										</div>
+										</td>
+									</tr>
+									<tr bgcolor="#FFCC66">
+										<td colspan="5" align="left"><strong><%=preferencia%>a Preferencia</strong></td>
+									</tr>
+									<tr>
+										<td colspan="5" align="right" bgcolor="#FFFFFF">
+											<table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF">
+												<tr>
+													<th align="center"><font color='#333333'><strong>Estado</strong></font></th>
+													<th align="center"><font color='#333333'><strong>Observación</strong></font></th>
+													<th align="center"><font color='#333333'><strong>llamar el día</strong></font></th>
+													<th align="center"><font color='#333333'><strong>Fecha entrevista</strong></font></th>
+													<th align="center"><font color='#333333'><strong>Hora</strong></font></th>
+												</tr>
+												<tr>
+													<td align="center"><%f_postulaciones.dibujaCampo("eopo_ccod")%></td>
+													<td align="center"><%f_postulaciones.dibujaCampo("obpo_tobservacion")%></td>
+													<td align="center"><%f_postulaciones.dibujaCampo("fecha_llamado")%></td>
+													<td align="center"><%f_postulaciones.dibujaCampo("fecha_entrevista")%></td>
+													<td align="center"><%f_postulaciones.dibujaCampo("hora_entrevista")%><%f_postulaciones.dibujaCampo("htes_ccod")%></td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="5" bgcolor="#FFFFFF"><strong>Observación Test/entrevista: </strong><%=observacion_examen%></td>
+									</tr>
+									<tr>
+										<td colspan="5" bgcolor="#D8D8DE">&nbsp;</td>
+									</tr>
+									<tr>
+										<td colspan="5" bgcolor="#D8D8DE">&nbsp;</td>
+									</tr>
+									<% posicion = posicion + 1
+									   preferencia = preferencia + 1
+									   wend%>
+								</table>
+								</td>
+						</tr>
+						<tr> 
+                          <td align="right" colspan="3"><font color="#990000"><strong>CT: Contactado Telefónicamente</strong></font></td>
+                        </tr>
+						<tr>
+						  <td align="right" colspan="3"><%botonera.dibujaboton "guardar"%></td>
+						</tr>
+						<tr>
+						  <td align="center" colspan="3"><hr></td>	
+						</tr>
+						<tr><td align="left" colspan="3"> <%pagina.DibujarSubtitulo "Seguimiento postulación alumno"%></td></tr>
+						<tr>
+                          <td align="center" colspan="3"> <div align="right">P&aacute;ginas: 
+                              <%f_historico.AccesoPagina()%>
+                            </div></td>
+                        </tr>
+                        <tr> 
+                          <td align="center" colspan="3">&nbsp; <%f_historico.dibujatabla()%> </td>
+                        </tr>
+                      </table>
+                    </form>
+                    <br>
+                    <br>
+                  </div>
+                </td>
+              </tr>
+        </table></td>
+        <td width="7" background="../imagenes/der.gif">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="9" height="28"><img src="../imagenes/abajo_r1_c1.gif" width="9" height="28"></td>
+        <td height="28">
+		 <table width="100%" height="28"  border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="38%" height="20"><div align="center">
+			 
+              <table width="90%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td><div align="center">
+                            <% 
+							botonera.agregabotonparam "anterior","url","listado_postulaciones.asp?busqueda[0][pers_nrut]="&session("rut_postulacion")&"&busqueda[0][pers_xdv]="&session("digito_postulacion")&"&busqueda[0][sede_ccod]="&session("sede_postulacion")&"&selecciono_carrera="&session("s_c_postulacion")&"&ingreso_familia="&session("i_f_postulacion")&"&postulacion_enviada="&session("p_e_postulacion")&"&test_rendido="&session("t_r_postulacion")&"&matriculado="&session("m_postulacion")&"&revisar="&session("r_postulacion")&"&tipo_postulante="&tipo_postulante
+							botonera.dibujaboton("anterior") %>
+                          </div></td>
+                  <td><div align="center"> </div></td>
+                  <td><div align="center">
+                            <% botonera.dibujaboton("salir") %>
+                          </div></td>
+				  <td> <div align="center">  <%botonera.dibujaboton "guardar"
+										%>
+					 </div>  
+                  </td>
+				</tr>
+              </table>
+			
+            </div></td>
+            <td width="62%" rowspan="2" background="../imagenes/abajo_r1_c4.gif"><img src="../imagenes/abajo_r1_c3.gif" width="12" height="28"></td>
+            </tr>
+          <tr>
+            <td height="8" background="../imagenes/abajo_r2_c2.gif"></td>
+          </tr>
+        </table></td>
+        <td width="7" height="28"><img src="../imagenes/abajo_r1_c5.gif" width="7" height="28"></td>
+      </tr>
+    </table>
+	<br>
+	<br>
+	</td>
+  </tr>  
+</table>
+</body>
+</html>

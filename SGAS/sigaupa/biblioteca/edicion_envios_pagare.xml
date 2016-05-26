@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="btn_edicion_envios_pagare">
+  <botones nombre="anterior"> 
+      <tipoTexto>ANTERIOR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>envios_notaria_pagare.asp</url>
+	</botones> 
+  <botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agregar()</funcion>
+	</botones> 
+    <botones nombre="agregar_pagare"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>AGREGAR</accion>
+	  <posicionX>100</posicionX>
+	  <posicionY>50</posicionY>
+	  <ancho>750</ancho>
+	  <alto>600</alto>
+	  <scroll>TRUE</scroll>
+	</botones> 	
+	<botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>ELIMINAR</accion>
+	  <formulario>edicion</formulario>
+	</botones>
+  <botones nombre="excel"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Generar Excel</texto>
+	  <accion>NAVEGAR</accion>
+	  <target>_blank</target>
+	  
+	</botones> 
+ </parametro>
+<parametro formulario="f_listado"  clave="envi_ncorr"  variable="detalle_envios" 
+         colorSeleccionado="#CCCCCC" colorResaltado="#999999" nroRegistros="12" maxLista="10" 
+	     eliminar="TRUE" seleccionarTodo="TRUE"  anchoTabla="100%"
+		 mensajeError="No se encontraron registros">
+ <tablas nombre="detalle_envios" accion="B"/>
+    <campos nombre="envi_ccod">
+	    <descripcion>CEstado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="paga_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="DING_NDOCTO">
+	    <descripcion>Nº Pagare</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="DING_NDOCTO2">
+	    <descripcion>Nro Pagare</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 
+	 <campos nombre="EDIN_TDESC">
+	    <descripcion>Estado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="rut_alumno">
+	    <descripcion>Rut Alumno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="rut_apoderado">
+	    <descripcion>Rut Apoderado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	  <campos nombre="nombre_apoderado">
+	    <descripcion>Apoderado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 	  <campos nombre="DING_FDOCTO">
+	    <descripcion>F Vencimiento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="ENVI_FENVIO">
+	    <descripcion>F Envio</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 
+	  <campos nombre="DING_MDOCTO">
+	    <descripcion>Monto</descripcion>
+		<tipo>INPUT</tipo>
+		
+		<permiso>LECTURA</permiso>
+		<alineamiento>RIGHT</alineamiento>
+	 </campos>
+</parametro> 
+
+
+
+<parametro formulario="excel"  clave="envi_ncorr"  variable="detalle_envios" 
+         colorSeleccionado="#CCCCCC" colorResaltado="#999999" nroRegistros="12" maxLista="10" 
+	     eliminar="FALSE" seleccionarTodo="FALSE"  anchoTabla="100%"
+		 mensajeError="No se encontraron registros">
+     <campos nombre="ENVI_NCORR">
+	    <descripcion>CEstado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="paga_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="DING_NDOCTO">
+	    <descripcion>Nº Pagare</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="DING_NDOCTO2">
+	    <descripcion>Nro Pagare</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 
+	 <campos nombre="EDIN_TDESC">
+	    <descripcion>Estado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="rut_alumno">
+	    <descripcion>Rut Alumno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="rut_apoderado">
+	    <descripcion>Rut Apoderado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	  <campos nombre="nombre_apoderado">
+	    <descripcion>Apoderado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 	  <campos nombre="DING_FDOCTO">
+	    <descripcion>F Vencimiento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="ENVI_FENVIO">
+	    <descripcion>F Envio</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 
+	  <campos nombre="DING_MDOCTO">
+	    <descripcion>Monto</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>RIGHT</alineamiento>
+	 </campos>
+</parametro> 
+
+ 
+</Parametros>
+

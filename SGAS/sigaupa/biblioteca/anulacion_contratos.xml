@@ -1,0 +1,87 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+      <botones nombre="anular">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Anular</texto>
+         <formulario>edicion</formulario>
+         <accion>GUARDAR</accion>
+         <url>proc_anulacion_contratos.asp</url>
+         <soloUnClick>TRUE</soloUnClick>
+		 <funcionValidacion>Anula_Contrato(document.edicion);</funcionValidacion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="busqueda" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>LN-N</id>
+         <script>onBlur="this.value = this.value.toUpperCase();"</script>
+      </campos>
+   </parametro>
+   <parametro formulario="contratos" eliminar="true" clave="cont_ncorr" 
+   	variable="contratos" anchoTabla="100%" mensajeError="No se encontraron contratos para anular.">
+ 		<campos nombre="abonado">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c_cont_ncorr">
+         <descripcion>Nº Interno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="cont_fcontrato">
+         <descripcion>Fecha Contrato</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="econ_ccod">
+         <descripcion>Estado</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>estados_contrato</destino>
+         <union>econ_ccod</union>
+         <salida>econ_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="rut">
+         <descripcion>R.U.T. Alumno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="nombre_completo">
+         <descripcion>Alumno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="carrera">
+         <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+</Parametros>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+         <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>salir()</funcion>
+      </botones>
+      <botones nombre="buscar">
+		  <tipoTexto>BUSCAR</tipoTexto>
+		  <accion>BUSCAR</accion>
+		  <formulario>buscador</formulario>
+ 	  </botones>
+	  <botones nombre="excel">
+        <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>NAVEGAR</accion>
+         <formulario>buscador</formulario>
+     </botones>
+   </parametro>
+ 
+ 
+   	<parametro formulario="busqueda" variable="busqueda">
+	   	<campos nombre="v_anos">
+		   <tipo>SELECT</tipo>
+		   <permiso>LECTURAESCRITURA</permiso>
+		   <union>v_anos</union>
+		   <salida>anos_tdesc</salida>
+		   <anulable>TRUE</anulable>
+		   <mensajeNulo>Seleccione Año para analizar</mensajeNulo>
+		   <id>TO-N</id>
+	   </campos>
+   	</parametro>
+ 
+ 	 <parametro formulario="alumnos" mensajeError="No existen alumnos pendientes para el año seleccionado" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a"  nroRegistros="50" maxLista="50" >  
+		<campos nombre="rut">
+			<descripcion>Rut</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="dv">
+			<descripcion>DV</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="nombres">
+			<descripcion>Nombres</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="apellidos">
+			<descripcion>Apellidos</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			<descripcion>Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="ultimo_periodo">
+			<descripcion>Último periodo cursado</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+</Parametros>

@@ -1,0 +1,514 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!--' #include file = "../biblioteca/_negocio.asp" -->
+
+<%
+'for each k in request.form
+'	response.Write(k&" = "&request.Form(k)&"<br>")
+'next
+'response.End()
+
+Response.AddHeader "Content-Disposition", "attachment;filename=listado_postulantes.xls"
+Response.ContentType = "application/vnd.ms-excel"
+Server.ScriptTimeOut = 300000
+
+
+set conexion = new CConexion
+conexion.Inicializar "upacifico"
+
+'set negocio = new CNegocio
+'negocio.Inicializa conexion
+
+'periodo=negocio.obtenerPeriodoAcademico("Postulacion")
+'-----------------------------------------------------------------------
+'------------------------------------------------------------------------------------
+rut = request.querystring("rut")
+sede = request.querystring("sede")
+selecciono_carrera = request.querystring("selecciono_carrera")
+ingreso_familia = request.querystring("ingreso_familia")
+postulacion_enviada = request.querystring("postulacion_enviada")
+test_rendido = request.querystring("test_rendido")
+matriculado = request.querystring("matriculado")
+periodo = request.querystring("periodo")
+tipo_postulante = request.QueryString("tipo_postulante")
+
+
+anio = conexion.consultaUno("select anos_ccod from periodos_academicos where cast(peri_ccod as varchar)='"&periodo&"'")
+
+
+'set tabla = new cformulario
+'tabla.carga_parametros	"adm_mallas_curriculares3.xml",	"tabla_conv"
+'tabla.inicializar		conexion
+
+'if sede <> "" then
+'	sede_a_buscar = sede
+'else	
+'	sede_a_buscar= negocio.obtenerSede
+'end if	
+
+'consulta_emergencias = "  select distinct pers_ncorr,'<font color=''#0033FF''>' + rut + '</font>' as rut,'<font color=''#0033FF''>' +alumno+ '</font>' as alumno,con_carrera_seleccionada,postulacion_enviada,con_familia_ingresada,con_codeudor,examen_rendido, "& vbcrlf & _
+'					   " matriculado,fecha_modificacion1,protic.trunc(fecha_modificacion1) as fecha_modificacion, "& vbcrlf & _
+'					   " sede,carrera,jornada,especialidad,estado_examen,nota,matri_anti as con_matricula_anticipada,estado_gestion,observacion,fecha_llamar,email,fono,celular   "& vbcrlf & _
+'					   " from (  "& vbcrlf & _
+'					   " select a.pers_ncorr,cast(pers_nrut as varchar) + '-' + pers_xdv as rut, pers_tape_paterno + ' ' + pers_tape_materno +', '+pers_tnombre as alumno,  "& vbcrlf & _
+'					   " (select case count(*) when 0 then 'No' else 'Sí' end  from detalle_postulantes dp (nolock) where dp.post_ncorr=b.post_ncorr) as con_carrera_seleccionada,  "& vbcrlf & _
+'					   " case b.epos_ccod when 2 then 'Sí' else 'No' end as postulacion_enviada, "& vbcrlf & _
+'					   " (select case count(*) when 0 then 'No' else 'Sí' end from grupo_familiar gf (nolock) where b.post_ncorr = gf.post_ncorr) as con_familia_ingresada, "& vbcrlf & _
+'					   " (select case count(*) when 0 then 'No' else 'Sí' end from codeudor_postulacion cp (nolock) where b.post_ncorr = cp.post_ncorr) as con_codeudor,  "& vbcrlf & _
+'					   " (select case count(*) when 0 then 'No' else 'Sí' end  from detalle_postulantes dp (nolock) where dp.post_ncorr=b.post_ncorr and dp.ofer_ncorr = c.ofer_ncorr and eepo_ccod not in (1,5)) as examen_rendido, "& vbcrlf & _
+'					   " (select case count(*) when 0 then 'No' else 'Sí' end  from detalle_postulantes dp (nolock),alumnos alu (nolock) where dp.post_ncorr=b.post_ncorr and alu.post_ncorr=dp.post_ncorr and alu.ofer_ncorr=dp.ofer_ncorr and emat_ccod=1) as matriculado, "& vbcrlf & _
+'					   " isnull(e.audi_fmodificacion,isnull(c.audi_fmodificacion,b.audi_fmodificacion)) as fecha_modificacion1, "& vbcrlf & _
+'					   "  sede_tdesc as sede, carr_tdesc as carrera, jorn_tdesc as jornada, espe_tdesc as especialidad,j.eepo_tdesc as estado_examen, case c.eepo_ccod when 1 then 'sin rendir' else cast(c.dpos_ncalificacion as varchar) end as nota, "& vbcrlf & _
+'					   " (select case (select sum(protic.total_recepcionar_cuota(37,comp.inst_ccod,comp.comp_ndocto,dcom.dcom_ncompromiso)) "& vbcrlf & _
+'					   "  from compromisos comp (nolock), detalle_compromisos dcom (nolock) "& vbcrlf & _
+'					   "  where comp.post_ncorr = c.post_ncorr and comp.ofer_ncorr = c.ofer_ncorr and  comp.comp_ndocto=dcom.comp_ndocto and  comp.tcom_ccod=dcom.tcom_ccod and  comp.inst_ccod=dcom.inst_ccod and comp.ecom_ccod <> 3 and comp.tcom_ccod=37) "& vbcrlf & _
+'					   "  when 0 then 'Sí' else 'No' end) as matri_anti,eo.eopo_tdesc as estado_gestion,isnull(obpo_tobservacion,'') as observacion, isnull(cast(fecha_llamado as varchar),'') as fecha_llamar,lower(pers_temail) as email,pers_tfono as fono, pers_tcelular as celular   "& vbcrlf & _
+'					   " from personas_postulante a (nolock) join  postulantes b (nolock) "& vbcrlf & _
+'				       "    on a.pers_ncorr=b.pers_ncorr "& vbcrlf & _
+'					   " left outer join detalle_postulantes c (nolock) "& vbcrlf & _
+'				 	   "    on  b.post_ncorr = c.post_ncorr "& vbcrlf & _
+'					   " left outer join ofertas_academicas d "& vbcrlf & _
+'				 	   "    on  c.ofer_ncorr = d.ofer_ncorr "& vbcrlf & _
+'					   " join observaciones_postulacion e (nolock) "& vbcrlf & _
+'					   "    on c.post_ncorr= e.post_ncorr and c.ofer_ncorr = e.ofer_ncorr "& vbcrlf & _
+'					   "  join estado_observaciones_postulacion eo "& vbcrlf & _
+'					   "    on isnull(e.eopo_ccod,1) = eo.eopo_ccod "& vbcrlf & _
+'					   " left outer join sedes f "& vbcrlf & _
+'					   "    on d.sede_ccod = f.sede_ccod   "& vbcrlf & _
+'					   " left outer join jornadas g "& vbcrlf & _
+'					   "    on d.jorn_ccod = g.jorn_ccod "& vbcrlf & _
+'					   " left outer join especialidades h "& vbcrlf & _
+'					   "    on d.espe_ccod = h.espe_ccod "& vbcrlf & _
+'					   " left outer join carreras i "& vbcrlf & _
+'					   "    on h.carr_ccod = i.carr_ccod   "& vbcrlf & _
+'					   " left outer join estado_examen_postulantes j "& vbcrlf & _
+'					   "    on c.eepo_ccod=j.eepo_ccod "& vbcrlf & _
+'					   " where  cast(b.peri_ccod as varchar)='"&periodo&"' and cast(d.sede_ccod as varchar)='"&sede_a_buscar&"' and b.post_bnuevo='S' "& vbcrlf & _
+'					   " and protic.trunc(getDate()) = protic.trunc(e.fecha_llamado))a "& vbcrlf & _
+'					   " UNION ALL "& vbcrlf & _
+'					   " select distinct pers_ncorr,rut,alumno,con_carrera_seleccionada,postulacion_enviada,con_familia_ingresada,con_codeudor,examen_rendido, "& vbcrlf & _
+'					   " matriculado,fecha_modificacion1,protic.trunc(fecha_modificacion1) as fecha_modificacion, "& vbcrlf & _
+'					   " sede,carrera,jornada,especialidad,estado_examen,nota,matri_anti as con_matricula_anticipada,estado_gestion,observacion,fecha_llamar,email,fono,celular "& vbcrlf & _
+'					   " from ( "& vbcrlf & _
+'					   " select a.pers_ncorr,cast(pers_nrut as varchar) + '-' + pers_xdv as rut, pers_tape_paterno + ' ' + pers_tape_materno +', '+pers_tnombre as alumno,  "& vbcrlf & _
+'					   " (select case count(*) when 0 then 'No' else 'Sí' end  from detalle_postulantes dp (nolock) where dp.post_ncorr=b.post_ncorr) as con_carrera_seleccionada, "& vbcrlf & _
+'					   " case b.epos_ccod when 2 then 'Sí' else 'No' end as postulacion_enviada, "& vbcrlf & _
+'					   " (select case count(*) when 0 then 'No' else 'Sí' end from grupo_familiar gf (nolock) where b.post_ncorr = gf.post_ncorr) as con_familia_ingresada, "& vbcrlf & _
+'					   " (select case count(*) when 0 then 'No' else 'Sí' end from codeudor_postulacion cp (nolock) where b.post_ncorr = cp.post_ncorr) as con_codeudor, "& vbcrlf & _
+'					   " (select case count(*) when 0 then 'No' else 'Sí' end  from detalle_postulantes dp (nolock) where dp.post_ncorr=b.post_ncorr  and dp.ofer_ncorr = c.ofer_ncorr and eepo_ccod not in (1,5)) as examen_rendido, "& vbcrlf & _
+'					   " (select case count(*) when 0 then 'No' else 'Sí' end  from detalle_postulantes dp (nolock),alumnos alu (nolock) where dp.post_ncorr=b.post_ncorr and alu.post_ncorr=dp.post_ncorr and alu.ofer_ncorr=dp.ofer_ncorr and emat_ccod=1) as matriculado, "& vbcrlf & _
+'					   " (select isnull(max(dp.audi_fmodificacion),isnull(b.post_fpostulacion,b.audi_fmodificacion)) from detalle_postulantes dp (nolock) where dp.post_ncorr=b.post_ncorr) as fecha_modificacion1, "& vbcrlf & _
+'					   " sede_tdesc as sede, carr_tdesc as carrera, jorn_tdesc as jornada, espe_tdesc as especialidad,i.eepo_tdesc as estado_examen, case c.eepo_ccod when 1 then 'sin rendir' else cast(c.dpos_ncalificacion as varchar) end as nota, "& vbcrlf & _
+'					   " (select case (select sum(protic.total_recepcionar_cuota(37,comp.inst_ccod,comp.comp_ndocto,dcom.dcom_ncompromiso)) "& vbcrlf & _
+'				 	   " from compromisos comp (nolock), detalle_compromisos dcom (nolock) "& vbcrlf & _
+'					   "  where comp.post_ncorr = c.post_ncorr and comp.ofer_ncorr = c.ofer_ncorr and  comp.comp_ndocto=dcom.comp_ndocto and  comp.tcom_ccod=dcom.tcom_ccod and  comp.inst_ccod=dcom.inst_ccod and comp.ecom_ccod <> 3 and comp.tcom_ccod=37) "& vbcrlf & _
+'					   "  when 0 then 'Sí' else 'No' end) as matri_anti,isnull(eo.eopo_tdesc,'') as estado_gestion,isnull(obpo_tobservacion,'') as observacion, isnull(cast(fecha_llamado as varchar),'') as fecha_llamar,lower(pers_temail) as email,pers_tfono as fono, pers_tcelular as celular  "& vbcrlf & _
+'					   " from personas_postulante a (nolock) join  postulantes b (nolock) "& vbcrlf & _
+'					   "    on a.pers_ncorr=b.pers_ncorr "& vbcrlf & _
+'					   " left outer join detalle_postulantes c (nolock) "& vbcrlf & _
+'					   "    on  b.post_ncorr = c.post_ncorr "& vbcrlf & _
+'					   " left outer join ofertas_academicas d "& vbcrlf & _
+'					   "    on  c.ofer_ncorr = d.ofer_ncorr "& vbcrlf & _
+'					   " left outer join sedes e "& vbcrlf & _
+'					   "    on d.sede_ccod = e.sede_ccod   "& vbcrlf & _
+'					   " left outer join jornadas f "& vbcrlf & _
+'					   "    on d.jorn_ccod = f.jorn_ccod "& vbcrlf & _
+'					   " left outer join especialidades g "& vbcrlf & _
+'					   "    on d.espe_ccod = g.espe_ccod "& vbcrlf & _
+'					   " left outer join carreras h "& vbcrlf & _
+'					   "    on g.carr_ccod = h.carr_ccod   "& vbcrlf & _
+'					   " left outer join estado_examen_postulantes i "& vbcrlf & _
+'				       "    on c.eepo_ccod=i.eepo_ccod "& vbcrlf & _
+'					   " left outer join observaciones_postulacion op  (nolock) "& vbcrlf & _
+'					   "    on c.post_ncorr= op.post_ncorr and c.ofer_ncorr = op.ofer_ncorr "& vbcrlf & _
+'					   " left outer join estado_observaciones_postulacion eo "& vbcrlf & _
+'					   "    on isnull(op.eopo_ccod,1) = eo.eopo_ccod "& vbcrlf & _
+'					   " where  cast(b.peri_ccod as varchar)='"&periodo&"' and cast(d.sede_ccod as varchar)='"&sede_a_buscar&"' and b.post_bnuevo='S' "& vbcrlf & _
+'					   " and (select case count(*) when 0 then 'No' else 'Sí' end  from detalle_postulantes dp (nolock) where dp.post_ncorr=b.post_ncorr) = 'Sí' "& vbcrlf & _
+'					   " and (select case count(*) when 0 then 'No' else 'Sí' end from grupo_familiar gf (nolock) where b.post_ncorr = gf.post_ncorr) = 'Sí' "& vbcrlf & _
+'					   " and case b.epos_ccod when 2 then 'Sí' else 'No' end = 'Sí' "& vbcrlf & _
+'					   " and (select case count(*) when 0 then 'No' else 'Sí' end  from detalle_postulantes dp (nolock) where dp.post_ncorr=b.post_ncorr and dp.ofer_ncorr = c.ofer_ncorr and eepo_ccod not in (1,5)) = 'No' "& vbcrlf & _
+'					   " and b.audi_fmodificacion <= getDate()-7  )a "
+					  
+
+''response.Write("<pre>"&consulta_emergencias&"</pre>")
+''response.End()		
+'set fo 		= 		new cFormulario
+'fo.carga_parametros	"adm_mallas_curriculares3.xml",	"tabla_conv"
+'fo.inicializar		conexion
+'fo.consultar 		consulta_emergencias & " order by fecha_modificacion1,alumno"
+
+'cantidad_emergencias = conexion.consultaUno("select count(distinct pers_ncorr) from ("&consulta_emergencias&")a")
+
+'response.End()
+'response.Write(cantidad_emergencias)
+'------------------------------------------------------------------------------------------------------
+'--------------------------------------------------------------------------
+set formulario = new CFormulario
+formulario.Carga_Parametros "tabla_vacia.xml", "tabla"
+formulario.Inicializar conexion
+
+consulta = "  select distinct pers_ncorr, rut ,alumno,con_carrera_seleccionada,postulacion_enviada,con_familia_ingresada,con_codeudor,examen_rendido, "& vbcrlf & _
+					   " matriculado,fecha_modificacion1,protic.trunc(fecha_modificacion1) as fecha_modificacion, edad,"& vbcrlf & _
+					   " sede,carrera,jornada,especialidad,estado_examen,observacion_examen,nota,matri_anti as con_matricula_anticipada,estado_gestion,observacion,fecha_llamar,email,fono,celular,direccion,comuna, region,fecha_asignacion_carrera   "& vbcrlf & _
+					   " from (  "& vbcrlf & _
+					   " select a.pers_ncorr,cast(pers_nrut as varchar) + '-' + pers_xdv as rut, protic.initCap(pers_tape_paterno + ' ' + pers_tape_materno +', '+pers_tnombre) as alumno,  "& vbcrlf & _
+					   " (select case count(*) when 0 then 'No' else 'Sí' end  from detalle_postulantes dp (nolock) where dp.post_ncorr=b.post_ncorr) as con_carrera_seleccionada,  "& vbcrlf & _
+					   " case b.epos_ccod when 2 then 'Sí' else 'No' end as postulacion_enviada, "& vbcrlf & _
+					   " (select case count(*) when 0 then 'No' else 'Sí' end from grupo_familiar gf (nolock) where b.post_ncorr = gf.post_ncorr) as con_familia_ingresada, "& vbcrlf & _
+					   " (select case count(*) when 0 then 'No' else 'Sí' end from codeudor_postulacion cp (nolock) where b.post_ncorr = cp.post_ncorr) as con_codeudor,  "& vbcrlf & _
+					   " (select case count(*) when 0 then 'No' else 'Sí' end  from detalle_postulantes dp (nolock) where dp.post_ncorr=b.post_ncorr and dp.ofer_ncorr = c.ofer_ncorr and eepo_ccod not in (1,5)) as examen_rendido, "& vbcrlf & _
+					   " (select case count(*) when 0 then 'No' else 'Sí' end  from alumnos alu (nolock) where  alu.post_ncorr=c.post_ncorr and alu.ofer_ncorr=c.ofer_ncorr and emat_ccod=1) as matriculado, "& vbcrlf & _
+					   " isnull(e.audi_fmodificacion,isnull(c.audi_fmodificacion,b.audi_fmodificacion)) as fecha_modificacion1,   "& vbcrlf & _
+					   " protic.obtener_edad(CASE WHEN DATEPART(DAY,A.PERS_FNACIMIENTO) = 29   "& vbcrlf & _
+                       "                      AND DATEPART(MONTH,A.PERS_FNACIMIENTO) = 2 THEN A.pers_fnacimiento - 1   "& vbcrlf & _
+                       "                     ELSE A.pers_fnacimiento END,getDate())  as edad, "& vbcrlf & _
+					   "  sede_tdesc as sede, carr_tdesc as carrera, jorn_tdesc as jornada, espe_tdesc as especialidad,j.eepo_tdesc as estado_examen,lower(isnull(c.dpos_tobservacion,'')) as observacion_examen, case c.eepo_ccod when 1 then 'sin rendir' else cast(c.dpos_ncalificacion as varchar) end as nota, "& vbcrlf & _
+					   " '--' as matri_anti,eo.eopo_tdesc as estado_gestion,isnull(obpo_tobservacion,'') as observacion, isnull(cast(fecha_llamado as varchar),'') as fecha_llamar,lower(pers_temail) as email,pers_tfono as fono, pers_tcelular as celular,   "& vbcrlf & _
+					   " protic.obtener_direccion_letra(a.pers_ncorr,1,'CNPB') as direccion,protic.obtener_direccion_letra(a.pers_ncorr,1,'C-C') as comuna,  "& vbcrlf & _
+					   " (select regi_tdesc from direcciones_publica tt, ciudades t2, regiones t3 where tt.pers_ncorr=a.pers_ncorr and tt.tdir_ccod=1 and tt.ciud_ccod=t2.ciud_ccod and t2.regi_ccod=t3.regi_ccod ) as region,fecha_asignacion_carrera  "& vbcrlf & _
+					   " from personas_postulante a (nolock) join  postulantes b (nolock) "& vbcrlf & _
+				       "    on a.pers_ncorr=b.pers_ncorr "& vbcrlf & _
+					   " join detalle_postulantes c (nolock) "& vbcrlf & _
+				 	   "    on  b.post_ncorr = c.post_ncorr "& vbcrlf & _
+					   " left outer join ofertas_academicas d "& vbcrlf & _
+				 	   "    on  c.ofer_ncorr = d.ofer_ncorr "& vbcrlf & _
+					   " left outer join observaciones_postulacion e (nolock) "& vbcrlf & _
+					   "    on c.post_ncorr= e.post_ncorr and c.ofer_ncorr = e.ofer_ncorr "& vbcrlf & _
+					   " left outer join estado_observaciones_postulacion eo "& vbcrlf & _
+					   "    on isnull(e.eopo_ccod,1) = eo.eopo_ccod "& vbcrlf & _
+					   " left outer join sedes f "& vbcrlf & _
+					   "    on d.sede_ccod = f.sede_ccod   "& vbcrlf & _
+					   " left outer join jornadas g "& vbcrlf & _
+					   "    on d.jorn_ccod = g.jorn_ccod "& vbcrlf & _
+					   " left outer join especialidades h "& vbcrlf & _
+					   "    on d.espe_ccod = h.espe_ccod "& vbcrlf & _
+					   " left outer join carreras i "& vbcrlf & _
+					   "    on h.carr_ccod = i.carr_ccod   "& vbcrlf & _
+					   " left outer join estado_examen_postulantes j "& vbcrlf & _
+					   "    on c.eepo_ccod=j.eepo_ccod "& vbcrlf & _
+		               " where  cast(b.peri_ccod as varchar)='"&periodo&"' and b.post_bnuevo='S' " & vbCrLf &_
+		               " and not exists (select 1 from alumnos tt (nolock), ofertas_academicas t2, especialidades t3  " & vbCrLf &_
+		               "                 where tt.ofer_ncorr = t2.ofer_ncorr and t2.espe_ccod=t3.espe_ccod  " & vbCrLf &_
+		               "  				 and t3.carr_ccod = i.carr_ccod and tt.pers_ncorr=a.pers_ncorr and tt.emat_ccod=1 and t2.peri_ccod < '"&periodo&"') "
+
+if rut <> "" then
+	consulta = consulta & " and cast(a.pers_nrut as varchar)='"&rut&"' "
+end if
+
+if selecciono_carrera = "1" then
+	consulta = consulta & " and (select case count(*) when 0 then 'No' else 'Sí' end  from detalle_postulantes dp (nolock) where dp.post_ncorr=b.post_ncorr) = 'Sí'"
+elseif selecciono_carrera = "2" then
+	consulta = consulta & " and (select case count(*) when 0 then 'No' else 'Sí' end  from detalle_postulantes dp (nolock) where dp.post_ncorr=b.post_ncorr) = 'No'"
+end if
+if ingreso_familia = "1" then
+	consulta = consulta & " and (select case count(*) when 0 then 'No' else 'Sí' end from grupo_familiar gf (nolock) where b.post_ncorr = gf.post_ncorr) = 'Sí'"
+elseif ingreso_familia = "2" then
+	consulta = consulta & " and (select case count(*) when 0 then 'No' else 'Sí' end from grupo_familiar gf (nolock) where b.post_ncorr = gf.post_ncorr) = 'No'"
+end if
+if postulacion_enviada = "1" then
+	consulta = consulta & " and case b.epos_ccod when 2 then 'Sí' else 'No' end = 'Sí'"
+elseif postulacion_enviada = "2" then
+	consulta = consulta & " and case b.epos_ccod when 2 then 'Sí' else 'No' end = 'No'"
+end if	
+if test_rendido = "1" then
+	consulta = consulta & " and (select case count(*) when 0 then 'No' else 'Sí' end  from detalle_postulantes dp (nolock) where dp.post_ncorr=b.post_ncorr and dp.ofer_ncorr = c.ofer_ncorr and eepo_ccod not in (1,5)) = 'Sí'"
+elseif test_rendido = "2" then
+	consulta = consulta & " and (select case count(*) when 0 then 'No' else 'Sí' end  from detalle_postulantes dp (nolock) where dp.post_ncorr=b.post_ncorr  and dp.ofer_ncorr = c.ofer_ncorr and eepo_ccod not in (1,5)) = 'No'"
+end if		   
+
+if matriculado = "1" then
+	consulta = consulta & " and (select case count(*) when 0 then 'No' else 'Sí' end  from alumnos alu (nolock) where  alu.post_ncorr=c.post_ncorr and alu.ofer_ncorr=c.ofer_ncorr and emat_ccod=1) = 'Sí'"
+elseif matriculado = "2" then
+	consulta = consulta & " and (select case count(*) when 0 then 'No' else 'Sí' end  from alumnos alu (nolock) where  alu.post_ncorr=c.post_ncorr and alu.ofer_ncorr=c.ofer_ncorr and emat_ccod=1) = 'No'"
+end if		
+
+if sede <> "" then
+	consulta = consulta & " and cast(d.sede_ccod as varchar)='"&sede&"' "
+end if
+   
+''response.Write("<pre>select count(*) from ("&consulta&")aa</pre>")
+	
+'response.Write("<pre>"&consulta & " ) a order by fecha_modificacion1,alumno</pre>")
+'response.End()
+'cantidad_encontrados = conexion.consultaUno("select count(*) from ("&consulta&")a)aa")	 
+
+consulta = consulta & " ) a order by alumno asc,fecha_asignacion_carrera asc"
+
+
+if tipo_postulante = "2" then
+
+	consulta =  "   select d.pers_ncorr,cast(d.pers_nrut as varchar)+'-'+d.pers_xdv as rut, "& vbcrlf & _
+				"	d.pers_tape_paterno + ' ' + pers_tape_materno + ', ' + pers_tnombre as alumno, "& vbcrlf & _
+				"	'Sí' as con_carrera_seleccionada, "& vbcrlf & _
+				"	case a.epot_ccod when 1 then 'No' else 'Sí' end as postulacion_enviada, "& vbcrlf & _
+				"	'No' as con_familia_ingresada, 'No' as con_codeudor, 'No' as examen_rendido,  "& vbcrlf & _
+				"	case a.epot_ccod when 4 then 'Sí' else 'No' end as matriculado, "& vbcrlf & _
+				"	a.AUDI_FMODIFICACION as fecha_modificacion1, protic.trunc(a.AUDI_FMODIFICACION) as fecha_modificacion, "& vbcrlf & _
+				"	protic.obtener_edad(CASE WHEN DATEPART(DAY,D.PERS_FNACIMIENTO) = 29    "& vbcrlf & _
+				"							 AND DATEPART(MONTH,D.PERS_FNACIMIENTO) = 2 THEN D.pers_fnacimiento - 1    "& vbcrlf & _
+				"						ELSE D.pers_fnacimiento END,getDate() )  as edad, "& vbcrlf & _
+				"	e.sede_tdesc as sede, f.dcur_tdesc as carrera, '' as jornada, f.dcur_tdesc as especialidad, "& vbcrlf & _
+				"	h.eepo_tdesc as estado_examen, g.dpos_tobservacion as observacion_examen, g.dpos_nnota as nota, '--' as con_matricula_anticipada, "& vbcrlf & _
+				"	j.eopo_tdesc as estado_gestion, i.obpo_tobservacion as observacion, i.fecha_llamado as fecha_llamar, "& vbcrlf & _
+				"	d.pers_temail as email, d.pers_tfono as fono, d.pers_tcelular as celular, "& vbcrlf & _
+				"	protic.obtener_direccion_letra(d.pers_ncorr,1,'CNPB') as direccion, "& vbcrlf & _
+				"	protic.obtener_direccion_letra(d.pers_ncorr,1,'C-C') as comuna,   "& vbcrlf & _
+				"	(select regi_tdesc  "& vbcrlf & _
+				"	 from direcciones_publica tt, ciudades t2, regiones t3  "& vbcrlf & _
+				"	 where tt.pers_ncorr=d.pers_ncorr and tt.tdir_ccod=1 and tt.ciud_ccod=t2.ciud_ccod and t2.regi_ccod=t3.regi_ccod ) as region, "& vbcrlf & _
+				"	protic.trunc(a.AUDI_FMODIFICACION) as fecha_asignacion_carrera "& vbcrlf & _
+				"	from postulacion_otec a join datos_generales_secciones_otec b "& vbcrlf & _
+				"			on a.dgso_ncorr=b.dgso_ncorr "& vbcrlf & _
+				"		 join ofertas_otec c "& vbcrlf & _
+				"			on b.dgso_ncorr=c.dgso_ncorr "& vbcrlf & _
+				"		 join personas d "& vbcrlf & _
+				"			on a.pers_ncorr=d.pers_ncorr "& vbcrlf & _
+				"		 join sedes e "& vbcrlf & _
+				"			on b.sede_ccod = e.sede_ccod "& vbcrlf & _
+				"		 join diplomados_cursos f  "& vbcrlf & _
+				"			on b.dcur_ncorr = f.dcur_ncorr "& vbcrlf & _
+				"		 left outer join detalle_postulacion_otec g "& vbcrlf & _
+				"			on a.pote_ncorr=g.pote_ncorr and a.dgso_ncorr=g.pote_ncorr "& vbcrlf & _
+				"		 left outer join estado_examen_postulantes h "& vbcrlf & _
+				"			on isnull(g.eepo_ccod,1) = h.eepo_ccod  "& vbcrlf & _
+				"		 left outer join observaciones_postulacion_otec i "& vbcrlf & _
+				"		  on a.pote_ncorr=i.pote_ncorr and a.dgso_ncorr=i.dgso_ncorr "& vbcrlf & _
+				"		left outer join estado_observaciones_postulacion j "& vbcrlf & _
+				"		  on isnull(i.eopo_ccod,1) = j.eopo_ccod  "& vbcrlf & _       
+				"	where cast(c.anio_admision as varchar)='"&anio&"'  and a.epot_ccod <> 5  "
+				
+	if postulacion_enviada = "1" then
+		consulta = consulta & " and a.epot_ccod <> 1 "
+	elseif postulacion_enviada = "2" then
+		consulta = consulta & " and a.epot_ccod = 1 "
+	end if
+	
+	if rut <> "" then
+		consulta = consulta & " and cast(d.pers_nrut as varchar)='"&rut&"' "
+	end if
+
+	if matriculado = "1" then
+		consulta = consulta & " and a.epot_ccod = 4"
+	elseif matriculado = "2" then
+		consulta = consulta & " and a.epot_ccod <> 4 "
+	end if		
+	
+	if sede <> "" then
+		consulta = consulta & " and cast(b.sede_ccod as varchar)='"&sede&"' "
+	end if
+				
+	consulta = consulta & " order by fecha_modificacion1,alumno "
+
+end if
+
+if tipo_postulante = "3" then
+
+
+	consulta =  " select a.id as pers_ncorr, replace(cast(rut as varchar),'.','') as rut, cast(apellido as varchar) + ' ' + cast(nombre as varchar) as alumno, " & vbCrLf &_
+				"	'N/A' as con_carrera_seleccionada, " & vbCrLf &_
+				"	'N/A' as postulacion_enviada, " & vbCrLf &_
+				"	'N/A' as con_familia_ingresada, 'N/A' as con_codeudor, 'N/A' as examen_rendido,   " & vbCrLf &_
+				"	'N/A' as matriculado,  " & vbCrLf &_
+				"	a.Fecha_ingreso as fecha_modificacion1, protic.trunc(a.Fecha_ingreso) as fecha_modificacion, " & vbCrLf &_
+				"	'' as edad, '' as sede, cast(a.curso AS VARCHAR(200)) as carrera, '' as jornada,  cast(a.curso AS VARCHAR(200))  as especialidad, " & vbCrLf &_
+				"	'N/A' as estado_examen, '' as observacion_examen, '' as nota, '--' as con_matricula_anticipada, " & vbCrLf &_
+				"	c.eopo_tdesc as estado_gestion, b.obpo_tobservacion as observacion, b.fecha_llamado as fecha_llamar, " & vbCrLf &_
+				"	lower(cast(Email as varchar(20))) as email, cast(Telefono as varchar(20)) as fono, cast(Celular as varchar(20)) as celular, " & vbCrLf &_
+				"	'' as direccion, " & vbCrLf &_
+				"	'' as comuna,   " & vbCrLf &_
+				"	'' as region, protic.trunc(a.Fecha_ingreso) as fecha_asignacion_carrera " & vbCrLf &_
+				"	from [ASPT].[dbo].[PROSPECTOS] a left outer join [ASPT].[dbo].[observaciones_prospectos] b " & vbCrLf &_
+				"		  on a.id = b.id " & vbCrLf &_
+				"		left outer join estado_observaciones_postulacion c " & vbCrLf &_
+				"		  on isnull(b.eopo_ccod,1) = c.eopo_ccod  " & vbCrLf &_
+				"	where cast(datepart(year,a.Fecha_ingreso) as varchar) = '"&anio&"'   " & vbCrLf &_
+				"	and len(cast(apellido as varchar) + ' ' + cast(nombre as varchar)) > 5  " & vbCrLf &_
+				"	and cast(rut as varchar) not like '%http%' " 			
+	
+	consulta = consulta & " order by fecha_modificacion1,alumno"
+
+end if
+
+'response.Write("<pre>"&consulta&"</pre>")
+ 
+formulario.Consultar consulta
+
+
+	
+'cantidad_filtrados = conexion.consultaUno("select count(distinct pers_ncorr) from ("&consulta&")a )aa")
+
+fecha=conexion.consultaUno("select cast(datePart(day,getDate())as varchar)+'-'+cast(datePart(month,getDate()) as varchar)+'-'+cast(datePart(year,getDate()) as varchar) as fecha")
+'------------------------------------------------------------------------------------
+formulario.siguiente
+rut1 = formulario.obtenerValor("rut")
+formulario.primero
+%>
+<html>
+<head>
+<title>Listado Postulantes</title>
+<meta http-equiv="Content-Type" content="text/html;">
+</head>
+<body >
+<table width="100%" border="0">
+ <tr> 
+    <td colspan="4"><div align="center"><font size="+2" face="Arial, Helvetica, sans-serif">Listado de Postulantes </font></div>
+	  <div align="right"></div></td>
+    
+  </tr>
+  <tr> 
+    <td colspan="4">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td width="16%"><strong>Fecha</strong></td>
+    <td width="84%" colspan="3"><strong>:</strong> <%=fecha%></td>
+   </tr>
+</table>
+
+<p>&nbsp;</p>
+<!--<table width="100%" border="1">
+    <tr>
+  	  <td colspan="23" align="center"><font size="4"><strong>Listado de Alumnos para llamar con Prioridad ( <%'=cantidad_emergencias%> Postulantes Distintos)</strong></font>
+	  </td>
+   </tr>
+   <tr> 
+    <td><div align="center"><strong>Nº</strong></div></td>
+	<td><div align="left"><strong>Rut</strong></div></td>
+    <td><div align="left"><strong>Nombre Alumno</strong></div></td>
+    <td><div align="Center"><strong>Seleccionó Carrera?</strong></div></td>
+	<td><div align="left"><strong>Sede</strong></div></td>
+    <td><div align="left"><strong>Carrera</strong></div></td>
+	<td><div align="left"><strong>Jornada</strong></div></td>
+	<td><div align="left"><strong>Especialidad</strong></div></td>
+	<td><div align="left"><strong>Ingresó Familiares ?</strong></div></td>
+	<td><div align="left"><strong>Ingresó Codeudor ?</strong></div></td>
+	<td><div align="left"><strong>Envió Postulación ?</strong></div></td>
+	<td><div align="left"><strong>Rindió Test ?</strong></div></td>
+	<td><div align="left"><strong>Estado Test</strong></div></td>
+	<td><div align="left"><strong>Calificación</strong></div></td>
+	<td><div align="left"><strong>Pagó matricula Anticipada ?</strong></div></td>
+	<td><div align="left"><strong>Matriculado ?</strong></div></td>
+	<td><div align="left"><strong>Fecha modificación</strong></div></td>
+	<td><div align="left"><strong>Estado Gestión</strong></div></td>
+	<td><div align="left"><strong>Observación</strong></div></td>
+	<td><div align="left"><strong>llamar el día</strong></div></td>
+	<td><div align="left"><strong>Email</strong></div></td>
+	<td><div align="left"><strong>Teléfono</strong></div></td>
+	<td><div align="left"><strong>Celular</strong></div></td>
+  </tr>
+  <%' fila = 1   
+    ' while fo.Siguiente %>
+
+  <tr> 
+    <td><div align="center"><%'=fila%></div></td>
+    <td><div align="center"><%'=fo.ObtenerValor("rut")%></div></td>
+    <td><div align="center"><%'=fo.ObtenerValor("alumno")%></div></td>
+    <td><div align="center"><%'=fo.ObtenerValor("con_carrera_seleccionada")%></div></td>
+    <td><div align="center"><%'=fo.ObtenerValor("sede")%></div></td>
+	<td><div align="center"><%'=fo.ObtenerValor("carrera")%></div></td>
+	<td><div align="center"><%'=fo.ObtenerValor("jornada")%></div></td>
+	<td><div align="center"><%'=fo.ObtenerValor("especialidad")%></div></td>
+	<td><div align="center"><%'=fo.ObtenerValor("con_familia_ingresada")%></div></td>
+	<td><div align="center"><%'=fo.ObtenerValor("con_codeudor")%></div></td>	
+	<td><div align="center"><%'=fo.ObtenerValor("postulacion_enviada")%></div></td>	
+	<td><div align="center"><%'=fo.ObtenerValor("examen_rendido")%></div></td>	
+	<td><div align="center"><%'=fo.ObtenerValor("estado_examen")%></div></td>	
+	<td><div align="center"><%'=fo.ObtenerValor("nota")%></div></td>
+	<td><div align="center"><%'=fo.ObtenerValor("con_matricula_anticipada")%></div></td>	
+	<td><div align="center"><%'=fo.ObtenerValor("matriculado")%></div></td>	
+	<td><div align="center"><%'=fo.ObtenerValor("fecha_modificacion")%></div></td>	
+	<td><div align="center"><%'=fo.ObtenerValor("estado_gestion")%></div></td>	
+	<td><div align="center"><%'=fo.ObtenerValor("observacion")%></div></td>	
+	<td><div align="center"><%'=fo.ObtenerValor("fecha_llamar")%></div></td>
+	<td><div align="center"><%'=fo.ObtenerValor("email")%></div></td>
+	<td><div align="center"><%'=fo.ObtenerValor("fono")%></div></td>
+	<td><div align="center"><%'=fo.ObtenerValor("celular")%></div></td>	
+  </tr>
+  <% 'fila = fila + 1  
+  'wend %>
+</table>
+<p>&nbsp;</p>
+-->
+  <table width="100%" border="1">
+    <tr>
+  	  <td colspan="29" align="center" bgcolor="#FFCC33"><font size="4"><strong>Listado de Postulantes filtrados.</strong></font>
+	  </td>
+   </tr>
+   <tr  bgcolor="#FFCC33"> 
+    <td><div align="center"><strong>Nº</strong></div></td>
+	<td><div align="left"><strong>Rut</strong></div></td>
+    <td><div align="left"><strong>Nombre Alumno</strong></div></td>
+	<td><div align="left"><strong>Edad</strong></div></td>
+    <td><div align="Center"><strong>Seleccionó Carrera?</strong></div></td>
+	<td><div align="left"><strong>Preferencia</strong></div></td>
+	<td><div align="left"><strong>Sede</strong></div></td>
+    <td><div align="left"><strong>Carrera</strong></div></td>
+	<td><div align="left"><strong>Jornada</strong></div></td>
+	<td><div align="left"><strong>Especialidad</strong></div></td>
+	<td><div align="left"><strong>Ingresó Familiares?</strong></div></td>
+	<td><div align="left"><strong>Ingresó Codeudor?</strong></div></td>
+	<td><div align="left"><strong>Envió Postulación?</strong></div></td>
+	<td><div align="left"><strong>Rindió Test?</strong></div></td>
+	<td><div align="left"><strong>Estado Test</strong></div></td>
+	<td><div align="left"><strong>Observación Test</strong></div></td>
+	<td><div align="left"><strong>Calificación</strong></div></td>
+	<td><div align="left"><strong>Pagó matricula Anticipada ?</strong></div></td>
+	<td><div align="left"><strong>Matriculado ?</strong></div></td>
+	<td><div align="left"><strong>Fecha modificación</strong></div></td>
+	<td><div align="left"><strong>Estado Gestión</strong></div></td>
+	<td><div align="left"><strong>Observación</strong></div></td>
+	<td><div align="left"><strong>llamar el día</strong></div></td>
+	<td><div align="left"><strong>Email</strong></div></td>
+	<td><div align="left"><strong>Teléfono</strong></div></td>
+	<td><div align="left"><strong>Celular</strong></div></td>
+	<td><div align="left"><strong>Dirección</strong></div></td>
+	<td><div align="left"><strong>Comuna</strong></div></td>
+	<td><div align="left"><strong>Región</strong></div></td>
+  </tr>
+  <% fila = 1   
+     contador = 1
+     while formulario.Siguiente 
+	   if rut1 <> formulario.obtenerValor("rut") then
+	      contador = 1
+		  rut1 = formulario.obtenerValor("rut")
+	   end if
+	 %>
+  <tr> 
+    <td><div align="center"><%=fila%></div></td>
+    <td><div align="center"><%=formulario.ObtenerValor("rut")%></div></td>
+    <td><div align="left"><%=formulario.ObtenerValor("alumno")%></div></td>
+	<td><div align="center"><%=formulario.ObtenerValor("edad")%></div></td>
+    <td><div align="center"><%=formulario.ObtenerValor("con_carrera_seleccionada")%></div></td>
+    <td><div align="center"><%=contador%>a Preferencia</div></td>
+	<td><div align="left"><%=formulario.ObtenerValor("sede")%></div></td>
+	<td><div align="left"><%=formulario.ObtenerValor("carrera")%></div></td>
+	<td><div align="left"><%=formulario.ObtenerValor("jornada")%></div></td>
+	<td><div align="left"><%=formulario.ObtenerValor("especialidad")%></div></td>
+	<td><div align="center"><%=formulario.ObtenerValor("con_familia_ingresada")%></div></td>
+	<td><div align="center"><%=formulario.ObtenerValor("con_codeudor")%></div></td>	
+	<td><div align="center"><%=formulario.ObtenerValor("postulacion_enviada")%></div></td>	
+	<td><div align="center"><%=formulario.ObtenerValor("examen_rendido")%></div></td>	
+	<td><div align="left"><%=formulario.ObtenerValor("estado_examen")%></div></td>
+	<td><div align="left"><%=formulario.ObtenerValor("observacion_examen")%></div></td>	
+	<td><div align="center"><%=formulario.ObtenerValor("nota")%></div></td>
+	<td><div align="center"><%=formulario.ObtenerValor("con_matricula_anticipada")%></div></td>	
+	<td><div align="center"><%=formulario.ObtenerValor("matriculado")%></div></td>	
+	<td><div align="center"><%=formulario.ObtenerValor("fecha_modificacion")%></div></td>	
+	<td><div align="center"><%=formulario.ObtenerValor("estado_gestion")%></div></td>	
+	<td><div align="left"><%=formulario.ObtenerValor("observacion")%></div></td>	
+	<td><div align="center"><%=formulario.ObtenerValor("fecha_llamar")%></div></td>
+	<td><div align="left"><%=formulario.ObtenerValor("email")%></div></td>
+	<td><div align="left"><%=formulario.ObtenerValor("fono")%></div></td>
+	<td><div align="left"><%=formulario.ObtenerValor("celular")%></div></td>
+	<td><div align="left"><%=formulario.ObtenerValor("direccion")%></div></td>
+	<td><div align="left"><%=formulario.ObtenerValor("comuna")%></div></td>
+	<td><div align="left"><%=formulario.ObtenerValor("region")%></div></td>	
+  </tr>
+  <% fila = fila + 1  
+     contador = contador + 1
+  wend %>
+</table>
+<p>&nbsp; 
+</p> 
+<div align="center"></div>
+</body>
+</html>

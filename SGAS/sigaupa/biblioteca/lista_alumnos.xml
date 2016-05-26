@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+<parametro formulario="jornada" clave="asig_ccod" variable="m" mensajeError="No hay Asignaturas que cumplan la condición"
+		 colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="true" 
+		 eliminar="true" agregar="true" nuevaVentana="false" paginaEdicion="editar_asig.asp?asig_ccod=%asig_ccod%" 
+		 >
+	<tablas nombre="asignaturas" accion="M" />
+		<campos nombre="asig_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso> 
+		</campos>
+		<campos nombre="asig_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso> 
+		</campos>
+    	<campos nombre="secc_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso> 
+		</campos>
+	
+		
+	</parametro>
+	<parametro formulario="asignatura" clave="asig_ccod" variable="m" 
+		 colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" 
+		 eliminar="false" agregar="true" nuevaVentana="false" anchoTabla="98%">
+		<campos nombre="asig_ccod">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Código</descripcion>
+			<alineamiento>center</alineamiento>
+		</campos>
+		
+		<campos nombre="asig_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nombre Asignatura</descripcion>
+			<maxCaracteres>3</maxCaracteres>
+			<caracteres>5</caracteres>
+			<etiqueta>false</etiqueta>
+			<alineamiento>center</alineamiento>
+		</campos>
+		<campos nombre="secc_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Sección</descripcion>
+			<maxCaracteres>3</maxCaracteres>
+			<caracteres>5</caracteres>
+			<etiqueta>false</etiqueta>
+			<alineamiento>center</alineamiento>
+		</campos>
+		</parametro>
+		
+	<parametro formulario="lista_alumnos" clave="asig_ccod" variable="m" mensajeError="No Hay Alumnos En Esta Asignatura, Para Esta Sede, En Esta Sección y para esta Jornada "
+		 colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" 
+		 eliminar="false" agregar="true" nuevaVentana="false" maxLista="10" nroRegistros="10" anchoTabla="98%">
+		<campos nombre="alum_nmatricula">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Matricula</descripcion>
+			<alineamiento>center</alineamiento>
+			</campos>
+		
+		<campos nombre="pers_tape_paterno">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Apellido Paterno</descripcion>
+			<maxCaracteres>3</maxCaracteres>
+			<caracteres>5</caracteres>
+			<etiqueta>false</etiqueta>
+			<alineamiento>left</alineamiento>
+		</campos>
+			<campos nombre="pers_tape_materno">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Apellido Materno</descripcion>
+			<maxCaracteres>3</maxCaracteres>
+			<caracteres>5</caracteres>
+			<etiqueta>false</etiqueta>
+			<alineamiento>left</alineamiento>
+		</campos>
+				<campos nombre="pers_tnombre">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nombres</descripcion>
+			<maxCaracteres>3</maxCaracteres>
+			<caracteres>5</caracteres>
+			<etiqueta>false</etiqueta>
+			<alineamiento>left</alineamiento>
+		</campos>
+		<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Código</descripcion>
+			<maxCaracteres>3</maxCaracteres>
+			<caracteres>5</caracteres>
+			<etiqueta>false</etiqueta>
+			<alineamiento>left</alineamiento>
+		</campos>
+				<campos nombre="carr_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Carrera</descripcion>
+			<maxCaracteres>3</maxCaracteres>
+			<caracteres>5</caracteres>
+			<etiqueta>false</etiqueta>
+			<alineamiento>left</alineamiento>
+		</campos>
+				<campos nombre="espe_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Especialidad</descripcion>
+			<maxCaracteres>3</maxCaracteres>
+			<caracteres>5</caracteres>
+			<etiqueta>false</etiqueta>
+			<alineamiento>left</alineamiento>
+		</campos>
+		</parametro>
+
+		
+		
+	<parametro formulario="impresora" variable="ip">
+		<campos nombre="impr_truta">	
+			<tipo>select</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<destino>IMPRESORAS</destino>
+			<union>impr_truta</union>
+			<salida>impr_truta</salida>
+			<alineamiento>CENTER</alineamiento>
+			<id>TO-N</id>
+		</campos>
+	</parametro> 
+		
+</Parametros>
+

@@ -1,0 +1,80 @@
+<!-- #include file = "../biblioteca/_conexion_encuesta_rr_pp.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+<%
+
+
+ Session.Contents.RemoveAll()
+'-----------------------------------------------------------
+ rut = request("datos[0][pers_nrut]")
+ dv = request("datos[0][pers_xdv]")
+ response.Write(rut)
+ response.Write("<br/>"&dv)
+
+ set conexion = new CConexion
+ conexion.Inicializar "upacifico"
+
+slt_existe= " select case count(*) when 0 then 'N' else 'S' end from titulados_egresados_rrpp "&_
+		 " where cast(pers_nrut as varchar)='"&rut&"' "
+		 
+slt_contensto=" select case count(*) when 0 then 'N' else 'S' end from encuesta_rr_pp "&_
+		 " where cast(pers_nrut as varchar)='"&rut&"' "	
+contesto=conexion.consultaUno(slt_contensto)		  
+existe = conexion.consultaUno(slt_existe)	
+
+pagina2=conexion.consultaUno("select case when preg_10 is null then 'N'else 'S' end from encuesta_rr_pp where pers_nrut="&rut&" ")
+pagina3=conexion.consultaUno("select case when preg_27 is null then 'N'else 'S' end from encuesta_rr_pp where pers_nrut="&rut&" ")
+pagina4=conexion.consultaUno("select case when preg_30 is null then 'N'else 'S' end from encuesta_rr_pp where pers_nrut="&rut&" ")
+
+
+'select case when preg_27 is null then 'N'else 'S' end from encuesta_rr_pp where pers_nrut=10590965
+'select case when preg_30 is null then 'N'else 'S' end from encuesta_rr_pp where pers_nrut=10590965
+'response.Write("<br/> pagina2="&pagina2)
+'response.Write("<br/> pagina3rrrrr="&pagina3)
+'response.Write("<br/> pagina4="&pagina4)
+'response.end()
+if existe <> "N" and rut <> "" then
+		'############################################################################################
+			sql_pers_ncorr = "SELECT pers_ncorr FROM personas WHERE cast(pers_nrut as varchar)='" & RUT & "'"
+			v_pers_ncorr =  conexion.ConsultaUno(sql_pers_ncorr)
+		if contesto = "N"  then	
+	   		session("rut_usuario") = RUT	
+			 response.Write("<br/>"&"1")
+	   		response.Redirect("encuesta.asp")
+			
+			else
+			
+			if pagina2="N" then
+			session("rut_usuario") = RUT
+			 response.Redirect("encuesta_parte2.asp") 
+			end if
+			
+			if pagina3="N" and pagina2="S" then
+			session("rut_usuario") = RUT
+			 response.Redirect("encuesta_parte3.asp") 
+			 end if
+			 
+			 			 		
+			 
+			 if pagina4="N" and pagina3="S" and pagina2="S" then
+			 session("rut_usuario") = RUT
+			 response.Redirect("encuesta_parte4.asp") 
+			 
+			 end if
+			 
+			 
+			if pagina4="S" and pagina3="S" and pagina2="S" then
+			session("mensajeerror")= "Tu Ya has respondido la encuesta"
+		    response.Redirect("portada_encuesta.asp") 
+			response.Write("<br/>"&"2")
+			end if
+			
+			end if
+else
+	   		session("mensajeerror")= "El rut ingresado no pertenece a un egresado de Relaciones Publicas"
+		    response.Redirect("portada_encuesta.asp")
+			response.Write("<br/>"&"3")
+			
+			 
+end if
+ 
+ %>

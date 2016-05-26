@@ -1,0 +1,216 @@
+<Parametros>
+   <parametro formulario="botonera">
+    <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+		 <soloUnClick>TRUE</soloUnClick>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>menu_alumno.asp</url>
+      </botones>
+       <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>NAVEGAR</accion>
+         <url>notas_alumno_excel.asp</url>
+      </botones>
+	  <botones nombre="HORARIO"> 
+      	 <tipoTexto>DEFINIR</tipoTexto>
+	     <texto>Horario</texto>
+	     <accion>JAVASCRIPT</accion>
+	     <funcion>horario()</funcion>	  
+	  </botones>
+	  <botones nombre="escape">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>mensajes.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="busqueda" variable="b">
+	  <campos nombre="pers_nrut">
+ 		 <tipo>INPUT</tipo> 
+  		 <permiso>OCULTO</permiso> 
+  		 <caracteres>10</caracteres> 
+  		 <maxCaracteres>8</maxCaracteres> 
+  		 <id>NU-N</id> 
+  	  </campos>
+	  <campos nombre="pers_xdv">
+  		 <tipo>INPUT</tipo> 
+  		 <permiso>OCULTO</permiso> 
+         <caracteres>1</caracteres> 
+         <maxCaracteres>1</maxCaracteres> 
+         <script>onBlur="this.value=this.value.toUpperCase();"</script> 
+         <id>LN-N</id> 
+      </campos>
+   </parametro>
+   <parametro formulario="salidas" anchoTabla="95%" mensajeError="El Alumno no presenta salidas registradas.">
+      <campos nombre="salida">
+         <descripcion>Salida</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="tipo_salida">
+         <descripcion>Tipo Salida</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="egresado">
+         <descripcion>Egresado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="titulado">
+         <descripcion>Titulado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="acceso">
+         <descripcion>Acceso</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro colorResaltado="#DCDCB8" colorSeleccionado="99FFFF" paginaEdicion="" 
+  formulario="lista_comision_tesis" agregar="false" nroRegistros="15" eliminar="false" clave="ctes_ncorr" maxLista="15" 
+  mensajeError="Aún no se ha ingresado la comisión evaluadora" colorBase="#F1F1E4" editar="false" anchoTabla="95%" nuevaVentana="false"
+  variable="comision">
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="plan_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ctes_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="docente">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nombre Profesor</descripcion>
+      </campos>
+      <campos nombre="calificacion_asignada">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Calificación</descripcion>
+      </campos>
+   </parametro>
+   <parametro formulario="encabezado" anchoTabla="100%" columnas="2" variable="enca">
+      <campos nombre="rut">
+         <descripcion>RUT</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="carrera">
+         <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="duas_tdesc">
+         <descripcion>Duración</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="ano_ingreso_plan">
+         <descripcion>Año Ingreso al Plan de Estudios</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="carreras_alumno">
+         <descripcion>Carrera</descripcion>
+         <tipo>SELECT</tipo>
+         <permiso>OCULTO</permiso>
+         <union>matr_ncorr</union>
+         <salida>carr_tdesc</salida>
+         <orden>carr_tdesc desc</orden>
+         <anulable>TRUE</anulable>
+		 <script>onchange='javascript:dibujar(document.buscador);'</script>
+         <mensajeNulo>Todas</mensajeNulo>
+      </campos>
+   </parametro>
+   <parametro formulario="param_impresion" anchoTabla="100%" variable="p">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="peri_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="peri_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="solo_aprobadas">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="plan_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="carrera">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tdes_ccod">
+         <descripcion>Motivo de Extensión</descripcion>
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>tipos_descripciones</destino>
+         <union>tdes_ccod</union>
+         <salida>tdes_tdesc</salida>
+         <orden>tdes_tdesc asc</orden>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione motivo</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="agrupar_periodo">
+         <descripcion>Agrupar por periodo</descripcion>
+         <tipo>BOLEANO</tipo>
+         <permiso>OCULTO</permiso>
+         <objeto>CHECKBOX</objeto>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+      </campos>
+      <campos nombre="sep1">
+         <tipo>separador</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="incluir_promedio">
+         <descripcion>Incluir promedio</descripcion>
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <objeto>CHECKBOX</objeto>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <onClick>incluir_promedio_click(this);</onClick>
+      </campos>
+      <campos nombre="promedio">
+         <descripcion>Promedio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>5</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>NT-N</id>
+         <deshabilitado>TRUE</deshabilitado>
+      </campos>
+   </parametro>
+</Parametros>

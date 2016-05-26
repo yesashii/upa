@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	   <botones nombre="imprimir" >
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <accion>GUARDAR</accion>
+		 <texto>Excel</texto>
+		  <formulario>excel</formulario>
+         <url>genera_informe_excel.asp</url>
+      </botones>
+	  <botones nombre="imprimir_upa" >
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <accion>GUARDAR</accion>
+		 <texto>Excel</texto>
+		  <formulario>excel</formulario>
+         <url>genera_informe_upa_excel.asp</url>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+   </parametro>
+   
+   <parametro  formulario="busqueda" variable="b">
+   <campos nombre="anos_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>anos</destino>
+		 <filtro>anos_ccod > 2009</filtro>
+		 <union>anos_ccod</union>
+         <salida>anos_ccod</salida>
+		 <orden>anos_tdesc desc</orden>
+		 <script>onChange="verifica_periodos(this.value,this.name)"</script>
+      </campos>   
+	  <campos nombre="anos_ccod_fin" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>anos</destino>
+		 <filtro>anos_ccod > 2009</filtro>
+		 <union>anos_ccod</union>
+         <salida>anos_ccod</salida>
+		 <orden>anos_tdesc desc</orden>
+		 <script>onChange="verifica_periodos(this.value,this.name)"</script>
+      </campos> 
+   <campos nombre="pais_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todos</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>paises</destino>
+		 <filtro>pais_ccod in (select pais_ccod from ciudades_extranjeras a ,universidad_ciudad b ,datos_convenio c where a.ciex_ccod=b.ciex_ccod and b.unci_ncorr=c.unci_ncorr)</filtro>
+		  <union>pais_ccod</union>
+         <salida>pais_tdesc</salida>
+		 <orden>pais_tdesc</orden>
+      </campos>
+	<campos nombre="peri_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>periodos_academicos</destino>
+		 <filtro>anos_ccod >=2010 and peri_tdesc not like 'TERCER%'</filtro>
+		  <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+		 <orden>peri_ccod</orden>		 
+      </campos>
+	  <campos nombre="carr_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>carreras</destino>
+		<filtro>carr_ccod in(51,17,21,2214,32,41,45,47,800,970,43,860,880,950,870,49,830,840,850,108)</filtro>
+		  <union>carr_ccod</union>
+         <salida>carr_tdesc</salida>
+		 <orden>carr_tdesc asc</orden>
+		 <script>onChange="bloquearcampo(this.value,this.name)"</script>
+      </campos>
+	  <campos nombre="univ_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>universidades</destino>
+		  <union>univ_ccod</union>
+         <salida>univ_tdesc</salida>
+		 <orden>univ_tdesc asc</orden>		 
+      </campos>
+	  <campos nombre="facu_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>facultades</destino>
+		 <filtro>facu_ccod in (1,2,3,4,8)</filtro>
+		  <union>facu_ccod</union>
+         <salida>facu_tdesc</salida>
+		 <orden>facu_tdesc asc</orden>
+		 <script>onChange="bloquearcampo(this.value,this.name)"</script>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="tabla" variable="a" >
+      <campos nombre="anos_peri">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>       
+   </parametro>
+   
+   
+   <parametro  formulario="busqueda_upa" variable="c">
+   <campos nombre="anos_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>anos</destino>
+		 <filtro>anos_ccod > 2009</filtro>
+		  <union>anos_ccod</union>
+         <salida>anos_ccod</salida>
+		 <orden>anos_tdesc desc</orden>
+		 <script>onChange="verifica_periodos(this.value,this.name)"</script>
+      </campos>   
+	  <campos nombre="anos_ccod_fin" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>anos</destino>
+		 <filtro>anos_ccod > 2009</filtro>
+		  <union>anos_ccod</union>
+         <salida>anos_ccod</salida>
+		 <orden>anos_tdesc desc</orden>
+		 <script>onChange="verifica_periodos(this.value,this.name)"</script>
+      </campos> 
+   <campos nombre="pais_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todos</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>paises</destino>
+		 <filtro>pais_ccod in (select pais_ccod from ciudades_extranjeras a ,universidad_ciudad b ,datos_convenio c where a.ciex_ccod=b.ciex_ccod and b.unci_ncorr=c.unci_ncorr)</filtro>
+		  <union>pais_ccod</union>
+         <salida>pais_tdesc</salida>
+		 <orden>pais_tdesc</orden>
+      </campos>
+	<campos nombre="peri_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>periodos_academicos</destino>
+		 <filtro>anos_ccod >=2010 and peri_tdesc not like 'TERCER%'</filtro>
+		  <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+		 <orden>peri_ccod</orden>
+		 <script>onChange="verifica_periodos(this.value,this.name)"</script>
+      </campos>
+	  <campos nombre="carr_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>carreras</destino>
+		<filtro>carr_ccod in(51,17,21,2214,32,41,45,47,800,970,43,860,880,950,870,49,830,840,850,108)</filtro>
+		  <union>carr_ccod</union>
+         <salida>carr_tdesc</salida>
+		 <orden>carr_tdesc asc</orden>
+		 <script>onChange="bloquearcampo(this.value,this.name)"</script>
+      </campos>
+	  <campos nombre="univ_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>universidades</destino>
+		  <union>univ_ccod</union>
+         <salida>univ_tdesc</salida>
+		 <orden>univ_tdesc asc</orden>		 
+      </campos>
+	  <campos nombre="facu_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>facultades</destino>
+		 <filtro>facu_ccod in (1,2,3,4,8)</filtro>
+		  <union>facu_ccod</union>
+         <salida>facu_tdesc</salida>
+		 <orden>facu_tdesc asc</orden>
+		 <script>onChange="bloquearcampo(this.value,this.name)"</script>
+      </campos>
+	</parametro>
+   
+</Parametros>

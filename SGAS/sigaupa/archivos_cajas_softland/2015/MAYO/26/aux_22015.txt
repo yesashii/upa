@@ -1,0 +1,6 @@
+16785653,SALDAÑA PEÑA MIGUEL ANGEL,,16785653-5,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+16931363,ALVAREZ OLGUIN NATALY,,16931363-6,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18635820,GALLEGOS SANCHEZ ALTEA ANDREA,,18635820-1,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18936000,SAN MARTIN SANCHEZ BELEN IGNACIA,,18936000-2,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+19451465,ABREGO CUBILLOS MAIKA VALENTINA,,19451465-4,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+60805000,TESORERIA GENERAL DE LA REPUBLICA   TESORERIA GENERAL DE LA REPUBLICA,,60805000-0,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

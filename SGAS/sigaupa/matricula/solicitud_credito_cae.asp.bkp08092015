@@ -1,0 +1,595 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+
+<%
+q_pers_nrut = Request.QueryString("busqueda[0][pers_nrut]")
+q_pers_xdv = Request.QueryString("busqueda[0][pers_xdv]")
+v_post_ncorr = Request.QueryString("busqueda[0][post_ncorr]")
+
+'---------------------------------------------------------------------------------------------------
+set pagina = new CPagina
+pagina.Titulo = "CREDITO CON AVAL DEL ESTADO LEY N° 20.027"
+
+'---------------------------------------------------------------------------------------------------
+set conexion = new CConexion
+conexion.Inicializar "upacifico"
+
+set negocio = new CNegocio
+negocio.Inicializa conexion
+
+v_peri_ccod = negocio.ObtenerPeriodoAcademico("POSTULACION")
+
+
+if v_peri_ccod<>"238" then
+	v_peri_ccod="238"
+end if
+
+v_anio= conexion.consultaUno("select anos_ccod from periodos_academicos where peri_ccod="&v_peri_ccod)
+
+'#######################################################################
+'#############	consultas para obtener los cupos cae	################
+set f_cupos_cae = new CFormulario
+f_cupos_cae.Carga_Parametros "tabla_vacia.xml", "tabla_vacia"
+f_cupos_cae.Inicializar conexion
+
+sql_cupos_cae="select ccae_ncupos_nuevos as cupos_nuevos,ccae_ncupos_superiores as cupos_superiores, isnull(ccae_ncupos_nuevos,0) + isnull(ccae_ncupos_superiores,0) as total_cupos from ufe_cupos_caes where anos_ccod="&v_anio
+
+'response.Write(sql_cupos_cae)
+
+f_cupos_cae.Consultar sql_cupos_cae
+f_cupos_cae.Siguiente
+
+'----------------------------------------------------------------------------------
+set f_cupos_reales = new CFormulario
+f_cupos_reales.Carga_Parametros "tabla_vacia.xml", "tabla_vacia"
+f_cupos_reales.Inicializar conexion
+
+sql_cupos_reales= " select isnull(sum(nuevo),0) as nuevos, isnull(sum(superior),0) as superiores,  isnull(sum(superior)+sum(nuevo),0) as total " & vbcrlf & _
+				"	from ( " & vbcrlf & _
+				"	select case when isnull(socc_bcurso_superior,0) =1 then 1 end as nuevo,case when isnull(socc_bcurso_superior,0) =2 then 1 end as superior  " & vbcrlf & _
+				"	 from solicitud_credito_cae a  " & vbcrlf & _
+				"	join postulantes b " & vbcrlf & _
+				"		on a.post_ncorr=b.POST_NCORR  " & vbcrlf & _
+				"	join alumnos c " & vbcrlf & _
+				"		on b.post_ncorr=c.POST_NCORR " & vbcrlf & _
+				"	join ofertas_academicas d " & vbcrlf & _
+				"		on c.ofer_ncorr=d.OFER_NCORR " & vbcrlf & _
+				"	join periodos_academicos e " & vbcrlf & _
+				"		on d.peri_ccod=e.peri_ccod " & vbcrlf & _
+				"	where e.anos_ccod="&v_anio&" " & vbcrlf & _
+				"		and convert(datetime,a.audi_fmodificacion,103) >= convert(datetime,'13/01/2014',103)  " & vbcrlf & _
+				"	) as tabla " 
+
+'response.Write(sql_cupos_reales)
+
+f_cupos_reales.Consultar sql_cupos_reales
+f_cupos_reales.Siguiente
+
+'#######################################################################
+
+'---------------------------------------------------------------------------------------------------
+set f_botonera = new CFormulario
+f_botonera.Carga_Parametros "solicitud_credito_cae.xml", "botonera"
+
+if not EsVacio(v_post_ncorr)  then
+	v_datos=split(v_post_ncorr,"&")
+	v_post_ncorr_carrera=v_datos(0)
+	v_oferta=v_datos(1)
+	
+	sql_update="Update postulantes set ofer_ncorr="&v_oferta&" where post_ncorr="&v_post_ncorr_carrera&" "
+	'response.Write(sql_update)
+	conexion.ejecutaS(sql_update)
+	v_existe=conexion.consultaUno("select count(*) from solicitud_credito_cae where post_ncorr="&v_post_ncorr_carrera&" and ofer_ncorr="&v_oferta&" ")
+	
+end if
+
+'---------------------------------------------------------------------------------------------------
+set f_busqueda = new CFormulario
+f_busqueda.Carga_Parametros "solicitud_credito_cae.xml", "busqueda"
+f_busqueda.Inicializar conexion
+
+f_busqueda.Consultar "select ''"
+f_busqueda.Siguiente
+f_busqueda.AgregaCampoCons "pers_nrut", q_pers_nrut
+f_busqueda.AgregaCampoCons "pers_xdv", q_pers_xdv
+f_busqueda.AgregaCampoCons "post_ncorr", v_post_ncorr
+
+consulta_select = "(select cast(b.post_ncorr as varchar)+'&'+cast(bb.ofer_ncorr as varchar) as post_ncorr, e.carr_tdesc as carrera -- +'-'+ d.espe_tdesc as carrera " & vbcrlf & _ 
+				 " from personas_postulante a, postulantes b, detalle_postulantes bb, ofertas_academicas c, " & vbcrlf & _  
+                 " especialidades d, carreras e " & vbcrlf & _ 
+				 " where a.pers_ncorr = b.pers_ncorr " & vbcrlf & _  
+				 "  and bb.ofer_ncorr = c.ofer_ncorr " & vbcrlf & _ 
+				 "  --and b.ofer_ncorr =c.ofer_ncorr " & vbcrlf & _  
+				 "  and b.post_ncorr = bb.post_ncorr " & vbcrlf & _  
+				 "  and c.espe_ccod = d.espe_ccod " & vbcrlf & _  
+				 "  and d.carr_ccod = e.carr_ccod " & vbcrlf & _  
+				 "  and b.tpos_ccod in (1,2) " & vbcrlf & _  
+				 "  and b.epos_ccod = 2  " & vbcrlf & _ 
+				 "  and b.peri_ccod =  " & v_peri_ccod & " " & vbcrlf & _ 
+				 "  and cast(a.pers_nrut as varchar)=  '" & q_pers_nrut & "') a "
+
+'response.Write("<pre>"&consulta_select&"</pre>")
+				 
+f_busqueda.AgregaCampoParam "post_ncorr", "destino", consulta_select
+
+v_cantidad_carrera=conexion.consultaUno("Select count(*) from "&consulta_select&" ")
+
+v_pers_ncorr = conexion.consultauno("select pers_ncorr from personas_postulante where cast(pers_nrut as varchar)  = '"&q_pers_nrut&"'")	
+
+'--------------------------------------------------------------------------------------------------
+set fc_datos = new CFormulario
+fc_datos.Carga_Parametros "consulta.xml", "consulta"
+fc_datos.Inicializar conexion
+
+		   
+consulta = "select cast(a.pers_nrut as varchar) + ' - ' + a.pers_xdv as rut," & vbCrLf &_
+			"         a.pers_tnombre + ' ' + a.pers_tape_paterno + ' ' + a.pers_tape_materno as nombre_completo " & vbCrLf &_
+			"from personas_postulante a " & vbCrLf &_
+			"where cast(a.pers_nrut as varchar) = '" & q_pers_nrut & "'"
+'response.Write("<pre>"&consulta&"</pre>")
+'response.End()		   
+fc_datos.Consultar consulta
+fc_datos.Siguiente
+'response.Write(fc_datos.nrofilas)
+
+
+if not esVacio(v_oferta) and v_oferta <> "" then
+
+	set f_solicitud = new CFormulario
+	f_solicitud.Carga_Parametros "solicitud_credito_cae.xml", "solicitud_credito_cae"
+	f_solicitud.Inicializar conexion
+	
+	if v_existe>=1 then
+		sql_datos_solicitud=" select * from solicitud_credito_cae "&_
+							" where post_ncorr="&v_post_ncorr_carrera&" "&_ 
+							" and ofer_ncorr="&v_oferta&" "
+	else
+		sql_datos_solicitud="select "&v_oferta&" as ofer_ncorr,"&v_post_ncorr_carrera&" as post_ncorr,"&v_pers_ncorr&" as pers_ncorr, "&_
+							" 0 as socc_mmonto_solicitado "
+	end if
+
+'response.Write(sql_datos_solicitud)
+							
+	f_solicitud.Consultar sql_datos_solicitud
+	f_solicitud.Siguiente		
+	
+renovantecheck= f_solicitud.obtenervalor("socc_brenovante")
+if renovantecheck = "2" then
+	chequear = "checked"
+end if					
+
+'** AGREGADO POR JUAN PABLO DURAN ******
+	cod_carrera = conexion.consultaUno("select carr_ccod from ofertas_academicas b,especialidades c where cast(peri_ccod as varchar)='"&v_peri_ccod&"' and b.espe_ccod = c.espe_ccod and b.ofer_ncorr="&v_oferta&" ")
+	carrera = conexion.consultaUno("select upper(carr_tdesc) from carreras where carr_ccod ='"&cod_carrera&"'")	
+	ano_ingreso = conexion.consultaUno("select isnull(protic.ANO_INGRESO_CARRERA("&v_pers_ncorr&",'"&cod_carrera&"'),year(getdate()))")
+	sede_ccod = conexion.consultaUno("select sede_ccod from ofertas_academicas where ofer_ncorr="&v_oferta&" ")
+	sede = conexion.consultaUno("select Upper(sede_tdesc) from sedes where sede_ccod ='"&sede_ccod&"'")	
+	jornada = conexion.consultaUno("select upper(jorn_tdesc) from ofertas_academicas a, jornadas b where a.ofer_ncorr="&v_oferta&" and a.jorn_ccod=b.jorn_ccod ")
+
+	
+	v_arancel_real=conexion.consultaUno("select max(aran_mcolegiatura) from aranceles where ofer_ncorr="&v_oferta&" ")
+	v_arancel_real=conexion.consultaUno("select  top 1 aran_mcolegiatura from aranceles where ofer_ncorr="&v_oferta&" order by audi_fmodificacion desc")
+	
+	sql_arancel_referencia= "select max(isnull(b.arancel_ext,0)) as arancel_referencia "&_
+							"	from aranceles a, especialidades c, ufe_aranceles_ext b,ofertas_academicas d "&_
+							"	where a.sede_ccod=b.sede_ccod "&_
+							"	and d.jorn_ccod=b.jorn_ccod "&_
+							"	and a.espe_ccod=c.espe_ccod "&_
+							"	and c.carr_ccod=b.carr_ccod "&_
+							"	and c.espe_ccod=d.espe_ccod "&_
+							"	and b.anos_ccod= year(getdate()) "&_
+							"	and a.ofer_ncorr="&v_oferta&" "
+	
+	
+	'solución básica a problema de sede Baquedano-Las Condes
+	c_ultima_sede = "select top 1 b.sede_ccod from alumnos a, ofertas_academicas b where a.ofer_ncorr=b.ofer_ncorr and cast(a.pers_ncorr as varchar)='"&v_pers_ncorr&"' order by b.peri_ccod desc"
+	ultima_sede = conexion.consultaUno(c_ultima_sede)
+	if ultima_sede = "8" and v_peri_ccod="234" then
+	sql_arancel_referencia= "select max(isnull(b.arancel_ext,0)) as arancel_referencia "&_
+							"	from aranceles a, especialidades c, ufe_aranceles_ext b,ofertas_academicas d "&_
+							"	where b.sede_ccod = 8 "&_
+							"	and d.jorn_ccod=b.jorn_ccod "&_
+							"	and a.espe_ccod=c.espe_ccod "&_
+							"	and c.carr_ccod=b.carr_ccod "&_
+							"	and c.espe_ccod=d.espe_ccod "&_
+							"	and b.anos_ccod= year(getdate()) "&_
+							"	and a.ofer_ncorr="&v_oferta&" "
+	end if
+	'Fin del parche - Marcelo Sandoval 26-12-2013
+	
+	'response.Write(sql_arancel_referencia)
+	v_arancel_referencia=conexion.consultaUno(sql_arancel_referencia)
+				
+end if
+
+if  q_pers_nrut<>"" then
+query_estado_respaldado="select case  when count(*)>0 then 'N' else 'S' end estado_respaldo  from ufe_no_respaldados_cae where pers_ncorr=protic.obtener_pers_ncorr(" & q_pers_nrut & ") and anos_ccod=2014"
+respaldado=conexion.consultaUno(query_estado_respaldado)
+else
+respaldado="S"
+end  if
+
+if  q_pers_nrut<>"" and v_post_ncorr_carrera<>"" and v_oferta<>"" then 
+query_tiene_beca_copago="select case count(*) when 0 then 'N' else 'S' end as tiene  from sdescuentos where post_ncorr="&v_post_ncorr_carrera&" and ofer_ncorr="&v_oferta&" and STDE_CCOD=2210"
+'response.Write(query_tiene_beca_copago)
+tiene_beca_copago=conexion.consultaUno(query_tiene_beca_copago)
+
+
+query_procentaje="select SDES_NPORC_COLEGIATURA from sdescuentos where post_ncorr="&v_post_ncorr_carrera&" and ofer_ncorr="&v_oferta&" and STDE_CCOD=2210"
+procentaje=conexion.consultaUno(query_procentaje)
+else
+tiene_beca_copago="N"
+end  if
+
+'response.Write(tiene_beca_copago)
+%>
+<html>
+<head>
+<title><%=pagina.Titulo%></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../estilos/estilos.css" rel="stylesheet" type="text/css">
+<link href="../estilos/tabla.css" rel="stylesheet" type="text/css">
+
+<script language="JavaScript" src="../biblioteca/tabla.js"></script>
+<script language="JavaScript" src="../biblioteca/funciones.js"></script>
+<script language="JavaScript" src="../biblioteca/validadores.js"></script>
+
+<script language="JavaScript">
+function ValidaFormBusqueda()
+{
+	var formulario = document.buscador;
+	var	rut = formulario.elements["busqueda[0][pers_nrut]"].value + '-' + formulario.elements["busqueda[0][pers_xdv]"].value;
+	
+	if (!valida_rut(rut)) {
+		alert('Ingrese un RUT válido.');
+		formulario.elements["busqueda[0][pers_xdv]"].select();
+		return false;
+	}
+	
+	return true;
+	
+}
+function InicioPagina(formulario){
+
+}
+
+function imprimir() {
+  var rut;
+  var direccion;
+  post_ncorr=<%=v_post_ncorr_carrera%>
+  ofer_ncorr=<%=v_oferta%>
+  rut=<%=q_pers_nrut%>
+  direccion="imprimir_solicitud_cae.asp?pers_nrut="+rut+"&post_ncorr="+post_ncorr+"&ofer_ncorr="+ofer_ncorr;
+  window.open(direccion ,"ventana1","width=680,height=680,scrollbars=yes, left=350, top=150, resizable=yes");
+}
+
+function ValidaRadios(formulario){
+
+	if((!formulario.elements["cae[0][socc_bsolicita]"][0].checked)&&(!formulario.elements["cae[0][socc_bsolicita]"][1].checked)){
+		alert("Debe seleccionar la opcion de solicitar o no solictar credito Cae");
+		return false;
+	}
+	
+	//if((!formulario.elements["cae[0][socc_brenovante]"][0].checked)&&(!formulario.elements["cae[0][socc_brenovante]"][1].checked)){
+	if((!formulario.elements["cae[0][socc_brenovante]"].checked)){
+		alert("Debe seleccionar el tipo de alumno Cae");
+		return false;
+	}
+/*	
+	if((!formulario.elements["cae[0][socc_bcurso_superior]"][0].checked)&&(!formulario.elements["cae[0][socc_bcurso_superior]"][1].checked)){
+		alert("Debe seleccionar si es curso superior o no");
+		return false;
+	}
+*/	
+	if (formulario.elements["cae[0][socc_bsolicita]"][0].checked){
+		if(formulario.elements["cae[0][socc_mmonto_solicitado]"].value==0){
+			alert("Debe ingresar un valor a solicitar");
+			return false;
+		}	
+	
+		if((parseInt(formulario.elements["arancel_referencia"].value))<(parseInt(formulario.elements["cae[0][socc_mmonto_solicitado]"].value))){
+			alert("No puede ingresar un monto mayor al arancel de referencia: "+formulario.elements["arancel_referencia"].value);
+			return false;
+		}
+		
+		if((parseInt(formulario.elements["cae[0][socc_mmonto_solicitado]"].value)>0)&&(parseInt(formulario.elements["cae[0][socc_mmonto_solicitado]"].value)<200000)){
+			alert("El monto solicitado no puede ser inferior a $200.000");
+			return false;
+		}
+	}
+		
+	formulario.method="POST";
+	formulario.action="proc_solicitud_credito_cae.asp";
+	formulario.submit();
+	
+}
+
+function CopiaMonto(valor){
+	var formulario = document.edicion;
+	if (valor==1){
+		formulario.elements["cae[0][socc_mmonto_solicitado]"].value=formulario.elements["arancel_referencia"].value;
+		formulario.elements["cae[0][socc_mmonto_solicitado]"].readOnly=true;
+	}else{
+		formulario.elements["cae[0][socc_mmonto_solicitado]"].readOnly=false;
+		formulario.elements["cae[0][socc_mmonto_solicitado]"].focus();
+		formulario.elements["cae[0][socc_mmonto_solicitado]"].value=0;				
+	}
+}
+
+function Solicita(valor){
+	var formulario = document.edicion;
+	if (valor==1){
+		formulario.elements["cae[0][socc_mmonto_solicitado]"].value=0;
+		formulario.elements["cae[0][socc_mmonto_solicitado]"].readOnly=false;
+		formulario.elements["cae[0][socc_bmonto_solicitado]"][0].disabled=false;
+		formulario.elements["cae[0][socc_bmonto_solicitado]"][1].checked=false;		
+	}else{
+		formulario.elements["cae[0][socc_mmonto_solicitado]"].value=0;
+		formulario.elements["cae[0][socc_mmonto_solicitado]"].readOnly=true;
+		formulario.elements["cae[0][socc_bmonto_solicitado]"][0].disabled=true;
+		formulario.elements["cae[0][socc_bmonto_solicitado]"][1].checked=true;		
+	}
+}
+
+
+function EsNumerico(obj) {
+   value = obj.value;
+   cont=0;
+   for (n = 0; n < value.length; n++){
+
+	  if ( ! isDigit(value.charAt(n))) {
+         alert("Debe ingresar un valor numerico");
+		 obj.value="";
+         return false;
+      }
+	}
+}
+
+function isDigit(ch) {
+   if (ch >= '0' && ch <= '9')
+      return true;
+   return false;
+}
+
+</script></head>
+<body bgcolor="#CC6600" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../imagenes/botones/buscar_f2.gif','../images/bot_deshabilitar_f2.gif','../images/agregar2_f2_p.gif','im&amp;#225;genes/marco1_r3_c2_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c4_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c6_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c8_f2.gif');MM_preloadImages('../imagenes/botones/cargar_f2.gif','../imagenes/botones/continuar_f2.gif')" onBlur="revisaVentana();">
+<table width="750" height="50%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="62" valign="top"><img src="../imagenes/vineta2_r1_c1.gif" width="750" height="62" border="0"></td>
+  </tr>
+  <%pagina.DibujarEncabezado()%>  
+  <tr>
+    <td valign="top" bgcolor="#EAEAEA">
+	<br>
+	<table width="90%"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#D8D8DE">
+      <tr>
+        <td width="9" height="8"><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+        <td height="8" background="../imagenes/top_r1_c2.gif"></td>
+        <td width="7" height="8"><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+      </tr>
+      <tr>
+        <td width="9" background="../imagenes/izq.gif"></td>
+        <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><%pagina.DibujarLenguetas Array("Buscador"), 1 %></td>
+          </tr>
+          <tr>
+            <td height="2" background="../imagenes/top_r3_c2.gif"></td>
+          </tr>
+          <tr>
+            <td><form name="buscador">
+              <br>
+              <table width="98%"  border="0" align="center">
+                <tr>
+                  <td width="81%"><div align="center">
+                    <table width="90%"  border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="56%"><div align="right">R.U.T. Alumno </div></td>
+                        <td width="4%"><div align="center">:</div></td>
+                        <td width="40%"><%f_busqueda.DibujaCampo("pers_nrut")%> 
+                        - 
+                          <%f_busqueda.DibujaCampo("pers_xdv")%><%pagina.DibujarBuscaPersonas "busqueda[0][pers_nrut]", "busqueda[0][pers_xdv]"%></td>
+                      </tr>
+                      <tr>
+                        <td align="right">Carrera</td>
+                        <td>:</td>
+                        <td><%f_busqueda.DibujaCampo("post_ncorr")%></td>
+                      </tr>
+                    </table>
+                  </div></td>
+                  <td width="19%"><div align="center"><%f_botonera.DibujaBoton("buscar")%></div></td>
+                </tr>
+              </table>
+            </form></td>
+          </tr>
+        </table></td>
+        <td width="7" background="../imagenes/der.gif"></td>
+      </tr>
+      <tr>
+        <td width="9" height="13"><img src="../imagenes/base1.gif" width="9" height="13"></td>
+        <td height="13" background="../imagenes/base2.gif"></td>
+        <td width="7" height="13"><img src="../imagenes/base3.gif" width="7" height="13"></td>
+      </tr>
+    </table>
+	<br><% if q_pers_nrut <>"" and fc_datos.nrofilas > 0  and v_oferta<>"" then %>
+	<table width="90%"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#D8D8DE">
+      <tr>
+        <td width="9" height="8"><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+        <td height="8" background="../imagenes/top_r1_c2.gif"></td>
+        <td width="7" height="8"><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+      </tr>
+      <tr>
+        <td width="9" background="../imagenes/izq.gif">&nbsp;</td>
+        <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><%pagina.DibujarLenguetas Array("Resultados de la búsqueda"), 1 %></td>
+          </tr>
+          <tr>
+            <td height="2" background="../imagenes/top_r3_c2.gif"></td>
+          </tr>
+          <tr>
+            <td>
+			 <form name="edicion" >
+			 <%f_solicitud.dibujaCampo("pers_ncorr")%>
+			 <%f_solicitud.dibujaCampo("ofer_ncorr")%>
+			 <%f_solicitud.dibujaCampo("post_ncorr")%>
+			
+			<div align="center"><br>
+              <%pagina.DibujarTituloPagina%><br>              
+                </div>
+				<br>				<br>
+				<%if respaldado="N" then%>
+				<table>
+					<tr>
+						<td>
+							<strong><font color="#FF0000" size="3">Alumno  NO será respaldado
+							por la Universidad, para el a&ntilde;o acad&eacute;mico <%=v_anio%></font></strong>						</td>
+					</tr>
+				</table>
+				<br>				<br>
+				<%end if%>
+				<%if tiene_beca_copago="S" then%>
+				<table align="center">
+					<tr>
+						<td>
+							<strong><font color="#FF0000" size="3">Alumno  Tiene Beca Copago CAE de <%=procentaje%>%</font></strong>						</td>
+					</tr>
+				</table>
+				<br>				<br>
+				<%end if%>
+				<table width="98%"  border="0" align="center" cellpadding="2" cellspacing="0">
+                <tr>
+                  <td width="11%"><strong>NOMBRE</strong></td>
+                  <td width="1%"><strong>:</strong></td>
+                  <td width="43%" ><%=fc_datos.ObtenerValor("nombre_completo")%></td>
+				  <td width="9%"><strong>RUT ALUMNO</strong></td>
+				  <td width="4%">:</td>
+				  <td width="32%"><%=fc_datos.ObtenerValor("rut")%></td>
+                </tr>
+				<tr>
+                  <td width="11%"><strong>CARRERA</strong></td>
+                  <td width="1%"><strong>:</strong></td>
+                  <td colspan="3" ><%=carrera%></td>
+				  <td></td>
+                </tr>
+                <tr>
+                  <td width="11%"><strong>SEDE</strong></td>
+                  <td width="1%"><strong>:</strong></td>
+                  <td width="43%"><%=sede%></td>
+				  <td><strong>JORNADA</strong></td>
+				  <td><strong>:</strong></td>
+				  <td><%=jornada%></td>
+                </tr>
+				<tr>
+                  <td width="11%"><strong>AÑO INGRESO</strong></td>
+                  <td width="1%"><strong>:</strong></td>
+                  <td width="43%"><%=ano_ingreso%></td>
+				  <td></td>
+				  <td></td>
+				  <td></td>				  
+                </tr>
+				<tr>
+				  <td colspan="6"><hr></td>
+				</tr>
+				<tr>
+					<td colspan="3"><strong>Solicita monto credito con aval del estado, para el periodo academico <%=v_anio%>:</strong></td>
+					<td colspan="3"><%f_solicitud.dibujaBoleano("socc_bsolicita")%></td>					
+				</tr>				
+				<tr>
+				  <td colspan="3"><strong>Condici&oacute;n del Alumno en relaci&oacute;n al CAE</strong></td>
+				  <td colspan="3">RENOVANTE
+				  <input name="cae[0][socc_brenovante]" id="TO-N" type="radio" value="2" <%=chequear%>/>
+				  <%'f_solicitud.dibujaBoleano("socc_brenovante")
+				  %>
+				  </td>
+				</tr>
+				<tr>
+				  <td colspan="3"><strong>Curso Superior o Nuevo</strong></td>
+				  <td colspan="3"><%f_solicitud.dibujaBoleano("socc_bcurso_superior")%></td>
+				</tr>        
+				<tr>
+				  <td colspan="6"><div align="center"></div></td>
+				  </tr>
+				<tr>
+				  <td colspan="3"><strong>Monto solicitado</strong></td>
+				  <td colspan="3"><%f_solicitud.dibujaBoleano("socc_bmonto_solicitado")%></td>
+				</tr>
+				<tr>
+				  <td colspan="3">OTRO MONTO&nbsp;  (que no exceda el Arancel Referencial)</td>
+				  <td colspan="3">$<%f_solicitud.dibujaCampo("socc_mmonto_solicitado")%>
+				    <b>Arancel Real Anual:</b>&nbsp;&nbsp; $<%=v_arancel_real%>					
+                    <input type="hidden" name="arancel_real" value="<%=v_arancel_real%>" >					</td>
+				  </tr>
+				<tr>
+				  <td colspan="3"></td>
+				  <td colspan="3"><b>Arancel Referencia:</b>&nbsp;&nbsp; $<%=v_arancel_referencia%>
+				  <input type="hidden" name="arancel_referencia" value="<%=v_arancel_referencia%>" ></td>
+				</tr>
+
+				<tr>
+				  <td colspan="6"><hr></td>
+				</tr>
+                <!--<tr>
+				  <td colspan="6">
+					<p><strong>Contador de cupos CAE</strong></p>
+                  <table width="50%">
+                 	 <tr bgcolor='#C4D7FF'><th></th><th>Nuevos</th><th>Superior</th><th>Total</th></tr>
+                     <tr bgcolor='#FFFFFF'>	
+                         <th>Meta</th>
+                         <td><%=f_cupos_cae.ObtenerValor("cupos_nuevos")%></td>
+                         <td><%=f_cupos_cae.ObtenerValor("cupos_superiores")%></td>
+                         <td><%=f_cupos_cae.ObtenerValor("total_cupos")%></td>
+                     </tr>
+                     <tr bgcolor='#FFFFFF'>
+                     	<th>Real</th>
+                        <td><font color="#FF0000"><strong><%=f_cupos_reales.ObtenerValor("nuevos")%></strong></font></td>
+                        <td><font color="#FF0000"><strong><%=f_cupos_reales.ObtenerValor("superiores")%></strong></font></td>
+                        <td><font color="#FF0000"><strong><%=f_cupos_reales.ObtenerValor("total")%></strong></font></td>
+                     </tr>
+                  </table>
+                  
+                  </tr>
+				<tr>-->
+                                				  
+              </table>
+             
+                          <br>
+            </form></td></tr>
+        </table></td>
+        <td width="7" background="../imagenes/der.gif">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="9" height="28"><img src="../imagenes/abajo_r1_c1.gif" width="9" height="28"></td>
+        <td height="28"><table width="100%" height="28"  border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="38%" height="20"><div align="center">
+              <table width="90%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td><div align="center"><%f_botonera.DibujaBoton("guardar")%></div></td>
+				  <td><div align="center"><%
+				  if v_existe>=1 then
+					  f_botonera.DibujaBoton ("imprimir")
+				  end if
+				  %></div></td>
+                  <td><div align="center">
+                    <%f_botonera.DibujaBoton("salir")%>
+                  </div></td>
+                  </tr>
+              </table>
+            </div></td>
+            <td width="72%" rowspan="2" background="../imagenes/abajo_r1_c4.gif"><img src="../imagenes/abajo_r1_c3.gif" width="12" height="28"></td>
+            </tr>
+          <tr>
+            <td height="8" background="../imagenes/abajo_r2_c2.gif"></td>
+          </tr>
+        </table></td>
+        <td width="7" height="28"><img src="../imagenes/abajo_r1_c5.gif" width="7" height="28"></td>
+      </tr>
+    </table><%end if%>
+	<br>
+	<br>	</td>
+  </tr>  
+</table>
+</body>
+</html>
+

@@ -1,0 +1,154 @@
+<Parametros>
+  <parametro formulario="botonera">
+     <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+	  <botones nombre="buscar"> 
+        <tipoTexto>BUSCAR</tipoTexto>
+	    <accion>BUSCAR</accion>
+	    <formulario>buscador</formulario>
+		<soloUnClick>TRUE</soloUnClick>
+	 </botones>
+	 <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones>
+	 <botones nombre="excel_general">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Listado General Docentes</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones>
+	 <botones nombre="excel_docentes">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Listado Docentes</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones>
+  </parametro>
+ 
+ <parametro formulario="f_busqueda" variable="busqueda">
+   <campos nombre="sede_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>sede</destino> 
+	  <union>sede_ccod</union>
+	  <salida>sede_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <orden>sede_tdesc</orden>
+	  <mensajeNulo>Todas</mensajeNulo>
+	  <mensajeVacio>Todas</mensajeVacio>
+	  <id>TO-S</id>
+   </campos> 
+  </parametro>
+  
+   <parametro  paginaEdicion="" formulario="f_docentes"  nroRegistros="30" eliminar="FALSE" clave="plan_ccod" maxLista="30"
+	  mensajeError="No se encontraron docentes para la sede seleccionada" seleccionarTodo="TRUE"  anchoTabla="100%" editar="FALSE"  nuevaVentana="FALSE" 
+	  variable="planes" >
+     <campos nombre="sede">
+	    <descripcion>Sede</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+	 </campos>
+	 <campos nombre="carrera">
+	    <descripcion>Carrera</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+	 </campos>
+	 <campos nombre="m30a">
+	    <descripcion> menores 30</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>		
+	 </campos>
+	 <campos nombre="m40a">
+	    <descripcion>31-40</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>		
+	 </campos>
+	 <campos nombre="m50a">
+	    <descripcion>41-50</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>	
+	 <campos nombre="m60a">
+	    <descripcion>51-60</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 	 <campos nombre="m70a">
+	    <descripcion>61-70</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="m80a">
+	    <descripcion>mas 71</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	  <campos nombre="Totales">
+	    <descripcion>Totales</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>	 
+   </parametro>
+   
+   <parametro  paginaEdicion="" formulario="f_reales"  nroRegistros="1" eliminar="FALSE"  maxLista="1" clave="plan_ccod"
+	  mensajeError="No se encontraron docentes" seleccionarTodo="TRUE"  anchoTabla="100%" editar="FALSE"  nuevaVentana="FALSE" 
+	  variable="reales" >
+     <campos nombre="m30">
+	    <descripcion>menores de 30</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>		
+	 </campos>
+	 <campos nombre="m40">
+	    <descripcion>31-40</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>		
+	 </campos>
+	 <campos nombre="m50">
+	    <descripcion>41-50</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>	
+	 <campos nombre="m60">
+	    <descripcion>51-60</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 	 <campos nombre="m70">
+	    <descripcion>61-70</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="m80">
+	    <descripcion>mas de 71</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	  <campos nombre="Totales">
+	    <descripcion>Totales</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>	 
+   </parametro>
+   
+   
+ </Parametros>

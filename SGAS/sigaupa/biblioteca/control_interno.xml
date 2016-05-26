@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+
+   <parametro formulario="btn_edicion_pago">
+      <botones nombre="guardar">
+         <tipoTexto>guardar</tipoTexto>
+         <accion>guardar</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>modificar(document.buscador)</funcionValidacion>
+         <url>actualizar_pago.asp</url>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>cerrarVentana()</funcion>
+      </botones>
+   </parametro>
+   
+	<parametro formulario="impresora" variable="ip">
+		  <campos nombre="impr_truta">
+			 <tipo>select</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <destino>IMPRESORAS</destino>
+			 <union>impr_truta</union>
+			 <salida>impr_truta</salida>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>TO-N</id>
+		  </campos>
+	</parametro>
+
+ <parametro formulario="consulta"/>
+ 
+   <parametro formulario="docto" variable="d" agregar="true" editar="false" clave="ingr_ncorr" paginaEdicion="proc_pagos.asp?ingr_ncorr=%ingr_ncorr%" maxLista="5" anchoTabla="98%" nroRegistros="10">
+      <tablas nombre="DETALLE_INGRESOS" accion="I"/>
+      <campos nombre="ding_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <tipoDato>SECUENCIA</tipoDato>
+         <secuencia>ding_ncorr_seq</secuencia>
+      </campos>
+	  <campos nombre="ding_tplaza_sbif">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="receptaculo">
+          <tipo>textarea</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>style="width:0px;height:1px;" onKeyPress='captura_saltos(this);' onblur='verifica_lectura(this);'</script>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Nro. Documento</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>13</caracteres>
+         <maxCaracteres>12</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="ting_ccod">
+         <tipo>select</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <script>onChange='habilitar(this);activa_pago(this);'</script>
+         <descripcion>Forma de Pago</descripcion>
+         <filtro>ting_ccod in (3,13,14,32,37,51,18)</filtro>
+         <orden>ting_tdesc</orden>
+         <alineamiento>CENTER</alineamiento>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Elija Forma de Pago</mensajeNulo>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="ding_fdocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <descripcion>Vencimiento</descripcion>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <alineamiento>CENTER</alineamiento>
+         <deshabilitado>TRUE</deshabilitado>
+         <id>FE-N</id>
+      </campos>
+      <campos nombre="banc_ccod">
+         <tipo>select</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>(select banc_ccod, banc_tdesc from bancos) a</destino>
+         <union>banc_ccod</union>
+         <salida>banc_tdesc</salida>
+		 <orden>a.banc_tdesc</orden>
+         <descripcion>Banco</descripcion>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Elija un Banco</mensajeNulo>
+         <alineamiento>CENTER</alineamiento>
+         <deshabilitado>TRUE</deshabilitado>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="ding_tcuenta_corriente">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Nro. Cuenta Corriente</descripcion>
+         <caracteres>20</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <alineamiento>CENTER</alineamiento>
+         <deshabilitado>TRUE</deshabilitado>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="plaz_ccod">
+         <tipo>select</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>(select plaz_ccod, plaz_tdesc from plazas) a</destino>
+         <union>plaz_ccod</union>
+         <salida>plaz_tdesc</salida>
+		 <orden>a.plaz_tdesc</orden>
+         <descripcion>Plaza</descripcion>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Elija Plaza</mensajeNulo>
+         <alineamiento>CENTER</alineamiento>
+         <deshabilitado>TRUE</deshabilitado>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="ding_mdetalle">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Monto</descripcion>
+         <caracteres>9</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <alineamiento>CENTER</alineamiento>
+         <id>IN-N</id>
+      </campos>
+   </parametro>
+   
+      <parametro formulario="docto2" variable="d" agregar="true" editar="false" clave="ingr_ncorr" paginaEdicion="proc_pagos.asp?ingr_ncorr=%ingr_ncorr%" maxLista="5" anchoTabla="98%" nroRegistros="10">
+      <tablas nombre="DETALLE_INGRESOS" accion="I"/>
+      <campos nombre="ding_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <tipoDato>SECUENCIA</tipoDato>
+         <secuencia>ding_ncorr_seq</secuencia>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Nro. Documento</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>13</caracteres>
+         <maxCaracteres>12</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="tipo">
+         <tipo>select</tipo>
+         <permiso>LECTURA</permiso>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <descripcion>Forma de Pago</descripcion>
+         <filtro>ting_ccod in (11)</filtro>
+         <orden>ting_ccod</orden>
+         <alineamiento>CENTER</alineamiento>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="ting_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ding_mdetalle">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Monto</descripcion>
+         <caracteres>9</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <alineamiento>CENTER</alineamiento>
+         <id>NU-N</id>
+      </campos>
+   </parametro>
+
+
+   <parametro formulario="pagos" variable="i">
+      <tablas nombre="ingresos" accion="M"/>
+      <campos nombre="ting_ccod">
+         <tipo>select</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <script>onChange='deshabilitar(this)'</script>
+         <salida>ting_tdesc</salida>
+         <!--	<filtro>ting_ccod</filtro> -->
+         <orden>ting_ccod</orden>
+         <alineamiento>CENTER</alineamiento>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Elija tipo ingreso</mensajeNulo>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="impr_truta">
+         <tipo>select</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>IMPRESORAS</destino>
+         <union>impr_truta</union>
+         <salida>impr_truta</salida>
+         <alineamiento>CENTER</alineamiento>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="ingr_ncorr">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="ingr_mefectivo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>9</maxCaracteres>
+         <id>IN-N</id>
+      </campos>
+      <campos nombre="ingr_mintereses">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>9</maxCaracteres>
+         <script>onBlur='actualizaTotal(this.form)'</script>
+         <id>IN-N</id>
+      </campos>
+      <campos nombre="ingr_mmultas">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>9</maxCaracteres>
+         <id>IN-N</id>
+         <script>onBlur='actualizaTotal(this.form)'</script>
+      </campos>
+      <campos nombre="ingr_mdocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <deshabilitado>TRUE</deshabilitado>
+         <caracteres>9</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+      </campos>
+      <campos nombre="mcaj_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="ingr_fpago">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="ingr_mefectivo">
+         <tipo>hidden</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>9</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="ingr_mdocto">
+         <tipo>hidden</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="ingr_mtotal">
+         <tipo>hidden</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="ingr_nestado">
+         <tipo>hidden</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+
+
+   
+</Parametros>

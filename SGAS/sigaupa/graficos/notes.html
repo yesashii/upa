@@ -1,0 +1,1088 @@
+<HTML>
+	<HEAD>
+		<TITLE>ASPCanvas 2.0.2, the revenge</TITLE>
+	</HEAD>
+	<BODY>
+		<H1>ASPCanvas 2.0.2</H1>
+		<H2>Author: Chris Read</H2>
+		<H3><a href="mailto:mrjolly@bigpond.net.au">E-mail</a> - <a href="http://users.bigpond.net.au/mrjolly/">Web</a></H3>
+		<p>This is more of a reference document than anything else, I suggest just skimming through
+			this briefly to get a rough idea of what it is, then delving into a couple of examples.
+			In particular, there is an example supplied in the ASPCanvas archive which covers some
+			of the basics as well as a couple of enhanced features. Above all, if you get stuck
+			send me a mail using the above address, I'll always be happy to help.</p>
+		<UL>
+			<LI><a href="#What is ASPCanvas">What is ASPCanvas?</a></LI>
+			<LI><a href="#Whats new in version 2">What's new in version 2?</a></LI>
+			<li><a href="#How does it work">How does it work?</a></li>
+			<li><a href="#Requirements">Requirements</a></li>
+			<li><a href="#Installation instructions">Installation instructions</a></li>
+			<li><a href="#Usage">Usage</a></li>
+			<li><a href="#Methods">Methods</a></li>
+			<li><a href="#Properties">Properties</a></li>
+			<li><a href="#Barcode support">Barcode support</a></li>
+			<li><a href="#Graphing">Graphing and charting</a></li>
+			<li><a href="#Current limitations">Current limitations</a></li>
+			<li><a href="#Technical information">Technical information</a></li>
+			<li><a href="#Defining your own fonts">Defining your own fonts</a></li>
+			<li><a href="#Using FontMaker">Using FontMaker</a></li>
+			<li><a href="#Including multiple images">Including multiple images within your HTML page</a></li>
+			<li><a href="#ASP Client-side debugging">ASP Client-side debugging</a></li>
+			<li><a href="#GIF Files not rendering correctly in non-IE browsers">GIF Files not rendering correctly in non-IE browsers</a></li>
+			<li><a href="#Im running the script">I'm running the script but all I'm getting is a page with "GIF87a x÷ÿÿÿÿÿÿ, xÿ" in the top left</a></li>
+			<li><a href="#LCID">Setting the LCID</a></li>
+			<li><a href="#My BMP image is all garbled">My BMP image is all garbled</a></li>
+			<li><a href="#ChiliSoft ASP package">ChiliSoft ASP package</a></li>
+			<li><a href="#Contating the author">Contating the author</a></li>
+			<li><a href="#Planned modifications">Planned modifications</a></li>
+			<li><a href="#Credits">Credits</a></li>
+			<li><a href="#Thank you">Thank you</a></li>
+			<li><a href="#Copyright">Copyright</a></li>
+			<li><a href="#Pointers">Pointers in the right direction</a></li>
+			<li><a href="#Version history">Version history</a></li>
+		</UL>
+		<H4><a name="What is ASPCanvas">What is ASPCanvas?</a></H4>
+		<p>ASPCanvas is a means of generating GIF images on an IIS/ASP based server without 
+			installing server-side COM objects or fiddling around with client-side Java. It 
+			is a purely VBScript class which generates GIF images of any size on the server 
+			and passes them onto the web browser client.</p>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<H4><a name="Whats new in version 2">What's new in version 2?</a></H4>
+		<p>Things that have been improved:</p>
+		<ul>
+			<li>Rendering speed - The GIF bitmap renderer has been sped up roughly 15x, go ahead and render that 1024x768 image, it'll do it!</li>
+			<li>Bitmap loading speed - The BMP loading and saving engine has been increased 25x</li>
+			<li>Pixel drawing speed - Each pixel is now written 6x faster</li>
+		</ul>
+		<p>On top of this, a few things have been added to the pot:</p>
+		<ul>
+			<li>Barcode support - Currently with Code39, Code39 extended and Code 128</li>
+			<li>Charting and graphing</li>
+			<li>FontMaker utility for creating custom fonts easily</li>
+		</ul>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="How does it work">How does it work?</a></h4>
+		<p>ASPCanvas works by generating a virtual canvas in memory, drawing to it using 
+			its own functions and then generating a binary GIF file which is sent to the 
+			web browser. The class manages the pixels and also the colour palette. The 
+			generated file is sent in an "uncompressed" mode.</p>
+		<p>Normally, GIF files employ 
+			the LZW compression algorithm to compress the file size. This is a lossless 
+			algorithm which works well with binary data. Unfortunately, it can be quite 
+			time consuming to compress data in languages such as VBScript because of the 
+			lack of binary manipulation functions.</p>
+		<p>Instead, ASPCanvas tricks the LZW 
+			decompression software into thinking that the GIF file is compressed by 
+			strategically manipulating the internal compression tables. Essentially what is 
+			saved is 7-bit uncompressed data from the image. This results in larger file 
+			sizes (most of the time the file size is larger than the bitmap), but at the 
+			end of the day you get a W3C compliant image from an ASP script!</p>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="Requirements">Requirements</a></h4>
+		<p>The requirements have changed very slightly from version 1.0.x to this version 
+			of the script, so pay very careful attention before overwriting your previous 
+			version!</p>
+		<ul>
+			<li>IIS 5.0</li>
+			<li>VBScript 5.6</li>
+			<li>MDAC 2.6</li>
+		</ul>
+		<p>These are all important as the internals of ASPCanvas have changed to utilise 
+			ADO Streams</p>
+		<P>Also note that this class will still NOT work under ChiliSoft's ASP package.</P>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="Installation instructions">Installation instructions</a></h4>
+		<p>Copy canvas.asp and font.asp to your web server. If you require the barcode 
+			support, copy the required barcode format along with it. There is a collection 
+			of extra fonts that accompany this script and can be used to replace the 
+			default font. The folder to which the scripts are copied to must have the 
+			correct permissions for running ASP scripts.</p>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="Usage">Usage</a></h4>
+		<p>I feel at this point that it is important to explain what this class should do, 
+			the thing you have to understand is this: You cannot mix image and HTML within 
+			a single file, this is not how gateway scripts work. If you want to show an 
+			image on an HTML page, you make 2 files, one with the HTML containing a &lt;IMG 
+			SRC="image.asp"&gt; tag, and the other file with the canvas code. The canvas 
+			code should not send HTML or any text for that matter to the browser.</p>
+		<p>OK, with that explanation out of the way, lets see a quick example of creating 
+			an image and sending it to the browser:</p>
+		<TEXTAREA cols="80" rows="14">
+&lt;!--#include file="canvas.asp"--&gt;
+&lt;!--#include file="font.asp"--&gt;
+&lt;%
+Dim objCanvas
+Set objCanvas = New Canvas
+objCanvas.GlobalColourTable(0) = RGB(255,255,255)
+objCanvas.GlobalColourTable(1) = RGB(0,0,0)
+objCanvas.BackgroundColourIndex = 0
+objCanvas.ForegroundColourIndex = 1
+objCanvas.Resize 320,240,False
+objCanvas.Circle 160,120,110
+objCanvas.Write
+%&gt;
+		</TEXTAREA>
+		<p>Lets explain what this code is doing in more detail. The first line is what is 
+			called a Server-Side-Include, or SSI for short. As an ASP developer you should 
+			have seen one of these before, so that's pretty straight forward. One thing to 
+			note is that if you want to use the text functions in ASPCanvas, you'll need to 
+			include the font.asp pack as well. The same applies to the barcode packs.</p>
+		<p>The next few lines declare objCanvas and create a new instance of the Canvas 
+			class. ASPCanvas is written as a VBScript class, that means that you can create 
+			as many canvases as you like (within the limits of VBScripts memory space).</p>
+		<p>Below this are two lines which assign values to <code>objCanvas.GlobalColourTable</code>, 
+			this is an array of colour values (there are 256 spots, but only the first 128 
+			are actually used by ASPCanvas). Each colour is given and indexed value within 
+			this array when drawing. GIF files only support 256 colours, unlike other image 
+			formats like JPG or PNG which can support millions of colours within the same 
+			image.</p>
+		<p>To use colours within your image you need to build a palette of Red Green Blue 
+			(RGB) values in this way so that they can be referenced by ASPCanvas</p>
+		<p>The next two lines set the <code>BackgroundColourIndex</code> and <code>ForegroundColourIndex</code>
+			properties. These numbers correspond to the indexes of colours in the <code>GlobalColourTable</code></p>
+		<p>The following line sets the width and height of the image. The third parameter 
+			is used to preserve any existing image information on the canvas. In this case 
+			we don't care for existing information, so we send False. This makes the 
+			resizing a little quicker because it doesn't have to copy the old information</p>
+		<p>OK, down to business! Draw a circle at position 160,120 with a radius of 110 
+			pixels! This is drawn using the colour speficied in the <code>ForegroundColourIndex</code>
+			property</p>
+		<p>Last, but not least, we send the image to the browser using <code>objCanvas.Write</code></p>
+		<p>Now, if you've saved this example to an ASP file somewhere on your server, with 
+			all the SSI's in the right location, you will be able to call the page using 
+			your browser. If you're successfull, you'll see a circle, if not, well, try 
+			again.</p>
+		<p>That's it in a nutshell. Once you understand how the canvas works in this way, 
+			then it becomes very easy to draw things like graphs, charts, barcodes, labels, 
+			rounded corners, security codes and other snazzy graphics.</p>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="Methods">Methods</a></h4>
+		<h5>Version()</h5>
+		<p>Returns a string containing the current version of ASPCanvas</p>
+		<h5>Replace(OldColour,NewColour)</h5>
+		<p>Replaces one colour index in the image with another index. NOTE: Slow to 
+			process!</p>
+		<h5>Copy(X1,Y1,X2,Y2,X3,Y3)</h5>
+		<p>Copies a rectangle of the screen defined by X1,Y1-X2,Y2 to position X3,Y3</p>
+		<h5>Flood(X,Y)</h5>
+		<P>Floodfills the image starting at X,Y with the current ForegroundColourIndex 
+			colour. NOTE: Slow to process!</P>
+		<h5>UnboundFlood(X,Y)</h5>
+		<p>Same as Flood but does not contain any boundary checks for the bitmap, which 
+			makes it faster. USE WITH CAUTION! Make sure that the object you are flooding 
+			does not contain any cracks in the shape to fill, otherwise runtime errors will 
+			occur!</p>
+		<h5>Polygon(aX,aY,Join)</h5>
+		<P>Draws a multi-sided polygon from an array of X and Y points in aX and aY. The 
+			Join parameter will tell Polygon to join the last point in the array with the 
+			first, completing the shape.</p>
+		<h5>RegularPolygon(lX,lY,lSides,lRadius,lAngle)</h5>
+		<p>Draws a regular polygon centered on lX,lY using lRadius with lSides, tilting the
+			polygon at lAngle</p>
+		<h5>RegularStar(lX,lY,lSides,lRadius,lAngle)</h5>
+		<p>Draws a regular star (every second point is skipped) centered on lX,lY using lRadius 
+			with lSides, tilting the star at lAngle</p>
+		<h5>PieSlice(X,Y,Radius,StartAngle,ArcAngle,Filled)</h5>
+		<p>Draws a "slice" of pie on the canvas, the center of the pie is at X,Y. The 
+			StartAngle and ArcAngle define the sweep of the slice, and the Filled parameter 
+			will make the pie slice solid with the current ForgroundColourIndex. The last 
+			parameter uses the FloodFill method, so it can be slow!</p>
+		<h5>Bezier(X1,Y1,CX1,CY1,CX2,CY2,X2,Y2,PointCount)</h5>
+		<p>Draw a Bezier curve between points X1,Y1 and X2,Y2 using the Bezier modification 
+			points CX1,CY1 and CX2,CY2. Point count specifies the "granularity" of the 
+			line, the more points, the higher definition of the line.</p>
+		<h5>Arc(X,Y,Radius1,Radius2,StartAngle,ArcAngle)</h5>
+		<p>Draw an arc centered around X,Y with two elliptical radii sweeping from 
+			StartAngle through to ArcAngle</p>
+		<h5>AngleLine(X,Y,Radius,Angle)</h5>
+		<p>Draws a line using pseudo-polar coordinates, starting at X,Y and travelling at 
+			Angle through Radius</p>
+		<h5>Line(X1,Y1,X2,Y2)</h5>
+		<p>Draws a straight line from X1,Y1 to X2,Y2</p>
+		<h5>CustomLine(X1,Y1,X2,Y2,sPattern)</h5>
+		<p>Similar to the Line method, with the addition that this can draw a line following
+		a supplied pattern. sPattern is a string containing an order of colour indexes with
+		which to draw a line. For example "01" will draw a line alternating between colour
+		index 0 and 1 for the lines entire length, and "01234" will draw a line using colour
+		indexes from 0 to 4, repeating</p>
+		<h5>Rectangle(X1,Y1,X2,Y2)</h5>
+		<p>Draws a rectangle from X1,Y1 to X2,Y2</p>
+		<h5>FilledRectangle(X1,Y1,X2,Y2)</h5>
+		<p>Same as Rectangle, with the exception that this is filled with the current 
+			ForegroundColourIndex. This does not use the FloodFill algorithm and is very 
+			fast</p>
+		<h5>Circle(X,Y,Radius)</h5>
+		<p>Draw a circle centered around X,Y</p>
+		<h5>Ellipse(X,Y,Radius1,Radius2)</h5>
+		<p>Draw an ellipse centered around X,Y with two radii</p>
+		<h5>DrawVectorTextWE(X,Y,Text,Size)</h5>
+		<p>Draw text from left to right starting at X,Y. The Size parameter defines the 
+			width and height of the text. To make the text twice the normal size, specify 
+			2, three times specify 3 etc.</p>
+		<h5>DrawVectorTextNS(X,Y,Text,Size)</h5>
+		<p>As with DrawVectorTextWE, this draws text from the top to the bottom</p>
+		<h5>DrawTextWE(X,Y,Text)</h5>
+		<p>Draw bitmapped (fixed size) text at X,Y from left to right</p>
+		<h5>DrawTextNS(X,Y,Text)</h5>
+		<p>Draw bitmapped (fixed size) text at X,Y from top to bottom</p>
+		<h5>GetTextWEWidth(sText)</h5>
+		<p>Return the pixel width of the text running WE with the current font</p>
+		<h5>GetTextWEHeight(sText)</h5>
+		<p>Return the pixel height of the text running WE with the current font</p>
+		<h5>GetTextNSWidth(sText)</h5>
+		<p>Return the pixel width of the text running NS with the current font</p>
+		<h5>GetTextNSHeight(sText)</h5>
+		<p>Return the pixel height of the text running NS with the current font</p>
+		<h5>Clear()</h5>
+		<p>Clear the canvas using the current BackgroundColourIndex</p>
+		<h5>Resize(Width,Height,Preserve)</h5>
+		<p>Resize the image. The preserve parameter indicates that any image currently on 
+			the canvas will be preserved</p>
+		<h5>Write()</h5>
+		<p>Write the image and appropriate information to the browser</p>
+		<h5>WriteBMP()</h5>
+		<p>Write the image as a Windows bitmap file</p>
+		<h5>ImageData()</h5>
+		<p>Provides the raw data of the image prior to sending to the browser. Useful for 
+			storing in a database</p>
+		<h5>LoadBMP(sFilename)</h5>
+		<p>Loads a Windows Bitmap file into the current canvas. The existing image is 
+			overwritten and the colour palette is replaces with the bitmaps. Bitmap files 
+			MUST by uncompressed with 256 colours only. Images must only use the first 128 
+			colours to work correctly</p>
+		<h5>SaveBMP(sFilename)</h5>
+		<p>Saves a Windows Bitmap to a file. You must have appropriate permissions on the 
+			folder to perform this action</p>
+		<h5>LoadBMPFromStream(objStream)</h5>
+		<p>Parses a BMP file from a text ADO stream (the type must be text, the charset 
+			must be x-ansi)</p>
+		<h5>SaveGIF(sFilename)</h5>
+		<p>Saves a GIF to file using sFilename</p>
+		<h5>CreateFontPack(lSpaceWidth,lBorder)</h5>
+		<p>Produce text to create a custom font pack (see the section on creating your own 
+			fonts)</p>
+		<h5>TruncatePalette</h5>
+		<p>Force the palette to a 128 colour palette, remaps colours in the image to match</p>
+		<h5>WebSafePalette()</h5>
+		<p>Loads the standard web-safe palette into ASPCanvas's palette. This will destroy 
+			the current palette.</p>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="Properties">Properties</a></h4>
+		<h5>Pixel(X,Y)</h5>
+		<p>Sets or retrieves the current pixel colour index value at X,Y</p>
+		<h5>FastPixel(X,Y)</h5>
+		<p>Sets or retrieves the current pixel colour index value at X,Y, this is faster 
+			because it does not perform and boundary checking. Use with caution!</p>
+		<h5>Width</h5>
+		<p>Retrieves the image width</p>
+		<h5>Height</h5>
+		<p>Retrieves the image height</p>
+		<h5>GlobalColourTable()</h5>
+		<p>Array of red/green/blue values for the images colour palette</p>
+		<h5>BackgroundColourIndex</h5>
+		<p>Index value for the current background colour</p>
+		<h5>ForegroundColourIndex</h5>
+		<p>Index value for the current pen colour</p>
+		<h5>TransparentColourIndex</h5>
+		<p>Index value for the transparent colour. Used in conjunction with UseTransparency 
+			when saving GIF's</p>
+		<h5>UseTransparency</h5>
+		<p>Saves the image with a transparent colour index. This means that the browser 
+			will make the selected index colour transparent on the web page</p>
+		<h5>Comment</h5>
+		<p>You can add a comment into your GIF file of up to 255 characters in length</p>
+		<h5>ErrorsToResponse</h5>
+		<p>True/False. Write any errors to the Response object</p>
+		<h5>ErrorsToIISLog</h5>
+		<p>True/False. Write any errors to IIS's log</p>
+		<h5>ErrorsHalt</h5>
+		<p>Halt the script on any error</p>
+		<h5>ErrorsToImage</h5>
+		<p>Send errors to a new image instead of the response object, enables you to view 
+			errors in images from the actual page with the img link</p>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="Barcode support">Barcode support</a></h4>
+		<p>Included with version 2.0.0 of ASPCanvas is a suite of barcoding classes. 
+			Currently, there are four major types of barcodes supported, Code 3 of 9, Code 
+			3 of 9 extended, Code 128 and non-interleaved 2 of 5.</p>
+		<p>These are included as seperate class files for inclusion into your application. 
+			This gives you the best flexibility</p>
+		<p>Please be aware that I will not supply any technical support with these 
+			barcoding classes.</p>
+		<p><B>PLEASE TEST THE CODES WITH YOUR OWN EQUIPMENT BEFORE COMMITTING YOUR APPLICATION 
+				TO THE PRODUCTION OF BARCODES!</B></p>
+		<p>The following is an example of how to include barcodes into your ASPCanvas 
+			project:</p>
+		<TEXTAREA cols="80" rows="20">
+&lt;!--#include file="canvas.asp"--&gt;
+&lt;!--#include file="barcodes/barcode3of9.asp"--&gt;
+&lt;%
+Dim objCanvas, objBarcode
+Set objCanvas = New Canvas ' New canvas object
+Set objBarcode = New Barcode3of9 ' New barcode object
+Set objBarcode.ActiveCanvas = objCanvas ' Set the barcode canvas
+objCanvas.GlobalColourTable(0) = RGB(255,255,255) ' Setup palette
+objCanvas.GlobalColourTable(1) = RGB(0,0,0)
+objCanvas.BackgroundColourIndex = 0 ' Setup pens
+objCanvas.ForegroundColourIndex = 1
+objCanvas.Resize 320,240,False ' Resize the image
+objBarcode.Height = 30 ' Set the barcode information
+objBarcode.Top = 0
+objBarcode.Left = 0
+objBarcode.Text = "ABC123"
+objBarcode.Render ' Render the barcode to the canvas
+objCanvas.Write ' Write the GIF to the browser
+%&gt;
+		</TEXTAREA>
+		<p>This is preliminary support. I have only tested these barcodes on one scanner so 
+			far. If you are able to confirm that these codes work/don't work with your 
+			scanner, please send me the information on your scanner make/model</p>
+		<p>Each barcode class supports a handful of different properties and methods:</p>
+		<h5>All barcodes</h5>
+		<ul>
+			<li>ActiveCanvas - Canvas object which the barcode will write to</li>
+			<li>Top, Left, Height - Dimensions of the barcode</li>
+			<li>QuietZone - This is the space in pixels before and after the code</li>
+			<li>GetWidth() - This will return the actual width of the barcode in pixels</li>
+			<li>Render() - Render the barcode onto the canvas</li>
+			<li>Text - The actual text to render in the barcode</li>
+			<li>NarrowWidth - Smallest element size in pixels</li>
+		</ul>
+		<h5>Code 3 of 9</h5>
+		<ul>
+			<li>WideRatio - Ratio of wide to small</li>
+			<li>MOD43 - True/False, include the MOD43 checksum digit</li>
+		</ul>
+		<h5>Code 3 of 9 extended</h5>
+		<ul>
+			<li>WideRatio - Ratio of wide to small</li>
+		</ul>
+		<h5>Code 128 (Character sets A, B and C)</h5>
+		<ul>
+			<li>No extra properties</li>
+		</ul>
+		<h5>Code 2 of 5</h5>
+		<ul>
+			<li>WideRatio - Ratio of wide to small</li>
+			<li>MOD10 - True/False, include the MOD10 checksum digit</li>
+		</ul>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="Graphing">Graphing and charting</a></h4>
+		<p>As of version 2.0.2 of ASPCanvas, some new classes were added to enhance the
+		existing functionality. These are classes designed to simplify the graphing and 
+		reporting aspect, which is currently the most common usage for this script.</p>
+		<p>When you unpack the initial ASPCanvas package, you will see a charts folder
+		containing several ASP files. These contain classes which can be added to your
+		ASPCanvas project to provide flexible and instant graphs and charts.</p>
+		<p>ASPCanvas comes with the following classes:</p>
+		<ul>
+			<li>ChartGraph (chart_graph.asp)</li>
+			<li>ChartBar (chart_bar.asp)</li>
+		</ul>
+		<p>The following information will show how to create graphs and charts using these
+		classes, including examples</p>
+		<h5>ChartGraph</h5>
+		<p>This is a generic charting class which can produce scatter or line charts with 2 axis.
+		The class contains methods and properties to control the axis formatting, dataset formatting
+		and legend positioning and formatting. All elements on the graph can be hidden or shown.</p>
+		<h6>Properties</h6>
+		<ul>
+			<li>ActiveCanvas - (object) Canvas object to draw the graph onto</li>
+			<li>Top, Left - (Integer) Top position within the canvas object to draw the graph</li>
+			<li>Height, Width - (Integer) Dimensions of the chart within the canvas object</li>
+			<li>AxisColourIndex - (Integer) Palette colour of the X and Y axis</li>
+			<li>XAxisOffset - (Integer) Offset from the left of the chart area</li>
+			<li>YAxisOffset - (Integer) Offset from the top of the chart area</li>
+			<li>XAxisText - (String) Main X axis text</li>
+			<li>YAxisText - (String) Main Y axis text</li>
+			<li>XAxisTextOffset - (Integer) Offset of the text from the left side of the graph</li>
+			<li>YAxisTextOffset - (Integer) Offset of the text from the bottom side of the graph</li>
+			<li>XAxisValueTextNS - (Boolean) Draw the X axis text running vertically</li>
+			<li>YAxisValueTextNS - (Boolean) Draw the Y axis text running vertically</li>
+			<li>DrawXAxis - (Boolean) Draw the X axis and text</li>
+			<li>DrawYAxis - (Boolean) Draw the Y axis and text</li>
+			<li>DrawXAxisMinMaxValues - (Boolean) Draw the values at each end of the X axis</li>
+			<li>DrawYAxisMinMaxValues - (Boolean) Draw the values at each end of the Y axis</li>
+			<li>DrawXAxisMajorValues - (Boolean) Draw the major values along the X axis</li>
+			<li>DrawYAxisMajorValues - (Boolean) Draw the major values along the Y axis</li>
+			<li>DrawXAxisName - (Boolean) Draw the X axis name</li>
+			<li>DrawYAxisName - (Boolean) Draw the Y axis name</li>
+			<li>DrawLegend - (Boolean) Draw the legend</li>
+			<li>LegendX - (Integer) Left position of the legend</li>
+			<li>LegendY - (Integer) Top position of the legend</li>
+			<li>LegendMargin - (Integer) Margin on the inside of the legend</li>
+			<li>ClearLegendBackground - (Boolean) True clears the inside of the legend box</li>
+			<li>LegendBackgroundColourIndex - (Integer) Palette index of the legend background</li>
+			<li>MaxX - (Integer) Maximum value of X axis</li>
+			<li>MaxY - (Integer) Maximum value of Y axis</li>
+			<li>MinX - (Integer) Minimum value of X axis</li>
+			<li>MinY - (Integer) Minimum value of Y axis</li>
+			<li>XMinor, YMinor - (Integer) Spacing of minor value pips</li>
+			<li>XMajor, YMajor - (Integer) Spacing of major value pips</li>
+			<li>MajorPipSize - (Integer) Size of major pips</li>
+			<li>MinorPipSize - (Integer) Size of minor pips</li>
+			<li>DataSets - (Collection) Collection of datasets</li>
+		</ul>
+		<h6>Methods</h6>
+		<ul>
+			<li>AddSet() - Create a new dataset for the chart</li>
+			<li>Render() - Render the chart onto the ActiveCanvas</li>
+		</ul>
+		<p>Along with this main class there are two smaller classes which store information
+		about the datasets. These are the ValueSet and Point class. The following is available
+		for the Point class:</p>
+		<h6>Properties</h6>
+		<ul>
+			<li>DrawDots - (Boolean) Show each value with a cross</li>
+			<li>DrawLines - (Boolean) Draw lines between points</li>
+			<li>DotCrossSize - (Integer) Size of each value cross</li>
+			<li>DotColourIndex - (Integer) Colour of each cross</li>
+			<li>LinePattern - (String) Line pattern for the dataset</li>
+			<li>Name - (String) Name of the dataset</li>
+			<li>DrawName - (Boolean) Show the datasets name on the graph</li>
+			<li>DrawValues - (Boolean) Show the values of each point</li>
+			<li>DrawRoot - (Boolean) Join the values to the root of the graph</li>
+			<li>Points - (Collection) Collection of points for the data set</li>
+		</ul>
+		<h6>Methods</h6>
+		<ul>
+			<li>AddPoint(lX,lY) - Add a point to the collection</li>
+			<li>AddPoints(aPoints) - Add an array of points to the collection</li>
+		</ul>
+		<p>And for the points class there are only two properties</p>
+		<h6>Properties</h6>
+		<ul>
+			<li>X - X position of the point</li>
+			<li>Y - Y position of the point</li>
+		</ul>
+		<p>An example of how to use this class:</p>
+		<TEXTAREA cols="80" rows="100">
+&lt;!--#include file="canvas.asp"--&gt;
+&lt;!--#include file="charts/chart_graph.asp"--&gt;
+&lt;!--#include file="extra_fonts/lucida_8_point.asp"--&gt;
+&lt;%
+
+Dim objCanvas, objChart
+
+Set objCanvas = New Canvas
+Set objChart = New ChartGraph
+
+objCanvas.GlobalColourTable(0) = RGB(255,255,255)
+objCanvas.GlobalColourTable(1) = RGB(0,0,0)
+objCanvas.GlobalColourTable(2) = RGB(255,0,0)
+objCanvas.GlobalColourTable(3) = RGB(0,255,0)
+objCanvas.GlobalColourTable(4) = RGB(0,0,255)
+
+objCanvas.Resize 800,600,False
+
+objCanvas.ForegroundColourIndex = 1
+
+Set objChart.ActiveCanvas = objCanvas
+
+objChart.Left = 50
+objChart.Top = 50
+
+objChart.Width = 630
+objChart.Height = 480
+
+objChart.MaxY = 500
+objChart.MaxX = 500
+
+objChart.MinX = 0
+objChart.MinY = 0
+
+Dim objSet
+
+Set objSet = objChart.AddSet()
+
+objSet.Name = "First set"
+objSet.DotColourIndex = 3
+objSet.AddPoints Array(10,10,20,20,30,30,40,60,80,90,45,87,45,76,44,35,68,44,77,17,74,36)
+objSet.LinePattern = "3"
+objSet.DrawRoot = False	
+objSet.DrawValues = False
+objSet.DrawName = False
+objSet.DrawLines = True
+objSet.DotCrossSize = 1
+
+Set objSet = objChart.AddSet()
+
+objSet.Name = "Second set"
+objSet.DotColourIndex = 4
+objSet.AddPoints Array(103,164,124,56,54,67,3,5,35,56,256,345)
+objSet.LinePattern = "4"
+objSet.DrawRoot = False	
+objSet.DrawValues = False
+objSet.DrawName = False
+objSet.DotCrossSize = 1
+objSet.DrawLines = True
+
+Set objSet = objChart.AddSet()
+
+objSet.Name = "Third set"
+objSet.DotColourIndex = 2
+objSet.AddPoints Array(20,30,50,60,40,70,80,100)
+objSet.LinePattern = "2"
+objSet.DrawRoot = False	
+objSet.DrawValues = False
+objSet.DrawName = False
+objSet.DotCrossSize = 1
+objSet.DrawLines = True
+
+Set objSet = objChart.AddSet()
+
+objSet.Name = "Fourth set with a long, long name"
+objSet.DotColourIndex = 1
+objSet.AddPoints Array(10,20,30,40,50,60,70,80)
+objSet.LinePattern = "1"
+objSet.DrawRoot = False	
+objSet.DrawValues = False
+objSet.DrawName = False
+objSet.DotCrossSize = 1
+objSet.DrawLines = True
+
+objChart.DrawXAxisMajorValues = True
+objChart.DrawYAxisMajorValues = True
+objChart.DrawXAxisMinMaxValues = True
+objChart.YAxisValueTextNS = False
+objChart.XAxisTextOffset = 50
+objChart.YAxisTextOffset = 50
+objChart.XMajor = 100
+objChart.YMajor = 100
+'objChart.LegendY = -3
+
+objChart.Render
+
+objCanvas.Write
+%&gt;
+		</TEXTAREA>
+		<h5>ChartBar</h5>
+		<p>This is a generic bar charting class which can produce bar charts with 2 axis.
+		The class contains methods and properties to control the axis formatting, dataset formatting
+		and legend positioning and formatting. All elements on the chart can be hidden or shown.</p>
+		<h6>Properties</h6>
+		<ul>
+			<li>ActiveCanvas - (object) Canvas object to draw the chart onto</li>
+			<li>Top, Left - (Integer) Top position within the canvas object to draw the chart</li>
+			<li>Height, Width - (Integer) Dimensions of the chart within the canvas object</li>
+			<li>AxisColourIndex - (Integer) Palette colour of the X and Y axis</li>
+			<li>XAxisOffset - (Integer) Offset from the left of the chart area</li>
+			<li>YAxisOffset - (Integer) Offset from the top of the chart area</li>
+			<li>XAxisText - (String) Main X axis text</li>
+			<li>YAxisText - (String) Main Y axis text</li>
+			<li>XAxisTextOffset - (Integer) Offset of the text from the left side of the chart</li>
+			<li>YAxisTextOffset - (Integer) Offset of the text from the bottom side of the chart</li>
+			<li>DrawXAxis - (Boolean) Draw the X axis and text</li>
+			<li>DrawYAxis - (Boolean) Draw the Y axis and text</li>
+			<li>DrawAxisMinMaxValues - (Boolean) Draw the values at each end of the X axis</li>
+			<li>DrawAxisMajorValues - (Boolean) Draw the major values along the X axis</li>
+			<li>DrawLegend - (Boolean) Draw the legend</li>
+			<li>LegendX - (Integer) Left position of the legend</li>
+			<li>LegendY - (Integer) Top position of the legend</li>
+			<li>LegendMargin - (Integer) Margin on the inside of the legend</li>
+			<li>ClearLegendBackground - (Boolean) True clears the inside of the legend box</li>
+			<li>LegendBackgroundColourIndex - (Integer) Palette index of the legend background</li>
+			<li>MaxX - (Integer) Maximum value of X axis</li>
+			<li>MaxY - (Integer) Maximum value of Y axis</li>
+			<li>MinX - (Integer) Minimum value of X axis</li>
+			<li>MinY - (Integer) Minimum value of Y axis</li>
+			<li>XMinor, YMinor - (Integer) Spacing of minor value pips</li>
+			<li>XMajor, YMajor - (Integer) Spacing of major value pips</li>
+			<li>MajorPipSize - (Integer) Size of major pips</li>
+			<li>MinorPipSize - (Integer) Size of minor pips</li>
+			<li>Vertical - (Boolean) Set the orientation of the chart</li>
+			<li>DataSets - (Collection) Collection of datasets</li>
+		</ul>
+		<h6>Methods</h6>
+		<ul>
+			<li>AddSet() - Create a new dataset for the chart</li>
+			<li>Render() - Render the chart onto the ActiveCanvas</li>
+		</ul>		
+		<p>Along with this main class there are two smaller classes which store information
+		about the datasets. These are the ValueSet and Point class. The following is available
+		for the Point class:</p>
+		<h6>Properties</h6>
+		<ul>
+			<li>DrawFill - (Boolean) Fill the bars with the FillIndex</li>
+			<li>DrawLines - (Boolean) Draw lines around each bar</li>
+			<li>FillIndex - (Integer) Palette index of the bars fill colour</li>
+			<li>BorderIndex - (Integer) Palette index of the bars border colour</li>
+			<li>Name - (String) Name of the dataset</li>
+			<li>DrawName - (Boolean) Show the datasets name on the chart</li>
+		</ul>
+		<h6>Methods</h6>
+		<ul>
+			<li>AddPoint(lX,lY) - Add a point to the collection</li>
+			<li>AddPoints(aPoints) - Add an array of points to the collection</li>
+		</ul>
+		<p>And for the points class there are only two properties</p>
+		<h6>Properties</h6>
+		<ul>
+			<li>Category - Category for the point</li>
+			<li>Value - Value for the point</li>
+		</ul>
+		<p>An example of how to use this class:</p>
+		<TEXTAREA cols="80" rows="80">
+&lt;!--#include file="canvas.asp"--&gt;
+&lt;!--#include file="charts/chart_bar.asp"--&gt;
+&lt;!--#include file="extra_fonts/lucida_8_point.asp"--&gt;
+&lt;%
+
+Dim objCanvas, objChart
+
+Set objCanvas = New Canvas
+Set objChart = New ChartBar
+
+objCanvas.GlobalColourTable(0) = RGB(255,255,255)
+objCanvas.GlobalColourTable(1) = RGB(0,0,0)
+objCanvas.GlobalColourTable(2) = RGB(255,0,0)
+objCanvas.GlobalColourTable(3) = RGB(0,255,0)
+objCanvas.GlobalColourTable(4) = RGB(0,0,255)
+objCanvas.GlobalColourTable(5) = RGB(128,128,128)
+
+objCanvas.Resize 800,600,False
+
+objCanvas.ForegroundColourIndex = 1
+
+objCanvas.Rectangle 0,0,798,598
+
+Set objChart.ActiveCanvas = objCanvas
+
+objChart.Left = 50
+objChart.Top = 50
+
+objChart.Width = 640
+objChart.Height = 480
+
+objChart.Max = 150
+
+objChart.Min = 0
+
+objChart.Vertical = True
+
+Dim objSet
+
+Set objSet = objChart.AddSet()
+
+objSet.Name = "First set"
+objSet.AddPoints Array("Category A",10,"Category B",20,"Category C",30)
+objSet.FillIndex = 2
+
+Set objSet = objChart.AddSet()
+
+objSet.Name = "Second set"
+objSet.AddPoints Array("Category A",10,"Category B",20,"Category C",30)
+objSet.FillIndex = 3
+
+Set objSet = objChart.AddSet()
+
+objSet.Name = "Third set"
+objSet.AddPoints Array("Category A",10,"Category B",20,"Category C",30)
+objSet.FillIndex = 4
+
+Set objSet = objChart.AddSet()
+
+objSet.Name = "Fourth set"
+objSet.AddPoints Array("Category A",15,"Category B",25,"Category C",35,"Category A",10,"Category B",5,"Category C",80)
+objSet.FillIndex = 5
+
+objChart.Render
+
+objCanvas.Write
+%&gt;
+		</TEXTAREA>
+		<p align="right"><a href="#_top">[TOP]</a></p>		
+		<h4><a name="Current limitations">Current limitations</a></h4>
+		<ul>
+			<li>As with version 1.0.x of ASPCanvas, the GIF's are still uncompressed. The 
+				palette is still fixed to the first 128 colours of the GIF as well. These 
+				aren't going to change. Sorry.</li>
+			<li>ChiliSoft's ASP package still doesn't support VBScript classes, so this wont 
+				work with that</li>
+			<li>MDAC 2.6 is required so that ADO Streams are present and correct</li>
+			<li>There is not, and never will be any image re-scaling in ASPCanvas</li>
+			<li>FloodFill is slow. I know. Write me a better one.</li>
+			<li>UNISYS are a pain in the ass. They received an extension on the LZW patent. But 
+				that's ok, I don't use the LZW algorithm anyway. :)</li>
+		</ul>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="Technical information">Technical information</a></h4>
+		<ul>
+			<li>Images are "uncompressed" GIF's. That is, the encoding is 7-bit data with the 
+				last bit used to stop the decoder from ratcheting up the LZW tables.</li>
+			<li>GIF's are written as 89a's</li>
+			<li>The maximum canvas size is 65535x65535</li>
+			<li>Line drawing method: Bresenham point to point, with no mid-point problems</li>
+			<li>Elliptical drawing method: Bresenham (symmetrical, no mid point problems)</li>
+			<li>Flood fill method: 4 point NSEW fill, non-recursive</li>
+			<li>Text type: Bitmap and vector fonts</li>
+			<li>Boundaries: The upper left of the image is (0,0)</li>
+			<li>File I/O: Uses ADO's Stream object to load and save bitmaps.</li>
+			<li>Rendering: Uses ADO's Stream object to render GIF data in memory.</li>
+		</ul>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="Defining your own fonts">Defining your own fonts</a></h4>
+		<P>The font.asp file contains the information needed to render bitmap and vector 
+			fonts to the canvas. The standard font pack which accompanies this release 
+			contains definitions for all characters in the standard ASCII character set 
+			from numbers 32 to 126 inclusive. The standard bitmap font size in this pack is 
+			defined on a 5x5 grid, but can be expanded by adjusting the font information if 
+			need be.</P>
+		<P>ASPCanvas needs a dictionary object called "Font" to be declared, this contains 
+			keys to each letter in the ASCII set, which in turn contains an array of 
+			strings with the font information. The declaration of the standard font pack 
+			shows the following code:</P>
+		<TEXTAREA cols="80" rows="9">
+Dim Font, Letter(5)
+Set Font = Server.CreateObject("Scripting.Dictionary")
+Letter(0) = "01100"
+Letter(1) = "10010"
+Letter(2) = "10010"
+Letter(3) = "11110"
+Letter(4) = "10010"
+Font.Add "A",Letter
+		</TEXTAREA>
+		<P>To increase the height of the font pack, change the initial dimensions of the 
+			Letter array and add the extra lines to the letter definition. To increase the 
+			width, simply add the extra 0's to the arrays strings. Both upper and lower 
+			case letters can be added in this way, as the dictionary object is case 
+			sensitive with its keys.</P>
+		<P>Also note that the fonts can support up to 9 colours, the standard font pack 
+			will utilise colour index 1. By inserting numbers from 1-9, the rendering 
+			engine will use the corresponding index from the GlobalColourTable array.</P>
+		<P>Vector fonts are supported in version 1.0.3 of ASPCanvas, and can be changed 
+			from the same font.asp file. It is similar in many respects to the bitmap fonts 
+			from above, but instead of defining a flat bitmap for each character, it uses 
+			points to draw lines on the canvas to form a character. To define a vector font 
+			set of your own is relatively simple as with the bitmap fonts, you need a 
+			dictionary of vector characters containing an array of values. Vector fonts can 
+			be of any size and width, the width of each character is worked out by the code 
+			when a character is drawn onto the screen. The font pack which comes with this 
+			version is designed around the existing 5x5 bitmap font. The declaration of the 
+			vector fonts are as follows:</P>
+		<TEXTAREA cols="80" rows="13">
+Dim VFont, VLetter()
+Set VFont = Server.CreateObject("Scripting.Dictionary")
+ReDim VLetter(8,3)
+VLetter(0,0) = 1 : VLetter(0,1) = 5 : VLetter(0,2) = 1
+VLetter(1,0) = 1 : VLetter(1,1) = 2 : VLetter(1,2) = 1
+VLetter(2,0) = 2 : VLetter(2,1) = 1 : VLetter(2,2) = 1
+VLetter(3,0) = 3 : VLetter(3,1) = 1 : VLetter(3,2) = 1
+VLetter(4,0) = 4 : VLetter(4,1) = 2 : VLetter(4,2) = 1
+VLetter(5,0) = 4 : VLetter(5,1) = 5 : VLetter(5,2) = 1
+VLetter(6,0) = 1 : VLetter(6,1) = 4 : VLetter(6,2) = 0
+VLetter(7,0) = 4 : VLetter(7,1) = 4 : VLetter(7,2) = 1
+VFont.Add "A",VLetter
+		</TEXTAREA>
+		<P>This example is taken from the font pack and defines the letter "A" (ASCII 65). 
+			VFont is a dictionary object which holds definitions for each character, 
+			VLetter is used to build an array of values for each point. VLetter is 
+			re-dimensioned for each character in accordance to the number of lines 
+			necessary to build a character, some characters require more, some less.</P>
+		<P>The first dimension in the array is the line number and defines the order in 
+			which the lines are drawn, the second dimension in the array contains the X, Y 
+			and "Pen down" value for the point. In the first line, the X position is 0, the 
+			Y position is 5 and the Pen is down from the last point to this current point 
+			(as this is the first point, nothing is actually drawn).</P>
+		<P>You will notice that the 7th line (the line starting with (6,0)) that the pen 
+			value is 0, which means that the pen is up and the line from the last point is 
+			not drawn. This is useful if you have characters such as "!" where the current 
+			position needs to "jump" from one position to the next without drawing 
+			anything.</P>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="Using FontMaker">Using FontMaker</a></h4>
+		<p>FontMaker is a small utility which can be used to create bitmap fonts from any 
+			of the standard Windows fonts</p>
+		<p>The utility is located in the fontmaker folder within the ASPCanvas archive. To 
+			use this, install the aspcanvas archive folder onto your web server. Ensure 
+			that the fontmaker folder contains at least the following two files:</p>
+		<ul>
+			<li>class_request.asp</li>
+			<li>fontmaker.asp</li>
+		</ul>
+		<p>Also make sure that canvas.asp is located in the folder above (either that or 
+			edit fontmaker.asp so that the SSI points to the right location on the server</p>
+		<p>In your web browser, run the fontmaker.asp file from the web server. The page 
+			will give you an ASCII character set with which you can copy the needed text, 
+			it will also prompt you for the file of an uncompressed, 128 colour windows 
+			bitmap file for it to load which contains a correctly formatted text image. 
+			There is an example in the supplied fontmaker folder.</p>
+		<p>The bitmap file must have the following attributes:</p>
+		<ul>
+			<li>Uncompressed (ie RGB only)</li>
+			<li>Reduced to 256 colours (with only the first 128 colours being used)</li>
+			<li>The first colour index is the background colour</li>
+			<li>The second colour index is the font foreground</li>
+			<li>The third colour index contains the colour to mark each font letter</li>
+			<li>The height of the bitmap defines the height of the actual font</li>
+		</ul>
+		<p>It doesn't matter how far apart each letter is in the bitmap, as long as the 
+			gaps are filled correctly as per the example.</p>
+		<p>Select the file to upload using the Browse... button, give a width for the space 
+			character in pixels, specify a pixel border (if any) to give to each character. 
+			Then press "Create Font Pack".</p>
+		<p>If everything is set correctly, a second text area will appear with the source 
+			code for the font pack. You now need to copy this text into an ASP file and it 
+			can now be included at the top of you ASPCanvas drawing page instead of the 
+			normal font pack.</p>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="Including multiple images">Including multiple images within your HTML page</a></h4>
+		<P>Currently, there is an issue with caching image data from MS IIS servers and MS 
+			IE browsers. This consists of the browser assuming that the same filename will 
+			contains exactly the same image data if the file is re-used multiple times on a 
+			single page. To stop IE from displaying the same image over and over again on 
+			the same page, simply add a bogus parameter to the end of the ASP page 
+			location. As in the following example:</P>
+		<TEXTAREA cols="80" rows="4">
+&lt;imgsrc="test.asp?bogus=1"&gt;
+&lt;imgsrc="test.asp?bogus=2"&gt;
+&lt;imgsrc="test.asp?bogus=3"&gt;
+		</TEXTAREA>
+		<P>This will ensure that the image data is always recalculated.</P>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="ASP Client-side debugging">ASP Client-side debugging</a></h4>
+		<P>If you have this option turned on in IIS for the web site which ASPCanvas is 
+			running on, the integration between IE and IIS will cause IE to see the ASP 
+			page as simply text, and will only render the image as text. Ensure that 
+			client-side debugging is disabled in the IIS MMC before testing ASPCanvas. You 
+			can find this option in Default Web Site-&gt;Properties-&gt;Home-&gt; 
+			directory-&gt;Configuration-&gt;App debugging-&gt;Enable ASP client-side script 
+			debugging.</P>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="GIF Files not rendering correctly in non-IE browsers">GIF Files not 
+				rendering correctly in non-IE browsers</a></h4>
+		<P>Due to the different ways in which browsers interpret the MIME types and file 
+			extensions from a web server, some non-IE browsers will not render the GIF 
+			files directly from an ASP file. It is advised that all images produced by 
+			ASPCanvas be rendered through a &lt;IMG&gt; tag within an HTML page. Care has 
+			been taken to ensure the correct content disposition of the file is sent to the 
+			browser.</P>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="Im running the script">I'm running the script but all I'm getting is a 
+				page with "GIF87a x÷ÿÿÿÿÿÿ, xÿ" in the top left</a></h4>
+		<P>There is a likely chance that you maybe mixing the ASPCanvas with HTML code. 
+			This is quite a common mistake to make and usually appears with code like this:</P>
+		<TEXTAREA cols="80" rows="16">
+&lt;!--#include file="canvas.asp"--&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Test ASPCanvas page that won't work&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+&lt;%
+Dim objCanvas
+Set objCanvas = New Canvas
+... ASPCanvas code
+objCanvas.Write ' The HTML headers have already been sent, so this will send garbage to the browser
+%&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+		</TEXTAREA>
+		<P>This simply will not work because GIF code cannot be mixed with HTML. Create two 
+			pages, one with the HTML, the other with the ASPCanvas code and then include 
+			the ASPCanvas page into your HTML page with the &lt;IMG 
+			SRC="canvas_code.asp"&gt; tag.</P>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="LCID">Setting the LCID</a></h4>
+		<p>Due to the way in which ASPCanvas 2.0 internally renders its bitmap, it has 
+			become necessary to make sure that certain conditions are met if you are 
+			developing for a different Locale ID other than English. It is advised that the 
+			LCID of the Session object be set to the value 1033 (US English) for just the 
+			image generation page. This ensures that ADO will interpret the x-ansi stream 
+			correctly without any character conversions.</p>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="My BMP image is all garbled">My BMP image is all garbled</a></h4>
+		<p>If you are attempting to use the LoadBMP method within ASPCanvas and get nothing 
+			but garbled image information, there is a likely chance that the image uses 
+			colour indexes greater than 127. ASPCanvas will only render the first 128 
+			colours in the BMP palette due to the way in which it creates the GIF file. To 
+			fix your image so that it loads correctly, load it into a paint package such as 
+			Paint Shop Pro or Photoshop and reduce the number of colours to 128. This will 
+			re-index the colours so that it uses only the first 128 colours in the palette. 
+			Then expand the colours back to 256 and re-save. Another way of fixing this problem
+			temporarily is to use the TruncatePalette method which will 'fix' the palette so
+			the image does display. However, this method will not provide corrected colours
+			for indexes greater than 128.</p>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="ChiliSoft ASP package">ChiliSoft ASP package</a></h4>
+		<P>Please note that the ChiliSoft ASP package does not support VBScript classes, 
+			and <EM>will not run this script correctly</EM>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="Extra font packs">Extra font packs</a></h4>
+		<P>With thanks to Tony Stefano, ASPCanvas now contains extra font packs. These are 
+			located in the "extra_fonts" folder. Tony has been kind enough to allow me to 
+			include these with the current script pack. These are bitmap fonts, with fixed 
+			point sizes:</P>
+		<ul>
+			<li>Arial, 10 point - "arial_10_point.asp"</li>
+			<li>Courier, 10 point - "courier_10_point.asp"</li>
+			<li>Courier New, 8 point - "courier_new_8_point.asp"</li>
+			<li>Courier New, 10 point - "courier_new_10_point.asp"</li>
+			<li>Lucida, 8 point - "lucida_8_point.asp"</li>
+			<li>Lucida, 10 point - "lucida_10_point.asp"</li>
+		</ul>
+		<p>To use a font from the list, copy the file from the "extra_fonts" folder into 
+			the same folder as canvas.asp and adjust the first code line in canvas.asp, 
+			replacing "font.asp" to the name of the font file you wish to use:</p>
+		<p>Please be aware that these are bitmap fonts. Replacing the standard font pack 
+			will mean that the vector fonts will be unavailable</p>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="Contating the author">Contacting the author</a></h4>
+		<P>Chris Read can be contacted using the following e-mail address:</P>
+		<P><A href="mailto:mrjolly@bigpond.net.au">mrjolly@bigpond.net.au</A></P>
+		<P>The primary location of this source and documentation is at the following 
+			address:</P>
+		<P><A href="http://users.bigpond.net.au/mrjolly/">http://users.bigpond.net.au/mrjolly/</A></P>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="Planned modifications">Planned modifications</a></h4>
+		<ul>
+			<li>More barcode formats</li>
+			<li>OCR-A/OCR-B/MICR band fonts</li>
+			<li>More charting/graphing classes</li>
+		</ul>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="Credits">Credits</a></h4>
+		<p>Pretty much all of this is written by Chris Read, but portions of the code have 
+			been kindly donated by the following people:</p>
+		<ul>
+			<li>Richard Deeming (<a href="http://www.trinet.co.uk">http://www.trinet.co.uk</a>) - Improved Arc functions</li>
+			<li>Daniel Hasan - Fixing the Bezier algorithm and also improving Netscape support</li>
+			<li>Tony Stefano - Extra font packs</li>
+		</ul>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="Thank you">Thank you</a></h4>
+		<p>I feel that I should insert a 'thank you' to the literally thousands of people who
+		have sent me mail about ASPCanvas. I had no idea that this component could be so useful
+		to so many people out there. I respond to every mail I receive and I'm always happy to
+		see the end result of utilising ASPCanvas in a larger project. Your support is always welcome!
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="Copyright">Copyright</a></h4>
+		<p>ASPCanvas Copyright (c) 2003, Chris Read. All rights reserved.</p>
+		<P>Redistribution and use in source&nbsp;form, with or without modification, are 
+			permitted provided that the following conditions are met:</P>
+		<OL>
+			<LI>Redistributions of source code must retain the above copyright notice, this 
+				list of conditions and the following disclaimer.</LI>
+			<LI>All advertising materials mentioning features or use of this software must 
+				display the following acknowledgement: This product includes software developed 
+				by&nbsp;Chris Read with portions contributed by Richard Deeming, Daniel Hasan 
+				and Tony Stefano.</LI>
+			<LI>The name of the author(s) may not be used to endorse or promote products 
+				derived from this software without specific prior written permission.</LI>
+		</OL>
+		<P>THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR IMPLIED 
+			WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANT 
+			ABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL 
+			THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
+			OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
+			SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
+			INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN 
+			CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING 
+			IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+			OF SUCH DAMAGE.</P>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="Pointers">Pointers in the right direction</a></h4>
+		<P>Quite a number of people have written to me asking how they can get information 
+			on the various image formats such as GIF, JPEG, PNG and so forth. Most of the 
+			information about image formats was gained from several years working with a 
+			lot of different formats, but more of the technical information was gathered 
+			from the following sites:</P>
+		<h5><a href="http://www.dcs.ed.ac.uk/home/mxr/gfx/2d-hi.html">The University of 
+				Edinburgh 2D image format page</a></h5>
+		<p>This contains a great deal of information on each image format, including the 
+			CompuServe GIF documentation.</p>
+		<h5><a href="http://kb.indiana.edu/data/adpn.html">The Indiana University Knowledge 
+				Base</a></h5>
+		<p>Good portal for image resources.</p>
+		<h5><a href="http://www.adams1.com/pub/russadam/info.html">Barcode 1</a></h5>
+		<p>Contains a wealth of information about some of the basic barcode formats</p>
+		<h5><a href="https://posworld.us/Scripts/linear.php">POS World</a></h5>
+		<p>Generates example barcodes on the fly. Great for comparing results. They also do 2D barcodes.</p>
+		<P>These are great places to start looking at graphic image formats.</P>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+		<h4><a name="Version history">Version history</a></h4>
+		<h5>2.0.2 - Additions, fixes</h5>
+		<ul>
+			<li>Added ability to send error reports to an image</li>
+			<li>Added TruncatePalette to ensure that loaded BMP's can be colour processed properly</li>
+			<li>Added LoadBMPFromStream so text streams containing BMP information can be loaded in</li>
+			<li>Added CreateFontPack</li>
+			<li>Fixed DrawTextWE to accomodate for variable width fonts</li>
+			<li>Added the FontMaker utility</li>
+			<li>Added the CustomLine method</li>
+			<li>Added GetTextWEWidth, GetTextWEHeight, GetTextNSWidth and GetTextNSHeight</li>
+			<li>Added Arial 10 point to the extra fonts section</li>
+			<li>Fixed DrawTextNS so that the first character always appears at the specified coordinates and not a line down</li>
+			<li>Added new graphing classes</li>
+			<li>Added RegularPolygon method</li>
+			<li>Added RegularStar method</li>
+			<li>Fixed bounds checking for the end of the bitmap stream</li>
+			<li>Added SaveGIF</li>
+			<li>Added graph class</li>
+			<li>Added bar chart class</li>
+		</ul>
+		<h5>2.0.1 - Additions</h5>
+		<ul>
+			<li>Improved error handling</li>
+			<li>Added UnboundFlood for quicker flood filling</li>
+			<li>Improved the speed of Flood slightly</li>
+			<li>Fixed the missing #'s from the samples in this document(!)</li>
+			<li>Included example ASP files with the distribution</li>
+		</ul>
+		<h5>2.0.0 - New version, overhauled engine, additions.</h5>
+		<ul>
+			<li><B>IMPORTANT: Changed the top left corner of the image to 0,0</B></li>
+			<li>Added FilledRectangle</li>
+			<li>Added FastPixel(X,Y) property</li>
+			<li>Sped up everything, GIF writing operation is now VERY quick. You can now render 1024x768 with no problems!</li>
+			<li>Converted all image operations to streams</li>
+			<li>BMP support is very quick now</li>
+			<li>Added support for barcodes 3 of 9, extended, 2 of 5 and code 128</li>
+			<li>New documentation</li>
+			<li>Tidied up source code, removed a lot of unused stuff, streamlined the GIF creation process</li>
+		</ul>
+		<H5>1.0.6 - Fixes, modifications, additions</H5>
+		<ul>
+			<li>The BMP images bytesize cannot be trusted from some applications. Now forces the correct size for reading.</li>
+			<LI>Vastly improved the speed of SaveBMP</LI>
+			<LI>Vastly improved (again!) the speed of writing GIF data! Now the writing of a 640x480 GIF is actually pretty decent!</LI>
+		</ul>
+		<H5>1.0.5 - Fixes, modifications, additions</H5>
+		<ul>
+			<li>Added Tony Stefano's extra font packs</li>
+			<li>Fixed Clear subroutine to handle BackgroundColourIndex's other than zero</li>
+			<LI>Added GIF89a support</LI>
+			<LI>Added transparency support</LI>
+			<LI>Added support for embedded comments</LI>
+		</ul>
+		<H5>1.0.4 - Fixes, modifications, additions</H5>
+		<UL>
+			<LI>Added WebSafePalette<LI>
+			<li>Fixed content type to display the image correctly in Netscape</li>
+			<LI>Added LoadBMP, SaveBMP, EncodeBMP and DecodeBMP</LI>
+			<li>Vastly improved the GIF creation process, it is now 6-7 times faster!</li>
+			<LI>Added the missing "=" character to both the bitmap and vector fonts (!)</LI>
+		</UL>
+		<H5>1.0.3 - Fixes, modifications, additions</H5>
+		<UL>
+			<LI>Source code released</LI>
+			<LI>Added Richard Deeming's improved Arc algorithm</LI>
+			<LI>Added a better content disposition so that images are saved correctly from a browser as GIF's</LI>
+			<LI>Moved DegreesToRadians and RadiansToDegrees out of the class</LI>
+			<LI>Added Replace function</LI>
+			<LI>Very rough but usable scaleable vector font support</LI>
+			<LI>Fixed the PieSlice documentation, it requires an extra parameter for the start angle of the slice</LI>
+		</UL>
+		<H5>1.0.2 - Minor fixes, additions</H5>
+		<UL>
+			<LI>Added PieSlice, Bezier, Arc, AngleLine and Polygon functions</LI>
+		</UL>
+		<H5>1.0.1 - Minor fixes</H5>
+		<UL>
+			<LI>Fixed boundary problem in Flood(...), it now no longer gives MidB errors when the fill is open</LI>
+			<LI>Added ImageData and TextImageData properties for FileSystemObject support</LI>
+		</UL>
+		<H5>1.0.0 - Initial public release</H5>
+		<p align="right"><a href="#_top">[TOP]</a></p>
+	</BODY>
+</HTML>

@@ -1,0 +1,339 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+		 <soloUnClick>TRUE</soloUnClick>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>menu_alumno.asp</url>
+      </botones>
+       <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>NAVEGAR</accion>
+         <url>notas_alumno_excel.asp</url>
+      </botones>
+	  <botones nombre="HORARIO"> 
+      	 <tipoTexto>DEFINIR</tipoTexto>
+	     <texto>Horario</texto>
+	     <accion>JAVASCRIPT</accion>
+	     <funcion>horario()</funcion>	  
+	  </botones>
+	  <botones nombre="guardar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Guardar Respuestas.</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>evaluacion_desarrollo_proc.asp</url>
+		 <funcionValidacion>verifica_respuestas(document.edicion);</funcionValidacion>
+      </botones>
+	  <botones nombre="asi_soy_yo"> 
+      	 <tipoTexto>DEFINIR</tipoTexto>
+	     <texto>Así Soy Yo</texto>
+	     <accion>JAVASCRIPT</accion>
+	     <funcion>abrir_encuesta(1);</funcion>	  
+	  </botones>
+	  <botones nombre="evaluacion"> 
+      	 <tipoTexto>DEFINIR</tipoTexto>
+	     <texto>Evaluación del Desarrollo</texto>
+	     <accion>JAVASCRIPT</accion>
+	     <funcion>abrir_encuesta(2);</funcion>	  
+	  </botones>
+   </parametro>
+   <parametro formulario="busqueda" variable="b">
+	  <campos nombre="pers_nrut">
+ 		 <tipo>INPUT</tipo> 
+  		 <permiso>OCULTO</permiso> 
+  		 <caracteres>10</caracteres> 
+  		 <maxCaracteres>8</maxCaracteres> 
+  		 <id>NU-N</id> 
+  	  </campos>
+	  <campos nombre="pers_xdv">
+  		 <tipo>INPUT</tipo> 
+  		 <permiso>OCULTO</permiso> 
+         <caracteres>1</caracteres> 
+         <maxCaracteres>1</maxCaracteres> 
+         <script>onBlur="this.value=this.value.toUpperCase();"</script> 
+         <id>LN-N</id> 
+      </campos>
+   </parametro>
+
+   <parametro formulario="encabezado" anchoTabla="100%" columnas="2" variable="encu">
+      <campos nombre="rut">
+         <descripcion>RUT</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombres">
+         <descripcion>Nombres</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="ap_paterno">
+         <descripcion>Ap. Paterno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="ap_materno">
+         <descripcion>Ap. Materno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+  
+  <parametro formulario="encuesta" anchoTabla="100%" columnas="2" variable="encu">
+      <campos nombre="reps_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="preg_I_aa">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="preg_I_ab">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="preg_I_ac">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="preg_I_ad">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="preg_I_ae">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="preg_I_af">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="preg_I_ba">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="preg_I_bb">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="preg_I_bc">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="preg_I_bd">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="preg_I_be">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="preg_I_bf">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="preg_I_bg">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="preg_II_a">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+		 <script>onClick="contar_seleccionadas(this.name);"</script>
+      </campos>
+	  <campos nombre="preg_II_b">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+		 <script>onClick="contar_seleccionadas(this.name);"</script>
+      </campos>
+	  <campos nombre="preg_II_c">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+		 <script>onClick="contar_seleccionadas(this.name);"</script>
+      </campos>
+	  <campos nombre="preg_II_d">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+		 <script>onClick="contar_seleccionadas(this.name);"</script>
+      </campos>
+	  <campos nombre="preg_II_e">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+		 <script>onClick="contar_seleccionadas(this.name);"</script>
+      </campos>
+	  <campos nombre="preg_II_f">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+		 <script>onClick="contar_seleccionadas(this.name);"</script>
+      </campos>
+	  <campos nombre="preg_III_a">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="preg_III_b">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="preg_III_c">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="preg_III_d">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="preg_III_e">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="preg_IV">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="preg_V_a">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="preg_V_b">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="preg_V_c">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	   <campos nombre="preg_V_d">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="preg_V_e">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="preg_VI">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="preg_VI_puntaje">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="preg_VII">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="preg_VII_argumentacion">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="preg_VII_puntaje">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="preg_VIII">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+  </parametro>   
+   
+   <parametro formulario="guardar_respuestas" variable="encu">
+      <tablas nombre="respuestas_encuesta_desarrollo" accion="M"/>
+   </parametro> 
+</Parametros>

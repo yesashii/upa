@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<menu>
+	<item item_label="Solicitud Certificados" item_url="index.html" item_url_target="_self" />
+	<item item_label="Convocados Ceremonia" item_url="regla.html" item_url_target="_self" />
+	<item item_label="Actualizar Datos" item_url="proce.html" item_url_target="_self" />
+</menu>

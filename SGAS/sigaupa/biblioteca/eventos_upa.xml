@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="botonera">
+    <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+	<botones nombre="excel">
+       <tipoTexto>DEFINIR</tipoTexto>
+	   <texto>Excel</texto>
+       <accion>NAVEGAR</accion>	   
+   </botones>
+   <botones nombre="imprimir">
+       <tipoTexto>DEFINIR</tipoTexto>
+	   <texto>Imprimir</texto>
+       <accion>GUARDAR</accion>
+	   <formulario>edicion</formulario>	
+	   <target>_BLANK</target>   
+   </botones>
+   <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	  <soloUnClick>TRUE</soloUnClick>
+	  <funcionValidacion>Validar();</funcionValidacion>
+	</botones>
+	<botones nombre="buscar_eventos"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	  <soloUnClick>TRUE</soloUnClick>
+	</botones>
+	<botones nombre="cerrar_actualizar"> 
+      <tipoTexto>SALIR</tipoTexto>
+      <accion>JAVASCRIPT</accion>
+	 <funcion>salir();</funcion>	   
+	</botones>
+	<botones nombre="agregar_evento"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>AGREGAR</accion>
+	  <posicionX>100</posicionX>
+	  <posicionY>100</posicionY>
+	  <ancho>600</ancho>
+	  <alto>480</alto>
+	  <url>ingreso_evento_nuevo.asp?folio_envio=NUEVO</url>
+	 </botones>
+	<botones nombre="guardar_nuevo_evento"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>Proc_ingreso_evento_nuevo.asp</url>
+	  <formulario>edicion</formulario>
+	  <funcionValidacion>ValidaPerfil();</funcionValidacion>
+	</botones>
+	<botones nombre="cancelar"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+	<botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>ELIMINAR</accion>
+	  <formulario>edicion</formulario>
+	</botones>
+	<botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+    </botones>
+
+	 <botones nombre="agregar_alumnos"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <texto>Agregar alumno</texto>
+	 </botones>
+	 
+	 <botones nombre="agregar_alumnos_sin_rut"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <texto>Agregar alumno sin rut</texto>
+	 </botones>
+	 
+ </parametro>
+
+
+ <parametro formulario="busqueda_eventos" variable="busqueda">
+   <campos nombre="even_ncorr">
+     <tipo>INPUT</tipo>
+     <permiso>LECTURAESCRITURA</permiso>
+     <caracteres>10</caracteres>
+     <maxCaracteres>8</maxCaracteres>
+    </campos>
+   <campos nombre="teve_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>tipo_evento</destino> 
+	  <union>teve_ccod</union>
+	  <salida>teve_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Tipo</mensajeNulo>
+	</campos>
+	<campos nombre="even_fevento">
+     <tipo>INPUT</tipo>
+     <permiso>LECTURAESCRITURA</permiso>
+     <caracteres>12</caracteres>
+     <maxCaracteres>10</maxCaracteres>
+     <id>FE-S</id>
+	</campos>
+	
+  </parametro>
+ 
+  <parametro formulario="f_eventos" clave="even_ncorr"  variable="eventos" 
+         colorSeleccionado="#CCCCCC" colorResaltado="#999999" nroRegistros="15" maxLista="10" 
+	     paginaEdicion="ingreso_alumnos_eventos.asp?folio_envio=%even_ncorr%" eliminar="TRUE" 
+         seleccionarTodo="TRUE"  anchoTabla="100%" editar="TRUE"  nuevaVentana="FALSE" 
+		 mensajeError="No se encontraron eventos...">
+	 
+	 <tablas nombre="eventos_upa" accion="B"/>
+	 
+	 <campos nombre="eenv_ccod">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 
+       <campos nombre="c_even_ncorr">
+	    <descripcion>N° Evento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<ancho>50</ancho>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="teve_ccod">
+		  <tipo>SELECT</tipo>
+		  <descripcion>Tipo Evento</descripcion>
+		  <destino>tipo_evento</destino> 
+		  <union>teve_ccod</union>
+		  <salida>teve_tdesc</salida>
+		  <permiso>LECTURA</permiso>
+		  <anulable>true</anulable>
+		  <mensajeNulo>Seleccione Tipo</mensajeNulo>
+	 </campos>
+	 <campos nombre="colegio">
+         <descripcion>Colegio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+     </campos>
+	  <campos nombre="even_trango_cursos">
+         <descripcion>Rango Cursos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	 <campos nombre="even_fevento">
+	    <descripcion>Fecha</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="even_ncantidad_fichas">
+	    <descripcion>N° Fichas T.</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="ingresados">
+	    <descripcion>Fichas Ing.</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	   <campos nombre="even_trecibido">
+         <descripcion>Recibido</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+      </campos>
+ </parametro>
+ 
+  <parametro formulario="f_nuevo" variable="envio">
+   <tablas nombre="eventos_upa" accion="M"/>
+   
+   <campos nombre="even_ncorr">
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>
+   </campos>
+   <campos nombre="eenv_ccod">
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>
+	  <caracteres>12</caracteres>
+	  <maxCaracteres>10</maxCaracteres>
+   </campos>
+
+    <campos nombre="regi_ccod_colegio">
+         <tipo>SELECT</tipo>
+         <destino>regiones</destino>
+         <union>regi_ccod</union>
+         <salida>regi_tdesc</salida>
+         <orden>regi_ccod ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onChange="_FiltrarCombobox(this.form.elements['envio[0][ciud_ccod_colegio]'], this.value, d_ciudades, 'regi_ccod', 'ciud_ccod', 'ciud_tdesc', '', 'Seleccionar ciudad'); LimpiarComboColegios();"</script>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar región</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="ciud_ccod_colegio">
+         <tipo>SELECT</tipo>
+         <destino>ciudades</destino>
+         <union>ciud_ccod</union>
+         <salida>ciud_tdesc</salida>
+         <filtro>1=2</filtro>
+         <orden>ciud_tdesc ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onChange="RecargarColegios();"</script>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar ciudad</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="cole_ccod">
+         <tipo>SELECT</tipo>
+         <destino>colegios</destino>
+         <union>cole_ccod</union>
+         <salida>cole_tdesc</salida>
+         <orden>cole_tdesc ASC</orden>
+         <filtro>1=2</filtro>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar colegio</mensajeVacio>
+      </campos>
+	<campos nombre="otro_tdesc">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>50</caracteres>
+		<maxCaracteres>100</maxCaracteres>
+		<deshabilitado>True</deshabilitado>
+		<id>TO-N</id>
+	</campos>
+	 <campos nombre="teve_ccod">
+         <tipo>SELECT</tipo>
+         <destino>TIPO_EVENTO</destino>
+         <union>teve_ccod</union>
+         <salida>teve_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <script>OnChange="valida_tipo_evento(this.value);"</script>
+         <id>TO-N</id>
+      </campos>
+	   	<campos nombre="even_fevento">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>12</caracteres>
+			<maxCaracteres>10</maxCaracteres>
+			<id>FE-N</id>
+		</campos>
+		<campos nombre="even_trango_cursos">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>50</caracteres>
+			<maxCaracteres>100</maxCaracteres>
+			<id>TO-S</id>
+		</campos>
+		<campos nombre="even_ncantidad_fichas">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>12</caracteres>
+			<maxCaracteres>10</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+		<campos nombre="even_trecibido">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>50</caracteres>
+			<maxCaracteres>100</maxCaracteres>
+			<id>TO-S</id>
+		</campos>
+<!--
+		<campos nombre="even_tnombre">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>50</caracteres>
+			<maxCaracteres>100</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+-->
+		<campos nombre="ciud_ccod_origen">
+         <tipo>SELECT</tipo>
+         <destino>ciudades</destino>
+         <union>ciud_ccod</union>
+         <salida>ciud_tdesc</salida>
+         <orden>ciud_tdesc ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione Comuna Evento</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+  </parametro>
+
+  <parametro formulario="f_detalle_alumnos" clave="even_ncorr"  variable="detalle_alumnos" 
+         colorSeleccionado="#CCCCCC" colorResaltado="#999999" nroRegistros="12" maxLista="10" 
+	     eliminar="TRUE" seleccionarTodo="TRUE"  anchoTabla="100%" editar="True" nuevaVentanaAncho="600" nuevaVentanaAlto="650"  
+		 paginaEdicion="javascript:navega(%evento%,%pers_ncorr_alumno%,%pers_nrut%,%pers_xdv%);" nuevaVentana="False"
+		 mensajeError="No se encontraron registros..." >
+	 
+	 <campos nombre="evento">
+	 	<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="pers_xdv">
+	 	<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="pers_ncorr_alumno">
+	 	<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="pers_nrut">
+	 	<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="rut_alumno">
+	    <descripcion>Rut Alumno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+
+	 <campos nombre="pers_tnombre">
+	    <descripcion>Nombres</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	  <campos nombre="pers_tape_paterno">
+	    <descripcion>Apellido Paterno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+	 </campos>
+	 <campos nombre="pers_tape_materno">
+	    <descripcion>Apellido Materno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+	 </campos>
+	<campos nombre="PERS_TDIRECCION">
+	    <descripcion>Direccion</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	<campos nombre="PERS_TEMAIL">
+	    <descripcion>Email</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+ </parametro>
+
+</Parametros>

@@ -1,0 +1,197 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+
+
+<%
+dcur_ncorr= request.QueryString("dcur_ncorr")
+mensaje= request.QueryString("mensaje")
+
+set pagina = new CPagina
+pagina.Titulo = "Mantenedor De Diplomados o Cursos"
+
+set botonera =  new CFormulario
+botonera.carga_parametros "m_diplomados_curso.xml", "btn_edita_diplomados_curso"
+'---------------------------------------------------------------------------------------------------
+set conexion = new CConexion
+conexion.Inicializar "upacifico"
+
+set negocio = new CNegocio
+negocio.Inicializa conexion
+periodo = negocio.obtenerPeriodoAcademico("Postulacion")
+'---------------------------------------------------------------------------------------------------
+set formulario = new cformulario
+formulario.carga_parametros "m_diplomados_curso.xml", "edicion_diplomados_curso"
+formulario.inicializar conexion
+
+if dcur_ncorr <> "" then 
+consulta= "SELECT dcur_ncorr, dcur_tdesc, tdcu_ccod,dcur_nsence,dcur_nombre_sence,dcur_nro_registro_sence " & vbCrlf & _
+		  " FROM diplomados_cursos " & vbCrlf & _
+          " WHERE cast(dcur_ncorr as varchar)= '" & dcur_ncorr & "'" 
+else
+consulta = "select '' as dcur_ncorr, '' as tdcu_tdesc, '' tdcu_ccod, '' dcur_nsence "
+end if
+
+'response.write("<pre>"&consulta&"</pre>")
+formulario.consultar consulta 
+if dcur_ncorr <> "" then
+	formulario.agregacampocons "dcur_ncorr", dcur_ncorr
+	formulario.agregacampocons "codigo", dcur_ncorr
+	lenguetas_masignaturas = Array(Array("Editar Diplomado o Curso", "editar_diplomado_curso.asp?dcur_ncorr="&dcur_ncorr))
+else
+ 	lenguetas_masignaturas = Array(Array("Crear Diplomado o Curso", "editar_diplomado_curso.asp?dcur_ncorr="&dcur_ncorr))
+end if
+formulario.siguiente
+c_diplomados = " (select distinct dcur_ncorr as dcur_ncorr_a_emular,dcur_tdesc "&_
+			   " from diplomados_cursos a "&_
+			   " where (select count(*) from mallas_otec tt where tt.dcur_ncorr=a.dcur_ncorr) > 1) ta"
+formulario.agregaCampoParam "dcur_ncorr_a_emular","destino",c_diplomados
+'response.Write("doras "&horas_Asignatura&" duracion "&duracion_asignatura)
+
+'Generamos listado para mostrar los descuentos y así ingresen los porcentajes a que estan afectos las matrículas de otec
+'set f_descuentos = new cformulario
+'f_descuentos.carga_parametros "m_diplomados_curso.xml", "f_descuentos"
+'f_descuentos.inicializar conexion
+
+
+'consulta= " select a.tdet_ccod,tdet_tdesc,ddcu_mdescuento as ddcu_mdescuento " & vbCrlf & _
+'		  " from tipos_detalle a left outer join descuentos_diplomados_curso b " & vbCrlf & _
+'		  "  on a.tdet_ccod=b.tdet_ccod and '"&dcur_ncorr&"' = cast(b.dcur_ncorr as varchar) " & vbCrlf & _
+'		  "  where a.tdet_ccod in (1371,1332,1393,1394,1276) "
+
+
+'f_descuentos.consultar consulta 
+tiene_malla = conexion.consultaUno("select count(*) from mallas_otec where cast(dcur_ncorr as varchar)='"&dcur_ncorr&"'")
+%>
+
+
+<html>
+<head>
+<title><%=pagina.Titulo%></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../estilos/estilos.css" rel="stylesheet" type="text/css">
+<link href="../estilos/tabla.css" rel="stylesheet" type="text/css">
+
+<script language="JavaScript" src="../biblioteca/tabla.js"></script>
+<script language="JavaScript" src="../biblioteca/funciones.js"></script>
+<script language="JavaScript" src="../biblioteca/validadores.js"></script>
+
+<script language="JavaScript">
+function guardar(formulario){
+
+if(preValidaFormulario(formulario))
+    {	
+    	formulario.action ='actualizar_diplomados_curso.asp';
+		formulario.submit();
+	}
+	
+}
+function volver(){
+	CerrarActualizar();
+}
+
+function validaCambios(){
+	alert("..");
+	return false;
+}
+
+</script>
+</head>
+<body bgcolor="#CC6600" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../imagenes/botones/buscar_f2.gif','../images/bot_deshabilitar_f2.gif','../images/agregar2_f2_p.gif','im&amp;#225;genes/marco1_r3_c2_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c4_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c6_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c8_f2.gif');MM_preloadImages('../imagenes/botones/cargar_f2.gif','../imagenes/botones/continuar_f2.gif')" onBlur="revisaVentana();">
+<table width="550" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td valign="top" bgcolor="#EAEAEA">
+	<table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#D8D8DE">
+      <tr>
+        <td width="9" height="8"><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+        <td height="8" background="../imagenes/top_r1_c2.gif"></td>
+        <td width="7" height="8"><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+      </tr>
+      <tr>
+        <td width="9" background="../imagenes/izq.gif">&nbsp;</td>
+        <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><%pagina.DibujarLenguetas lenguetas_masignaturas, 1%> </td>
+          </tr>
+          <tr>
+            <td height="2" background="../imagenes/top_r3_c2.gif"></td>
+          </tr>
+          <tr>
+            <td>
+              <form name="edicion" method="post"><table width="100%"  border="0">
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><%pagina.DibujarSubtitulo "Datos del Diplomado o Curso"%></td>
+  </tr>
+  <tr>
+    <td align="center">
+	<%if mensaje <> "" then %>
+	<table width="95%" cellpadding="0" cellspacing="0">
+		<tr><td align="center" bgcolor="#660000"><font color="#FFFFFF"><%=mensaje%></font></td>
+		</tr>
+	</table>
+	<%end if%>
+	</td>
+  </tr>
+</table>
+
+                    <table width="98%" align="center">
+                      <tr> 
+                        <td width="15%"><strong>Nombre </strong></td>
+                        <td width="85%">:<%=formulario.dibujaCampo("dcur_tdesc")%><input type="hidden" name="modifica" value="<%=codigo%>"></td>
+                      </tr>
+					  <tr> 
+                        <td width="15%"><strong>Cód. Sence</strong></td>
+                        <td width="85%">:<%=formulario.dibujaCampo("dcur_nsence")%><%=formulario.dibujaCampo("dcur_ncorr")%><%=formulario.dibujaCampo("dcur_nro_registro_sence")%></td>
+                      </tr>
+                      <tr bgcolor="#FFFFCC"> 
+                        <td width="15%"><strong>Nombre Sence</strong></td>
+                        <td width="85%">:<%=formulario.dibujaCampo("dcur_nombre_sence")%></td>
+                      </tr>
+					  <tr> 
+                        <td colspan="2" align="center"><strong>Indique el Tipo de programa a crear</strong></td>
+                      </tr>
+					  <tr> 
+                        <td colspan="2" align="center"><strong><%=formulario.dibujaCampo("tdcu_ccod")%></strong></td>
+                      </tr>
+					  <%if tiene_malla = "0" then%>
+					  <tr valign="top">
+					    <td width="15%"><strong>Considerar la malla de</strong></td>
+                        <td width="85%">:<%=formulario.dibujaCampo("dcur_ncorr_a_emular")%></td> 	
+					  </tr>
+					  <%end if%>
+         
+                    </table>
+                          
+            </form></td></tr>
+        </table></td>
+        <td width="7" background="../imagenes/der.gif">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="9" height="28"><img src="../imagenes/abajo_r1_c1.gif" width="9" height="28"></td>
+        <td height="28"><table width="100%" height="28"  border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="38%" height="20"><div align="center">
+              <table width="90%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td><div align="center"><%botonera.dibujaboton "guardar"%></div></td>
+                  <td><div align="center"><%botonera.dibujaboton "volver"%></div></td>
+                  <td><div align="center"></div></td>
+                </tr>
+              </table>
+            </div></td>
+            <td width="62%" rowspan="2" background="../imagenes/abajo_r1_c4.gif"><img src="../imagenes/abajo_r1_c3.gif" width="12" height="28"></td>
+            </tr>
+          <tr>
+            <td height="8" background="../imagenes/abajo_r2_c2.gif"></td>
+          </tr>
+        </table></td>
+        <td width="7" height="28"><img src="../imagenes/abajo_r1_c5.gif" width="7" height="28"></td>
+      </tr>
+    </table>
+	</td>
+  </tr>  
+</table>
+</body>
+</html>

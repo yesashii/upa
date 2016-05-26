@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  
+	<botones nombre="excel">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Excel</texto>
+      </botones>
+   
+   </parametro>
+   <parametro formulario="busqueda" variable="b" columnas="3" >
+ 
+	   <campos nombre="sede_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+		 <script>onchange='javascript:dibujar(document.editar);'</script>			
+	    <mensajeNulo>Todas</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		<filtro>sede_ccod not in (2,3,5,6,8,7) </filtro>
+		 <destino>sedes </destino>
+		 <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+		 
+		 <id>NU-S</id>
+      </campos>
+	  <campos nombre="peri_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+		<script>onchange='javascript:dibujar(document.editar);'</script>			
+	    <mensajeNulo>Seleccione un Periodo Académico</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>periodos_academicos</destino>
+		 <filtro>anos_ccod >= 2009 </filtro>
+         <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+		 <orden>peri_ccod </orden>
+		 <id>NU-N</id>
+      </campos>
+	  
+	  	  <campos nombre="tcar_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+		<script>onchange='javascript:dibujar(document.editar);'</script>			
+	    <mensajeNulo>Todas</mensajeNulo>
+		<mensajeVacio>0</mensajeVacio>
+		 <destino>tipos_carrera</destino>
+		  <union>tcar_ccod</union>
+         <salida>tcar_tdesc</salida>
+		 <orden>tcar_ccod </orden>
+		 <id>NU-N</id>
+      </campos>
+	 
+	  	  <campos nombre="tido_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+		<script>onchange='javascript:dibujar(document.editar);'</script>			
+	    <mensajeNulo>Seleccione el tipo de Académico</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>tipos_docente</destino>
+		  <union>tido_ccod</union>
+         <salida>tido_tdesc</salida>
+		 <orden>tido_ccod </orden>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="tido_ccod2" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+		<script>onchange='javascript:dibujar(document.editar);'</script>			
+	    <mensajeNulo>Todos</mensajeNulo>
+		<mensajeVacio>0</mensajeVacio>
+		 <destino>tipos_docente</destino>
+		 <filtro>tido_ccod in (1,3)</filtro>
+		  <union>tido_ccod</union>
+         <salida>tido_tdesc</salida>
+		 <orden>tido_ccod </orden>
+		 <id>NU-N</id>
+      </campos>
+	  
+   </parametro>
+   
+ 
+   
+</Parametros>

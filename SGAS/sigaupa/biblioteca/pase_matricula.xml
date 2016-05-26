@@ -1,0 +1,129 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>ValidaFormBusqueda();</funcionValidacion>
+      </botones>
+      <botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_pase_matricula.asp</url>
+		 <funcionValidacion>valida();</funcionValidacion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	  <botones nombre="calcular">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Calcular</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>calcular()</funcion>
+      </botones>
+	  <botones nombre="salir2">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Salir</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>salir()</funcion>
+      </botones>
+	  <botones nombre="imprimir">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Imprimir</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>imprimir()</funcion>
+      </botones>
+   </parametro>
+   <parametro formulario="busqueda" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-N</id>
+      </campos>
+	  <campos nombre="peri_ccod">
+	<tipo>SELECT</tipo>
+         <destino>(select distinct a.* from periodos_academicos a,actividades_periodos b where a.peri_ccod = b.peri_ccod and cast(b.ACPE_BVIGENTE as varchar) = 'S' and a.ANOS_CCOD >= 2015) c</destino>
+         <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+         <descripcion>Periodos</descripcion>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <mensajeNulo>Periodos</mensajeNulo>
+		<mensajeVacio>Periodos</mensajeVacio>		
+	</campos>
+   </parametro>
+   <parametro formulario="documentos" variable="documentos" anchoTabla="98%" mensajeError="No ha enviado su postulación.">
+      <tablas nombre="documentos_postulantes" accion="M"/>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="doma_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="doma_tdesc">
+         <descripcion>Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="bentregado">
+         <descripcion>Entregado</descripcion>
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="agrega_pase" variable="a">
+      <tablas nombre="pase_matricula" accion="M"/>
+      <campos nombre="pama_ncorr"/>
+      <campos nombre="post_ncorr"/>
+	  <campos nombre="ofer_ncorr"/>
+	  <campos nombre="pers_ncorr"/>
+	  <campos nombre="peri_ccod"/>
+	  <campos nombre="pama_tipo_pase"/>
+      <campos nombre="pama_mmatricula"/>
+	  <campos nombre="pama_mcolegiatura"/>
+	  <campos nombre="pama_nporc_matricula"/>
+	  <campos nombre="pama_nporc_colegiatura"/>
+	  <campos nombre="pama_tobservaciones"/>
+   </parametro>
+    <parametro formulario="pase_escolar" variable="a">
+   		<campos nombre="alumno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nombre</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>		
+		<campos nombre="rut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>R.U.T.</descripcion>
+         <alineamiento>CENTER</alineamiento>
+        </campos>
+		<campos nombre="carrera">
+		 <descripcion>Carrera</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>carreras</destino>
+         <union>carr_ccod</union>
+         <salida>carr_tdesc</salida>
+		 <permiso>LECTURAEscritura</permiso>
+		</campos>
+   </parametro>
+</Parametros>

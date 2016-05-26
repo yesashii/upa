@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="btn_eval_asignaturas">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.busqueda)</funcion>
+	</botones> 
+</parametro>
+</Parametros>  

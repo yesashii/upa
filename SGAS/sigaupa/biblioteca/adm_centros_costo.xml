@@ -1,0 +1,101 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="agregar">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>AGREGAR</accion>
+         <url>agregar_centro_costo.asp</url>
+         <ancho>500</ancho>
+         <alto>300</alto>
+         <posicionX>100</posicionX>
+         <posicionY>100</posicionY>
+      </botones>
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_centros_costo.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	  <botones nombre="buscar"> 
+      	<tipoTexto>BUSCAR</tipoTexto>
+	  	<accion>JAVASCRIPT</accion>
+	  	<funcion>enviar(document.buscador)</funcion>	 
+	  </botones> 
+	  
+   </parametro>
+
+   <parametro formulario="botonera_agregar">
+      <botones nombre="aceptar">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_agregar_centro_costo.asp</url>
+      </botones>
+      <botones nombre="cancelar">
+         <tipoTexto>CANCELAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+   </parametro>
+
+   <parametro formulario="centros_costo" variable="centros_costo" anchoTabla="100%" nroRegistros="10" maxLista="10" eliminar="TRUE" clave="ccos_ccod" editar="TRUE" paginaEdicion="agregar_centro_costo.asp?ccos_ccod=%ccos_ccod%" nuevaVentana="TRUE" nuevaVentanaAlto="300" nuevaVentanaAncho="500" mensajeError="No se encontraron centros de costo.">
+      <tablas nombre="centros_costo" accion="B"/>
+      <campos nombre="c_ccos_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ccos_tdesc">
+         <descripcion>Descripción</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="ccos_tcodigo">
+         <descripcion>Código</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="ccos_tcompuesto">
+         <descripcion>Código Compuesto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="agregar_centro_costo" anchoTabla="100%" camposObligatorios="TRUE" variable="centro_costo">
+      <tablas nombre="centros_costo" accion="M"/>
+      <campos nombre="ccos_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <tipoDato>SECUENCIA</tipoDato>
+         <secuencia>centros_costo</secuencia>
+      </campos>
+      <campos nombre="ccos_tdesc">
+         <descripcion>Descripción</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="ccos_tcodigo">
+         <descripcion>Código</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>6</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="ccos_tcompuesto">
+         <descripcion>Código Compuesto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+		 <id>TO-N</id>
+      </campos>
+   </parametro>
+</Parametros>

@@ -1,0 +1,16 @@
+<Parametros>
+  <parametro formulario="f_botonera">  
+   <botones nombre="imprimir"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Imprimir</texto>
+		<accion>JAVASCRIPT</accion>
+		<formulario>edicion</formulario>		
+		<funcion>imprimir();</funcion>
+   </botones>	 
+	 <botones nombre="cancelar"> 
+        <tipoTexto>SALIR</tipoTexto>	    
+		<accion>JAVASCRIPT</accion>
+		<funcion>salir();</funcion>
+	 </botones>	
+   </parametro>
+ </Parametros>

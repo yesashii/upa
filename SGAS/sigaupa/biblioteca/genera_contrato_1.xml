@@ -1,0 +1,96 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>ValidaBusqueda();</funcionValidacion>
+      </botones>
+      <botones nombre="siguiente">
+         <tipoTexto>SIGUIENTE</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>enviar(document.edicion)</funcion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="busqueda" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>LN-N</id>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+      </campos>
+   </parametro>
+   <parametro formulario="tabla_valores" anchoTabla="98%" mensajeError="Ingrese el RUT del postulante.">
+        
+	 <campos nombre="POST_NCORR">
+         <descripcion>FICHA</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+		<campos nombre="carrera">
+         <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>left</alineamiento>
+      </campos>
+
+      <campos nombre="aran_mmatricula">
+         <descripcion>Matrícula</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="aran_mcolegiatura">
+         <descripcion>Arancel</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="total">
+         <descripcion>Total</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   
+   
+    <parametro formulario="impedimentos" anchoTabla="98%" mensajeError=" no se encontraron documentos pendientes">
+        <campos nombre="doma_tdesc">
+         <descripcion>NOMBRE DEL DOCUMENTOS</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+      <campos nombre="situacion">
+         <descripcion>SITUACION</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	      
+   </parametro>
+   
+   
+   
+   <parametro formulario="postulacion" variable="m">
+      <tablas nombre="postulantes" accion="M"/>
+   </parametro>   
+</Parametros>

@@ -1,0 +1,188 @@
+<Parametros>
+   <parametro formulario="botonera">
+	  <botones nombre="anioCalendario">
+          <tipoTexto>DEFINIR</tipoTexto> 
+          <texto>Año Calendario</texto> 
+          <accion>JAVASCRIPT</accion> 
+       </botones>
+	   
+	   <botones nombre="anioParcial">
+          <tipoTexto>DEFINIR</tipoTexto> 
+          <texto>Año Parcial</texto> 
+          <accion>JAVASCRIPT</accion> 
+       </botones>
+	    <botones nombre="anioComplementario">
+          <tipoTexto>DEFINIR</tipoTexto> 
+          <texto>Año complementario</texto> 
+          <accion>JAVASCRIPT</accion> 
+       </botones>
+	
+      <botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_certificado_asistencia_otec.asp</url>
+      </botones>
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>ValidaBusqueda();valida_carga();</funcionValidacion>
+      </botones>      
+   </parametro>
+
+ <parametro formulario="busqueda" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+		 <script>onBlur="this.value=this.value.toUpperCase();"</script>
+
+         <id>LN-N</id>
+      </campos>
+      <campos nombre="tipo_persona">
+         <descripcion>tipo</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>( select 1 as codigo_persona,'EMPRESA' as tipo_persona union select 2 as codigo_persona, 'OTIC' as tipo_persona ) a</destino>
+         <union>codigo_persona</union>
+         <salida>tipo_persona</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <mensajeNulo>Seleccione un tipo</mensajeNulo>
+         <anulable>true</anulable>
+		 <script>onChange="cambiarTextoD()"</script> 
+         <id>TO-N</id>
+      </campos>
+	   <campos nombre="tipo_doc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>14</caracteres>
+         <maxCaracteres>12</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+   </parametro>
+
+<parametro formulario="cargo" 
+ variable="cargo"  
+ anchoTabla="100%" 
+ editar="false"
+ nuevaVentana="false"  
+ eliminar="false" 
+ clave="dcur_ncorr" 
+ seleccionarTodo="False" 
+ mensajeError="No existen participantes" >
+    <campos nombre="rut">
+        <descripcion>RUT</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+		<NoIrA>N</NoIrA>
+    </campos>
+	<campos nombre="pers_tape_paterno">
+        <descripcion>Apellido paterno</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<NoIrA>N</NoIrA>
+    </campos>
+	<campos nombre="pers_tape_materno">
+        <descripcion>Apellido materno</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<NoIrA>N</NoIrA>
+    </campos>	
+	<campos nombre="pers_tnombre">
+        <descripcion>Nombres</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<NoIrA>N</NoIrA>
+    </campos>	
+	<campos nombre="asistencia">
+        <descripcion>% Asistencia</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+		<NoIrA>N</NoIrA>
+    </campos>		
+</parametro>
+
+
+<parametro formulario="multigrilla" 
+ variable="multigrilla"  
+ anchoTabla="100%" 
+ editar="false"
+ nuevaVentana="false"  
+ eliminar="false" 
+ clave="pote_ncorr" 
+ seleccionarTodo="False" 
+ mensajeError="No existen participantes" >
+ <tablas nombre="postulacion_otec_asistencias_parciales" accion="M" />
+ <campos nombre="pote_ncorr">
+        <descripcion>pote_ncorr</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>OCULTO</permiso>
+ </campos>
+ <campos nombre="dgso_ncorr">
+        <descripcion>dgso_ncorr</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>OCULTO</permiso>
+ </campos> 
+    <campos nombre="rut">
+        <descripcion>RUT</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+		<NoIrA>N</NoIrA>
+    </campos>
+	<campos nombre="pers_tape_paterno">
+        <descripcion>Apellido paterno</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<NoIrA>N</NoIrA>
+    </campos>
+	<campos nombre="pers_tape_materno">
+        <descripcion>Apellido materno</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<NoIrA>N</NoIrA>
+    </campos>	
+	<campos nombre="pers_tnombre">
+        <descripcion>Nombres</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<NoIrA>N</NoIrA>
+    </campos>	
+	<campos nombre="pote_nasistencia_parcial">
+        <descripcion>% Asistencia parc.</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURAESCRITURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+		<caracteres>3</caracteres>
+		<maxCaracteres>3</maxCaracteres>
+		<script>onFocus="this.select();"</script>
+		<NoIrA>N</NoIrA>
+    </campos>
+	<campos nombre="pote_nasistencia_complementaria">
+        <descripcion>% Asistencia comp.</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURAESCRITURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+		<caracteres>3</caracteres>
+		<maxCaracteres>3</maxCaracteres>
+		 <script>onFocus="this.select();"</script>
+		<NoIrA>N</NoIrA>
+    </campos>	
+</parametro>
+</Parametros>

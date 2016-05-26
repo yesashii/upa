@@ -1,0 +1,28 @@
+<Parametros>
+   <parametro formulario="consulta"/>
+   
+   <parametro formulario="pase_escolar">
+   		<campos nombre="alumno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nombre</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>		
+		<campos nombre="carr_ccod">
+		 <descripcion>Carrera</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>carreras</destino>
+         <union>carr_ccod</union>
+         <salida>carr_tdesc</salida>
+		 <permiso>LECTURAEscritura</permiso>
+		</campos>
+		<campos nombre="rut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>R.U.T.</descripcion>
+         <alineamiento>CENTER</alineamiento>
+        
+      </campos>
+   </parametro>
+</Parametros>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="recepcionar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Recepcionar</texto>
+         <formulario>edicion</formulario>
+         <accion>GUARDAR</accion>
+         <mensajeConfirmacion>¿Está seguro que desea recepcionar las letras seleccionadas?</mensajeConfirmacion>
+         <url>proc_recepcion_letras_protestadas.asp</url>
+         <funcionValidacion>ValidarEdicion();</funcionValidacion>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+	  <botones nombre="cancelar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Salir</texto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	<botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	   <funcionValidacion>Validar();</funcionValidacion>
+	</botones>
+   </parametro>
+   <parametro formulario="busqueda" variable="b" columnas="2" separacionColumnas="30" separacion="20">
+      <campos nombre="ding_ndocto">
+         <descripcion>Nº Letra</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="sep1">
+         <tipo>separador</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      	<campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+     <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+	  <campos nombre="code_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="code_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+   </parametro>
+   <parametro formulario="letras" anchoTabla="100%" variable="letras" mensajeError="Ingrese criterio de búsqueda." eliminar="TRUE" clave="ding_ndocto" nroRegistros="10" maxLista="10">
+      <tablas nombre="detalle_ingresos" accion="M"/>
+      <campos nombre="ting_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ingr_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="edin_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c_ding_ndocto">
+         <descripcion>Nº Letra</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="edin_tdesc">
+         <descripcion>Estado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="ingr_fpago">
+         <descripcion>Fecha Emisión</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_fdocto">
+         <descripcion>Fecha Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="rut_alumno">
+         <descripcion>RUT Alumno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="rut_apoderado">
+         <descripcion>RUT Apoderado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="ding_mdocto">
+         <descripcion>Valor</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="c_reca_mmonto">
+         <descripcion>Monto Protesto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <caracteres>12</caracteres>
+         <alineamiento>RIGHT</alineamiento>
+      </campos>
+	  <campos nombre="reca_mmonto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="cargo_protesto" variable="letras">
+      <tablas nombre="referencias_cargos" accion="I"/>
+      <tablas nombre="compromisos" accion="I"/>
+      <tablas nombre="detalles" accion="I"/>
+      <tablas nombre="detalle_compromisos" accion="I"/>
+   </parametro>
+</Parametros>

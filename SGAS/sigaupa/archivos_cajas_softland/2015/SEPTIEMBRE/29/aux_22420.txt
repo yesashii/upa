@@ -1,0 +1,4 @@
+12628397,ORELLANA ECHEVERRIA AMERICO FRANCISCO,,12628397-0,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+16931363,ALVAREZ OLGUIN NATALY,,16931363-6,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+19340338,ORELLANA RAMIREZ DIEGO FRANCISCO,,19340338-7,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+60805000,TESORERIA GENERAL DE LA REPUBLICA   TESORERIA GENERAL DE LA REPUBLICA,,60805000-0,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

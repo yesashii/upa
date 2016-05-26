@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+	<parametro formulario="f_prueba" 
+			clave="ciud_ccod" variable="m" 
+			mensajeError="No hay secciones para las asignaturas requeridas"
+			colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="false" editar="false" agregar="true" nuevaVentana="true" 
+			 anchoTabla="100%" >
+		<campos nombre="ciud_tdesc">
+		    <descripcion>Ciudades</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+	</parametro>
+	<parametro formulario="mantiene_tabla"	variable="m">
+		<tablas nombre="ciudades" accion="M"/>
+		<campos nombre="ciud_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>
+		</campos>
+	</parametro>
+</Parametros>	
+
+
+

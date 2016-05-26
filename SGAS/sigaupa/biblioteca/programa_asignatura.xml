@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="btn_programa_asignaturas">
+    <botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>guardar(document.edicion)</funcion>
+	</botones> 
+    <botones nombre="volver"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Volver</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>history.go(-1)</funcion>
+	</botones> 
+    <botones nombre="limpiar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Limpiar Datos</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar()</funcion>
+	</botones> 
+    <botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>eliminar(document.lista_unidad)</funcion>
+	</botones> 
+
+ </parametro>
+ <parametro formulario="f_programa_asignatura" variable="m">
+ 		<campos nombre="upro_nnumero">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<caracteres>6</caracteres>
+			<maxCaracteres>4</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+ 		<campos nombre="UPRO_NHORAS">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<caracteres>6</caracteres>
+			<maxCaracteres>4</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+
+		<campos nombre="upro_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<caracteres>80</caracteres>
+			<maxCaracteres>200</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+
+ 		<campos nombre="upro_tobjetivo">
+			<tipo>TEXTAREA</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<filas>4</filas>
+			<caracteres>80</caracteres>
+			<id>TO-S</id>
+		</campos>
+ 		<campos nombre="upro_tcontenido">
+			<tipo>TEXTAREA</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<filas>4</filas>
+			<caracteres>80</caracteres>
+			<id>TO-S</id>
+		</campos>
+ 		<campos nombre="upro_tmetodo">
+			<tipo>TEXTAREA</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<filas>4</filas>
+			<caracteres>80</caracteres>
+			<id>TO-S</id>
+		</campos>
+ 		<campos nombre="upro_tbiblio">
+			<tipo>TEXTAREA</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<filas>4</filas>
+			<caracteres>80</caracteres>
+			<id>TO-S</id>
+		</campos>
+ </parametro>
+ <parametro formulario="f_programa_asignatura_tabla" 
+  clave="UPRO_CCOD" variable="m" mensajeError="No hay Unidades Creadas Para Esta Asignatura"
+		 colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="true" 
+		 eliminar="true" agregar="true" nuevaVentana="false" 
+		 paginaEdicion="programa_asignatura.asp?asig_ccod=%asig_ccod%&amp;upro_ccod=%upro_ccod%" 
+		 maxLista="10" nroRegistros="10"  anchoTabla="98%">
+		 <campos nombre="PRAS_CCOD">
+			<tipo>HIDDEN</tipo>
+			<permiso>invisible</permiso>
+		</campos>
+		<campos nombre="upro_tdesc">
+			<tipo>INPUT</tipo>
+			<descripcion>Nombre De La Unidad</descripcion>
+			<alineamiento>left</alineamiento>
+			<permiso>LECTURA</permiso>
+		</campos>
+ 		<campos nombre="upro_nnumero">
+			<tipo>INPUT</tipo>
+			<descripcion>Numero De La Unidad</descripcion>
+			<alineamiento>left</alineamiento>
+			<permiso>LECTURA</permiso>
+		</campos>
+ 		<campos nombre="UPRO_NHORAS">
+			<tipo>INPUT</tipo>
+			<descripcion>N° De Horas De La Unidad</descripcion>
+			<alineamiento>left</alineamiento>
+			<permiso>LECTURA</permiso>
+		</campos>
+
+		 
+</parametro>		 
+ <parametro formulario="mantiene_tablas" variable="m" >
+	<tablas nombre="asignaturas" accion="M" />
+	<tablas nombre="programa_asignaturas" accion="M" />
+	<tablas nombre="unidades_programa" accion="M" />
+ </parametro>	
+  <parametro formulario="elimina_unidades" variable="m" >
+	<tablas nombre="unidades_programa" accion="B" />
+ </parametro>
+</Parametros>
+

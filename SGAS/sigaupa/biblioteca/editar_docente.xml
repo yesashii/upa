@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="edicion_docente_tpersonas" clave="pers_ncorr" variable="m">
+      <tablas nombre="personas" accion="M"/>
+   </parametro>
+   <parametro formulario="sedes_profesor" clave="pers_ncorr" variable="m">
+      <tablas nombre="profesores" accion="M"/>
+      <tablas nombre="sis_sedes_usuarios" accion="M"/>
+   </parametro>
+   <parametro formulario="edicion_docente" clave="pers_ncorr" variable="m" mensajeError="No hay docentes que cumplan la condición." colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="true" eliminar="true" agregar="true" nuevaVentana="false" paginaEdicion="editar_docente.asp?pers_ncorr=%pers_ncorr%" maxLista="10" nroRegistros="10">
+      <tablas nombre="personas" accion="M"/>
+      <tablas nombre="direcciones" accion="M"/>
+      <tablas nombre="sis_usuarios" accion="M"/>
+      <tablas nombre="sis_roles_usuarios" accion="M"/>
+	
+      
+	  <campos nombre="mcol_ncorr">
+         <tipo>select</tipo>
+         <destino>monto_colacion</destino>
+         <union>mcol_ncorr</union>
+         <salida>mcol_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>True</anulable>
+		 <mensajeNulo>Seleccione Colación</mensajeNulo>
+      </campos>
+	    <campos nombre="tido_ccod">
+         <tipo>select</tipo>
+         <destino>tipos_docente</destino>
+         <union>tido_ccod</union>
+         <salida>tido_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>True</anulable>
+		 <script>onchange='javascript:valida_cargo(this.value);'</script>
+		 <mensajeNulo>Seleccione un Tipo Docente</mensajeNulo>
+		 
+      </campos>
+	   <campos nombre="vire_ccod">
+         <tipo>select</tipo>
+         <destino>vicerectorias</destino>
+         <union>vire_ccod</union>
+         <salida>vire_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>True</anulable>
+		 <script>onchange='javascript:valida_facu(this.value);'</script>
+		 <mensajeNulo>Seleccione una Vice-Rectoría</mensajeNulo>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="facu_ccod">
+         <tipo>select</tipo>
+         <destino>facultades</destino>
+         <union>facu_ccod</union>
+         <salida>facu_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+		 <mensajeNulo>Seleccione una Facultad</mensajeNulo>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="cargo_directivo">
+         <tipo>INPUT</tipo>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>TO-N</id>
+         <caracteres>101</caracteres>
+         <maxCaracteres>100</maxCaracteres>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="jdoc_ccod">
+         <tipo>select</tipo>
+         <destino>jerarquias_docentes</destino>
+         <union>jdoc_ccod</union>
+         <salida>jdoc_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>True</anulable>
+		 <mensajeNulo>Seleccione Jerarquia</mensajeNulo>
+      </campos>
+	  <campos nombre="prof_nporcentaje_colacion">
+         <tipo>INPUT</tipo>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>NU-S</id>
+         <caracteres>3</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="prof_ingreso_uas">
+         <tipo>INPUT</tipo>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>NU-N</id>
+         <caracteres>6</caracteres>
+         <maxCaracteres>4</maxCaracteres>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="prof_exacademica">
+         <tipo>INPUT</tipo>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>TO-S</id>
+         <caracteres>6</caracteres>
+         <maxCaracteres>2</maxCaracteres>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="prof_exprofesional">
+         <tipo>INPUT</tipo>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>NU-S</id>
+         <caracteres>6</caracteres>
+         <maxCaracteres>2</maxCaracteres>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="pais_ccod">
+         <tipo>select</tipo>
+         <destino>paises</destino>
+         <union>pais_ccod</union>
+         <salida>pais_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+      </campos>
+      <campos nombre="pers_tprofesion">
+         <tipo>INPUT</tipo>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>TO-S</id>
+         <caracteres>80</caracteres>
+         <maxCaracteres>100</maxCaracteres>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="pers_fnacimiento">
+         <tipo>INPUT</tipo>
+         <tipoDato>FECHA</tipoDato>
+         <id>FE-N</id>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="sede_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <descripcion>Rut Docente</descripcion>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <id>LN-N</id>
+         <caracteres>2</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+      </campos>
+      <campos nombre="rut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Rut Docente</descripcion>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="dv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>LN-N</id>
+         <caracteres>2</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+      </campos>
+      <campos nombre="pers_tape_materno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>NO-S</id>
+         <caracteres>33</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+      </campos>
+      <campos nombre="pers_tape_paterno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>NO-N</id>
+         <caracteres>33</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+      </campos>
+      <campos nombre="pers_tnombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>NO-N</id>
+         <caracteres>33</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+      </campos>
+      <campos nombre="pers_tfono">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TE-S</id>
+         <caracteres>13</caracteres>
+         <maxCaracteres>12</maxCaracteres>
+      </campos>
+      <campos nombre="pers_tcelular">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TE-S</id>
+         <caracteres>12</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+      </campos>
+      <campos nombre="eciv_ccod">
+         <tipo>select</tipo>
+         <destino>estados_civiles</destino>
+         <union>eciv_ccod</union>
+         <salida>eciv_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>NU-N</id>
+         <columnas>4</columnas>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>--Seleccione estado civil--</mensajeNulo>
+      </campos>
+      <campos nombre="sexo_ccod">
+         <tipo>radio</tipo>
+         <destino>sexos</destino>
+         <union>sexo_ccod</union>
+         <salida>sexo_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+         <columnas>3</columnas>
+      </campos>
+      <campos nombre="pers_temail">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>EM-S</id>
+         <caracteres>60</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>4</caracteres>
+         <maxCaracteres>4</maxCaracteres>
+      </campos>
+      <campos nombre="tdir_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="dire_tcalle">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>TO-N</id>
+         <caracteres>50</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+      </campos>
+      <campos nombre="dire_tnro">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>TO-N</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+      </campos>
+      <campos nombre="dire_tblock">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>LN-S</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+      </campos>
+      <campos nombre="dire_tdepto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>LN-S</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+      </campos>
+      <campos nombre="dire_tpoblacion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>NO-S</id>
+         <caracteres>30</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+      </campos>
+      <campos nombre="ciud_ccod">
+         <tipo>SELECT</tipo>
+         <destino>ciudades</destino>
+         <union>ciud_ccod</union>
+         <salida>ciud_tdesc</salida>
+         <orden>ciud_tdesc asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione ciudad</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="ciud_ccod_laboral">
+         <tipo>SELECT</tipo>
+         <destino>ciudades</destino>
+         <union>ciud_ccod</union>
+         <salida>ciud_tdesc</salida>
+         <orden>ciud_tdesc asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione ciudad</mensajeNulo>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tcalle_laboral">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>TO-S</id>
+         <caracteres>50</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+      </campos>
+      <campos nombre="dire_tnro_laboral">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>LN-S</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+      </campos>
+      <campos nombre="dire_tblock_laboral">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>LN-S</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+      </campos>
+      <campos nombre="dire_tdepto_laboral">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>LN-S</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+      </campos>
+      <campos nombre="dire_tpoblacion_laboral">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>NO-S</id>
+         <caracteres>30</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+      </campos>
+      <campos nombre="pers_tfono_laboral">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TE-S</id>
+         <caracteres>13</caracteres>
+         <maxCaracteres>12</maxCaracteres>
+      </campos>
+	  <campos nombre="tpro_ccod">
+         <tipo>SELECT</tipo>
+         <destino>tipos_profesores</destino>
+         <union>tpro_ccod</union>
+         <salida>tpro_tdesc</salida>
+         <orden>tpro_tdesc asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione tipo</mensajeNulo>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="tjdo_ccod">
+         <tipo>SELECT</tipo>
+         <destino>tipo_jornada_docente</destino>
+         <union>tjdo_ccod</union>
+         <salida>tjdo_tdesc</salida>
+         <orden>tjdo_ccod asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione Jornada</mensajeNulo>
+         <id>TO-S</id>
+      </campos>	  
+   </parametro>
+   
+   <parametro formulario="botonera">
+      <botones nombre="anterior">
+         <accion>NAVEGAR</accion>
+         <url>busca_docentes.asp</url>
+         <tipoTexto>ANTERIOR</tipoTexto>
+      </botones>
+      <botones nombre="siguiente">
+         <accion>GUARDAR</accion>
+         <formulario>editar</formulario>
+         <url>actualizar_docente.asp</url>
+         <funcionValidacion>ValidaForm(document.editar, 3)</funcionValidacion>
+         <tipoTexto>SIGUIENTE</tipoTexto>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+   </parametro>
+</Parametros>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+	<parametro formulario="btn_portada" >
+	   <botones nombre="aceptar"> 
+	      <tipoTexto>DEFINIR</tipoTexto>
+		  <texto>Entrar al sitio</texto>
+		  <accion>GUARDAR</accion>
+	      <url>proc_portada_alumno.asp</url>
+	      <formulario>valida</formulario>
+		</botones> 
+		<botones nombre="ev_docente"> 
+		  <tipoTexto>DEFINIR</tipoTexto>
+		  <texto>Sólo Ev. Docente</texto>
+		  <accion>GUARDAR</accion>
+	      <url>proc_portada_alumno_evaluacion.asp</url>
+	      <formulario>valida</formulario>
+		</botones>
+		<botones nombre="toma_carga"> 
+	      <tipoTexto>DEFINIR</tipoTexto>
+		  <texto>Toma Carga 2009</texto>
+		  <accion>GUARDAR</accion>
+	      <url>proc_portada_alumno_toma_carga.asp</url>
+	      <formulario>valida</formulario>
+		</botones>  
+	</parametro>	
+   <parametro formulario="botonera_olvido_clave">
+      <botones nombre="buscar">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Aceptar</texto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+	  <botones nombre="aceptar">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>enviar(document.formulario)</funcion>
+      </botones>
+	   <botones nombre="cancelar">
+         <tipoTexto>CANCELAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  <botones nombre="solicitar"> 
+      	 <tipoTexto>DEFINIR</tipoTexto>
+	     <texto>Solicitar</texto>
+	     <accion>GUARDAR</accion>
+	     <url>proc_solicitud_reporte_alumno.asp</url> 
+		 <formulario>buscador</formulario>
+	  </botones>
+	  <botones nombre="solicitar2"> 
+      	 <tipoTexto>DEFINIR</tipoTexto>
+	     <texto>Solicitar Clave</texto>
+	     <accion>GUARDAR</accion>
+	     <url>http://www.cppacifico.cl/cgi-bin/acceso_ponline.cgi</url> 
+		 <formulario>buscador</formulario>
+	  </botones>
+   </parametro>
+   
+   <parametro formulario="f_datos" variable="datos">
+   	<campos nombre="login">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+		 <caracteres>12</caracteres>
+		 <alineamiento>LEFT</alineamiento>
+      </campos>
+     <campos nombre="clave">
+         <tipo>CLAVE</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <id>TO-N</id>
+		 <alineamiento>LEFT</alineamiento>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="busqueda" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>LN-N</id>
+      </campos>
+   </parametro>
+   
+</Parametros>

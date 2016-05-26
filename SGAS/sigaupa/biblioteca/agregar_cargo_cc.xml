@@ -1,0 +1,87 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="aceptar">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_agregar_cargo.asp</url>
+         <funcionValidacion>ValidarCargos();</funcionValidacion>
+		 <soloUnClick>TRUE</soloUnClick>
+      </botones>
+      <botones nombre="aceptar_multa">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_agregar_multa.asp</url>
+         <funcionValidacion>ValidarCargos();</funcionValidacion>
+		 <soloUnClick>TRUE</soloUnClick>
+      </botones>	  
+      <botones nombre="cancelar">
+         <tipoTexto>CANCELAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+   </parametro>
+   <parametro formulario="cargo" anchoTabla="100%" variable="cargo" camposObligatorios="TRUE">
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="inst_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="comp_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <tipoDato>SECUENCIA</tipoDato>
+         <secuencia>compromisos</secuencia>
+      </campos>
+      <campos nombre="tdet_ccod">
+         <descripcion>Ítem</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_detalle</destino>
+         <union>tdet_ccod</union>
+         <salida>tdet_tdesc</salida>
+         <filtro>tdet_bcargo='S' and isnull(tdet_bdescuento, 'N')='N' and tdet_bvigente = 'S' </filtro>
+         <orden>tdet_tdesc asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione Ítem</mensajeNulo>
+         <script>onChange="tdet_ccod_change(this);"</script>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="deta_ncantidad">
+         <descripcion>Cantidad</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>EP-N</id>
+         <caracteres>5</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+         <script>onChange="deta_ncantidad_change(this);"</script>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="deta_mvalor_unitario">
+         <descripcion>Valor Unitario</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>EP-N</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <alineamiento>CENTER</alineamiento>
+         <script>onChange="deta_mvalor_unitario_change(this);"</script>
+      </campos>
+      <campos nombre="deta_msubtotal">
+         <descripcion>Subtotal</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>E0-N</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <alineamiento>CENTER</alineamiento>
+         <soloLectura>TRUE</soloLectura>
+      </campos>
+      <tablas nombre="compromisos" accion="I"/>
+      <tablas nombre="detalle_compromisos" accion="I"/>
+      <tablas nombre="detalles" accion="I"/>
+   </parametro>
+</Parametros>

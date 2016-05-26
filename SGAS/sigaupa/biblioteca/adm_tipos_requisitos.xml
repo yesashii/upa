@@ -1,0 +1,69 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="agregar">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>AGREGAR</accion>
+         <url>adm_tipos_requisitos_agregar.asp</url>
+         <ancho>600</ancho>
+         <alto>400</alto>
+      </botones>
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_tipos_requisitos.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="aceptar">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <url>proc_agregar_tipos_requisitos.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+   </parametro>
+   <parametro formulario="tipos_requisitos" anchoTabla="100%" variable="tr" eliminar="TRUE" clave="treq_ccod" enumerarLista="TRUE" nroRegistros="15" maxLista="10" editar="TRUE" paginaEdicion="adm_tipos_requisitos_agregar.asp?treq_ccod=%treq_ccod%" nuevaVentana="TRUE" nuevaVentanaAlto="400" nuevaVentanaAncho="600">
+      <tablas nombre="tipos_requisitos_titulo" accion="B"/>
+      <campos nombre="treq_tdesc">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="teva_tdesc">
+         <descripcion>Tipo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="x">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="tipo_requisito" anchoTabla="100%" camposObligatorios="TRUE" variable="tr">
+      <tablas nombre="tipos_requisitos_titulo" accion="M"/>
+      <campos nombre="treq_tdesc">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="teva_ccod">
+         <descripcion>Tipo</descripcion>
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>tipos_evaluacion_requisitos</destino>
+         <union>teva_ccod</union>
+         <salida>teva_tdesc</salida>
+         <anulable>TRUE</anulable>
+         <orden>teva_ccod asc</orden>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="treq_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <tipoDato>SECUENCIA</tipoDato>
+         <secuencia>treq_ccod_seq</secuencia>
+      </campos>
+   </parametro>
+</Parametros>
+

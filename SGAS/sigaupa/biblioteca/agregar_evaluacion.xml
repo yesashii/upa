@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="f_datos_asignaturas" anchoTabla="98%">
+      <campos nombre="asig_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Código</descripcion>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+		 <alineamiento>CENTER</alineamiento>
+         <id>IN-N</id>
+      </campos>
+      <campos nombre="asig_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Asignatura</descripcion>
+         <caracteres>30</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+		 <alineamiento>CENTER</alineamiento>
+         <id>LN-N</id>
+      </campos>
+      <campos nombre="secc_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Sección</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="asig_nhoras">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+		 <descripcion>Horas</descripcion>
+      	<id>NU-N</id>
+      </campos>
+      <campos nombre="sede_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Sede</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+         <id>TO-N</id>
+      </campos>
+    </parametro>
+   <parametro formulario="f_datos_evaluacion" variable="m">
+    <campos nombre="teva_ccod">
+		    <tipo>SELECT</tipo>
+			<destino>tipos_evaluacion</destino>
+			<union>teva_ccod</union>
+			<salida>teva_tdesc</salida>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Tipo Evaluación</descripcion>
+	</campos>
+	<campos nombre="cali_nevaluacionD">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+		 <caracteres>4</caracteres>
+         <maxCaracteres>2</maxCaracteres>
+       	<id>NU-N</id>
+      </campos>
+	  	  <campos nombre="cali_nevaluacion">
+         <tipo>INPUT</tipo>
+        <permiso>LECTURAESCRITURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+		 <caracteres>4</caracteres>
+         <maxCaracteres>2</maxCaracteres>
+       	<id>NU-N</id>
+      </campos>
+	  	
+	  <campos nombre="cali_nponderacion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+		 <caracteres>4</caracteres>
+         <maxCaracteres>4</maxCaracteres>
+         <id>NT-N</id>
+      </campos>
+	  	  <campos nombre="cali_fevaluacion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+		 <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-N</id>
+      </campos>
+   </parametro>
+    <parametro formulario="consulta">
+ 	</parametro>
+  <parametro formulario="btn_agregar_evaluacion">
+   <botones nombre="guardar"> 
+     <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>cerrar()</funcion>
+	</botones> 		 
+</parametro>
+<parametro formulario="f_datos_evaluacion_cambio" variable="m">
+      <campos nombre="teva_ccod">
+		    <tipo>SELECT</tipo>
+			<destino>tipos_evaluacion</destino>
+			<union>teva_ccod</union>
+			<salida>teva_tdesc</salida>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Tipo Evaluación</descripcion>
+	  </campos>
+	  <campos nombre="cali_nevaluacionD">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+		 <caracteres>4</caracteres>
+         <maxCaracteres>2</maxCaracteres>
+       	<id>NU-N</id>
+      </campos>
+	  <campos nombre="cali_nevaluacion">
+         <tipo>INPUT</tipo>
+        <permiso>LECTURAESCRITURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+		 <caracteres>4</caracteres>
+         <maxCaracteres>2</maxCaracteres>
+       	<id>NU-N</id>
+      </campos>
+	  <campos nombre="cali_nponderacion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+		 <caracteres>4</caracteres>
+         <maxCaracteres>4</maxCaracteres>
+         <id>NT-N</id>
+      </campos>
+	  	  <campos nombre="cali_fevaluacion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+		 <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-N</id>
+      </campos>
+	  <campos nombre="cali_nresolucion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+		 <caracteres>30</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="cali_tobservacion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+		 <caracteres>50</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+</Parametros>

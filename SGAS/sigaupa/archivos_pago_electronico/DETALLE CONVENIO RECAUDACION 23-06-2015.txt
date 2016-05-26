@@ -1,0 +1,2 @@
+RUT ,ID,NombreCliente,TipoMoneda,ValorCuota,ValorMora,MontoRecaudado,FechaVcto,FechaRecaudacion
+16429272K,457413,PÉREZ NORAMBUENA RODRIGO ALEXIS,Pesos,150000,0,150000,05/06/2015,23/06/2015

@@ -1,0 +1,253 @@
+<!--Versión 1.0 creada por Sinezio da Silva fecha 03-05-2015 supervisionada por Michael Shaw
+hay dos paginas que estan viculadas a este XML proc_cambio_detalle_cheque.asp y cambio_detalle_cheques.asp-->
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cancelar">
+         <tipoTexto>Cerrar</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>cerrarVentana()</funcion>
+      </botones>
+	  <botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+		 <accion>GUARDAR</accion>
+		 <url>proc_cambio_asignatura.asp</url>
+		 <formulario>edicion</formulario>	
+		 </botones>
+	
+   </parametro>
+   
+      
+   <parametro formulario="buscador" variable="buscador">
+      <campos nombre="secc_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+   </parametro>
+   
+      
+   <parametro formulario="datos_asignatura" >	  
+	  <campos nombre="secc_ccod">
+         <descripcion>Codigo Seccion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	 
+	  <campos nombre="ASIG_CCOD">
+         <descripcion>Codigo Asignatura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	 
+	  <campos nombre="ASIG_TDESC">
+         <descripcion>Descripcion Asignatura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+	 </campos>
+	 
+	  <campos nombre="CARR_TDESC">
+         <descripcion>Descripcion de la Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+	 </campos>
+	 
+	  <campos nombre="SEDE_TDESC">
+         <descripcion>Descripcion Sede</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   
+ <parametro
+  formulario="detalle_ingreso"  variable="datos_ingreso"  clave="secc_ccod"  mensajeError="No se registran abonos para este Documento." paginaEdicion="modifica_asignatura.asp?BLOQ_CCOD=%BLOQ_CCOD%&amp;amp;DIAS_CCOD=%DIAS_CCOD%&amp;amp;SALA_CCOD=%SALA_CCOD%&amp;amp;HORA_CCOD=%HORA_CCOD%&amp;amp;SEDE_CCOD=%SEDE_CCOD%&amp;amp;SSEC_NCORR=%SSEC_NCORR%&amp;amp;SECC_CCOD=%SECC_CCOD%" editar ="TRUE" nuevaVentana="TRUE">
+			
+			<campos nombre="SECC_CCOD">
+			<alineamiento>center</alineamiento>
+			<descripcion>Codigo del Dia</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>
+			</campos>
+			<campos nombre="SSEC_NCORR">
+			<alineamiento>center</alineamiento>
+			<descripcion>Codigo del Dia</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>
+			</campos>
+			
+			<campos nombre="SEDE_CCOD">
+			<alineamiento>center</alineamiento>
+			<descripcion>Codigo del Dia</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>
+			</campos>
+			
+			<campos nombre="SALA_CCOD ">
+			<alineamiento>center</alineamiento>
+			<descripcion>Codigo del Dia</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>
+			</campos>
+			
+			<campos nombre="DIAS_CCOD ">
+			<alineamiento>center</alineamiento>
+			<descripcion>Codigo del Dia</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>
+			</campos>
+			
+			<campos nombre="BLOQ_CCOD">
+			<alineamiento>center</alineamiento>
+			<descripcion>Codigo del bloque</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>
+			</campos>
+			
+			<campos nombre="secc_ccod">
+			<alineamiento>center</alineamiento>
+			<descripcion>No. Compromiso</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>
+			</campos>
+			
+			<campos nombre="DIAS_TDESC">
+			<alineamiento>center</alineamiento>
+			<descripcion>Dia de la Semana</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			</campos>
+						
+			<campos nombre="blocke">
+			<alineamiento>center</alineamiento>
+			<descripcion>DESCRIPCION DEL BLOQUE</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			</campos>
+			
+			<campos nombre="SALA_TDESC">
+			<alineamiento>center</alineamiento>
+			<descripcion>SALA</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			</campos>
+			
+			<campos nombre="HORA_CCOD">
+			<alineamiento>center</alineamiento>
+			<descripcion>codigo hora</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>
+			</campos>
+			
+			<campos nombre="SEDE_CCOD">
+			<alineamiento>center</alineamiento>
+			<descripcion>codigo sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>
+			</campos>
+	
+   </parametro>
+   
+   <parametro formulario="datos_cambio_asignatura" clave = "BLOQ_CCOD">
+   	<tablas nombre="BLOQUES_HORARIOS" accion="M" />
+	
+	
+		<campos nombre="SEDE_CCOD">
+			<alineamiento>center</alineamiento>
+			<descripcion>codigo sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>
+			</campos>
+			
+		<campos nombre="BLOQ_CCOD">
+			<alineamiento>center</alineamiento>
+			<descripcion>codigo sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>
+			</campos>	
+	 
+	  <campos nombre="DIAS_CCOD">
+	  	<tipo>SELECT</tipo>
+		<destino>DIAS_SEMANA</destino>
+		<union>DIAS_CCOD</union>
+		<salida>DIAS_TDESC</salida>
+        <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	 
+	  <campos nombre="SALA_CCOD">
+        <tipo>SELECT</tipo>
+		<destino>SALAS</destino>
+		<union>SALA_CCOD</union>
+		<salida>SALA_TDESC</salida>
+		<orden>SALA_TDESC</orden>
+        <permiso>LECTURAESCRITURA</permiso>
+	 </campos>
+	 
+	  <campos nombre="HORA_CCOD">
+         <tipo>SELECT</tipo>
+		<destino>HORARIOS_SEDES</destino>
+		<union>HORA_CCOD</union>
+		<salida>BLOCK</salida>
+        <permiso>LECTURAESCRITURA</permiso>
+	</campos>	 
+		 <campos nombre="SSEC_NCORR">
+         <tipo>SELECT</tipo>
+		<destino>BLOQUES_HORARIOS</destino>
+		<union>BLOQ_CCOD</union>
+		<salida>SSEC_NCORR</salida>
+        <permiso>oculto</permiso>
+		
+	 </campos>
+	 
+	 <campos nombre="SECC_CCOD">
+         <tipo>SELECT</tipo>
+		<destino>BLOQUES_HORARIOS</destino>
+		<union>BLOQ_CCOD</union>
+		<salida>SECC_CCOD</salida>
+        <permiso>oculto</permiso>
+		
+	 </campos>
+	 
+	   
+   </parametro>
+   
+   <parametro formulario="datos_formulario" >	  
+	  <campos nombre="BLOQ_CCOD">
+         <descripcion>codigo bloque</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+	  <campos nombre="HORA_CCOD">
+         <descripcion>codigo hora</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+	  <campos nombre="SALA_CCOD">
+         <descripcion>codigo sala</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+	   <campos nombre="AUDI_TUSUARIO">
+         <descripcion>Usuario Auditado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+	   <campos nombre="AUDI_FMODIFICACION">
+         <descripcion>Fecha Hora de Modificación</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+	  
+   </parametro>
+   
+</Parametros>

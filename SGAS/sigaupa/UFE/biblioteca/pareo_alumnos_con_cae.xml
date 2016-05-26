@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="btn_adm_carreras">
+    <botones nombre="buscar"> 
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+	</botones> 
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_carrera.asp</url>
+         <formulario>edicion</formulario>
+      </botones> 
+    <botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agrega_carrera(document.edicion)</funcion>
+	</botones> 
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>	
+	  <botones nombre="excel_pareo">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+          <accion>GUARDAR</accion>
+         <url>pareo_alumnos_cae_excel.asp</url>
+		 <formulario>buscador</formulario>
+     </botones> 
+ </parametro>
+ 
+  <parametro formulario="btn_agregar_carrera">
+    <botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agregar(document.editar)</funcion>
+	</botones> 
+    <botones nombre="GUARDAR"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agregar(document.editar)</funcion>
+	</botones> 	
+  <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>salir(document.edicion)</funcion>
+	</botones> 
+ </parametro>
+ 
+<parametro formulario="busqueda2" variable="b" columnas="3" >
+          <campos nombre="pers_nrut" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>NU-S</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+      </campos>
+	   <campos nombre="pers_xdv" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-S</id>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+	 </campos>
+	 <campos nombre="anos_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Periodo Academico</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>anos</destino>
+		 <filtro>anos_ccod > 2010 </filtro>
+         <union>anos_ccod</union>
+         <salida>anos_tdesc</salida>
+		 <orden>anos_tdesc asc</orden>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="taca_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>ufe_tipo_alumnos_cae</destino>
+         <union>taca_ccod</union>
+         <salida>taca_tdesc</salida>
+		 <orden>taca_tdesc asc</orden>
+		 <id>NU-S</id>
+      </campos>
+</parametro>
+
+ 	<parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8"  paginaEdicion="agregar_carrera.asp" formulario="tabla_generica" eliminar="false" 
+	 clave="pers_ncorr" nroRegistros="10" maxLista="10"	 mensajeError="No existen datos para los parámetros de búsqueda." 
+	 colorBase="#F1F1E4" editar="false" anchoTabla="98%" variable="em" nuevaVentana="true" nuevaVentanaAlto="500" nuevaVentanaAncho="650" >
+	
+	<campos nombre="rut_alumno">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Rut</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	<campos nombre="pers_tape_paterno">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Ap. Paterno</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	<campos nombre="pers_tape_materno">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Ap. Materno</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>	
+	<campos nombre="pers_tnombre">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nombres</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	<campos nombre="monto_solicitado">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<descripcion>Monto</descripcion>
+		<alineamiento>left</alineamiento>
+	</campos>
+	<campos nombre="carrera">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<descripcion>Carrera</descripcion>
+		<alineamiento>left</alineamiento>			
+	</campos>
+	<campos nombre="tipo_cae">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<descripcion>Tipo CAE</descripcion>
+		<alineamiento>left</alineamiento>			
+	</campos>
+</parametro>
+	
+
+	<parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8"  paginaEdicion="agregar_carrera.asp" formulario="tabla_mixta" eliminar="false" 
+	 clave="pers_ncorr" nroRegistros="10" maxLista="10"	 mensajeError="No existen datos para los parámetros de búsqueda." 
+	 colorBase="#F1F1E4" editar="false" anchoTabla="98%" variable="em" nuevaVentana="true" nuevaVentanaAlto="500" nuevaVentanaAncho="650" >
+	
+	<campos nombre="rut_alumno">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Rut</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	<campos nombre="pers_tnombre">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nombres</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	<campos nombre="pers_tape_paterno">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Ap. Paterno</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	<campos nombre="pers_tape_materno">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Ap. Materno</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	<campos nombre="monto_solicitado_1">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<descripcion>Monto Ingresa</descripcion>
+		<alineamiento>left</alineamiento>
+	</campos>
+	<campos nombre="monto_solicitado_2">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<descripcion>Monto SGA</descripcion>
+		<alineamiento>left</alineamiento>
+	</campos>
+	<campos nombre="carrera_1">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<descripcion>Carrera Igresa</descripcion>
+		<alineamiento>left</alineamiento>			
+	</campos>
+	<campos nombre="carrera_2">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<descripcion>Carrera SGA</descripcion>
+		<alineamiento>left</alineamiento>			
+	</campos>		
+	<campos nombre="tipo_ingresa">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<descripcion>Tipo CAE- Ingresa</descripcion>
+		<alineamiento>left</alineamiento>			
+	</campos>
+	<campos nombre="tipo_sga">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<descripcion>Tipo CAE- SGA</descripcion>
+		<alineamiento>left</alineamiento>			
+	</campos>
+</parametro>
+	
+</Parametros>

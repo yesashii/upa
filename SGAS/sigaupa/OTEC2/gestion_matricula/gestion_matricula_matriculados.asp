@@ -1,0 +1,265 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+
+<%
+'for each k in request.form
+	'response.Write(k&" = "&request.Form(k)&"<br>")
+'next
+'response.End()
+
+'---------------------------------------------------------------------------------------------------
+set pagina = new CPagina
+pagina.Titulo = "Gestion Matricula OTEC"
+
+'---------------------------------------------------------------------------------------------------
+set conexion = new CConexion
+conexion.Inicializar "upacifico"
+set negocio = new CNegocio
+negocio.Inicializa conexion
+
+
+sede_tdesc= request.QueryString("sede_ccod")
+sede_ccod=request.QueryString("sede_ccod")
+ano_ccod  = request.querystring("busqueda[0][ano_ccod]")
+ano_ccod2  = request.querystring("ano_ccod")
+
+if ano_ccod2 ="" then
+ano_ccod2=0
+end if
+if ano_ccod="" then
+ano_ccod=ano_ccod2
+end if
+
+ set f_busqueda = new CFormulario
+ f_busqueda.Carga_Parametros "gestion_matricula_otec.xml", "busqueda"
+ f_busqueda.Inicializar conexion
+ f_busqueda.Consultar "select ''"
+ f_busqueda.Siguiente
+ 
+
+ 
+
+
+
+
+set f_botonera = new CFormulario
+f_botonera.Carga_Parametros "gestion_matricula_otec.xml", "botonera"
+
+v_peri_ccod = negocio.ObtenerPeriodoAcademico("POSTULACION")
+
+set lista = new CFormulario
+lista.carga_parametros "gestion_matricula_otec.xml", "lista_contratos"
+lista.inicializar conexion
+
+if sede_ccod="" then
+ sede_ccod=conexion.consultaUno("select sede_ccod from sedes where sede_tdesc='"&sede_tdesc&"'")
+ end if
+  sede_tdesc=conexion.consultaUno("select sede_tdesc from sedes where sede_ccod='"&sede_ccod&"'")
+
+consulta ="select dcur_tdesc,esot_tdesc,dgso_ncorr,dgo.sede_ccod,dgso_nquorum,pendiente,aprobado,matriculado,protic.trunc(dgso_finicio)as dgso_finicio,protic.trunc(dgso_ftermino)as dgso_ftermino"& vbcrlf & _
+"from(select mmm.dcur_ncorr, isnull(count(pendiente),0)as pendiente,isnull(count(aprobado),0)as aprobado,isnull(count(matriculado),0)as matriculado"& vbcrlf & _
+"from(select dgo.sede_ccod,dgo.dcur_ncorr,"& vbcrlf & _
+"case when epot_ccod =1 then epot_ccod end as  pendiente,"& vbcrlf & _
+"case when epot_ccod =2 then epot_ccod end as  aprobado,"& vbcrlf & _
+"case when epot_ccod in (3,4) then epot_ccod end as  matriculado"& vbcrlf & _
+"from diplomados_cursos dc right outer join datos_generales_secciones_otec dgo"& vbcrlf & _
+"on dgo.dcur_ncorr=dc.dcur_ncorr"& vbcrlf & _
+"left outer join postulacion_otec pot"& vbcrlf & _
+"on pot.dgso_ncorr=dgo.dgso_ncorr"& vbcrlf & _
+"right outer join ofertas_otec oot"& vbcrlf & _
+"on dgo.dcur_ncorr=oot.dcur_ncorr"& vbcrlf & _
+"where dgo.sede_ccod='"&sede_ccod&"'"& vbcrlf & _
+"and anio_admision="&ano_ccod&")as mmm"& vbcrlf & _
+"group by mmm.dcur_ncorr)as nnn,datos_generales_secciones_otec dgo,diplomados_cursos dc,estado_seccion_otec ff"& vbcrlf & _
+"where nnn.dcur_ncorr=dgo.dcur_ncorr"& vbcrlf & _
+"and nnn.dcur_ncorr=dc.dcur_ncorr"& vbcrlf & _
+"and dgo.sede_ccod='"&sede_ccod&"'"& vbcrlf & _
+"and dgo.esot_ccod=ff.esot_ccod"& vbcrlf & _
+"order by dgso_finicio"
+
+' "select dcur_tdesc,dgso_nquorum,pendiente,aprobado,matriculado"& vbcrlf & _
+'"from(select mmm.dcur_ncorr, isnull(count(pendiente),0)as pendiente,isnull(count(aprobado),0)as aprobado,isnull(count(matriculado),0)as matriculado"& vbcrlf & _
+'"from(select dgo.sede_ccod,dgo.dcur_ncorr,"& vbcrlf & _
+'"case when epot_ccod =1 then epot_ccod end as  pendiente,"& vbcrlf & _
+'"case when epot_ccod =2 then epot_ccod end as  aprobado,"& vbcrlf & _
+'"case when epot_ccod in (3,4) then epot_ccod end as  matriculado"& vbcrlf & _
+'"from diplomados_cursos dc,datos_generales_secciones_otec dgo,postulacion_otec pot,ofertas_otec oot"& vbcrlf & _
+'"where pot.dgso_ncorr=dgo.dgso_ncorr"& vbcrlf & _
+'"and dgo.dcur_ncorr=dc.dcur_ncorr"& vbcrlf & _
+'"and dgo.sede_ccod='"&sede_ccod&"'" & vbcrlf & _
+'"and dgo.dcur_ncorr=oot.dcur_ncorr"& vbcrlf & _
+'"and anio_admision="&ano_ccod&")as mmm"& vbcrlf & _
+'"group by mmm.dcur_ncorr)as nnn,datos_generales_secciones_otec dgo,diplomados_cursos dc"& vbcrlf & _
+'"where nnn.dcur_ncorr=dgo.dcur_ncorr"& vbcrlf & _
+'"and nnn.dcur_ncorr=dc.dcur_ncorr"
+
+ 'response.Write("<pre>"&consulta&"</pre>")
+ 'response.end()
+
+lista.Consultar consulta
+
+
+
+
+'response.Write("<pre>"&consulta&"</pre>")	
+'response.Write("<pre>"&sede_tdesc&"</pre>")
+'response.Write("<pre>"&sede_ccod&"</pre>")	
+
+
+%>
+
+
+<html>
+<head>
+<title><%=pagina.Titulo%></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../estilos/estilos.css" rel="stylesheet" type="text/css">
+<link href="../estilos/tabla.css" rel="stylesheet" type="text/css">
+
+<script language="JavaScript" src="../biblioteca/tabla.js"></script>
+<script language="JavaScript" src="../biblioteca/funciones.js"></script>
+<script language="JavaScript" src="../biblioteca/validadores.js"></script>
+<script language="JavaScript" src="../biblioteca/PopCalendar.js"></script>
+
+<script language="JavaScript">
+
+
+function salir(){
+location.href="../lanzadera/lanzadera_up.asp?resolucion=1152";
+}
+
+</script>
+<%
+	set calendario = new FCalendario
+	calendario.IniciaFuncion
+	calendario.MuestraFecha "inicio","1","buscador","fecha_oculta_inicio"
+	calendario.FinFuncion
+%><style type="text/css">
+<!--
+body {
+	background-color: #D8D8DE;
+}
+-->
+</style></head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../imagenes/botones/buscar_f2.gif','../images/bot_deshabilitar_f2.gif','../images/agregar2_f2_p.gif','../jefe_carrera/im&amp;#225;genes/marco1_r3_c2_f2.gif');MM_preloadImages('../jefe_carrera/im&amp;#225;genes/marco1_r3_c4_f2.gif');MM_preloadImages('../jefe_carrera/im&amp;#225;genes/marco1_r3_c6_f2.gif');MM_preloadImages('../jefe_carrera/im&amp;#225;genes/marco1_r3_c8_f2.gif');MM_preloadImages('../imagenes/botones/cargar_f2.gif','../imagenes/botones/continuar_f2.gif')" onBlur="revisaVentana();" >
+<%calendario.ImprimeVariables%>
+<table width="650" border="0" align="center" cellpadding="0" cellspacing="0">
+  
+ 
+  <tr>
+    <td valign="top" bgcolor="#EAEAEA">
+	<br>
+	<br>
+	<table width="95%"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#D8D8DE">
+      <tr>
+        <td width="9" height="8"><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+        <td height="8" background="../imagenes/top_r1_c2.gif"></td>
+        <td width="7" height="8"><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+      </tr>
+      <tr>
+        <td width="9" background="../imagenes/izq.gif">&nbsp;</td>
+        <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><%pagina.DibujarLenguetas Array("Resultados de la búsqueda"), 1 %></td>
+          </tr>
+          <tr>
+            <td height="2" background="../imagenes/top_r3_c2.gif"></td>
+          </tr>
+          <tr>
+            <td><br><div align="center"> 
+                    <%pagina.DibujarTituloPagina%>
+                </div>
+              <form name="edicion" method="post" action="">
+			     
+				 <table width="95%" border="1" align="center">
+  <tr borderColor="#999999"> 
+  
+  <td width="16%" height="17" bgColor="#c4d7ff"><div align="center"><strong>Sede</strong></div></td>
+   <td width="48%" height="17" bgColor="#c4d7ff"><div align="center"><strong>Programa</strong></div></td>
+   <td width="6%" bgColor="#c4d7ff"><div align="center"><strong>Fecha Incio</strong></div></td>
+    <td width="6%" bgColor="#c4d7ff"><div align="center"><strong>Fecha Termino</strong></div></td>
+	<td width="6%" bgColor="#c4d7ff"><div align="center"><strong>Estado</strong></div></td>
+  <td width="6%" bgColor="#c4d7ff"><div align="center"><strong>Pendientes</strong></div></td>
+  <td width="6%" bgColor="#c4d7ff"><div align="center"><strong>Aprobados</strong></div></td>
+  <td width="6%" bgColor="#c4d7ff"><div align="center"><strong>Matriculados</strong></div></td>
+   <td width="6%" bgColor="#c4d7ff"><div align="center"><strong>Meta</strong></div></td>
+
+   
+  </tr>
+   
+  <%  while lista.Siguiente 
+   total_pendiente = total_pendiente  + cdbl(lista.Obtenervalor("pendiente"))
+		total_aprobado = total_aprobado  + cdbl(lista.Obtenervalor("aprobado"))
+		total_matriculado = total_matriculado  + cdbl(lista.Obtenervalor("matriculado"))
+		total_meta = total_meta  + cdbl(lista.Obtenervalor("dgso_nquorum"))%>
+  <tr borderColor="#999999"> 
+    
+    <td bgcolor="#FFECC6"><div align="left"><%=sede_tdesc%></div></td>
+	<td bgcolor="#FFECC6"><div align="left"><%=lista.Obtenervalor("dcur_tdesc")%></div></td>
+	<td bgcolor="#FFECC6"><div align="left"><%=lista.Obtenervalor("dgso_finicio")%></div></td>
+	<td bgcolor="#FFECC6"><div align="left"><%=lista.Obtenervalor("dgso_ftermino")%></div></td>
+	<td bgcolor="#FFECC6"><div align="left"><%=lista.Obtenervalor("esot_tdesc")%></div></td>
+	<td bgcolor="#FFECC6" class='click' onClick='irA("detalle_gestion_matricula_matriculados.asp?sede_ccod=<%=lista.obtenervalor("sede_ccod")%>&ano_ccod=<%=ano_ccod%>&epot_ccod=1&dgso_ncorr=<%=lista.obtenervalor("dgso_ncorr")%>", "2", 600, 400)'><div align="center"><%=lista.Obtenervalor("pendiente")%></div></td>
+	<td bgcolor="#FFECC6" class='click' onClick='irA("detalle_gestion_matricula_matriculados.asp?sede_ccod=<%=lista.obtenervalor("sede_ccod")%>&ano_ccod=<%=ano_ccod%>&epot_ccod=2&dgso_ncorr=<%=lista.obtenervalor("dgso_ncorr")%>", "2", 600, 400)'><div align="center"><%=lista.Obtenervalor("aprobado")%></div></td>
+	<td bgcolor="#FFECC6" class='click' onClick='irA("detalle_gestion_matricula_matriculados.asp?sede_ccod=<%=lista.obtenervalor("sede_ccod")%>&ano_ccod=<%=ano_ccod%>&epot_ccod=4&dgso_ncorr=<%=lista.obtenervalor("dgso_ncorr")%>", "2", 600, 400)'><div align="center"><%=lista.Obtenervalor("matriculado")%></div></td>
+	<td bgcolor="#FFECC6" ><div align="right"><strong><%=lista.Obtenervalor("dgso_nquorum")%></strong></div></td>
+	
+  </tr>
+   
+  
+  
+      <%  wend %>
+	 
+	   
+	   
+  <tr borderColor="#999999"> 
+    
+    <td bgColor="#c4d7ff" colspan="5"><div align="center"><strong>Total</strong></div></td>
+	
+	<td bgcolor="#FFECC6" ><div align="center"><strong><%=total_pendiente%></strong></div></td>
+	<td bgcolor="#FFECC6"><div align="center"><strong><%=total_aprobado%></strong></div></td>
+	 <td bgcolor="#FFECC6"><div align="center"><strong><%=total_matriculado%></strong></div></td>
+	  <td bgcolor="#FFECC6"><div align="center"><strong><%=total_meta%></strong></div></td>
+  </tr>
+ 
+</table>
+				 
+            </form></td></tr>
+        </table></td>
+        <td width="7" background="../imagenes/der.gif">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="9" height="28"><img src="../imagenes/abajo_r1_c1.gif" width="9" height="28"></td>
+        <td height="28"><table width="100%" height="28"  border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="16%" height="20"><div align="center">
+              <table width="90%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+				<td width="51%"><div align="center">
+                    <%f_botonera.AgregaBotonParam "Atras", "url", "gestion_matricula_otec.asp?ano_ccod="&ano_ccod
+					f_botonera.DibujaBoton "Atras"%></div></td>
+                
+				 
+				   <td><div align="center">
+                    
+					<%f_botonera.AgregaBotonParam "excel2", "url", "gestion_matricula_matriculados_excel.asp?ano_ccod="&ano_ccod&"&sede_tdesc="&sede_ccod
+				   f_botonera.DibujaBoton"excel2"  %></div></td>
+                  </tr>
+              </table>
+            </div></td>
+            <td width="84%" rowspan="2" background="../imagenes/abajo_r1_c4.gif"><img src="../imagenes/abajo_r1_c3.gif" width="12" height="28"></td>
+            </tr>
+          <tr>
+            <td height="8" background="../imagenes/abajo_r2_c2.gif"></td>
+          </tr>
+        </table></td>
+        <td width="7" height="28"><img src="../imagenes/abajo_r1_c5.gif" width="7" height="28"></td>
+      </tr>
+    </table>
+	<br>
+	<br>
+	</td>
+  </tr>  
+</table>
+</body>
+</html>

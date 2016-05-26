@@ -1,0 +1,170 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>ValidaFormBusqueda();</funcionValidacion>
+      </botones>
+      <botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_documentacion_matricula.asp</url>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	  <botones nombre="salir2">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Salir</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>salir()</funcion>
+      </botones>
+	  <botones nombre="imprimir">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Imprimir</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>imprimir()</funcion>
+      </botones>
+   </parametro>
+   <parametro formulario="busqueda" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="documentos" variable="documentos" anchoTabla="98%" mensajeError="No ha enviado su postulación.">
+      <tablas nombre="documentos_postulantes" accion="M"/>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="doma_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="doma_tdesc">
+         <descripcion>Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="bentregado">
+         <descripcion>Entregado</descripcion>
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="documentos2" variable="documentos" anchoTabla="98%" mensajeError="No ha enviado su postulación.">
+      <tablas nombre="documentos_postulantes" accion="M"/>
+	  <tablas nombre="ALUMNOS_FORMA_MATRICULA" accion="M"/>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="doma_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="doma_tdesc">
+         <descripcion>Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="entregado">
+         <descripcion>Entregado</descripcion>
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="retirado">
+         <descripcion>Retirado</descripcion>
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="fecha_retiro">	
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Fecha de Retiro</descripcion>
+			<caracteres>12</caracteres>
+			<maxcaracteres>10</maxcaracteres>
+			<alineamiento>CENTER</alineamiento>
+			<id>FE-S</id>
+		</campos>
+   </parametro>
+   <parametro formulario="elimina_documentos_postulantes" variable="documentos">
+      <tablas nombre="documentos_postulantes" accion="M"/>
+      <campos nombre="pers_ncorr"/>
+      <campos nombre="doma_ccod"/>
+   </parametro>
+   
+   <parametro formulario="f_forma_mat" variable="documentos">
+   <campos nombre="tfma_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>TIPOS_FORMA_MATRICULA</destino> 
+	  <union>tfma_ccod</union>
+	  <salida>tfma_TDESC</salida>
+      <orden>TFMA_CCOD asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <id>TO-N</id>
+   </campos>
+  </parametro>
+  
+   
+    <parametro formulario="impr_documentos" variable="documentos" anchoTabla="98%" mensajeError="No ha enviado su postulación.">
+      <tablas nombre="documentos_postulantes" accion="M"/>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="doma_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="doma_tdesc">
+         <descripcion>Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="bentregado">
+         <descripcion>Entregado</descripcion>
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURA</permiso>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+		 <afirmacion>Sí</afirmacion>
+         <negacion>No</negacion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="fecha_entrega">
+         <descripcion>Entregado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+</Parametros>

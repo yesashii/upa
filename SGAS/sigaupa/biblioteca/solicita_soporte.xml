@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+	   <botones nombre="buscar2">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>filtrado</formulario>
+      </botones>
+	  <botones nombre="buscarpe">
+         <tipoTexto>DEFINIR</tipoTexto>
+		  <texto>Buscar</texto>
+         <accion>JAVASCRIPT</accion>
+         <script>filtrar()</script>
+      </botones>
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+		  <botones nombre="missolicitudes">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Mis solicitudes</texto>
+         <accion>NAVEGAR</accion>
+         <url>peticiones_tecnico.asp</url>
+      </botones> 
+	<botones nombre="siguiente">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Ver Siguiente</texto>
+      </botones>
+	   <botones nombre="guardar_marca_monitores">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       	<texto>Guardar</texto>
+		<formulario>ingresa</formulario>
+         <url>ingresa_prioridad_persona_proc.asp</url>
+      </botones>
+	  
+	  <botones nombre="tomar_solicitud">
+         <accion>Guardar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       	<texto>Tomar Solicitud</texto>
+		<formulario>edicion</formulario>
+		<funcionValidacion>Validar_asignacion()</funcionValidacion>
+         <url>tomar_peticiones_proc.asp</url>
+      </botones>
+	   <botones nombre="Guardar_prioridad_persona">
+         <accion>Guardar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       	<texto>Guardar</texto>
+		<formulario>edicion</formulario>
+         <url>tomar_peticiones_proc.asp</url>
+      </botones>
+	  
+	   <botones nombre="guardar">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       	<texto>Solicitar</texto>
+		<formulario>edicion</formulario>
+        <url>solicita_soporte_proc.asp</url>
+      </botones>
+	  
+	  <botones nombre="filtrar">
+		 <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>filtrado</formulario>      
+	  </botones>
+	  <botones nombre="persona">
+		 <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>busqueda</formulario>      
+	  </botones>
+   </parametro>
+   
+   <parametro formulario="solicita" variable="b">
+  <campos nombre="peso_tcargo" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+		 <script>onKeyUp='this.value=this.value.toLowerCase();'</script>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+      </campos>
+   <campos nombre="peso_temail" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>EM-N</id>
+		 <script>onKeyUp='this.value=this.value.toLowerCase();'</script>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+      </campos>
+	  <campos nombre="peso_tfono" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+		 <script>onKeyUp='this.value=this.value.toLowerCase();'</script>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+      </campos>
+	    <campos nombre="sede_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>sedes </destino>
+         <union>sede_ccod</union>
+		 <filtro>sede_ccod in (1,2,4,8)</filtro>
+         <salida>sede_tdesc</salida>
+		 <orden>sede_ccod asc</orden>
+		 <id>TO-N</id>
+      </campos>
+	  <campos nombre="peso_tdepto" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+		 <script>onKeyUp='this.value=this.value.toLowerCase();'</script>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+      </campos>
+	  <campos nombre="peso_tubicacion" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+		 <script>onKeyUp='this.value=this.value.toLowerCase();'</script>
+         <caracteres>30</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="solicita_proc" variable="b" clave="inci_ccod">
+   <tablas nombre="peticion_soporte" accion="M" />
+   <tablas nombre="INCIDENTES" accion="M" />
+   <campos nombre="sede_ccod" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+   </campos>
+    <campos nombre="peso_tdescripcion" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+   </campos>
+    <campos nombre="peso_temail" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+   </campos>
+    <campos nombre="peso_tfono" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+   </campos>
+       <campos nombre="inci_ccod" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+   </campos>
+   <campos nombre="hora_incidente" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+   </campos>
+   <campos nombre="fecha_incidente" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+   </campos>
+   <campos nombre="incidente" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+   </campos>
+    <campos nombre="folio" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+   </campos>
+   <campos nombre="EINC_CCOD" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+   </campos>
+   
+   </parametro>
+      <parametro formulario="solicita_x_telefono" variable="b">
+   	 <campos nombre="pers_nrut" >
+         <descripcion>Nº Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>NU-S</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+      </campos>
+	   <campos nombre="pers_xdv" >
+         <descripcion>Nº Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-S</id>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+      </campos>
+	  <campos nombre="peso_tcargo" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+		 <script>onKeyUp='this.value=this.value.toLowerCase();'</script>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+      </campos>
+   <campos nombre="peso_temail" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>EM-N</id>
+		 <script>onKeyUp='this.value=this.value.toLowerCase();'</script>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+      </campos>
+	  <campos nombre="peso_tfono" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+		 <script>onKeyUp='this.value=this.value.toLowerCase();'</script>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+      </campos>
+	    <campos nombre="sede_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>sedes </destino>
+         <union>sede_ccod</union>
+		 <filtro>sede_ccod in (1,2,4,8)</filtro>
+         <salida>sede_tdesc</salida>
+		 <orden>sede_ccod asc</orden>
+		 <id>TO-N</id>
+      </campos>
+	  <campos nombre="peso_tdepto" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+		 <script>onKeyUp='this.value=this.value.toLowerCase();'</script>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+      </campos>
+	  <campos nombre="peso_tubicacion" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+		 <script>onKeyUp='this.value=this.value.toLowerCase();'</script>
+         <caracteres>30</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+      </campos>
+   </parametro>
+
+   <parametros formulario="filtra_solicitudes" variable="b">
+	   <campos nombre="sede_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+		 <orden>sede_ccod asc</orden>
+		 <id>TO-S</id>
+      </campos>
+	   <campos nombre="tpus_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>tipos_prioridad_usuarios </destino>
+         <union>tpus_ccod</union>
+         <salida>tpus_tdesc</salida>
+		 <orden>tpus_ccod asc</orden>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="EINC_CCOD" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>estados_incidentes</destino>
+         <union>EINC_CCOD</union>
+         <salida>EINC_TDESC</salida>
+		 <orden>EINC_CCOD asc</orden>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="inci" >
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <caracteres>25</caracteres>
+         <maxCaracteres>24</maxCaracteres>
+   </campos>
+   </parametros>
+   <parametro formulario="solicitudes" mensajeError="No Hay Solicitudes Pendientes" maxLista="10" variable="b" nroRegistros="10" anchoTabla="100%" eliminar="true" clave="folio" seleccionarTodo="TRUE">
+      <campos nombre="inci_ccod" >
+         <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+
+   <campos nombre="inci_ccod2" >
+   		<descripcion>Codigo Incidente</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+    <campos nombre="tpus_tdesc" >
+   		<descripcion>Prioridad</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="persona_solicitante" >
+   		<descripcion>Solicitante</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+    <campos nombre="peso_tcargo" >
+   		<descripcion>Cargo</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="sede" >
+   		<descripcion>Sede</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="peso_tdepto" >
+   		<descripcion>Departamento</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="peso_tubicacion" >
+   		<descripcion>Ubicación</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+    <campos nombre="solicitud" >
+		<descripcion>Solicitud/Problema</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+    <campos nombre="FECHA_INCIDENTE" >
+		<descripcion>Fecha Solicitud/Problema</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+   </parametro>
+     <parametro formulario="solicitudes_tecnico" editar="true" paginaEdicion="../MANTENEDORES/mantenedor_incidentes_editar.asp?inci_ccod=%inci_ccod%" nuevaVentana="true" mensajeError="No Hay Solicitudes Pendientes" maxLista="10" nroRegistros="10" anchoTabla="100%">
+   <campos nombre="inci_ccod" >
+   		<descripcion>Codigo Incidente</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="tpus_tdesc" >
+   		<descripcion>Prioridad</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="persona_solicitante" >
+   		<descripcion>Persona Solicitante</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="peso_tcargo" >
+   		<descripcion>Cargo</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+    <campos nombre="peso_tfono" >
+   		<descripcion>Telefono</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+    <campos nombre="sede" >
+   		<descripcion>Sede</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="peso_tdepto" >
+   		<descripcion>Departamento</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="peso_tubicacion" >
+   		<descripcion>Ubicación</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+    <campos nombre="solicitud" >
+		<descripcion>Solicitud/Problema</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+    <campos nombre="EINC_CCOD" >
+		<descripcion>Estado</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+   </parametro>
+    <parametro formulario="tomar_solicitudes_proc" variable="b" clave="inci_ccod">
+       <campos nombre="inci_ccod" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+   </campos>
+   <campos nombre="folio" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+   </campos>
+   </parametro>
+   <parametro formulario="solicitudes_tecnico_otros" editar="false" paginaEdicion="../MANTENEDORES/mantenedor_incidentes_editar.asp?inci_ccod=%inci_ccod%" nuevaVentana="true" mensajeError="No Hay Solicitudes Pendientes" maxLista="10" nroRegistros="10" anchoTabla="100%">
+   <campos nombre="inci_ccod" >
+   		<descripcion>Codigo Incidente</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+    <campos nombre="tpus_tdesc" >
+   		<descripcion>Prioridad</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="persona_solicitante" >
+   		<descripcion>Persona Solicitante</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="sede" >
+   		<descripcion>Sede</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="peso_tdepto" >
+   		<descripcion>Departamento</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="peso_tubicacion" >
+   		<descripcion>Ubicación</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+    <campos nombre="solicitud" >
+		<descripcion>Solicitud/Problema</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+    <campos nombre="solicitud" >
+		<descripcion>Solicitud/Problema</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+    <campos nombre="EINC_CCOD" >
+		<descripcion>Estado</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="tomada_por" >
+		<descripcion>Tomada por</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+   </parametro>
+   <parametro formulario="ingresa_prioridad_persona" variable="test">
+   		<campos nombre="pers_nrut" >
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>9</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+		 <id>NU-N</id>
+   		</campos>
+		<campos nombre="pers_xdv" >
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>2</caracteres>
+		 <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <maxCaracteres>1</maxCaracteres>
+		 <id>TO-N</id>
+   		</campos>
+		<campos nombre="tpus_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>tipos_prioridad_usuarios </destino>
+         <union>tpus_ccod</union>
+         <salida>tpus_tdesc</salida>
+		 <orden>tpus_ccod asc</orden>
+		 <id>TO-N</id>
+      </campos>
+   </parametro>
+    <parametro formulario="busqueda_ingresa_prioridad_persona" variable="a">
+   		<campos nombre="pers_nrut" >
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>9</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+		 <id>NU-S</id>
+   		</campos>
+		<campos nombre="pers_xdv" >
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>2</caracteres>
+		 <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <maxCaracteres>1</maxCaracteres>
+		 <id>TO-S</id>
+   		</campos>
+		<campos nombre="tpus_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todos</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>tipos_prioridad_usuarios </destino>
+         <union>tpus_ccod</union>
+         <salida>tpus_tdesc</salida>
+		 <orden>tpus_ccod asc</orden>
+		 <id>TO-S</id>
+      </campos>
+   </parametro>
+   <parametro formulario="ingresa_prioridad_persona_proc" variable="test" clave="inus_ncorr">
+   <tablas nombre="info_usuarios_soporte" accion="M" />
+   <campos nombre="tpus_ccod" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+   </campos>
+   <campos nombre="pers_ncorr" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+   </campos>
+   <campos nombre="inus_ncorr" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+   </campos>
+   </parametro>
+   <parametro formulario="prioridades_personas" editar="false" paginaEdicion="" nuevaVentana="true" mensajeError="No Hay Solicitudes Pendientes" 
+   maxLista="10" nroRegistros="10" anchoTabla="100%">
+   <campos nombre="nombre" >
+   		<descripcion>Nombre</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="tpus_tdesc" >
+   		<descripcion>Prioridad</descripcion>
+		<alineamiento>center</alineamiento>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+   </campos>
+   </parametro>
+</Parametros>

@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="BotoneraTomaCarga">
+    <botones nombre="aceptar"> 
+		  <tipoTexto>Aceptar</tipoTexto>
+		  <accion>GUARDAR</accion>
+	      <url>inicio_toma_carga_2008.asp</url>
+	      <formulario>valida</formulario>
+	</botones>
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador);_HabilitarBoton(this,false);</funcion>
+	</botones> 
+    <botones nombre="ELIMINAR"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>elim_asig(document.edicion);</funcion>
+	</botones> 
+    <botones nombre="GUARDAR"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>guardar(document.edicion);_HabilitarBoton(this,false);</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones>
+	<botones nombre="GUARDAR2"> 
+       <tipoTexto>DEFINIR</tipoTexto>
+	   <texto>Guardar</texto>
+       <accion>GUARDAR</accion>
+       <formulario>edicion</formulario>
+	   <url>toma_carga_proc.asp</url>
+	</botones> 
+	<botones nombre="HORARIO"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Horario</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>horario()</funcion>	  
+	</botones>
+	<botones nombre="NOTAS"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Ver Notas</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>ver_notas()</funcion>	  
+	</botones>
+	<botones nombre="MALLA"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Ver Malla</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>ver_malla()</funcion>	  
+	</botones>	
+	<botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>inicio_toma_carga.asp</url>
+    </botones>
+    <botones nombre="SALIR">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>	
+ </parametro>
+  <parametro formulario="BotoneraEQ">
+    <botones nombre="ELIMINAR"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	   <accion>JAVASCRIPT</accion>
+	  <funcion>eliminar(document.edicion);_HabilitarBoton(this,false);</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+    <botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>abrir();</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+	<botones nombre="FORZAR"> 
+	  <tipoTexto>DEFINIR</tipoTexto>
+      <texto>Forzar Equivalencias</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>abrir2();</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+ </parametro>
+ <parametro formulario="BotoneraOptativos">
+    <botones nombre="ELIMINAR"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	   <accion>JAVASCRIPT</accion>
+	  <funcion>eliminar_optativo(document.edicion_optativo);</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+    <botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>abrir_optativo();</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+ </parametro>
+  <parametro formulario="BotoneraSeccionesEQ">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 
+    <botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>guardar(document.edicion);</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+    <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>salir()</funcion>
+	</botones> 	
+ </parametro>
+
+<parametro formulario="toma_carga" variable="d">
+		<campos nombre="secc_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<union>secc_ccod</union>
+			<salida>horario</salida>
+			<columnas>2</columnas>
+			<anulable>true</anulable>
+			<mensajeNulo>Sin sección asignada</mensajeNulo>
+			<mensajeVacio>No hay secciones disponibles</mensajeVacio>
+			<estilo>anchofijo</estilo>
+			<id>TO-N</id>
+		</campos>
+		<campos nombre="asignatura">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<union>mall_ccod</union>
+			<salida>asignatura</salida>
+			<columnas>2</columnas>
+			<anulable>true</anulable>
+			<mensajeNulo>Seleccione asignatura equivalente</mensajeNulo>
+			<mensajeVacio>No hay asignaturas disponibles</mensajeVacio>
+			<estilo>anchofijo</estilo>
+			<id>TO-N</id>
+		</campos>
+	</parametro>
+	<parametro formulario="buscador" variable="a">
+	    <listas nombre="lBusqueda">
+			<item clave="carr_ccod" valor="carr_tdesc" />
+			<item clave="asig_ccod" valor="asig_tdesc" />
+		</listas>
+		<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="asig_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+	</parametro>
+	<parametro formulario="buscador_optativos" variable="a">
+	    <listas nombre="lBusqueda">
+			<item clave="asig_tdesc" valor="asig_tdesc" />
+			<item clave="secc_ccod" valor="secc_tdesc" />
+		</listas>
+		<campos nombre="asig_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="secc_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+	</parametro>
+	<parametro formulario="combo_carreras" variable="ch">
+		<campos nombre="matr_ncorr">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<union>parametro</union>
+			<salida>salida</salida>
+			<script>onchange='javascript:dibujar(document.temporal);'</script>			
+			<id>TO-N</id>
+		</campos>
+	</parametro>
+	<parametro formulario="tabla_Op_deportivos" variable="d" clave="secc_ccod" mensajeError="No hay optativos deportivos para el alumno."
+		 maxLista="10" nroRegistros="10" anchoTabla="99%" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" eliminar="true" >
+		<campos nombre="matr_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="asignatura">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Asignatura</descripcion>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="horario">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Horario</descripcion>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="afecta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Afecta promedio</descripcion>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+	</parametro>
+	<parametro formulario="afecta_promedio" variable="d">
+	 <campos nombre="carg_afecta_promedio">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <objeto>RADIO</objeto>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <afirmacion>Sí</afirmacion>
+         <negacion>No</negacion>
+		 <id>TO-S</id>
+      </campos>
+	 </parametro>
+	<parametro formulario="BotoneraOptativosDeportivos">
+    <botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <formulario>edicion</formulario>
+      <funcionValidacion>validar()</funcionValidacion>
+      <url>guardar_optativo.asp</url>
+	  <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+    <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>salir()</funcion>
+	</botones> 	
+ </parametro>
+ <parametro formulario="BotoneraCursosArtisticos">
+    <botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <formulario>edicion</formulario>
+      <funcionValidacion>validar()</funcionValidacion>
+      <url>guardar_curso_dae.asp</url>
+	  <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+    <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>salir()</funcion>
+	</botones> 	
+ </parametro>
+ <parametro formulario="combo_sedes" variable="sede">
+		<campos nombre="sede_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<union>sede_ccod</union>
+			<salida>sede_tdesc</salida>
+			<script>onchange='javascript:re_envia();'</script>			
+			<id>TO-N</id>
+		</campos>
+	</parametro>
+	
+</Parametros>

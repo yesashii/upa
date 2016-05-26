@@ -1,0 +1,23 @@
+<Parametros>
+   <parametro formulario="flujos">
+	<campos nombre="fecha_corte">
+      <descripcion>Fecha Corte</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-N</id>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+    </campos>
+   </parametro>
+   <parametro formulario="botonera2">
+    <botones nombre="excel">
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Generar Excel</texto>
+		<accion>GUARDAR</accion>
+        <formulario>buscador</formulario>
+        <url>cuotas_profes_mes_excel.asp</url>
+    </botones>
+   </parametro>
+</Parametros>

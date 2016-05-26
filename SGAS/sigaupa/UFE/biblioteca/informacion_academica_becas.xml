@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="botonera">
+     <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+	 <botones nombre="cancelar"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>CERRAR</accion>
+	 </botones>
+	 <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 	
+	 <botones nombre="nueva"> 
+        <tipoTexto>AGREGAR</tipoTexto>
+	    <accion>AGREGAR</accion>
+	    <posicionX>100</posicionX>
+	    <posicionY>50</posicionY>
+	    <ancho>750</ancho>
+	    <alto>400</alto>	   
+	 </botones>
+	 <botones nombre="excel">
+       <tipoTexto>DEFINIR</tipoTexto>
+	   <texto>Generar archivo Excel</texto>
+       <accion>GUARDAR</accion>	   
+	   <formulario>edicion</formulario>
+   </botones>   
+	
+  </parametro>
+  
+  <parametro formulario="f_busqueda" variable="busqueda">
+   <campos nombre="pers_nrut">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>10</caracteres>
+			 <maxCaracteres>8</maxCaracteres>
+			 <id>NU-S</id>
+	</campos>
+    <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+    </campos>
+  </parametro>
+  
+   <parametro
+    paginaEdicion="avance_curricular_listado_detalle.asp?carr_ccod=%carr_ccod%&amp;plan_ccod=%plan_ccod%&amp;pers_ncorr=%pers_ncorr%" 
+	nuevaVentanaAlto="360" formulario="f_listado" nroRegistros="10" nuevaVentanaAncho="500" eliminar="false" clave="pers_ncorr" maxLista="10"
+	mensajeError="No se encontraron coincidencias con alumnos matriculados" 
+	seleccionarTodo="false" anchoTabla="100%" editar="TRUE" nuevaVentana="TRUE" variable="m" >
+	  <campos nombre="pers_ncorr">
+	    <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	  </campos>
+	  <campos nombre="carr_ccod">
+	    <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	  </campos>
+	  <campos nombre="plan_ccod">
+	    <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	  </campos>
+      <campos nombre="rut">
+	    <descripcion>Rut</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="nombre">
+	    <descripcion>Nombre</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="carrera">
+	    <descripcion>Carrera</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="ingreso">
+	    <descripcion>Ingreso</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="estado">
+	    <descripcion>Estado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="periodo">
+	    <descripcion>Periodo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="avance">
+	    <descripcion>Avance academico</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="nivel_estudio">
+	    <descripcion>Nivel de estudio base</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+   </parametro>
+   <parametro formulario="becas_descuentos" variable="becas_descuentos" mensajeError="No hay becas y descuentos para este alumno." anchoTabla="100%" nroRegistros="10" maxLista="10">
+      <campos nombre="contrato">
+         <descripcion>Nº Contrato</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="tben_ccod">
+         <descripcion>Tipo</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_beneficios</destino>
+         <union>tben_ccod</union>
+         <salida>tben_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="stde_tdesc">
+         <descripcion>Beneficio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="bene_fbeneficio">
+         <descripcion>Fecha</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+	  <campos nombre="bene_mmonto">
+         <descripcion>Monto Beneficio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+      </campos>
+      <campos nombre="bene_nporcentaje_matricula">
+         <descripcion>% (Matrícula)</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="bene_nporcentaje_colegiatura">
+         <descripcion>% (Colegiatura)</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+<parametro formulario="matriculas" anchoTabla="100%" 
+   colorResaltado="#CCCCCC"  mensajeError="No existe información del alumno"
+   colorSeleccionado="#CCCCCC" eliminar="FALSE" seleccionarTodo="FALSE"
+    editar="FALSE" 	paginaEdicion="" nuevaVentana="FALSE" variable="matri">
+     <campos nombre="num_con">
+	    <descripcion>N°Contrato</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="periodo">
+	    <descripcion>Periodo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="sede">
+	    <descripcion>Sede</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="carrera">
+	    <descripcion>Carrera</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="jornada">
+	    <descripcion>Jorn.</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="estado_alumno">
+	    <descripcion>Est Matricula</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="fecha">
+	    <descripcion>Fecha Matricula</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="estado_matricula">
+	    <descripcion>Est Alumno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+ </parametro>     
+    <parametro formulario="becas_mineduc" variable="becas_mineduc" mensajeError="No hay becas para este alumno." anchoTabla="100%" nroRegistros="10" maxLista="10">
+      <campos nombre="anos_ccod">
+         <descripcion>Año</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="tdet_tdesc">
+         <descripcion>Beca</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="monto_bene">
+         <descripcion>Monto Befeficio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+		 <formato>moneda</formato>
+      </campos>
+      <campos nombre="ano_adjudicacion">
+         <descripcion>Año Adjudicacion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+
+ </Parametros>

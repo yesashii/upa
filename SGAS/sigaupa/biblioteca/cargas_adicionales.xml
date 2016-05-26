@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="botonera">
+   	 <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	   <funcionValidacion>Validar();</funcionValidacion>
+	</botones>
+   	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>	 
+	</botones>	
+	<botones nombre="guardar"> 
+       <tipoTexto>DEFINIR</tipoTexto>
+	   <texto>Guardar Carga seleccionada</texto>
+       <accion>GUARDAR</accion>
+       <formulario>edicion</formulario>
+	   <url>cargas_adicionales_proc.asp</url>
+	</botones> 	
+   </parametro>
+   <parametro formulario="busqueda_usuarios_nuevo" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+		 <script>onBlur="genera_digito(this.value);"</script>
+         <id>NU-S</id>
+      </campos>
+        <campos nombre="pers_xdv">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>1</caracteres>
+			 <maxCaracteres>1</maxCaracteres>
+			 <script>onBlur="this.value=this.value.toUpperCase();"</script>
+			 <id>LN-S</id>
+        </campos>
+      </parametro>
+      <parametro formulario="busqueda" variable="busqueda">
+  		 <listas nombre="lBusqueda">
+			<item clave="sede_ccod" valor="sede_tdesc" />
+			<item clave="carr_ccod" valor="carr_tdesc" />
+			<item clave="jorn_ccod" valor="jorn_tdesc" />
+			<item clave="secc_ccod" valor="asig_tdesc" />
+		</listas>
+		<campos nombre="sede_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="jorn_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="secc_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+    </parametro>
+	<parametro formulario="carga_tomada_agregada" clave="secc_ccod" anchoTabla="100%" variable="carga" maxLista="25" nroRegistros="25"
+   mensajeError="No existe Carga Académica registrada para este alumno." eliminar="false" nuevaVentana="false" >
+      <campos nombre="matr_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="cod_asignatura">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Cod. Asignatura</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="asignatura">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Asignatura</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="creditos">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Créditos</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="seccion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Sección</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="horario">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Horario</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="tipo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Concepto</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+</Parametros>

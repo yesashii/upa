@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+	<parametro formulario="btn_portada" >
+	   <botones nombre="aceptar"> 
+		  <tipoTexto>Aceptar</tipoTexto>
+		  <accion>GUARDAR</accion>
+	      <url>proc_portada.asp</url>
+	      <formulario>valida</formulario>
+		</botones> 
+	</parametro>	
+   
+   <parametro formulario="f_datos" variable="datos">
+   	<campos nombre="login">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+		 <caracteres>12</caracteres>
+		 <alineamiento>LEFT</alineamiento>
+      </campos>
+     <campos nombre="clave">
+         <tipo>CLAVE</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <id>TO-N</id>
+		 <alineamiento>LEFT</alineamiento>
+      </campos>
+   </parametro>
+</Parametros>

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="BotoneraTomaCarga">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador);_HabilitarBoton(this,false);</funcion>
+	</botones> 
+    <botones nombre="ELIMINAR"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>elim_asig(document.edicion);_HabilitarBoton(this,false);</funcion>
+	 <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+    <botones nombre="GUARDAR"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>guardar(document.edicion);_HabilitarBoton(this,false);</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+	<botones nombre="HORARIO"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Horario</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>horario()</funcion>	  
+	</botones>
+	<botones nombre="NOTAS"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Ver Notas</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>ver_notas()</funcion>	  
+	</botones>	
+    <botones nombre="SALIR">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>menu_alumno.asp</url>
+      </botones>	
+ </parametro>
+  <parametro formulario="BotoneraEQ">
+    <botones nombre="ELIMINAR"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	   <accion>JAVASCRIPT</accion>
+	  <funcion>eliminar(document.edicion);_HabilitarBoton(this,false);</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+    <botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>abrir();</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+	<botones nombre="BORRAR2"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>eliminar2(document.edicion2);</funcion>
+	</botones> 
+    <botones nombre="NUEVO2"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>abrir2();</funcion>
+	</botones> 
+	<botones nombre="FORZAR"> 
+	  <tipoTexto>DEFINIR</tipoTexto>
+      <texto>Forzar Equivalencias</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>abrir2();</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+ </parametro>
+  <parametro formulario="BotoneraSeccionesEQ">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 
+    <botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>guardar(document.edicion);</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+    <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>salir()</funcion>
+	</botones> 	
+ </parametro>
+
+<parametro formulario="toma_carga" variable="d">
+		<campos nombre="secc_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<union>secc_ccod</union>
+			<salida>horario</salida>
+			<columnas>2</columnas>
+			<anulable>true</anulable>
+			<mensajeNulo>Sin sección asignada</mensajeNulo>
+			<mensajeVacio>No hay secciones disponibles</mensajeVacio>
+			<estilo>anchofijo</estilo>
+			<id>TO-N</id>
+		</campos>
+		<campos nombre="asignatura">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<union>mall_ccod</union>
+			<salida>asignatura</salida>
+			<columnas>2</columnas>
+			<anulable>true</anulable>
+			<mensajeNulo>Seleccione asignatura equivalente</mensajeNulo>
+			<mensajeVacio>No hay asignaturas disponibles</mensajeVacio>
+			<estilo>anchofijo</estilo>
+			<id>TO-N</id>
+		</campos>
+	</parametro>
+	<parametro formulario="buscador" variable="a">
+	    <listas nombre="lBusqueda">
+			<item clave="carr_ccod" valor="carr_tdesc" />
+			<item clave="asig_ccod" valor="asig_tdesc" />
+		</listas>
+		<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="asig_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+	</parametro>
+	<parametro  formulario="remediales" clave="matr_ncorr"  variable="doc"  nroRegistros="20" maxLista="10" 
+    eliminar="TRUE" seleccionarTodo="FALSE"  anchoTabla="100%" mensajeError="No se encontraron asignaturas remediales en la carga del alumno...">
+	 <tablas nombre="cargas_academicas" accion="B" />
+	 <campos nombre="secc_ccod">
+	    <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="asig_ccod">
+	    <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	  <campos nombre="asig_ccod_muestra">
+	    <descripcion>Cod. Asignatura</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+      <campos nombre="asig_tdesc">
+	    <descripcion>Asignatura</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	<campos nombre="secc_tdesc">
+	    <descripcion>Sección</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="horario">
+	    <descripcion>Horario</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+  </parametro> 
+  <parametro formulario="tabla"/>
+  <parametro formulario="toma_carga" 
+			clave="mcaj_ncorr" variable="toma_carga" 
+			mensajeError="No hay secciones para las asignaturas requeridas"
+			colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="false" editar="false" agregar="true" nuevaVentana="true" 
+			 anchoTabla="100%">
+		<tablas nombre="cargas_academicas" accion="I" />
+		<campos nombre="matr_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="asig_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="asig_ccod_paso">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>left</alineamiento>
+			<descripcion>Código</descripcion>
+		</campos>
+		<campos nombre="asignatura">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>left</alineamiento>
+			<descripcion>Asignatura</descripcion>
+		</campos>
+		<campos nombre="nive_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<descripcion>Nivel</descripcion>
+		</campos>
+		<campos nombre="asig_nhoras">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<descripcion>Horas</descripcion>
+		</campos>
+		<campos nombre="secc_ccod">
+			<tipo>SELECT</tipo>
+			<destino>(SELECT a.*, 'SEC '+
+               cast(a.secc_tdesc as varchar)+ ' -> '+ cast(protic.horario(a.secc_ccod)as varchar) AS horario
+          FROM secciones a, sub_secciones b
+         WHERE a.secc_ccod = b.secc_ccod
+           AND cast(b.tsse_ccod as varchar)= '1') a</destino>
+			<union>secc_ccod</union>
+			<salida>horario</salida>
+			<orden>cast(secc_tdesc as varchar)</orden>
+			<permiso>LECTURAESCRITURA</permiso>
+			<alineamiento>center</alineamiento>
+			<descripcion>Sección</descripcion>
+			<anulable>true</anulable>
+		<!--	<varCondicionNulo>reprobado</varCondicionNulo>
+			<valCondicionNulo>0</valCondicionNulo> -->
+			<mensajeNulo>Sin sección asignada</mensajeNulo>
+			<mensajeVacio>No hay secciones disponibles</mensajeVacio>
+			<estilo>anchofijo</estilo>
+		</campos>
+		<campos nombre="sit_asignatura">
+		</campos>
+	</parametro>
+	<parametro formulario="tabla_resumen" variable="d" clave="secc_ccod" mensajeError="No hay equivalencias para el alumno."
+		 maxLista="10" nroRegistros="10" anchoTabla="99%" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" eliminar="true" >
+		<campos nombre="a_plan">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Asignatura del Plan</descripcion>
+			<ancho>33%</ancho>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="a_destino">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Asignatura a Cursar</descripcion>
+			<ancho>33%</ancho>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="seccion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Sección - Horario</descripcion>
+			<ancho>33%</ancho>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+	</parametro>
+	<parametro formulario="tabla_resumen_otra_sede" variable="d" clave="secc_ccod" mensajeError="No hay equivalencias para el alumno."
+		 maxLista="10" nroRegistros="10" anchoTabla="99%" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" eliminar="true" >
+		<campos nombre="a_plan">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Asignatura del Plan</descripcion>
+			<ancho>25%</ancho>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="a_destino">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Asignatura a Cursar</descripcion>
+			<ancho>25%</ancho>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="seccion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Sección - Horario</descripcion>
+			<ancho>25%</ancho>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="sede">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Sede</descripcion>
+			<ancho>25%</ancho>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+	</parametro>	
+</Parametros>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>	
+	<parametro formulario="botonera">	
+		<botones nombre="Volver"> 
+      		<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Volver</texto>		
+	  		<accion>JAVASCRIPT</accion>
+	  		<funcion>volver();</funcion>	   		
+		</botones>
+		<botones nombre="grabar"> 
+      		<tipoTexto>GUARDAR</tipoTexto>
+	  		<accion>JAVASCRIPT</accion>
+			<formulario>edicion</formulario>
+			<funcion>validar();</funcion>
+			<soloUnClick>TRUE</soloUnClick>			
+		</botones>
+		<botones nombre="excel_otec">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Observaciones</texto>
+         <accion>NAVEGAR</accion>
+		 <url>observaciones_otec_excel.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+	</parametro>
+	<parametro formulario="botonera2">	
+		<botones nombre="Volver"> 
+      		<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Volver</texto>		
+			<formulario>edicion</formulario>
+	  		<accion>JAVASCRIPT</accion>
+	  		<funcion>Volver();</funcion>	   		
+		</botones>
+		<botones nombre="grabar"> 
+      		<tipoTexto>GUARDAR</tipoTexto>
+	  		<accion>JAVASCRIPT</accion>
+			<formulario>edicion</formulario>
+			<funcion>validar();</funcion>
+			<soloUnClick>TRUE</soloUnClick>			
+		</botones>
+		<botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Opinión Del Curso</texto>
+         <accion>NAVEGAR</accion>
+		 <url>observaciones_excel.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+	  <botones nombre="pdf">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Exportar PDF</texto>
+		 <accion>NAVEGAR</accion>
+         <url>javascript:pdf();</url>
+		 <deshabilitado>FALSE</deshabilitado>
+    </botones>
+	</parametro>
+</Parametros>

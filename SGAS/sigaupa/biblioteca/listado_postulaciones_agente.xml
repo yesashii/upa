@@ -1,0 +1,138 @@
+<Parametros>
+   <parametro formulario="f_listado" anchoTabla="100%" 
+   colorResaltado="#CCCCCC"  mensajeError="No existen postulantes asociados a este agente"
+   colorSeleccionado="#CCCCCC" eliminar="FALSE" seleccionarTodo="FALSE"
+    editar="TRUE" 	paginaEdicion="detalle_postulacion.asp?personas[0][pers_ncorr]=%pers_ncorr%" 
+	clave="pers_ncorr" nuevaVentana="FALSE"	variable="alumnos" nroRegistros="15" maxLista="15" >
+    <campos nombre="rut">
+	   <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<descripcion>RUT</descripcion>
+	 </campos>
+     <campos nombre="alumno">
+	    <descripcion>Nombre Postulante</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="ingresado">
+	    <descripcion>Ingresado el día</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="total_agentes">
+	    <descripcion>Total Agentes</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="total_carreras">
+	    <descripcion>Total Carreras</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="gestionado">
+	    <descripcion>Gestionado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="ultima_modificacion">
+	    <descripcion>Última Gestión</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+   </parametro> 
+   
+   <parametro formulario="f_listado_del_dia" anchoTabla="100%" 
+   colorResaltado="#CCCCCC"  mensajeError="No existen postulantes a llamar durante el día de hoy"
+   colorSeleccionado="#CCCCCC" eliminar="FALSE" seleccionarTodo="FALSE"
+    editar="TRUE" 	paginaEdicion="detalle_postulacion.asp?personas[0][pers_ncorr]=%pers_ncorr%" 
+	clave="pers_ncorr" nuevaVentana="FALSE"	variable="alumnos_fecha" nroRegistros="15" maxLista="15" >
+    <campos nombre="rut">
+	   <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<descripcion>RUT</descripcion>
+	 </campos>
+     <campos nombre="alumno">
+	    <descripcion>Nombre Postulante</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="ingresado">
+	    <descripcion>Ingresado el día</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="total_agentes">
+	    <descripcion>Total Agentes</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="total_carreras">
+	    <descripcion>Total Carreras</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="gestionado">
+	    <descripcion>Gestionado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="ultima_modificacion">
+	    <descripcion>Última Gestión</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+   </parametro>     
+      
+  <parametro formulario="botonera">
+   <botones nombre="cancelar"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>	 
+	</botones>	
+	<botones nombre="anterior">
+      <tipoTexto>ANTERIOR</tipoTexto>
+      <accion>NAVEGAR</accion>
+	  <url>listado_postulaciones.asp</url>
+    </botones>
+	 <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+      </botones>
+	  <botones nombre="excel_encuesta">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel encuesta Admisión</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+      </botones>
+	  <botones nombre="excel_test_pendiente">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel Entrevistas pendientes</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+      </botones>
+</parametro>
+<parametro formulario="busqueda_usuarios_nuevo" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+		 <script>onBlur="genera_digito(this.value);"</script>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+</parametro>
+</Parametros>

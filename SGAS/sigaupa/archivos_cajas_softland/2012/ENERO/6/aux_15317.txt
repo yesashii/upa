@@ -1,0 +1,5 @@
+10560192,COVARRUBIAS VALENZUELA HERNAN ANIBAL,,10560192-1,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17184325,MESA ASTABURUAGA PABLO IGNACIO,,17184325-1,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17409451,STAMNA CEPEDA MARIA JAVIERA,,17409451-9,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17701189,COVARRUBIAS IBARRA FRANCISCA,,17701189-4,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18634927,ACLE VALDIVIESO MARIA  SOFIA,,18634927-K,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

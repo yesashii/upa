@@ -1,0 +1,6 @@
+7051961,DEL SANTE VIVES CATALINA,,7051961-5,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+10848127,TOCORNAL COOPER MARIA JOSEFINA,,10848127-7,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+15638461,GONZALEZ COOPER FELIPE ANDRES,,15638461-5,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+16361133,LARRAIN DEL SANTE RAFAEL IGNACIO,,16361133-3,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+16940080,DEL VALLE VELASCO MARIA SOLEDAD,,16940080-6,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17087855,FERNANDEZ LLORENTE JAVIERA,,17087855-8,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

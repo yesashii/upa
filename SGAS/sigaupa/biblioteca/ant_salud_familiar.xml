@@ -1,0 +1,115 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>propiedades_grupo_familiar.asp</url>
+      </botones>
+	  <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_enfermo.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+	  <botones nombre="agregar">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Guardar</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion2</formulario>
+		 <url>proc_agregar_ant_salud.asp</url>
+      </botones>
+	  <botones nombre="nuevo"> 
+		  <tipoTexto>AGREGAR</tipoTexto>
+		  <accion>JAVASCRIPT</accion>
+		  <funcion>abrir();</funcion>
+		   <soloUnClick>TRUE</soloUnClick>
+	 </botones> 
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	   <botones nombre="siguiente">
+         <tipoTexto>siguiente</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+		 <url>proc_propiedades.asp</url>
+      </botones>
+	  <botones nombre="cerrar">
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+		 <funcion>CerrarActualizar();</funcion>
+      </botones>
+   </parametro>
+   
+   <parametro formulario="grilla_enfermos" variable="padre" editar="true"  eliminar="TRUE" 
+   paginaEdicion="agregar_enfermo.asp?enfp_ncorr=%enfp_ncorr%" nuevaVentana="TRUE" clave="enfp_ncorr"
+   anchoTabla="100%" maxLista="25" nroRegistros="25" mensajeError="No se han ingresado familiares para el alumno" 
+   nuevaVentanaAncho="550" nuevaVentanaAlto="350">
+      	 <campos nombre="pers_ncorr">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+		  </campos>  
+		  <campos nombre="Nom_familiar">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Nombre</descripcion>
+			 <id>TO-N</id>
+		  </campos>
+		  <campos nombre="Parentesco">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Parentesco</descripcion>
+			 <id>NU-S</id>
+		  </campos>
+		  <campos nombre="enfp_ncosto">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Costo</descripcion>
+		  </campos>
+		  <campos nombre="enfp_tdiagnostico">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Diagnóstico</descripcion>
+		  </campos>
+   </parametro>
+   <parametro formulario="datos_enfermos" variable="enfermo" editar="false"  eliminar="true" 
+   paginaEdicion="" nuevaVentana="FALSE" clave="enfp_ncorr" 
+   anchoTabla="100%" mensajeError="">
+   <tablas nombre="enfermedades_persona" accion="M"/>
+       	<campos nombre="pers_ncorr">
+			 <tipo>SELECT</tipo>
+			 <union>pers_ncorr</union>
+			 <salida>familiar</salida>
+			 <orden>familiar</orden>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <anulable>TRUE</anulable>
+			 <mensajeNulo>Seleccionar</mensajeNulo>
+			 <mensajeVacio>Seleccionar</mensajeVacio>
+			 <id>TO-N</id>
+      </campos>
+		<campos nombre="enfp_ncosto">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <descripcion>Costo</descripcion>
+			 <caracteres>10</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>NU-N</id>
+		  </campos>
+		  <campos nombre="enfp_tdiagnostico">
+				<descripcion>Detalle Comentario</descripcion>
+			    <tipo>TEXTAREA</tipo>
+			    <permiso>LECTURAESCRITURA</permiso>
+			    <filas>5</filas>
+			    <caracteres>50</caracteres>
+			    <id>TO-N</id>
+		  </campos>
+		  <campos nombre="prpe_navaluo">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <descripcion>Avalúo Fiscal ($)</descripcion>
+			 <id>NU-N</id>
+		  </campos>
+   </parametro>
+ 
+ </Parametros>

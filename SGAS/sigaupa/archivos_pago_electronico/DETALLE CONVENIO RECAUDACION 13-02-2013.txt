@@ -1,0 +1,2 @@
+RUT , ID , NombreCliente , TipoMoneda , ValorCuota , ValorMora, MontoRecaudado , FechaVcto , FechaRecaudacion 
+166301408,396150,CERVERA FERNANDEZ ROCIO BELEN,Pesos,115800,0,115800,15/02/2013,13/02/2013

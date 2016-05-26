@@ -1,0 +1,207 @@
+
+<!--construido 02/06/2015 V1.0 -->
+<Parametros> 
+ <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+		 <funcionValidacion>ValidaBusqueda();</funcionValidacion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cancelar">
+         <tipoTexto>Cerrar</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>cerrarVentana()</funcion>
+      </botones>
+	  <botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+		 <accion>GUARDAR</accion>
+		 <url>proc_cambio_asignatura.asp</url>
+		 <formulario>edicion</formulario>	
+		 </botones>
+	
+   </parametro>
+
+<parametro formulario="buscador" variable="buscador">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>LN-N</id>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="datos_alumno" >	  
+	  <campos nombre="nombre">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="rut">
+         <descripcion>Rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  
+   </parametro>
+   <parametro formulario="cambio_detalle_oferta_academica"  variable="datos"  clave="post_ncorr">
+        	
+	 <campos nombre="ofer_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <script>onkeypress="ValidaSoloNumeros()";</script>
+		 <maxCaracteres>4</maxCaracteres>
+         <caracteres>6</caracteres>
+      </campos> 
+   </parametro>
+   
+<parametro formulario="detalle_ingreso" mensajeError="No se registra matricula para este Alumno." paginaEdicion="modifica_oferta_academica.asp?num_ofe=%num_ofe%&amp;amp;POST_NCORR=%POST_NCORR%&amp;amp;jorn_ccod=%jorn_ccod%&amp;amp;ofer_ncorr=%ofer_ncorr%&amp;amp;pers_ncorr=%pers_ncorr%&amp;amp;POST_BNUEVO=%POsT_BNUEVO%&amp;amp;sede_ccod=%sede_ccod%&amp;amp;peri_ccod=%peri_ccod%&amp;amp;carr_ccod=%carr_ccod%&amp;amp;espe_ccod=%espe_ccod%" editar ="TRUE" nuevaVentana="TRUE">
+ 
+			<campos nombre="sede_ccod">
+			<alineamiento>center</alineamiento>
+			<descripcion>Codigo sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			</campos> 
+			
+			<campos nombre="peri_ccod">
+			<alineamiento>center</alineamiento>
+			<descripcion>Codigo sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			</campos> 
+			
+			<campos nombre="carr_ccod">
+			<alineamiento>center</alineamiento>
+			<descripcion>Codigo sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			</campos>
+			
+			<campos nombre="espe_ccod">
+			<alineamiento>center</alineamiento>
+			<descripcion>Codigo sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			</campos> 
+			
+			<campos nombre="POST_NCORR">
+			<alineamiento>center</alineamiento>
+			<descripcion>Codigo Postulacion</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			</campos> 
+
+					
+			<campos nombre="POST_BNUEVO">
+			<alineamiento>center</alineamiento>
+			<descripcion>Codigo Oferta</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			</campos>
+			
+			<campos nombre="ofer_ncorr">
+			<alineamiento>center</alineamiento>
+			<descripcion>Codigo Oferta</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			</campos>
+			
+			<campos nombre="pers_ncorr">
+			<alineamiento>center</alineamiento>
+			<descripcion>Codigo Persona</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			</campos>
+			
+			<campos nombre="jorn_ccod">
+			<alineamiento>center</alineamiento>
+			<descripcion>Codigo Jornada</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			</campos>
+
+			
+			<campos nombre="num_pos">
+			<alineamiento>center</alineamiento>
+			<descripcion>No. de la Postulación</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			</campos>
+			
+			<campos nombre="num_ofe">
+			<alineamiento>center</alineamiento>
+			<descripcion>No. de la Oferta</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			</campos>
+						
+			<campos nombre="periodo">
+			<alineamiento>center</alineamiento>
+			<descripcion>Periodo/Semestre</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			</campos>
+			
+			<campos nombre="sede">
+			<alineamiento>center</alineamiento>
+			<descripcion>Sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			</campos>
+			
+			<campos nombre="carrera">
+			<alineamiento>center</alineamiento>
+			<descripcion>Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			</campos>
+			
+			<campos nombre="jornada">
+			<alineamiento>center</alineamiento>
+			<descripcion>Jornada</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			</campos>
+			
+			<campos nombre="mension">
+			<alineamiento>center</alineamiento>
+			<descripcion>Mension</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			</campos> 
+			
+			<campos nombre="estado_pos">
+			<alineamiento>center</alineamiento>
+			<descripcion>Estado de Postulación</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			</campos>
+			 
+			<campos nombre="estado_examen">
+			<alineamiento>center</alineamiento>
+			<descripcion>Estado Teste</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			</campos>
+			 
+			
+			 
+   </parametro>
+   
+   
+</Parametros> 

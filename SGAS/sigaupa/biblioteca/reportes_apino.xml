@@ -1,0 +1,99 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="filtros_flujo_venc_cursos" anchoTabla="100%" variable="filtros">
+      <botones nombre="generar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Generar</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>AbrirReporte();</funcion>
+         <formulario>edicion</formulario>
+         <target>_blank</target>
+         <url>/reportesnet/rep_flujo_venc_cursos.aspx</url>
+      </botones>
+      <campos nombre="peri_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="sede_ccod">
+         <tipo>SELECT</tipo>
+         <descripcion>Sede</descripcion>
+         <destino>sedes</destino>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="anos_ccod">
+         <descripcion>Año</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>4</maxCaracteres>
+      </campos>
+      <campos nombre="formato">
+         <columnas>3</columnas>
+         <descripcion>Formato</descripcion>
+         <tipo>RADIO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>(select 1 as formato, 'PDF' as descripcion union select 2 as formato, 'EXCEL' as descripcion ) a</destino>
+         <union>formato</union>
+         <salida>descripcion</salida>
+      </campos>
+   </parametro>
+   <parametro formulario="filtros_alumnos_cursos" anchoTabla="100%" variable="filtros">
+      <botones nombre="generar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Generar</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>AbrirReporte();</funcion>
+         <formulario>edicion</formulario>
+         <target>_blank</target>
+         <url>/reportesnet/rep_flujo_venc_cursos.aspx</url>
+      </botones>
+      <campos nombre="peri_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="sede_ccod">
+         <tipo>SELECT</tipo>
+         <descripcion>Sede</descripcion>
+         <destino>sedes</destino>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="anos_ccod">
+         <descripcion>Año</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>4</maxCaracteres>
+      </campos>
+      <campos nombre="tdet_ccod">
+         <descripcion>Curso</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_detalle</destino>
+         <union>tdet_ccod</union>
+         <salida>tdet_tdesc</salida>
+         <orden>tdet_tdesc asc</orden>
+         <filtro>tcom_ccod=7</filtro>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Todos</mensajeNulo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="formato">
+         <columnas>3</columnas>
+         <descripcion>Formato</descripcion>
+         <tipo>RADIO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>(select 1 as formato, 'PDF' as descripcion union select 2 as formato, 'EXCEL' as descripcion ) a</destino>
+         <union>formato</union>
+         <salida>descripcion</salida>
+      </campos>
+   </parametro>
+</Parametros>

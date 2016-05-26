@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+<parametro formulario="botonera">
+ 	<botones nombre="buscar_cajas"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	  <soloUnClick>TRUE</soloUnClick>
+   </botones>
+   <botones nombre="salir"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	<botones nombre="eliminar">
+		 <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Eliminar</texto>
+		 <accion>NAVEGAR</accion>
+		 <url>javascript:EliminaDetalle();</url>
+	</botones>
+	<botones nombre="guardar">
+		 <tipoTexto>GUARDAR</tipoTexto>
+		 <accion>GUARDAR</accion>
+		 <url>vb_finanzas_proc.asp</url>
+		 <formulario>datos</formulario>
+	</botones>	
+    <botones nombre="buscar">
+		 <tipoTexto>BUSCAR</tipoTexto>
+		 <accion>BUSCAR</accion>
+		 <formulario>buscador</formulario>
+		 <soloUnClick>TRUE</soloUnClick>
+	  </botones>
+</parametro>
+
+<parametro formulario="buscador" variable="busqueda">
+	<campos nombre="solicitud">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-S</id>
+	</campos>
+	<campos nombre="tsol_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_solicitud</destino>
+		 <union>tsol_ccod</union>
+		 <salida>tsol_tdesc</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+	</campos>
+</parametro>
+
+<parametro formulario="datos_solicitud" variable="datos" clave="cod_solicitud" anchoTabla="100%" eliminar="true" 
+mensajeError="No hay solicitudes que cumplan la condición de esta aprobadas por presupuesto" >
+		<tablas nombre="ocag_solicitud_giro" accion="M"/>
+		<campos nombre="tsol_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="vcon_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="dpva_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>									
+		<campos nombre="num_solicitud">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>N°Giro</descripcion>
+		</campos>
+		<campos nombre="tsol_tcodigo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Tipo</descripcion>
+		</campos>
+		<campos nombre="aprueba">
+			 <tipo>BOLEANO</tipo>
+			 <objeto>RADIO</objeto>
+			 <deshabilitado>TRUE</deshabilitado>			 
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <descripcion>Aprueba &lt;br&gt;|SI|NO|</descripcion>
+			 <columnas>2</columnas>
+			 <alineamiento>CENTER</alineamiento>
+			 <script>onClick='CambiaValor(this)'</script>
+			 <id>TO-N</id>
+		</campos>
+		<campos nombre="asgi_nestado">
+			 <tipo>SELECT</tipo>
+			 <destino>ocag_estado_autorizacion</destino>
+			 <union>asgi_nestado</union>
+			 <salida>asgi_tdesc</salida>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <anulable>false</anulable>
+			 <deshabilitado>TRUE</deshabilitado>
+			 <filtro>asgi_nestado in (5,3) </filtro>
+		</campos>		
+		<campos nombre="asgi_tobservaciones">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <deshabilitado>TRUE</deshabilitado>
+			 <caracteres>25</caracteres>
+			 <maxCaracteres>55</maxCaracteres>
+			 <descripcion>Observaciones</descripcion>
+		</campos>
+		<campos nombre="asgi_fautorizado_finanzas">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <deshabilitado>TRUE</deshabilitado>
+			 <caracteres>12</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>FE-N</id>
+			 <descripcion>Fecha Normal</descripcion>
+		</campos>
+		<campos nombre="asgi_fpropuesta_finanzas">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <deshabilitado>TRUE</deshabilitado>
+			 <caracteres>12</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>FE-N</id>
+			 <descripcion>Fecha Propuesta</descripcion>
+		</campos>		
+		<campos nombre="pers_tnombre">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Proveedor</descripcion>
+		</campos>
+		<campos nombre="monto">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>12</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <descripcion>Monto</descripcion>
+		</campos>			
+		<campos nombre="usuario">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Solicitante</descripcion>
+		</campos>
+		<campos nombre="solicitud">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Solicitud</descripcion>
+		</campos>
+</parametro> 
+
+<parametro formulario="autoriza_solicitud_giro" variable="datos" >
+	<tablas nombre="ocag_autoriza_solicitud_giro" accion="M"/>
+</parametro>
+
+</Parametros>

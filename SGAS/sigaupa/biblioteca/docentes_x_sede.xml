@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+<parametro formulario="botonera">
+     <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+	 <botones nombre="buscar"> 
+        <tipoTexto>BUSCAR</tipoTexto>
+	    <accion>BUSCAR</accion>
+	    <formulario>buscador</formulario>
+		<soloUnClick>TRUE</soloUnClick>
+	 </botones>
+	  <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones>
+	 <botones nombre="anterior">
+         	<tipoTexto>DEFINIR</tipoTexto>
+         	<accion>GUARDAR</accion>
+			<texto>Anterior</texto>
+			<formulario>edicion</formulario>
+     </botones>
+</parametro>
+ 
+<parametro formulario="f_busqueda" variable="busqueda">
+    <campos nombre="sede_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>(select sede_ccod,sede_tdesc from sedes where sede_ccod in (1,2,4,5,6,7))a</destino> 
+	  <union>sede_ccod</union>
+	  <salida>sede_TDESC</salida>
+      <orden>sede_TDESC asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione una Sede</mensajeNulo>
+	  <mensajeVacio>Seleccione una Sede</mensajeVacio>
+	  <id>TO-N</id>
+   </campos>
+  </parametro>
+  <parametro formulario="f_busqueda_nuevo" variable="busqueda">
+    <campos nombre="sede_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>(select sede_ccod,sede_tdesc from sedes where sede_ccod in (1,2,4,5,6,7))a</destino> 
+	  <union>sede_ccod</union>
+	  <salida>sede_TDESC</salida>
+      <orden>sede_TDESC asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Todas</mensajeNulo>
+	  <mensajeVacio>Todas</mensajeVacio>
+	  <id>TO-S</id>
+   </campos>
+  </parametro>
+  <parametro formulario="lista_docentes" anchoTabla="100%" resumen ="TRUE" maxLista="10" nroRegistros="20" 
+   mensajeError="No se encontraron docentes">
+	    <campos nombre="pers_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="rut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>RUT</descripcion>
+		</campos>
+		<campos nombre="nombre">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nombre Docente</descripcion>
+			<caracteres>10</caracteres>
+		</campos>
+		<campos nombre="grado">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Grado</descripcion>
+			<caracteres>10</caracteres>
+		</campos>
+</parametro>
+<parametro formulario="lista_docentes_horas" anchoTabla="100%" resumen ="TRUE" maxLista="10" nroRegistros="20" 
+   mensajeError="No se encontraron docentes">
+	    <campos nombre="pers_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="rut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>RUT</descripcion>
+		</campos>
+		<campos nombre="nombre">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nombre Docente</descripcion>
+			<caracteres>10</caracteres>
+		</campos>
+		<campos nombre="grado">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Grado</descripcion>
+			<caracteres>10</caracteres>
+		</campos>
+		<campos nombre="horas">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Horas Totales</descripcion>
+			<caracteres>10</caracteres>
+		</campos>
+		<campos nombre="horas_semanales">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Horas Semanales</descripcion>
+			<caracteres>10</caracteres>
+		</campos>
+</parametro>
+<parametro formulario="lista_docentes_horas2" anchoTabla="100%" resumen ="TRUE" maxLista="10" nroRegistros="20" 
+   mensajeError="No se encontraron docentes">
+	    <campos nombre="pers_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="rut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>RUT</descripcion>
+		</campos>
+		<campos nombre="nombre">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nombre Docente</descripcion>
+			<caracteres>10</caracteres>
+		</campos>
+		<campos nombre="periodo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Periodo</descripcion>
+			<caracteres>10</caracteres>
+		</campos>
+		<campos nombre="jornada">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Jornada</descripcion>
+			<caracteres>10</caracteres>
+		</campos>
+		<campos nombre="horas">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Horas Totales</descripcion>
+			<caracteres>10</caracteres>
+		</campos>
+		<campos nombre="horas_semanales">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Horas Semanales</descripcion>
+			<caracteres>10</caracteres>
+		</campos>
+</parametro>
+
+</Parametros>

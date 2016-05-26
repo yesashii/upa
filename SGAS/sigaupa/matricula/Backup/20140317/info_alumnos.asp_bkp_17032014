@@ -1,0 +1,935 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+
+<%
+'*******************************************************************
+'DESCRIPCION		:
+'FECHA CREACIÓN		:
+'CREADO POR 		:
+'ENTRADA		:NA
+'SALIDA			:NA
+'MODULO QUE ES UTILIZADO:POSTULACION 
+'
+'--ACTUALIZACION--
+'
+'FECHA ACTUALIZACION 	:06/03/2013
+'ACTUALIZADO POR	:JAIME PAINEMAL A.
+'MOTIVO			:Corregir código, eliminar sentencia *=
+'LINEA			:68,70
+'********************************************************************
+ip_usuario=Request.ServerVariables("REMOTE_ADDR")
+'response.Write(ip_usuario)
+
+set pagina = new CPagina
+pagina.Titulo = "Información de alumnos"
+'---------------------------------------------------------------------------------------------------
+set conexion = new CConexion
+conexion.Inicializar "upacifico"
+
+set negocio = new CNegocio
+negocio.Inicializa conexion
+
+'---------------------------------------------------------------------------------------------------
+rut = request.querystring("busqueda[0][pers_nrut]")
+digito = request.querystring("busqueda[0][pers_xdv]")
+grabar = request.querystring("grabar")
+'--------------------------------------------------------------------------
+
+'response.Write(session.Timeout)
+
+
+ set f_busqueda = new CFormulario
+ f_busqueda.Carga_Parametros "info_alumnos.xml", "busqueda_usuarios_nuevo"
+ f_busqueda.Inicializar conexion
+ f_busqueda.Consultar "select '' "
+ f_busqueda.Siguiente
+ 
+ f_busqueda.AgregaCampoCons "pers_nrut", rut
+ f_busqueda.AgregaCampoCons "pers_xdv", digito
+'--------------------------------------------------------------------------
+set botonera = new CFormulario
+botonera.Carga_Parametros "info_alumnos.xml", "botonera"
+'--------------------------------------------------------------------------
+set datos_personales = new CFormulario
+datos_personales.Carga_Parametros "tabla_vacia.xml", "tabla"
+datos_personales.Inicializar conexion
+'consulta_datos =  " select a.pers_ncorr,protic.format_rut(pers_nrut) as rut, "& vbCrLf &_
+'				  " a.pers_tnombre + ' ' + a.pers_tape_paterno + ' ' +a.pers_tape_materno as nombre, "& vbCrLf &_
+'				  " isnull(b.sexo_tdesc,'-No ingresado-') as sexo,isnull(c.pais_tdesc,'-No ingresado-') as pais  "& vbCrLf &_
+'				  " from personas_postulante a,sexos b,paises c "& vbCrLf &_
+'				  " where cast(a.pers_nrut as varchar)='"&rut&"' "& vbCrLf &_
+'				  " and a.sexo_ccod *=b.sexo_ccod "& vbCrLf &_
+'				  " and a.pais_ccod *=c.pais_ccod"
+
+consulta_datos =  " select a.pers_ncorr,protic.format_rut(pers_nrut) as rut, "& vbCrLf &_
+				  " a.pers_tnombre + ' ' + a.pers_tape_paterno + ' ' +a.pers_tape_materno as nombre, "& vbCrLf &_
+				  " isnull(b.sexo_tdesc,'-No ingresado-') as sexo,isnull(c.pais_tdesc,'-No ingresado-') as pais  "& vbCrLf &_
+				  " from personas_postulante a LEFT OUTER JOIN sexos b "& vbCrLf &_
+				  " ON a.sexo_ccod = b.sexo_ccod "& vbCrLf &_
+				  " LEFT OUTER JOIN paises c "& vbCrLf &_
+				  " ON a.pais_ccod = c.pais_ccod "& vbCrLf &_
+				  " WHERE cast(a.pers_nrut as varchar)='"&rut&"' "
+
+'response.Write("<pre>"&consulta_datos&"</pre>")
+datos_personales.Consultar consulta_datos
+datos_personales.siguiente
+
+codigo = datos_personales.obtenerValor("pers_ncorr")
+rut_completo = datos_personales.obtenerValor("rut")
+nombre = datos_personales.obtenerValor("nombre")
+sexo = datos_personales.obtenerValor("sexo")
+pais = datos_personales.obtenerValor("pais")
+
+if not esvacio(codigo) then
+es_moroso = conexion.consultaUno("select protic.es_moroso('"&codigo&"', getDate())")
+	if es_moroso="N" then
+		moroso = "No"
+	else
+	    consulta_monto = " select isnull(sum(protic.total_recepcionar_cuota(dc.tcom_ccod, dc.inst_ccod,dc.COMP_NDOCTO,dc.DCOM_NCOMPROMISO)), 0) "& vbCrLf &_
+    					 " from compromisos cc,detalle_compromisos dc "& vbCrLf &_
+    					 " where cc.tcom_ccod = dc.tcom_ccod "& vbCrLf &_
+			             "        and cc.comp_ndocto = dc.comp_ndocto "& vbCrLf &_
+				         "        and cc.inst_ccod = dc.inst_ccod      "& vbCrLf &_
+						 "        --and convert(datetime,dc.DCOM_FCOMPROMISO,103) < convert(datetime,getDate(),103) "& vbCrLf &_
+			             "		and dateadd(day,4,convert(datetime,dc.DCOM_FCOMPROMISO,103)) < convert(datetime,getDate(),103) "& vbCrLf &_
+				         "        and dc.ecom_ccod = 1 "& vbCrLf &_
+				         "        and cc.ecom_ccod = 1 "& vbCrLf &_
+				         "        and cast(cc.pers_ncorr as varchar)= '"&codigo&"'" 
+		
+		moroso = "Sí"		
+		monto = conexion.consultaUno(consulta_monto)
+    end if
+end if
+
+'------------------------------------------------------------------------------------------------------
+'----------------------------buscamos la información de acceso al sistema por parte del alumno
+set datos_online = new CFormulario
+datos_online.Carga_Parametros "info_alumnos.xml", "formu_online"
+datos_online.Inicializar conexion
+consulta_acceso =  " select susu_tlogin as login,case when pers_ncorr in (103170,12118,101130) then '******' else susu_tclave end as clave, (select case count(*) when 0 then 'Sin asignar' else 'Asignados' end from sis_roles_usuarios bb where bb.pers_ncorr=a.pers_ncorr and bb.srol_ncorr=4) as autorizado, "& vbCrLf &_
+                   " (select top 1 lower(email_nuevo) from cuentas_email_upa tt where tt.pers_ncorr=a.pers_ncorr) as email"& vbCrLf &_
+				   " from sis_usuarios a where cast(pers_ncorr as varchar)='"&codigo&"'"
+
+datos_online.Consultar consulta_acceso
+datos_online.siguiente
+
+'------------------------------------------------------------------------------------------------------
+'----------------------------buscamos la información de acceso al sistema para entrar postulación
+set datos_acceso = new CFormulario
+datos_acceso.Carga_Parametros "info_alumnos.xml", "formu_clave"
+datos_acceso.Inicializar conexion
+consulta_acceso =  " select usua_tpregunta,usua_trespuesta,usua_tusuario,usua_tclave "& vbCrLf &_
+				  " from usuarios where cast(pers_ncorr as varchar)='"&codigo&"'"
+
+datos_acceso.Consultar consulta_acceso
+datos_acceso.siguiente
+'------------------------------------------------------------------------------------------------------
+'----------------------------buscamos la información de postulaciones del alumno
+set datos_postulacion = new CFormulario
+datos_postulacion.Carga_Parametros "info_alumnos.xml", "postulaciones"
+datos_postulacion.Inicializar conexion
+consulta_postulacion =  " select distinct b.ofer_ncorr as num_ofe,b.post_ncorr as num_pos,c.peri_ccod,protic.initcap(f.peri_tdesc) as periodo,protic.initcap(g.sede_tdesc) as sede, protic.initcap(e.carr_tdesc) as carrera,case h.jorn_ccod when 1 then '(D)' else '(V)' end as jornada,cast(d.espe_ccod as varchar)+ '-->' + protic.initcap(d.espe_tdesc) as mension  "& vbCrLf &_
+						" ,case a.epos_ccod when 1 then 'No enviada' when 2 then 'Enviada' end as estado_pos, protic.initcap(i.eepo_tdesc) as estado_examen,f.anos_ccod,f.plec_ccod " & vbCrLf &_
+						" from postulantes a, detalle_postulantes b, ofertas_academicas c, especialidades d, "& vbCrLf &_
+						"     carreras e, periodos_Academicos f, sedes g, jornadas h,estado_examen_postulantes i "& vbCrLf &_
+						" where cast(a.pers_ncorr as varchar)='"&codigo&"'"& vbCrLf &_
+						"	and a.post_ncorr = b.post_ncorr "& vbCrLf &_
+						"	and b.ofer_ncorr = c.ofer_ncorr "& vbCrLf &_
+						"	and c.espe_ccod  = d.espe_ccod "& vbCrLf &_
+						"	and d.carr_ccod  = e.carr_ccod "& vbCrLf &_
+						"	and c.peri_ccod  = f.peri_ccod "& vbCrLf &_
+						"	and c.sede_ccod  = g.sede_ccod "& vbCrLf &_
+						"	and c.jorn_ccod  = h.jorn_ccod "& vbCrLf &_
+						"	and b.eepo_ccod  = i.eepo_ccod "& vbCrLf &_
+						" order by f.anos_ccod asc,f.plec_ccod asc,b.post_ncorr asc "
+'response.Write("<pre>"&consulta_postulacion&"</pre>")
+'response.End()
+datos_postulacion.Consultar consulta_postulacion
+'datos_postulacion.siguiente
+
+'------------------------------------------------------------------------------------------------------
+'----------------------------buscamos la información de las matriculas del alumno
+set datos_matriculas = new CFormulario
+datos_matriculas.Carga_Parametros "info_alumnos.xml", "matriculas"
+datos_matriculas.Inicializar conexion
+consulta_matriculas =  " select case when m.espe_ccod <> d.espe_ccod then '<font color=red><strong>'+cast(a.matr_ncorr as varchar)+'</strong></font>' else cast(a.matr_ncorr as varchar) end  as num_matricula, a.post_ncorr as num_pos,cast(j.cont_ncorr as varchar) + case j.contrato when null then '' else '(' + cast(contrato as varchar) + ')' end  as num_con,protic.initcap(f.peri_tdesc) as periodo,protic.initcap(g.sede_tdesc) as sede, protic.initcap(e.carr_tdesc) as carrera,case h.jorn_ccod when 1 then '(D)' else '(V)' end as jornada,cast(d.espe_ccod as varchar)+ '-->' + protic.initcap(d.espe_tdesc) as mension, "& vbCrLf &_
+					   " protic.initcap(i.emat_tdesc) as estado_alumno, protic.trunc(isnull(j.cont_fcontrato,a.alum_fmatricula)) as fecha, isnull(k.econ_tdesc,'*') as estado_matricula "& vbCrLf &_   
+					   " ,'('+cast(l.plan_ccod as varchar)+') '+ l.plan_tdesc as plan_estu, m.espe_ccod as espe_plan,f.anos_ccod,f.plec_ccod,isnull(j.cont_fcontrato,a.alum_fmatricula) as fecha2  "& vbCrLf &_
+					   " from "& vbCrLf &_
+					   " alumnos a join ofertas_academicas c "& vbCrLf &_
+				       "    on a.ofer_ncorr = c.ofer_ncorr "& vbCrLf &_
+					   " join especialidades d "& vbCrLf &_
+				       "    on c.espe_ccod  = d.espe_ccod "& vbCrLf &_
+					   " join carreras e "& vbCrLf &_
+				       "    on d.carr_ccod  = e.carr_ccod "& vbCrLf &_
+					   " join periodos_Academicos f "& vbCrLf &_
+				       "    on c.peri_ccod  = f.peri_ccod  "& vbCrLf &_
+				       " join sedes g "& vbCrLf &_
+				       "    on c.sede_ccod  = g.sede_ccod "& vbCrLf &_
+				       " join jornadas h "& vbCrLf &_
+				       "    on c.jorn_ccod  = h.jorn_ccod  "& vbCrLf &_
+					   " join estados_matriculas i "& vbCrLf &_
+					   "    on a.emat_ccod  = i.emat_ccod "& vbCrLf &_
+					   " left outer join contratos j "& vbCrLf &_
+					   "    on a.matr_ncorr = j.matr_ncorr "& vbCrLf &_
+				       " left outer join estados_contrato k "& vbCrLf &_
+					   "    on j.econ_ccod = k.econ_ccod "& vbCrLf &_
+					   "left outer join planes_estudio l "& vbCrLf &_
+					   "    on a.plan_ccod = l.plan_ccod   "& vbCrLf &_
+					   " left outer join especialidades m "& vbCrLf &_
+					   "    on l.espe_ccod = m.espe_ccod " & vbCrLf &_
+					   " where cast(a.pers_ncorr as varchar)='"&codigo&"' "& vbCrLf &_
+					   " union  "& vbCrLf &_
+ 					   " select '' as num_matricula, null as num_pos,null  as num_con,protic.initcap(d.peri_tdesc) as periodo,null as sede, protic.initCap(linea_1_certificado + ' ' + linea_2_certificado) as carrera,  "& vbCrLf &_
+					   " null as jornada,protic.initCap(linea_1_certificado + ' ' + linea_2_certificado) as mension,   "& vbCrLf &_
+					   " protic.initcap(c.emat_tdesc) as estado_alumno, protic.trunc(a.fecha_proceso) as fecha, '*' as estado_matricula   "& vbCrLf &_
+					   " ,null as plan_estu, null as espe_plan,d.anos_ccod,d.plec_ccod,a.fecha_proceso as fecha2   "& vbCrLf &_
+					   " from alumnos_salidas_intermedias a, salidas_carrera b,estados_matriculas c,periodos_academicos d, carreras e  "& vbCrLf &_
+					   " where cast(a.pers_ncorr as varchar)='"&codigo&"' and a.saca_ncorr=b.saca_ncorr    "& vbCrLf &_
+					   " and a.emat_ccod=c.emat_ccod  and a.peri_ccod = d.peri_ccod and b.carr_ccod=e.carr_ccod "& vbCrLf &_
+					   " order by anos_ccod asc,plec_ccod asc, fecha2 asc    "
+'response.Write("<pre>"&consulta_matriculas&"</pre>")
+datos_matriculas.Consultar consulta_matriculas
+'datos_matriculas.siguiente
+consulta = " select top 1 cast(c.pers_nrut as varchar)+ '-' +c.pers_xdv + ' : ' + c.pers_tnombre +  ' ' + c.pers_tape_paterno + ' (' + d.pare_tdesc + ') post: ' + cast(b.post_ncorr as varchar) " & vbCrLf &_
+		   " from postulantes a, codeudor_postulacion b, personas c,parentescos d " & vbCrLf &_
+		   " where cast(a.pers_ncorr as varchar)='"&codigo&"' " & vbCrLf &_
+		   " and a.post_ncorr=b.post_ncorr " & vbCrLf &_
+		   " and a.peri_ccod = (select max(peri_ccod) " & vbCrLf &_
+		   " from postulantes aa, codeudor_postulacion ba where cast(aa.pers_ncorr as varchar)='"&codigo&"' and aa.post_ncorr=ba.post_ncorr) " & vbCrLf &_
+		   " and b.pers_ncorr=c.pers_ncorr " & vbCrLf &_
+		   " and b.pare_ccod=d.pare_ccod " & vbCrLf &_
+		   " order by post_fpostulacion desc "
+codeudor = conexion.consultaUno(consulta)
+
+
+usuario=negocio.ObtenerUsuario()
+pers_ncorr_encargado=conexion.consultaUno("Select pers_ncorr from personas where cast(pers_nrut as varchar)='"&usuario&"'")
+
+autorizado = conexion.consultaUno("select case count(*) when 0 then 'N' else 'S' end from sis_roles_usuarios a where srol_ncorr='99' and cast(pers_ncorr as varchar)='"&pers_ncorr_encargado&"'")
+registro_evento = conexion.consultaUno("select case count(*) when 0 then 'N' else 'S' end from sis_roles_usuarios a where srol_ncorr='190' and cast(pers_ncorr as varchar)='"&pers_ncorr_encargado&"'")	
+if registro_evento = "S" then
+	pagina.Titulo = "Registro de asistencia a eventos"
+end if
+
+c_post_ncorr = " select top 1 a.post_ncorr  " & vbCrLf &_
+		   " from postulantes a " & vbCrLf &_
+		   " where cast(a.pers_ncorr as varchar)='"&codigo&"' and epos_ccod = 2" & vbCrLf &_
+		   " and a.peri_ccod = (select max(peri_ccod) " & vbCrLf &_
+		   " from postulantes aa, codeudor_postulacion ba where cast(aa.pers_ncorr as varchar)='"&codigo&"' and aa.post_ncorr=ba.post_ncorr) " & vbCrLf &_
+           " --and exists (select 1 from contratos cc, compromisos dd where cc.post_ncorr=a.post_ncorr and cc.cont_ncorr=dd.comp_ndocto and dd.ecom_ccod <> 3)" & vbCrLf &_    
+		   " order by post_fpostulacion desc "
+'response.Write("<pre>"&c_post_ncorr&"</pre>")
+ultimo_post_ncorr = conexion.consultaUno(c_post_ncorr)
+
+'if codigo="98823" then
+'ultimo_post_ncorr="105193"
+'end if
+'response.Write("<pre>"&c_post_ncorr&"</pre>")
+
+tiene_foto  = conexion.consultaUno("Select case count(*) when 0 then 'N' else 'S' end from rut_fotos_2010 where cast(rut as varchar)='"&rut&"'")
+tiene_foto2 = conexion.consultaUno("Select case count(*) when 0 then 'N' else 'S' end from fotos_alumnos where cast(pers_nrut as varchar)='"&rut&"'")
+
+if tiene_foto="S" then 
+ 	nombre_foto = conexion.consultaUno("Select ltrim(rtrim(imagen)) from rut_fotos_2010 where cast(rut as varchar)='"&rut&"'")
+elseif tiene_foto="N" and tiene_foto2="S" then 
+  	nombre_foto = conexion.consultaUno("Select ltrim(rtrim(foto_truta)) from fotos_alumnos where cast(pers_nrut as varchar)='"&rut&"'")	
+else
+    nombre_foto = "user.png"
+end if
+
+'Agregamos select para seleccionar sala
+set f_salas = new CFormulario
+f_salas.Carga_Parametros "info_alumnos.xml", "fselect"
+f_salas.Inicializar conexion
+f_salas.Consultar "select '' "
+f_salas.Siguiente
+
+v_mes_actual	= 	Month(now())
+v_anio_actual	= 	Year(now())
+if v_mes_actual <= 7 then 
+	plec_laboratorio = 1 
+else
+	plec_laboratorio = 2
+end if
+peri_ccod_lab = conexion.consultaUno("select peri_ccod from periodos_academicos where cast(anos_ccod as varchar)='"&v_anio_actual&"' and cast(plec_ccod as varchar)='"&plec_laboratorio&"'")
+peri_tdesc_lab = conexion.consultaUno("select peri_tdesc from periodos_academicos where cast(peri_ccod as varchar)='"&peri_ccod_lab&"'")
+
+
+%>
+
+
+<html>
+<head>
+<title><%=pagina.Titulo%></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../estilos/estilos.css" rel="stylesheet" type="text/css">
+<link href="../estilos/tabla.css" rel="stylesheet" type="text/css">
+
+<script language="JavaScript" src="../biblioteca/tabla.js"></script>
+<script language="JavaScript" src="../biblioteca/funciones.js"></script>
+<script language="JavaScript" src="../biblioteca/validadores.js"></script>
+
+<script language="JavaScript">
+function pdf(parametro)
+{
+	direccion = "ficha_alumno.asp?post_ncorr="+parametro;
+	resultado=window.open(direccion, "info","scrollbars=yes,resizable,width=700,height=750");
+
+}
+function Validar()
+{
+	formulario = document.buscador;
+	
+	rut_alumno = formulario.elements["busqueda[0][pers_nrut]"].value + "-" + formulario.elements["busqueda[0][pers_xdv]"].value;	
+	if (formulario.elements["busqueda[0][pers_nrut]"].value  != '')
+  	  if (!valida_rut(rut_alumno)) {
+		alert('Ingrese un RUT válido.');
+		formulario.elements["busqueda[0][pers_xdv]"].focus();
+		formulario.elements["busqueda[0][pers_xdv]"].select();
+		return false;
+	  }
+	
+	
+	return true;
+}
+
+function genera_digito (rut){
+ var IgStringVerificador, IgN, IgSuma, IgDigito, IgDigitoVerificador, rut;
+ var texto_rut = new String(rut);
+ var posicion_guion = 0;
+ 
+ posicion_guion = texto_rut.indexOf("-");
+ if (posicion_guion != -1)
+ {
+    texto_rut = texto_rut.substring(0,posicion_guion);
+    document.buscador.elements["busqueda[0][pers_nrut]"].value= texto_rut;
+	rut = texto_rut;
+ }
+// texto_rut.
+ //alert(texto_rut);
+   if (rut.length==7) rut = '0' + rut; 
+
+   
+   IgStringVerificador = '32765432';
+   IgSuma = 0;
+   for( IgN = 0; IgN < 8 && IgN < rut.length; IgN++)
+      IgSuma = eval(IgSuma + '+' + rut.substr(IgN, 1) + '*' + IgStringVerificador.substr(IgN, 1) + ';');
+   IgDigito = 11 - IgSuma % 11;
+   IgDigitoVerificador = IgDigito==10?'K':IgDigito==11?'0':IgDigito;
+   //alert(IgDigitoVerificador);
+buscador.elements["busqueda[0][pers_xdv]"].value=IgDigitoVerificador;
+//alert(rut+IgDigitoVerificador);
+_Buscar(this, document.forms['buscador'],'', 'Validar();', 'FALSE');
+}
+function abrir_info_persona(rut)
+{
+	if (confirm("La carga de datos puede tardar algunos segundos,¿Desea continuar?"))
+	{
+	  window.open("../condensador/alumno.asp?busqueda[0][pers_nrut]="+rut,"fullscreen", 'top=0,left=0,width='+(screen.availWidth)+',height ='+(screen.availHeight)+',toolbar=0 ,location=0,directories=0,status=0,resizable=1,scrolling=1,scrollbars=1');
+    }
+}
+</script>
+
+<style type="text/css">
+.button {
+	display: inline-block;
+	zoom: 1; /* zoom and 
+	display = ie7 hack for display:inline-block */
+	*display: inline;
+	vertical-align: baseline;
+	margin: 0 2px;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font: 14px/100% Arial, Helvetica, sans-serif;
+	padding: .5em 2em .55em;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .5em; 
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+.button:hover {
+	text-decoration: none;
+}
+.button:active {
+	position: relative;
+	top: 1px;
+}
+ 
+.bigrounded {
+	-webkit-border-radius: 2em;
+	-moz-border-radius: 2em;
+	border-radius: 2em;
+}
+.medium {
+	font-size: 12px;
+	padding: .4em 1.5em .42em;
+}
+.small {
+	font-size: 11px;
+	padding: .2em 1em .275em;
+}
+
+/* black */
+.black {
+	color: #d7d7d7;
+	border: solid 1px #333;
+	background: #333;
+	background: -webkit-gradient(linear, left top, left bottom, from(#666), to(#000));
+	background: -moz-linear-gradient(top,  #666,  #000);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#666666', endColorstr='#000000');
+}
+.black:hover {
+	background: #000;
+	background: -webkit-gradient(linear, left top, left bottom, from(#444), to(#000));
+	background: -moz-linear-gradient(top,  #444,  #000);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#444444', endColorstr='#000000');
+}
+.black:active {
+	color: #666;
+	background: -webkit-gradient(linear, left top, left bottom, from(#000), to(#444));
+	background: -moz-linear-gradient(top,  #000,  #444);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#666666');
+}
+ 
+/* gray */
+.gray {
+	color: #e9e9e9;
+	border: solid 1px #555;
+	background: #6e6e6e;
+	background: -webkit-gradient(linear, left top, left bottom, from(#888), to(#575757));
+	background: -moz-linear-gradient(top,  #888,  #575757);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#888888', endColorstr='#575757');
+}
+.gray:hover {
+	background: #616161;
+	background: -webkit-gradient(linear, left top, left bottom, from(#757575), to(#4b4b4b));
+	background: -moz-linear-gradient(top,  #757575,  #4b4b4b);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#757575', endColorstr='#4b4b4b');
+}
+.gray:active {
+	color: #afafaf;
+	background: -webkit-gradient(linear, left top, left bottom, from(#575757), to(#888));
+	background: -moz-linear-gradient(top,  #575757,  #888);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#575757', endColorstr='#888888');
+}
+ 
+/* white */
+.white {
+	color: #606060;
+	border: solid 1px #b7b7b7;
+	background: #fff;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ededed));
+	background: -moz-linear-gradient(top,  #fff,  #ededed);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed');
+}
+.white:hover {
+	background: #ededed;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#dcdcdc));
+	background: -moz-linear-gradient(top,  #fff,  #dcdcdc);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dcdcdc');
+}
+.white:active {
+	color: #999;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#fff));
+	background: -moz-linear-gradient(top,  #ededed,  #fff);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#ffffff');
+}
+ 
+/* orange */
+.orange {
+	color: #fef4e9;
+	border: solid 1px #da7c0c;
+	background: #f78d1d;
+	background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+	background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+}
+.orange:hover {
+	background: #f47c20;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
+	background: -moz-linear-gradient(top,  #f88e11,  #f06015);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
+}
+.orange:active {
+	color: #fcd3a5;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f47a20), to(#faa51a));
+	background: -moz-linear-gradient(top,  #f47a20,  #faa51a);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
+}
+ 
+/* red */
+.red {
+	color: #faddde;
+	border: solid 1px #980c10;
+	background: #d81b21;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ed1c24), to(#aa1317));
+	background: -moz-linear-gradient(top,  #ed1c24,  #aa1317);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed1c24', endColorstr='#aa1317');
+}
+.red:hover {
+	background: #b61318;
+	background: -webkit-gradient(linear, left top, left bottom, from(#c9151b), to(#a11115));
+	background: -moz-linear-gradient(top,  #c9151b,  #a11115);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#c9151b', endColorstr='#a11115');
+}
+.red:active {
+	color: #de898c;
+	background: -webkit-gradient(linear, left top, left bottom, from(#aa1317), to(#ed1c24));
+	background: -moz-linear-gradient(top,  #aa1317,  #ed1c24);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#aa1317', endColorstr='#ed1c24');
+}
+ 
+/* blue */
+.blue {
+	color: #d9eef7;
+	border: solid 1px #0076a3;
+	background: #0095cd;
+	background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+	background: -moz-linear-gradient(top,  #00adee,  #0078a5);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#00adee', endColorstr='#0078a5');
+}
+.blue:hover {
+	background: #007ead;
+	background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+	background: -moz-linear-gradient(top,  #0095cc,  #00678e);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#0095cc', endColorstr='#00678e');
+}
+.blue:active {
+	color: #80bed6;
+	background: -webkit-gradient(linear, left top, left bottom, from(#0078a5), to(#00adee));
+	background: -moz-linear-gradient(top,  #0078a5,  #00adee);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#0078a5', endColorstr='#00adee');
+}
+ 
+/* rosy */
+.rosy {
+	color: #fae7e9;
+	border: solid 1px #b73948;
+	background: #da5867;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f16c7c), to(#bf404f));
+	background: -moz-linear-gradient(top,  #f16c7c,  #bf404f);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f16c7c', endColorstr='#bf404f');
+}
+.rosy:hover {
+	background: #ba4b58;
+	background: -webkit-gradient(linear, left top, left bottom, from(#cf5d6a), to(#a53845));
+	background: -moz-linear-gradient(top,  #cf5d6a,  #a53845);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#cf5d6a', endColorstr='#a53845');
+}
+.rosy:active {
+	color: #dca4ab;
+	background: -webkit-gradient(linear, left top, left bottom, from(#bf404f), to(#f16c7c));
+	background: -moz-linear-gradient(top,  #bf404f,  #f16c7c);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#bf404f', endColorstr='#f16c7c');
+}
+ 
+/* green */
+.green {
+	color: #e8f0de;
+	border: solid 1px #538312;
+	background: #64991e;
+	background: -webkit-gradient(linear, left top, left bottom, from(#7db72f), to(#4e7d0e));
+	background: -moz-linear-gradient(top,  #7db72f,  #4e7d0e);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#7db72f', endColorstr='#4e7d0e');
+}
+.green:hover {
+	background: #538018;
+	background: -webkit-gradient(linear, left top, left bottom, from(#6b9d28), to(#436b0c));
+	background: -moz-linear-gradient(top,  #6b9d28,  #436b0c);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#6b9d28', endColorstr='#436b0c');
+}
+.green:active {
+	color: #a9c08c;
+	background: -webkit-gradient(linear, left top, left bottom, from(#4e7d0e), to(#7db72f));
+	background: -moz-linear-gradient(top,  #4e7d0e,  #7db72f);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#4e7d0e', endColorstr='#7db72f');
+}
+ 
+/* pink */
+.pink {
+	color: #feeef5;
+	border: solid 1px #d2729e;
+	background: #f895c2;
+	background: -webkit-gradient(linear, left top, left bottom, from(#feb1d3), to(#f171ab));
+	background: -moz-linear-gradient(top,  #feb1d3,  #f171ab);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#feb1d3', endColorstr='#f171ab');
+}
+.pink:hover {
+	background: #d57ea5;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f4aacb), to(#e86ca4));
+	background: -moz-linear-gradient(top,  #f4aacb,  #e86ca4);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4aacb', endColorstr='#e86ca4');
+}
+.pink:active {
+	color: #f3c3d9;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f171ab), to(#feb1d3));
+	background: -moz-linear-gradient(top,  #f171ab,  #feb1d3);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f171ab', endColorstr='#feb1d3');
+}
+</style>
+</head>
+<body bgcolor="#CC6600" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../imagenes/botones/buscar_f2.gif','../images/bot_deshabilitar_f2.gif','../images/agregar2_f2_p.gif','im&amp;#225;genes/marco1_r3_c2_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c4_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c6_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c8_f2.gif');MM_preloadImages('../imagenes/botones/cargar_f2.gif','../imagenes/botones/continuar_f2.gif')">
+<table width="750" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><img src="../imagenes/vineta2_r1_c1.gif" width="750" height="72" border="0"></td>
+  </tr>
+  <%pagina.DibujarEncabezado()%>  
+  <tr>
+    <td valign="top" bgcolor="#EAEAEA">
+	<br>
+	<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr> 
+                <td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <!-- fwtable fwsrc="marco contenidos.png" fwbase="top.gif" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" -->
+                    <tr> 
+                      <td><img src="../imagenes/spacer.gif" width="9" height="1" border="0" alt=""></td>
+                      <td><img src="../imagenes/spacer.gif" width="559" height="1" border="0" alt=""></td>
+                      <td><img src="../imagenes/spacer.gif" width="7" height="1" border="0" alt=""></td>
+                    </tr>
+                    <tr> 
+                      <td><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+                      <td height="8"><img name="top_r1_c2" src="../imagenes/top_r1_c2.gif" width="670" height="8" border="0" alt=""></td>
+                      <td><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+                    </tr>
+                    <tr> 
+                      <td><img name="top_r2_c1" src="../imagenes/top_r2_c1.gif" width="9" height="17" border="0" alt=""></td>
+                      <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <tr> 
+                            <td width="15" background="../imagenes/fondo1.gif"><img src="../imagenes/izq_1.gif" width="5" height="17"></td>
+                            <td width="210" valign="bottom" background="../imagenes/fondo1.gif"> 
+                              <div align="left"><font color="#FFFFFF" size="2" face="Verdana, Arial, Helvetica, sans-serif">Buscador 
+                                </font></div></td>
+                            <td width="6"><img src="../imagenes/derech1.gif" width="6" height="17"></td>
+                            <td width="423" bgcolor="#D8D8DE"><font color="#D8D8DE" size="1">.</font></td>
+                          </tr>
+                        </table></td>
+                      <td><img name="top_r2_c3" src="../imagenes/top_r2_c3.gif" width="7" height="17" border="0" alt=""></td>
+                    </tr>
+                    <tr> 
+                      <td><img name="top_r3_c1" src="../imagenes/top_r3_c1.gif" width="9" height="2" border="0" alt=""></td>
+                      <td><img name="top_r3_c2" src="../imagenes/top_r3_c2.gif" width="670" height="2" border="0" alt=""></td>
+                      <td><img name="top_r3_c3" src="../imagenes/top_r3_c3.gif" width="7" height="2" border="0" alt=""></td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr> 
+                      <td width="9" height="62" align="left" background="../imagenes/izq.gif">&nbsp;</td>
+                      <td bgcolor="#D8D8DE"><div align="center"> 
+                          <form name="buscador">
+                            <table width="98%"  border="0">
+                              <tr> 
+                                <td width="81%"><table width="524" border="0">
+                                    <tr> 
+                                      <td width="98">Rut Usuario</td>
+                                      <td width="23">:</td>
+                                      <td width="389"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+                                        <%f_busqueda.DibujaCampo("pers_nrut") %>
+                                        - 
+                                        <%f_busqueda.DibujaCampo("pers_xdv")%>
+                                        </font><a href="javascript:buscar_persona('busqueda[0][pers_nrut]', 'busqueda[0][pers_xdv]');"><img src="../imagenes/lupa_f2.gif" width="16" height="15" border="0"></a></td>
+                                    </tr>
+                                  </table></td>
+                                <td width="19%"><div align="center"> 
+                                    <%botonera.DibujaBoton "buscar" %>
+                                  </div></td>
+                              </tr>
+							  <%if negocio.obtenerUsuario = "13813352" or negocio.obtenerUsuario = "11592558" then%>
+							  <tr>
+							     <td colspan="2" align="center">
+								     <%if rut <> "" then%>
+									   <!--<input type="button" value="Información completa del Alumno" class="button orange small" title="Ver información del alumno" onClick="abrir_info_persona(<%=rut%>)">-->
+									   <table width="200" border="0" bordercolor="#666666">
+									   	<tr>
+											<td width="100%">
+												<table width="200" cellpadding="0" cellspacing="0" align="center" title="Ir al Módulo de alumnos" onClick="abrir_info_persona(<%=rut%>)">
+												<tr>
+													<td width="50" height="50"><img width="50" height="50" src="../imagenes/busqueda.png" border="0"></td>
+													<td width="10">&nbsp;</td>
+													<td width="140"><font size="2" color="#0066CC" face="Times New Roman, Times, serif"><strong>Visitar M&oacute;dulo Integrado<br>Informaci&oacute;n Alumno.</strong></font></td>
+												</tr>
+											   </table>
+											</td>
+										</tr>
+									   </table>
+									   
+									 <%end if%>
+								 </td>
+							  </tr>
+							 <%end if%>
+                            </table>
+                          </form>
+                        </div></td>
+                      <td width="7" align="right" background="../imagenes/der.gif">&nbsp;</td>
+                    </tr>
+                    <tr> 
+                      <td align="left" valign="top"><img src="../imagenes/base1.gif" width="9" height="13"></td>
+                      <td valign="top" bgcolor="#D8D8DE"><img src="../imagenes/base2.gif" width="670" height="13"></td>
+                      <td align="right" valign="top"><img src="../imagenes/base3.gif" width="7" height="13"></td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table></td>
+      </tr>
+    </table>	
+	<br>		
+	<%if rut <> "" then%>
+	<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+              <!-- fwtable fwsrc="marco contenidos.png" fwbase="top.gif" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" -->
+              <tr>
+                <td><img src="../imagenes/spacer.gif" width="9" height="1" border="0" alt=""></td>
+                <td><img src="../imagenes/spacer.gif" width="559" height="1" border="0" alt=""></td>
+                <td><img src="../imagenes/spacer.gif" width="7" height="1" border="0" alt=""></td>
+              </tr>
+              <tr>
+                <td><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+                <td><img src="../imagenes/top_r1_c2.gif" alt="" name="top_r1_c2" width="670" height="8" border="0"></td>
+                <td><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+              </tr>
+              <tr>
+                <td><img name="top_r2_c1" src="../imagenes/top_r2_c1.gif" width="9" height="17" border="0" alt=""></td>
+                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td width="13" background="../imagenes/fondo1.gif"><img src="../imagenes/izq_1.gif" width="5" height="17"></td>
+                      <td width="209" valign="middle" background="../imagenes/fondo1.gif">
+                      <div align="left"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">Datos 
+                          Encontrados</font></div></td>
+                      <td width="448" bgcolor="#D8D8DE"><img src="../imagenes/derech1.gif" width="6" height="17"></td>
+                    </tr>
+                </table></td>
+                <td><img name="top_r2_c3" src="../imagenes/top_r2_c3.gif" width="7" height="17" border="0" alt=""></td>
+              </tr>
+              <tr>
+                <td><img name="top_r3_c1" src="../imagenes/top_r3_c1.gif" width="9" height="2" border="0" alt=""></td>
+                <td><img name="top_r3_c2" src="../imagenes/top_r3_c2.gif" width="670" height="2" border="0" alt=""></td>
+                <td><img name="top_r3_c3" src="../imagenes/top_r3_c3.gif" width="7" height="2" border="0" alt=""></td>
+              </tr>
+            </table>
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" aling="center">
+                <tr>
+                  <td width="9" align="left" background="../imagenes/izq.gif">&nbsp;</td>
+                  
+                <td bgcolor="#D8D8DE"> <div align="center">&nbsp; 
+                    <BR>
+					<%pagina.DibujarTituloPagina%>
+                  </div>
+                  <%if rut<>"" then%>
+				  <table width="100%" border="0">
+				    <tr valign="top">
+						<td colspan="3">
+							<table width="100%" cellpadding="0" cellspacing="0">
+								<tr>
+									<td width="80%" align="left">
+										<table width="100%" cellpadding="0" cellspacing="0">
+											<tr> 
+											  <td align="left" width="15%"><strong>C&oacute;digo</strong></td>
+											  <td align="left" width="2%"><strong>:</strong></td>
+											  <td width="83%" align="left"><%=codigo%></td>
+											</tr>
+											<tr> 
+											  <td align="left" width="15%"><strong>R.U.T.</strong></td>
+											  <td align="left" width="2%"><strong>:</strong></td>
+											  <td align="left"><%=rut_completo%></td>
+											</tr>
+											<tr> 
+											  <td align="left" width="15%"><strong>Nombre</strong></td>
+											  <td align="left" width="2%"><strong>:</strong></td>
+											  <td align="left"><%=nombre%></td>
+											</tr>
+											<tr> 
+											  <td align="left" width="15%"><strong>Sexo</strong></td>
+											  <td align="left" width="2%"><strong>:</strong></td>
+											  <td align="left"><%=sexo%></td>
+											</tr>
+											<tr> 
+											  <td align="left" width="15%"><strong>Pa&iacute;s</strong></td>
+											  <td align="left" width="2%"><strong>:</strong></td>
+											  <td align="left"><%=pais%></td>
+											</tr>
+											<%if registro_evento="N" then%>
+											<tr> 
+											  <td align="left" width="15%"><strong>Es Moroso</strong></td>
+											  <td align="left" width="2%"><strong>:</strong></td>
+											  <td align="left"><%=moroso%></td>
+											</tr>
+											<tr> 
+											  <td align="left" width="15%"><strong>Monto deuda</strong></td>
+											  <td align="left" width="2%"><strong>:</strong></td>
+											  <td align="left"><%=monto%></td>
+											</tr>
+											<tr> 
+											  <td align="left" width="15%"><strong>Último Codeudor</strong></td>
+											  <td align="left" width="2%"><strong>:</strong></td>
+											  <td align="left"><%=codeudor%></td>
+											</tr>
+											<%end if%>
+										</table>								
+									</td>
+									<td width="20%" align="center">
+									    <img width="90" height="98" src="../informacion_alumno_2008b/imagenes/alumnos/<%=nombre_foto%>" border="2">
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+                    
+					<%if (autorizado= "S" or registro_evento="S") and grabar <> "1" then%>
+					<tr><td colspan="3" align="center">&nbsp;</td></tr>
+                    <form name="solicitud_permiso" method="get">
+                      <input type="hidden" name="rut" value="<%=rut%>">
+                      <input type="hidden" name="digito" value="<%=digito%>">
+                      <input type="hidden" name="de_soporte" value="si">     
+                      <input type="hidden" name="peri" value="<%=peri_ccod_lab%>">                 
+					<tr>
+					   <td colspan="3" height="30" align="center" bgcolor="#d8d8de">
+                           <table width="90%" cellpadding="0" cellspacing="0" border="1" bordercolorlight="#0099FF" bordercolordark="#CC6600">
+                           <tr>
+                               <td width="100%">
+                                 <table width="100%" cellpadding="0" cellspacing="0">
+                                    <tr><td colspan="2">&nbsp;</td></tr>
+                                    <tr>
+                                       <td width="50%" align="right"><strong>Seleccione Sala</strong></td>
+                                       <td width="50%" align="left">:<%f_salas.dibujaCampo("sala_ccod")%></td>
+                                    </tr>
+                                    <tr>
+                                       <td width="50%" align="right"><strong>Período académico</strong></td>
+                                       <td width="50%" align="left">:<%=peri_tdesc_lab%></td>
+                                    </tr>
+                                    <tr><td colspan="2">&nbsp;</td></tr>
+                                    <tr>
+                                       <td width="50%" align="right"><%botonera.DibujaBoton "autorizar"%></td>
+                                       <td width="50%" align="left"><%botonera.agregaBotonParam "excel","url","../jefe_carrera/horario_sala_excel.asp"
+									                                  botonera.DibujaBoton "excel"%></td>
+                                    </tr>
+                                    <tr><td colspan="2">&nbsp;</td></tr>
+					              </table>   
+                               </td>
+                           </tr>
+                          </table>
+				      </td>
+					</tr>
+                    </form>
+					<%elseif grabar = "1" then %>
+					<tr><td colspan="3" align="center">&nbsp;</td></tr>
+					<tr>
+					   <td colspan="3" height="30" align="center" bgcolor="#009933"><font color="#FFFFFF" size="2"><strong>La Autorización de ingreso a Laboratorio o Evento para el alumno fue grabada correctamente.</strong></font>
+				      </td>
+					</tr>
+					<%end if%>
+                  </table>
+				  <%end if%>
+				  <table width="100%" border="0">
+                    <tr> 
+                      <td align="left">&nbsp;</td>
+                    </tr>
+					<%if registro_evento="N" then 'Para bloquear acceso a datos para las personas de asistencia a eventos%>
+					<%if usuario <> "12284733" then 'para bloquear el acceso a claves de alumno por parte del asistente externo de dae%>
+					<tr> 
+                      <td align="left">- Datos de acceso a <strong>PACÍFICO ONLINE.</strong></td>
+                    </tr>
+					<tr> 
+						<td><form name="edicion_online">
+							<div align="center">
+							  <% datos_online.DibujaTabla %>
+							</div>
+						  </form>
+					  </td>
+                    </tr>
+					<tr> 
+                      <td align="left">&nbsp;</td>
+                    </tr>
+					<tr> 
+                      <td align="left">- Datos de acceso al sistema de <strong>Postulación.</strong></td>
+                    </tr>
+					<tr> 
+						<td><form name="edicion_acceso">
+							<div align="center">
+							  <% datos_acceso.DibujaTabla %>
+							</div>
+						  </form>
+					  </td>
+                    </tr>
+					<tr> 
+                      <td align="left">&nbsp;</td>
+                    </tr>
+					<%end if%>
+					<tr> 
+                      <td align="left">- Datos de postulaciones históricas de la persona.</td>
+                    </tr>
+					<tr> 
+						<td><form name="edicion_postulacion">
+							<div align="center">
+							  <%datos_postulacion.DibujaTabla %>
+							</div>
+						  </form>
+					  </td>
+                    </tr>
+					<tr> 
+                      <td align="left">&nbsp;</td>
+                    </tr>
+					<tr> 
+                      <td align="left">- Datos de matriculas históricas de la persona.</td>
+                    </tr>
+					<tr> 
+						<td><form name="edicion_matriculas">
+							<div align="center">
+							  <%datos_matriculas.DibujaTabla %>
+							</div>
+						  </form>
+					  </td>
+                    </tr>
+					<tr> 
+                      <td align="Right">* No existe informaci&oacute;n del estado del contrato</td>
+                    </tr>
+					<%end if%>
+                  </table> 
+                  
+				  <br>				  </td>
+                  <td width="7" align="right" background="../imagenes/der.gif">&nbsp;</td>
+                </tr>
+            </table>
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="9" rowspan="2"><img src="../imagenes/abajo_r1_c1.gif" width="9" height="28"></td>
+                  <td width="101" nowrap bgcolor="#D8D8DE"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tr valign="middle"> 
+                       <td width="33%">
+                        <%  botonera.dibujaboton "salir"%>
+                      </td>
+					  <td width="34%">
+					   <% if ultimo_post_ncorr <> "" and registro_evento = "N" then
+					      botonera.agregabotonparam "imprimir_alumno", "funcion", "pdf('"&ultimo_post_ncorr&"')"  
+    					  botonera.dibujaboton "imprimir_alumno" 
+						  end if%>
+					  </td>
+					  <td width="33%">&nbsp;
+					   
+					  </td>
+                    </tr>
+                  </table></td>
+                  <td width="309" rowspan="2" background="../imagenes/abajo_r1_c4.gif"><img src="../imagenes/abajo_r1_c3.gif" width="12" height="28"></td>
+                  <td width="267" rowspan="2" align="right" background="../imagenes/abajo_r1_c4.gif"><img src="../imagenes/abajo_r1_c5.gif" width="7" height="28"></td>
+                </tr>
+                <tr>
+                  <td valign="bottom" bgcolor="#D8D8DE"><img src="../imagenes/abajo_r2_c2.gif" width="100%" height="8"></td>
+                </tr>
+            </table>
+			<%end if%>
+			<BR>
+		  </td>
+        </tr>
+      </table>	
+   </td>
+  </tr>  
+</table>
+</body>
+</html>

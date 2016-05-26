@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+         <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>salir()</funcion>
+      </botones>
+      <botones nombre="buscar">
+		  <tipoTexto>BUSCAR</tipoTexto>
+		  <accion>BUSCAR</accion>
+		  <formulario>buscador</formulario>
+ 	  </botones>
+	  <botones nombre="excel">
+        <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>BUSCAR</accion>
+		<url>indicadores_docencia_excel.asp</url>
+		 <!-- <url>javascript:Excel();</url>-->
+         <formulario>buscador</formulario>
+     </botones>
+   </parametro>
+ 
+ 
+   	<parametro formulario="busqueda" variable="busqueda">
+	   	<campos nombre="cod_opcion">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<union>cod_opcion</union>
+			<salida>opcion</salida>
+			<anulable>TRUE</anulable>
+			<mensajeNulo>---Seleccione opcion de indicadores---</mensajeNulo>
+			<id>TO-N</id>
+	   	</campos>
+	   <campos nombre="v_anos">
+		   <tipo>SELECT</tipo>
+		   <permiso>LECTURAESCRITURA</permiso>
+		   <union>v_anos</union>
+		   <salida>anos_tdesc</salida>
+		   <anulable>TRUE</anulable>
+		   <mensajeNulo>Seleccione Año para analizar</mensajeNulo>
+		   <id>TO-N</id>
+	   </campos>
+   	</parametro>
+ 
+ 	 <parametro formulario="grados_docente" mensajeError="No se encontraron datos para los criterios de busqueda" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a">
+		<campos nombre="sede">
+			<descripcion>Sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>  
+		<campos nombre="carrera">
+			<descripcion>Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			<descripcion>Jornada</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="cantidad">
+			<descripcion>N° Docentes</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="valor_escuela">
+			<descripcion>N° Total Escuela</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="indice_escuela">
+			<descripcion>Indicador Escuela</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>	
+		<campos nombre="valor">
+			<descripcion>N° Total</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="indice">
+			<descripcion>Indice</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+	  </parametro>
+
+	<parametro formulario="grados_docente_facu" mensajeError="No se encontraron datos para los criterios de busqueda" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a">
+		<campos nombre="facultad">
+			<descripcion>Facultad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="cantidad">
+			<descripcion>N° Docentes</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="valor_facultad">
+			<descripcion>N° Total Facultad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="indice_facultad">
+			<descripcion>Indicador Facultad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>			
+		<campos nombre="valor">
+			<descripcion>N° Total</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="indice">
+			<descripcion>Indice</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+	  </parametro>
+
+	<parametro formulario="edad_profesores" mensajeError="No se datos para los criterios de busqueda" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a" > 
+		<campos nombre="sede">
+			<descripcion>Sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			<descripcion>Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			<descripcion>Jornada</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos> 
+		<campos nombre="cantidad">
+			<descripcion>Cantidad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="promedio">
+			<descripcion>Promedio Edad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+
+	<parametro formulario="edad_profesores_facu" mensajeError="No se datos para los criterios de busqueda" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a" > 
+		<campos nombre="facultad">
+			<descripcion>Facultad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="cantidad">
+			<descripcion>Cantidad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="promedio">
+			<descripcion>Promedio Edad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+
+	<parametro formulario="ingreso_profesores" mensajeError="No se datos para los criterios de busqueda" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a">  
+		<campos nombre="sede">
+			<descripcion>Sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			<descripcion>Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			<descripcion>Jornada</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos> 
+		<campos nombre="cantidad">
+			<descripcion>Cantidad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="promedio">
+			<descripcion>Permanencia (Prom.)</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+
+	<parametro formulario="ingreso_profesores_facu" mensajeError="No se datos para los criterios de busqueda" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a" > 
+		<campos nombre="facultad">
+			<descripcion>Facultad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="cantidad">
+			<descripcion>Cantidad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="promedio">
+			<descripcion>Promedio Permanencia</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+
+	<parametro formulario="jornadas_profesores" mensajeError="No se datos para los criterios de busqueda" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a">
+		<campos nombre="sede">
+			<descripcion>Sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			<descripcion>Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			<descripcion>Jornada</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos> 
+		<campos nombre="cantidad">
+			<descripcion>N° Docentes</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="valor_escuela">
+			<descripcion>N° Total Escuela</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="indice_escuela">
+			<descripcion>Indicador Escuela</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>		  
+		<campos nombre="total_docentes">
+			<descripcion>Total Docentes</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="indice">
+			<descripcion>Indicador</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro> 
+
+	<parametro formulario="jornadas_profesores_facu" mensajeError="No se datos para los criterios de busqueda" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a">
+		<campos nombre="facultad">
+			<descripcion>Facultad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="cantidad">
+			<descripcion>N° Docentes</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="valor_facultad">
+			<descripcion>N° Total Facultad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="indice_facultad">
+			<descripcion>Indicador Facultad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>			  
+		<campos nombre="total_docentes">
+			<descripcion>Total Docentes</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="indice">
+			<descripcion>Indicador</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro> 
+
+ 	 <parametro formulario="categorias_docente" mensajeError="No se datos para los criterios de busqueda" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a">
+		<campos nombre="sede">
+			<descripcion>Sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			<descripcion>Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			<descripcion>Jornada</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>   
+		<campos nombre="cantidad">
+			<descripcion>N° Docentes</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="valor_escuela">
+			<descripcion>N° Total Escuela</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="indice_escuela">
+			<descripcion>Indicador Escuela</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>				  
+		<campos nombre="total_docentes">
+			<descripcion>Total Docentes</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="indice">
+			<descripcion>Indicador</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+
+ <parametro formulario="categorias_docente_facu" mensajeError="No se datos para los criterios de busqueda" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a">
+		<campos nombre="facultad">
+			<descripcion>Facultad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="cantidad">
+			<descripcion>N° Docentes</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="valor_facultad">
+			<descripcion>N° Total Facultad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="indice_facultad">
+			<descripcion>Indicador Facultad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>	    
+		<campos nombre="total_docentes">
+			<descripcion>Total Docentes</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="indice">
+			<descripcion>Indicador</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+
+	<parametro formulario="grados_consolidados" mensajeError="No se encontraron datos para los criterios de busqueda" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a">
+		<campos nombre="universidad">
+			<descripcion>Universidad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="doctores">
+			<descripcion>N° Doctores</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="indice_doc">
+			<descripcion>Indice Doctores</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="magister">
+			<descripcion>N° Magister</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="indice_mag">
+			<descripcion>Indice Magister</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="profesionales">
+			<descripcion>N° Profesionales</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+	    <campos nombre="indice_prof">
+			<descripcion>Indice Profesionales</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="tecnicos">
+			<descripcion>N° no profesionales</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+	    <campos nombre="indice_tec">
+			<descripcion>Indice no profesionaes</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="total">
+			<descripcion>N° total</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+	  </parametro>
+
+	<parametro formulario="grados_consolidados_facu" mensajeError="No se encontraron datos para los criterios de busqueda" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a">
+		<campos nombre="facultad">
+			<descripcion>Facultad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="doctores">
+			<descripcion>N° Doctores</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="indice_doc">
+			<descripcion>Indice Doctores</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="magister">
+			<descripcion>N° Magister</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="indice_mag">
+			<descripcion>Indice Magister</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="profesionales">
+			<descripcion>N° Profesionales</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="indice_prof">
+			<descripcion>Indice Profesionales</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="tecnicos">
+			<descripcion>N° no profesionales</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+	    <campos nombre="indice_tec">
+			<descripcion>Indice no profesionaes</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+	  </parametro>
+
+	<parametro formulario="grados_consolidados_escuela" mensajeError="No se encontraron datos para los criterios de busqueda" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a">
+		<campos nombre="sede">
+			<descripcion>Sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			<descripcion>Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			<descripcion>Jornada</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="doctores">
+			<descripcion>N° Doctores</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="indice_doc">
+			<descripcion>Indice Doctores</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>	
+		<campos nombre="magister">
+			<descripcion>N° Magister</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+	    <campos nombre="indice_mag">
+			<descripcion>Indice Magister</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>		
+		<campos nombre="profesionales">
+			<descripcion>N° Profesionales</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+	    <campos nombre="indice_prof">
+			<descripcion>Indice Profesionales</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+		<campos nombre="tecnicos">
+			<descripcion>N° no profesionales</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+	    <campos nombre="indice_tec">
+			<descripcion>Indice no profesionaes</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+	  </parametro>
+
+   	<parametro formulario="formulario_vacio" mensajeError="No se datos para los criterios de busqueda"
+		anchoTabla="100%" nuevaVentana="false" variable="a">
+		<campos nombre="indicadores">
+			<descripcion>indicadores</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+    	</campos>
+	</parametro>
+</Parametros>

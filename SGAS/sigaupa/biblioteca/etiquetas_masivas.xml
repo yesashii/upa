@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="btn_etiqueta">
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_ceremonia.asp</url>
+         <formulario>edicion</formulario>
+      </botones> 
+    <botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agrega_ceremonia(document.edicion)</funcion>
+	</botones> 
+      <botones nombre="SALIR">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	  <botones nombre="imprimir">
+  		<tipoTexto>DEFINIR</tipoTexto> 
+  		<texto>Imprimir Etiquetas</texto> 
+  		<accion>JAVASCRIPT</accion> 
+  		<funcion>imprimir_etiqueta()</funcion> 
+      </botones>
+	  <botones nombre="enviar_email_las_condes"> 
+		  <tipoTexto>DEFINIR</tipoTexto>
+		  <texto>Enviar Email Las Condes</texto>
+		  <accion>JAVASCRIPT</accion>
+		  <funcion>enviar_email_masivo(1)</funcion>
+	  </botones> 
+	  <botones nombre="enviar_email_baquedano"> 
+		  <tipoTexto>DEFINIR</tipoTexto>
+		  <texto>Enviar Email Baquedano</texto>
+		  <accion>JAVASCRIPT</accion>
+		  <funcion>enviar_email_masivo(8)</funcion>
+	  </botones> 
+	  <botones nombre="enviar_email_melipilla"> 
+		  <tipoTexto>DEFINIR</tipoTexto>
+		  <texto>Enviar Email Melipilla</texto>
+		  <accion>JAVASCRIPT</accion>
+		  <funcion>enviar_email_masivo(4)</funcion>
+	  </botones> 	
+ </parametro>
+ <parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" 
+	 formulario="tabla_etiquetas" eliminar="false" clave="id_ceremonia" nroRegistros="15" maxLista="10"
+	 mensajeError="No existen alumnos asociados a la impresión de etiquetas." 
+	 colorBase="#F1F1E4" editar="false" anchoTabla="98%" variable="em">
+	<campos nombre="sede">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Sede</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	<campos nombre="carrera">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Carrera</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	<campos nombre="rut">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Rut</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	<campos nombre="nombre">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nombre</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+  </parametro>
+  <parametro formulario="datos_extras" variable="em">
+	    <listas nombre="lBusqueda">
+			<item clave="acar_ccod" valor="acar_tdesc" />
+			<item clave="saca_ccod" valor="saca_tdesc" />
+		</listas>
+		<campos nombre="acar_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="saca_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+	</parametro>
+
+</Parametros>

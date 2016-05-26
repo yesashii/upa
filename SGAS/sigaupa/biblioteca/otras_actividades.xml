@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro colorResaltado="#DCDCB8" colorSeleccionado="99FFFF" formulario="eliminar_otras_actividades" agregar="true" editar="true" anchoTabla="98%" nuevaVentana="true" variable="m">
+      <tablas nombre="publicacion_docente" accion="B"/>
+      <campos nombre="publ_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   <parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" paginaEdicion="agregar_otras_actividades.asp?publ_ccod=%publ_ccod%&amp;pers_ncorr=%pers_ncorr%" nuevaVentanaAlto="320" formulario="otras_actividades"  agregar="true" nuevaVentanaAncho="617" eliminar="true" clave="publ_ccod" maxLista="10" mensajeError="No hay otras actividades para este docente" anchoTabla="98%" editar="true" nuevaVentana="true" variable="m">
+      <tablas nombre="publicacion_docente" accion="M"/>
+	  <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="publ_totrasactividades">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Descripcion Actividad</descripcion>
+      </campos>
+   </parametro>
+   <parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" paginaEdicion="" formulario="agregar_otras_actividades" nroRegistros="10" agregar="true" eliminar="true" maxLista="10" clave="publ_ccod" mensajeError="" colorBase="#F1F1E4" anchoTabla="98%" editar="true" nuevaVentana="false" variable="m">
+      <tablas nombre="publicacion_docente" accion="M"/>
+      <campos nombre="publ_totrasactividades">
+         <tipo>TEXTAREA</tipo>
+		 <filas>10</filas>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>80</caracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="botonera">
+      <botones nombre="agregar">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>AGREGAR</accion>
+         <url>agregar_otras_actividades.asp</url>
+         <posicionX>100</posicionX>
+         <posicionY>100</posicionY>
+         <ancho>600</ancho>
+         <alto>300</alto>
+      </botones>
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>eliminar_otras_actividades.asp</url>
+         <formulario>editar</formulario>
+      </botones>
+      <botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+       <accion>JAVASCRIPT</accion>
+         <funcion>enviar(document.editar, 0)</funcion>
+      </botones>
+      <botones nombre="siguiente">
+           <tipoTexto>SIGUIENTE</tipoTexto>
+		   <accion>JAVASCRIPT</accion>
+           <funcion>enviar2()</funcion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cerrar">
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+      <botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_agregar_otras_actividades.asp</url>
+      </botones>
+   </parametro>
+</Parametros>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="btn_adm_carreras">
+    
+	<botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>	 
+	</botones> 
+    
+	  <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_carrera_min.asp</url>
+         <formulario>edicion</formulario>
+      </botones> 
+    
+	<botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agrega_carrera(document.edicion)</funcion>
+	</botones> 
+    
+	  <botones nombre="SALIR">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>	
+	
+	  <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones> 
+	
+	 <botones nombre="excel_general">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel Datos Generales</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones> 	
+ 
+ </parametro>
+ 
+ 
+  <parametro formulario="btn_agregar_carrera">
+    <botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agregar(document.editar)</funcion>
+	</botones> 
+    <botones nombre="GUARDAR"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agregar(document.editar)</funcion>
+	</botones> 	
+  <botones nombre="SALIR"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>salir(document.edicion)</funcion>
+	</botones> 
+ </parametro>
+
+
+ 	
+	<parametro colorSeleccionado="99FFFF" variable="em" colorResaltado="#DCDCB8" paginaEdicion="" 
+		 formulario="tabla_valores" eliminar="true"  colorBase="#F1F1E4" editar="true"
+		 mensajeError="No Existen Datos Para Los Parámetros De Búsqueda." 
+			anchoTabla="98%"  nuevaVentana="true">
+		
+		<campos nombre="cod_carrera_min">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onKeyUp='this.value=this.value.toUpperCase();' Onblur='ExisteCodigo(this.value)'</script>
+			<id>TO-N</id>
+			<caracteres>10</caracteres>
+			<maxCaracteres>6</maxCaracteres>
+		</campos>
+		 
+		<campos nombre="nom_carrera_min">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<id>TO-N</id>
+			<caracteres>50</caracteres>
+			<maxCaracteres>220</maxCaracteres>
+		</campos>
+		
+	</parametro>
+
+
+  <parametro formulario="mantiene_carreras" variable="em">
+      <tablas nombre="ufe_carreras_mineduc" accion="M"/>
+   </parametro>
+
+  <parametro formulario="eliminar_carreras" variable="em">
+      <tablas nombre="ufe_carreras_mineduc" accion="B"/>
+   </parametro>
+  
+  <parametro formulario="datos_extras" variable="em">
+	    <listas nombre="lBusqueda">
+			<item clave="acar_ccod" valor="acar_tdesc" />
+			<item clave="saca_ccod" valor="saca_tdesc" />
+		</listas>
+		<campos nombre="acar_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="saca_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+	</parametro>
+	 
+	 
+	 	<parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8"
+	 paginaEdicion="agregar_carrera_min.asp?car_min_ncorr=%car_min_ncorr%" 
+	 formulario="tabla" eliminar="true" clave="eliminar" nroRegistros="10" maxLista="10"
+	 mensajeError="No Existen Datos Para Los Parámetros De Búsqueda." 
+	 colorBase="#F1F1E4" editar="true" 	anchoTabla="98%" variable="em" nuevaVentana="true" nuevaVentanaAlto="500" nuevaVentanaAncho="650" >
+	<tablas nombre="carreras" accion="B"/>
+	<campos nombre="car_min_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+	</campos>
+	<campos nombre="cod_carrera_min">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Código</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	<campos nombre="nom_carrera_min">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nombre</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	
+	
+	</parametro>
+
+
+</Parametros>

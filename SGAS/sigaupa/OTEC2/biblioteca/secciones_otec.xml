@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="botonera">
+    <botones nombre="buscar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Ver Malla</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 
+	<botones nombre="crear_dcurso"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Agregar Diplomado o Curso</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar2(document.buscador)</funcion>
+	</botones> 
+    <botones nombre="agregar_nuevo_dcurso"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Agregar nuevo Diplomado o Curso</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>abrir()</funcion>
+	</botones> 
+	<botones nombre="agregar_programa_dcurso"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Poblar Malla</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>abrir_programa()</funcion>
+	</botones> 
+    <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	
+	<botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <formulario>edicion</formulario>
+         <url>eliminar_diplomados_curso.asp</url>
+    </botones>
+	<botones nombre="eliminar_malla">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <formulario>edicion</formulario>
+         <url>eliminar_malla_otec.asp</url>
+    </botones>
+	
+    <botones nombre="enviar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Enviar</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.formu)</funcion>
+	</botones> 
+	<botones nombre="guardar_datos_generales">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>guardar_datos_generales.asp</url>
+		 <funcionValidacion>validar_fechas();</funcionValidacion>
+    </botones>
+	<botones nombre="asignar_horario">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Asignar Horario</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>asignar_horario_comun.asp</url>
+    </botones>
+ </parametro>
+ <parametro formulario="f_busqueda" variable="b">
+   <campos nombre="dcur_ncorr">
+      <tipo>SELECT</tipo>
+	  <destino>diplomados_cursos</destino> 
+	  <union>DCUR_NCORR</union>
+	  <salida>DCUR_TDESC</salida>
+      <orden>DCUR_TDESC asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Programa</mensajeNulo>
+	  <mensajeVacio>Seleccione Programa</mensajeVacio>
+	  <id>TO-N</id>
+   </campos>
+   <campos nombre="sede_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>(select sede_ccod,sede_tdesc from sedes where sede_ccod in (1,2,4,7,8))a</destino> 
+	  <union>sede_ccod</union>
+	  <salida>sede_tdesc</salida>
+      <orden>sede_ccod asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Sede</mensajeNulo>
+	  <mensajeVacio>Seleccione Sede</mensajeVacio>
+	  <id>TO-N</id>
+   </campos>
+  </parametro>
+ 
+ <parametro formulario="f_secciones"
+ clave="maot_ncorr" variable="m" 
+ nuevaVentana="true" nuevaVentanaAlto="250" nuevaVentanaAncho="600"
+ mensajeError="No existen modulos ingresados para este programa" 
+ colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" 
+ editar="true" eliminar="false" agregar="true"
+ paginaEdicion="agregar_seccion.asp?maot_ncorr=%maot_ncorr%&amp;dgso_ncorr=%dgso_ncorr%" maxLista="10" nroRegistros="10" anchoTabla="98%">
+   <campos nombre="codigo">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Código</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+ <campos nombre="mote_tdesc">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Programa</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+  <campos nombre="maot_norden">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Orden</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+  <campos nombre="num_secciones">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Cant. Secciones</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+</parametro>
+<parametro formulario="form_busca_modulos"
+ clave="mote_ccod" variable="m" 
+ nuevaVentana="true" nuevaVentanaAlto="200" nuevaVentanaAncho="400"
+ mensajeError="No hay módulos que coincidan con el criterio de búsqueda" 
+ colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" 
+ editar="false" eliminar="true" agregar="true"
+  paginaEdicion="" maxLista="10" nroRegistros="10" anchoTabla="98%">
+  <campos nombre="dcur_ncorr">
+	  <tipo>INPUT</tipo> 
+	  <permiso>OCULTO</permiso> 
+  </campos>
+  <campos nombre="mote_ccod">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Código</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+ <campos nombre="mote_tdesc">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Módulo</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+  <campos nombre="dcur_norden">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURAESCRITURA</permiso> 
+	  <descripcion>Orden</descripcion> 
+	  <maxCaracteres>2</maxCaracteres>
+	  <caracteres>4</caracteres>
+	  <alineamiento>CENTER</alineamiento>
+	  <id>NU-S</id> 
+  </campos>
+</parametro>
+<parametro formulario="botonera_modulos">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 
+    <botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>abrir()</funcion>
+	</botones> 
+    <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	<botones nombre="salir22"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>CerrarActualizar()</funcion>
+	</botones>
+	<botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>guardar_malla_otec.asp</url>
+    </botones>
+	
+    <botones nombre="enviar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Enviar</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.formu)</funcion>
+	</botones> 
+	
+    <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones>
+ </parametro>
+ <parametro formulario="datos_generales" clave="asig_ccod" variable="m" mensajeError="No hay Asignaturas que cumplan la condición"
+		 colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="true" 
+		 eliminar="true" agregar="true" nuevaVentana="false" paginaEdicion="editar_asig.asp?asig_ccod=%asig_ccod%" 
+		 maxLista="10" nroRegistros="10">
+		
+		<campos nombre="dcur_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso> 
+		</campos>
+		<campos nombre="sede_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso> 
+		</campos>
+		<campos nombre="dgso_finicio">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>12</caracteres>
+			<maxCaracteres>40</maxCaracteres>
+			<id>FE-N</id>
+		</campos>
+		<campos nombre="dgso_ncupo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>6</caracteres>
+			<maxCaracteres>3</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+		<campos nombre="dgso_nquorum">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>6</caracteres>
+			<maxCaracteres>3</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+		<campos nombre="dgso_ftermino">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>12</caracteres>
+			<maxCaracteres>40</maxCaracteres>
+			<id>FE-N</id>
+		</campos>
+		 <campos nombre="esot_ccod">
+			  <tipo>SELECT</tipo>
+			  <destino>estado_seccion_otec</destino> 
+			  <union>esot_ccod</union>
+			  <salida>esot_tdesc</salida>
+			  <orden>esot_ccod asc </orden>	  
+			  <permiso>LECTURAESCRITURA</permiso>
+			  <anulable>true</anulable>
+			  <mensajeNulo>Seleccione Estado</mensajeNulo>
+			  <mensajeVacio>Seleccione Estado</mensajeVacio>
+			  <id>TO-N</id>
+		 </campos>
+  </parametro>
+   <parametro formulario="mantiene_datos_generales" variable="m" >
+		<tablas nombre="datos_generales_secciones_otec" accion="M" />
+   </parametro>	
+ <parametro formulario="edita_secciones" clave="codigo" variable="m"  nuevaVentana="false" 
+ mensajeError="No existen secciones creadas para este programa" 
+ colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" 
+ editar="false" eliminar="true" agregar="true" paginaEdicion="" maxLista="10" nroRegistros="10" anchoTabla="98%">
+  <campos nombre="seot_ncorr">
+	  <tipo>INPUT</tipo> 
+	  <permiso>OCULTO</permiso> 
+  </campos>
+  <campos nombre="maot_ncorr">
+	  <tipo>INPUT</tipo> 
+	  <permiso>OCULTO</permiso> 
+  </campos>
+  <campos nombre="seot_tdesc">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Sección</descripcion> 
+	  <alineamiento>CENTER</alineamiento> 
+  </campos>
+ <campos nombre="seot_ncupo">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURAESCRITURA</permiso> 
+	  <caracteres>5</caracteres>
+	  <maxCaracteres>3</maxCaracteres>
+	  <descripcion>Cupo</descripcion> 
+	  <alineamiento>CENTER</alineamiento> 
+	  <id>NU-N</id>
+  </campos>
+  <campos nombre="seot_nquorum">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURAESCRITURA</permiso> 
+	  <caracteres>5</caracteres>
+	  <maxCaracteres>3</maxCaracteres>
+	  <descripcion>Mínimo de Alumnos</descripcion> 
+	  <alineamiento>CENTER</alineamiento> 
+	  <id>NU-N</id>
+  </campos>
+   <campos nombre="jorn_ccod">
+      <tipo>SELECT</tipo>
+	  <descripcion>Jornada</descripcion> 
+	  <destino>jornadas</destino> 
+	  <union>jorn_ccod</union>
+	  <salida>jorn_tdesc_corta</salida>
+      <orden>jorn_ccod asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>False</anulable>
+	  <mensajeNulo>Jornada</mensajeNulo>
+	  <mensajeVacio>Jornada</mensajeVacio>
+	  <id>TO-N</id>
+   </campos>
+  <campos nombre="seot_finicio">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURAESCRITURA</permiso> 
+	  <caracteres>12</caracteres>
+	  <maxCaracteres>10</maxCaracteres>
+	  <descripcion>Fecha Inicio</descripcion> 
+	  <alineamiento>CENTER</alineamiento> 
+	  <id>FE-N</id>
+  </campos>
+   <campos nombre="seot_ftermino">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURAESCRITURA</permiso> 
+	  <caracteres>12</caracteres>
+	  <maxCaracteres>10</maxCaracteres>
+	  <descripcion>Fecha Término</descripcion> 
+	  <alineamiento>CENTER</alineamiento> 
+	  <id>FE-N</id>
+  </campos>
+   <campos nombre="maot_nhoras_programa">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Total Horas</descripcion> 
+	  <alineamiento>CENTER</alineamiento> 
+  </campos>
+   <campos nombre="maot_npresupuesto_relator">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Presupuesto Relatores</descripcion> 
+	  <alineamiento>CENTER</alineamiento> 
+	  <formato>MONEDA</formato>
+  </campos>
+  <campos nombre="seot_ncantidad_relator">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURAESCRITURA</permiso> 
+	  <caracteres>5</caracteres>
+	  <maxCaracteres>1</maxCaracteres>
+	  <descripcion>Cantidad Relatores</descripcion> 
+	  <alineamiento>CENTER</alineamiento> 
+	  <id>NU-N</id>
+  </campos>
+</parametro>
+
+<parametro formulario="botonera_secciones">
+    <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>CerrarActualizar()</funcion>
+	</botones>
+	<botones nombre="agregar">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Agregar Sección</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>agregar_seccion_otec.asp</url>
+    </botones>
+	<botones nombre="guardar">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Guardar</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>guardar_seccion_otec.asp</url>
+		 <funcionValidacion>revision(document.edicion);</funcionValidacion>
+    </botones>
+	<botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <formulario>edicion</formulario>
+         <url>eliminar_seccion_otec.asp</url>
+    </botones>
+   </parametro>
+    <parametro formulario="mantiene_secciones" variable="m" >
+		<tablas nombre="secciones_otec" accion="M" />
+   </parametro>	 
+   <parametro formulario="arreglo_secciones" variable="b">
+	   <campos nombre="seot_ncorr">
+		  <tipo>SELECT</tipo>
+		  <union>seot_ncorr</union>
+		  <salida>muestra</salida>
+		  <orden>muestra asc </orden>	  
+		  <permiso>LECTURAESCRITURA</permiso>
+		  <anulable>true</anulable>
+		  <mensajeNulo>Seleccione horario para el curso</mensajeNulo>
+		  <mensajeVacio>Seleccione horario para el curso</mensajeVacio>
+		  <id>TO-S</id>
+	   </campos>
+   </parametro> 
+</Parametros>

@@ -1,0 +1,231 @@
+<Parametros>
+<parametro formulario="f_libroletras">
+<campos nombre="fechaletra">	    
+		<tipo>INPUT</tipo>
+		<descripcion>FECHA_LETRA</descripcion>
+		<permiso>lectura</permiso>
+</campos>
+<campos nombre="ding_ndocto">	    
+		<tipo>INPUT</tipo>
+		<descripcion>NUMERO_DOCTO</descripcion>
+		<permiso>lectura</permiso>
+</campos>
+<campos nombre="Nombre">	    
+		<tipo>INPUT</tipo>
+		<descripcion>NOMBRE</descripcion>
+		<permiso>lectura</permiso>
+</campos> 
+<campos nombre="pers_nrut">	    
+		<tipo>INPUT</tipo>
+		<descripcion>RUT</descripcion>
+		<permiso>lectura</permiso>
+</campos> 
+<campos nombre="ding_mdocto">	    
+		<tipo>INPUT</tipo>
+		<descripcion>MONTO_DOCTO</descripcion>
+		<permiso>lectura</permiso>
+</campos>
+<campos nombre="ding_fdocto">	    
+		<tipo>INPUT</tipo>
+		<descripcion>FECHA_VCTO</descripcion>
+		<permiso>lectura</permiso>
+</campos>
+<campos nombre="ting_tdesc">	    
+		<tipo>INPUT</tipo>
+		<descripcion>TIPO_DOCTO</descripcion>
+		<permiso>lectura</permiso>
+</campos>  
+<campos nombre="ding_mdetalle">	    
+		<tipo>INPUT</tipo>
+		<descripcion>MONTO_DETALLE</descripcion>
+		<permiso>lectura</permiso>
+</campos> 
+</parametro>
+
+  <parametro formulario="botonera">
+   <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>     	
+   <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	  <soloUnClick>TRUE</soloUnClick>	  
+	</botones> 
+	<botones nombre="excel">
+         <accion>JAVASCRIPT</accion>
+         <funcion>excel(document.buscador)</funcion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Excel</texto>
+      </botones>
+   </parametro>  
+    
+  <parametro formulario="busqueda_documentos" variable="busqueda">      
+  <campos nombre="mes">
+      <tipo>SELECT</tipo>
+	  <destino>(select 01 AS mes, 'ENERO' as descripcion union select 02 AS mes, 'FEBRERO' as descripcion union select 03 AS mes, 'MARZO' as descripcion union select 04 AS mes, 'ABRIL' as descripcion union select 05 AS mes, 'MAYO' as descripcion union select 06 AS mes, 'JUNIO' as descripcion union select 07 AS mes, 'JULIO' as descripcion union select 08 AS mes, 'AGOSTO' as descripcion union select 09 AS mes, 'SEPTIEMBRE' as descripcion union select 10 AS mes, 'OCTUBRE' as descripcion union select 11 AS mes, 'NOVIEMBRE' as descripcion union select 12 AS mes, 'DICIEMBRE' as descripcion ) a</destino> 
+	  <union>mes</union>
+	  <salida>descripcion</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <orden>a.mes</orden>
+	  <mensajeNulo>Todos</mensajeNulo>
+  </campos>
+  <campos nombre="ano">
+      <tipo>SELECT</tipo>
+	  <destino>COMPROMISOS</destino> 
+	  <union>ano</union>
+	  <salida>ano2</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <orden>a.ano2</orden>
+	  <mensajeNulo>Todos</mensajeNulo>
+  </campos>
+ </parametro>
+
+
+
+  <parametro formulario="botonera">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	  <soloUnClick>TRUE</soloUnClick>
+	</botones>	
+   <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+  <botones nombre="imprimir"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Imprimir</texto>
+		<accion>GUARDAR</accion>
+		<formulario>edicion</formulario>
+		<target>_BLANK</target>
+   </botones>
+    <botones nombre="portada"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Portada</texto>
+		<accion>GUARDAR</accion>
+		<formulario>edicion</formulario>
+		<target>_BLANK</target>
+   </botones>	      
+   <botones nombre="excel">
+       <tipoTexto>DEFINIR</tipoTexto>
+	   <texto>Excel</texto>
+       <accion>NAVEGAR</accion>	   
+	   <url>LibroLetras_excel.asp</url>
+   </botones> 
+   <botones nombre="cerrar_actrualizar"> 
+      <tipoTexto>SALIR</tipoTexto>
+      <accion>JAVASCRIPT</accion>
+	 <funcion>salir();</funcion>	   
+	</botones>
+   <botones nombre="cerrar"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+	<botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+    </botones>
+     <botones nombre="siguiente">
+         <tipoTexto>SIGUIENTE</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_postulacion_4.asp</url>
+         <funcionValidacion>Validar();</funcionValidacion>
+      </botones>
+   </parametro>
+   <parametro formulario="busqueda" variable="busqueda">
+     <campos nombre="nombre_asig">
+       <tipo>INPUT</tipo>
+       <permiso>LECTURAESCRITURA</permiso>
+       <caracteres>25</caracteres>
+       <maxCaracteres>24</maxCaracteres>
+       <script>onBlur="this.value=this.value.toUpperCase();"</script>
+    </campos>
+	<campos nombre="codigo_asig">
+     <tipo>INPUT</tipo>
+     <permiso>LECTURAESCRITURA</permiso>
+     <caracteres>25</caracteres>
+     <maxCaracteres>24</maxCaracteres>
+     <script>onBlur="this.value=this.value.toUpperCase();"</script>
+    </campos>        
+  </parametro>
+  
+  <parametro formulario="deudor" anchoTabla="100%" columnas="2" separacionColumnas="40">
+      <campos nombre="rut">
+         <descripcion>R.U.T.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre_completo">
+         <descripcion>NOMBRE</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="espe_tdesc">
+         <descripcion>CARRERA</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="Jornada">
+         <descripcion>JORNADA</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>     
+   </parametro>
+  
+   <parametro formulario="detalle">   
+	<campos nombre="ding_ndocto">	    
+	<tipo>INPUT</tipo>
+	<descripcion>NRO_DOCTO</descripcion>
+	<permiso>lectura</permiso>
+	</campos> 
+	<campos nombre="ting_tdesc">	    
+	<tipo>INPUT</tipo>
+	<descripcion>TIPO_DOCTO</descripcion>
+	<permiso>lectura</permiso>
+	</campos> 
+	<campos nombre="ding_fdocto">	    
+	<tipo>INPUT</tipo>
+	<descripcion>FECHA VCTO</descripcion>
+	<permiso>lectura</permiso>
+	</campos> 
+	<campos nombre="ding_mdetalle">	    
+	<tipo>INPUT</tipo>
+	<descripcion>M_DETALLE</descripcion>
+	<permiso>lectura</permiso>
+	</campos> 
+	<campos nombre="ding_mdocto">	    
+	<tipo>INPUT</tipo>
+	<descripcion>MONTO_DOCTO</descripcion>
+	<permiso>lectura</permiso>
+	</campos> 
+	<campos nombre="banc_tdesc">	    
+	<tipo>INPUT</tipo>
+	<descripcion>BANCO</descripcion>
+	<permiso>lectura</permiso>
+	</campos> 
+	<campos nombre="ding_tcuenta_corriente">	    
+	<tipo>INPUT</tipo>
+	<descripcion>CTA_CTE</descripcion>
+	<permiso>lectura</permiso>
+	</campos>
+	<campos nombre="plaz_tdesc">	    
+	<tipo>INPUT</tipo>
+	<descripcion>PLAZA</descripcion>
+	<permiso>lectura</permiso>
+	</campos>
+	<campos nombre="EDIN_TDESC">	    
+	<tipo>INPUT</tipo>
+	<descripcion>ESTADO_DOCTO</descripcion>
+	<permiso>lectura</permiso>
+	</campos>
+   </parametro>      
+   
+ </Parametros>

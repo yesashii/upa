@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="protestar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Protestar</texto>
+         <accion>GUARDAR</accion>
+         <url>Proc_ingreso_Protestos.asp</url>
+         <formulario>edicion</formulario>
+		 <soloUnClick>true</soloUnClick>
+         <mensajeConfirmacion>¿Está seguro que desea protestar los documentos seleccionados?</mensajeConfirmacion>
+      </botones>
+      <botones nombre="lanzadera">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>Validar();</funcionValidacion>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+   </parametro>
+   <parametro formulario="busqueda" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+	        <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+      <campos nombre="code_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="code_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="ding_fdocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+	  <campos nombre="edin_ccod">
+         <tipo>SELECT</tipo>
+         <destino>(select edin_ccod, edin_tdesc from estados_detalle_ingresos)a</destino>
+         <union>edin_ccod</union>
+         <salida>edin_tdesc</salida>
+		 <orden>a.edin_tdesc</orden> 
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>true</anulable>
+         <mensajeNulo>Seleccione Estado</mensajeNulo>
+      </campos>
+      <campos nombre="ting_ccod">
+         <tipo>SELECT</tipo>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>true</anulable>
+         <filtro>ting_ccod IN (3,4)</filtro>
+         <mensajeNulo>Seleccione tipo Documento</mensajeNulo>
+		 <id>NU-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="f_documentos" clave="ding_ndocto" variable="documentos" nroRegistros="10" maxLista="10" anchoTabla="100%" mensajeError="No se encontraron documentos." eliminar="TRUE">
+      
+	  <tablas nombre="detalle_ingresos" accion="M"/>
+      <tablas nombre="compromisos" accion="M"/>
+      <tablas nombre="detalle_compromisos" accion="M"/>
+      <tablas nombre="detalles" accion="M"/>
+      <tablas nombre="referencias_cargos" accion="M"/>
+	  
+      <campos nombre="ting_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ding_bpacta_cuota">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ingr_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ding_nsecuencia">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tcom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c_tcom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="comp_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="inst_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="dcom_ncompromiso">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c_ding_ndocto">
+         <descripcion>N. Docto.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="banc_ccod">
+         <descripcion>Banco</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ting_tdesc">
+         <descripcion>Tipo Docto.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="edin_tdesc">
+         <descripcion>Estado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="ding_fdocto">
+         <descripcion>F. Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	     <campos nombre="rut_alumno">
+         <descripcion>Rut Alumno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="rut_apoderado">
+         <descripcion>Rut Apoderado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="ding_mdocto">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="multa">
+         <descripcion>Multa</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <formato>MONEDA</formato>
+      </campos>
+      <campos nombre="reca_mmonto">
+         <descripcion>Multas Cargadas</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+   </parametro>
+
+   <parametro formulario="cargo_cheque_protestado" variable="documentos">
+      <tablas nombre="compromisos" accion="I"/>
+      <tablas nombre="detalles" accion="I"/>
+      <tablas nombre="detalle_compromisos" accion="I"/>
+      <tablas nombre="ingresos" accion="I"/>
+      <tablas nombre="abonos" accion="I"/>
+   </parametro>
+   <parametro formulario="detalle_cheque_protestado" variable="documentos">
+      <tablas nombre="detalle_ingresos" accion="I"/>
+   </parametro>
+
+   <parametro formulario="abono_cheque_protestado" variable="documentos">
+      <tablas nombre="ingresos" accion="I"/>
+      <tablas nombre="abonos" accion="I"/>
+   </parametro>
+   <parametro formulario="detalle_abono_cheque_protestado" variable="documentos">
+      <tablas nombre="detalle_ingresos" accion="I"/>
+   </parametro>
+</Parametros> 

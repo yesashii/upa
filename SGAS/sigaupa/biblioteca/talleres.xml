@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      
+	  <botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>ELIMINAR</accion>
+	  <url>elimina_taller_proc.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>
+	
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  
+	<botones nombre="taller">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Crear Taller</texto>
+      </botones>
+   
+   </parametro>
+   <parametro formulario="busqueda" variable="b" columnas="3" >
+  
+	  	   <campos nombre="tasi_ncorr" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todas los Talleres</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>talleres_sicologia </destino>
+		   <union>tasi_ncorr</union>
+         <salida>tasi_tdesc</salida>
+		 
+      </campos>
+	  
+   </parametro>
+   
+ 
+		   <parametro formulario="cheques" colorResaltado="#999999" colorSeleccionado="#EBEDA9" seleccionarTodo="false"
+     eliminar="TRUE" anchoTabla="100%"  clave = "tasi_tdesc" variable="a" nroRegistros="10" maxLista="12"
+	 mensajeError = "" paginaEdicion="edicion_talleres.asp?tasi_ncorr=%tasi_ncorr%" editar="true" >
+	 
+      <campos nombre="tasi_tdesc">
+		<descripcion>Talleres</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	
+       <campos nombre="tasi_ncorr">
+		<descripcion>Talleres</descripcion>
+         <tipo>input</tipo>
+         <permiso>OCULTO</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+         
+      
+   </parametro>
+   
+   
+   
+</Parametros>

@@ -1,0 +1,152 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>ValidaBusqueda();</funcionValidacion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="busqueda" variable="b" columnas="2" separacionColumnas="1">
+      <campos nombre="pers_nrut">
+         <descripcion>R.U.T.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>LN-S</id>
+      </campos>
+      <campos nombre="ingr_nfolio_referencia">
+         <descripcion>Folio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+   </parametro>
+   <parametro paginaEdicion="../reportesnet/comp_cajas.aspx?nfolio=%ingr_nfolio_referencia%&amp;nro_ting_ccod=%ting_ccod%&amp;pers_ncorr=%pers_ncorr%&amp;total=%ingr_mtotal%&amp;peri_ccod=%peri_ccod%" nuevaVentanaAlto="700" formulario="comp_ingreso" nuevaVentanaAncho="700" mensajeError="No hay comprobantes de pago asociados al Alumno." anchoTabla="100%" editar="TRUE" nuevaVentana="TRUE">
+      <campos nombre="ting_ccod">
+         <descripcion>Tipo</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="ingr_nfolio_referencia">
+         <descripcion>Folio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ingr_fpago">
+         <descripcion>Fecha Emisión</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ingr_mtotal">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+      </campos>
+      <campos nombre="rut">
+         <descripcion>R.U.T.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="lista_cursos" anchoTabla="100%" mensajeError="No hay Cursos asociados al Alumno." editar="TRUE" paginaEdicion="../otec/pactacion/imprimir_pactacion.asp?comp_ndocto=%comp_ndocto%" nuevaVentana="TRUE" nuevaVentanaAlto="400" nuevaVentanaAncho="700">
+      <campos nombre="comp_ndocto">
+         <descripcion>Nº Curso</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="comp_fdocto">
+         <descripcion>Fecha Inscripción</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="comp_ncuotas">
+         <descripcion>Nº Cuotas</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="comp_mdocumento">
+         <descripcion>Monto </descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+      </campos>
+   </parametro>
+   
+     <parametro formulario="lista_contratos" anchoTabla="100%" mensajeError="No hay Contratos Educacionales asociados al Alumno." 
+	 editar="TRUE" paginaEdicion="../REPORTESNET/imprimir_contrato.aspx?post_ncorr=%post_ncorr%&amp;post_nuevo=%post_nuevo%" 
+	 nuevaVentana="TRUE" nuevaVentanaAlto="400" nuevaVentanaAncho="700">
+      <campos nombre="post_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="post_nuevo">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="cont_ncorr">
+         <descripcion>N° Contrato</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="carrera">
+         <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>Left</alineamiento>
+      </campos>
+      <campos nombre="fecha_contrato">
+         <descripcion>Fecha Contrato</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="periodo">
+         <descripcion>Periodo Academico </descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	   <campos nombre="comprobante">
+         <descripcion>Comprobante</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   
+</Parametros>

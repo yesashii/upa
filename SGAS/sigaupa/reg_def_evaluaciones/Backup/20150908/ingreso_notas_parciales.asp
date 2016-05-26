@@ -1,0 +1,1125 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+
+<%
+set pagina = new CPagina
+set botonera =  new CFormulario
+botonera.carga_parametros "ingreso_notas_parciales.xml", "btn_eval_asignaturas"
+
+
+secc_ccod = request.QueryString("m[0][secc_tdesc]")
+asig_tdesc = request.QueryString("m[0][secc_ccod]")
+'id_sesion = request.querystring("sesi_ccod")
+ip_usuario = Request.ServerVariables("REMOTE_ADDR")
+'response.Write("ip_usuario = "&ip_usuario&" , secc_ccod = "&secc_ccod)
+'response.End
+'ip_usuario = 172.16.100.91 , secc_ccod = 62473 
+
+set conectar = new cConexion
+set negocio = new cnegocio
+set formbusqueda = new cformulario
+set formsecciones = new cformulario
+set formprofesores = new cformulario
+
+conectar.inicializar "upacifico"
+negocio.inicializa conectar
+sede = negocio.obtenerSede
+carrera = conectar.consultaUno("Select carr_tdesc from secciones a, carreras b where a.carr_ccod=b.carr_ccod and cast(a.secc_ccod as varchar)='"&secc_ccod&"'")
+set errores = new CErrores
+
+formbusqueda.carga_parametros "ingreso_notas_parciales.xml", "busqueda"
+formsecciones.carga_parametros "ingreso_notas_parciales.xml", "secciones"
+formprofesores.carga_parametros "ingreso_notas_parciales.xml", "profesores"
+
+formbusqueda.inicializar conectar
+formsecciones.inicializar conectar 
+formprofesores.inicializar conectar
+periodo = negocio.ObtenerPeriodoAcademico("PLANIFICACION")
+
+'response.Write("ip_usuario = "&ip_usuario&" , secc_ccod = "&secc_ccod&" , periodo = "&periodo)
+'response.End
+'ip_usuario = 172.16.100.91 , secc_ccod = 62473 , periodo = 238 
+
+PerSel=conectar.consultauno("select peri_tdesc  from periodos_academicos where cast(peri_ccod as varchar)='"&periodo&"'")
+
+'-------------------------------------------datos del docente
+Sql="select pers_ncorr from personas where cast(pers_nrut as varchar)='"&negocio.obtenerUsuario&"'"
+pers_ncorr=conectar.consultaUno(Sql)
+
+sedeprofesor=   " select distinct  cast(a.pers_ncorr as varchar)+' '+cast(a.sede_ccod as varchar)+' '+ e.sede_tdesc as profesor_sede, "& _
+				" e.sede_tdesc as sede,d.peri_ccod  "& _
+				" from profesores a,bloques_profesores b, "& _
+				" bloques_horarios c,secciones d, sedes e "& _
+				" where a.pers_ncorr = b.pers_ncorr "& _
+				" and a.sede_ccod = b.sede_ccod " & _
+				" and b.bloq_ccod = c.bloq_ccod "& _
+				" and c.secc_ccod = d.secc_ccod "& _
+				" and a.sede_ccod = e.sede_ccod "& _
+				" and cast(d.peri_ccod as varchar)='"&periodo&"' "& _
+				" and   cast(b.pers_ncorr as varchar)= '"&pers_ncorr&"' " 
+
+consprofesor = "select '"&request.QueryString("m[0][sede_ccod]")&"' as sede_ccod"
+
+'response.Write("periodo = "&periodo&" , sedeprofesor = "&sedeprofesor&" , consprofesor = "&consprofesor)
+'response.End
+
+formprofesores.consultar consprofesor
+formprofesores.agregacampoparam "sede_ccod","destino","("& sedeprofesor &") aa"   
+formprofesores.siguiente
+
+consulta="select '"&request.QueryString("m[0][secc_ccod]")&"' as secc_ccod"
+formbusqueda.consultar consulta
+formbusqueda.agregacampocons	"secc_ccod", asig_tdesc
+formbusqueda.siguiente
+
+consulta2="select '"&request.QueryString("m[0][secc_tdesc]")&"' as secc_tdesc"
+'response.Write("consulta2 = "&consulta2)
+'response.End
+formsecciones.consultar consulta2
+formsecciones.siguiente
+
+'-------------------------------------------asignaturas del docente
+asignaturas=" select distinct a.sede_ccod,e.asig_ccod,e.asig_tdesc, a.pers_ncorr from  " & _
+			" profesores a, bloques_profesores b, " & _
+			" bloques_horarios c,secciones d, asignaturas e " & _
+			" where a.pers_ncorr =  b.pers_ncorr  " & _
+			" and a.sede_ccod = b.sede_ccod " & _
+			" and b.bloq_ccod = c.bloq_ccod  " & _
+			" and c.secc_ccod = d.secc_ccod " & _
+			" and d.asig_ccod = e.asig_ccod  " & _
+			" and cast(d.peri_ccod as varchar)= '"&periodo&"'" & _
+			" and cast(a.pers_ncorr as varchar)= '"&pers_ncorr&"' " 
+'response.Write("asignaturas = "&asignaturas)
+'response.End
+conectar.Ejecuta asignaturas
+set rec_asignaturas = conectar.ObtenerRS
+
+'-------------------------------------------secciones del docente
+Secciones =" select distinct a.pers_ncorr,d.sede_ccod, " & _
+			" d.secc_ccod,d.secc_tdesc, " & _
+			" e.asig_ccod,e.asig_tdesc, d.secc_tdesc+ ' - ' + isnull(f.carr_tsigla,'-')+ ' '+ case d.jorn_ccod when 1 then '(D)' when 2 then '(V)' else '' end as descripcion " & _
+			" from " & _
+			" profesores a, bloques_profesores b, " & _
+			" bloques_horarios c,secciones d,asignaturas e, carreras f " & _
+			" where a.pers_ncorr = b.pers_ncorr " & _
+			" and a.sede_ccod = b.sede_ccod " & _
+			" and b.bloq_ccod = c.bloq_ccod " & _
+			" and c.secc_ccod = d.secc_ccod " & _
+			" and d.asig_ccod = e.asig_ccod " & _
+			" and d.carr_ccod = f.carr_ccod " & _
+			" and cast(d.peri_ccod as varchar)= '"&periodo&"' " & _
+			" and cast(a.pers_ncorr as varchar)='"&pers_ncorr&"' " 
+'response.Write("Secciones = "&Secciones)
+'response.End
+conectar.Ejecuta Secciones
+set rec_secciones = conectar.ObtenerRS
+
+'--------------------------------------------asignatura seleccionada
+set f_asignatura = new CFormulario
+f_asignatura.Carga_Parametros "agregar_evaluacion.xml", "f_datos_asignaturas"
+f_asignatura.Inicializar conectar
+dotos_asignatura=   " select a.asig_ccod,a.secc_tdesc + ' - ' + isnull(e.carr_tsigla,'-') + ' ' + case a.jorn_ccod when 1 then '(DIURNA)' when 2 then '(VESPERTINA)' else '' end as secc_tdesc,d.tasg_tdesc," & _
+	                " b.asig_tdesc,b.asig_nhoras,c.sede_tdesc " & _
+					" from secciones a,asignaturas b, sedes c,tipos_asignatura d, carreras e" & _
+					" where  a.asig_ccod=b.asig_ccod and" & _
+					"	     a.sede_ccod=c.sede_ccod and " & _
+					"        a.carr_ccod = e.carr_ccod and " &_
+					"	     isnull(a.tasg_ccod,b.tasg_ccod)=d.tasg_ccod and    " & _					
+					"	     cast(a.secc_ccod as varchar)='"&secc_ccod&"' " & _
+					" and cast(a.peri_ccod as varchar)='"&periodo&"'"
+'response.Write("dotos_asignatura = "&dotos_asignatura)
+'response.End
+f_asignatura.Consultar dotos_asignatura
+f_asignatura.Siguiente
+
+'--------------------------------------------nombre del docente
+nombre=conectar.consultauno("select pers_tnombre +' '+ pers_tape_paterno +' '+ pers_tape_materno from personas where cast(pers_ncorr as varchar)='"&pers_ncorr&"'")
+'response.Write("nombre = "&nombre)
+'response.End
+
+set f_eva = new CFormulario
+f_eva.Carga_Parametros "tabla_vacia.xml", "tabla"
+f_eva.Inicializar conectar
+
+'--------------------------------------------calificaciones de la asignatura
+c_eva = "select cali_ncorr,teva_tdesc as tipo, cali_nevaluacion,replace(cali_nponderacion,',','.') as cali_nponderacion,protic.trunc(cali_fevaluacion) as fecha"&_
+		" from calificaciones_seccion a,tipos_evaluacion b "&_
+		" where a.teva_ccod=b.teva_ccod "&_
+		" and cast(secc_ccod as varchar)='"&secc_ccod&"' "&_
+		" order by cali_nevaluacion asc "
+'response.Write("c_eva = "&c_eva)
+'response.End
+f_eva.Consultar c_eva
+nro_eva = f_eva.nroFilas
+
+'--------------------------------------------total ponderacion y ponderacion de cada calificacion
+total_ponderado = 0
+while f_eva.siguiente
+	total_ponderado = total_ponderado + cdbl(f_eva.obtenerValor("cali_nponderacion"))
+	'if secc_ccod="62473" then
+	'response.Write("<br>"&cdbl(f_eva.obtenerValor("cali_nponderacion")))
+	'end if
+wend 
+'response.Write(total_ponderado)
+'end if
+'total ponderacion = 1000
+
+f_eva.primero
+
+set f_alumnos = new CFormulario
+f_alumnos.Carga_Parametros "tabla_vacia.xml", "tabla"
+f_alumnos.Inicializar conectar
+
+'--------------------------------------------calificaciones de los alumnos de la asignatura
+c_alumnos = " select a.matr_ncorr,cast(c.pers_nrut as varchar)+'-'+c.pers_xdv as rut, pers_tape_paterno + ' ' + pers_tape_materno + ', ' + pers_tnombre as nombre, "&_
+            "(select top 1 lower(email_nuevo) from cuentas_email_upa ttt where ttt.pers_ncorr=c.pers_ncorr ) as email, "&_
+            "(select top 1 replace(cast(cast(cala_nnota as decimal(2,1)) as varchar),',','.') from calificaciones_seccion tt (nolock), calificaciones_alumnos t2 (nolock) "&_
+			" where tt.secc_ccod=a.secc_ccod and tt.secc_ccod=t2.secc_ccod and tt.cali_ncorr=t2.cali_ncorr "&_
+			" and t2.matr_ncorr=a.matr_ncorr and tt.cali_nevaluacion = 1) as nota_1, "&_
+			"(select top 1 replace(cast(cast(cala_nnota as decimal(2,1)) as varchar),',','.') from calificaciones_seccion tt (nolock), calificaciones_alumnos t2 (nolock) "&_
+			" where tt.secc_ccod=a.secc_ccod and tt.secc_ccod=t2.secc_ccod and tt.cali_ncorr=t2.cali_ncorr "&_
+			" and t2.matr_ncorr=a.matr_ncorr and tt.cali_nevaluacion = 2) as nota_2, "&_
+			"(select top 1 replace(cast(cast(cala_nnota as decimal(2,1)) as varchar),',','.') from calificaciones_seccion tt (nolock), calificaciones_alumnos t2 (nolock) "&_
+			" where tt.secc_ccod=a.secc_ccod and tt.secc_ccod=t2.secc_ccod and tt.cali_ncorr=t2.cali_ncorr "&_
+			" and t2.matr_ncorr=a.matr_ncorr and tt.cali_nevaluacion = 3) as nota_3, "&_
+			"(select top 1 replace(cast(cast(cala_nnota as decimal(2,1)) as varchar),',','.') from calificaciones_seccion tt (nolock), calificaciones_alumnos t2 (nolock) "&_
+			" where tt.secc_ccod=a.secc_ccod and tt.secc_ccod=t2.secc_ccod and tt.cali_ncorr=t2.cali_ncorr "&_
+			" and t2.matr_ncorr=a.matr_ncorr and tt.cali_nevaluacion = 4) as nota_4, "&_
+			"(select top 1 replace(cast(cast(cala_nnota as decimal(2,1)) as varchar),',','.') from calificaciones_seccion tt (nolock), calificaciones_alumnos t2 (nolock) "&_
+			" where tt.secc_ccod=a.secc_ccod and tt.secc_ccod=t2.secc_ccod and tt.cali_ncorr=t2.cali_ncorr "&_
+			" and t2.matr_ncorr=a.matr_ncorr and tt.cali_nevaluacion = 5) as nota_5, "&_
+			"(select top 1 replace(cast(cast(cala_nnota as decimal(2,1)) as varchar),',','.') from calificaciones_seccion tt (nolock), calificaciones_alumnos t2 (nolock) "&_
+			" where tt.secc_ccod=a.secc_ccod and tt.secc_ccod=t2.secc_ccod and tt.cali_ncorr=t2.cali_ncorr "&_
+			" and t2.matr_ncorr=a.matr_ncorr and tt.cali_nevaluacion = 6) as nota_6, "&_ 
+			"(select top 1 replace(cast(cast(cala_nnota as decimal(2,1)) as varchar),',','.') from calificaciones_seccion tt (nolock), calificaciones_alumnos t2 (nolock) "&_
+			" where tt.secc_ccod=a.secc_ccod and tt.secc_ccod=t2.secc_ccod and tt.cali_ncorr=t2.cali_ncorr "&_
+			" and t2.matr_ncorr=a.matr_ncorr and tt.cali_nevaluacion = 7) as nota_7, "&_
+			"(select top 1 replace(cast(cast(cala_nnota as decimal(2,1)) as varchar),',','.') from calificaciones_seccion tt (nolock), calificaciones_alumnos t2 (nolock) "&_
+			" where tt.secc_ccod=a.secc_ccod and tt.secc_ccod=t2.secc_ccod and tt.cali_ncorr=t2.cali_ncorr "&_
+			" and t2.matr_ncorr=a.matr_ncorr and tt.cali_nevaluacion = 8) as nota_8, "&_
+			"(select top 1 replace(cast(cast(cala_nnota as decimal(2,1)) as varchar),',','.') from calificaciones_seccion tt (nolock), calificaciones_alumnos t2 (nolock) "&_
+			" where tt.secc_ccod=a.secc_ccod and tt.secc_ccod=t2.secc_ccod and tt.cali_ncorr=t2.cali_ncorr "&_
+			" and t2.matr_ncorr=a.matr_ncorr and tt.cali_nevaluacion = 9) as nota_9, "&_
+			"(select top 1 replace(cast(cast(cala_nnota as decimal(2,1)) as varchar),',','.') from calificaciones_seccion tt (nolock), calificaciones_alumnos t2 (nolock) "&_
+			" where tt.secc_ccod=a.secc_ccod and tt.secc_ccod=t2.secc_ccod and tt.cali_ncorr=t2.cali_ncorr "&_
+			" and t2.matr_ncorr=a.matr_ncorr and tt.cali_nevaluacion = 10) as nota_10, "&_
+			"(select top 1 replace(cast(cast(cala_nnota as decimal(2,1)) as varchar),',','.') from calificaciones_seccion tt (nolock), calificaciones_alumnos t2 (nolock) "&_
+			" where tt.secc_ccod=a.secc_ccod and tt.secc_ccod=t2.secc_ccod and tt.cali_ncorr=t2.cali_ncorr "&_
+			" and t2.matr_ncorr=a.matr_ncorr and tt.cali_nevaluacion = 11) as nota_11, "&_
+			"(select top 1 replace(cast(cast(cala_nnota as decimal(2,1)) as varchar),',','.') from calificaciones_seccion tt (nolock), calificaciones_alumnos t2 (nolock) "&_
+			" where tt.secc_ccod=a.secc_ccod and tt.secc_ccod=t2.secc_ccod and tt.cali_ncorr=t2.cali_ncorr "&_
+			" and t2.matr_ncorr=a.matr_ncorr and tt.cali_nevaluacion = 12) as nota_12, "&_
+			"(select top 1 replace(cast(cast(cala_nnota as decimal(2,1)) as varchar),',','.') from calificaciones_seccion tt (nolock), calificaciones_alumnos t2 (nolock) "&_
+			" where tt.secc_ccod=a.secc_ccod and tt.secc_ccod=t2.secc_ccod and tt.cali_ncorr=t2.cali_ncorr "&_
+			" and t2.matr_ncorr=a.matr_ncorr and tt.cali_nevaluacion = 13) as nota_13, "&_
+			"(select top 1 replace(cast(cast(cala_nnota as decimal(2,1)) as varchar),',','.') from calificaciones_seccion tt (nolock), calificaciones_alumnos t2 (nolock) "&_
+			" where tt.secc_ccod=a.secc_ccod and tt.secc_ccod=t2.secc_ccod and tt.cali_ncorr=t2.cali_ncorr "&_
+			" and t2.matr_ncorr=a.matr_ncorr and tt.cali_nevaluacion = 14) as nota_14, "&_
+			"(select top 1 replace(cast(cast(cala_nnota as decimal(2,1)) as varchar),',','.') from calificaciones_seccion tt (nolock), calificaciones_alumnos t2 (nolock) "&_
+			" where tt.secc_ccod=a.secc_ccod and tt.secc_ccod=t2.secc_ccod and tt.cali_ncorr=t2.cali_ncorr "&_
+			" and t2.matr_ncorr=a.matr_ncorr and tt.cali_nevaluacion = 15) as nota_15, "&_
+			"(select top 1 replace(cast(cast(cala_nnota as decimal(2,1)) as varchar),',','.') from calificaciones_seccion tt (nolock), calificaciones_alumnos t2 (nolock) "&_
+			" where tt.secc_ccod=a.secc_ccod and tt.secc_ccod=t2.secc_ccod and tt.cali_ncorr=t2.cali_ncorr "&_
+			" and t2.matr_ncorr=a.matr_ncorr and tt.cali_nevaluacion = 16) as nota_16, "&_
+			"(select top 1 replace(cast(cast(cala_nnota as decimal(2,1)) as varchar),',','.') from calificaciones_seccion tt (nolock), calificaciones_alumnos t2 (nolock) "&_
+			" where tt.secc_ccod=a.secc_ccod and tt.secc_ccod=t2.secc_ccod and tt.cali_ncorr=t2.cali_ncorr "&_
+			" and t2.matr_ncorr=a.matr_ncorr and tt.cali_nevaluacion = 17) as nota_17, "&_
+			"(select top 1 replace(cast(cast(cala_nnota as decimal(2,1)) as varchar),',','.') from calificaciones_seccion tt (nolock), calificaciones_alumnos t2 (nolock) "&_
+			" where tt.secc_ccod=a.secc_ccod and tt.secc_ccod=t2.secc_ccod and tt.cali_ncorr=t2.cali_ncorr "&_
+			" and t2.matr_ncorr=a.matr_ncorr and tt.cali_nevaluacion = 18) as nota_18, "&_
+			"(select top 1 replace(cast(cast(cala_nnota as decimal(2,1)) as varchar),',','.') from calificaciones_seccion tt (nolock), calificaciones_alumnos t2 (nolock) "&_
+			" where tt.secc_ccod=a.secc_ccod and tt.secc_ccod=t2.secc_ccod and tt.cali_ncorr=t2.cali_ncorr "&_
+			" and t2.matr_ncorr=a.matr_ncorr and tt.cali_nevaluacion = 19) as nota_19, "&_
+			"(select top 1 replace(cast(cast(cala_nnota as decimal(2,1)) as varchar),',','.') from calificaciones_seccion tt (nolock), calificaciones_alumnos t2 (nolock) "&_
+			" where tt.secc_ccod=a.secc_ccod and tt.secc_ccod=t2.secc_ccod and tt.cali_ncorr=t2.cali_ncorr "&_
+			" and t2.matr_ncorr=a.matr_ncorr and tt.cali_nevaluacion = 20) as nota_20 "&_
+			" from cargas_academicas a, alumnos b, personas c "&_
+			" where a.matr_ncorr=b.matr_ncorr and b.pers_ncorr=c.pers_ncorr and b.emat_ccod <> 9 "&_
+			" and cast(a.secc_ccod as varchar)='"&secc_ccod&"' "&_
+			" order by nombre "
+'response.Write("c_alumnos = "&c_alumnos)
+'response.End
+
+f_alumnos.Consultar c_alumnos
+nro_alumnos = f_alumnos.nroFilas
+
+dim arreglo_colores(21) 
+arreglo_colores(0)="#F8E0E0"
+arreglo_colores(1)="#F8ECE0"
+arreglo_colores(2)="#F7F8E0"
+arreglo_colores(3)="#ECF8E0"
+arreglo_colores(4)="#E0F8E0"
+arreglo_colores(5)="#E0F8EC"
+arreglo_colores(6)="#E0F8F7"
+arreglo_colores(7)="#E0ECF8"
+arreglo_colores(8)="#E0E0F8"
+arreglo_colores(9)="#ECE0F8"
+arreglo_colores(10)="#F8E0F7"
+arreglo_colores(11)="#F8E0EC"
+arreglo_colores(12)="#F2F2F2"
+arreglo_colores(13)="#F8E0E0"
+arreglo_colores(14)="#F8ECE0"
+arreglo_colores(15)="#F7F8E0"
+arreglo_colores(16)="#ECF8E0"
+arreglo_colores(17)="#E0F8E0"
+arreglo_colores(18)="#E0F8EC"
+arreglo_colores(19)="#E0F8F7"
+arreglo_colores(20)="#E0ECF8"
+
+'--------------------------------------------seteo de asignatura cerrada
+sql = "select isnull(estado_cierre_ccod,1) from secciones where cast(secc_ccod as varchar)='"&secc_ccod&"'"
+'response.write sql
+asig_cerrada = conectar.consultaUno(sql)
+'response.Write("asig_cerrada = "&asig_cerrada)
+'response.End
+'asig_cerrada = 1 
+
+
+if secc_ccod <> "" then
+	jorn_ccod = conectar.consultaUno("select jorn_ccod from secciones where cast(secc_ccod as varchar)='"&secc_ccod&"'")
+    es_anual  = conectar.consultaUno("select count(*) from secciones a, asignaturas b where cast(secc_ccod as varchar)='"&secc_ccod&"' and a.asig_ccod=b.asig_ccod and b.duas_ccod = 3")
+end if
+'response.Write(sys_cierra_notas)
+
+tipo_asignatura = conectar.consultaUno("select b.tasg_ccod from secciones a, asignaturas b where a.asig_ccod=b.asig_ccod and cast(secc_ccod as varchar)='"&secc_ccod&"'")
+sql = "select anos_ccod from periodos_academicos where cast(peri_ccod as varchar)='"&periodo&"'"
+'response.write sql
+anos_ccod = conectar.consultaUno(sql)
+'response.Write(anos_ccod)
+bloqueado_cambio = false
+if anos_ccod < "2007" then
+	 bloqueado_cambio = true
+else
+	sys_cierra_notas = false	 
+end if
+'Bloqueado a solicitud de Registro curricular para 2013-02 el 23-12-2013
+if ip_usuario="10.10.2.27" OR ip_usuario="172.16.16.166" OR ip_usuario="172.16.100.83" then 'OR ip_usuario="10.10.2.200"
+	autorizar = true 'desbloqueado 10-07-2014
+end if
+
+'response.Write("autorizar"&autorizar)
+
+carr_seccion = conectar.consultaUno("select ltrim(rtrim(carr_ccod)) from secciones where cast(secc_ccod as varchar)='"&secc_ccod&"'")
+bloquear_todo = "N"
+if anos_ccod < "2010" then
+	if jorn_ccod="1" and autorizar=false  and es_anual="0"  then
+			bloquear_todo= conectar.consultaUno("select case when convert(datetime,getDate(),103) >= convert(datetime,'01/01/2009',103) then 'S' else 'N' end ")
+	elseif jorn_ccod="2" and autorizar=false  and es_anual="0"  then
+			bloquear_todo= conectar.consultaUno("select case when convert(datetime,getDate(),103) >= convert(datetime,'01/01/2009',103) then 'S' else 'N' end ")
+	end if
+	
+	if carr_seccion="7" and (anos_ccod="2008" or anos_ccod="2007" or anos_ccod="2009") then
+			bloquear_todo = "N"
+			autorizar = true
+	end if
+end if
+
+'response.write bloquear_todo
+ 
+if anos_ccod = "2015" then  
+	if secc_ccod <> "" and periodo <> ""  then
+		duracion_asignatura = conectar.consultaUno("select b.duas_ccod from secciones a, asignaturas b where a.asig_ccod=b.asig_ccod and cast(secc_ccod as varchar)='"&secc_ccod&"'")
+		plec_ccod = conectar.consultaUno("select plec_ccod from periodos_academicos where cast(peri_ccod as varchar)='"&periodo&"'")
+        sede_ccod = conectar.consultaUno("select sede_ccod from secciones where cast(secc_ccod as varchar)='"&secc_ccod&"'") 
+		
+		if plec_ccod="1" then
+			bloquear_todo = "S"
+		end if
+		
+		if sede_ccod <> "9" then 
+			fecha_cierre= conectar.consultaUno("select case when convert(datetime,protic.trunc(getDate()),103) > convert(datetime,'08/12/2015',103) then 'S' else 'N' end ")
+		else
+			fecha_cierre= conectar.consultaUno("select case when convert(datetime,protic.trunc(getDate()),103) > convert(datetime,'26/07/2015',103) then 'S' else 'N' end ")
+		end if
+		
+		if fecha_cierre="S" then
+			bloquear_todo = "S"
+		else
+			bloquear_todo = "N"
+		end if
+		
+		tcar_ccod = conectar.consultaUno("select tcar_ccod from carreras where carr_ccod='"&carr_seccion&"'")
+		
+		
+		if carr_seccion="900" then
+			bloquear_todo = "N"
+		end if
+		
+		'if plec_ccod="1" and duracion_asignatura <> "3" then
+		'	bloquear_todo = "N"
+		'end if
+		
+		if tcar_ccod = "2" or carr_seccion="600" or duracion_asignatura = "3" then
+			bloquear_todo = "N"
+		end if 
+		
+		if plec_ccod="1" then
+			bloquear_todo = "S"
+		end if
+		
+	end if
+end if	
+
+
+sede_tdesc_temp = conectar.consultaUno("select sede_tdesc from secciones a, sedes b where cast(a.secc_ccod as varchar)='"&secc_ccod&"' and a.sede_ccod=b.sede_ccod")
+carr_tdesc_temp = conectar.consultaUno("select carr_tdesc from secciones a, carreras b where cast(a.secc_ccod as varchar)='"&secc_ccod&"' and a.carr_ccod=b.carr_ccod")
+asig_ccod_temp  = conectar.consultaUno("select ltrim(rtrim(asig_ccod)) from secciones a where cast(a.secc_ccod as varchar)='"&secc_ccod&"'")	
+asig_tdesc_temp = conectar.consultaUno("select asig_tdesc from secciones a, asignaturas b where cast(a.secc_ccod as varchar)='"&secc_ccod&"' and a.asig_ccod=b.asig_ccod")
+secc_tdesc_temp = conectar.consultaUno("select secc_tdesc from secciones a where cast(a.secc_ccod as varchar)='"&secc_ccod&"'")
+profe_temp      = conectar.consultaUno("select pers_tnombre + ' ' + pers_tape_paterno + ' ' + pers_tape_materno from personas where cast(pers_ncorr as varchar)='"&pers_ncorr&"'")
+
+
+'response.Write("ingreso_notas_parciales.asp")
+'response.End()
+
+
+%>
+
+
+<html>
+<head>
+<title>Evaluación De Asignaturas</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../estilos/estilos.css" rel="stylesheet" type="text/css">
+<link href="../estilos/tabla.css" rel="stylesheet" type="text/css">
+
+<script language="JavaScript" src="../biblioteca/tabla.js"></script>
+<script language="JavaScript" src="../biblioteca/funciones.js"></script>
+<script language="JavaScript" src="../biblioteca/validadores.js"></script>
+
+<script language="JavaScript">
+arreglo_calificaciones = new Array();
+rec_asignaturas = new Array();
+
+<%
+if (rec_asignaturas.BOF <> rec_asignaturas.EOF) then
+
+rec_asignaturas.MoveFirst
+i = 0
+while not rec_asignaturas.Eof
+%>
+rec_asignaturas[<%=i%>] = new Array();
+rec_asignaturas[<%=i%>]["pers_ncorr"] = '<%=rec_asignaturas("pers_ncorr")%>';
+rec_asignaturas[<%=i%>]["asig_ccod"] = '<%=rec_asignaturas("asig_ccod")%>';
+rec_asignaturas[<%=i%>]["asig_tdesc"] = '<%=rec_asignaturas("asig_tdesc")%>';
+rec_asignaturas[<%=i%>]["sede_ccod"] = '<%=rec_asignaturas("sede_ccod")%>';
+
+<%	
+	rec_asignaturas.MoveNext
+	i = i + 1
+wend
+end if
+%>
+
+
+rec_secciones = new Array();
+<%
+
+if (rec_secciones.BOF <> rec_secciones.EOF) then
+rec_secciones.MoveFirst
+j = 0
+while not rec_secciones.Eof
+%>
+rec_secciones[<%=j%>] = new Array();
+rec_secciones[<%=j%>]["pers_ncorr"] = '<%=rec_secciones("pers_ncorr")%>';
+rec_secciones[<%=j%>]["asig_ccod"] = '<%=rec_secciones("asig_ccod")%>';
+rec_secciones[<%=j%>]["asig_tdesc"] = '<%=rec_secciones("asig_tdesc")%>';
+rec_secciones[<%=j%>]["sede_ccod"] = '<%=rec_secciones("sede_ccod")%>';
+rec_secciones[<%=j%>]["secc_tdesc"] = '<%=rec_secciones("secc_tdesc")%>';
+rec_secciones[<%=j%>]["secc_ccod"] = '<%=rec_secciones("secc_ccod")%>';
+rec_secciones[<%=j%>]["descripcion"] = '<%=rec_secciones("descripcion")%>';
+<%	
+	rec_secciones.MoveNext
+	j = j + 1
+wend
+end if
+%>
+
+function CargarAsignaturas(formulario, profesor_sede)
+{
+ var cadena, pers_ncorr, sede_ccod
+ cadena=profesor_sede.split(" ");
+ pers_ncorr=cadena[0];
+ sede_ccod=cadena[1];
+
+	formulario.elements["m[0][secc_ccod]"].length = 0;
+	
+	op = document.createElement("OPTION");
+	op.value = "-1";
+	op.text = "-- Seleccione Una Asignaturas --";
+	formulario.elements["m[0][secc_ccod]"].add(op)
+	
+	for (i = 0; i < rec_asignaturas.length; i++) {
+		if ((rec_asignaturas[i]["pers_ncorr"] == pers_ncorr) && (rec_asignaturas[i]["sede_ccod"] == sede_ccod)) {
+			op = document.createElement("OPTION");
+			op.value = rec_asignaturas[i]["asig_ccod"];
+			op.text = rec_asignaturas[i]["asig_ccod"]+"-"+rec_asignaturas[i]["asig_tdesc"];
+			formulario.elements["m[0][secc_ccod]"].add(op)
+			
+		}
+	}	
+}
+
+var t_evaluaciones;
+
+function InicioPagina(formulario)
+{
+	t_evaluaciones = new CTabla("em");
+/*formulario = document.busqueda;*/
+a="<%=asig_tdesc%>"
+if (a !="")
+{
+CargarAsignaturas(formulario, formulario.elements["m[0][sede_ccod]"].value)
+formulario.elements["m[0][secc_ccod]"].value = "<%=asig_tdesc%>";
+
+CargarSecciones(formulario,formulario.elements["m[0][secc_ccod]"].value)
+formulario.elements["m[0][secc_tdesc]"].value = "<%=secc_ccod%>";
+sec=formulario.elements["m[0][secc_tdesc]"].value;
+}
+	
+}
+
+function CargarSecciones(formulario,asig_ccod){
+var cadena,cadena2, pers_ncorr, sede_ccod
+ cadena= formulario.elements["m[0][sede_ccod]"].value.split(" ");
+ cadena2=asig_ccod.split(" ");
+ pers_ncorr=cadena[0];
+ sede_ccod=cadena[1];
+asig=cadena2[0];
+asig_ccod=formulario.elements["m[0][secc_ccod]"].value
+
+	formulario.elements["m[0][secc_tdesc]"].length = 0;
+	
+	op2 = document.createElement("OPTION");
+	op2.value = "-1";
+	op2.text = "-- Secciones --";
+	formulario.elements["m[0][secc_tdesc]"].add(op2)
+	
+	
+	for (i = 0; i < rec_secciones.length; i++) {
+		if ((rec_secciones[i]["pers_ncorr"] == pers_ncorr) && (rec_secciones[i]["sede_ccod"] == sede_ccod) && (rec_secciones[i]["asig_ccod"]== asig_ccod)) {
+			op2 = document.createElement("OPTION");
+			op2.value = rec_secciones[i]["secc_ccod"];
+			op2.text = rec_secciones[i]["descripcion"];
+			formulario.elements["m[0][secc_tdesc]"].add(op2)
+			
+		}
+	}
+}
+
+function ValidarBusqueda(formulario){
+	if (formulario.elements["m[0][sede_ccod]"].value == "") {
+		alert('Seleccione una Sede.');
+		formulario.elements["m[0][sede_ccod]"].focus();
+		return false ;
+	}
+	if (formulario.elements["m[0][secc_ccod]"].value == "-1") {
+		alert('Seleccione una Asignatura.');
+		formulario.elements["m[0][secc_ccod]"].focus();
+		return false;
+	}
+	
+	if (formulario.elements["m[0][secc_tdesc]"].value == "-1") {
+		alert('Seleccione una Sección.');
+		formulario.elements["m[0][secc_tdesc]"].focus();
+		return false ;
+	}
+	return true;
+ }
+
+function enviar(formulario){
+	/*var pers_ncorr,sede_ccod,asig_ccod,secc_ccod,cadena*/
+  	if(ValidarBusqueda(formulario)){
+	  formulario.action = 'ingreso_notas_parciales.asp'
+   	  formulario.submit();}
+ }
+
+function cambiarperiodo(formulario){
+	  
+	   formulario.action = 'matar_sesion.asp'
+   	   formulario.submit();
+}
+
+function ProcEliminar(formulario)
+{
+	//alert('ok');
+	
+	formulario.method="post";
+	formulario.target="_self";
+	formulario.action = 'eliminar_eval.asp';
+	formulario.submit();
+	
+}
+
+
+function eliminar(formulario)
+{
+	var nseleccionados = t_evaluaciones.CuentaSeleccionados("cali_ncorr");
+	var str_alerta = "";
+	var bnotas = false;
+	var str_mensaje;
+	
+	if (nseleccionados > 0) {
+		//if (nseleccionados == 1) {			
+			
+			for (var i = 0; i < t_evaluaciones.filas.length; i++) {
+				
+				if ( (t_evaluaciones.filas[i].campos["cali_ncorr"].objeto.checked) && (parseInt(t_evaluaciones.ObtenerValor(i, "nnotas")) > 0) ) {
+					str_alerta = str_alerta + "Evaluación Nº " + t_evaluaciones.ObtenerValor(i, "c_cali_nevaluacion") + " : " + t_evaluaciones.ObtenerValor(i, "nnotas") + " alumnos con nota.\n";
+					bnotas = true;						
+				}				
+			}
+			
+			if (bnotas)
+				str_mensaje = "Las siguientes evaluaciones tienen notas puestas. Si las elimina, también eliminará las notas asociadas a ellas.\n\n" + str_alerta + "\n¿Desea continuar?";
+			else 
+				str_mensaje = "¿Está seguro que desea eliminar las evaluaciones seleccionadas?";
+			
+			if (confirm(str_mensaje))
+				ProcEliminar(formulario);
+			
+		/*}
+		else {
+			alert('No puede seleccionar más de una evaluación para eliminar.');
+		}*/
+	}
+	else {
+		alert('No ha seleccionado una evaluación para eliminar.');
+	}	
+
+}
+
+function eliminar_(formulario){
+	if (vcheck_eliminar(formulario)==1){
+		formulario.method="post";
+		formulario.target="_self"
+		formulario.action = 'eliminar_eval.asp'
+		formulario.submit();
+	}
+	else {
+		if (vcheck_eliminar(formulario)==0){
+			alert('No ha seleccionado una evaluación para eliminar');
+		}
+		else {
+			alert('No puede seleccionar más de una evaluación para eliminar');
+		}
+	}
+}
+
+function vcheck_eliminar(formulario) {
+	num=formulario.elements.length;
+	c=0;
+	for (i=0;i<num;i++){
+		//alert(formulario.elements[i].name);
+		nombre = formulario.elements[i].name;
+		var elem = new RegExp ("cali_ncorr","gi");
+		if (elem.test(nombre)){
+			if((formulario.elements[i].checked==true)){
+				c=c+1;
+			}
+		}
+	}
+	if (c==1){
+		valor=1;
+	}
+	else {
+		if (c==0){
+			valor=0;
+		}
+		else{
+			valor=2;
+		}
+	}
+return(valor);	
+}
+
+function agregar(formulario){
+//if(ValidarBusqueda(formulario)){
+	 direccion="agregar_evaluacion.asp?secc_ccod="+"<%=secc_ccod%>";
+     resultado=window.open(direccion, "ventana1","width=600,height=400,scrollbars=yes, left=0, top=0");
+//	}
+}	
+
+ 
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_nbGroup(event, grpName) { //v6.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])? args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+
+function clipFloat(num,decimales)
+{ 
+	//creamos variable local String 
+	var t=num+""; 
+	/*Al string lo delimitamos desde 0 (inicio) hasta el punto, mas los decimales y 1 (el punto), y lo convertimos a numero flotante (real) 
+	*/ 
+	num = parseFloat(t.substring(0,(t.indexOf(".")+decimales+1))); 
+	//regresamos el valor 
+	return (num) 
+} 
+
+var modificado_nota = false;
+
+
+function calcular_nota(indice,nombre_campo)
+{
+	var nota_total = 0.0;
+	var valor_temporal = 0.0;
+	var nota_ingresada = "";
+	var numero = 0.0;
+	var valor_ingresado = document.edicion.elements[nombre_campo].value;
+	if ((isNota(valor_ingresado))&&(valor_ingresado > "0") &&(valor_ingresado <= 7))
+	{
+		for (i in arreglo_calificaciones)
+		{ 
+		   //alert(arreglo_calificaciones[i]);
+		   numero =  (arreglo_calificaciones[i]/100);
+		   nota_ingresada = document.edicion.elements["m["+indice+"][cali_"+i+"]"].value;
+		   if (nota_ingresada == "")
+		   {
+			 nota_ingresada = "1.0";
+		   }
+		   valor_temporal = (nota_ingresada * 1 ) * numero;
+		   nota_total = nota_total + valor_temporal;
+		}
+		nota_total = clipFloat(nota_total,1);
+		document.edicion.elements["f["+indice+"]"].value = nota_total;
+		document.edicion.elements[nombre_campo].style.backgroundColor ="#ffffff";
+		modificado_nota = true;//para cuando se modifique un registro que alerte antes de enviar email
+	}
+	else
+	{
+		alert("Ingrese una nota entre 1.0 y 7.0(la separación es con un punto)");
+		document.edicion.elements[nombre_campo].value="";
+		document.edicion.elements[nombre_campo].style.backgroundColor ="#ed583b";
+	}
+}
+
+function guardar(formulario)
+{
+   if(preValidaFormulario(formulario))
+   {
+	 formulario.method='post';
+	 formulario.target = "_self";
+	 formulario.action = 'ingreso_notas_parciales_proc.asp';
+	 formulario.submit();
+   }
+  else 
+  {
+   	alert('Existen calificaciones que no cumplen el formato');
+  }
+}
+
+function enviar_email_masivo()
+{
+	if (!modificado_nota)
+	{
+		if (confirm("Esto enviará las calificaciones a todos los alumnos,\n¿Para continuar presione Aceptar?") )
+		{
+			var formulario = document.edicion;
+			formulario.action = "http://www.upacifico.cl/super_test/motor_email_notas_parciales_totales.php";
+			formulario.target = "_black";
+			formulario.submit();
+		}	
+	}
+	else
+	{
+		alert("Se han realizado modificaciones en las notas parciales, debe guardar antes de enviar el email");
+	}	
+}
+
+</script>
+
+</head>
+<body bgcolor="#D8D8DE" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="InicioPagina(document.busqueda);MM_preloadImages('../imagenes/botones/buscar_f2.gif','../images/bot_deshabilitar_f2.gif','../images/agregar2_f2_p.gif','../__base/im&amp;#225;genes/marco1_r3_c2_f2.gif');MM_preloadImages('../__base/im&amp;#225;genes/marco1_r3_c4_f2.gif');MM_preloadImages('../__base/im&amp;#225;genes/marco1_r3_c6_f2.gif');MM_preloadImages('../__base/im&amp;#225;genes/marco1_r3_c8_f2.gif');MM_preloadImages('../imagenes/botones/cargar_f2.gif','../imagenes/botones/continuar_f2.gif')" onBlur="revisaVentana();">
+<table width="750" height="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="62" valign="top"><img src="../imagenes/vineta2_r1_c1.gif" width="750" height="62" border="0"></td>
+  </tr>
+  <%pagina.DibujarEncabezado()%>  
+  <tr>
+    <td valign="top" bgcolor="#EAEAEA">
+	<br>
+	<table width="90%"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#D8D8DE">
+      <tr>
+        <td width="9" height="8"><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+        <td height="8" background="../imagenes/top_r1_c2.gif"></td>
+        <td width="7" height="8"><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+      </tr>
+      <tr>
+        <td width="9" background="../imagenes/izq.gif"></td>
+        <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><%pagina.DibujarLenguetas Array("Búsqueda de Asignaturas"), 1 %></td>
+          </tr>
+          <tr>
+            <td height="2" background="../imagenes/top_r3_c2.gif"></td>
+          </tr>
+          <tr>
+            <td>
+			<form action="" method="get" name="busqueda" id="busqueda">
+              <br>
+              <table width="98%"  border="0" align="center">
+                <tr>
+                  <td width="81%"><div align="center"> 
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr> 
+                                <td width="24%" align="left"> <font face="Verdana, Arial, Helvetica, sans-serif" size="1">Sede 
+                                  <br>
+                                  <%formprofesores.dibujacampo("sede_ccod")%>
+                                  </font></td>
+                                <td width="57%" align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">&nbsp; 
+                                  </font> <font face="Verdana, Arial, Helvetica, sans-serif" size="1">&nbsp; 
+                                  </font><font face="Verdana, Arial, Helvetica, sans-serif" size="1">&nbsp; 
+                                  Asignaturas<br>
+                                  <%formbusqueda.dibujacampo("secc_ccod")%>
+                                  </font></td>
+                                <td width="19%" align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Secci&oacute;n<br>
+                                  <%formsecciones.dibujacampo("secc_tdesc")%>
+                                  </font></td>
+                              </tr>
+                            </table>
+                          </div></td>
+                  
+                </tr><input name="sesi_ccod" type="hidden" value="<%=id_sesion%>">
+              </table>
+             <table width="98%" border="0">
+                            <tr> 
+                              <td>*PARA VER UN CURSO SELECCIONE LOS PARAMETROS 
+                                DE B&Uacute;SQUEDA Y PRESIONE EL BOTON <em><strong>&quot;BUSCAR&quot;</strong></em></td>
+                            </tr>
+                            <tr> 
+                              <td>Nota : Ud. esta definiendo Evaluaciones para 
+                                el periodo acad&eacute;mico de :<strong> 
+                                <%response.Write(PerSel)%>
+                                </strong> &nbsp;</td>
+                            </tr>
+							<tr> 
+                            <td align="right"><%botonera.dibujaboton "buscar"%></td>
+                            </tr>
+                  </table>
+        
+            </form></td>
+          </tr>
+        </table></td>
+        <td width="7" background="../imagenes/der.gif"></td>
+      </tr>
+      <tr>
+        <td width="9" height="13"><img src="../imagenes/base1.gif" width="9" height="13"></td>
+        <td height="13" background="../imagenes/base2.gif"></td>
+        <td width="7" height="13"><img src="../imagenes/base3.gif" width="7" height="13"></td>
+      </tr>
+    </table>
+	<br>
+	<%if secc_ccod <> "" then%>
+	<table width="90%"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#D8D8DE">
+      <tr>
+        <td width="9" height="8"><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+        <td height="8" background="../imagenes/top_r1_c2.gif"></td>
+        <td width="7" height="8"><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+      </tr>
+      <tr valign="top">
+        <td width="9" background="../imagenes/izq.gif">&nbsp;</td>
+        <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+                <td>
+                  <%pagina.DibujarLenguetas Array("Evaluación de Asignaturas"), 1 %>
+                </td>
+          </tr>
+          <tr>
+            <td height="2" background="../imagenes/top_r3_c2.gif"></td>
+          </tr>
+          <tr valign="top">
+            <td><div align="center">
+                    <p align="left"> 
+                      <% if secc_ccod <>"" then %>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <p align="left">Resultado de La busqueda <br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sede :<strong>&nbsp;<%=f_asignatura.obtenervalor("sede_tdesc")%></strong><br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Carrera :<strong><%=carrera%></strong> <br>
+					  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Asignatura :<strong> 
+                      <%=f_asignatura.obtenervalor("asig_ccod")%> &nbsp; <%=f_asignatura.obtenervalor("asig_tdesc")%></strong> <br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tipo Asignatura :<strong> 
+                      <%=f_asignatura.obtenervalor("tasg_tdesc")%> </strong> <br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seccion :<strong> <%=f_asignatura.obtenervalor("secc_tdesc")%></strong> <br>
+                      <%end if %>
+                    </p>
+                    <form action="" method="post" name="edicion" id="edicion">
+					  <input type="hidden" name="secc_ccod" value="<%=secc_ccod%>">
+					  <input type="hidden" name="audi_tusuario" value="<%=negocio.obtenerUsuario%>">
+					  <input type="hidden" name="sede_tdesc_temp" value="<%=sede_tdesc_temp%>">
+					  <input type="hidden" name="carr_tdesc_temp" value="<%=carr_tdesc_temp%>">
+					  <input type="hidden" name="asig_ccod_temp" value="<%=asig_ccod_temp%>">
+					  <input type="hidden" name="asig_tdesc_temp" value="<%=asig_tdesc_temp%>">
+					  <input type="hidden" name="secc_tdesc_temp" value="<%=secc_tdesc_temp%>">
+					  <input type="hidden" name="profe_temp" value="<%=profe_temp%>">
+					  <input type="hidden" name="nro_alumnos" value="<%=nro_alumnos%>">
+					  <input type="hidden" name="nro_eva" value="<%=nro_eva%>">
+                      <div align="left">
+                        <input name="url" type="hidden" value="<%=request.ServerVariables("HTTP_REFERER")%>">
+                      </div>
+                      <table width="98%" border="0" align="center" cellpadding="5" cellspacing="0" >
+                        <%if ((bloqueado_cambio = true and autorizar = false) or (bloquear_todo="S")) then %>
+						<tr> 
+                          <td align="center"><font color="#0000FF" size="2"><strong>Atención: </strong><br>
+                          No se pueden hacer modificaciones en las actas ya que el proceso fue cerrado según reglamento académico, si desea hacer cambios en ella diríjase al departamento de registro curricular.</font>
+                          </td>
+                        </tr>
+						<tr> 
+                          <td align="center">&nbsp;</td>
+                        </tr>
+						<%end if%>
+						<tr> 
+                          <td align="left">
+						    <script language='javaScript1.2'> colores = Array(3);   colores[0] = ''; colores[1] = '#FFECC6'; colores[2] = '#FFECC6'; </script>
+							<table class=v1 width='98%' border='1' cellpadding='0' cellspacing='0' bordercolor='#999999' bgcolor='#ADADAD' id='tb_em'>
+							<tr bgcolor='#C4D7FF' bordercolor='#999999'>
+								<th><font color='#333333'>Nº Evaluación</font></th>
+								<th><font color='#333333'>Tipo De Evaluación</font></th>
+								<th><font color='#333333'>Fecha Evaluación</font></th>
+								<th><font color='#333333'>Ponderación (%)</font></th>
+								<th><font color='#333333'>Color</font></th>
+							</tr>
+							<%fila=0
+							  color_celda = "#FFFFFF"
+							  while f_eva.siguiente
+							  cali = f_eva.obtenerValor("cali_ncorr")
+							  numero = f_eva.obtenerValor("cali_nevaluacion")
+							  tipo   = f_eva.obtenerValor("tipo")
+							  fecha_eva = f_eva.obtenerValor("fecha")
+							  ponderacion = f_eva.obtenerValor("cali_nponderacion")
+							  color_celda = arreglo_colores(fila)
+							  fila = fila + 1
+							  %>
+							<tr bgcolor="#FFFFFF">
+							    <td class='click'align='CENTER' width='' onMouseOver='resaltar(this)' onMouseOut='desResaltar(this)'><%=numero%></td>
+								<td class='click'align='LEFT' width='' onMouseOver='resaltar(this)' onMouseOut='desResaltar(this)'><%=tipo%></td>
+								<td class='click'align='CENTER' width='' onMouseOver='resaltar(this)' onMouseOut='desResaltar(this)'><%=fecha_eva%></td>
+								<td class='click'align='CENTER' width='' onMouseOver='resaltar(this)' onMouseOut='desResaltar(this)'><%=ponderacion%></td>
+								<td width='10' align='center' bgcolor="<%=color_celda%>">&nbsp;</td>
+							</tr>
+							<%wend%>
+							</table>
+						  </td>
+                        </tr>
+						<tr>
+						   <td align="center"></td>
+						</tr>
+						<tr>
+						   <td align="Left">Ingreso de calificaciones Parciales</td>
+						</tr>
+						<tr>
+						   <td align="center"></td>
+						</tr>
+						<%total_ponderado = cint(total_ponderado)
+						  if total_ponderado >= 100 then
+						    %>
+						<tr>
+						   <td align="left">
+						   		<table class=v1 width='98%' border='1' cellpadding='0' cellspacing='0' bordercolor='#999999' bgcolor='#ADADAD' id='tb_em'>
+									<tr bgcolor='#C4D7FF' bordercolor='#999999' valign="bottom">
+										<th><font color='#333333'>N</font></th>
+										<th><font color='#333333'>Alumno</font>
+										    <input type="hidden" name="dato_email_0_0" value="RUT"> 
+											<input type="hidden" name="dato_email_0_1" value="EMAIL">
+										</th>
+										<%fila=0
+										  color_celda = "#FFFFFF"
+										  f_eva.primero
+										  while f_eva.siguiente
+										      cali = f_eva.obtenerValor("cali_ncorr")
+											  numero = f_eva.obtenerValor("cali_nevaluacion")
+											  ponderacion = f_eva.obtenerValor("cali_nponderacion")
+											  color_celda = arreglo_colores(fila)
+											  fila = fila + 1
+										  %>
+										      <script>arreglo_calificaciones[<%=cali%>] ='<%=ponderacion%>';</script>
+											  <th align="center" bgcolor="<%=color_celda%>"><font color='#333333'><%=numero%><br><%=ponderacion%>%</font>
+											    <input type="hidden" name="dato_email_0_<%=fila+1%>" value="<%=numero%><br><%=ponderacion%>%">
+											  </th>
+										  <%wend%>
+										<th><font color='#333333'>Nota<br>Final</font></th>
+									</tr>
+									<%num = 1
+									  while f_alumnos.siguiente
+									   matr= f_alumnos.obtenerValor("matr_ncorr")
+									   secc = secc_ccod
+									   nombre= f_alumnos.obtenerValor("nombre")
+									   rut= f_alumnos.obtenerValor("rut")
+									   email= f_alumnos.obtenerValor("email")
+									  %>
+									   <tr bgcolor="#FFFFFF">
+											<td class='click'align='CENTER' width='' onMouseOver='resaltar(this)' onMouseOut='desResaltar(this)'><%=num%></td>
+											<td class='click'align='LEFT' width='' onMouseOver='resaltar(this)' onMouseOut='desResaltar(this)'><%=nombre%>
+											<input type="hidden" name="dato_email_<%=num%>_0" value="<%=rut%>">
+											<input type="hidden" name="dato_email_<%=num%>_1" value="<%=email%>">
+											</td>
+											<%fila=0
+											  color_celda = "#FFFFFF"
+											  f_eva.primero
+											  while f_eva.siguiente
+											  cali = f_eva.obtenerValor("cali_ncorr")
+											  numero = f_eva.obtenerValor("cali_nevaluacion")
+											  color_celda = arreglo_colores(fila)
+											  fila = fila + 1
+											  nota =  f_alumnos.obtenerValor("nota_"&numero)
+											  %>
+											  <td class='click'align='CENTER' bgcolor="<%=color_celda%>" width='' onMouseOver='resaltar(this)' onMouseOut='desResaltar(this)'>
+											  		<input type="text" size="4" maxlength="3" id="NT-S" name="m[<%=matr%>][cali_<%=cali%>]" value="<%=nota%>" onChange="calcular_nota(<%=matr%>,this.name);">
+													<input type="hidden" size="4" maxlength="3" name="o[<%=matr%>][cali_<%=cali%>]" value="<%=nota%>">
+													<input type="hidden" name="dato_email_<%=num%>_<%=fila + 1%>" value="<%=nota%>">
+											  </td>
+											  <% nota = ""
+											     wend%>
+											<td class='click'align='CENTER' width='' onMouseOver='resaltar(this)' onMouseOut='desResaltar(this)'>
+													<input type="text" size="4" maxlength="3" name="f[<%=matr%>]" value="" readonly>
+											</td>
+										</tr>
+									 <%num = num + 1
+									 wend%>		
+						        </table>
+						   </td>
+						</tr>
+						<tr>
+						   <td align="center"></td>
+						</tr>
+						<tr>
+						   <td align="right">
+								<%if no_permite > 0 and asig_cerrada = "1"  then 
+									 botonera.agregaBotonParam "guardar","deshabilitado","FALSE"
+								  end if
+								  if asig_cerrada <> "1" or (sys_cierra_notas = TRUE ) or bloqueado_cambio = true or bloquear_botones="S" then
+									 botonera.agregaBotonParam "guardar","deshabilitado","TRUE"
+								  end if 
+								  if ((bloqueado_cambio = true and autorizar = false) or (bloquear_todo="S")) then
+									 botonera.agregaBotonParam "guardar","deshabilitado","TRUE"
+								  End if
+								  if autorizar then
+									 botonera.agregaBotonParam "guardar","deshabilitado","FALSE"
+								  end if
+								  botonera.dibujaBoton "guardar"
+								%>
+						   </td>
+						</tr>
+						<tr>
+						   <td align="center"></td>
+						</tr>
+						<tr>
+						   <td align="center">
+						      	<table width="60%" cellpadding="0" cellspacing="0">
+								<tr>
+									<td width="15%" bgcolor="#ebc66d" align="center"><font color="#0033CC" size="2"><strong>NUEVO</strong></font></td>
+									<td width="70%">&nbsp;</td>
+									<td width="15%">&nbsp;</td>
+								</tr>
+								<tr>
+									<td colspan="2" bgcolor="#ebc66d"><font color="#000000" face="Times New Roman, Times, serif" size="2">Estimado(a) Docente:<br>Ahora puede enviar directamente al email de los alumnos las calificaciones parciales de esta asignatura. Para ello presione en el ícono.</font></td>
+									<td width="15%" bgcolor="#ebc66d" align="center"><a href="javascript: enviar_email_masivo();" title="Enviar correo con notas a todo el curso."><img width="64" height="64" src="../imagenes/email_masivo.png" border="0"></a></td>
+								</tr>
+							</table>
+						   </td>
+						</tr>
+						<tr>
+						   <td align="center"></td>
+						</tr>
+						<%else%>
+						<tr>
+						   <td align="center"></td>
+						</tr>
+						<tr>
+						   <td align="center" bgcolor="#0033CC"><font size="2" color="#FFFFFF">DEBE PROGRAMAR EL 100% DE LAS EVALUACIONES DE ASIGNATURA ANTES DEL INGRESO DE NOTAS PARCIALES.</font></td>
+						</tr>
+						<tr>
+						   <td align="center"></td>
+						</tr>
+						<%end if%>
+                      </table>
+                    </form>
+                    <br>
+					<%if asig_cerrada <> "1" then%>
+						<font color="#0000FF"><b>Observaci&oacute;n :</b></font>&nbsp;La 
+                                  evaluación de esta asignatura se encuentra <b>Cerrada</b>, 
+                                  por lo tanto si desea hacer cualquier cambio 
+                                  en ella se debe comunicar con la dirección de 
+                                  la escuela.
+				    <%end if%>
+                    <p><br>
+                    </p>
+                  </div>
+                </td>
+              </tr>
+        </table></td>
+        <td width="7" background="../imagenes/der.gif">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="9" height="28"><img src="../imagenes/abajo_r1_c1.gif" width="9" height="28"></td>
+        <td height="28"><table width="100%" height="28"  border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="18%" height="20"><div align="center">
+              <table width="90%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td><div align="center">
+                            <%botonera.dibujaboton "salir"%>
+                          </div></td>
+                </tr>
+              </table>
+            </div></td>
+            <td width="82%" rowspan="2" background="../imagenes/abajo_r1_c4.gif"><img src="../imagenes/abajo_r1_c3.gif" width="12" height="28"></td>
+            </tr>
+          <tr>
+            <td height="8" background="../imagenes/abajo_r2_c2.gif"></td>
+          </tr>
+        </table></td>
+        <td width="7" height="28"><img src="../imagenes/abajo_r1_c5.gif" width="7" height="28"></td>
+      </tr>
+    </table>
+	<%end if%>
+	<br>
+	<br>
+	</td>
+  </tr>  
+</table>
+</body>
+</html>

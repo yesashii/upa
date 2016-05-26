@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+   <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	   <funcionValidacion>Validar();</funcionValidacion>
+	</botones>
+	<botones nombre="activar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Activar</texto>
+	  <formulario>edicion</formulario>
+	  <accion>GUARDAR</accion>
+	  <url>proc_activar_contrato.asp</url>
+	  <funcionValidacion>Activar();</funcionValidacion>
+	</botones>		
+   <botones nombre="salir"> 
+      <tipoTexto>CANCELAR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+    <botones nombre="imprimir"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Imprimir</texto>
+	  <accion>GUARDAR</accion>
+	  <target>_BLANK</target>
+	  <funcionValidacion>ValidarImpresion();</funcionValidacion>
+      <formulario>edicion</formulario>
+	</botones> 
+	 <botones nombre="pagos"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Ver forma de pago</texto>
+	  <!--<accion>AGREGAR</accion>-->
+	  <accion>GUARDAR</accion>
+	  <target>_BLANK</target>
+	  <!--<url>ver_forma_pago.asp</url>-->
+	  <funcionValidacion>ValidarVerFP();</funcionValidacion>
+	  <!--<ancho>800</ancho>
+	  <alto>500</alto>-->
+	  <formulario>edicion</formulario>
+	  <scroll>TRUE</scroll>
+	</botones> 
+   </parametro>
+   
+   <parametro formulario="busqueda" variable="busqueda">
+   <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="f_contratos" clave="cont_ncorr"  variable="contratos" 
+         colorSeleccionado="#CCCCCC" colorResaltado="#999999" nroRegistros="15" maxLista="10" 
+	     eliminar="TRUE"  seleccionarTodo="FALSE"  anchoTabla="100%" editar="FALSE"  nuevaVentana="FALSE" 
+		 mensajeError="No se encontraron contratos pendientes" >
+	 <campos nombre="pers_nrut">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+	 </campos>
+	  <campos nombre="pers_xdv">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+	 </campos>
+	 <campos nombre="econ_ccod">
+	    <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+	 </campos>
+	 <campos nombre="c_cont_ncorr">
+	    <descripcion>N Interno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="carrera">
+	    <descripcion>Carrera</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="cont_fcontrato">
+	    <descripcion>Fecha Contrato</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+      <campos nombre="rut_alumno">
+	    <descripcion>Rut Alumno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	  <campos nombre="nombre_alumno">
+	    <descripcion>Nombre Alumno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="econ_tdesc">
+	    <descripcion>Estado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+  </parametro>   
+  
+     <parametro formulario="busqueda_imprimir" variable="busqueda">
+   <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+	  <campos nombre="folio">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+   </parametro>
+  
+   
+</Parametros>

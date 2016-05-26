@@ -1,0 +1,161 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>adm_salidas.asp</url>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+      <botones nombre="agregar">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>AGREGAR</accion>
+         <alto>600</alto>
+         <ancho>800</ancho>
+         <url>adm_requisitos_adicionales_agregar.asp</url>
+         <scroll>TRUE</scroll>
+      </botones>
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_requisitos_adicionales.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="aceptar">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <url>proc_adm_requisitos_adicionales_agregar.asp</url>
+         <formulario>edicion</formulario>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+   </parametro>
+   <parametro formulario="encabezado" anchoTabla="100%" columnas="2">
+      <campos nombre="carr_tdesc">
+         <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="espe_tdesc">
+         <descripcion>Especialidad</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="plan_tdesc">
+         <descripcion>Plan</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="peri_tdesc">
+         <descripcion>Periodo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="tspl_tdesc">
+         <descripcion>Tipo de Salida</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="sapl_tdesc">
+         <descripcion>Descripción</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="sapl_npond_asignaturas">
+         <descripcion>% Pond. Asignaturas</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="pond_adicionales">
+         <descripcion>% Req. Adicionales</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="pond_total">
+         <descripcion>Pond. Asignaturas + Req. Adicionales</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="requisitos" anchoTabla="100%" mensajeError="No se han agregado requisitos." eliminar="TRUE" clave="repl_ncorr" seleccionarTodo="TRUE" variable="req" nroRegistros="10" maxLista="10" enumerarLista="TRUE" resumen="TRUE" editar="TRUE" paginaEdicion="editar_requisito_adic.asp?repl_ncorr=%repl_ncorr%" nuevaVentana="TRUE">
+      <tablas nombre="requisitos_plan" accion="B"/>
+      <campos nombre="x">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="treq_tdesc">
+         <descripcion>Requisito</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="teva_tdesc">
+         <descripcion>Tipo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="repl_nponderacion">
+         <descripcion>Ponderación (%)</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <resumen>SUMA_JC</resumen>
+         <formato>DECIMAL</formato>
+      </campos>
+   </parametro>
+   <parametro formulario="tipos_requisitos" anchoTabla="100%" eliminar="TRUE" clave="treq_ccod" seleccionarTodo="FALSE" variable="rp" mensajeError="No se pueden agregar más requisitos.">
+      <tablas nombre="requisitos_plan" accion="M"/>
+      <campos nombre="treq_tdesc">
+         <descripcion>Requisito</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="teva_tdesc">
+         <descripcion>Tipo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="repl_nponderacion">
+         <descripcion>Ponderación</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <id>EP-N</id>
+         <deshabilitado>TRUE</deshabilitado>
+      </campos>
+      <campos nombre="sapl_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="repl_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <tipoDato>SECUENCIA</tipoDato>
+         <secuencia>repl_ncorr_seq</secuencia>
+      </campos>
+   </parametro>
+   <parametro formulario="requisito" anchoTabla="100%" variable="rp">
+      <campos nombre="treq_tdesc">
+         <descripcion>Descripción</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="teva_tdesc">
+         <descripcion>Tipo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="repl_nponderacion">
+         <descripcion>Ponderación</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>EP-N</id>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="repl_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="treq_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+</Parametros>

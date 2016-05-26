@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>edicion</formulario>
+      </botones>
+	   <botones nombre="buscar2">
+  		<tipoTexto>BUSCAR</tipoTexto> 
+  		<accion>JAVASCRIPT</accion> 
+  		<funcion>enviar();</funcion> 
+  	  </botones>
+	  
+	  <botones nombre="nuevo">
+	    <texto>Nuevo</texto>
+        <tipoTexto>Definir</tipoTexto>
+  		<accion>NAVEGAR</accion> 
+  		<url>javascript:nuevo_centro_costo();</url> 
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	  <botones nombre="guardar">
+         <tipoTexto>Guardar</tipoTexto>
+         <accion>Guardar</accion>
+		 <formulario>buscador</formulario>
+         <url>proc_asignar_centro_costo.asp</url>
+      </botones>
+	  <botones nombre="cerrar">
+			<texto>Cerrar</texto>
+			<tipoTexto>Definir</tipoTexto>
+			<accion>NAVEGAR</accion> 
+			<url>javascript:CerrarActualizar();</url> 
+      </botones>
+   </parametro>
+   
+   <parametro formulario="busqueda" variable="busqueda_cc">
+   		<campos nombre="ccos_ccod">
+			  <tipo>SELECT</tipo>
+			  <destino>CENTROS_COSTO</destino> 
+			  <union>ccos_ccod</union>
+			  <salida>ccos_tdesc</salida>
+			  <permiso>LECTURAESCRITURA</permiso>
+			  <anulable>true</anulable>
+			  <orden>ccos_tdesc</orden>
+			  <mensajeNulo>Seleccione una Centro de costo</mensajeNulo>
+			  <mensajeVacio>Seleccione una Carrera</mensajeVacio>
+			  <id>TO-N</id>
+	   </campos> 
+   </parametro>
+   
+    <parametro formulario="busqueda2" variable="busqueda">
+		<campos nombre="tdet_ccod">
+			<tipo>SELECT</tipo>
+			<destino>tipos_detalle</destino> 
+			<union>tdet_ccod</union>
+			<salida>tdet_tdesc</salida>
+			<permiso>LECTURAESCRITURA</permiso>
+			<anulable>true</anulable>
+			<orden>tdet_tdesc</orden>
+			<mensajeNulo>Seleccione un tipo de Cargo</mensajeNulo>
+			<mensajeVacio>Seleccione un tipo de Cargo</mensajeVacio>
+			<id>TO-N</id>
+		</campos>
+		<campos nombre="sede_ccod" >
+			<tipo>SELECT</tipo> 
+			<destino>sedes</destino>
+			<union>sede_ccod</union> 
+			<salida>sede_tdesc</salida> 
+			<permiso>LECTURAESCRITURA</permiso> 
+			<mensajeNulo>Seleccione una Sede</mensajeNulo>
+			<mensajeVacio>Seleccione una Sede</mensajeVacio>
+			<script>onChange="CargarCarreras(this.form, this.value)"</script>
+			<id>TO-N</id>
+		</campos>
+		<campos nombre="carr_ccod">
+			<tipo>SELECT</tipo>
+			<destino>carreras</destino> 
+			<union>carr_ccod</union>
+			<salida>CARR_TDESC</salida>
+			<permiso>LECTURAESCRITURA</permiso>
+			<anulable>true</anulable>
+			<orden>carr_tdesc</orden>
+			<mensajeNulo>Seleccione una Carrera</mensajeNulo>
+			<mensajeVacio>Seleccione una Carrera</mensajeVacio>
+			<script>onChange="CargarJornadas(this.form, this.value)"</script>
+			<id>TO-N</id>
+		</campos> 
+		<campos nombre="jorn_ccod" >
+			<tipo>SELECT</tipo> 
+			<destino>jornadas</destino>
+			<union>jorn_ccod</union> 
+			<salida>jorn_tdesc</salida> 
+			<permiso>LECTURAESCRITURA</permiso> 
+			<orden>jorn_tdesc</orden>
+			<mensajeNulo>Seleccione una Jornada</mensajeNulo>
+			<mensajeVacio>Seleccione una Jornada</mensajeVacio>
+			<id>TO-N</id>
+		</campos>
+    </parametro>
+
+	<parametro
+	paginaEdicion="asigna_centros_costos_agregar.asp?v_edita=1&amp;ccos_ccod=%v_ccos_ccod%&amp;tdet_ccod=%v_tdet_ccod%&amp;carr_ccod=%v_carr_ccod%&amp;sede_ccod=%v_sede_ccod%&amp;jorn_ccod=%v_jorn_ccod%" formulario="listado_uniones"
+	mensajeError="No se encuentran datos asociados al centro de costo" editar="true" anchoTabla="98%" nuevaVentana="True" variable="l_union" >
+		 <campos nombre="v_ccos_ccod">
+		 	 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+		 </campos>
+		 <campos nombre="v_tdet_ccod">
+		 	 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+		 </campos>
+		 <campos nombre="v_carr_ccod">
+		 	 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+		 </campos>
+		 <campos nombre="v_sede_ccod">
+		 	 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+		 </campos>
+		 <campos nombre="v_jorn_ccod">
+		 	 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+		 </campos>
+		 
+		 <campos nombre="ccos_ccod">
+		 	<tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>centro costo</descripcion>	
+		 </campos>
+		 <campos nombre="CCOS_TCOMPUESTO">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>10</caracteres>
+			 <maxCaracteres>8</maxCaracteres>
+			 <descripcion>Centro Costo Compuesto</descripcion>
+			 <id>NU-S</id>
+		  </campos>
+		  <campos nombre="CCOS_TCODIGO">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>10</caracteres>
+			 <maxCaracteres>8</maxCaracteres>
+			 <descripcion>Centro Costo Compuesto</descripcion>
+			 <id>NU-S</id>
+		  </campos>
+		  <campos nombre="CCOS_TDESC">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>1</caracteres>
+			 <maxCaracteres>1</maxCaracteres>
+			 <descripcion>Nombre</descripcion>
+			 <id>LN-S</id>
+		  </campos>
+		  <campos nombre="tdet_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>1</caracteres>
+			 <maxCaracteres>1</maxCaracteres>
+			 <descripcion>Detalle</descripcion>
+			 <id>LN-S</id>
+		  </campos>
+		  <campos nombre="carr_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>1</caracteres>
+			 <maxCaracteres>1</maxCaracteres>
+			 <descripcion>Nombre</descripcion>
+			 <id>LN-S</id>
+		  </campos>
+    </parametro>
+   
+</Parametros>
+

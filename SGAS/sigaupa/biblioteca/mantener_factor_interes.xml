@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+   <botones nombre="salir"> 
+      <tipoTexto>CANCELAR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	<botones nombre="cancelar">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>CERRAR</accion>
+    </botones>
+	<botones nombre="guardar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Guardar</texto>
+	  <accion>GUARDAR</accion>
+	  <formulario>edicion</formulario>
+	  <url>proc_guardar_factor_interes.asp</url>
+	  <funcionValidacion>Guardar_Rangos(document.edicion);</funcionValidacion>
+	</botones>
+    <botones nombre="nuevo_rango">
+         <tipoTexto>DEFINIR</tipoTexto>
+	     <texto>Nuevo</texto>
+         <accion>NAVEGAR</accion>
+         <url>mantenedor_factor_interes.asp</url>
+     </botones>
+  </parametro>
+
+  <parametro formulario="detalle_boletas" clave="rbol_ncorr"  variable="rango" >
+		 <tablas nombre="rangos_boletas_sedes" accion="M" />
+  </parametro> 
+
+</Parametros>

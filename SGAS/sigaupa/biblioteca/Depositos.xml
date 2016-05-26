@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="lanzadera">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cancelar">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+      <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+      </botones>
+	  <botones nombre="conciliacion">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Conciliar Deposito</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+		  <url>proc_conciliacion_deposito.asp</url>
+		 <funcionValidacion>validar_deposito_enviado(document.edicion);</funcionValidacion> 
+      </botones>
+      <botones nombre="imprimir">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Imprimir</texto>
+         <accion>AGREGAR</accion>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="nuevo_deposito">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>AGREGAR</accion>
+		 <posicionX>200</posicionX>
+         <posicionY>200</posicionY>
+         <ancho>418</ancho>
+         <alto>300</alto>
+         <url>Deposito_nuevo.asp</url>
+      </botones>
+      <botones nombre="guardar_nuevo_deposito">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <url>Proc_Deposito_Nuevo.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+      </botones>
+      <botones nombre="siguiente">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Agregar</texto>
+         <accion>NAVEGAR</accion>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="guardar_cheques">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Agregar</texto>
+         <accion>GUARDAR</accion>
+         <url>Proc_Depositos_detalle_Agregar.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="depositar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Depositar</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+		 <funcionValidacion>validar_deposito_pendiente(document.edicion);</funcionValidacion>
+      </botones>
+   </parametro>
+   <parametro formulario="f_depositar" clave="envi_ncorr" variable="depositos">
+      <tablas nombre="envios" accion="M"/>
+   </parametro>
+   <parametro formulario="busqueda_depositos" variable="busqueda">
+      <campos nombre="envi_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+      </campos>
+      <campos nombre="envi_fenvio">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+      <campos nombre="ccte_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>15</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="eenv_ccod">
+	     <tipo>SELECT</tipo>
+		 <destino>estados_envio</destino>
+		 <union>eenv_ccod</union>
+		 <salida>eenv_tdesc</salida>
+		 <orden>eenv_ccod asc</orden>
+		 <filtro>eenv_ccod in (1, 2, 4)</filtro>
+		 <anulable>TRUE</anulable>
+		 <mensajeNulo>Todos</mensajeNulo>
+		 <permiso>LECTURAESCRITURA</permiso>
+	  </campos>
+   </parametro>
+   <parametro formulario="f_depositos" clave="envi_ncorr" variable="depositos" 
+   colorSeleccionado="#CCCCCC" colorResaltado="#999999" nroRegistros="10" maxLista="10" 
+   paginaEdicion="Depositos_Detalle.asp?folio_envio=%envi_ncorr%" eliminar="TRUE" seleccionarTodo="TRUE" 
+   anchoTabla="100%" editar="TRUE" nuevaVentana="FALSE" mensajeError="No se encontraron Depositos">
+      <tablas nombre="envios" accion="B"/>
+      
+	  <campos nombre="c_envi_ncorr">
+         <descripcion>Deposito</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <ancho>50</ancho>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="eenv_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c2_envi_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="eenv_tdesc">
+         <descripcion>Estado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	   <campos nombre="envi_tdescripcion">
+         <descripcion>Descripcion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="tdep_ccod">
+         <descripcion>Tipo Deposito</descripcion>
+         <tipo>SELECT</tipo>
+         <permiso>LECTURA</permiso>
+		 <destino>tipos_depositos</destino>
+         <union>tdep_ccod</union>
+         <salida>tdep_tdesc</salida>
+         <anulable>true</anulable>
+      </campos>
+      <campos nombre="inen_tdesc">
+         <descripcion>Banco</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="ccte_tdesc">
+         <descripcion>Cuenta Corriente</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="envi_fenvio">
+         <descripcion>Fecha</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="cant_doc">
+         <descripcion>Documentos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="total">
+         <descripcion>Total</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+      </campos>
+   </parametro>
+   <parametro formulario="f_nuevo" variable="deposito">
+      <tablas nombre="envios" accion="M"/>
+      
+	  <campos nombre="envi_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="eenv_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+      </campos>
+      <campos nombre="tenv_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+      </campos>
+      <campos nombre="cuenta_corriente">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="inen_ccod">
+         <tipo>SELECT</tipo>
+         <destino>instituciones_envio</destino>
+         <union>inen_ccod</union>
+         <salida>inen_tdesc</salida>
+         <filtro>tine_ccod=1</filtro>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>true</anulable>
+         <mensajeNulo>Seleccione Banco</mensajeNulo>
+         <id>TO-N</id>
+         <script>onChange="CargarEspecialidades(this.form, this.value)"</script>
+      </campos>
+      <campos nombre="ccte_ccod">
+         <tipo>SELECT</tipo>
+         <destino>(SELECT -1 AS ccte_ccod, 'Seleccione Cuenta Corriente' AS blanco) a</destino>
+         <union>ccte_ccod</union>
+         <salida>blanco</salida>
+		 <orden>a.blanco</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="tdep_ccod">
+         <tipo>RADIO</tipo>
+         <destino>tipos_depositos</destino>
+         <union>tdep_ccod</union>
+         <salida>tdep_tdesc</salida>
+         <columnas>1</columnas>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <script>onClick="VerificaTipoDeposito(this.form, this.value)"</script>
+         <id>TO-N</id>
+	</campos>
+	  	<campos nombre="envi_fenvio">
+     	<tipo>INPUT</tipo>
+     	<permiso>LECTURAESCRITURA</permiso>
+     	<caracteres>12</caracteres>
+     	<maxCaracteres>10</maxCaracteres>
+	 	<id>FE-N</id>
+    </campos>
+	  	  
+   </parametro>
+   
+   <parametro formulario="f_detalle_deposito" clave="envi_ncorr" variable="detalle_deposito" colorSeleccionado="#CCCCCC" colorResaltado="#999999" nroRegistros="30" maxLista="10" eliminar="TRUE" seleccionarTodo="TRUE" anchoTabla="100%" mensajeError="No se encontraron registros" resumen="TRUE">
+      <tablas nombre="detalle_envios" accion="B"/>
+      <campos nombre="ting_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ingr_ncorr">
+         <descripcion>ingr</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c_ding_ndocto">
+         <descripcion>N Cheque</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+	  <campos nombre="edin_tdesc">
+         <descripcion>Estado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_fdocto">
+         <descripcion>F. Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="banc_ccod">
+         <descripcion>Cod. Banco</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="banc_tdesc">
+         <descripcion>Banco</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+      <campos nombre="rut_alumno">
+         <descripcion>Rut del Alumno </descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+      <campos nombre="ding_mdocto">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <resumen>SUMA_JC</resumen>
+         <nowrap>TRUE</nowrap>
+      </campos>
+   </parametro>
+   <parametro formulario="f_detalle_deposito_excel" clave="envi_ncorr" variable="detalle_deposito" eliminar="TRUE" seleccionarTodo="TRUE" anchoTabla="100%" mensajeError="No se encontraron registros" resumen="TRUE">
+      <tablas nombre="detalle_envios" accion="B"/>
+      <campos nombre="ting_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ingr_ncorr">
+         <descripcion>ingr</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c_ding_ndocto">
+         <descripcion>N Cheque</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+      <campos nombre="ding_fdocto">
+         <descripcion>F. Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_tcuenta_corriente">
+         <descripcion>Cta. Cte</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="banc_tdesc">
+         <descripcion>Banco</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+      <campos nombre="nombre_apoderado">
+         <descripcion>Titular</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+      <campos nombre="ding_mdocto">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <resumen>SUMA</resumen>
+         <nowrap>TRUE</nowrap>
+      </campos>
+   </parametro>
+   <parametro formulario="busqueda_cheques" variable="busqueda">
+      <campos nombre="sede_ccod">
+         <tipo>SELECT</tipo>
+         <destino>sedes</destino>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>true</anulable>
+         <mensajeNulo>Seleccione Sede</mensajeNulo>
+      </campos>
+      <campos nombre="inicio">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+      <campos nombre="termino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+	  <campos nombre="mcaj_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+   </parametro>
+   <parametro formulario="f_cheques" clave="envi_ncorr" variable="cheques" colorSeleccionado="#CCCCCC" 
+   colorResaltado="#999999" nroRegistros="30" maxLista="10" eliminar="TRUE" seleccionarTodo="True" 
+   anchoTabla="95%" editar="FALSE" nuevaVentana="FALSE" mensajeError="No se encontraron cheques...">
+      <tablas nombre="detalle_envios" accion="M"/>
+      <tablas nombre="detalle_ingresos" accion="M"/>
+      <campos nombre="ting_ccod">
+         <descripcion>tipo envio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ingr_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="edin_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="edin_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c_ting_ccod">
+         <descripcion>Tipo</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="c_ding_ndocto">
+         <descripcion>Cheque</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <ancho>50</ancho>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="edin_tdesc">
+         <descripcion>Estado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="ding_fdocto">
+         <descripcion>F. Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="banc_ccod">
+         <descripcion>Cod. Banco</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="banc_tdesc">
+         <descripcion>Banco</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="rut_alumno">
+         <descripcion>Rut del Alumno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+      <campos nombre="ding_mdocto">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+	 <campos nombre="sede_actual">
+	    <tipo>SELECT</tipo>
+		<descripcion>Sede</descripcion>
+		<destino>sedes</destino>
+		<union>sede_ccod</union>
+		<salida>sede_tdesc</salida>
+		<permiso>LECTURA</permiso>
+	 </campos>
+   </parametro>
+    
+
+   <parametro formulario="f_datos" clave="envi_ncorr" variable="depositos">
+      <campos nombre="envi_ncorr">
+         <descripcion>Deposito</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <ancho>50</ancho>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="eenv_tdesc">
+         <descripcion>Estado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="inen_tdesc">
+         <descripcion>Banco</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="cuenta_corriente">
+         <descripcion>Cuenta Corriente</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="envi_fenvio">
+         <descripcion>Fecha</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   
+   
+    <parametro formulario="f_cheques_convalidacion" clave="ding_ndocto"  variable="cheques" 
+    colorSeleccionado="#CCCCCC" colorResaltado="#999999" nroRegistros="15" maxLista="10" 
+    eliminar="TRUE" seleccionarTodo="FALSE"  anchoTabla="100%" 
+	mensajeError="No se encontraron documentos...">
+	<tablas nombre="detalle_ingresos" accion="M"/>	
+	<campos nombre="ting_ccod">
+	    <descripcion>tipo envio</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="ding_ncorrelativo">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos> 
+	 <campos nombre="ding_tcuenta_corriente">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 
+	 <campos nombre="ting_ccod_ingreso">
+	    <descripcion>tipo envio</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="ingr_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="edin_ccod">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="c_ting_ccod">
+	    <tipo>SELECT</tipo>
+		<descripcion>Tipo</descripcion>
+		<destino>tipos_ingresos</destino>
+		<union>ting_ccod</union>
+		<salida>ting_tdesc</salida>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="c_ding_ndocto">
+	    <descripcion>N. Cheque</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="banc_ccod">
+ 	     <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="banc_tdesc">
+	    <descripcion>Banco</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="c_ding_tcuenta_corriente">
+	    <descripcion>Cuenta Corriente</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="vencimiento">
+	    <descripcion>F. Vencimiento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	    <alineamiento>CENTER</alineamiento>
+	 </campos>     
+	 <campos nombre="edin_tdesc">
+	    <descripcion>Estado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="rut_apoderado">
+	    <descripcion>Rut Titular</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="ding_mdocto">
+	    <descripcion>Monto</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>RIGHT</alineamiento>
+		<formato>MONEDA</formato>
+	 </campos>
+   </parametro>
+</Parametros>

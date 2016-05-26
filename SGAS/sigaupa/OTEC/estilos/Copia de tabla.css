@@ -1,0 +1,66 @@
+
+
+body {
+	font-family: Verdana, Geneva, Arial, helvetica, sans-serif;
+	font-size: 10px;
+}
+table {color: black; font-family: monospace;}
+
+td {
+	font-family: Verdana, Geneva, Arial, helvetica, sans-serif;
+	font-size: 10px;
+}
+
+th {
+	font-family: Verdana, Geneva, Arial, helvetica, sans-serif;
+	font-size: 10px;
+}
+
+select {
+    color: black;
+    border: 2px black solid;
+	font-family: Verdana, Geneva, Arial, helvetica, sans-serif;
+	font-size: 9pt;
+}
+
+textarea {
+	font-family: Verdana, Geneva, Arial, helvetica, sans-serif;
+	font-size: 10px;
+}
+
+.click {
+	cursor: hand;
+}
+
+.flechas {
+	font-family: Webdings;
+}
+
+.tituloTabla {
+	color: #FFFFFF;
+}
+
+.tituloTablaColumna {
+}
+
+.noclick {
+	cursor: default;
+}
+
+.horario {
+	font-family: Verdana, Geneva, Arial, helvetica, sans-serif;
+	font-size: 10px;
+}
+.derecha {
+	text-align: right;
+}
+
+TABLE.v1 {
+	BORDER-RIGHT: #B9B9B9 1px solid; BORDER-TOP: #666666 1px solid; FLOAT: left; BORDER-LEFT: #B9B9B9 1px solid; BORDER-BOTTOM: #B9B9B9 1px solid; BORDER-COLLAPSE: collapse;ALIGN:Center
+}
+.v1 TD {
+	BORDER-RIGHT: #B9B9B9 1px solid; PADDING-RIGHT: 0em; BORDER-TOP: #B9B9B9 1px solid; PADDING-LEFT: 0em; PADDING-BOTTOM: 0em; BORDER-LEFT: #B9B9B9 1px solid; PADDING-TOP: 0em; BORDER-BOTTOM: #B9B9B9 1px solid
+}
+.v1 TR {
+	BORDER-RIGHT: #B9B9B9 1px solid; PADDING-RIGHT: 0em; BORDER-TOP: #B9B9B9 1px solid; PADDING-LEFT: 0em; PADDING-BOTTOM: 0em; BORDER-LEFT: #B9B9B9 1px solid; PADDING-TOP: 0em; BORDER-BOTTOM: #B9B9B9 1px solid
+}

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro 
+   colorResaltado="#CCCCCC"
+   colorSeleccionado="#CCCCCC" 	paginaEdicion="" formulario="listado_asignaturas" nroRegistros="10" eliminar="TRUE" 
+   clave="libr_ncorr" maxLista="10"  mensajeError="No existe información de inasistencias para el docente" seleccionarTodo="FALSE" anchoTabla="100%"
+    editar="FALSE" nuevaVentana="FALSE" 
+	variable="docente" >
+    <campos nombre="bloq_ccod">
+	   <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+	 </campos>
+	 <campos nombre="pres_ncorr">
+	   <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+	 </campos>
+	 <campos nombre="cale_fcalendario">
+	   <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+	 </campos>
+     <campos nombre="carrera">
+	    <descripcion>Carrera</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="asignatura">
+	    <descripcion>Asignatura</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="dia">
+	    <descripcion>Día</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="bloque">
+	    <descripcion>Bloque</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="fecha">
+	    <descripcion>Fecha Inasistencia</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="fecha_recuperacion">
+	    <descripcion>Fecha Recuperación</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+		<caracteres>14</caracteres>
+		<maxCaracteres>10</maxCaracteres>
+		<id>FE-S</id>
+		<deshabilitado>TRUE</deshabilitado>
+	 </campos>
+   </parametro>   
+   
+  <parametro formulario="botonera">
+   <botones nombre="cancelar"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+	 <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	   <funcionValidacion>Validar();</funcionValidacion>
+	</botones>
+	<botones nombre="filtrar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <texto>Filtrar Busqueda</texto>
+	  <formulario>filtrador</formulario>
+	</botones>
+   	<botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>AGREGAR</accion>
+	  <posicionX>100</posicionX>
+	  <posicionY>50</posicionY>
+	  <ancho>495</ancho>
+	  <alto>550</alto>
+	</botones>
+	<botones nombre="guardar1"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Guardar Recuperativa</texto>
+	  <accion>GUARDAR</accion>
+	  <url>m_recuperativas_proc.asp</url>
+	  <formulario>edicion</formulario>
+	  <funcionValidacion>revisa_check();</funcionValidacion>
+	</botones>
+	<botones nombre="guardar2"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Guardar Inasistencia</texto>
+	  <accion>GUARDAR</accion>
+	  <url>m_inasistencias_proc.asp</url>
+	  <formulario>edicion</formulario>
+	  <funcionValidacion>revisa_check();</funcionValidacion>
+	</botones>
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>	 
+	</botones>	
+   </parametro>
+
+ <parametro formulario="busqueda" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+		 <script>onBlur="genera_digito(this.value);"</script>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+</parametro>
+
+<parametro formulario="buscador" variable="a">
+<listas nombre="filtros">
+	<item clave="carr_ccod" valor="carr_tdesc" />
+	<item clave="asig_ccod" valor="asig_tdesc" />
+</listas>
+<campos nombre="carr_ccod">
+	<tipo>INPUT</tipo>
+	<permiso>LECTURA</permiso>
+</campos>
+<campos nombre="asig_ccod">
+	<tipo>INPUT</tipo>
+	<permiso>LECTURA</permiso>
+</campos>
+</parametro>
+</Parametros>

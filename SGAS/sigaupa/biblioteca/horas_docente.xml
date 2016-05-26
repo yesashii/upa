@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="botonera">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 	
+   <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+     <botones nombre="portada"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Portada</texto>
+		<accion>GUARDAR</accion>
+		<formulario>edicion</formulario>
+		<target>_BLANK</target>
+   </botones>	 
+   <botones nombre="excel">
+       <tipoTexto>DEFINIR</tipoTexto>
+	   <texto>Excel</texto>
+       <accion>GUARDAR</accion>	   
+	   <formulario>edicion</formulario>
+   </botones>   
+   <botones nombre="cerrar_actualizar"> 
+      <tipoTexto>SALIR</tipoTexto>
+      <accion>JAVASCRIPT</accion>
+	 <funcion>salir();</funcion>	   
+	</botones>
+   <botones nombre="cancelar"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+	<botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+    </botones>
+     <botones nombre="siguiente">
+         <tipoTexto>SIGUIENTE</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_postulacion_4.asp</url>
+         <funcionValidacion>Validar();</funcionValidacion>
+      </botones>
+	   <botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_edicion_docentes.asp</url>
+         <funcionValidacion>validar_horas();</funcionValidacion>
+      </botones>
+   </parametro>
+   <parametro formulario="busqueda" variable="busqueda">
+  		 <listas nombre="lBusqueda">
+			<item clave="carr_ccod" valor="carr_tdesc" />
+			<item clave="asig_ccod" valor="asig_tdesc" />
+			<item clave="jorn_ccod" valor="jorn_tdesc" />
+		</listas>
+		<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="asig_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="jorn_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+      <campos nombre="nombre_asig">
+       <tipo>INPUT</tipo>
+       <permiso>LECTURAESCRITURA</permiso>
+       <caracteres>25</caracteres>
+       <maxCaracteres>24</maxCaracteres>
+       <script>onBlur="this.value=this.value.toUpperCase();"</script>
+    </campos>
+	<campos nombre="codigo_asig">
+     <tipo>INPUT</tipo>
+     <permiso>LECTURAESCRITURA</permiso>
+     <caracteres>25</caracteres>
+     <maxCaracteres>24</maxCaracteres>
+     <script>onBlur="this.value=this.value.toUpperCase();"</script>
+    </campos>        
+  </parametro>
+
+<parametro formulario="f_sabana" nroRegistros="25" maxLista="15">
+<campos nombre="espe_tdesc">	    
+		<tipo>INPUT</tipo>
+		<descripcion>Especialidad</descripcion>
+		<permiso>lectura</permiso>
+</campos> 
+<campos nombre="Jornada">	    
+		<tipo>INPUT</tipo>
+		<descripcion>Jornada</descripcion>
+		<permiso>lectura</permiso>
+</campos>
+<campos nombre="TIPO_ALUMNOS">	    
+		<tipo>INPUT</tipo>
+		<descripcion>Tipo</descripcion>
+		<permiso>lectura</permiso>
+</campos>  
+<campos nombre="rut">	    
+		<tipo>INPUT</tipo>
+		<descripcion>Rut</descripcion>
+		<permiso>lectura</permiso>
+</campos> 
+<campos nombre="nombre">	    
+		<tipo>INPUT</tipo>
+		<descripcion>Alumno</descripcion>
+		<permiso>lectura</permiso>
+</campos> 
+<campos nombre="COLEGIO_EGRESO">	    
+		<tipo>INPUT</tipo>
+		<descripcion>Colegio</descripcion>
+		<permiso>lectura</permiso>
+</campos>
+<campos nombre="TIPO_COLEGIO">	    
+		<tipo>INPUT</tipo>
+		<descripcion>Tipo Colegio</descripcion>
+		<permiso>lectura</permiso>
+</campos>   
+<campos nombre="NOTA_EM">	    
+		<tipo>INPUT</tipo>
+		<descripcion>N.E.M</descripcion>
+		<permiso>lectura</permiso>
+</campos> 
+<campos nombre="EGRESO_EM">	    
+		<tipo>INPUT</tipo>
+		<descripcion>Ano Egreso</descripcion>
+		<permiso>lectura</permiso>
+</campos> 
+<campos nombre="TIPO_PRUEBA">	    
+		<tipo>INPUT</tipo>
+		<descripcion>Tipo Prueba</descripcion>
+		<permiso>lectura</permiso>
+</campos> 
+<campos nombre="ANO_PRUEBA">	    
+		<tipo>INPUT</tipo>
+		<descripcion>Ano Prueba</descripcion>
+		<permiso>lectura</permiso>
+</campos>
+<campos nombre="MATEMATICAS">	    
+		<tipo>INPUT</tipo>
+		<descripcion>Matematicas</descripcion>
+		<permiso>lectura</permiso>
+</campos> 
+<campos nombre="VERBAL">	    
+		<tipo>INPUT</tipo>
+		<descripcion>Verbal</descripcion>
+		<permiso>lectura</permiso>
+</campos>  
+</parametro>
+
+
+<parametro formulario="f_asignaturas" clave="secc_ccod"  variable="secciones" 
+      colorSeleccionado="#CCCCCC" colorResaltado="#999999" nroRegistros="15" maxLista="10" 
+	  paginaEdicion="edicion_docentes.asp?secc_ccod=%secc_ccod%" eliminar="FALSE" 
+      seleccionarTodo="FALSE"  anchoTabla="100%" editar="TRUE"  nuevaVentana="FALSE" 
+	  mensajeError="No se encontraron asignaturas...">	
+	 <campos nombre="secc_ccod">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos> 
+	 <campos nombre="asig_ccod">
+	    <descripcion>Cod. Asig.</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>	 
+	 <campos nombre="ASIG_TDESC">
+	    <descripcion>Asignatura</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="asig_nhoras">
+	    <descripcion>Horas</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="secc_tdesc">
+	    <descripcion>Seccion</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="cant_docentes">
+	    <descripcion>N. docentes</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	</campos>	 
+ </parametro> 
+ 
+<parametro formulario="f_docentes" clave="pers_ncorr"  variable="docentes" 
+      colorSeleccionado="#CCCCCC" colorResaltado="#999999" nroRegistros="15" maxLista="10" 
+	  paginaEdicion="" eliminar="FALSE" 
+      seleccionarTodo="FALSE"  anchoTabla="100%" editar="FALSE"  nuevaVentana="FALSE" 
+	  mensajeError="No se encontraron docentes para la seccion...">
+	  
+	  <tablas nombre="horas_profesores" accion="M" />	
+
+	  
+	 <campos nombre="secc_ccod">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos> 
+	 <campos nombre="pers_ncorr">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="bloq_ayudantia">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="c_nhoras_ayudantia">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="c_nhoras_laboratorio">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="c_nhoras_terreno">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="c_nhoras_elearning">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>	 	 	 	 
+	 <campos nombre="tipo_bloque">
+	    <descripcion>Bloque</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>	    
+	 <campos nombre="rut">
+	    <descripcion>R.U.T.</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>	 
+	 <campos nombre="ap_paterno">
+	    <descripcion>Apellido Paterno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<nowrap>TRUE</nowrap>
+	 </campos>
+	 <campos nombre="ap_materno">
+	    <descripcion>Apellido Materno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<nowrap>TRUE</nowrap>
+	 </campos>
+	 <campos nombre="nombres">
+	    <descripcion>Nombre Alumno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<nowrap>TRUE</nowrap>
+	</campos>
+	 <campos nombre="horario">
+	    <descripcion>Horario</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<nowrap>TRUE</nowrap>
+	</campos>
+	<campos nombre="hopr_nhoras">
+	    <descripcion>Horas Docente</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+		<caracteres>3</caracteres>
+		<maxCaracteres>3</maxCaracteres>
+		<nowrap>TRUE</nowrap>
+		<id>NU-S</id>
+	</campos>
+	<campos nombre="hopr_tresolucion">
+	    <descripcion>Resolucion</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+		<caracteres>20</caracteres>
+		<maxCaracteres>20</maxCaracteres>
+		<nowrap>TRUE</nowrap>
+		<id>TO-N</id>
+	</campos>
+	
+	<campos nombre="ebpr_ccod">
+		<tipo>Select</tipo>
+		<destino>estado_bloque_profesor</destino>
+		<union>ebpr_ccod</union>
+		<salida>ebpr_tdesc</salida>
+		<orden>ebpr_ccod asc</orden>
+		<permiso>LECTURAESCRITURA</permiso>
+		<id>TO-N</id>
+	</campos>
+
+	
+   </parametro>    
+ </Parametros>

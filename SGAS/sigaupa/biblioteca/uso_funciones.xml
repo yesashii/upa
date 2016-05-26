@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  
+	<botones nombre="excel">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Excel</texto>
+      </botones>
+   
+   </parametro>
+   <parametro formulario="busqueda" variable="b" columnas="3" >
+          <campos nombre="pers_nrut" >
+         <descripcion>Nº Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>NU-S</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+      
+      </campos>
+	   <campos nombre="pers_xdv" >
+         <descripcion>Nº Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-S</id>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+      
+      </campos>
+	   <campos nombre="sfun_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todos las funciones</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>sis_funciones_modulos </destino>
+         <union>sfun_ccod</union>
+         <salida>sfun_tdesc</salida>
+		 <orden>sfun_tdesc asc</orden>
+		 
+		  </campos>
+	   <campos nombre="fecha_inicio" >
+         <descripcion>Nº Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+		 <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+       
+		  
+		  </campos>
+	   <campos nombre="fecha_fin" >
+         <descripcion>Nº Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+		 <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         
+		 
+      </campos>
+	  
+   </parametro>
+   
+  <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="cheques" nroRegistros="15"
+		 maxLista="10" mensajeError="No se encontranron funciones ." colorBase="#F1F1E4" editar="false" anchoTabla="100%"	 nuevaVentana="false" variable="a">  
+      <campos nombre="nombre">
+		<descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="smod_tdesc" >
+		 <descripcion>Modulo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="sfun_tdesc" >
+		 <descripcion>Funcion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="fecha_log">
+		 <descripcion> fecha y hora</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+		<formato>Fecha</formato>
+      </campos>
+      
+   </parametro>
+   
+   
+   
+</Parametros>

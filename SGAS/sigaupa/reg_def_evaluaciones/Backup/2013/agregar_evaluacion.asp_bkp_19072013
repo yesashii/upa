@@ -1,0 +1,543 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+
+<%
+
+ip_usuario=Request.ServerVariables("REMOTE_ADDR")
+
+set pagina = new CPagina
+pagina.Titulo = "Agregar Evaluaciones"
+set botonera =  new CFormulario
+botonera.carga_parametros "agregar_evaluacion.xml", "btn_agregar_evaluacion"
+
+set conexion = new CConexion
+conexion.Inicializar "upacifico"
+
+set negocio = new Cnegocio
+negocio.Inicializa conexion
+
+secc_ccod= request.QueryString("secc_ccod")
+cali_ncorr= request.QueryString("cali_ncorr")
+
+ponderacion=" select isnull(sum(cali_nponderacion),0.0)  " & _	 
+ 		 " from calificaciones_seccion a, tipos_evaluacion b   " & _
+		 " where a.teva_ccod=b.teva_ccod   " & _
+		 " and cast(a.secc_ccod as varchar)='"&secc_ccod&"'"& _
+		 " and b.teva_ctipo_promedio='N'"
+
+suma=conexion.consultauno(ponderacion)
+suma=conexion.consultaUno("select replace('"&suma&"',',','.')")
+'response.Write("suma "&suma)
+carrera= conexion.consultaUno("Select carr_tdesc from secciones a, carreras b where a.carr_ccod=b.carr_ccod and cast(a.secc_ccod as varchar)='"&secc_ccod&"'")
+
+set f_asignatura = new CFormulario
+f_asignatura.Carga_Parametros "agregar_evaluacion.xml", "f_datos_asignaturas"
+f_asignatura.Inicializar conexion
+
+set f_evaluacion = new CFormulario
+f_evaluacion.Carga_Parametros "agregar_evaluacion.xml", "f_datos_evaluacion"
+f_evaluacion.Inicializar conexion
+
+datos_asignatura=   " select a.asig_ccod,a.secc_tdesc," & _
+	                " b.asig_tdesc,b.asig_nhoras,c.sede_tdesc " & _
+					" from secciones a,asignaturas b, sedes c" & _
+					" where  a.asig_ccod=b.asig_ccod and" & _
+					"	     a.sede_ccod=c.sede_ccod and " & _
+					"	     cast(a.secc_ccod as varchar)='"&secc_ccod&"' "
+					
+f_asignatura.Consultar datos_asignatura
+f_asignatura.Siguiente
+
+'asig_nhoras=clng(f_asignatura.obtenervalor("asig_nhoras"))
+asig_nhoras=f_asignatura.obtenervalor("asig_nhoras")
+
+Registros=" select count(*)" & _
+ 		" from calificaciones_seccion a, tipos_evaluacion b " & _
+		" where a.teva_ccod=b.teva_ccod " & _
+		" and cast(a.secc_ccod as varchar)='"&secc_ccod&"' " & _
+  		 " and b.teva_ctipo_promedio='N'"
+		
+nroRegistros=conexion.consultauno(Registros)
+
+SQL_mall_ccod  = " select isnull(mall_ccod,1) from secciones " & _
+			     " where cast(secc_ccod as varchar) ='"&secc_ccod&"'"
+v_mall_ccod = conexion.consultauno(SQL_mall_ccod)
+
+
+sql = " select mall_nevaluacion_minima " & _
+	  " from malla_curricular " & _
+	  " where cast(mall_ccod as varchar)='"&v_mall_ccod&"'"
+	  
+PMinima=conexion.consultauno(sql)
+texto="Evaluaciones Minimas a Ingresar :"&PMinima&".  Segun El Reglamento Academico"
+
+	
+datos_eval= " select a.cali_nevaluacion,a.cali_nevaluacion AS cali_nevaluacionD,a.cali_nponderacion,convert(datetime,a.cali_fevaluacion,103) as cali_fevaluacion, b.teva_ccod,b.teva_tdesc " & _
+			" from calificaciones_seccion a, tipos_evaluacion b " & _
+			" where a.teva_ccod=b.teva_ccod and" &_
+	  		" cast(a.cali_ncorr as varchar)='"&cali_ncorr&"' " & _
+			" order by b.teva_tdesc " 
+			
+'response.Write(datos_eval)					
+f_evaluacion.Consultar datos_eval
+f_evaluacion.agregacampoparam	"teva_ccod","filtro","teva_ctipo_promedio in ('N')"
+
+if f_evaluacion.NroFilas = 0 then
+	consulta = "SELECT " & nroRegistros +1 & " AS cali_nevaluacion,"& nroRegistros +1 & " AS cali_nevaluacionD"
+	f_evaluacion.Consultar consulta
+end if
+
+f_evaluacion.Siguientef
+
+FPruebas=" select convert(datetime,cali_fevaluacion,103) as cali_fevaluacion " & _
+	  	" from calificaciones_seccion a, tipos_evaluacion b " & _
+		" where a.teva_ccod=b.teva_ccod " & _
+		" and cast(a.secc_ccod as varchar)='"&secc_ccod&"' "   & _
+		"order by a.cali_nevaluacion"
+
+conexion.Ejecuta FPruebas
+
+set rec_fpruebas = conexion.ObtenerRS
+
+NPruebas=" select a.cali_nevaluacion " & _
+	   	" from calificaciones_seccion a, tipos_evaluacion b " & _
+		" where a.teva_ccod=b.teva_ccod " & _
+		" and cast(a.secc_ccod as varchar)='"&secc_ccod&"' "   & _
+		" order by a.cali_nevaluacion"
+
+conexion.Ejecuta NPruebas
+
+set rec_npruebas = conexion.ObtenerRS
+
+sql=" select convert(datetime,max(cali_fevaluacion),103) as cali_fevaluacion " & _
+" from calificaciones_seccion " & _
+" where cast(secc_ccod as varchar)='"&secc_ccod&"' and " & _
+" cast(teva_ccod as varchar)<>'N'" 
+	maxfecha=conexion.consultauno(sql)
+if isnull(maxfecha) then
+	maxfecha="01-03-2005"
+end if
+'response.Write(maxfecha)
+
+periodo = conexion.consultaUno("select peri_ccod from secciones where cast(secc_ccod as varchar)='"&secc_ccod&"'")
+es_anual = conexion.consultaUno("select count(*) from secciones a, asignaturas b where cast(secc_ccod as varchar)='"&secc_ccod&"' and a.asig_ccod=b.asig_ccod and b.duas_ccod = 3")
+
+anos_ccod = conexion.consultaUno("select anos_ccod from periodos_academicos where cast(peri_ccod as varchar)='"&periodo&"'")
+carr_seccion = conexion.consultaUno("select ltrim(rtrim(carr_ccod)) from secciones where cast(secc_ccod as varchar)='"&secc_ccod&"'")
+plec_ccod = conexion.consultaUno("select plec_ccod from periodos_academicos where cast(peri_ccod as varchar)='"&periodo&"'")
+sede_ccod = conexion.consultaUno("select sede_ccod from secciones where cast(secc_ccod as varchar)='"&secc_ccod&"'")
+
+'response.Write(anos_ccod)
+bloqueado_cambio = false
+if anos_ccod < "2007" then
+	 bloqueado_cambio = true
+else
+	sys_cierra_notas = false	 
+end if
+
+if ip_usuario="10.10.2.100" OR ip_usuario="10.10.2.200" OR ip_usuario="172.16.16.164" then
+	autorizar = false
+end if
+
+asig_cerrada = conexion.consultaUno("select isnull(estado_cierre_ccod,1) from secciones where cast(secc_ccod as varchar)='"&secc_ccod&"'")
+		
+if sede_ccod <> "9" then 
+	fecha_cierre= conexion.consultaUno("select case when convert(datetime,protic.trunc(getDate()),103) > convert(datetime,'22/07/2013',103) then 'S' else 'N' end ")
+else
+	fecha_cierre= conexion.consultaUno("select case when convert(datetime,protic.trunc(getDate()),103) > convert(datetime,'22/07/2013',103) then 'S' else 'N' end ")
+end if				
+		
+if fecha_cierre="N" then
+		bloquear_todo = "N"
+else
+		bloquear_todo = "S"	
+end if
+duracion_asignatura = conexion.consultaUno("select b.duas_ccod from secciones a, asignaturas b where a.asig_ccod=b.asig_ccod and cast(secc_ccod as varchar)='"&secc_ccod&"'")
+tcar_ccod = conexion.consultaUno("select tcar_ccod from carreras where carr_ccod='"&carr_seccion&"'")
+ 
+		
+		
+if carr_seccion="900" then
+	bloquear_todo = "N"
+end if
+
+'if plec_ccod="1" and duracion_asignatura <> "3" then
+'	bloquear_todo = "N"
+	'autorizar = true
+'end if
+
+if tcar_ccod = "2" or carr_seccion="600" then
+	bloquear_todo = "N"
+end if
+%>
+
+
+<html>
+<head>
+<title><%=pagina.Titulo%></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../estilos/estilos.css" rel="stylesheet" type="text/css">
+<link href="../estilos/tabla.css" rel="stylesheet" type="text/css">
+
+<script language="JavaScript" src="../biblioteca/tabla.js"></script>
+<script language="JavaScript" src="../biblioteca/funciones.js"></script>
+<script language="JavaScript" src="../biblioteca/validadores.js"></script>
+<script language="JavaScript" src="../biblioteca/PopCalendar.js"></script>
+
+<script language="JavaScript">
+rec_fpruebas = new Array();
+rec_npruebas = new Array();
+<%
+if (rec_fpruebas.BOF <> rec_fpruebas.EOF) then
+
+rec_fpruebas.MoveFirst
+i = 0
+while not rec_fpruebas.Eof
+%>
+rec_fpruebas[<%=i%>] = new Array();
+rec_fpruebas[<%=i%>]["cali_fevaluacion"] = '<%=rec_fpruebas("cali_fevaluacion")%>';
+<%	
+	rec_fpruebas.MoveNext
+	i = i + 1
+wend
+end if
+%>
+<%
+if (rec_npruebas.BOF <> rec_npruebas.EOF) then
+
+rec_npruebas.MoveFirst
+i = 0
+while not rec_npruebas.Eof
+%>
+rec_npruebas[<%=i%>] = new Array();
+rec_npruebas[<%=i%>]["cali_nevaluacion"] = '<%=rec_npruebas("cali_nevaluacion")%>';
+<%	
+	rec_npruebas.MoveNext
+	i = i + 1
+wend
+end if
+%>
+function buscarfecha(formulario){
+	for (i = 0; i < rec_fpruebas.length; i++) {
+		if(rec_fpruebas[i]["cali_fevaluacion"]==formulario.elements["m[0][cali_fevaluacion]"].value){
+			
+			return false ;
+		}
+	}
+
+return true;
+}
+
+function buscaevaluacion(formulario){
+	for (i = 0; i < rec_npruebas.length; i++) {
+		if(rec_npruebas[i]["cali_nevaluacion"]==formulario.elements["m[0][cali_nevaluacion]"].value){
+			return false;
+		}
+	}
+	return true;
+}
+
+function compfecha(formulario){
+StrBD="<%=maxfecha%>"
+
+arrfechaBD=StrBD.split('-');
+StrIng=formulario.elements["m[0][cali_fevaluacion]"].value;
+arrFechaIng=StrIng.split('/');
+var FechaBD = new Date(arrfechaBD[2],arrfechaBD[1],arrfechaBD[0])
+var FechaIng = new Date(arrFechaIng[2],arrFechaIng[1],arrFechaIng[0])
+//alert("fechaBD "+FechaBD+" FechaIng "+FechaIng);
+if (FechaIng >= FechaBD) {
+return true;
+}
+else {return false;}
+}
+
+function revisa_evaluaciones(formulario)
+{
+	var mensaje = "";
+	var tipo_eva = formulario.elements["m[0][teva_ccod]"].value;
+	var ponderacion = formulario.elements["m[0][cali_nponderacion]"].value;
+	if (((tipo_eva == "5" ) || (tipo_eva == "6")) && ((ponderacion < 20.0) || (ponderacion > 25.0)))
+	{
+	  mensaje = "Cada Prueba Solemne debe corresponder a un porcentaje entre el 20 y 25% de la nota final";
+	}
+	if (((tipo_eva == "X" )) && ((ponderacion < 30.0) || (ponderacion > 35.0)))
+	{
+	  mensaje = "La 3ra Prueba Solemne debe corresponder a un porcentaje entre el 30 y 35% de la nota final";
+	}
+	
+	return mensaje;
+}
+
+
+function enviar(formulario){
+	
+	if(preValidaFormulario(formulario)){
+	  if (revisa_evaluaciones(formulario) == "" ){
+		if (buscarfecha(formulario)==true){
+			if (buscaevaluacion(formulario)==true){
+				if(compfecha(formulario)==true){
+					sum=formulario.elements["m[0][cali_nponderacion]"].value
+					SumP=formulario.elements["m[0][cali_nponderacion]"].value					
+	  				suma=parseFloat(sum)+ parseFloat("<%=suma%>");
+					sumaP=parseFloat(SumP)+parseFloat("<%=suma%>")
+					NRegistros=parseInt("<%=nroRegistros%>") + 1
+					minimo=parseInt("<%=PMinima%>")
+					if (suma<=100.0){
+						if ((sumaP==100.0) && (( NRegistros )<(minimo))){
+										alert("Debe Completar El Minimo De Evaluaciones, Con El 100% de Ponderación")
+						}				
+						else {
+	                        //alert("Estamos procesando");					
+							formulario.action ='procesa_evaluacion.asp';
+		 					formulario.submit();
+							}
+					}	
+					else
+					{alert("Imposible Guardar, la ponderación ingresada y la suma de las existente superan el 100%")} 
+				}
+				else{alert("imposible Guardar , La fecha Ingresada es Menor A La ultima registrada ")}
+			}
+			else{alert("El Número De Evaluación Ya Existe")
+			formulario.elements["m[0][cali_nevaluacion]"].focus();
+			formulario.elements["m[0][cali_nevaluacion]"].select();
+			}		
+		}
+		else{alert("No Pueden Existir Dos Evauaciones Con La Misma Fecha")
+		 formulario.elements["m[0][cali_fevaluacion]"].focus();
+ 	     formulario.elements["m[0][cali_fevaluacion]"].select();
+		}
+	  }
+       else
+		 {
+		   alert(revisa_evaluaciones(formulario));
+		 }	
+		
+	}
+}
+
+function cerrar(){
+self.opener.location.reload();
+	self.close();
+}
+//-->
+</script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+
+
+function valida(boton) {
+	formulario = document.buscador;
+	nroElementos = formulario.elements.length;
+	j=1;
+	flag = true;
+	for(i=0; i < nroElementos ; i++ ) {
+		var expresion = new RegExp('(bloq_finicio_modulo|bloq_ftermino_modulo)','gi');
+		if (expresion.test(formulario.elements[i].name) ) {
+			switch(j%2) {
+				case 1 :
+					fechaInicio = formulario.elements[i].value;
+					break;
+				case 0 :
+					fechaTermino = formulario.elements[i].value;
+					if(!comparaFechas(fechaTermino,fechaInicio)) {
+						flag=false;
+					}
+					break;
+			}
+			j++;
+		}
+	}
+	if(!flag) {
+		alert('Complete correctamente las fechas del formulario');
+	}
+	return(flag);
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_nbGroup(event, grpName) { //v6.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])? args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+//-->
+</script>
+<%
+	set calendario = new FCalendario
+	calendario.IniciaFuncion
+	calendario.MuestraFecha "m[0][cali_fevaluacion]","1","buscador","fecha_oculta_fevaluacion"
+	calendario.FinFuncion
+%>
+
+</head>
+<body bgcolor="#EAEAEA" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../imagenes/botones/buscar_f2.gif','../images/bot_deshabilitar_f2.gif','../images/agregar2_f2_p.gif','../__base/im&amp;#225;genes/marco1_r3_c2_f2.gif');MM_preloadImages('../__base/im&amp;#225;genes/marco1_r3_c4_f2.gif');MM_preloadImages('../__base/im&amp;#225;genes/marco1_r3_c6_f2.gif');MM_preloadImages('../__base/im&amp;#225;genes/marco1_r3_c8_f2.gif');MM_preloadImages('../imagenes/botones/cargar_f2.gif','../imagenes/botones/continuar_f2.gif')" onBlur="revisaVentana();">
+<%calendario.ImprimeVariables%>
+<table width="564" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+  </tr>
+  <tr>
+    <td valign="top" bgcolor="#EAEAEA">
+	<br>
+	<table width="90%"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#D8D8DE">
+      <tr>
+        <td width="9" height="8"><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+        <td height="8" background="../imagenes/top_r1_c2.gif"></td>
+        <td width="7" height="8"><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+      </tr>
+      <tr>
+        <td width="9" background="../imagenes/izq.gif">&nbsp;</td>
+        <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><%pagina.DibujarLenguetas Array("Agregar Evaluaciones"), 1 %></td>
+          </tr>
+          <tr>
+            <td height="2" background="../imagenes/top_r3_c2.gif"></td>
+          </tr>
+          <tr>
+            <td><div align="center"><br>
+                    <br>
+                    <table width="100%" border="0">
+                      <tr> 
+                        <td align="center"> 
+                          <%f_asignatura.dibujatabla()%>
+                        </td>
+                      </tr>
+                    </table>
+                    
+                  </div>
+                         <form action="" method="post" name="buscador">
+                <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">
+                  <tr>
+                        <td> <br>
+                          <table width="100%" border="0">
+                            <tr> 
+                              <td align="center"><strong> <br>
+                                &nbsp;<%=texto%><br>
+                                </strong> </td>
+                            </tr>
+                          </table>
+                          <table width="100%" border="0">
+                            <tr> 
+                              <td width="36%" align="right"> Carrera 
+                                :</td>
+                              <td width="64%" align="left"><%=carrera%></td>
+                            </tr>
+							<tr> 
+                              <td width="36%" align="right"> Tipo De Evaluaci&oacute;n 
+                                :</td>
+                              <td width="64%" align="left"><%=f_evaluacion.dibujacampo("teva_ccod")%></td>
+                            </tr>
+                            <tr> 
+                              <td align="right"> Numero Evaluaci&oacute;n :&nbsp;</td>
+                              <td align="left"><%=f_evaluacion.dibujacampo("cali_nevaluacion")%></td>
+                            </tr>
+                            <tr> 
+                              <td align="right"> Ponderaci&oacute;n :</td>
+                              <td align="left"><%=f_evaluacion.dibujacampo("cali_nponderacion")%> 
+                                Ej: 12.5 (%)</td>
+                            </tr>
+                            <tr> 
+                              <td align="right">Fecha Evaluaci&oacute;n :</td>
+                              <td><%=f_evaluacion.dibujacampo("cali_fevaluacion")%> 
+							      <a style='cursor:hand;' onClick='PopCalendar.show(document.buscador.fecha_oculta, "dd/mm/yyyy", null, null, "obtener_fecha(1)", "11");'> 
+                                  </a> 
+                                  <%calendario.DibujaImagen "fecha_oculta_fevaluacion","1","buscador" %>(dd/mm/aaaa)
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                  </tr>
+                </table>
+                          
+                    <p><strong> &nbsp;N&uacute;mero de Evaluaciones Ya Registradas : 
+                      <%=nroRegistros%></strong><br>
+					  <strong> &nbsp;Total ponderaci&oacute;n a la fecha : 
+                      <%=suma%></strong>
+					  </p>
+                    <p><br>
+                      <input name="secc_ccod" type="hidden" value="<%=secc_ccod%>">
+                      <input name="cali_ncorr" type="hidden" value="<%=cali_ncorr%>">
+                    </p>
+            <br>
+            </form></td></tr>
+        </table></td>
+        <td width="7" background="../imagenes/der.gif">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="9" height="28"><img src="../imagenes/abajo_r1_c1.gif" width="9" height="28"></td>
+        <td height="28"><table width="100%" height="28"  border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="38%" height="20"><div align="center">
+              <table width="90%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td><div align="center"></div></td>
+                  <td><div align="center"><% 
+				  
+				                            if (asig_cerrada = "2")  or (bloqueado_cambio = TRUE) then
+				                             	botonera.agregaBotonParam "guardar","deshabilitado","true"
+											 end if
+											 if autorizar  then '  or ip_usuario="172.16.11.216"  or ip_usuario="172.16.11.147" then 'or ip_usuario="172.16.11.143" or ip_usuario="172.16.11.147" or ip_usuario="172.16.11.249" then
+												botonera.agregaBotonParam "guardar","deshabilitado","FALSE"
+											 end if
+				                             botonera.dibujaboton "guardar"%></div></td>
+                  <td><div align="center"><%botonera.dibujaboton "salir"%></div></td>
+                </tr>
+              </table>
+            </div></td>
+            <td width="62%" rowspan="2" background="../imagenes/abajo_r1_c4.gif"><img src="../imagenes/abajo_r1_c3.gif" width="12" height="28"></td>
+            </tr>
+          <tr>
+            <td height="8" background="../imagenes/abajo_r2_c2.gif"></td>
+          </tr>
+        </table></td>
+        <td width="7" height="28"><img src="../imagenes/abajo_r1_c5.gif" width="7" height="28"></td>
+      </tr>
+    </table>
+	<br>
+	<br>
+	</td>
+  </tr>  
+</table>
+</body>
+</html>

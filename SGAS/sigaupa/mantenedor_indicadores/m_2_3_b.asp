@@ -1,0 +1,249 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+
+<%
+'for each k in request.form
+'	response.Write(k&" = "&request.Form(k)&"<br>")
+'	next
+	
+
+anos_ccod=request.Form("bu[0][anos_ccod]")	
+tipo_mantenedora=request.Form("bu[0][tipo_mantenedora]")
+tipo_indi=request.Form("bu[0][tipo_indi]") 
+
+
+'response.write("<br>anos_ccod= "&anos_ccod)
+'response.write("<br>tipo_mantenedora= "&tipo_mantenedora)
+'response.write("<br>tipo_indi= "&tipo_indi)	
+'response.End()
+'---------------------------------------------------------------------------------------------------
+'set pagina = new CPagina
+'pagina.Titulo = "Encuesta Así soy yo"
+'---------------------------------------------------------------------------------------------------
+'secc_ccod=request.Form("secc")
+'anos_ccod=request.Form("anos_ccod")
+
+set pagina = new cPagina
+set conexion = new CConexion
+conexion.Inicializar "upacifico"
+'
+set negocio = new CNegocio
+negocio.Inicializa conexion
+
+set f_botonera = new CFormulario
+f_botonera.Carga_Parametros "mantenedores_escuela.xml", "botonera"
+
+set f_mantenedor = new CFormulario
+'response.End()
+if tipo_mantenedora="1" then
+	f_mantenedor.Carga_Parametros "mantenedores_escuela.xml", "f_mantenedor_base_2_3_b"
+	pre="base"
+	anos="2009"
+elseif tipo_mantenedora="2"  then
+	f_mantenedor.Carga_Parametros "mantenedores_escuela.xml", "f_mantenedor_real_2_3_b"
+	pre="real"
+	anos=anos_ccod
+	valor=valor&" and g.anos_Ccod="&anos_ccod&""
+elseif tipo_mantenedora="3"  then
+	f_mantenedor.Carga_Parametros "mantenedores_escuela.xml", "f_mantenedor_estimativo_2_3_b"
+	pre="estimativo"
+	anos="2009"
+	valor=valor&" and g.anos_Ccod="&anos_ccod&""
+end if
+f_mantenedor.Inicializar conexion
+
+'pers_ncorr=conexion.ConsultaUno("select protic.obtener_pers_ncorr("&q_pers_nrut&")")
+consulta = "select distinct a.sede_ccod,e.jorn_ccod,d.carr_tdesc,c.carr_ccod,d.tcar_ccod, b.sede_tdesc as sede,e.jorn_tdesc as jornada,d.carr_tdesc as carrera ,case d.tcar_ccod when 1 then 'Pregrado' else 'Postgrado' end as tipo_carrera,isnull(indi_2_3_b_sem_I,'') as "&pre&"_indi_2_3_b_sem_I,isnull(indi_2_3_b_sem_II,'') as "&pre&"_indi_2_3_b_sem_II ,isnull(indi_2_3_b_tri_III,'') as "&pre&"_indi_2_3_b_tri_III "& vbCrLf &_
+"from ofertas_academicas a "& vbCrLf &_
+		"join sedes b"& vbCrLf &_
+		"on a.sede_ccod=b.sede_ccod"& vbCrLf &_
+		"join especialidades c"& vbCrLf &_
+		"on  a.espe_ccod=c.espe_ccod"& vbCrLf &_
+		"join carreras d "& vbCrLf &_
+		"on c.carr_ccod=d.carr_ccod"& vbCrLf &_
+		"join jornadas e "& vbCrLf &_
+		"on a.jorn_ccod=e.jorn_ccod"& vbCrLf &_
+		"join periodos_academicos f"& vbCrLf &_
+		"on a.peri_ccod=f.peri_Ccod"& vbCrLf &_
+		"left outer join mantenedor_dato_"&pre&"_escuela g"& vbCrLf &_
+		"on a.sede_ccod=g.sede_ccod"& vbCrLf &_
+		"and e.jorn_ccod=g.jorn_ccod"& vbCrLf &_
+		"and c.carr_ccod=g.carr_ccod"& vbCrLf &_
+		"and d.tcar_ccod=g.tcar_ccod"& vbCrLf &_
+		""&valor&""& vbCrLf &_
+		"where f.anos_Ccod='"&anos&"'"& vbCrLf &_
+		"and exists (select 1 from alumnos tt where tt.ofer_ncorr=a.ofer_ncorr and tt.emat_ccod=1)"& vbCrLf &_
+		"order by sede,carrera,jornada"
+
+'sresponse.write("<br>consulta= "&consulta)
+'response.End()
+f_mantenedor.Consultar consulta
+'f_mantenedor.Siguiente
+
+
+'Ano =conexion.ConsultaUno("select anos_ccod from ")
+
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link href="../estilos/estilos.css" rel="stylesheet" type="text/css">
+<link href="../estilos/tabla.css" rel="stylesheet" type="text/css">
+
+<title>- Universidad del Pac&iacute;fico</title>
+<style type="text/css">
+.Estilo35 {
+	font-weight: bold;
+	font-size: 26px;
+	font-style: Arial, Helvetica, sans-serif;
+	color: #000000;
+}
+.Estilo36 {
+	font-weight: bold;
+	font-size: 18px;
+	font-style: Arial, Helvetica, sans-serif;
+	color: #000000;
+}
+.Estilo37 {
+	font-weight: bold;
+	font-size: 14px;
+	font-style: Arial, Helvetica, sans-serif;
+	color: #000000;
+}
+</style>
+<script language="JavaScript" src="../biblioteca/tabla.js"></script>
+<script language="JavaScript" src="../biblioteca/funciones.js"></script>
+<script language="JavaScript" src="../biblioteca/validadores.js"></script>
+
+<script language="JavaScript">
+
+function agrega_celda(id)
+{
+//alert(cont);
+var ggg='<input type="text" name="encu[0][preg_0]" value="">';
+var fff='<input type="button"  id="btn'+cont+'"  value="texto del botón" onClick="valor(this.id) ;">';
+
+//for (i=0; i<=50; i++)
+//{
+var tbody = document.getElementById
+(id).getElementsByTagName("TBODY")[0];
+var row = document.createElement("TR")
+var td1 = document.createElement("TD")
+td1.appendChild(document.createElement(ggg))
+var td1 = document.createElement("TD")
+row.appendChild(td1);
+tbody.appendChild(td1);
+cont=cont+1;
+//}
+}
+
+</script>
+</head>
+
+<body bgcolor="#CC6600" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../imagenes/botones/buscar_f2.gif','../images/bot_deshabilitar_f2.gif','../images/agregar2_f2_p.gif','im&aacute;genes/marco1_r3_c2_f2.gif');MM_preloadImages('im&aacute;genes/marco1_r3_c4_f2.gif');MM_preloadImages('im&aacute;genes/marco1_r3_c6_f2.gif');MM_preloadImages('im&aacute;genes/marco1_r3_c8_f2.gif');MM_preloadImages('../imagenes/botones/cargar_f2.gif','../imagenes/botones/continuar_f2.gif')" >
+<table width="750" height="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="62" valign="top"><img src="../imagenes/vineta2_r1_c1.gif" width="750" height="62" border="0"></td>
+  </tr>
+  <%pagina.DibujarEncabezado()%>  
+  <tr>
+    <td valign="top" bgcolor="#EAEAEA"><br>
+	<table width="90%"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#D8D8DE">
+      <tr>
+        <td width="9" height="8"><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+        <td height="8" background="../imagenes/top_r1_c2.gif"></td>
+        <td width="7" height="8"><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+      </tr>
+      <tr>
+        <td width="9" background="../imagenes/izq.gif">&nbsp;</td>
+        <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+         
+          <tr>
+            <td height="2" background="../imagenes/top_r3_c2.gif"></td>
+          </tr>
+          <tr>
+            <td><table width="700" border="0">
+				<tr valign="top" align="center">
+				<td width="100%" align="center">
+				<form name="edicion">
+				<input type="hidden" name="ma[0][anos_ccod]" value="<%=anos_ccod%>">
+				<input type="hidden" name="ma[0][tipo_mantenedora]" value="<%=tipo_mantenedora%>">
+				<input type="hidden" name="ma[0][tipo_indi]" value="<%=tipo_indi%>">
+				  <table>
+				  <tr>
+					<td align="center">
+					<%if tipo_mantenedora="1" then%>
+						<p class="Estilo35"><strong>Informaci&oacute;n  Base para</strong></p>
+					<%elseif tipo_mantenedora="2" then%>
+						<p class="Estilo35"><strong>Informaci&oacute;n Real para el Año <%=anos_ccod%> de </strong></p>
+					<%elseif tipo_mantenedora="3" then%>
+						<p class="Estilo35"><strong>Informaci&oacute;n Estimativa para el Año <%=anos_ccod%> de </strong></p>
+					<%end if%>
+					</td>
+				  </tr>
+				  <tr>
+					<td>
+						<p class="Estilo36" align="center">Fechas de cohorte para considerar ingreso de notas oportuno por semestres    </p>
+					</td>
+				  </tr>
+				  <tr>
+					<td>
+						<p class="Estilo37" align="center">* Debe ingresa la fecha con este formato dd/mm/aaaa </p>
+					</td>
+				  </tr>
+					<tr>
+					   <td>
+						  <table>
+							<tr>
+								<td>
+										<%f_mantenedor.DibujaTabla()%>
+								</td>
+							 </tr>
+						  </table>
+					   </td>	
+					</tr>
+				  </table>
+				</form>
+				</td>
+				</tr>
+			</table>
+			</td>
+          </tr>
+        </table></td>
+        <td width="7" background="../imagenes/der.gif">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="9" height="28"><img src="../imagenes/abajo_r1_c1.gif" width="9" height="28"></td>
+        <td height="28"><table width="100%" height="28"  border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="31%" height="20"><div align="center">
+              <table width="90%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+				  <td>
+				    <div align="center">
+                  		<%f_botonera.AgregaBotonParam "guardar", "url", "m_2_3_b_proc.asp"
+					      f_botonera.DibujaBoton"guardar"%>
+				     </div>
+				   </td>
+				   <td><div align="center"><%f_botonera.DibujaBoton("salir")%></div></td>
+                  </tr>
+              </table>
+            </td>
+            <td width="69%" rowspan="2" background="../imagenes/abajo_r1_c4.gif"><img src="../imagenes/abajo_r1_c3.gif" width="12" height="28"></td>
+            </tr>
+          <tr>
+            <td height="8" background="../imagenes/abajo_r2_c2.gif"></td>
+          </tr>
+        </table></td>
+        <td width="7" height="28"><img src="../imagenes/abajo_r1_c5.gif" width="7" height="28"></td>
+      </tr>
+    </table>
+	<br>
+	<br>
+	</td>
+  </tr>  
+</table> 
+
+</body>
+</html>

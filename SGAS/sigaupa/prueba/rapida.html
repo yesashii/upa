@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Accesos Rápidos</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../estilos/tabla.css" rel="stylesheet" type="text/css">
+
+<script language="JavaScript" src="../biblioteca/tabla.js"></script>
+<script language="JavaScript" src="../biblioteca/funciones.js"></script>
+<script language="JavaScript" src="../biblioteca/validadores.js"></script>
+<script language="JavaScript"> 
+<!-- 
+function EncuadraVentana(){
+	if(parent.location != self.location)parent.location = self.location;
+}
+
+
+function valida_chileno(form)
+{
+ var cont = 0;
+ v_largo_rut=form.rut.value.length;
+ if (form.rut.value == '')
+ {
+     alert('Si Ud. posee un número de RUT nacional, debe ingresarlo antes de continuar.')
+	  form.rut.focus();
+ }
+ else
+ {
+	 if(!(valida_rut(form.rut.value))|| (v_largo_rut<=4))
+	 {
+	    alert('ERROR.\nEl RUT que Ud. ha ingresado no es válido.\nPor favor, ingréselo nuevamente.');
+		form.rut.focus();
+		form.rut.select();
+	 }
+	 else
+	 {
+	    arreglo = form.rut.value.split("-");
+		var rut = arreglo[0];
+		var dv = arreglo[1];
+		var ruta = 'http://admision.upacifico.cl/postulacion/www/pre_registrarse_proc.php?rut='+rut+'&dv='+dv;
+		//alert(ruta);
+		form.action = ruta;
+	    form.submit();
+	 }		
+  }
+}
+
+function ingreso_extranjero(form)
+{
+	if (form.rut.value!="")
+	{
+		arreglo = form.rut.value.split("-");
+		var rut = arreglo[0];
+		var dv = arreglo[1];
+	}
+	else
+	{
+		var rut = "";
+		var dv  = "";
+	}
+	var ruta = 'http://admision.upacifico.cl/postulacion/www/pre_registrarse_proc.php?rut='+rut+'&dv='+dv+'&radio=2';
+	form.action = ruta;//'pre_registrarse_proc.php?radio=2';
+	form.submit();
+}
+
+function valida_rut(rut)
+{
+   var IgStringVerificador, IgN, IgSuma, IgDigito, IgDigitoVerificador, rut;
+   for( i=10-rut.length; i>0; i-- ) rut = '0' + rut; 
+   IgStringVerificador = '32765432';
+   IgSuma = 0;
+   for( IgN = 0; IgN < 8 && IgN < rut.length; IgN++)
+      IgSuma = eval(IgSuma + '+' + rut.substr(IgN, 1) + '*' + IgStringVerificador.substr(IgN, 1) + ';');
+   IgDigito = 11 - IgSuma % 11;
+   IgDigitoVerificador = IgDigito==10?'K':IgDigito==11?'0':IgDigito;
+   if (rut.substr(rut.length-1) == IgDigitoVerificador) 
+   {
+     return true;
+   }
+   else 
+   {
+     return false;
+   }
+}
+function manda_1(form)
+{
+ 		var ruta = 'http://fangorn.upacifico.cl/sigaupa/portada_alumno_2008b/proc_portada_alumno.asp';
+		form.action = ruta;
+	    form.submit();
+}
+function manda_2(form)
+{
+ 		var ruta = 'http://fangorn.upacifico.cl/sigaupa/portada/proc_portada.asp';
+		form.action = ruta;
+	    form.submit();
+}
+</script>
+</head>
+
+<body>
+<table width="70%" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="2" height="100" align="center"><font size="+5" color="#0000FF">Sistema Rápido de Testing</font></td>
+	</tr>
+	<tr><td colspan="2">&nbsp;</td></tr>
+	<tr>
+		<td width="50%" align="center">
+			<table width="95%" bgcolor="#6699CC">
+				<form name="valida" action="" method="post" target="_top">
+				<tr>
+					
+            <td colspan="3"><strong>P-ONLINE</strong></td>
+				</tr>
+				<tr>
+					<td width="40%"><strong>Usuario</strong></td>
+					<td width="1%"><strong>:</strong></td>
+					<td><input type='text'  name='datos[0][login]' value='16125125-9' size='12'  maxlength='20'></td>
+				</tr>
+				<tr>
+					<td width="40%"><strong>Clave</strong></td>
+					<td width="1%"><strong>:</strong></td>
+					<td><input type='password'  name='datos[0][clave]' value='139113' size='12'  maxlength='20'></td>
+				</tr>
+				<tr>
+					<td colspan="3" align="center"><input type="button" name="aceptar" value="Aceptar" onClick="manda_1(document.valida);"></td>
+				</tr>
+				</form>
+			</table>
+		</td>
+		<td width="50%" align="center">
+			<table width="95%" bgcolor="#FFCC66">
+				<form name="valida2" action="" method="post" target="_top">
+				<tr>
+					<td colspan="3"><strong>SGA</strong></td>
+				</tr>
+				<tr>
+					<td width="40%"><strong>Usuario</strong></td>
+					<td width="1%"><strong>:</strong></td>
+					<td><input type='text'  name='datos[0][login]' value='lbustos' size='12'  maxlength='20'></td>
+				</tr>
+				<tr>
+					<td width="40%"><strong>Clave</strong></td>
+					<td width="1%"><strong>:</strong></td>
+					<td><input type='password'  name='datos[0][clave]' value='134721' size='12'  maxlength='20'></td>
+				</tr>
+				<tr>
+					<td colspan="3" align="center"><input type="button" name="aceptar" value="Aceptar" onClick="manda_2(document.valida2);"></td>
+				</tr>
+				</form>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td width="50%" align="center">
+			<table width="95%" bgcolor="#66CC66">
+				<form action="inicio_proc.php" method="post" name="edicion" target="_top">
+				<tr>
+					<td colspan="3"><strong>ADMISIÓN</strong></td>
+				</tr>
+				<tr>
+					<td width="40%"><strong>RUT</strong></td>
+					<td width="1%"><strong>:</strong></td>
+					<td><input type="text" name="rut" value="13813352-4" maxlength="10" size="15" onBlur="this.value=this.value.toUpperCase();"></td>
+				</tr>
+				<tr>
+					<td colspan="3" align="center"><input type="button" name="boton1" value="Ingresar" onClick="valida_chileno(document.edicion);"></td>
+				</tr>
+				</form>
+			</table>
+		</td>
+		<td width="50%" align="center">
+			<table width="95%" bgcolor="#9966FF">
+				<form action="http://www.pacificovirtual.cl/aula/login/index.php" method="post" name="login" target="_top" id="login">
+				<tr>
+					<td colspan="3"><strong>MOODLE</strong></td>
+				</tr>
+				<tr>
+					<td width="40%"><strong>Usuario</strong></td>
+					<td width="1%"><strong>:</strong></td>
+					<td><input name="username" type="text" id="username" value="16125125-9" size="15" /></td>
+				</tr>
+				<tr>
+					<td width="40%"><strong>Clave</strong></td>
+					<td width="1%"><strong>:</strong></td>
+					<td><input name="password" type="password" id="password" value="139113" size="15" /></td>
+				</tr>
+				<tr>
+					<td colspan="3" align="center"><input name="submit" type="submit" value="Ingresar" /></td>
+				</tr>
+				</form>
+			</table>
+		</td>
+	</tr>
+	<tr><td colspan="2">&nbsp;</td></tr>
+	<tr><td colspan="2" align="center" bgcolor="#0066FF"><a href="http://catalogo.upacifico.cl/#focus" target="_top"><font size="+4">Acceso a Biblioteca</font></a></td></tr>
+</table>
+</body>
+</html>

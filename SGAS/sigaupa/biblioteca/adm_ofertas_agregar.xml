@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="t_ofertas_academicas" variable="ofertas" clave="ofer_ncorr">
+      <tablas nombre="ofertas_academicas" accion="I"/>
+      <campos nombre="ofer_ncorr">
+		<tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="c_sede_ccod">
+         <tipo>SELECT</tipo>
+         <destino>sedes</destino>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="c_peri_ccod">
+         <tipo>SELECT</tipo>
+         <destino>(SELECT peri_ccod, cast(peri_tdesc as varchar) + ' ' + cast(anos_ccod as varchar) AS descripcion FROM periodos_academicos ) a</destino>
+         <union>peri_ccod</union>
+         <salida>descripcion</salida>
+		 <orden>a.descripcion</orden>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="carr_ccod">
+         <tipo>SELECT</tipo>
+         <destino>carreras</destino>
+         <union>carr_ccod</union>
+         <salida>carr_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="c_espe_ccod">
+         <tipo>SELECT</tipo>
+         <destino>especialidades</destino>
+         <union>espe_ccod</union>
+         <salida>espe_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="jorn_ccod">
+         <tipo>SELECT</tipo>
+         <destino>jornadas</destino>
+         <union>jorn_ccod</union>
+         <salida>jorn_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>--Seleccione jornada--</mensajeNulo>
+   <!--      <script>onChange="CargarMontos(this.form, this.value)"</script>-->
+      </campos>
+        <campos nombre="post_bnuevo">
+         <tipo>SELECT</tipo>
+         <destino>(SELECT 'S' as post_bnuevo, 'ALUMNOS NUEVOS' AS tipo_alumnos UNION SELECT 'N' as post_bnuevo,'ALUMNOS ANTIGUOS' AS tipo_alumnos ) a </destino>
+         <union>post_bnuevo</union>
+         <salida>tipo_alumnos</salida>
+		 <orden>a.tipo_alumnos</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>TRUE</anulable>
+		 <mensajeNulo>--Seleccione tipo de alumno--</mensajeNulo>
+	  </campos>
+     <campos nombre="aran_ncorr">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="ofer_nvacantes">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="ofer_nquorum">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="ofer_bpaga_examen">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="ofer_bpublica">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="ofer_bactiva">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+      <campos nombre="sede_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="peri_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="espe_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="t_aranceles" variable="aranceles" clave="aran_ncorr" anchoTabla="100%">
+      <tablas nombre="aranceles" accion="I"/>
+      <campos nombre="aran_ncorr">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="mone_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ofer_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="aran_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="aran_mmatricula">
+         <descripcion>MATRÍCULA ($)</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="aran_mcolegiatura">
+         <descripcion>COLEGIATURA ($)</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="aran_nano_ingreso">
+	     <descripcion>ANO INGRESO</descripcion>
+         <tipo>INPUT</tipo>
+		<!--  <deshabilitado>TRUE</deshabilitado>  -->
+         <permiso>LECTURAESCRITURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+		<!-- <soloLectura>TRUE</soloLectura> -->
+      </campos>
+      <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="espe_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="peri_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="btn_adm_ofertas_agregar">
+    <botones nombre="aceptar"> 
+      <tipoTexto>ACEPTAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>javascript:Aceptar()</funcion>
+	</botones> 
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>javascript:Salir()</funcion>
+	</botones> 		 
+</parametro>
+</Parametros>

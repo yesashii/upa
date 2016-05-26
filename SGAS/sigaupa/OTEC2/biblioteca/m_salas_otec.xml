@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="botonera">
+    <botones nombre="buscar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Buscar Salas</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 
+	<botones nombre="crear_dcurso"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Agregar Diplomado o Curso</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar2(document.buscador)</funcion>
+	</botones> 
+    <botones nombre="agregar_sala"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Agregar Nueva Sala de la sede</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>abrir()</funcion>
+	</botones> 
+	<botones nombre="agregar_programa_dcurso"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Poblar Malla</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>abrir_programa()</funcion>
+	</botones> 
+    <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	
+	<botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <formulario>edicion</formulario>
+         <url>eliminar_salas.asp</url>
+    </botones>
+	<botones nombre="eliminar_malla">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <formulario>edicion</formulario>
+         <url>eliminar_malla_otec.asp</url>
+    </botones>
+	
+    <botones nombre="enviar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Enviar</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.formu)</funcion>
+	</botones> 
+	<botones nombre="guardar_datos_generales">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>guardar_datos_generales.asp</url>
+		 <funcionValidacion>validar_fechas();</funcionValidacion>
+    </botones>
+ </parametro>
+ <parametro formulario="f_busqueda" variable="b">
+  <campos nombre="sede_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>(select sede_ccod,sede_tdesc from sedes where sede_ccod in (1,2,4,7,8))a</destino> 
+	  <union>sede_ccod</union>
+	  <salida>sede_tdesc</salida>
+      <orden>sede_ccod asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Sede</mensajeNulo>
+	  <mensajeVacio>Seleccione Sede</mensajeVacio>
+	  <id>TO-N</id>
+   </campos>
+  </parametro>
+ 
+ <parametro formulario="f_salas"
+ clave="sala_ccod" variable="m" 
+ nuevaVentana="true" nuevaVentanaAlto="230" nuevaVentanaAncho="400"
+ mensajeError="No existen salas registradas para la sede seleccionada" 
+ colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" 
+ editar="true" eliminar="true" agregar="true"
+ paginaEdicion="agregar_sala.asp?sala_ccod=%sala_ccod%" maxLista="10" nroRegistros="10" anchoTabla="98%">
+ <campos nombre="sala_tdesc">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Sala</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+  <campos nombre="sala_ncupo">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Cupo</descripcion> 
+	  <alineamiento>Center</alineamiento> 
+  </campos>
+  <campos nombre="tsal_tdesc">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Tipo Sala</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+  <campos nombre="sala_ciso">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Cod. Iso.</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+</parametro>
+<parametro formulario="botonera_modulos">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 
+    <botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>abrir()</funcion>
+	</botones> 
+    <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	<botones nombre="salir22"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>CerrarActualizar()</funcion>
+	</botones>
+	<botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>guardar_malla_otec.asp</url>
+    </botones>
+	
+    <botones nombre="enviar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Enviar</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.formu)</funcion>
+	</botones> 
+	
+    <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones>
+ </parametro>
+
+<parametro formulario="botonera_secciones">
+    <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>CerrarActualizar()</funcion>
+	</botones>
+	<botones nombre="agregar">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Agregar Sección</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>agregar_seccion_otec.asp</url>
+    </botones>
+	<botones nombre="guardar">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Guardar</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>guardar_seccion_otec.asp</url>
+		 <funcionValidacion>revision(document.edicion);</funcionValidacion>
+    </botones>
+	<botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <formulario>edicion</formulario>
+         <url>eliminar_seccion_otec.asp</url>
+    </botones>
+   </parametro>
+    <parametro formulario="mantiene_secciones" variable="m" >
+		<tablas nombre="secciones_otec" accion="M" />
+   </parametro>
+   <parametro formulario="edicion_salas" clave="sala_ccod" variable="m" mensajeError=""
+		 colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" 
+		 eliminar="false" agregar="false" nuevaVentana="false" paginaEdicion="" 
+		 maxLista="10" nroRegistros="10">
+		
+		<campos nombre="sala_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso> 
+		</campos>
+		<campos nombre="codigo">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso> 
+		</campos>
+		<campos nombre="sala_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<caracteres>45</caracteres>
+			<maxCaracteres>50</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+        <campos nombre="sala_ncupo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>10</caracteres>
+			<maxCaracteres>3</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+		<campos nombre="sala_ciso">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>45</caracteres>
+			<maxCaracteres>50</maxCaracteres>
+			<id>TO-S</id>
+		</campos>
+		<campos nombre="sede_ccod">
+			  <tipo>SELECT</tipo>
+			  <destino>(select sede_ccod,sede_tdesc from sedes where sede_ccod in (1,2,4,7,8))a</destino> 
+			  <union>sede_ccod</union>
+			  <salida>sede_tdesc</salida>
+			  <orden>sede_ccod asc </orden>	  
+			  <permiso>LECTURAESCRITURA</permiso>
+			  <anulable>true</anulable>
+			  <mensajeNulo>Seleccione Sede</mensajeNulo>
+			  <mensajeVacio>Seleccione Sede</mensajeVacio>
+			  <id>TO-N</id>
+		 </campos>
+		 <campos nombre="tsal_ccod">
+			  <tipo>SELECT</tipo>
+			  <destino>tipos_sala</destino> 
+			  <union>tsal_ccod</union>
+			  <salida>tsal_tdesc</salida>
+			  <orden>tsal_ccod asc </orden>	  
+			  <permiso>LECTURAESCRITURA</permiso>
+			  <anulable>true</anulable>
+			  <mensajeNulo>Seleccione Tipo</mensajeNulo>
+			  <mensajeVacio>Seleccione Tipo</mensajeVacio>
+			  <id>TO-N</id>
+		 </campos>
+	</parametro>
+	<parametro formulario="btn_edita_modulos">
+    	<botones nombre="guardar"> 
+      		<tipoTexto>GUARDAR</tipoTexto>
+	  		<accion>JAVASCRIPT</accion>
+	  		<funcion>guardar(document.edicion)</funcion>
+		</botones> 
+    
+		<botones nombre="volver"> 
+      		<tipoTexto>DEFINIR</tipoTexto>
+	  		<texto>Cerrar</texto>
+	  		<accion>JAVASCRIPT</accion>
+	  		<funcion>CerrarActualizar()</funcion>
+		</botones> 
+ 	</parametro>
+</Parametros>

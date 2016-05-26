@@ -1,0 +1,438 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>postulacion_2.asp</url>
+      </botones>
+      <botones nombre="siguiente">
+         <tipoTexto>SIGUIENTE</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_postulacion_3.asp</url>
+         <funcionValidacion>Validar();</funcionValidacion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>log_out.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="antecedentes" variable="antecedentes">
+      <tablas nombre="personas_postulante" accion="M"/>
+      <tablas nombre="postulantes" accion="M"/>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="post_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ano_actividades">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="regi_ccod_colegio">
+         <tipo>SELECT</tipo>
+         <destino>regiones</destino>
+         <union>regi_ccod</union>
+         <salida>regi_tdesc</salida>
+         <orden>regi_ccod ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onChange="_FiltrarCombobox(this.form.elements['antecedentes[0][ciud_ccod_colegio]'], this.value, d_ciudades, 'regi_ccod', 'ciud_ccod', 'ciud_tdesc', '', 'Seleccionar ciudad'); LimpiarComboColegios();"</script>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar región</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="ciud_ccod_colegio">
+         <tipo>SELECT</tipo>
+         <destino>ciudades</destino>
+         <union>ciud_ccod</union>
+         <salida>ciud_tdesc</salida>
+         <filtro>1=2</filtro>
+         <orden>ciud_tdesc ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onChange="RecargarColegios();"</script>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar ciudad</mensajeNulo>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="cole_ccod">
+         <tipo>SELECT</tipo>
+         <destino>colegios</destino>
+         <union>cole_ccod</union>
+         <salida>cole_tdesc</salida>
+         <orden>cole_tdesc ASC</orden>
+         <filtro>1=2</filtro>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar colegio</mensajeVacio>
+      </campos>
+      <campos nombre="otro_colegio">
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <permiso>LECTURAESCRITURA</permiso>
+         <onClick>HabilitarTextbox(this.form.elements['antecedentes[0][pers_tcole_egreso]'], this.checked);</onClick>
+      </campos>
+      <campos nombre="pers_tcole_egreso">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="tens_ccod">
+         <tipo>RADIO</tipo>
+         <destino>tipos_ensenanza_media</destino>
+         <union>tens_ccod</union>
+         <salida>tens_tdesc</salida>
+         <orden>tens_ccod ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+         <ancho>100%</ancho>
+      </campos>
+      <campos nombre="pers_ttipo_ensenanza">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="pers_nano_egr_media">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>4</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="tpad_ccod">
+         <tipo>SELECT</tipo>
+         <destino>tipos_pruebas_admision</destino>
+         <union>tpad_ccod</union>
+         <salida>tpad_tdesc</salida>
+         <orden>tpad_ccod ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+      </campos>
+      <campos nombre="post_nano_paa">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>4</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_nnota_ens_media">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="post_npaa_verbal">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="post_npaa_matematicas">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="ties_ccod">
+         <tipo>RADIO</tipo>
+         <destino>tipos_institucion_educ_sup</destino>
+         <union>ties_ccod</union>
+         <salida>ties_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>2</columnas>
+         <script>onClick="ties_ccod_Click();"</script>
+         <ancho>100%</ancho>
+      </campos>
+      <campos nombre="post_ttipo_institucion_ant">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="iesu_ccod">
+         <tipo>SELECT</tipo>
+         <destino>instituciones_educ_superior</destino>
+         <union>iesu_ccod</union>
+         <salida>iesu_tdesc</salida>
+         <orden>iesu_tdesc ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar institución</mensajeNulo>
+      </campos>
+      <campos nombre="otra_institucion">
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <onClick>otra_institucion_click();</onClick>
+      </campos>
+      <campos nombre="post_tinstitucion_anterior">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="post_tcarrera_anterior">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="post_nano_inicio_est_ant">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>4</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="post_nano_termino_est_ant">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>4</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="post_nsem_aprobados">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>4</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="post_btitulado">
+         <tipo>BOLEANO</tipo>
+         <objeto>RADIO</objeto>
+         <afirmacion>Sí</afirmacion>
+         <negacion>No</negacion>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onClick="post_btitulado_click();"</script>
+      </campos>
+      <campos nombre="post_ttitulo_obtenido">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>60</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="isap_ccod">
+         <tipo>SELECT</tipo>
+         <destino>isapres</destino>
+         <union>isap_ccod</union>
+         <salida>isap_tdesc</salida>
+         <orden>isap_tdesc asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione isapre</mensajeNulo>
+      </campos>
+      <campos nombre="ffaa_ccod">
+         <tipo>SELECT</tipo>
+         <destino>ffaa</destino>
+         <union>ffaa_ccod</union>
+         <salida>ffaa_tdesc</salida>
+         <orden>ffaa_tdesc asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione FF.AA.</mensajeNulo>
+         <permiso>TO-S</permiso>
+      </campos>
+      <campos nombre="pers_tenfermedades">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="pers_tmedicamentos_alergia">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="post_btrabaja">
+         <tipo>BOLEANO</tipo>
+         <objeto>RADIO</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+         <afirmacion>Sí</afirmacion>
+         <negacion>No</negacion>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <script>onClick="post_btrabaja_click();"</script>
+      </campos>
+      <campos nombre="pers_tempresa">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_tcargo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="regi_ccod_empresa">
+         <tipo>SELECT</tipo>
+         <destino>regiones</destino>
+         <union>regi_ccod</union>
+         <salida>regi_tdesc</salida>
+         <orden>regi_ccod ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onChange="_FiltrarCombobox(this.form.elements['antecedentes[0][ciud_ccod_empresa]'], this.value, d_ciudades, 'regi_ccod', 'ciud_ccod', 'ciud_tdesc', '', 'Seleccionar ciudad');"</script>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar región</mensajeNulo>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="ciud_ccod_empresa">
+         <tipo>SELECT</tipo>
+         <destino>ciudades</destino>
+         <union>ciud_ccod</union>
+         <salida>ciud_tdesc</salida>
+         <filtro>1=2</filtro>
+         <orden>ciud_tdesc ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar ciudad</mensajeNulo>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tcalle">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>40</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tnro">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tpoblacion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tfono">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>15</maxCaracteres>
+         <id>TE-S</id>
+      </campos>
+      <campos nombre="alab_ccod">
+         <tipo>SELECT</tipo>
+         <destino>antiguedad_laboral</destino>
+         <union>alab_ccod</union>
+         <salida>alab_tdesc</salida>
+         <orden>alab_ccod asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar antiguedad</mensajeNulo>
+      </campos>
+      <campos nombre="post_breconocimiento_estudios">
+         <tipo>BOLEANO</tipo>
+         <objeto>RADIO</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+         <afirmacion>Sí</afirmacion>
+         <negacion>No</negacion>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+      </campos>
+      <campos nombre="post_totras_actividades">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+   </parametro>
+   <parametro formulario="direccion_laboral" variable="antecedentes">
+      <tablas nombre="direcciones_publica" accion="M"/>
+      <campos nombre="pers_ncorr"/>
+      <campos nombre="tdir_ccod"/>
+   </parametro>
+   <parametro formulario="actividades_realizadas" variable="actividades_realizadas" columnas="4" anchoTabla="100%">
+      <tablas nombre="actividades_postulantes" accion="M"/>
+      <campos nombre="post_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="acre_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="actividad_realizada">
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="acre_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <ancho>100%</ancho>
+      </campos>
+   </parametro>
+   <parametro formulario="elimina_actividades_realizadas" variable="actividades_realizadas">
+      <tablas nombre="actividades_postulantes" accion="B">
+         <campos nombre="post_ncorr"/>
+         <campos nombre="acre_ccod"/>
+      </tablas>
+   </parametro>
+   <parametro formulario="actividades_participar" variable="actividades_participar" columnas="4" anchoTabla="100%">
+      <tablas nombre="actividades_participar_post" accion="M"/>
+      <campos nombre="post_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tacp_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="bparticipar">
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="tacp_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <ancho>100%</ancho>
+      </campos>
+   </parametro>
+   <parametro formulario="elimina_actividades_participar" variable="actividades_participar">
+      <tablas nombre="actividades_participar_post" accion="B">
+         <campos nombre="post_ncorr"/>
+         <campos nombre="tacp_ccod"/>
+      </tablas>
+   </parametro>
+</Parametros>

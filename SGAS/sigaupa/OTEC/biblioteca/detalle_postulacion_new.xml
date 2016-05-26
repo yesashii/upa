@@ -1,0 +1,100 @@
+<Parametros>
+ <parametro formulario="botonera">
+   <botones nombre="cancelar"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+	<botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>proc_guardar_observacion.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>
+  </parametro>
+  <parametro formulario="f_historico_postulaciones" anchoTabla="100%" 
+   colorResaltado="#CCCCCC"  mensajeError="el alumno no presenta histórico de observaciones en el año consultado"
+   colorSeleccionado="#CCCCCC" eliminar="FALSE" seleccionarTodo="FALSE"
+   editar="FALSE" 	paginaEdicion="" nroRegistros="15" maxLista="15" >
+	<campos nombre="ofer_ncorr">
+	   <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+    </campos>
+	<campos nombre="post_ncorr">
+	   <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+    </campos>
+	<campos nombre="escuela">
+	    <descripcion>Escuela</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="estado_examen">
+	    <descripcion>Est.Test</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="matriculado">
+	    <descripcion>¿Matriculado?</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="estado">
+        <descripcion>Estado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	  <campos nombre="obpo_tobservacion">
+	    <descripcion>Observación</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="fecha_llamado">
+	    <descripcion>Llamar el día...</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="entrevista">
+	    <descripcion>Entrevista</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="fecha_modificacion">
+	    <descripcion>Modificado el Día</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+   </parametro>
+   <parametro formulario="f_detalle_otec_extension" anchoTabla="100%" 
+   colorResaltado="#CCCCCC"  mensajeError=""
+   colorSeleccionado="#CCCCCC" eliminar="FALSE" seleccionarTodo="FALSE"
+   editar="FALSE" 	paginaEdicion="" clave="pote_ncorr" nuevaVentana="FALSE" variable="alumnos">
+    <tablas nombre="observaciones_postulacion_otec" accion="M"/>
+	<campos nombre="dgso_ncorr">
+	   <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+    </campos>
+	<campos nombre="pote_ncorr">
+	   <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+    </campos>
+	<campos nombre="eopo_ccod">
+         <tipo>SELECT</tipo>
+		 <descripcion>Estado</descripcion>
+		 <permiso>LECTURAESCRITURA</permiso>
+         <destino>(select eopo_ccod,eopo_tdesc from estado_observaciones_postulacion where eopo_ccod in (1,32,34,35,37,43,44))a</destino>
+         <union>eopo_ccod</union>
+         <salida>eopo_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>FALSE</anulable>
+		 <orden>eopo_tdesc</orden>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="obpo_tobservacion">
+	    <descripcion>Observación</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>50</caracteres>
+		<maxCaracteres>150</maxCaracteres>
+	 </campos>
+   </parametro>
+</Parametros>

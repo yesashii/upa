@@ -1,0 +1,173 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+
+<%
+Server.ScriptTimeout = 2000 
+Response.AddHeader "Content-Disposition", "attachment;filename=reporte_letras.xls"
+Response.ContentType = "application/vnd.ms-excel"
+'------------------------------------------------------------------------------------
+set pagina = new CPagina
+'------------------------------------------------------------------------------------
+set conexion = new CConexion
+conexion.Inicializar "upacifico"
+
+set negocio = new CNegocio
+negocio.Inicializa conexion
+'------------------------------------------------------------------------------------
+Periodo = negocio.ObtenerPeriodoAcademico("POSTULACION")
+Usuario = negocio.ObtenerUsuario()
+'------------------------------------------------------------------------------------
+ sede 		= request.querystring("busqueda[0][sede_ccod]")
+ inicio 	= request.querystring("busqueda[0][inicio]")
+ termino 	= request.querystring("busqueda[0][termino]")
+ rut_alumno = request.querystring("busqueda[0][pers_nrut]")
+ rut_alumno_digito 		= request.querystring("busqueda[0][pers_xdv]")
+ rut_apoderado 			= request.querystring("busqueda[0][code_nrut]")
+ rut_apoderado_digito 	= request.querystring("busqueda[0][code_xdv]")
+ num_doc = request.querystring("busqueda[0][ding_ndocto]")
+ estado_letra 		= request.querystring("busqueda[0][edin_ccod]")
+ v_inen_ccod 		= Request.QueryString("busqueda[0][inen_ccod]")
+ v_sede_carrera 	= Request.QueryString("busqueda[0][sede_carrera]")
+
+'----------------------------------------------------------------------------
+consulta = "SELECT pers_ncorr FROM personas WHERE pers_nrut='" & Usuario & "'"
+pers_ncorr = conexion.ConsultaUno(consulta)
+'response.Write(pers_ncorr)
+'f_busqueda.AgregaCampoParam "sede_ccod","destino", "(select a.sede_ccod, d.sede_tdesc from sis_sedes_usuarios a, sis_usuarios b, personas c, sedes d where a.pers_ncorr = b.pers_ncorr and b.pers_ncorr = c.pers_ncorr and a.sede_ccod = d.sede_ccod and a.pers_ncorr =" & pers_ncorr & ")"
+'----------------------------------------------------------------------------
+
+set f_letras = new CFormulario
+f_letras.Carga_Parametros "Reporte_Letras.xml", "f_letras_excel"
+f_letras.Inicializar conexion
+
+					if v_sede_carrera <> "" then
+						sql_extra=  " left outer join postulantes p "& vbCrLf &_
+									" 	on p.post_ncorr=protic.obtener_post_ncorr(b.pers_ncorr,i.comp_ndocto,b.ingr_ncorr) "& vbCrLf &_         
+									" 	and p.ofer_ncorr is not null "& vbCrLf &_
+									" join ofertas_academicas o "& vbCrLf &_
+									" 	on p.ofer_ncorr=o.ofer_ncorr " & vbCrLf   
+					
+						sql_and_sede_extra = " AND o.sede_ccod = '" & v_sede_carrera & "' "& vbCrLf
+
+					end if
+					
+consulta = 	"select  b.mcaj_ncorr,a.envi_ncorr, a.ding_ndocto, convert(varchar,b.ingr_fpago,103) as ingr_fpago, " & vbCrLf &_
+				" case  when protic.documento_pagado_x_regularizacion(a.ingr_ncorr,a.ding_bpacta_cuota,'P' )=1 " & vbCrLf &_
+				" and protic.documento_pagado_x_regularizacion(a.ingr_ncorr,a.ding_bpacta_cuota,'A' )=a.ding_mdocto " & vbCrLf &_
+				" and d.edin_tdesc='PAGADO' then (select ereg_tdesc from estados_regularizados where ereg_ccod=protic.documento_pagado_x_regularizacion(a.ingr_ncorr,a.ding_bpacta_cuota,'T')) else d.edin_tdesc end as edin_tdesc, " & vbCrLf &_
+				"        convert(varchar,a.ding_fdocto,103) as ding_fdocto, a.ding_mdocto, " & vbCrLf &_
+				"        protic.obtener_rut(b.pers_ncorr) as rut_alumno, " & vbCrLf &_
+				"        protic.obtener_rut(a.pers_ncorr_codeudor) as rut_apoderado, " & vbCrLf &_
+				"        case d.udoc_ccod when 2 then e.inen_tdesc else case a.edin_ccod when 6 then e.inen_tdesc end  end as institucion , " & vbCrLf &_
+				" 		 (select sede_tdesc from sedes where sede_ccod=isnull(a.sede_actual,case when b.ingr_fpago < '03/12/2006' then 1 else m.sede_ccod end) ) as sede_actual, " & vbCrLf &_
+				" 		isnull((select top 1 di.ding_mdocto from detalle_ingresos di, ingresos ing where ing.eing_ccod not in (3,6) and di.ingr_ncorr=ing.ingr_ncorr and di.ding_ndocto=a.ding_ndocto and di.ting_ccod=87),0) as monto_protesto "& vbCrLf &_
+				" from detalle_ingresos a " & vbCrLf &_
+				"    join   ingresos b " & vbCrLf &_
+				"        on a.ingr_ncorr = b.ingr_ncorr " & vbCrLf &_
+				" 	 join movimientos_cajas m "& vbCrLf &_
+				"    	 on b.mcaj_ncorr = m.mcaj_ncorr "& vbCrLf &_
+				"    left outer join   envios c " & vbCrLf &_
+				"        on a.envi_ncorr = c.envi_ncorr " & vbCrLf &_
+				"    join   estados_detalle_ingresos d " & vbCrLf &_
+				"        on a.edin_ccod = d.edin_ccod " & vbCrLf &_
+				"    left outer join   instituciones_envio e " & vbCrLf &_
+				"        on c.inen_ccod = e.inen_ccod  " & vbCrLf &_
+				"    join   personas f " & vbCrLf &_
+				"        on b.pers_ncorr = f.pers_ncorr " & vbCrLf &_
+				"    left outer join   personas g " & vbCrLf &_
+				"        on a.pers_ncorr_codeudor = g.pers_ncorr  " & vbCrLf &_
+				"    join   abonos h " & vbCrLf &_
+				"        on b.ingr_ncorr = h.ingr_ncorr " & vbCrLf &_
+				"    join   compromisos i " & vbCrLf &_
+				"        on h.tcom_ccod = i.tcom_ccod  " & vbCrLf &_
+				"        and h.inst_ccod = i.inst_ccod  " & vbCrLf &_
+				"        and h.comp_ndocto = i.comp_ndocto " & vbCrLf &_
+				"	"&sql_extra&" "& vbCrLf &_
+				" where i.ecom_ccod not in (2,3)   " & vbCrLf &_
+				"	"&sql_and_sede_extra&" "& vbCrLf &_
+				"    and a.ting_ccod = 4    " & vbCrLf &_
+				"    and a.ding_ncorrelativo > 0    " & vbCrLf &_
+				"    and b.eing_ccod not in (2,3)  "
+					
+					
+					if sede <> "" then
+					  consulta = consulta &  "AND isnull(a.sede_actual,case when b.ingr_fpago < '03/12/2006' then 1 else m.sede_ccod end) = '" & sede & "' "& vbCrLf
+					end if
+				  
+					if inicio <> "" or termino <> "" then
+					  'consulta = consulta &  "AND protic.trunc(a.ding_fdocto) BETWEEN  isnull('" & inicio & "',a.ding_fdocto) and isnull('" & termino & "',a.ding_fdocto) "& vbCrLf
+					  consulta = consulta &  "AND convert(datetime,a.ding_fdocto,103) BETWEEN  isnull(convert(datetime,'" & inicio & "',103),convert(datetime,a.ding_fdocto,103)) and isnull(convert(datetime,'" & termino & "',103),convert(datetime,a.ding_fdocto,103))"& vbCrLf
+					end if 
+					
+					if rut_alumno <> "" then
+					  consulta = consulta &  "AND f.pers_nrut = '" & rut_alumno & "' "& vbCrLf
+					end if
+					
+					if rut_apoderado <> "" then
+					  consulta = consulta &  "AND g.pers_nrut = '" & rut_apoderado & "' "& vbCrLf
+					end if
+					
+					if num_doc <> "" then                   
+				      consulta = consulta &  "AND a.ding_ndocto = '" & num_doc & "' "& vbCrLf
+					end if
+					
+					if estado_letra <> "" then
+  					   'consulta = consulta & " AND d.fedi_ccod = '" & estado_letra & "' "& vbCrLf
+					   consulta = consulta & " AND d.edin_ccod = '" & estado_letra & "' "& vbCrLf
+					 end if
+					 
+					 if v_inen_ccod <> "" then
+  					   consulta = consulta & " AND case when d.udoc_ccod = 2 then e.inen_ccod end = '" & v_inen_ccod & "' "& vbCrLf
+					 end if
+					 
+					 consulta = consulta & "order by a.ding_ndocto asc, a.ding_fdocto asc, b.ingr_fpago asc"
+					 
+f_letras.Consultar consulta
+
+
+'response.Write("<PRE>" & consulta & "</PRE>")
+'response.End()
+%>
+<html>
+<head>
+<title> Detalle Envio a Banco</title>
+<meta http-equiv="Content-Type" content="text/html;">
+</head>
+<body >
+<table width="75%" border="1">
+  <tr>
+  	<td width="11%"><div align="center"><strong>Caja Origen</strong></div></td>
+	<td width="11%"><div align="center"><strong>Deposito</strong></div></td> 
+    <td width="11%"><div align="center"><strong>N&ordm; Letra</strong></div></td>
+    <td width="11%"><div align="center"><strong>Estado</strong></div></td>
+    <td width="11%"><div align="center"><strong>F. Emisi&oacute;n</strong></div></td>
+    <td width="14%"><div align="center"><strong>F. Vencimiento</strong></div></td>
+    <td width="8%"><div align="center"><strong>Monto ($)</strong></div></td>
+	<td width="8%"><div align="center"><strong>Gasto Protesto ($)</strong></div></td>
+    <td width="11%"><div align="center"><strong>Rut Alumno</strong></div></td>
+    <td width="11%"><div align="center"><strong>Rut Apoderado</strong></div></td>
+    <td width="11%"><div align="center"><strong>Instituci&oacute;n</strong></div></td>
+	<td width="11%"><div align="center"><strong>Sede</strong></div></td>
+  </tr>
+  <%  while f_letras.Siguiente %>
+  <tr> 
+   	<td><div align="center"><%=f_letras.ObtenerValor("mcaj_ncorr")%></div></td>
+	<td><div align="center"><%=f_letras.ObtenerValor("envi_ncorr")%></div></td>
+	<td><%=f_letras.ObtenerValor("ding_ndocto")%></td>
+    <td><%=f_letras.ObtenerValor("edin_tdesc")%></td>
+    <td><div align="center"><%=f_letras.ObtenerValor("ingr_fpago")%></div></td>
+    <td><div align="center"><%=f_letras.ObtenerValor("ding_fdocto")%></div></td>
+    <td><div align="right"><%=f_letras.ObtenerValor("ding_mdocto")%></div></td>
+	<td><div align="right"><%=f_letras.ObtenerValor("monto_protesto")%></div></td>
+    <td><div align="center"><%=f_letras.ObtenerValor("rut_alumno")%></div></td>
+    <td><div align="center"><%=f_letras.ObtenerValor("rut_apoderado")%></div></td>
+    <td><%=f_letras.ObtenerValor("institucion")%></td>
+	<td><%=f_letras.ObtenerValor("sede_actual")%></td>
+  </tr>
+  <%  wend %>
+</table>
+<p>&nbsp; 
+</p> 
+<div align="center"></div>
+</body>
+</html>

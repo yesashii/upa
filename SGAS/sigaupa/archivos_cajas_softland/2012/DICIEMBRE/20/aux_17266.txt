@@ -1,0 +1,5 @@
+70417500,  CORP. CAPACITACION Y EMPLEO SOFOFA,,70417500-0,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+78874060,  MCCANN RELATIONSHIP MARKETING LTDA.,,78874060-3,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+81253200,  MCCAN ERICKSON S.A DE PUBLICIDAD,,81253200-6,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+86931000,  AGENCIAS DE REPRESENTACIONES LTDA.,,86931000-K,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+96759000,  MOMENTUM S.A.,,96759000-2,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

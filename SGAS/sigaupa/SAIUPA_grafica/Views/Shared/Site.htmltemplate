@@ -1,0 +1,177 @@
+      <%  Const withTemplate = True   %>
+      <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+	  <html xmlns="http://www.w3.org/1999/xhtml">
+        <head runat="server">
+		  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+          <title>
+          	Sistema de an&aacute;lisis institucional
+          </title>
+          <link href="Content/Site.css" rel="stylesheet" type="text/css" />
+		  <link href="Content/xom.css" rel="stylesheet" type="text/css" />
+		  
+		  <link href="Content/css/jquery.onebyone.css" rel="stylesheet" type="text/css">
+    	  <link rel="stylesheet" type="text/css" href="Content/css/animate.css">
+		  <link href="Content/css/example1.css" rel="stylesheet" type="text/css">
+          
+		  <script type="text/javascript" src="Content/jquery-1.6.3.min.js"></script>
+		  <script src="Content/js/jquery.onebyone.min.js"></script>              
+	      <script src="Content/js/jquery.touchwipe.min.js"></script>
+ 
+	   	  <script type="text/javascript">
+		     function minimizar(nombre_capa){
+			 document.getElementById(nombre_capa).style.display="none";
+			 }
+			 function maximizar(nombre_capa){
+			 document.getElementById(nombre_capa).style.display="block";
+			 }
+			 $(document).ready(function() { 
+				$('#banner').oneByOne({
+				className: 'oneByOne1',	             
+				easeType: 'random',
+				interval: 7000,
+				pause: 'hover',
+				slideShow: true
+			    });  
+			});
+			function cargar_excel(url)
+			{
+			    if (document.formu_anos.elements[c2005].checked)
+					{ document.formu_excel.elements[excel2005].value=1;}
+				if (document.formu_anos.elements[c2006].checked)
+					{ document.formu_excel.elements[excel2006].value=1;}
+				if (document.formu_anos.elements[c2007].checked)
+					{ document.formu_excel.elements[excel2007].value=1;}
+				if (document.formu_anos.elements[c2008].checked)
+					{ document.formu_excel.elements[excel2008].value=1;}
+				if (document.formu_anos.elements[c2009].checked)
+					{ document.formu_excel.elements[excel2009].value=1;}
+				if (document.formu_anos.elements[c2010].checked)
+					{ document.formu_excel.elements[excel2010].value=1;}
+				if (document.formu_anos.elements[c2011].checked)
+					{ document.formu_excel.elements[excel2011].value=1;}
+				if (document.formu_anos.elements[c2012].checked)
+					{ document.formu_excel.elements[excel2012].value=1;}
+				if (document.formu_anos.elements[c2013].checked)
+					{ document.formu_excel.elements[excel2013].value=1;}
+			    document.formu_excel.action= url;
+				document.formu_excel.submit();
+    	  } 
+		  </script>
+		  
+        </head>
+
+        <body>
+          <div class="containerWrap">
+
+            <div id="header" class="header">
+      
+              <!--start logo -->
+				<div class="logo">
+					<img width="329" height="81" src="Content/logo2.png">
+				</div>
+			  <!--end logo -->
+			  <!--start navigation -->
+    <div id="nav"><li><%=Html.ActionLink("Inicio","Login","List", "")%></li>
+      <li><a href="#">Alumnos y Postulantes</a>
+          <ul>
+            <li><%=Html.ActionLink("Postulantes por carrera","Postulante","List", "")%></li>
+            <li><a href="#">Matriculados</a>
+                <ul>
+                  <li><%=Html.ActionLink("1er a&ntilde;o","MatrNuevo","List", "")%></li>
+                  <li><%=Html.ActionLink("Extranjeros","ExtrNuevo","List", "")%></li>
+                  <li><%=Html.ActionLink("Otras Regiones","OtraRegion","List", "")%></li>
+                  <li><%=Html.ActionLink("Colegio Procedencia","ColegioProcede","List", "partial=conDashboard")%></li>
+                </ul>
+            </li>
+            <li><a href="#">PSU</a>
+                <ul>
+                  <li><%=Html.ActionLink("Puntaje promedio","PsuPromedio","List", "")%></li>
+                  <li><%=Html.ActionLink("Puntaje m&aacute;ximo","PsuMaximo","List", "")%></li>
+                  <li><%=Html.ActionLink("Puntaje m&iacute;nimo","PsuMinimo","List", "")%></li>
+                  <li><%=Html.ActionLink("Desviaci&oacute;n Est&aacute;ndar","PsuDesviacion","List", "")%></li>
+				  <li><%=Html.ActionLink("Aporte Fiscal Indirecto","AporteFiscalIndirecto","List", "")%></li>
+                </ul>
+            </li>
+            <li><a href="#">NEM</a>
+                <ul>
+                  <li><%=Html.ActionLink("Promedio NEM","NemPromedio","List", "")%></li>
+                  <li><%=Html.ActionLink("Desviaci&oacute;n Est&aacute;ndar","NemDesviacion","List", "")%></li>
+                </ul>
+            </li>
+            <li><%=Html.ActionLink("Vacantes 1er a&ntilde;o","VacantesNuevo","List", "")%></li>
+            <li><%=Html.ActionLink("Matriculados por sexo","MatrXSexo","List", "partial=conDashboard")%></li>
+            <li><a href="#">Matriculados por edad</a>
+			    <ul>
+                  <li><%=Html.ActionLink("SIES","MatrXEdadSIES","List", "partial=conDashboard")%></li>
+                  <li><%=Html.ActionLink("Autoevaluación","MatrXEdadAutoev","List", "partial=conDashboard")%></li>
+                </ul>
+			</li>
+            <li><a href="#">Aranceles</a>
+                <ul>
+                  <li><%=Html.ActionLink("Matricula 1er a&ntilde;o","MatriculaNuevo","List", "")%></li>
+                  <li><%=Html.ActionLink("Arancel 1er a&ntilde;o","ArancelNuevo","List", "")%></li>
+				  <li><%=Html.ActionLink("Matriculados con cr&eacute;dito","MatriculaCredito","List", "")%></li>
+				  <li><%=Html.ActionLink("Costos titulaci&oacute;n","CostoTitulacion","List", "")%></li>
+                </ul>
+            </li>
+          </ul>
+      </li>
+      <li><a href="#">Docentes</a>
+          <ul>
+            <li><%=Html.ActionLink("Jornada","DocenteJornada","List", "partial=conDashboard")%></li>
+            <li><%=Html.ActionLink("Grado acad&eacute;mico","DocenteGrado","List", "partial=conDashboard")%></li>
+            <li><a href="#">Jerarqu&iacute;a</a>
+                <ul>
+                  <li><%=Html.ActionLink("Distribuci&oacute;n total","DocenteJerarquia","List", "partial=conDashboard")%></li>
+                  <li><%=Html.ActionLink("Distribuci&oacute;n grados","DocenteJerarquiaGrado","List", "partial=conDashboard")%></li>
+                </ul>
+            </li>
+            <li><%=Html.ActionLink("Sexo","DocenteSexo","List", "partial=conDashboard")%></li></li>
+            <li><%=Html.ActionLink("Rango de edad","DocenteEdad","List", "partial=conDashboard")%></li>
+            <li><%=Html.ActionLink("Renta Promedio UF","DocentePromRenta","List", "partial=conDashboard")%></li></li>
+          </ul>
+      </li>
+      <li><a href="#">Cohorte</a>
+      	  <ul>
+            <li><%=Html.ActionLink("Evolución Cohorte","EvolucionCohorte","List", "partial=conDashboard")%></li>
+			<li><%=Html.ActionLink("Retención Cohorte","RetencionCohorte","List", "partial=conDashboard")%></li>
+            <li><%=Html.ActionLink("Titulación Cohorte","TitulacionCohorte","List", "partial=conDashboard")%></li>
+			<li><%=Html.ActionLink("Porcentaje Titulación","PorcentajeTitulacionCohorte","List", "partial=conDashboard")%></li>
+          </ul>
+      </li>
+	  <li><%=Html.ActionLink("Salir","Login","AbandonSession", "")%></li>
+    </div> 
+    <!--end navigation -->
+	<div class="content" id="wrapper">
+      <!--start article -->
+            
+ </div>
+  </div>
+    </div>
+            <form name="formu_excel" target="_new" method="post">
+                   <input type="hidden" name="excel2005" value="" />
+                   <input type="hidden" name="excel2006" value="" />
+                   <input type="hidden" name="excel2007" value="" />
+                   <input type="hidden" name="excel2008" value="" />
+                   <input type="hidden" name="excel2009" value="" />
+                   <input type="hidden" name="excel2010" value="" />
+                   <input type="hidden" name="excel2011" value="" />
+                   <input type="hidden" name="excel2012" value="" />
+                   <input type="hidden" name="excel2013" value="" />
+            </form>
+            <div id="main">
+              <%ContentPlaceHolder()%>
+            </div>
+     
+            <footer>
+			 <div class="top"> 
+			 </div>
+			  <div class="footerWrapper" id="footercontent">
+				<p><li><a href="http://www.upacifico.cl" target="_blank">Todos los derechos reservados </a>&copy; copyrigth - www.upacifico.cl</li></p>
+			 </div> 
+			</footer>
+       
+          </div>
+        </body>
+      </html>
+    

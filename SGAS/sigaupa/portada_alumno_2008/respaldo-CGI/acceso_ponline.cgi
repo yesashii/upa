@@ -1,0 +1,83 @@
+#!/usr/bin/perl -w
+use CGI;
+$q= new CGI;
+
+$nombre_alumno             = $q->param("nombre");
+$email                     = 'informatica@upacifico.cl';
+$login	 		   = $q->param("login");	
+$clave                     = $q->param("clave");
+$email_alumno              = $q->param("email");
+
+
+$recipient = $email_alumno;
+$mailprog  = '/usr/lib/sendmail';
+
+
+open (MAIL, "|$mailprog $recipient")  || die " No puedo abrir $mailprog!\n";
+print MAIL "To: $recipient \n";
+print MAIL "From : $email \n";
+print MAIL "Subject : Datos de acceso a Pacífico Online \n";
+print MAIL "-----------------------------MENSAJE------------------------------\n";
+print MAIL " Estimado $nombre_alumno : \n";
+print MAIL " \n";
+print MAIL " \n";
+print MAIL "Los Datos de acceso registrados para tu portal pacífico online son: \n";
+print MAIL "--------------------------------------   \n";
+print MAIL "Login                           : $login  \n";
+print MAIL "Clave                           : $clave  \n";
+print MAIL " \n\n";
+print MAIL " Si presentas problemas para ingresar a pacífico online con los datos enviados, favor comunicarte con";
+print MAIL " el departamento de informática de la Universidad ";
+close (MAIL);
+
+print "Content-type: text/html\n\n";
+print "<html>\n";
+print "<head>\n";
+print "<title>Envio de datos de Acceso</title>\n";
+print "<meta http-equiv=Content-Type content=text/html; charset=iso-8859-1>\n";
+print "</head>\n";
+print "<body bgcolor=#FFFFFF>\n";
+print "<p align=center>&nbsp;</p>\n";
+print "<p align=center>\n";
+print "<table width='65%' border='1' cellspacing='0' cellpadding='0' bordercolor='#FFFFFF'>\n";
+print "   <tr> \n";
+print "      <td height='30' bgcolor='#ABABAB'> \n"; 
+print "            <div align='center'><b>Se han enviado exitosamente los datos solicitados</b></div> \n";
+print "      </td> \n";
+print "   </tr></table>\n";
+print "</p>\n";
+print "<p align=center><bl><font color=#FFFFFF>&nbsp;</font></bl></p>\n";
+print "<p align=center><bl><font color=#000000>Si presenta problemas con sus accesos favor comunicarse con el departamento de informática de la Universidad.</font></bl></p>\n";
+print "<p align=center><bl><font color=#FFFFFF>&nbsp;</font></bl></p>\n";
+print "<blockquote>\n";
+print "  <blockquote> \n";
+print "    <blockquote>\n"; 
+print "      <blockquote>\n"; 
+print "        <blockquote>\n"; 
+print "          <blockquote>\n"; 
+print "            <blockquote>\n"; 
+print "              <blockquote>\n"; 
+print "                <blockquote>\n"; 
+print "                  <blockquote>\n"; 
+print "                    <blockquote>\n"; 
+print "                      <blockquote>\n";
+print "                        <blockquote>\n";
+print "                          <blockquote>\n";
+print "                            <blockquote>\n";
+print "                            </blockquote>\n";
+print "                          </blockquote>\n";
+print "                        </blockquote>\n";
+print "                      </blockquote>\n";
+print "                    </blockquote>\n";
+print "                  </blockquote>\n";
+print "                </blockquote>\n";
+print "              </blockquote>\n";
+print "            </blockquote>\n";
+print "          </blockquote>\n";
+print "        </blockquote>\n";
+print "      </blockquote>\n";
+print "    </blockquote>\n";
+print "  </blockquote>\n";
+print "</blockquote>\n";
+print "</body>\n";
+print "</html>\n";

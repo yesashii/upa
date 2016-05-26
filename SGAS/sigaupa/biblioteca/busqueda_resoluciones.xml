@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="resoluciones" variable="resoluciones" anchoTabla="100%" nroRegistros="10" maxLista="10" mensajeError="No existen resoluciones de este tipo para esta persona.">
+      <campos nombre="reso_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="reso_nresolucion">
+         <descripcion>Nº RESOLUCIÓN</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="tres_ccod">
+         <descripcion>TIPO RESOLUCIÓN</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_resolucion</destino>
+         <union>tres_ccod</union>
+         <salida>tres_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="reso_fresolucion">
+         <descripcion>FECHA</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="eres_ccod">
+         <descripcion>ESTADO</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>estados_resolucion</destino>
+         <union>eres_ccod</union>
+         <salida>eres_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="boton">
+         <descripcion>&amp;nbsp;</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+    <parametro formulario="botonera">
+   <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>javascript</accion>
+	  <funcion>Salir();</funcion>	
+	  <soloUnClick>TRUE</soloUnClick>
+	</botones>	
+  </parametro>
+</Parametros>

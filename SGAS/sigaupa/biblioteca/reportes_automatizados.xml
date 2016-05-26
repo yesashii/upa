@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="lanzadera">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cancelar">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+      <botones nombre="excel_th">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Topones Horarios</texto>
+         <accion>BUSCAR</accion>
+		 <url>reportes_automatizados_th.asp</url>
+         <formulario>buscador_th</formulario>
+      </botones>
+	  <botones nombre="excel_eq">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Equivalencias</texto>
+         <accion>BUSCAR</accion>
+		 <url>reportes_automatizados_eq.asp</url>
+         <formulario>buscador_th</formulario>
+      </botones>
+	  <botones nombre="excel_fp">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Form.Profesional</texto>
+         <accion>BUSCAR</accion>
+		 <url>reportes_automatizados_fp.asp</url>
+         <formulario>buscador_th</formulario>
+      </botones>
+	  <botones nombre="excel_fgo">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Form.Gnral.Optativa</texto>
+         <accion>BUSCAR</accion>
+		 <url>reportes_automatizados_fgo.asp</url>
+         <formulario>buscador_th</formulario>
+      </botones>
+	  <botones nombre="excel_ps">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Resultados parciales Alumnos</texto>
+         <accion>BUSCAR</accion>
+		 <url>reportes_automatizados_ps.asp</url>
+         <formulario>buscador_th</formulario>
+      </botones>
+	  <botones nombre="excel_nm">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>No Matriculados</texto>
+         <accion>BUSCAR</accion>
+		 <url>reportes_automatizados_nm.asp</url>
+         <formulario>buscador_eq</formulario>
+      </botones>
+	  <botones nombre="excel_ce">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Causal Eliminación C</texto>
+         <accion>BUSCAR</accion>
+		 <url>reportes_automatizados_ce.asp</url>
+         <formulario>buscador_eq</formulario>
+      </botones>
+  	  <botones nombre="excel_ca">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Carga Anual</texto>
+         <accion>BUSCAR</accion>
+		 <url>reportes_automatizados_ca.asp</url>
+         <formulario>buscador_eq</formulario>
+      </botones>
+	  <botones nombre="excel_alumnos">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel Servidor Alumnos</texto>
+         <accion>BUSCAR</accion>
+		 <url>planificacion_gral_alumnos_excel.asp</url>
+         <formulario>buscador</formulario>
+      </botones>
+      <botones nombre="imprimir">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Imprimir</texto>
+         <accion>AGREGAR</accion>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+      </botones>
+   </parametro>
+   <parametro formulario="busqueda_th" variable="busqueda">
+	  <campos nombre="peri_ccod">
+	     <tipo>SELECT</tipo>
+		 <destino>periodos_academicos</destino>
+		 <union>peri_ccod</union>
+		 <salida>peri_tdesc</salida>
+		 <orden>peri_tdesc</orden>
+		 <anulable>FALSE</anulable>
+		 <permiso>LECTURAESCRITURA</permiso>
+	  </campos>
+   </parametro>
+   
+   <parametro formulario="busqueda_se" variable="busqueda">
+	  <campos nombre="peri_ccod">
+	     <tipo>SELECT</tipo>
+		 <destino>periodos_academicos</destino>
+		 <union>peri_ccod</union>
+		 <salida>peri_tdesc</salida>
+		 <orden>peri_tdesc</orden>
+		 <anulable>FALSE</anulable>
+		 <permiso>LECTURAESCRITURA</permiso>
+	  </campos>
+   </parametro>
+   
+   <parametro formulario="busqueda_an" variable="busqueda">
+	  <campos nombre="anos_ccod">
+	     <tipo>SELECT</tipo>
+		 <destino>anos</destino>
+		 <union>anos_ccod</union>
+		 <salida>anos_tdesc</salida>
+		 <orden>anos_tdesc</orden>
+		 <anulable>FALSE</anulable>
+		 <permiso>LECTURAESCRITURA</permiso>
+	  </campos>
+   </parametro>
+   
+
+  <parametro formulario="carreras_comunes" variable="carreras" anchoTabla="100%" 
+  clave="asignado" nroRegistros="15" maxLista="15" >
+	<campos nombre="secc_ccod">
+	   	<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	</campos>
+	<campos nombre="sede_ccod">
+	   	<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	</campos>
+	<campos nombre="carr_ccod">
+	   	<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	</campos>
+	<campos nombre="jorn_ccod">
+	   	<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	</campos>
+	<campos nombre="sede">
+	   <descripcion>Sede</descripcion>
+		<tipo>INPUT</tipo>
+	   <permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="carrera">
+	   <descripcion>Carrera</descripcion>
+		<tipo>INPUT</tipo>
+	   <permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="jornada">
+	   <descripcion>Jornada</descripcion>
+		<tipo>INPUT</tipo>
+	   <permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="asignado">
+	   <descripcion>Asignado</descripcion>
+		<tipo>BOLEANO</tipo>
+	    <objeto>CHECKBOX</objeto>
+		<permiso>LECTURAESCRITURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos> 
+ </parametro>
+
+</Parametros>   

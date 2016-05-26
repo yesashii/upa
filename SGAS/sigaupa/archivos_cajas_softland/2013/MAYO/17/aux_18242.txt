@@ -1,0 +1,4 @@
+65227700,  FUNDACION PADRE JAIME LARRAIN,,65227700-4,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+76185379,  ESTUDIO DE DISEÑO ARACELLI SALINAS VARGAS EIRL,,76185379-1,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+77392800,  SERVICIOS INFORMATICOS VRWEB LTDA.,,77392800-2,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+96864250,  ASICOM S.A.,,96864250-2,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

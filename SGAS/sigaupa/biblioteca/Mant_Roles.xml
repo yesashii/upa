@@ -1,0 +1,68 @@
+<Parametros>
+   <parametro formulario="f1" anchoTabla="100%" eliminar="TRUE" seleccionarTodo="TRUE"
+    editar="TRUE" paginaEdicion="Mant_Roles_Edicion.asp?codigo=%srol_ncorr%" clave="srol_ncorr" nuevaVentana="TRUE" 
+	nuevaVentanaAncho="556" nuevaVentanaAlto="230"
+	variable="roles" nroRegistros="10" maxLista="10">
+	 <tablas nombre="sis_roles" accion="B"/>
+     <campos nombre="srol_ncorr">
+	    <descripcion>Codigo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<ancho>50</ancho>
+	 </campos>
+	 <campos nombre="srol_tdesc">
+	    <descripcion>Nombre del Rol</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>	 
+   </parametro>
+   
+   <parametro formulario="f1_edicion" variable="roles">
+   <tablas nombre="sis_roles" accion="M"/>
+   <campos nombre="srol_ncorr">
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>
+   </campos>
+   <campos nombre="srol_tdesc">
+      <tipo>INPUT</tipo>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <caracteres>50</caracteres>
+	  <maxCaracteres>100</maxCaracteres>
+	  <id>TO-N</id>
+   </campos>
+   </parametro>
+  
+  <parametro formulario="botonera">
+  <botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>ELIMINAR</accion>
+	  <url>Mant_Roles_Eliminar.asp</url>
+	  <formulario>edicion</formulario>
+	</botones> 
+  	<botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>AGREGAR</accion>
+	  <posicionX>100</posicionX>
+	  <posicionY>100</posicionY>
+	  <ancho>530</ancho>
+	  <alto>220</alto>
+	</botones>
+   <botones nombre="cancelar"> 
+      <tipoTexto>CANCELAR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+	<botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>Proc_Mant_Roles_Edicion.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>	  
+	</botones>
+  </parametro>
+  
+
+</Parametros>

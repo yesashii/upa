@@ -1,0 +1,255 @@
+<Parametros>
+   <parametro formulario="movimiento_caja" anchoTabla="100%" columnas="1" variable="movimientos_cajas">
+      <campos nombre="CARR_TDESC">
+         <descripcion>CARRERA</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>LEFT</alineamiento>
+      </campos>
+	  <campos nombre="ASIG_CCOD">
+         <descripcion>CODIGO</descripcion>
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>LEST</alineamiento>
+      </campos>
+      <campos nombre="ASIG_TDESC">
+         <descripcion>ASIGNATURA</descripcion>
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>LEFT</alineamiento>
+      </campos>
+	   <campos nombre="SECC_TDESC">
+         <descripcion>SECCION</descripcion>
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>LEFT</alineamiento>
+      </campos>
+	  <campos nombre="DOCENTE">
+         <descripcion>DOCENTE</descripcion>
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>LEFT</alineamiento>
+      </campos>
+	  <campos nombre="PERIODO">
+         <descripcion>PERIODO</descripcion>
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>LEFT</alineamiento>
+      </campos>
+     
+   </parametro>
+   <parametro paginaEdicion="detalle_documentos.asp?mcaj_ncorr=%mcaj_ncorr%&amp;ting_ccod=%ting_ccod%&amp;tdoc_ccod=%tdoc_ccod%" formulario="rendicion" resumen="TRUE" editar="TRUE" anchoTabla="100%">
+      <campos nombre="tdoc_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>&amp;nbsp;</descripcion>
+         <ancho>60%</ancho>
+      </campos>
+      <campos nombre="ndocumentos">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nº</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <ancho>20%</ancho>
+         <formato>DECIMAL</formato>
+      </campos>
+      <campos nombre="total">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Total</descripcion>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <ancho>20%</ancho>
+         <resumen>SUMA</resumen>
+      </campos>
+   </parametro>
+   <parametro formulario="ingresos" anchoTabla="100%" resumen="TRUE">
+      <campos nombre="ting_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Movimiento</descripcion>
+      </campos>
+      <campos nombre="ingr_nfolio_referencia">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Folio</descripcion>
+      </campos>
+      <campos nombre="ingr_mefectivo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Efectivo</descripcion>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="ingr_mdocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Documentos</descripcion>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="ingr_mtotal">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Total</descripcion>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="anulado_efectivo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Anulado&lt;br&gt;Efectivo</descripcion>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="anulado_documentos">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Anulado&lt;br&gt;Documentos</descripcion>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="total_anulado">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Total&lt;br&gt;Anulado</descripcion>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="saldo_efectivo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Saldo Efectivo</descripcion>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <resumen>SUMA</resumen>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="saldo_documentos">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Saldo Documentos</descripcion>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <resumen>SUMA</resumen>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="saldo_total">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Saldo Total</descripcion>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <resumen>SUMA</resumen>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="rut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>R.U.T.</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="nombre_completo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nombre</descripcion>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="documentos" anchoTabla="100%" resumen="TRUE" mensajeError="No hay documentos de este tipo en esta caja." nroRegistros="20" maxLista="10" variable="documentos">
+      <campos nombre="ting_ccod">
+         <descripcion>Documento</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nº Docto.</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_fdocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Fecha Docto.</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="ding_mdetalle">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Monto</descripcion>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+      </campos>
+      <campos nombre="ding_mdocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <descripcion>Monto Documento</descripcion>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+      </campos>
+      <campos nombre="anulado">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Anulado</descripcion>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+      </campos>
+      <campos nombre="saldo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Saldo</descripcion>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <resumen>SUMA</resumen>
+      </campos>
+      <campos nombre="rut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>R.U.T.</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="nombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nombre</descripcion>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="botonera">
+      <botones nombre="cerrar">
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+      <botones nombre="exportar_excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>A Excel</texto>
+         <accion>NAVEGAR</accion>
+         <url>detalle_documentos_excel.asp</url>
+      </botones>
+      <botones nombre="exportar_excel_ingresos">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>A Excel</texto>
+         <accion>NAVEGAR</accion>
+         <url>detalle_ingresos_excel.asp</url>
+      </botones>
+      <botones nombre="imprimir">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Imprimir</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>Imprimir();</funcion>
+      </botones>
+   </parametro>
+</Parametros>

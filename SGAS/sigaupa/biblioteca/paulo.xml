@@ -1,0 +1,2760 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="filtro_docentes" clave="pers_ncorr" variable="m" mensajeError="No hay docentes que coincidan con el criterio de búsqueda" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="true" eliminar="true" agregar="true" nuevaVentana="false" paginaEdicion="editar_docente.asp?pers_ncorr=%pers_ncorr%" maxLista="10" nroRegistros="10" anchoTabla="98%">
+      <campos nombre="pers_ncorr">
+         <tipo>HIDDEN</tipo>
+         <permiso>INVISIBLE</permiso>
+      </campos>
+      <campos nombre="sede_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tdir_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="rut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>NU-S</id>
+         <descripcion>Rut Docente</descripcion>
+         <maxCaracteres>3</maxCaracteres>
+         <caracteres>5</caracteres>
+         <etiqueta>false</etiqueta>
+         <alineamiento>center</alineamiento>
+      </campos>
+      <campos nombre="nom">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>LE-S</id>
+         <descripcion>Nombre del Docente</descripcion>
+      </campos>
+   </parametro>
+   <parametro formulario="f_docente">
+      <campos nombre="app">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>LE-S</id>
+      </campos>
+   </parametro>
+   <parametro formulario="f_d" clave="pers_ncorr" variable="m" mensajeError="No hay docentes que cumplan la condición" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="true" eliminar="true" agregar="true" nuevaVentana="false" paginaEdicion="editar_docenteprueba.asp?pers_ncorr=%pers_ncorr%" maxLista="10" nroRegistros="10" anchoTabla="98%">
+      <campos nombre="pers_ncorr">
+         <tipo>HIDDEN</tipo>
+         <permiso>INVISIBLE</permiso>
+      </campos>
+      <campos nombre="sede_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tdir_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="rut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>NU-S</id>
+         <descripcion>Rut Docente</descripcion>
+         <maxCaracteres>3</maxCaracteres>
+         <caracteres>5</caracteres>
+         <etiqueta>false</etiqueta>
+         <alineamiento>center</alineamiento>
+      </campos>
+      <campos nombre="nom">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>LE-S</id>
+         <descripcion>Nombre del Docente</descripcion>
+      </campos>
+   </parametro>
+   <parametro formulario="f_docente">
+      <campos nombre="app">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>LE-S</id>
+      </campos>
+   </parametro>
+   <parametro formulario="edicion_docente" clave="pers_ncorr" variable="m" mensajeError="No hay docentes que cumplan la condición" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="true" eliminar="true" agregar="true" nuevaVentana="false" paginaEdicion="editar_docente.asp?pers_ncorr=%pers_ncorr%" maxLista="10" nroRegistros="10">
+      <tablas nombre="personas" accion="M"/>
+      <tablas nombre="direcciones" accion="M"/>
+      <tablas nombre="profesores" accion="M"/>
+      <campos nombre="pais_ccod">
+         <tipo>select</tipo>
+         <destino>paises</destino>
+         <union>pais_ccod</union>
+         <salida>pais_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+      </campos>
+      <campos nombre="pers_tprofesion">
+         <tipo>INPUT</tipo>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>TO-N</id>
+         <caracteres>33</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="pers_fnacimiento">
+         <tipo>INPUT</tipo>
+         <tipoDato>FECHA</tipoDato>
+         <id>TO-N</id>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="sede_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <tipoDato>SECUENCIA</tipoDato>
+         <secuencia>pers_ncorr_seq</secuencia>
+      </campos>
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <descripcion>Rut Docente</descripcion>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <id>LN-N</id>
+         <caracteres>2</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+      </campos>
+      <campos nombre="rut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Rut Docente</descripcion>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="dv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>LN-N</id>
+         <caracteres>2</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+      </campos>
+      <campos nombre="pers_tape_materno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>NO-N</id>
+         <caracteres>33</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+      </campos>
+      <campos nombre="pers_tape_paterno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>NO-N</id>
+         <caracteres>33</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+      </campos>
+      <campos nombre="pers_tnombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>NO-N</id>
+         <caracteres>33</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+      </campos>
+      <campos nombre="pers_tfono">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TE-S</id>
+         <caracteres>13</caracteres>
+         <maxCaracteres>12</maxCaracteres>
+      </campos>
+      <campos nombre="pers_tcelular">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TE-S</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+      </campos>
+      <campos nombre="eciv_ccod">
+         <tipo>select</tipo>
+         <destino>estados_civiles</destino>
+         <union>eciv_ccod</union>
+         <salida>eciv_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>NU-N</id>
+         <columnas>4</columnas>
+      </campos>
+      <campos nombre="sexo_ccod">
+         <tipo>radio</tipo>
+         <destino>sexos</destino>
+         <union>sexo_ccod</union>
+         <salida>sexo_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+         <columnas>3</columnas>
+      </campos>
+      <campos nombre="pers_temail">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>EM-S</id>
+         <caracteres>30</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>4</caracteres>
+         <maxCaracteres>4</maxCaracteres>
+      </campos>
+      <campos nombre="tdir_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="dire_tcalle">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>NO-N</id>
+         <caracteres>33</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+      </campos>
+      <campos nombre="dire_tnro">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>LN-N</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+      </campos>
+      <campos nombre="dire_tblock">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>LN-S</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+      </campos>
+      <campos nombre="dire_tdepto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>LN-S</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+      </campos>
+      <campos nombre="dire_tpoblacion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <id>NO-S</id>
+         <caracteres>30</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+      </campos>
+   </parametro>
+   <parametro formulario="agregar_docente" clave="pers_ncorr" variable="profesores" tabla="PROFESORES">
+      <tablas nombre="personas" accion="M"/>
+      <tablas nombre="profesores" accion="M"/>
+      <tablas nombre="direcciones" accion="M"/>
+      <campos nombre="pers_ncorr">
+         <tipo>input</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>4</caracteres>
+         <maxCaracteres>4</maxCaracteres>
+      </campos>
+      <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+      </campos>
+      <campos nombre="prof_fingreso_sede">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+      </campos>
+      <campos nombre="pers_nrut_persona">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>2</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+      </campos>
+      <campos nombre="pers_tape_paterno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+      </campos>
+      <campos nombre="pers_tape_materno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+      </campos>
+      <campos nombre="pers_tnombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+      </campos>
+      <campos nombre="tdir_ccod">
+         <tipo>SELECT</tipo>
+         <destino>tipos_direcciones</destino>
+         <union>tdir_ccod</union>
+         <salida>tdir_desc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>3</columnas>
+         <orden>FILAS</orden>
+      </campos>
+      <campos nombre="dire_calle">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>33</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+      </campos>
+      <campos nombre="pers_tfono">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>13</caracteres>
+         <maxCaracteres>12</maxCaracteres>
+      </campos>
+      <campos nombre="pers_ncelular">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+      </campos>
+      <campos nombre="eciv_ccod">
+         <tipo>select</tipo>
+         <destino>estados_civiles</destino>
+         <union>eciv_ccod</union>
+         <salida>eciv_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+      </campos>
+      <campos nombre="sexo_ccod">
+         <tipo>radio</tipo>
+         <destino>sexos</destino>
+         <union>sexo_ccod</union>
+         <salida>sexo_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>3</columnas>
+      </campos>
+      <campos nombre="pers_temail">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+      </campos>
+      <campos nombre="tdir_ccod">
+         <tipo>SELECT</tipo>
+         <destino>tipos_direcciones</destino>
+         <union>tdir_ccod</union>
+         <salida>tdir_des</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>3</columnas>
+      </campos>
+      <campos nombre="dire_calle">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>33</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+      </campos>
+      <campos nombre="dire_tnro">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+      </campos>
+      <campos nombre="dire_block">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+      </campos>
+      <campos nombre="dire_depto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+      </campos>
+      <campos nombre="dire_tpoblacion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+      </campos>
+   </parametro>
+   <parametro formulario="eliminar_docente" clave="pers_ncorr" variable="m" mensajeError="No se puede Eliminar">
+      <tablas nombre="profesores" accion="B"/>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="pl_academica_seccion" clave="ssec_ncorr" variable="pl" mensajeError="No hay registros que cumplan la condición" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="true" eliminar="false" agregar="true" nuevaVentana="false" maxLista="10" nroRegistros="10" anchoTabla="100%" paginaEdicion="det_plan.asp?ssec_ncorr=%ssec_ncorr%">
+      <campos nombre="posicion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Subsección</descripcion>
+         <alineamiento>right</alineamiento>
+      </campos>
+      <campos nombre="tsse_ccod">
+         <tipo>SELECT</tipo>
+         <destino>tipos_subsecciones</destino>
+         <union>tsse_ccod</union>
+         <salida>tsse_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <descripcion>Tipo</descripcion>
+         <alineamiento>Center</alineamiento>
+      </campos>
+      <campos nombre="ssec_ncupo">
+         <tipo>INPUT</tipo>
+         <descripcion>Cupo</descripcion>
+         <permiso>LECTURA</permiso>
+         <alineamiento>right</alineamiento>
+      </campos>
+      <campos nombre="ssec_nquorum">
+         <tipo>INPUT</tipo>
+         <descripcion>Mínimo de alumnos</descripcion>
+         <permiso>LECTURA</permiso>
+         <alineamiento>right</alineamiento>
+      </campos>
+      <campos nombre="ssec_finicio_sec">
+         <tipo>INPUT</tipo>
+         <descripcion>Fecha Inicio Sección</descripcion>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>center</alineamiento>
+      </campos>
+      <campos nombre="ssec_ftermino_sec">
+         <tipo>INPUT</tipo>
+         <tipoDato>FECHA</tipoDato>
+         <descripcion>Fecha Término Sección</descripcion>
+         <permiso>LECTURA</permiso>
+         <alineamiento>center</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="pl_academica" clave="bloq_ccod" variable="pl" mensajeError="No hay registros que cumplan la condición" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" eliminar="true" agregar="true" nuevaVentana="false" maxLista="10" nroRegistros="10">
+      <tablas nombre="anos" accion=""/>
+      <tablas nombre="periodos_academicos" accion=""/>
+      <tablas nombre="carreras" accion=""/>
+      <tablas nombre="asignaturas" accion=""/>
+      <tablas nombre="salas" accion=""/>
+      <tablas nombre="profesores" accion=""/>
+      <tablas nombre="secciones" accion=""/>
+      <tablas nombre="dias_semana" accion=""/>
+      <tablas nombre="niveles" accion=""/>
+      <tablas nombre="especialidades" accion=""/>
+      <campos nombre="espe_ccod">
+         <tipo>SELECT</tipo>
+         <destino>especialidades</destino>
+         <union>espe_ccod</union>
+         <salida>espe_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onchange='document.buscador.submit()'</script>
+      </campos>
+      <campos nombre="plan_ccod">
+         <tipo>SELECT</tipo>
+         <destino>planes_estudio</destino>
+         <union>plan_ccod</union>
+         <salida>plan_ncorrelativo</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="espe_ccod">
+         <tipo>SELECT</tipo>
+         <destino>especialidades</destino>
+         <union>espe_ccod</union>
+         <salida>espe_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="peri_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="carr_ccod">
+         <tipo>select</tipo>
+         <destino>carreras</destino>
+         <union>carr_ccod</union>
+         <salida>carr_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onchange='document.buscador.submit()'</script>
+         <columnas>4</columnas>
+      </campos>
+      <campos nombre="nive_ccod">
+         <tipo>select</tipo>
+         <destino>niveles</destino>
+         <union>nive_ccod</union>
+         <salida>nive_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+      </campos>
+      <campos nombre="dias_ccod">
+         <tipo>select</tipo>
+         <destino>dias_semana</destino>
+         <union>dias_ccod</union>
+         <salida>dias_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+      </campos>
+      <campos nombre="sala_ccod">
+         <tipo>select</tipo>
+         <destino>salas</destino>
+         <union>sala_ccod</union>
+         <salida>sala_ccod</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+      </campos>
+      <campos nombre="nom">
+         <tipo>select</tipo>
+         <destino>(select cast(a.pers_nrut as varchar)+ '-' + cast(a.pers_xdv as varchar) as rut  , cast(a.pers_tape_paterno as varchar)+ ' ' + cast(a.PERS_TAPE_MATERNO as varchar)+ ' ' + cast(a.pers_tnombre as varchar) as nom , a.pers_ncorr, b.sede_ccod from personas a, profesores b, direcciones c where a.pers_ncorr=b.pers_ncorr and b.pers_ncorr=c.pers_ncorr order by nom) b</destino>
+         <codigo>pers_ncorr</codigo>
+         <salida>nom</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+      </campos>
+      <campos nombre="Asignatura_Seccion">
+         <tipo>SELECT</tipo>
+         <destino>(SELECT DISTINCT cast(a.asig_ccod as varchar)+ '  -  ' + cast(a.asig_tdesc as varchar)+'  -  ' + cast(b.secc_tdesc as varchar) AS asignatura_seccion, c.nive_ccod, b.secc_ccod FROM asignaturas a,secciones b,malla_curricular c,planes_estudio d,especialidades e WHERE a.asig_ccod = b.asig_ccod AND c.plan_ccod = d.plan_ccod
+   AND a.asig_ccod = c.asig_ccod and d.espe_ccod=e.espe_ccod) a</destino>
+         <codigo>secc_ccod</codigo>
+         <salida>Asignatura_Seccion</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+      </campos>
+      <campos nombre="Bloque_Horario">
+         <tipo>SELECT</tipo>
+         <destino>(select cast(b.hora_ccod as varchar)+' - '+ cast(datePart(hour,a.hora_hinicio) as varchar)+':'+ cast(datePart(minute,a.hora_hinicio) as varchar) +' - '+ cast(datePart(hour,a.hora_htermino) as varchar)+':'+ cast(datePart(minute,a.hora_htermino) as varchar) as Bloque_Horario, a.sede_ccod from horarios_sedes a, horarios b where a.hora_ccod=b.hora_ccod order by b.hora_ccod ) a</destino>
+         <codigo>sede_ccod</codigo>
+         <salida>Bloque_Horario</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+      </campos>
+   </parametro>
+    <parametro formulario="agregado_seccion" clave="secc_ccod" variable="s">
+   		<campos nombre="seleccion_seccion">
+         <tipo>select</tipo>
+         <union>secc_tdesc</union>
+         <salida>secc_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <mensajeNulo>Todas</mensajeNulo>
+         <mensajeVacio>Todas</mensajeVacio>
+		 <anulable>TRUE</anulable>
+		 <script>onchange='javascript:dibujar(document.edicion22);'</script>
+      </campos>
+   </parametro>
+   <parametro formulario="pl_academica2_titulos" clave="secc_ccod" variable="pl" mensajeError="Revise el filtro" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="true" eliminar="true" agregar="true" nuevaVentana="false" paginaEdicion="det_plan.asp?secc_ccod=%secc_ccod%" maxLista="10" nroRegistros="10" anchoTabla="100%">
+      <listas nombre="lBusqueda">
+         <item clave="carr_ccod" valor="carr_tdesc"/>
+         <item clave="espe_ccod" valor="espe_tdesc"/>
+         <item clave="plan_ccod" valor="plan_ncorrelativo"/>
+      </listas>
+      <campos nombre="carrera">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Carrera.</descripcion>
+      </campos>
+      <campos nombre="especialidad">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Especialidad</descripcion>
+      </campos>
+      <campos nombre="nivel">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nivel</descripcion>
+      </campos>
+      <campos nombre="plan1">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Plan</descripcion>
+      </campos>
+   </parametro>
+   <parametro formulario="pl_academica2" clave="secc_ccod" variable="pl" mensajeError="No hay planificaciones que coincidan con el criterio de búsqueda" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="true" eliminar="false" agregar="true" nuevaVentana="false" paginaEdicion="plan_academica_seccion.asp?secc_ccod=%secc_ccod%"  anchoTabla="100%">
+      <campos nombre="secc_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>INVISIBLE</permiso>
+      </campos>
+      <campos nombre="seccion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Cód.</descripcion>
+      </campos>
+      <campos nombre="asig_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Asignatura</descripcion>
+      </campos>
+      <campos nombre="asig_nhoras">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Horas</descripcion>
+         <alineamiento>right</alineamiento>
+      </campos>
+      <campos nombre="hrs_asignadas">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Planificadas</descripcion>
+         <alineamiento>right</alineamiento>
+      </campos>
+	  <campos nombre="d">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Dur</descripcion>
+         <alineamiento>center</alineamiento>
+      </campos>
+      <campos nombre="horario">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Horario</descripcion>
+      </campos>
+	  <campos nombre="moda_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Modalidad</descripcion>
+      </campos>
+   </parametro>
+   <parametro formulario="eliminar_bloque" clave="bloq_ccod" variable="bl" mensajeError="No se puede Eliminar">
+      <tablas nombre="bloques_horarios" accion="B"/>
+      <campos nombre="bloq_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="edicion_bloque" clave="bloque_ccod" variable="pl" mensajeError="Favor revise sus parametros de búsqueda" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" eliminar="true" agregar="true" nuevaVentana="true" paginaEdicion="edicion_plan_acad.asp?bloq_ccod=%bloq_ccod%" maxLista="10" nroRegistros="5">
+      <tablas nombre="bloques_horarios" accion="M"/>
+      <campos nombre="bloq_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <tipoDato>SECUENCIA</tipoDato>
+         <secuencia>BLOQ_CCOD_SEQ</secuencia>
+      </campos>
+      <campos nombre="bloq_finicio_modulo">
+         <tipo>INPUT</tipo>
+         <tipoDato>FECHA</tipoDato>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="bloq_ftermino_modulo">
+         <tipo>INPUT</tipo>
+         <tipoDato>FECHA</tipoDato>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="secc_ccod_pres">
+         <tipo>input</tipo>
+         <destino>(SELECT DISTINCT cast(a.asig_ccod as varchar)+'-' + cast(b.secc_tdesc as varchar)+ ' ' + cast(a.asig_tdesc as varchar)  AS asignatura_seccion, c.nive_ccod, b.secc_ccod FROM asignaturas a, secciones b, malla_curricular c,planes_estudio d, especialidades e WHERE a.asig_ccod = b.asig_ccod AND c.plan_ccod = d.plan_ccod AND a.asig_ccod = c.asig_ccod ) a</destino>
+         <union>secc_ccod</union>
+         <codigo>secc_ccod</codigo>
+         <salida>Asignatura_Seccion</salida>
+         <permiso>LECTURA</permiso>
+         <columnas>4</columnas>
+      </campos>
+      <campos nombre="hora_ccod">
+         <tipo>select</tipo>
+         <destino>(select distinct cast(b.hora_ccod as varchar)+' - '+ cast(datepart(hour,a.hora_hinicio) as varchar)+':'+ cast(datepart(minute,a.hora_hinicio) as varchar) +' - '+ cast(datepart(hour,a.hora_htermino) as varchar)+':'+ cast(datepart(minute,a.hora_htermino) as varchar) as Bloque_Horario,b.hora_ccod, a.sede_ccod from horarios_sedes a, horarios b where a.hora_ccod=b.hora_ccod ) c</destino>
+         <union>hora_ccod</union>
+         <codigo>hora_ccod</codigo>
+		 <orden>c.hora_ccod</orden>
+         <salida>Bloque_Horario</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+      </campos>
+      <campos nombre="ssec_ncorr">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="secc_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="dias_ccod">
+         <tipo>select</tipo>
+         <destino>dias_semana</destino>
+         <union>dias_ccod</union>
+         <salida>dias_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+      </campos>
+      <campos nombre="sala_ccod">
+         <tipo>select</tipo>
+         <destino>(select a.sala_ccod, a.sede_ccod, esal_ccod, a.sala_ncupo
+       , c.sede_tdesc+ ' : ' + cast(Left(tsal_tdesc,1) as varchar) + '-' + cast(sala_ciso as varchar)+ '('  + cast(sala_ncupo as varchar)+ ')' as sala
+    from salas a, tipos_sala b,sedes c
+    where a.tsal_ccod=b.tsal_ccod and a.sede_ccod=c.sede_ccod 
+	AND a.sala_ccod not in (30,32,31,29,43,274,65,25,175,176,102,161,85,133,167,266,336) ) a</destino>
+         <union>sala_ccod</union>
+         <salida>sala</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <orden>sala asc </orden>
+         <columnas>4</columnas>
+      </campos>
+	  <campos nombre="bloq_ayudantia">
+		 <tipo>select</tipo>
+         <destino>(select 0 as bloq_ayudantia,'Cátedra' as descripcion 
+					union 
+					select 1 as bloq_ayudantia, 'Ayudantía' as descripcion
+					union 
+					select 2 as bloq_ayudantia, 'Laboratorio' as descripcion
+					union
+					select 3 as bloq_ayudantia, 'Terreno' as descripcion
+					union
+					select 4 as bloq_ayudantia, 'Elearning' as descripcion)a
+		 </destino>
+         <union>bloq_ayudantia</union>
+		 <salida>descripcion</salida>
+		 <orden>bloq_ayudantia</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="bloque" clave="bloq_ccod" variable="bl" mensajeError="No existen bloques para las condiciones" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" anchoTabla="98%" nuevaVentana="true" paginaEdicion="edicion_plan_acad.asp?bloq_ccod=%bloq_ccod%" editar="true" eliminar="true" maxLista="10" nroRegistros="10">
+      <campos nombre="c_bloq_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="bloq_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>INVISIBLE</permiso>
+      </campos>
+      <campos nombre="secc_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>HIDDEN</permiso>
+      </campos>
+      <campos nombre="dia">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Dia</descripcion>
+      </campos>
+      <campos nombre="hora">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Bloque</descripcion>
+      </campos>
+      <campos nombre="inicio">
+         <tipo>INPUT</tipo>
+         <tipoDato>FECHA</tipoDato>
+         <permiso>LECTURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <descripcion>Fecha Inicio</descripcion>
+      </campos>
+      <campos nombre="termino">
+         <tipo>INPUT</tipo>
+         <tipoDato>FECHA</tipoDato>
+         <permiso>LECTURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <descripcion>Fecha Termino</descripcion>
+      </campos>
+      <campos nombre="sala">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Sala</descripcion>
+      </campos>
+	  <campos nombre="tipo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Tipo</descripcion>
+      </campos>
+      <campos nombre="profesor">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Docente</descripcion>
+      </campos>
+   </parametro>
+   <parametro formulario="bloque_muestra" clave="bloq_ccod" variable="bl" mensajeError="No existen bloques para las condiciones" 
+   colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" anchoTabla="98%" nuevaVentana="false" 
+   editar="false" eliminar="true" maxLista="10" nroRegistros="10">
+      <campos nombre="c_bloq_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="bloq_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>INVISIBLE</permiso>
+      </campos>
+      <campos nombre="secc_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>HIDDEN</permiso>
+      </campos>
+      <campos nombre="dia">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Dia</descripcion>
+      </campos>
+      <campos nombre="hora">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Hora</descripcion>
+      </campos>
+      <campos nombre="inicio">
+         <tipo>INPUT</tipo>
+         <tipoDato>FECHA</tipoDato>
+         <permiso>LECTURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <descripcion>Fecha Inicio</descripcion>
+      </campos>
+      <campos nombre="termino">
+         <tipo>INPUT</tipo>
+         <tipoDato>FECHA</tipoDato>
+         <permiso>LECTURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <descripcion>Fecha Termino</descripcion>
+      </campos>
+      <campos nombre="sala">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Sala</descripcion>
+      </campos>
+	  <campos nombre="tipo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Tipo</descripcion>
+      </campos>
+      <campos nombre="profesor">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Docente</descripcion>
+      </campos>
+   </parametro>
+   <parametro formulario="bloque1">
+      <campos nombre="docente">
+         <tipo>select</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>(
+SELECT b.pers_ncorr, b.sede_ccod,cast(a.pers_tape_paterno as varchar)+
+       ' ' +
+       cast(a.pers_tape_materno as varchar)+
+       ', ' +
+       cast(a.pers_tnombre as varchar)
+             AS docente
+  FROM personas a, profesores b, sedes c
+ WHERE a.pers_ncorr = b.pers_ncorr
+   AND b.sede_ccod = c.sede_ccod
+ ) a</destino>
+         <union>pers_ncorr</union>
+         <salida>docente</salida>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>DOCENTE NO ASIGNADO</mensajeNulo>
+      </campos>
+      <campos nombre="sede_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="asignatura">
+      <campos nombre="asignatura">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="consultas">
+      <campos nombre="docente">
+         <tipo>SELECT</tipo>
+         <destino>(SELECT b.pers_ncorr, b.sede_ccod, 
+					cast(a.pers_tape_paterno as varchar)+' ' +
+					 cast(a.pers_tape_materno as varchar)+', '+ 
+					 cast(a.pers_tnombre as varchar) AS docente 
+					 FROM personas a, profesores b, sedes c 
+					 WHERE a.pers_ncorr = b.pers_ncorr  
+					  AND b.sede_ccod = c.sede_ccod 
+					 ) a</destino>
+         <union>pers_ncorr</union>
+         <salida>docente</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="finicio">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <id>FE-N</id>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+      </campos>
+      <campos nombre="ftermino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <id>FE-N</id>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+      </campos>
+      <campos nombre="salas">
+         <tipo>SELECT</tipo>
+         <destino>(SELECT a.sede_ccod, a.sala_ccod, cast(b.tsal_tdesc as varchar)+ ' - ' + cast(a.sala_ciso as varchar) as Aula
+ FROM salas a, tipos_sala b where a.tsal_ccod = b.tsal_ccod and a.sala_tdesc not in ('SALA PRODUCTO MIGRACION DATOS')) a</destino>
+         <union>sala_ccod</union>
+         <salida>Aula</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-S</id>
+      </campos>
+   </parametro>
+   <parametro formulario="r_busqueda">
+      <campos nombre="Docente">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="aula">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="checklist" clave="pers_ncorr" variable="ch" mensajeError="No existen registros asociados." colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" eliminar="false" agregar="true" nuevaVentana="false" maxLista="10" nroRegistros="10" anchoTabla="98%">
+      <tablas nombre="documentacion" accion="M"/>
+      <campos nombre="pers_ncorr">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="docu_bfotos">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Fotos</descripcion>
+         <objeto>CHECKBOX</objeto>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+         <alineamiento>center</alineamiento>
+      </campos>
+      <campos nombre="docu_bfoto_ci">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Fotocopia Carné de Identidad</descripcion>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+         <alineamiento>center</alineamiento>
+      </campos>
+      <campos nombre="docu_bcert_nacimiento">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Certificado de Nacimiento</descripcion>
+         <etiqueta>false</etiqueta>
+         <alineamiento>center</alineamiento>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+      </campos>
+      <campos nombre="docu_blic_emedia">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Licencia Enseñanza Media</descripcion>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+         <alineamiento>center</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="bloqueos" clave="tblo_ccod" variable="b" mensajeError="No existen bloqueos asociados." colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" eliminar="false" agregar="true" nuevaVentana="false" maxLista="10" nroRegistros="10" anchoTabla="98%">
+      <tablas nombre="personas" accion=""/>
+      <tablas nombre="tipos_bloqueos" accion=""/>
+      <tablas nombre="bloqueos" accion="M"/>
+      <campos nombre="pers_ncorr">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="bloq_ncorr">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tblo_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="bloq_fbloqueo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Fecha Bloqueo</descripcion>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="tblo_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Tipo Bloqueo</descripcion>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="bloq_nresolucion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Número Resolución</descripcion>
+         <alineamiento>center</alineamiento>
+         <caracteres>8</caracteres>
+         <maxCaracteres>6</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="bloq_fresolucion">
+         <tipo>INPUT</tipo>
+         <tipoDato>FECHA</tipoDato>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Fecha Resolución &lt;br&gt; (dd/mm/aaaa) </descripcion>
+         <alineamiento>center</alineamiento>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-N</id>
+      </campos>
+      <campos nombre="eblo_ccod">
+         <tipo>RADIO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>estados_bloqueos</destino>
+         <union>eblo_ccod</union>
+         <salida>eblo_tdesc</salida>
+         <columnas>1</columnas>
+         <descripcion>Estado</descripcion>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="sede_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Sede</descripcion>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="bloq_tobservacion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Observación</descripcion>
+         <id>TO-S</id>
+      </campos>
+   </parametro>
+   <parametro formulario="persona">
+      <campos nombre="pers_ncorr">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="rut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="matricula">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="ingresos1" clave="dcom_ncompromiso" variable="mm" mensajeError="No hay compromisos asociados a la persona" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" eliminar="true" agregar="false" nuevaVentana="false" paginaEdicion="editar_ingreso.asp?dcom_ncompromiso=%dcom_ncompromiso%" maxLista="10" nroRegistros="20" anchoTabla="98%">
+      <tablas nombre="abonos" accion="M"/>
+      <campos nombre="nro">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nro. Docto.</descripcion>
+      </campos>
+      <campos nombre="institucion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Institución</descripcion>
+      </campos>
+      <campos nombre="dcom_ncompromiso">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nro. Cuota</descripcion>
+      </campos>
+      <campos nombre="concepto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Concepto</descripcion>
+      </campos>
+      <campos nombre="dcom_fcompromiso">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <descripcion>Vencimiento</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="dcom_mcompromiso">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Monto</descripcion>
+         <alineamiento>right</alineamiento>
+         <formato>MONEDA</formato>
+         <ancho>100</ancho>
+      </campos>
+      <campos nombre="tcom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="comp_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="inst_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="dcom_ncompromiso">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nro. Cuota</descripcion>
+      </campos>
+      <campos nombre="dcom_mcompromiso_oculto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="concepto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="abono">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Pago</descripcion>
+         <alineamiento>right</alineamiento>
+         <formato>MONEDA</formato>
+         <ancho>100</ancho>
+      </campos>
+      <campos nombre="saldo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>right</alineamiento>
+         <descripcion>Saldo</descripcion>
+         <formato>MONEDA</formato>
+         <ancho>100</ancho>
+      </campos>
+   </parametro>
+   <parametro formulario="ingresos" clave="dcom_ncompromiso" variable="m" mensajeError="No hay compromisos asociados a la persona" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" eliminar="true" agregar="false" nuevaVentana="false" paginaEdicion="editar_ingreso.asp?dcom_ncompromiso=%dcom_ncompromiso%" maxLista="10" nroRegistros="30" anchoTabla="98%">
+      <tablas nombre="abonos" accion="M"/>
+      <campos nombre="nro">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nro. Docto.</descripcion>
+      </campos>
+      <campos nombre="institucion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Institución</descripcion>
+      </campos>
+      <campos nombre="tcom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="comp_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="inst_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="dcom_ncompromiso">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nro. Cuota</descripcion>
+      </campos>
+      <campos nombre="concepto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Concepto</descripcion>
+      </campos>
+      <campos nombre="tcom_tdesc">
+         <tipo>HIDDEN</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="dcom_fcompromiso">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <descripcion>Vencimiento</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="dcom_mcompromiso">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Monto</descripcion>
+         <alineamiento>right</alineamiento>
+         <formato>MONEDA</formato>
+         <ancho>100</ancho>
+      </campos>
+      <campos nombre="dcom_mcompromiso_oculto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="concepto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="abono">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Pago</descripcion>
+         <alineamiento>right</alineamiento>
+         <formato>MONEDA</formato>
+         <ancho>100</ancho>
+      </campos>
+      <campos nombre="saldo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>right</alineamiento>
+         <descripcion>Saldo</descripcion>
+         <formato>MONEDA</formato>
+         <ancho>100</ancho>
+      </campos>
+   </parametro>
+   <parametro formulario="ingreso">
+      <campos nombre="deuda">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+      </campos>
+      <campos nombre="abono">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+      </campos>
+      <campos nombre="saldo_total">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+      </campos>
+   </parametro>
+   <parametro formulario="ingresos_abonos" variable="i">
+      <tablas nombre="abonos" accion="M"/>
+   </parametro>
+   <parametro formulario="detalle_ingresos" variable="i">
+      <tablas nombre="detalle_ingresos" accion="M"/>
+   </parametro>
+   <parametro formulario="pagos" variable="i">
+      <tablas nombre="ingresos" accion="M"/>
+      <campos nombre="ting_ccod">
+         <tipo>select</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <script>onChange='deshabilitar(this)'</script>
+         <salida>ting_tdesc</salida>
+         <orden>ting_ccod</orden>
+         <alineamiento>CENTER</alineamiento>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Elija tipo ingreso</mensajeNulo>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="impr_truta">
+         <tipo>select</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>IMPRESORAS</destino>
+         <union>impr_truta</union>
+         <salida>impr_truta</salida>
+         <alineamiento>CENTER</alineamiento>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="ingr_ncorr">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="ingr_mefectivo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>9</maxCaracteres>
+         <id>IN-N</id>
+      </campos>
+      <campos nombre="ingr_mintereses">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>9</maxCaracteres>
+         <script>onBlur='actualizaTotal(this.form)'</script>
+         <id>IN-N</id>
+      </campos>
+      <campos nombre="ingr_mmultas">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>9</maxCaracteres>
+         <id>IN-N</id>
+         <script>onBlur='actualizaTotal(this.form)'</script>
+      </campos>
+      <campos nombre="ingr_mdocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <deshabilitado>TRUE</deshabilitado>
+         <caracteres>9</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+      </campos>
+      <campos nombre="mcaj_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="ingr_fpago">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="ingr_mefectivo">
+         <tipo>hidden</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>9</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="ingr_mdocto">
+         <tipo>hidden</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="ingr_mtotal">
+         <tipo>hidden</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="ingr_nestado">
+         <tipo>hidden</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="docto" variable="d" agregar="true" editar="false" clave="ingr_ncorr" paginaEdicion="proc_pagos.asp?ingr_ncorr=%ingr_ncorr%" maxLista="5" anchoTabla="98%" nroRegistros="10">
+      <tablas nombre="DETALLE_INGRESOS" accion="I"/>
+      <campos nombre="ding_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <tipoDato>SECUENCIA</tipoDato>
+         <secuencia>ding_ncorr_seq</secuencia>
+      </campos>
+	  <campos nombre="ding_tplaza_sbif">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="receptaculo">
+          <tipo>textarea</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>style="width:0px;height:1px;" onKeyPress='captura_saltos(this);' onblur='verifica_lectura(this);'</script>
+      </campos>
+      
+      <campos nombre="ting_ccod">
+         <tipo>select</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <script>onChange='habilitar(this);activa_pago(this);'</script>
+         <descripcion>Forma de Pago</descripcion>
+         <filtro>ting_ccod in (3,13,14,32,37,51)</filtro>
+         <orden>ting_tdesc</orden>
+         <alineamiento>CENTER</alineamiento>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Elija Forma de Pago</mensajeNulo>
+         <id>NU-N</id>
+      </campos>
+	  <campos nombre="ding_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Nro. Documento</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>13</caracteres>
+         <maxCaracteres>12</maxCaracteres>
+		 <script>onblur='validarNumDoc(this);'</script>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="ding_fdocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <descripcion>Vencimiento</descripcion>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <alineamiento>CENTER</alineamiento>
+         <deshabilitado>TRUE</deshabilitado>
+		 <script>onblur='validarFecha(this);'</script>
+         <id>FE-N</id>
+      </campos>
+      <campos nombre="banc_ccod">
+         <tipo>select</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>(select banc_ccod, banc_tdesc from bancos) a</destino>
+         <union>banc_ccod</union>
+         <salida>banc_tdesc</salida>
+		 <orden>a.banc_tdesc</orden>
+         <descripcion>Banco</descripcion>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Elija un Banco</mensajeNulo>
+         <alineamiento>CENTER</alineamiento>
+         <deshabilitado>TRUE</deshabilitado>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="ding_tcuenta_corriente">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Nro. Cuenta Corriente</descripcion>
+         <caracteres>20</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <alineamiento>CENTER</alineamiento>
+         <deshabilitado>TRUE</deshabilitado>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="plaz_ccod">
+         <tipo>select</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>(select plaz_ccod, plaz_tdesc from plazas) a</destino>
+         <union>plaz_ccod</union>
+         <salida>plaz_tdesc</salida>
+		 <orden>a.plaz_tdesc</orden>
+         <descripcion>Plaza</descripcion>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Elija Plaza</mensajeNulo>
+         <alineamiento>CENTER</alineamiento>
+         <deshabilitado>TRUE</deshabilitado>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="ding_mdetalle">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Monto</descripcion>
+         <caracteres>9</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <alineamiento>CENTER</alineamiento>
+         <id>IN-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="docto2" variable="d" agregar="true" editar="false" clave="ingr_ncorr" paginaEdicion="proc_pagos.asp?ingr_ncorr=%ingr_ncorr%" maxLista="5" anchoTabla="98%" nroRegistros="10">
+      <tablas nombre="DETALLE_INGRESOS" accion="I"/>
+      <campos nombre="ding_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <tipoDato>SECUENCIA</tipoDato>
+         <secuencia>ding_ncorr_seq</secuencia>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Nro. Documento</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>13</caracteres>
+         <maxCaracteres>12</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="tipo">
+         <tipo>select</tipo>
+         <permiso>LECTURA</permiso>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <descripcion>Forma de Pago</descripcion>
+         <filtro>ting_ccod in (11)</filtro>
+         <orden>ting_ccod</orden>
+         <alineamiento>CENTER</alineamiento>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="ting_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ding_mdetalle">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Monto</descripcion>
+         <caracteres>9</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <alineamiento>CENTER</alineamiento>
+         <id>NU-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="ingre_x" variable="i">
+      <tablas nombre="ingresos" accion="M"/>
+      <campos nombre="ingr_mefectivo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>9</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="mcaj_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="ingr_fpago">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="ingr_mdocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="ingr_mtotal">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="ingr_nestado">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="fecha">
+      <campos nombre="fecha">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="institucion" variable="ins">
+      <campos nombre="insti">
+         <tipo>select</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>(select distinct 
+inst_ccod, inst_trazon_social as institucion from instituciones) a</destino>
+         <union>inst_ccod</union>
+         <salida>institucion</salida>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Elija una Institución</mensajeNulo>
+      </campos>
+   </parametro>
+   <parametro formulario="examen" variable="ale">
+      <campos nombre="carrera">
+         <tipo>select</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>(select distinct 
+cast(b.carr_tdesc as varchar)+ ' ' + cast(a.espe_tdesc as varchar) as  carrera, a.espe_ccod as espe_ccod, d.sede_ccod as sede_ccod
+from 
+especialidades a, carreras b, ofertas_academicas c, sedes d
+where 
+a.carr_ccod=b.carr_ccod 
+and a.espe_ccod=c.espe_ccod
+and c.sede_ccod=d.sede_ccod
+and cast(espe_bexamen_adm as varchar)='S') a</destino>
+         <union>espe_ccod</union>
+         <salida>carrera</salida>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Elija Programa de Estudio</mensajeNulo>
+      </campos>
+      <campos nombre="programa">
+         <tipo>select</tipo>
+         <permiso>LECTURA</permiso>
+         <destino>(select distinct 
+cast(b.carr_tdesc as varchar)+ ' ' + cast(a.espe_tdesc as varchar) as  programa, a.espe_ccod as espe_ccod, d.sede_ccod as sede_ccod
+from 
+especialidades a, carreras b, ofertas_academicas c, sedes d
+where 
+a.carr_ccod=b.carr_ccod 
+and a.espe_ccod=c.espe_ccod
+and c.sede_ccod=d.sede_ccod
+and cast(espe_bexamen_adm as varchar)='S') a</destino>
+         <union>espe_ccod</union>
+         <salida>programa</salida>
+      </campos>
+      <campos nombre="jorn_ccod">
+         <tipo>RADIO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>jornadas</destino>
+         <union>jorn_ccod</union>
+         <salida>jorn_tdesc</salida>
+         <columnas>2</columnas>
+         <descripcion>Estado</descripcion>
+      </campos>
+      <campos nombre="jornada">
+         <tipo>radio</tipo>
+         <permiso>LECTURA</permiso>
+         <destino>(select jorn_ccod,jorn_tdesc  from jornadas) a</destino>
+         <union>jorn_ccod</union>
+         <salida>jorn_tdesc</salida>
+         <columnas>2</columnas>
+      </campos>
+   </parametro>
+   <parametro formulario="alum_exa" clave="post_ncorr" variable="ale" mensajeError="No postulantes que coincidan con el criterio de búsqueda" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" agregar="false" nuevaVentana="false" maxLista="10" nroRegistros="10" anchoTabla="98%">
+      <tablas accion="M" nombre="postulantes"/>
+      <campos nombre="post_ncorr">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="rut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Rut</descripcion>
+      </campos>
+      <campos nombre="alumno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nombre Postulante</descripcion>
+      </campos>
+      <campos nombre="post_bestado_examen">
+         <tipo>BOLEANO</tipo>
+         <objeto>RADIO</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+         <afirmacion>Aprobado</afirmacion>
+         <negacion>Reprobado</negacion>
+         <columnas>2</columnas>
+         <descripcion>Situación</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="edicion_examen" clave="post_ncorr" variable="ale" paginaEdicion="actualizar_examen.asp?post_ncorr=%post_ncorr%">
+      <tablas nombre="postulantes" accion="M"/>
+      <campos nombre="post_bestado_examen">
+         <tipo>BOLEANO</tipo>
+         <objeto>RADIO</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+         <afirmacion>Aprobado</afirmacion>
+         <negacion>Reprobado</negacion>
+         <columnas>2</columnas>
+         <descripcion>Situación</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="convalidaciones" variable="conv">
+      <campos nombre="especialidades">
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>(select distinct
+ b.espe_ccod as espe_ccod, cast(h.carr_tdesc as varchar) +' '+ cast(g.espe_tdesc as varchar) as especialidades, f.pers_nrut as pers_nrut
+from  
+ matriculas a, planes_estudio b, malla_curricular c, asignaturas d, postulantes e, personas f, especialidades g, carreras h
+ where a.plan_ccod   =   b.plan_ccod  
+ and b.plan_ccod     =   c.plan_ccod  
+ and c.asig_ccod     =   d.asig_ccod  
+ and a.post_ncorr    =   e.post_ncorr 
+ and e.pers_ncorr    =   f.pers_ncorr 
+ and b.espe_ccod	 =	 g.espe_ccod
+ and g.carr_ccod	 =	 h.carr_ccod	
+ order by especialidades ) a</destino>
+         <union>espe_ccod</union>
+         <salida>especialidades</salida>
+         <script>onchange='javascript:dibujar(this.form);'</script>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Elija Programa de Estudio</mensajeNulo>
+      </campos>
+   </parametro>
+   <parametro formulario="tabla_conv" mensajeError="Debe selecionar un programa de estudio." anchoTabla="98%" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" eliminar="false">
+      <campos nombre="asig_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Código</descripcion>
+         <ancho>50</ancho>
+      </campos>
+      <campos nombre="asignatura">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Asignatura</descripcion>
+      </campos>
+   </parametro>
+   <parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" paginaEdicion="detalle_compromiso.asp?inst_ccod=%inst_ccod%&amp;tcom_ccod=%tcom_ccod%&amp;comp_ndocto=%comp_ndocto%&amp;dcom_ncompromiso=%dcom_ncompromiso%" formulario="cuenta_corriente" nroRegistros="15" agregar="false" eliminar="false" maxLista="15" clave="dcom_ncompromiso" mensajeError="No hay compromisos asociados a la persona" colorBase="#F1F1E4" anchoTabla="98%" editar="true" nuevaVentana="true" variable="m">
+      <tablas nombre="abonos" accion="M"/>
+      <campos nombre="ecom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>center</alineamiento>
+         <descripcion>Código</descripcion>
+      </campos>
+      <campos nombre="nro">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nro. Docto.</descripcion>
+      </campos>
+      <campos nombre="institucion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Institución</descripcion>
+      </campos>
+      <campos nombre="tcom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="comp_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="inst_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="dcom_ncompromiso">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nro. Cuota</descripcion>
+      </campos>
+      <campos nombre="concepto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Concepto</descripcion>
+      </campos>
+      <campos nombre="tcom_tdesc">
+         <tipo>HIDDEN</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="dcom_fcompromiso">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <descripcion>Vencimiento</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="dcom_mcompromiso">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Monto</descripcion>
+         <alineamiento>right</alineamiento>
+         <formato>MONEDA</formato>
+         <ancho>100</ancho>
+      </campos>
+      <campos nombre="dcom_mcompromiso_oculto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="concepto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="abono">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Pago</descripcion>
+         <alineamiento>right</alineamiento>
+         <formato>MONEDA</formato>
+         <ancho>100</ancho>
+      </campos>
+      <campos nombre="saldo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>right</alineamiento>
+         <descripcion>Saldo</descripcion>
+         <formato>MONEDA</formato>
+         <ancho>100</ancho>
+      </campos>
+   </parametro>
+   <parametro formulario="cambia_estado" variable="ce">
+      <tablas nombre="detalle_compromisos" accion="A"/>
+      <campos nombre="tcom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="inst_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="comp_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="dcom_ncompromiso">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="ecom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="cambia_estado2" variable="ce2">
+      <tablas nombre="detalle_compromisos" accion="A"/>
+      <campos nombre="tcom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="inst_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="comp_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="dcom_ncompromiso">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="ecom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="tabla"/>
+   <parametro formulario="impresora" variable="ip">
+      <campos nombre="impr_truta">
+         <tipo>select</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>IMPRESORAS</destino>
+         <union>impr_truta</union>
+         <salida>impr_truta</salida>
+         <alineamiento>CENTER</alineamiento>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="docto_contraloria" variable="d" agregar="true" editar="false" clave="ingr_ncorr" paginaEdicion="proc_pagos.asp?ingr_ncorr=%ingr_ncorr%" maxLista="5" anchoTabla="98%" nroRegistros="10">
+      <tablas nombre="DETALLE_INGRESOS" accion="I"/>
+      <campos nombre="ding_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <tipoDato>SECUENCIA</tipoDato>
+         <secuencia>ding_ncorr_seq</secuencia>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Nro. Documento</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>13</caracteres>
+         <maxCaracteres>12</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="ting_ccod">
+         <tipo>select</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <script>onChange='habilitar(this)'</script>
+         <descripcion>Forma de Pago</descripcion>
+         <filtro>ting_ccod in (6,13,33,34,35,36,37,38,40,41,42,43,46,50,71)</filtro>
+         <orden>ting_ccod</orden>
+         <alineamiento>CENTER</alineamiento>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Elija Forma de Pago</mensajeNulo>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="ding_fdocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <descripcion>Vencimiento</descripcion>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <alineamiento>CENTER</alineamiento>
+         <deshabilitado>TRUE</deshabilitado>
+         <id>FE-N</id>
+      </campos>
+      <campos nombre="banc_ccod">
+         <tipo>select</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>(select banc_ccod, banc_tdesc from bancos order by banc_tdesc) a</destino>
+         <union>banc_ccod</union>
+         <salida>banc_tdesc</salida>
+         <descripcion>Banco</descripcion>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Elija un Banco</mensajeNulo>
+         <alineamiento>CENTER</alineamiento>
+         <deshabilitado>TRUE</deshabilitado>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="ding_tcuenta_corriente">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Nro. Cuenta Corriente</descripcion>
+         <caracteres>20</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <alineamiento>CENTER</alineamiento>
+         <deshabilitado>TRUE</deshabilitado>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="plaz_ccod">
+         <tipo>select</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>(select plaz_ccod, plaz_tdesc from plazas order by plaz_tdesc) a</destino>
+         <union>plaz_ccod</union>
+         <salida>plaz_tdesc</salida>
+         <descripcion>Plaza</descripcion>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Elija Plaza</mensajeNulo>
+         <alineamiento>CENTER</alineamiento>
+         <deshabilitado>TRUE</deshabilitado>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="ding_mdetalle">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Monto</descripcion>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+         <alineamiento>CENTER</alineamiento>
+         <id>IN-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="docto_teso_subdaf" variable="d" agregar="true" editar="false" clave="ingr_ncorr" paginaEdicion="proc_pagos.asp?ingr_ncorr=%ingr_ncorr%" maxLista="5" anchoTabla="98%" nroRegistros="10">
+      <tablas nombre="DETALLE_INGRESOS" accion="I"/>
+      <campos nombre="ding_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <tipoDato>SECUENCIA</tipoDato>
+         <secuencia>ding_ncorr_seq</secuencia>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Nro. Documento</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>13</caracteres>
+         <maxCaracteres>12</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="ting_ccod">
+         <tipo>select</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <script>onChange='habilitar(this)'</script>
+         <descripcion>Forma de Pago</descripcion>
+         <filtro>ting_ccod in (44,47,48,49)</filtro>
+         <orden>ting_ccod</orden>
+         <alineamiento>CENTER</alineamiento>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Elija Forma de Pago</mensajeNulo>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="ding_fdocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <descripcion>Vencimiento</descripcion>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <alineamiento>CENTER</alineamiento>
+         <deshabilitado>TRUE</deshabilitado>
+         <id>FE-N</id>
+      </campos>
+      <campos nombre="banc_ccod">
+         <tipo>select</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>(select banc_ccod, banc_tdesc from bancos order by banc_tdesc) a</destino>
+         <union>banc_ccod</union>
+         <salida>banc_tdesc</salida>
+         <descripcion>Banco</descripcion>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Elija un Banco</mensajeNulo>
+         <alineamiento>CENTER</alineamiento>
+         <deshabilitado>TRUE</deshabilitado>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="ding_tcuenta_corriente">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Nro. Cuenta Corriente</descripcion>
+         <caracteres>20</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <alineamiento>CENTER</alineamiento>
+         <deshabilitado>TRUE</deshabilitado>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="plaz_ccod">
+         <tipo>select</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>(select plaz_ccod, plaz_tdesc from plazas order by plaz_tdesc) a</destino>
+         <union>plaz_ccod</union>
+         <salida>plaz_tdesc</salida>
+         <descripcion>Plaza</descripcion>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Elija Plaza</mensajeNulo>
+         <alineamiento>CENTER</alineamiento>
+         <deshabilitado>TRUE</deshabilitado>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="ding_mdetalle">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Monto</descripcion>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+         <alineamiento>CENTER</alineamiento>
+         <id>IN-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="totales" colorBase="#F1F1E4" maxLista="10" nroRegistros="10" anchoTabla="100%">
+      <campos nombre="TOTAL_COMPROMISOS">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <descripcion>Total Compromisos</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <ancho>33%</ancho>
+      </campos>
+      <campos nombre="total_abonos">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <descripcion>Total Abonos</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <ancho>33%</ancho>
+      </campos>
+      <campos nombre="TOTAL_SALDO">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <descripcion>Saldo Total</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <ancho>33%</ancho>
+      </campos>
+   </parametro>
+   <parametro colorSeleccionado="99FFFF" formulario="asignatura_origen" colorResaltado="#DCDCB8" nroRegistros="50" agregar="false" eliminar="true" maxLista="50" mensajeError="Seleccione programa de estudio de origen" colorBase="#F1F1E4" anchoTabla="98%" editar="false" nuevaVentana="false" variable="ao">
+      <campos nombre="matr_ncorr">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="secc_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="sitf_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ecaa_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="carg_nnota_presentacion">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="carg_nnota_examen">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="carg_nnota_repeticion">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="carg_nnota_final">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="carg_nasistencia">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="carg_nnota_final">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="audi_tusuario">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="audi_fmodificacion">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="nive_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nivel</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <ancho>5</ancho>
+      </campos>
+      <campos nombre="asig_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Cód. Asignatura</descripcion>
+         <ancho>10</ancho>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="asignatura">
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>(SELECT DISTINCT  b.plan_ccod, f.pers_nrut,
+					    i.secc_ccod AS asig_ccod 
+					    ,cast(d.asig_ccod as varchar)+' - '+cast(d.asig_tdesc as varchar)+' / '+cast(g.carg_nnota_final as varchar)  AS asignatura 
+					    ,c.nive_ccod AS nive_ccod 
+					    ,h.sitf_ccod 
+					    ,i.secc_ccod,d.asig_ccod as asig
+					  FROM alumnos a 
+					       ,planes_estudio b 
+					       ,malla_curricular c 
+					       ,asignaturas d 
+					       ,postulantes e 
+					       ,personas f 
+					       ,cargas_academicas g 
+					       ,situaciones_finales h 
+					       ,secciones i 
+					 WHERE a.plan_ccod  =   b.plan_ccod 
+					   AND b.plan_ccod  =   c.plan_ccod 
+					   AND c.asig_ccod  =   d.asig_ccod 
+					   AND a.post_ncorr =   e.post_ncorr 
+					   AND e.pers_ncorr =   f.pers_ncorr 
+					   and a.matr_ncorr =   g.matr_ncorr 
+					   and g.sitf_ccod  =   h.sitf_ccod  
+					   and i.secc_ccod  =   g.secc_ccod  
+					   and d.asig_ccod  =   i.asig_ccod  
+					   AND h.sitf_ccod  in ('AA')
+					   order by asig) A</destino>
+         <union>asig_ccod</union>
+         <salida>asignatura</salida>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Elija Asignatura</mensajeNulo>
+         <mensajeVacio>No hay asignaturas asociadas al plan.</mensajeVacio>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="sitf_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Situación Final</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <ancho>5</ancho>
+      </campos>
+      <campos nombre="sitf_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Situación Final</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <ancho>5</ancho>
+      </campos>
+   </parametro>
+   <parametro colorSeleccionado="99FFFF" formulario="asignatura_destino" colorResaltado="#DCDCB8" nroRegistros="200" agregar="false" eliminar="true" maxLista="50" clave="asig_ccod" mensajeError="Seleccione programa de estudio de destino" colorBase="#F1F1E4" anchoTabla="98%" editar="false" nuevaVentana="false" variable="ad">
+      <campos nombre="nive_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nivel</descripcion>
+         <ancho>5</ancho>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="asig_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Cód. Asignatura</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <ancho>10</ancho>
+      </campos>
+      <campos nombre="asignatura">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Asignatura</descripcion>
+      </campos>
+   </parametro>
+   <parametro formulario="convalidaciones1" variable="conv1">
+      <campos nombre="especialidades">
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>(select distinct
+ b.espe_ccod as espe_ccod, cast(h.carr_tdesc as varchar)+' '+ cast(g.espe_tdesc as varchar) as especialidades, f.pers_nrut as pers_nrut
+from  
+ matriculas a, planes_estudio b, malla_curricular c, asignaturas d, postulantes e, personas f, especialidades g, carreras h
+ where a.plan_ccod   =   b.plan_ccod  
+ and b.plan_ccod     =   c.plan_ccod  
+ and c.asig_ccod     =   d.asig_ccod  
+ and a.post_ncorr    =   e.post_ncorr 
+ and e.pers_ncorr    =   f.pers_ncorr 
+ and b.espe_ccod	 =	 g.espe_ccod
+ and g.carr_ccod	 =	 h.carr_ccod	
+ order by especialidades ) a</destino>
+         <union>espe_ccod</union>
+         <salida>especialidades</salida>
+         <script>onchange='javascript:dibujar(this.form);'</script>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Elija Programa de Estudio Destino</mensajeNulo>
+      </campos>
+   </parametro>
+   <parametro formulario="combo_origen" variable="co">
+      <campos nombre="especialidad">
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <union>espe_ccod</union>
+         <salida>especialidad</salida>
+         <script>onchange='javascript:dibujar(this.form);'</script>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Elija Programa de Estudio Origen</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="plan" variable="pl">
+      <campos nombre="plan_ccod">
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <union>plan_ccod</union>
+         <salida>plan</salida>
+         <script>onchange='javascript:dibujar(this.form);'</script>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Elija Programa de Estudio</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="combo_destino" variable="cd">
+      <campos nombre="especialidad">
+         <tipo>SELECT</tipo>
+         <permiso>LECTURA</permiso>
+         <union>espe_ccod</union>
+         <destino>(select distinct e.pers_nrut,b.peri_ccod,cast(d.espe_ccod as varchar)+' '+cast(c.carr_tdesc as varchar)+' '+ cast(d.espe_tdesc as varchar) as especialidad,d.espe_ccod from  alumnos a, ofertas_academicas b, carreras c, especialidades d,personas e where  a.ofer_ncorr = b.ofer_ncorr  and c.carr_ccod = d.carr_ccod  and d.espe_ccod = b.espe_ccod and a.pers_ncorr = e.pers_ncorr order by peri_ccod )a</destino>
+         <salida>especialidad</salida>
+         <script>onchange='javascript:dibujar(this.form);'</script>
+      </campos>
+   </parametro>
+   <parametro formulario="c_academica_homo" variable="ao">
+      <tablas nombre="cargas_academicas" accion="M"/>
+      <campos nombre="matr_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="secc_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="sitf_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="ecaa_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="carg_nnota_final">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="seccion_homologada" variable="ao">
+      <tablas nombre="secciones" accion="M"/>
+      <campos nombre="secc_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="moda_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="peri_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="secc_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="secc_nquorum">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="secc_ncupo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="reso_homo" variable="rh">
+      <tablas nombre="resoluciones_homologaciones" accion="M"/>
+      <campos nombre="matr_ncorr_origen">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="secc_ccod_origen">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="sitf_ccod_origen">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="ecaa_ccod_origen">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="carg_nnota_presentacion_origen">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="carg_nnota_examen_origen">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="carg_nnota_repeticion_origen">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="carg_nnota_final_origen">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="carg_nasistencia_origen">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="audi_tusuario_origen">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="audi_fmodificacion_origen">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="homo_ccod_origen">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="matr_ncorr_destino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="secc_ccod_destino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="sitf_ccod_destino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="ecaa_ccod_destino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="carg_nnota_presentacion_dest">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="carg_nnota_examen_destino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="carg_nnota_repeticion_destino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="carg_nnota_final_destino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="carg_nasistencia_destino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="audi_tusuario_destino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="audi_fmodificacion_destino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="homo_ccod_destino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   <parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" paginaEdicion="editar_homologaciones.asp?reso_ncorr=%reso_ncorr%&amp;eres_ccod=%eres_ccod%" formulario="resoluciones" nroRegistros="10" agregar="true" eliminar="true" maxLista="10" clave="reso_ncorr" mensajeError="No existen resoluciones asociadas." colorBase="#F1F1E4" anchoTabla="98%" editar="true" nuevaVentana="true" variable="res">
+      <tablas nombre="resoluciones" accion="M"/>
+      <campos nombre="eres_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="reso_ncorr">
+         <tipo>HIDDEN</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="reso_nresolucion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Número Resolución</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="reso_fresolucion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <descripcion>Fecha Resolución</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="tres_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Tipo de Resolución</descripcion>
+         <alineamiento>center</alineamiento>
+      </campos>
+      <campos nombre="eres_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Estado de Resolución</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="resumen" variable="r" clave="reho_ncorr" mensajeError="No existen asignaturas homologadas." colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" maxLista="10" nroRegistros="50" anchoTabla="98%" eliminar="true" editar="false" agregar="false" nuevaVentana="false">
+      <campos nombre="asignatura_origen">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Asignatura Origen</descripcion>
+         <ancho>40%</ancho>
+      </campos>
+      <campos nombre="asignatura_destino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Asignatura Destino</descripcion>
+         <ancho>40%</ancho>
+      </campos>
+      <campos nombre="nota">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nota Final</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <ancho>20%</ancho>
+      </campos>
+   </parametro>
+   <parametro formulario="resumen_destino" mensajeError="No existen asignaturas homologadas para el alumno" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" eliminar="false" agregar="false" nuevaVentana="false" paginaEdicion="editar_docente.asp?pers_ncorr=%pers_ncorr%" maxLista="10" nroRegistros="10" anchoTabla="98%">
+      <campos nombre="asig_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Asignatura Destino</descripcion>
+      </campos>
+   </parametro>
+   <parametro formulario="reso_personas" variable="rp">
+      <tablas nombre="resoluciones_personas" accion="I"/>
+      <campos nombre="reso_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="editar_resoluciones" variable="res" clave="reso_ncorr" editar="false" eliminar="false" agregar="false" nuevaVentana="false" anchoTabla="98%" maxLista="10" nroRegistros="10" mensajeError="No existen resoluciones asociadas." paginaEdicion="homologaciones.asp?reso_ncorr=%reso_ncorr%">
+      <tablas nombre="resoluciones" accion="I"/>
+      <campos nombre="reso_ncorr">
+         <tipo>HIDDEN</tipo>
+         <permiso>INVISIBLE</permiso>
+      </campos>
+      <campos nombre="reso_nresolucion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>READONLY</script>
+         <caracteres>11</caracteres>
+         <alineamiento>right</alineamiento>
+      </campos>
+      <campos nombre="reso_fresolucion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>READONLY</script>
+         <tipoDato>FECHA</tipoDato>
+         <caracteres>11</caracteres>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="tres_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>READONLY</script>
+         <caracteres>60</caracteres>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="adm_resoluciones" variable="res" clave="reso_ncorr" editar="true" eliminar="false" agregar="true" nuevaVentana="true" anchoTabla="98%" maxLista="10" nroRegistros="10" mensajeError="No existen resoluciones asociadas." paginaEdicion="homologaciones.asp?reso_ncorr=%reso_ncorr%">
+      <tablas nombre="resoluciones" accion="I"/>
+      <campos nombre="reso_nresolucion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>NU-N</id>
+         <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="reso_fresolucion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <!--	<tipoDato>FECHA</tipoDato>   -->
+         <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <alineamiento>CENTER</alineamiento>
+         <id>FE-N</id>
+      </campos>
+      <campos nombre="tres_ccod">
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>tipos_resolucion</destino>
+         <union>tres_ccod</union>
+         <salida>tres_tdesc</salida>
+         <filtro>tres_ccod=6</filtro>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Elija tipo resolución</mensajeNulo>
+         <id>NU-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="borrar_sec" variable="r">
+      <tablas nombre="secciones" accion="B"/>
+      <campos nombre="secc_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="reho_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="borrar" variable="r">
+      <tablas nombre="resoluciones_homologaciones" accion="B"/>
+      <campos nombre="secc_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="reho_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="borrar_c_ac" variable="r">
+      <tablas nombre="cargas_academicas" accion="B"/>
+      <campos nombre="secc_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="matr_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="sub_secciones" variable="ao">
+      <tablas nombre="sub_secciones" accion="I"/>
+      <campos nombre="ssec_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="secc_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="borrar_subsec" variable="r">
+      <tablas nombre="sub_secciones" accion="B"/>
+      <campos nombre="ssec_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="secc_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="resumen_cons" variable="r" anchoTabla="90%" mensajeError="No presenta homologaciones el alumno.">
+      <campos nombre="fuente">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Asignatura Fuente</descripcion>
+      </campos>
+      <campos nombre="destino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Asignatura Destino</descripcion>
+      </campos>
+      <campos nombre="nota">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nota</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="anos_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Año</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="btn_plan_academica">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+	  <botones nombre="HORARIO"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Horario</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar_datos()</funcion>	  
+	  </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="btn_examen_adm">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <url>examen_adm.asp</url>
+         <formulario>buscador</formulario>
+      </botones>
+      <botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>actualizar_examen.asp</url>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="btn_plan_acedemica_seccion">
+      <botones nombre="volver">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>history.back()</funcion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	  <botones nombre="actualizar"> 
+		  <tipoTexto>GUARDAR</tipoTexto>
+		  <accion>GUARDAR</accion>
+		  <url>Proc_carreras_comunes.asp</url>
+		  <formulario>hola</formulario>
+	</botones>
+   </parametro>
+   <parametro formulario="btn_det_plan">
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>enviar2(document.editar)</funcion>
+      </botones>
+      <botones nombre="agregar">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>abrir(document.editar)</funcion>
+      </botones>
+      <botones nombre="volver">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>history.go(-1)</funcion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="btn_edicion_plan_acad">
+      <botones nombre="guardar">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>enviar(document.buscador)</funcion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>cerrar()</funcion>
+      </botones>
+   </parametro>
+   <parametro formulario="btn_plan_academica_intersem">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>enviar(document.buscador)</funcion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="btn_rec_ingresos">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>enviar(document.buscador)</funcion>
+      </botones>
+      <botones nombre="pagar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>abrir()</funcion>
+      </botones>
+      <botones nombre="pagar2">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>abrir2()</funcion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="btn_edicion_pago">
+      <botones nombre="guardar">
+         <tipoTexto>guardar</tipoTexto>
+         <accion>guardar</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>modificar(document.buscador)</funcionValidacion>
+         <url>actualizar_pago.asp</url>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>cerrarVentana()</funcion>
+      </botones>
+   </parametro>
+   <parametro formulario="btn_rev_ctacte">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>enviar(document.buscador)</funcion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="profesores" clave="pers_ncorr" variable="profesores" tabla="PROFESORES" eliminar="true" maxLista="10" nroRegistros="10" mensajeError="Debe selecionar un programa de estudio.">
+      <tablas nombre="profesores" accion="M"/>
+      <campos nombre="pers_ncorr">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+      </campos>
+      <campos nombre="nombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Nombre</descripcion>
+         <caracteres>50</caracteres>
+         <maxCaracteres>200</maxCaracteres>
+      </campos>
+      <campos nombre="sede_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+      </campos>
+   </parametro>
+   <parametro formulario="imprimir_listado" variable="idoc" nroRegistros="10" maxLista="10" eliminar="FALSE" seleccionarTodo="FALSE" anchoTabla="100%" mensajeError="No se encontraron Documentos...">
+      <campos nombre="ting_ccod">
+         <descripcion>tipo doc</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="ting_tdesc">
+         <descripcion>Tipo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="ding_mdetalle">
+         <descripcion>Detalle</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="ding_fdocto">
+         <descripcion>Fecha Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+</Parametros>

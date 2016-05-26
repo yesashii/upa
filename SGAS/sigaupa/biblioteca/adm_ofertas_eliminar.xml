@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="t_ofertas_academicas" variable="ofertas" clave="ofer_ncorr">
+      <tablas nombre="ofertas_academicas" accion="B"/>
+	  
+      <campos nombre="ofer_ncorr">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="c_sede_ccod">
+         <tipo>SELECT</tipo>
+         <destino>sedes</destino>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="c_peri_ccod">
+         <tipo>SELECT</tipo>
+         <destino>(SELECT peri_ccod, cast(peri_tdesc as varchar) + ' ' + cast(anos_ccod as varchar) AS descripcion FROM periodos_academicos ) a</destino>
+         <union>peri_ccod</union>
+         <salida>descripcion</salida>
+		 <orden>a.peri_ccod</orden>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="carr_ccod">
+         <tipo>SELECT</tipo>
+         <destino>carreras</destino>
+         <union>carr_ccod</union>
+         <salida>carr_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="c_espe_ccod">
+         <tipo>SELECT</tipo>
+         <destino>especialidades</destino>
+         <union>espe_ccod</union>
+         <salida>espe_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="jorn_ccod">
+         <tipo>SELECT</tipo>
+         <destino>jornadas</destino>
+         <union>jorn_ccod</union>
+         <salida>jorn_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>--Seleccione jornada--</mensajeNulo>
+      </campos>
+      <campos nombre="ofer_nvacantes">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="ofer_nquorum">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="sede_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="peri_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="espe_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+</Parametros>

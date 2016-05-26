@@ -1,0 +1,86 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="aceptar">
+         <accion>GUARDAR</accion>
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <formulario>edicion</formulario>
+         <url>proc_editar_director.asp</url>
+      </botones>
+      <botones nombre="cancelar">
+         <accion>CERRAR</accion>
+         <tipoTexto>CANCELAR</tipoTexto>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+   </parametro>
+   <parametro paginaEdicion="editar_director.asp?d[0][carr_ccod]=%carr_ccod%&amp;d[0][sede_ccod]=%sede_ccod%&amp;d[0][jorn_ccod]=%jorn_ccod%&amp;d[0][pers_nrut]=%pers_nrut%" nuevaVentanaAlto="270" 
+   formulario="carreras" nuevaVentanaAncho="600" anchoTabla="100%" editar="TRUE" nuevaVentana="TRUE">
+      <campos nombre="sede">
+         <descripcion>Sede</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="carr_tdesc">
+         <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="jornada">
+         <descripcion>Jornada</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre_director">
+         <descripcion>Director</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="pers_temail">
+         <descripcion>Email Director</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+    </parametro>
+   <parametro formulario="edicion_director" anchoTabla="100%" variable="d">
+      <tablas nombre="EMAIL_DIRECTORES_CARRERA" accion="M"/>
+      <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+       <campos nombre="Rut">
+         <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre_director">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nombre</descripcion>
+      </campos>
+	  <campos nombre="pers_temail">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>EM-N</id>
+      </campos>
+   </parametro>
+</Parametros>

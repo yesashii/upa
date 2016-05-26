@@ -1,0 +1,38 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>postulacion_5.asp</url>
+      </botones>
+      <botones nombre="enviar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Enviar</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_postulacion_6.asp</url>
+         <mensajeConfirmacion>¿Estás seguro que deseas enviar tu postulación?</mensajeConfirmacion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>log_out.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="postulacion" variable="postulacion">
+      <tablas nombre="postulantes" accion="M"/>
+      <campos nombre="post_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   
+   </parametro>
+   
+   
+   <parametro formulario="agrega_beneficios" variable="postulacion">
+      <tablas nombre="sdescuentos" accion="M"/>
+      
+	  
+	   
+   </parametro>
+</Parametros>

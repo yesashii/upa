@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+       <botones nombre="salir" >
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Volver</texto>
+         <accion>navegar</accion>
+         <url>mis_datos.asp</url>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  
+	<botones nombre="excel">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Excel</texto>
+      </botones>
+   
+   </parametro>
+   <parametro formulario="busqueda" variable="b" columnas="3" >
+          <campos nombre="pers_nrut" >
+         <descripcion>Nº Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>NU-S</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+      
+      </campos>
+	   <campos nombre="pers_xdv" >
+         <descripcion>Nº Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-S</id>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+      
+      </campos>
+	  <campos nombre="peri_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Periodo Academico</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>periodos_academicos</destino>
+		 <filtro>peri_ccod > 217 </filtro>
+         <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+		 <orden>peri_ccod</orden>
+		 <id>NU-N</id>
+      </campos>
+	  	   <campos nombre="sede_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todas las Sedes</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>sedes </destino>
+		 <filtro>sede_ccod in (1,2,4,7,8)</filtro>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+		 
+      </campos>
+	  
+   </parametro>
+   
+     <parametro 
+	 colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion="resultados_mis_datos.asp?pers_ncorr=%pers_ncorr%&amp;peri_ccod=%peri_ccod%"  formulario="mis_datos" nroRegistros="10"
+	 maxLista="10" mensajeError="No se encontranron Alumnos." colorBase="#F1F1E4" editar="true" anchoTabla="100%"	 nuevaVentana="false" variable="c" clave="pers_ncorr">
+   		 <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="peri_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+		 <campos nombre="nombre">
+		<descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   	 <campos nombre="rut" >
+		 <descripcion>Rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   
+  <parametro formulario="cheques">  
+      <campos nombre="nombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="rut" >
+		 <descripcion>Rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	   <campos nombre="direccion">
+		 <descripcion>direccion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="carrera" >
+		 <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="sede">
+		 <descripcion>Sede</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="estudia">
+		 <descripcion>Sede</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="datos_correctos">
+		 <descripcion>Sede</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="tenfer_tdesc">
+		 <descripcion>Sede</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="tenfer_otro">
+		 <descripcion>Sede</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="pre_basica">
+		 <descripcion>Sede</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="basica">
+		 <descripcion>Sede</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="media_1_3">
+		 <descripcion>Sede</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="media_4">
+		 <descripcion>Sede</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="superior">
+		 <descripcion>Sede</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="otra">
+		 <descripcion>Sede</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+    <parametro formulario="parientes"> 
+   <campos nombre="parentesco">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos> 
+	<campos nombre="nombre">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="edad">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="cargo">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="empresa">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+   	</parametro>
+   <parametro formulario="papa"> 
+   <campos nombre="rut">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	 <campos nombre="vivo">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos> 
+	<campos nombre="nombre">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="pais">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="region">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="ciudad">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="estado_civil">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="direccion">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="email">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="cargo">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="empresa">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="nied_ccod">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="sicupadre_ccod">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="topa_ccod">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="sitocup_ccod">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="datos_corr">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+   	</parametro>
+	<parametro formulario="mama">  
+	    <campos nombre="rut">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	 <campos nombre="vivo">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos> 
+	<campos nombre="nombre">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="pais">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="region">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="ciudad">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="estado_civil">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="direccion">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="email">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="cargo">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="empresa">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="nied_ccod">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="sicupadre_ccod">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="topa_ccod">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="sitocup_ccod">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="datos_corr">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+
+   	</parametro>
+   <parametro formulario="codeudor">  
+	    <campos nombre="rut">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	 <campos nombre="vivo">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos> 
+	<campos nombre="nombre">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="pais">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="region">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="ciudad">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="estado_civil">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="direccion">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="email">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="cargo">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="empresa">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="nied_ccod">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="sicupadre_ccod">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="topa_ccod">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="sitocup_ccod">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="parentesco">
+		<tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento> 
+	</campos>
+
+   	</parametro>
+</Parametros>

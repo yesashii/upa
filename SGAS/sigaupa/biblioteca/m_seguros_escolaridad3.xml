@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+<parametro formulario="botonera">
+   	 <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	   <funcionValidacion>Validar();</funcionValidacion>
+	</botones>
+   	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>	 
+	</botones>	
+	<botones nombre="autorizar"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+		<texto>Autorizar Ingreso del Alumno a Laboratorios</texto>
+	    <accion>NAVEGAR</accion>
+	    <url>autorizar_ingreso.asp</url>
+	    <formulario>autorizar</formulario>
+	</botones>
+	<botones nombre="agregar_preexistencia"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+		<texto>Agregar Preexistencia</texto>
+	    <accion>GUARDAR</accion>
+	    <url>proc_agregar_preexistencia.asp</url>
+	    <formulario>edicion</formulario>
+		<funcionValidacion>revisar_fecha();</funcionValidacion>
+	</botones>
+	 <botones nombre="imprimir_alumno"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Imprimir Ficha</texto>
+		<accion>AGREGAR</accion>
+		<target>_blank</target>
+	 </botones>	
+	 <botones nombre="guardar_solicitud"> 
+       <tipoTexto>DEFINIR</tipoTexto>
+	   <texto>Guardar Solicitud</texto>
+       <accion>GUARDAR</accion>
+       <formulario>edicion2</formulario>
+	   <url>m_seguros_escolaridad_proc.asp</url>
+	   <funcionValidacion>revisar();</funcionValidacion>
+	</botones> 
+	<botones nombre="excel2">
+       <tipoTexto>DEFINIR</tipoTexto>
+	   <texto>Imprimir Solicitud</texto>
+       <accion>AGREGAR</accion>	   
+	   <formulario>edicion2</formulario>
+	   <posicionX>150</posicionX>
+       <posicionY>150</posicionY>
+       <ancho>700</ancho>
+       <alto>550</alto>
+   </botones> 
+   <botones nombre="listado_solicitudes">
+       <tipoTexto>DEFINIR</tipoTexto>
+	   <texto>Listado Solicitudes</texto>
+       <accion>NAVEGAR</accion>	   
+	   <formulario>edicion2</formulario>
+   </botones> 
+   </parametro>
+<parametro formulario="busqueda_usuarios_nuevo" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+		 <script>onBlur="genera_digito(this.value);"</script>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+</parametro>
+<parametro formulario="codeudor" variable="busqueda">
+      <campos nombre="pare_ccod">
+         <tipo>RADIO</tipo>
+         <destino>parentescos</destino>
+         <union>pare_ccod</union>
+         <salida>pare_tdesc</salida>
+         <orden>pare_ccod asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+         <script>onClick="refrescar(this.value);"</script>
+         <id>TO-N</id>
+         <ancho>90%</ancho>
+      </campos>
+	  <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+</parametro>
+<parametro formulario="ingreso_preexistencias" variable="ip">
+<tablas nombre="enfermedades_solicitud_seguro" accion="M"/>
+      <campos nombre="enfe_ccod">
+         <tipo>SELECT</tipo>
+         <destino>enfermedades</destino>
+         <union>enfe_ccod</union>
+         <salida>enfe_tdesc</salida>
+         <orden>enfe_tdesc asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+         <script>onChange="bloquear(this.value);"</script>
+         <id>TO-N</id>
+         <ancho>90%</ancho>
+      </campos>
+	  <campos nombre="post_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="esse_tdescripcion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>80</caracteres>
+         <maxCaracteres>100</maxCaracteres>
+         <id>TO-S</id>
+		 <deshabilitado>true</deshabilitado>
+       </campos>
+	   <campos nombre="esse_tfecha">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-N</id>
+       </campos>
+</parametro>
+<parametro formulario="lista_preexistencias" anchoTabla="100%" 
+   colorResaltado="#CCCCCC"  mensajeError="No existen preexistencias ingresadas para esta persona contratante."
+   colorSeleccionado="#CCCCCC" eliminar="FALSE" seleccionarTodo="FALSE"
+    editar="FALSE" 	paginaEdicion="" nuevaVentana="FALSE" variable="l">
+     <campos nombre="nombre">
+	    <descripcion>Nombre del Asegurable</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="enfermedad">
+	    <descripcion>Descripción de la enfermedad o accidente </descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="fecha">
+	    <descripcion>Fecha Diagnóstico</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+   </parametro> 
+</Parametros>

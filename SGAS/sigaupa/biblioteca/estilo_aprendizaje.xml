@@ -1,0 +1,989 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+		 <soloUnClick>TRUE</soloUnClick>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>portada_evalua.asp</url>
+      </botones>
+       <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>NAVEGAR</accion>
+         <url>notas_alumno_excel.asp</url>
+      </botones>
+	  <botones nombre="HORARIO"> 
+      	 <tipoTexto>DEFINIR</tipoTexto>
+	     <texto>Horario</texto>
+	     <accion>JAVASCRIPT</accion>
+	     <funcion>horario()</funcion>	  
+	  </botones>
+	  <botones nombre="evaluacion"> 
+      	 <tipoTexto>DEFINIR</tipoTexto>
+	     <texto>Comenzar Evaluaciones</texto>
+	     <accion>NAVEGAR</accion>
+	    <url>asi_soy_yo.asp</url>	  
+	  </botones>
+	  <botones nombre="guardar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Guardar Respuestas.</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>tus_datos_proc.asp</url>
+		 
+	</botones>
+	     <botones nombre="ventana"> 
+      	 <tipoTexto>DEFINIR</tipoTexto>
+	     <texto>Ver Ocupaciones</texto>
+	     <accion>JAVASCRIPT</accion>
+	     <funcion>PopWindow()</funcion>	  
+	  </botones>
+
+   </parametro>
+   <parametro formulario="busqueda" >
+	  <campos nombre="pers_nrut">
+ 		 <tipo>INPUT</tipo> 
+  		 <permiso>OCULTO</permiso> 
+  		 <caracteres>10</caracteres> 
+  		 <maxCaracteres>8</maxCaracteres> 
+  		 <id>NU-N</id> 
+  	  </campos>
+	  <campos nombre="pers_xdv">
+  		 <tipo>INPUT</tipo> 
+  		 <permiso>OCULTO</permiso> 
+         <caracteres>1</caracteres> 
+         <maxCaracteres>1</maxCaracteres> 
+         <script>onBlur="this.value=this.value.toUpperCase();"</script> 
+         <id>LN-N</id> 
+      </campos>
+   </parametro>
+   
+   <parametro formulario="sitocupaciones" >
+	  <campos nombre="sitocup_ccod">
+ 		 <tipo>INPUT</tipo> 
+  		 <permiso>LECTURA</permiso> 
+  		 <caracteres>10</caracteres> 
+  		 <maxCaracteres>8</maxCaracteres> 
+  		 <id>NU-N</id> 
+  	  </campos>
+	  <campos nombre="sitocup_tdesc">
+  		 <tipo>INPUT</tipo> 
+  		 <permiso>LECTURA</permiso> 
+         <caracteres>1</caracteres> 
+         <maxCaracteres>1</maxCaracteres> 
+         <id>LN-N</id> 
+      </campos>
+   </parametro>
+   
+
+
+   <parametro formulario="encabezado" anchoTabla="100%" columnas="2" variable="encu">
+      <campos nombre="rut">
+         <descripcion>RUT</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombres">
+         <descripcion>Nombres</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="ap_paterno">
+         <descripcion>Ap. Paterno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="ap_materno">
+         <descripcion>Ap. Materno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="ciud_ccod">
+         <tipo>SELECT</tipo>
+		 <destino>paises</destino>
+         <permiso>LECTURAESCRITURA</permiso>
+         <union>pais_ccod</union>
+         <salida>pais_tdesc</salida>
+         <orden>pais_tdesc asc</orden>
+         <anulable>TRUE</anulable>
+		 <mensajeNulo>Pais</mensajeNulo>
+		 <id>TO-S</id>
+      </campos>	
+	  <campos nombre="edad">
+         <descripcion>Edad</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>5</caracteres>
+		 <maxCaracteres>2</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="pers_tfono">
+         <descripcion>telefono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	   <campos nombre="pers_tcelular">
+         <descripcion>telefono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	<campos nombre="tenfer_ccod">
+         <tipo>SELECT</tipo>
+         <destino>tipos_enfermedad</destino>
+         <union>tenfer_ccod</union>
+         <salida>tenfer_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+		 <script>onChange="valida_enfermedades();"</script> 
+		 <mensajeNulo>Ninguna</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-S</id>
+		</campos>	
+		 <campos nombre="otras">
+         <descripcion>telefono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		  <deshabilitado>TRUE</deshabilitado>
+		 <caracteres>50</caracteres>
+		 <maxCaracteres>49</maxCaracteres>
+		 <id>TO-S</id>
+		 </campos>
+		  <campos nombre="dir">
+         <descripcion>RUT</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      
+      </campos> 
+   </parametro>
+  
+  <parametro formulario="encuesta" anchoTabla="100%" columnas="2" variable="encu">
+      <campos nombre="reps_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	 
+	  <campos nombre="codeudor">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>  
+   
+   	 
+ 
+  
+  <parametro formulario="vpapa" anchoTabla="100%" columnas="2" variable="vpapa">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  
+   </parametro> 
+   
+   <parametro formulario="papa" anchoTabla="100%" columnas="2" variable="fpapa">
+    <tablas nombre="personas" accion="M"/>
+	<tablas nombre="grupo_familiar" accion="M"/>
+	<tablas nombre="direcciones" accion="M"/>
+     <campos nombre="pare_ccod">
+         <tipo>SELECT</tipo>
+         <destino>PARENTESCOS</destino>
+         <union>pare_ccod</union>
+         <salida>pare_tdesc</salida>
+		<filtro>pare_ccod =1</filtro>
+         <permiso>LECTURAESCRITURA</permiso>
+		<deshabilitado>FALSE</deshabilitado>
+         <anulable>FALSE</anulable>
+		 <permiso>OCULTO</permiso>
+         <id>TO-S</id>
+		   </campos>  
+		  <campos nombre="post_ncorr">
+         <tipo>INPUT</tipo>
+		 <permiso>OCULTO</permiso>
+      </campos>
+       <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+		 <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pers_nrut">
+         <descripcion>rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>FALSE</deshabilitado>
+		 <caracteres>8</caracteres>
+		 <maxCaracteres>8</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_xdv">
+         <descripcion>telefono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		  <script>onBlur="Validar_rut_papa();"</script>
+		  <deshabilitado>FALSE</deshabilitado>
+		 <caracteres>1</caracteres>
+		 <maxCaracteres>1</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_tape_paterno">
+         <descripcion>telefono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>FALSE</deshabilitado>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_tape_materno">
+         <descripcion>telefono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>FALSE</deshabilitado>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_tnombre">
+         <descripcion>telefono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>FALSE</deshabilitado>
+		 <caracteres>40</caracteres>
+		 <maxCaracteres>40</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="regi_ccod">
+         <tipo>SELECT</tipo>
+         <destino>regiones</destino>
+         <union>regi_ccod</union>
+         <salida>regi_tdesc</salida>
+         <orden>regi_ccod ASC</orden>
+		 <deshabilitado>FALSE</deshabilitado>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="ciud_ccod">
+         <tipo>SELECT</tipo>
+         <destino>ciudades</destino>
+         <union>ciud_ccod</union>
+         <salida>ciud_tdesc</salida>
+         <orden>ciud_tdesc ASC</orden>
+		 <deshabilitado>FALSE</deshabilitado>
+         <permiso>LECTURAESCRITURA</permiso>
+		<deshabilitado>TRUE</deshabilitado>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-S</id>
+      </campos>
+	   <campos nombre="eciv_ccod">
+         <tipo>SELECT</tipo>
+         <destino>estados_civiles</destino>
+         <union>eciv_ccod</union>
+         <salida>eciv_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>FALSE</deshabilitado>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-S</id>
+      </campos>	
+	  <campos nombre="pers_tcelular">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_temail">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>TRUE</deshabilitado>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	        <campos nombre="dire_tcalle">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>FALSE</deshabilitado>
+         <caracteres>30</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tnro">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>FALSE</deshabilitado>
+         <caracteres>10</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="dire_tblock">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>FALSE</deshabilitado>
+         <caracteres>10</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tpoblacion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>FALSE</deshabilitado>
+         <caracteres>30</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	   <campos nombre="dire_tfono">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>FALSE</deshabilitado>
+         <caracteres>12</caracteres>
+         <maxCaracteres>15</maxCaracteres>
+         <id>TE-S</id>
+      </campos>
+	    <campos nombre="nedu_ccod">
+         <tipo>SELECT</tipo>
+         <destino>niveles_educacionales</destino>
+         <union>nedu_ccod</union>
+         <salida>nedu_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-S</id>
+      </campos> 
+	   <campos nombre="sicupadre_ccod">
+         <tipo>SELECT</tipo>
+         <destino>situacion_ocupacional_padres</destino>
+         <union>sicupadre_ccod</union>
+         <salida>sicupadre_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-S</id>
+		 </campos> 
+		  <campos nombre="sitocup_ccod">
+  		 <tipo>INPUT</tipo> 
+  		 <permiso>LECTURAESCRITURA</permiso> 
+         <caracteres>2</caracteres> 
+         <maxCaracteres>2</maxCaracteres> 
+         <id>TO-S</id> 
+      
+      </campos> 
+	  
+   </parametro> 
+   
+ <parametro formulario="mama" anchoTabla="100%" columnas="2" variable="fmama">
+ <tablas nombre="personas" accion="M"/>
+	<tablas nombre="grupo_familiar" accion="M"/>
+	<tablas nombre="direcciones" accion="M"/>	
+   <campos nombre="pare_ccod">
+         <tipo>SELECT</tipo>
+         <destino>PARENTESCOS</destino>
+         <union>pare_ccod</union>
+         <salida>pare_tdesc</salida>
+		<filtro>pare_ccod =2</filtro>
+         <permiso>LECTURAESCRITURA</permiso>
+		<deshabilitado>FALSE</deshabilitado>
+         <anulable>FALSE</anulable>
+         <id>TO-S</id>
+		  </campos>
+		  <campos nombre="post_ncorr">
+         <tipo>INPUT</tipo>
+		 <permiso>OCULTO</permiso>
+      </campos>
+       <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+		 <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pers_nrut">
+         <descripcion>rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>FALSE</deshabilitado>
+		 <caracteres>8</caracteres>
+		 <maxCaracteres>8</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_xdv">
+         <descripcion>telefono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>FALSE</deshabilitado>
+		  <script>onBlur="Validar_rut_mama();"</script>
+		 <caracteres>1</caracteres>
+		 <maxCaracteres>1</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_tape_paterno">
+         <descripcion>telefono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>FALSE</deshabilitado>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_tape_materno">
+         <descripcion>telefono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>FALSE</deshabilitado>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_tnombre">
+         <descripcion>telefono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>FALSE</deshabilitado>
+		 <caracteres>40</caracteres>
+		 <maxCaracteres>40</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="regi_ccod">
+         <tipo>SELECT</tipo>
+         <destino>regiones</destino>
+         <union>regi_ccod</union>
+         <salida>regi_tdesc</salida>
+         <orden>regi_ccod ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>FALSE</deshabilitado>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="ciud_ccod">
+         <tipo>SELECT</tipo>
+         <destino>ciudades</destino>
+         <union>ciud_ccod</union>
+         <salida>ciud_tdesc</salida>
+         <orden>ciud_tdesc ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>FALSE</deshabilitado>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-S</id>
+      </campos>
+	   <campos nombre="eciv_ccod">
+         <tipo>SELECT</tipo>
+         <destino>estados_civiles</destino>
+         <union>eciv_ccod</union>
+         <salida>eciv_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>FALSE</deshabilitado>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-S</id>
+      </campos>	
+	  <campos nombre="pers_tcelular">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>FALSE</deshabilitado>
+         <caracteres>20</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_temail">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>FALSE</deshabilitado>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	        <campos nombre="dire_tcalle">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>FALSE</deshabilitado>
+         <caracteres>30</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tnro">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>FALSE</deshabilitado>
+         <caracteres>10</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="dire_tblock">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>FALSE</deshabilitado>
+         <caracteres>10</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tpoblacion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>FALSE</deshabilitado>
+         <caracteres>30</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	   <campos nombre="dire_tfono">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>FALSE</deshabilitado>
+         <caracteres>12</caracteres>
+         <maxCaracteres>15</maxCaracteres>
+         <id>TE-S</id>
+      </campos>
+	    <campos nombre="nedu_ccod">
+         <tipo>SELECT</tipo>
+         <destino>niveles_educacionales</destino>
+         <union>nedu_ccod</union>
+         <salida>nedu_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-S</id>
+      </campos> 
+	   <campos nombre="sicupadre_ccod">
+         <tipo>SELECT</tipo>
+         <destino>situacion_ocupacional_padres</destino>
+         <union>sicupadre_ccod</union>
+         <salida>sicupadre_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-S</id>
+		 </campos> 
+		  <campos nombre="sitocup_ccod">
+  		 <tipo>INPUT</tipo> 
+  		 <permiso>LECTURAESCRITURA</permiso> 
+         <caracteres>2</caracteres> 
+         <maxCaracteres>2</maxCaracteres> 
+         <id>TO-S</id> 
+      </campos> 
+	  
+   </parametro>
+    
+ <parametro formulario="hermano1" anchoTabla="100%" columnas="2" variable="fhermano1">
+  <tablas nombre="personas" accion="M"/>
+	<tablas nombre="grupo_familiar" accion="M"/>
+ 	   <campos nombre="pare_ccod">
+         <tipo>SELECT</tipo>
+         <destino>PARENTESCOS</destino>
+         <union>pare_ccod</union>
+         <salida>pare_tdesc</salida>
+		<filtro>pare_ccod =3</filtro>
+         <permiso>LECTURAESCRITURA</permiso>
+		
+         <anulable>FALSE</anulable>
+         <id>TO-S</id>
+		  
+		  </campos>	
+		   <campos nombre="post_ncorr">
+         <tipo>INPUT</tipo>
+		 <permiso>OCULTO</permiso>
+      </campos>
+       <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+		 <permiso>OCULTO</permiso>
+      </campos>	  
+      <campos nombre="pers_nrut">
+         <descripcion>rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>8</caracteres>
+		 <maxCaracteres>8</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_xdv">
+         <descripcion>pers_xdv</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		<script>onBlur="Validar_rut_her1();"</script>
+		 <caracteres>1</caracteres>
+		 <maxCaracteres>1</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_tape_paterno">
+         <descripcion>telefono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_tape_materno">
+         <descripcion>telefono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_tnombre">
+         <descripcion>telefono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>40</caracteres>
+		 <maxCaracteres>40</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="regi_ccod">
+         <tipo>SELECT</tipo>
+         <destino>regiones</destino>
+         <union>regi_ccod</union>
+         <salida>regi_tdesc</salida>
+         <orden>regi_ccod ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="ciud_ccod">
+         <tipo>SELECT</tipo>
+         <destino>ciudades</destino>
+         <union>ciud_ccod</union>
+         <salida>ciud_tdesc</salida>
+         <orden>ciud_tdesc ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+		
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-S</id>
+      </campos>
+	   <campos nombre="eciv_ccod">
+         <tipo>SELECT</tipo>
+         <destino>estados_civiles</destino>
+         <union>eciv_ccod</union>
+         <salida>eciv_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-S</id>
+      </campos>	
+	  
+	    <campos nombre="nied_ccod">
+         <tipo>SELECT</tipo>
+         <destino>nivel_educacional</destino>
+         <union>nied_ccod</union>
+         <salida>nied_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-S</id>
+      </campos> 
+	   <campos nombre="sicupadre_ccod">
+         <tipo>SELECT</tipo>
+         <destino>situacion_ocupacional_padres</destino>
+         <union>sicupadre_ccod</union>
+         <salida>sicupadre_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-S</id>
+		 </campos> 
+		  <campos nombre="pers_fnacimiento">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <tipoDato>FECHA</tipoDato>
+         <id>FE-S</id>
+      </campos>
+   </parametro>
+
+	<parametro formulario="hermano2" anchoTabla="100%" columnas="2" variable="fhermano2">
+ 	   <campos nombre="pare_ccod">
+         <tipo>SELECT</tipo>
+         <destino>PARENTESCOS</destino>
+         <union>pare_ccod</union>
+         <salida>pare_tdesc</salida>
+		<filtro>pare_ccod =3</filtro>
+         <permiso>LECTURAESCRITURA</permiso>
+	
+         <anulable>FALSE</anulable>
+         <id>TO-S</id>
+		  
+		  </campos>
+		    <campos nombre="post_ncorr">
+         <tipo>INPUT</tipo>
+		 <permiso>OCULTO</permiso>
+      </campos>
+       <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+		 <permiso>OCULTO</permiso>
+      </campos>			  
+      <campos nombre="pers_nrut">
+         <descripcion>rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>8</caracteres>
+		 <maxCaracteres>8</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_xdv">
+         <descripcion>telefono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <script>onBlur="Validar_rut_her2();"</script>
+		 <caracteres>1</caracteres>
+		 <maxCaracteres>1</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_tape_paterno">
+         <descripcion>telefono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_tape_materno">
+         <descripcion>telefono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_tnombre">
+         <descripcion>telefono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>40</caracteres>
+		 <maxCaracteres>40</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="regi_ccod">
+         <tipo>SELECT</tipo>
+         <destino>regiones</destino>
+         <union>regi_ccod</union>
+         <salida>regi_tdesc</salida>
+         <orden>regi_ccod ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="ciud_ccod">
+         <tipo>SELECT</tipo>
+         <destino>ciudades</destino>
+         <union>ciud_ccod</union>
+         <salida>ciud_tdesc</salida>
+         <orden>ciud_tdesc ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+		
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-S</id>
+      </campos>
+	   <campos nombre="eciv_ccod">
+         <tipo>SELECT</tipo>
+         <destino>estados_civiles</destino>
+         <union>eciv_ccod</union>
+         <salida>eciv_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-S</id>
+      </campos>	
+	  
+	    <campos nombre="nied_ccod">
+         <tipo>SELECT</tipo>
+         <destino>nivel_educacional</destino>
+         <union>nied_ccod</union>
+         <salida>nied_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-S</id>
+      </campos> 
+	   <campos nombre="sicupadre_ccod">
+         <tipo>SELECT</tipo>
+         <destino>situacion_ocupacional_padres</destino>
+         <union>sicupadre_ccod</union>
+         <salida>sicupadre_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-S</id>
+		 </campos> 
+		  <campos nombre="pers_fnacimiento">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <tipoDato>FECHA</tipoDato>
+         <id>FE-S</id>
+      </campos>
+   </parametro>
+  
+    <parametro formulario="hermano3" anchoTabla="100%" columnas="2" variable="fhermano3">
+ 	   <campos nombre="pare_ccod">
+         <tipo>SELECT</tipo>
+         <destino>PARENTESCOS</destino>
+         <union>pare_ccod</union>
+         <salida>pare_tdesc</salida>
+		<filtro>pare_ccod =3</filtro>
+         <permiso>LECTURAESCRITURA</permiso>
+		
+         <anulable>FALSE</anulable>
+         <id>TO-S</id>
+		  
+		  </campos>	
+		    <campos nombre="post_ncorr">
+         <tipo>INPUT</tipo>
+		 <permiso>OCULTO</permiso>
+      </campos>
+       <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+		 <permiso>OCULTO</permiso>
+      </campos>		  
+      <campos nombre="pers_nrut">
+         <descripcion>rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>8</caracteres>
+		 <maxCaracteres>8</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_xdv">
+         <descripcion>telefono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <script>onBlur="Validar_rut_her3();"</script>
+		 <caracteres>1</caracteres>
+		 <maxCaracteres>1</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_tape_paterno">
+         <descripcion>telefono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_tape_materno">
+         <descripcion>telefono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_tnombre">
+         <descripcion>telefono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>40</caracteres>
+		 <maxCaracteres>40</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="regi_ccod">
+         <tipo>SELECT</tipo>
+         <destino>regiones</destino>
+         <union>regi_ccod</union>
+         <salida>regi_tdesc</salida>
+         <orden>regi_ccod ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="ciud_ccod">
+         <tipo>SELECT</tipo>
+         <destino>ciudades</destino>
+         <union>ciud_ccod</union>
+         <salida>ciud_tdesc</salida>
+         <orden>ciud_tdesc ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+		
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-S</id>
+      </campos>
+	   <campos nombre="eciv_ccod">
+         <tipo>SELECT</tipo>
+         <destino>estados_civiles</destino>
+         <union>eciv_ccod</union>
+         <salida>eciv_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-S</id>
+      </campos>	
+	  
+	    <campos nombre="nied_ccod">
+         <tipo>SELECT</tipo>
+         <destino>nivel_educacional</destino>
+         <union>nied_ccod</union>
+         <salida>nied_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-S</id>
+      </campos> 
+	   <campos nombre="sicupadre_ccod">
+         <tipo>SELECT</tipo>
+         <destino>situacion_ocupacional_padres</destino>
+         <union>sicupadre_ccod</union>
+         <salida>sicupadre_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-S</id>
+		 </campos> 
+		  <campos nombre="pers_fnacimiento">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <tipoDato>FECHA</tipoDato>
+         <id>FE-S</id>
+      </campos>
+   </parametro>
+  
+      
+   <parametro formulario="guardar_respuestas" variable="encu">
+      <tablas nombre="encuesta_asi_soy_yo" accion="M"/>
+   </parametro> 
+   
+  
+</Parametros>

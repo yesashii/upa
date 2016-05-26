@@ -1,0 +1,184 @@
+<Parametros>
+  <parametro formulario="botonera">
+     <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+	 <botones nombre="buscar"> 
+        <tipoTexto>BUSCAR</tipoTexto>
+	    <accion>BUSCAR</accion>
+	    <formulario>buscador</formulario>
+		<soloUnClick>TRUE</soloUnClick>
+	 </botones>
+	 <botones nombre="anterior">
+         	<tipoTexto>ANTERIOR</tipoTexto>
+         	<accion>NAVEGAR</accion>
+	 </botones>
+	  <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones>
+  </parametro>
+ 
+ <parametro formulario="f_busqueda" variable="busqueda">
+   <listas nombre="lBusqueda">
+			<item clave="sede_ccod" valor="sede_tdesc" />
+			<item clave="carr_ccod" valor="carr_tdesc" />
+			<item clave="jorn_ccod" valor="jorn_tdesc" />
+	</listas>
+	<campos nombre="sede_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+	</campos>
+	<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+	</campos>
+	<campos nombre="jorn_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+	</campos>	
+	<!--<campos nombre="carr_ccod">
+      <tipo>SELECT</tipo>
+	  <union>carr_ccod</union>
+	  <salida>carr_tdesc</salida>
+      <orden>a.carr_tdesc</orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione una Carrera</mensajeNulo>
+	  <mensajeVacio>Seleccione una Carrera</mensajeVacio>
+	  <id>TO-N</id>
+   </campos>-->
+  </parametro>
+  
+   <parametro paginaEdicion="" nuevaVentanaAlto="400" formulario="f_grados"
+      nroRegistros="10" nuevaVentanaAncho="770"
+      eliminar="FALSE" maxLista="10" 
+	  mensajeError="No se encontraron docentes para esta carrera " seleccionarTodo="FALSE" editar="FALSE"  anchoTabla="100%"  nuevaVentana="FALSE" variable="especialidades" >
+ 	  <campos nombre="jornada">
+	    <descripcion>JORNADA</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="profesional">
+	    <descripcion>No.</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="hora_profesional">
+	    <descripcion>Horas</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="tecnico">
+	    <descripcion>No.</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="hora_tecnico">
+	    <descripcion>Horas</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="sin_grado">
+	    <descripcion>No.</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="hora_sin_grado">
+	    <descripcion>Horas</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="total_docentes">
+	    <descripcion>No.</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="total_horas">
+	    <descripcion>Horas</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+   </parametro>
+   <parametro paginaEdicion="" nuevaVentanaAlto="400" formulario="f_docentes"
+      nroRegistros="10" nuevaVentanaAncho="770"
+      eliminar="FALSE" maxLista="10" 
+	  mensajeError="No se encontraron docentes para esta carrera " seleccionarTodo="FALSE" editar="FALSE"  anchoTabla="100%"  nuevaVentana="FALSE" variable="docentes" >
+ 	  <campos nombre="rut">
+	    <descripcion>R.U.T.</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="ap_paterno">
+	    <descripcion>Ap. Paterno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="ap_materno">
+	    <descripcion>Ap. Materno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="nombre">
+	    <descripcion>Nombre</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="horas">
+	    <descripcion>Horas</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+   </parametro>
+   <parametro paginaEdicion="" nuevaVentanaAlto="400" formulario="f_docentes_excel" nuevaVentanaAncho="770" eliminar="FALSE" 
+      mensajeError="No se encontraron docentes para esta carrera " seleccionarTodo="FALSE" editar="FALSE"  anchoTabla="100%"  nuevaVentana="FALSE" variable="docentes" >
+ 	  <campos nombre="rut">
+	    <descripcion>R.U.T.</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="ap_paterno">
+	    <descripcion>Ap. Paterno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="ap_materno">
+	    <descripcion>Ap. Materno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="nombre">
+	    <descripcion>Nombre</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="horas">
+	    <descripcion>Horas</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+   </parametro>
+</Parametros>

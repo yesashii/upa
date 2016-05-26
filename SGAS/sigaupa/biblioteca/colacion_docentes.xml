@@ -1,0 +1,85 @@
+<Parametros>
+   <parametro formulario="colacion" anchoTabla="100%" eliminar="TRUE" seleccionarTodo="TRUE"
+    editar="TRUE" paginaEdicion="colacion_modificar.asp?codigo=%mcol_ncorr%" clave="mcol_ncorr" nuevaVentana="TRUE" 
+	nuevaVentanaAncho="556" nuevaVentanaAlto="230"
+	variable="colacion" nroRegistros="10" maxLista="10">
+	 <tablas nombre="monto_colacion" accion="B"/>
+     <campos nombre="mcol_ncorr">
+	    <descripcion>Codigo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<ancho>50</ancho>
+	 </campos>
+	 <campos nombre="mcol_tdesc">
+	    <descripcion>Nombre de categoria</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>	 
+	 <campos nombre="mcol_mmonto">
+	    <descripcion>Monto Colacion</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="ANOS_CCOD">
+	    <descripcion>Año Vigente</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>	 	 
+   </parametro>
+   
+   <parametro formulario="f1_edicion" variable="colacion">
+   <tablas nombre="monto_colacion" accion="M"/>
+   <campos nombre="mcol_ncorr">
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>
+   </campos>
+   <campos nombre="mcol_tdesc">
+      <tipo>INPUT</tipo>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <caracteres>50</caracteres>
+	  <maxCaracteres>100</maxCaracteres>
+	  <id>TO-N</id>
+   </campos>
+   <campos nombre="mcol_mmonto">
+      <tipo>INPUT</tipo>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <caracteres>50</caracteres>
+	  <maxCaracteres>100</maxCaracteres>
+	  <id>TO-N</id>
+   </campos>   
+   </parametro>
+  
+  <parametro formulario="botonera">
+  <botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>ELIMINAR</accion>
+	  <url>proc_colacion_eliminar.asp</url>
+	  <formulario>edicion</formulario>
+	</botones> 
+  	<botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>AGREGAR</accion>
+	  <posicionX>100</posicionX>
+	  <posicionY>100</posicionY>
+	  <ancho>530</ancho>
+	  <alto>220</alto>
+	</botones>
+   <botones nombre="cancelar"> 
+      <tipoTexto>CANCELAR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+	<botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>proc_colacion_agregar.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>	  
+	</botones>
+  </parametro>
+  
+
+</Parametros>

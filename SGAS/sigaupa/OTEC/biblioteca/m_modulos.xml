@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="btn_busca_asignaturas">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 
+    <botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>abrir()</funcion>
+	</botones> 
+    <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	<botones nombre="salir22"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>CerrarActualizar()</funcion>
+	</botones>
+	<botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <formulario>edicion</formulario>
+         <url>eliminar_modulos.asp</url>
+    </botones>
+	<botones nombre="ver_ocultar">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Ver/Ocultar</texto>
+         <accion>ELIMINAR</accion>
+         <formulario>edicion</formulario>
+         <url>ocultar_modulos.asp</url>
+    </botones>	
+    <botones nombre="enviar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Enviar</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.formu)</funcion>
+	</botones> 
+	
+    <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones>
+ </parametro>
+ <parametro formulario="form_busca_modulos"
+ clave="mote_ccod" variable="m" 
+ nuevaVentana="true" nuevaVentanaAlto="200" nuevaVentanaAncho="400"
+ mensajeError="No hay módulos que coincidan con el criterio de búsqueda" 
+ colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" 
+ editar="true" eliminar="true" agregar="true"
+  paginaEdicion="editar_modulos.asp?codigo=%mote_ccod%" maxLista="10" nroRegistros="10" anchoTabla="98%">
+  <campos nombre="mote_ccod">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Código</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+  <campos nombre="mote_tdesc">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Módulo</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+  <campos nombre="ver_ocultar">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Ver/Ocultar</descripcion> 
+	  <alineamiento>CENTER</alineamiento> 
+  </campos>
+</parametro>
+
+</Parametros>

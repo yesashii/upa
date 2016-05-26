@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+<parametro formulario="botonera">
+   	 <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	   <funcionValidacion>Validar();</funcionValidacion>
+	</botones>
+   	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>	 
+	</botones>	
+	<botones nombre="autorizar"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+		<texto>REGISTRAR ASISTENCIA</texto>
+	    <accion>NAVEGAR</accion>
+	    <url>autorizar_ingreso.asp</url>
+	    <formulario>autorizar</formulario>
+	</botones>
+	 <botones nombre="imprimir_alumno"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Imprimir Ficha</texto>
+		<accion>AGREGAR</accion>
+		<target>_blank</target>
+	 </botones>
+	 <botones nombre="nuevos"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+		<texto>Pase por $2.700</texto>
+	    <accion>JAVASCRIPT</accion>
+		<funcion>pase_escolar('S');</funcion>
+	</botones>
+	<botones nombre="antiguos"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+		<texto>Pase por $1.100</texto>
+	    <accion>JAVASCRIPT</accion>
+		<funcion>pase_escolar('N');</funcion>
+	</botones>
+	<botones nombre="practica">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Antecedentes de Práctica</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>practica(document.edicion)</funcion>
+    </botones>
+	<botones nombre="comision">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Comisión de Tesis</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>comision_tesis(document.edicion)</funcion>
+    </botones>
+	<botones nombre="tesis">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Antecedentes Tesis</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>datos_tesis(document.edicion)</funcion>
+    </botones>	
+</parametro>
+<parametro formulario="busqueda_usuarios_nuevo" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+		 <script>onBlur="genera_digito(this.value);"</script>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+   </parametro>
+   <parametro formulario="info_carreras" anchoTabla="98%" variable="m" eliminar="true" clave="plan_ccod">
+	  <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="carrera">
+         <descripcion>CARRERA</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="jornada">
+         <descripcion>JORNADA</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="plan_tdesc">
+	     <descripcion>PLAN</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="emat_tdesc">
+         <descripcion>ESTADO</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="botonera_de">
+      <botones nombre="agregar">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>AGREGAR</accion>
+         <url>adm_titulados_agregar.asp</url>
+         <alto>400</alto>
+         <ancho>750</ancho>
+         <posicionX>50</posicionX>
+         <posicionY>50</posicionY>
+         <scroll>TRUE</scroll>
+      </botones>
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_titulados.asp</url>
+      </botones>
+      <botones nombre="siguiente">
+         <tipoTexto>SIGUIENTE</tipoTexto>
+         <accion>GUARDAR</accion>
+         <url>proc_adm_titulados_agregar.asp</url>
+         <soloUnClick>TRUE</soloUnClick>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="aceptar">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <url>proc_adm_titulados_agregar_2.asp?seguir=N</url>
+         <soloUnClick>TRUE</soloUnClick>
+         <formulario>edicion</formulario>
+      </botones>
+	  <botones nombre="agregar_docente">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Agregar Docente</texto>
+         <accion>GUARDAR</accion>
+         <url>antecedentes_titulados_escuela_comision_proc.asp</url>
+         <soloUnClick>TRUE</soloUnClick>
+         <formulario>comision</formulario>
+      </botones>
+	  <botones nombre="guardar_practica">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Guardar</texto>
+         <accion>GUARDAR</accion>
+         <url>antecedentes_titulos_escuela_practica_proc.asp</url>
+         <soloUnClick>TRUE</soloUnClick>
+         <formulario>practica</formulario>
+      </botones>
+	  <botones nombre="guardar_tesis">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Guardar Datos Tesis</texto>
+         <accion>GUARDAR</accion>
+         <url>antecedentes_titulados_escuela_tesis_proc.asp</url>
+         <soloUnClick>TRUE</soloUnClick>
+         <formulario>tesis</formulario>
+      </botones>
+	  <botones nombre="guardar_concentracion">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Guardar Datos Concentración</texto>
+         <accion>GUARDAR</accion>
+         <url>proc_agregar_concentracion.asp</url>
+         <soloUnClick>TRUE</soloUnClick>
+         <formulario>concentracion</formulario>
+		 <funcionValidacion>calcular();</funcionValidacion>
+      </botones>
+      <botones nombre="guardar_nuevo">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Guardar/Nuevo</texto>
+         <accion>GUARDAR</accion>
+         <url>proc_adm_titulados_agregar_2.asp?seguir=S</url>
+         <soloUnClick>TRUE</soloUnClick>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="cerrar">
+         <tipoTexto>CANCELAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  <botones nombre="certificado_titulo">
+  		<tipoTexto>DEFINIR</tipoTexto> 
+  		<texto>Imprimir Certificado de Título</texto> 
+  		<accion>JAVASCRIPT</accion> 
+  		<funcion>certificado_titulo()</funcion> 
+  	  </botones>
+	  <botones nombre="imprimir_titulado">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Imprimir Conc. Notas Titulados</texto>
+         <accion>GUARDAR</accion>
+         <url>../certificados/conc_notas_imprimible.asp?TITULADO=SI</url>
+         <formulario>edicion</formulario>
+         <target>_BLANK</target>
+      </botones>
+	  <botones nombre="guardar_notas">
+  		<tipoTexto>DEFINIR</tipoTexto> 
+  		<texto>Guardar Solicitud Concentración</texto> 
+  		<accion>JAVASCRIPT</accion> 
+  		<funcion>guarda_notas()</funcion> 
+  	  </botones>
+   </parametro>
+   <parametro formulario="encabezado_de" variable="dp" anchoTabla="100%" columnas="2">
+      <campos nombre="rut">
+         <descripcion>RUT</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="carr_tdesc">
+         <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="plan_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="espe_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="peri_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="egre_bingr_manual">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="detalle_datos_practica" anchoTabla="100%" variable="egreso">
+      <tablas nombre="detalles_titulacion_carrera" accion="M"/>
+	  <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+  	  <campos nombre="plan_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="nombre_empresa">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-S</id>
+         <caracteres>35</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+      </campos>
+	  <campos nombre="ubicacion_empresa">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-S</id>
+         <caracteres>35</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+      </campos>
+	  <campos nombre="telefono_empresa">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-S</id>
+         <caracteres>20</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+      </campos>
+	  <campos nombre="email_empresa">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>EM-S</id>
+         <caracteres>35</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+      </campos>
+	  <campos nombre="nombre_encargado">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-S</id>
+         <caracteres>35</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+      </campos>
+	  <campos nombre="cargo_encargado">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-S</id>
+         <caracteres>35</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+      </campos>
+	  <campos nombre="inicio_practica">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>FE-S</id>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+      </campos>
+	  <campos nombre="termino_practica">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>FE-S</id>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+      </campos>
+	  <campos nombre="descripcion_practica">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-S</id>
+         <caracteres>35</caracteres>
+         <maxCaracteres>80</maxCaracteres>
+      </campos>
+	  <campos nombre="horas_practica">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>NU-S</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>4</maxCaracteres>
+      </campos>
+   </parametro>
+   <parametro formulario="comision_tesis" anchoTabla="100%" variable="comision">
+      <tablas nombre="comision_tesis" accion="M"/>
+	  <campos nombre="ctes_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="saca_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+  	  <campos nombre="plan_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="docente">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+         <caracteres>35</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+      </campos>
+	  <campos nombre="calificacion_asignada">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>NT-N</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>4</maxCaracteres>
+      </campos>
+  </parametro>
+  <parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" 
+  paginaEdicion="antecedentes_titulados_escuela_comision.asp?pers_ncorr=%pers_ncorr%&amp;plan_ccod=%plan_ccod%&amp;ctes_ncorr=%ctes_ncorr%" 
+  formulario="lista_comision_tesis" nroRegistros="15" agregar="false" eliminar="false" maxLista="15" clave="ctes_ncorr" 
+  mensajeError="Aún no se ha ingresado la comisión evaluadora" colorBase="#F1F1E4" editar="true" anchoTabla="98%" nuevaVentana="false"
+  variable="comision">
+      <tablas nombre="comision_tesis" accion="M"/>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="saca_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="plan_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ctes_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="docente">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nombre Profesor</descripcion>
+      </campos>
+      <campos nombre="calificacion_asignada">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Calificación</descripcion>
+      </campos>
+   </parametro>
+   <parametro formulario="datos_tesis" anchoTabla="100%" variable="tesis">
+      <tablas nombre="detalles_titulacion" accion="M"/>
+	  <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+  	  <campos nombre="plan_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tema_tesis">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-S</id>
+         <caracteres>80</caracteres>
+         <maxCaracteres>80</maxCaracteres>
+      </campos>
+	  <campos nombre="inicio_tesis">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>FE-S</id>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+      </campos>
+	  <campos nombre="termino_tesis">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>FE-S</id>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+      </campos>
+   </parametro>
+</Parametros>

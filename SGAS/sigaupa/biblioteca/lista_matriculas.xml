@@ -1,0 +1,152 @@
+<Parametros>
+   <parametro formulario="botonera">
+         <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>salir()</funcion>
+      </botones>
+      <botones nombre="buscar">
+  		<tipoTexto>BUSCAR</tipoTexto> 
+  		<accion>JAVASCRIPT</accion> 
+  		<funcion>enviar();</funcion> 
+  	  </botones>
+	  <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones>
+	 <botones nombre="excel_temporal">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Listado alumnos E-mail</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones>
+   </parametro>
+ 
+ <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="list_alumnos" nroRegistros="20" clave="pers_nrut"
+		 maxLista="10" mensajeError="No se encontraron alumnos para los parametros de busqueda ingresados." colorBase="#F1F1E4" editar="false" anchoTabla="100%" 		 nuevaVentana="false" variable="a">  
+		<campos nombre="pers_ncorr">
+			<tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="rut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>RIGHT</alineamiento>
+			<descripcion>RUT</descripcion>
+			
+		</campos>
+		<campos nombre="nombre">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Nombre Persona</descripcion>
+    	</campos>
+		<campos nombre="fono">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Fono</descripcion>
+    	</campos>
+		<campos nombre="email">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Email</descripcion>
+    	</campos>
+		<campos nombre="jornada">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Jornada</descripcion>
+    	</campos>
+		<campos nombre="fecha">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Fecha</descripcion>
+    	</campos>
+	</parametro>  
+   <parametro formulario="f_busqueda" variable="busqueda">
+    <campos nombre="sede_ccod" >
+      <tipo>SELECT</tipo> 
+      <destino>sedes</destino>
+      <union>sede_ccod</union> 
+      <salida>sede_tdesc</salida> 
+      <permiso>LECTURAESCRITURA</permiso> 
+	  <mensajeNulo>Seleccione una Sede</mensajeNulo>
+	  <mensajeVacio>Seleccione una Sede</mensajeVacio>
+  	  <script>onChange="CargarCarreras(this.form, this.value)"</script>
+	  <id>TO-N</id>
+	</campos>
+	<campos nombre="carr_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>carreras</destino> 
+	  <union>carr_ccod</union>
+	  <salida>CARR_TDESC</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <orden>carr_tdesc</orden>
+	  <mensajeNulo>Seleccione una Carrera</mensajeNulo>
+      <mensajeVacio>Seleccione una Carrera</mensajeVacio>
+	  <script>onChange="CargarJornadas(this.form, this.value)"</script>
+	  <id>TO-N</id>
+   </campos> 
+   <campos nombre="jorn_ccod" >
+      <tipo>SELECT</tipo> 
+      <destino>jornadas</destino>
+      <union>jorn_ccod</union> 
+      <salida>jorn_tdesc</salida> 
+      <permiso>LECTURAESCRITURA</permiso> 
+	  <orden>jorn_tdesc</orden>
+	  <mensajeNulo>Seleccione una Jornada</mensajeNulo>
+	  <mensajeVacio>Seleccione una Jornada</mensajeVacio>
+	  <id>TO-N</id>
+	</campos>
+  </parametro>
+   <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="list_alumnos_matriculados" nroRegistros="20" clave="pers_nrut"
+		 maxLista="10" mensajeError="No se encontraron alumnos para los parametros de busqueda ingresados." colorBase="#F1F1E4" editar="false" anchoTabla="100%" 		 nuevaVentana="false" variable="a">  
+		<campos nombre="pers_ncorr">
+			<tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="rut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>RIGHT</alineamiento>
+			<descripcion>RUT</descripcion>
+		</campos>
+		<campos nombre="nombre">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Nombre Persona</descripcion>
+    	</campos>
+		<campos nombre="fono">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Fono</descripcion>
+    	</campos>
+		<campos nombre="email">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Email</descripcion>
+    	</campos>
+		
+		<campos nombre="fecha">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Fecha</descripcion>
+    	</campos>
+		<campos nombre="estado">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Estado</descripcion>
+    	</campos>
+	</parametro>  
+</Parametros>

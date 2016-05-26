@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="botonera">
+	   	<botones nombre="salir"> 
+		  	<tipoTexto>SALIR</tipoTexto>
+		  	<accion>NAVEGAR</accion>
+		  	<url>../lanzadera/lanzadera.asp</url>
+		</botones>  
+	   	<botones nombre="buscar"> 
+		  	<tipoTexto>BUSCAR</tipoTexto>
+		  	<accion>BUSCAR</accion>
+		  	<formulario>buscador</formulario>
+		  	<soloUnClick>TRUE</soloUnClick>	  
+		</botones>
+		<botones nombre="excel">
+			 <tipoTexto>DEFINIR</tipoTexto>
+			 <texto>Excel</texto>
+			 <accion>BUSCAR</accion>
+			 <url>inscritos_cursos_excel.asp</url>
+			 <formulario>buscador</formulario>
+        </botones>
+	    <botones nombre="grabar"> 
+      		<tipoTexto>GUARDAR</tipoTexto>
+	  		<accion>GUARDAR</accion>
+			<formulario>edicion</formulario>
+            <url>impresion_certificados_cursos_proc.asp</url>		
+		</botones>
+		<botones nombre="imprimir_certificado">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Imprimir Acta</texto>
+         <accion>AGREGAR</accion>
+         <url>../reportesnet/cert_alumno.aspx</url>
+      </botones>
+   </parametro>   
+  
+  <parametro formulario="busqueda_cursos" variable="busqueda">
+   <campos nombre="tdet_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>tipos_detalle</destino> 
+	  <union>tdet_ccod</union>
+	  <salida>tdet_tdesc</salida>
+	  <filtro>tcom_ccod in (7) and tdet_bvigente='S'</filtro>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Curso</mensajeNulo>
+	  <id>TO-N</id>
+	 </campos>
+  </parametro>
+  
+   
+  <parametro formulario="f_cursos" variable="cursos" anchoTabla="100%"
+  eliminar="FALSE" nroRegistros="10" maxLista="10"  
+   mensajeError="No se encontraron personas inscritas en los cursos selecionados...">
+  <campos nombre="c_ding_ndocto">
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>	  
+   </campos>
+   <campos nombre="rut">
+      <descripcion>Nº Rut</descripcion>
+	  <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="nombre_persona">
+      <descripcion>Nombre</descripcion>
+	  <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="comprobante">
+      <descripcion>Nº Comprobante</descripcion>
+	  <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="fecha_inscrito">
+   <descripcion>Fecha Inscripcion</descripcion>
+     <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="tdet_tdesc">
+   <descripcion>Curso</descripcion>
+      <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+   </campos>
+ </parametro>
+    
+  <parametro formulario="f_listado_alumnos" variable="cursos" anchoTabla="100%"
+   mensajeError="No se encontraron personas inscritas en los cursos selecionados...">
+  <campos nombre="c_ding_ndocto">
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>	  
+   </campos>
+   <campos nombre="comprobante">
+      <descripcion>Nº Comprobante</descripcion>
+	  <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="fecha_inscrito">
+   <descripcion>Fecha Inscripcion</descripcion>
+     <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="tdet_tdesc">
+   <descripcion>Curso</descripcion>
+      <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="nombre_persona">
+   		<descripcion>Persona</descripcion>
+      	<tipo>INPUT</tipo>
+	  	<permiso>OCULTO</permiso>
+   </campos>
+  	<campos nombre="rut">
+   		<descripcion>Rut</descripcion>
+      	<tipo>INPUT</tipo>
+	  	<permiso>OCULTO</permiso>	  
+   </campos>
+   <campos nombre="telefono">
+   		<descripcion>Telefono</descripcion>
+     	<tipo>INPUT</tipo>
+	  	<permiso>LECTURA</permiso>
+  	</campos>
+  	<campos nombre="direccion">
+  		<descripcion>Direccion</descripcion>
+      	<tipo>INPUT</tipo>
+	  	<permiso>LECTURA</permiso>
+	</campos>
+  </parametro>
+  <parametro formulario="datos_cursos" anchoTabla="100%" variable="d_cursos">
+      <tablas nombre="datos_cursos" accion="M"/>
+	  <campos nombre="tdet_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="nombre_curso">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+         <caracteres>70</caracteres>
+         <maxCaracteres>100</maxCaracteres>
+      </campos>
+	  <campos nombre="horas_curso">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>NU-N</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>4</maxCaracteres>
+      </campos>
+	  <campos nombre="organizado_por">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+         <caracteres>70</caracteres>
+         <maxCaracteres>100</maxCaracteres>
+      </campos>
+	  <campos nombre="periodo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+         <caracteres>70</caracteres>
+         <maxCaracteres>100</maxCaracteres>
+      </campos>
+ </parametro>
+ </Parametros>

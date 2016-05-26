@@ -1,0 +1,214 @@
+﻿<settings>
+	<app_name>Primeros pasos en la programación con Python</app_name>
+	<vendor_name>video2brain</vendor_name>
+	<unique_app_code>ES_743</unique_app_code>
+	<debug>false</debug>
+	<videodebug>false</videodebug>
+	<url>http://www.video2brain.com</url>
+	
+	<splash_image>media/splash_image.png</splash_image>
+	<splash_show_status>false</splash_show_status>
+	
+	<bg_image>media/bg_image.jpg</bg_image>
+	<exit_info>media/exit.swf</exit_info>
+	
+	<xxdata_location></xxdata_location>
+	
+	<moviefolder_1024></moviefolder_1024>
+	<moviefolder_1280>videos/</moviefolder_1280>
+	<wfiles_folder></wfiles_folder>
+	<logo_bottom>media/lynda_v2b.png</logo_bottom>
+	
+	<default_stage_width>1284</default_stage_width>
+	<default_stage_height>900</default_stage_height>
+	<minimum_stage_width>1024</minimum_stage_width>
+	<minimum_stage_height>400</minimum_stage_height>
+	<maximum_teaser_image_height>132</maximum_teaser_image_height>
+	
+	<search_active>true</search_active>
+	<search_input_default_message>Buscar...</search_input_default_message>
+	<search_input_field_width>300</search_input_field_width>
+	<search_input_field_height>32</search_input_field_height>
+	
+	<tab_home></tab_home>
+	<tab_dvd_content>Contenido del DVD</tab_dvd_content>
+	<tab_bookmarks>Mis marcadores</tab_bookmarks>
+	<tab_online></tab_online>
+	<tab_help>Ayuda</tab_help>
+	<tab_setup></tab_setup>
+	
+	<tab_search>Búsqueda</tab_search>
+
+	
+	<additional_tabs>
+		<tab xml_file="produkte.xml">Otros productos</tab>
+		<tab xml_file="webtipps.xml">Nuestras webs</tab>
+		<tab xml_file="welcome.xml"></tab>
+		<tab xml_file="autor.xml">Tu formador</tab>
+	</additional_tabs>
+	
+	
+	<mainmenu_welcome>Bienvenida</mainmenu_welcome>
+	<mainmenu_playall>Reproducir todos los vídeos</mainmenu_playall>
+	<mainmenu_directory>Índice de contenidos</mainmenu_directory>
+	<mainmenu_chapterbrowser></mainmenu_chapterbrowser>
+	
+	<mainmenu_show_bg>true</mainmenu_show_bg>
+	
+	<mainmenu_help_image>media/f1_is_for_help.png</mainmenu_help_image>
+	
+	<no_connection_image>media/no_connection.png</no_connection_image>
+	
+	<targetF1>Ayuda</targetF1>
+	<targetLOST>Ayuda</targetLOST>
+	
+	<submenu_show_back_bar>true</submenu_show_back_bar>
+	<submenu_show_back_button>true</submenu_show_back_button>
+	
+	<menu_playall_chapter>Reproducir los vídeos del capítulo</menu_playall_chapter>
+	<menu_playall_chapter_desc>Haz clic aquí si quieres ver todos los vídeos del capítulo</menu_playall_chapter_desc>
+	<menu_exit>Cerrar el curso</menu_exit>
+	<menu_back>atrás</menu_back>
+	
+	<contents_label>Contenido</contents_label>
+	<teaser_info_label>Info</teaser_info_label>
+	<teaser_info_desc>Selecciona alguna de las siguientes opciones</teaser_info_desc>
+	
+	<directory_label>Índice de contenidos</directory_label>
+	<directory_desc>Selecciona alguna de las siguientes opciones</directory_desc>
+	
+	<search_label>Resultados de la búsqueda para</search_label>
+	<search_desc>Tu búsqueda ha dado los siguientes resultados</search_desc>
+	
+	<exit_desc>Haz clic en la pantalla para salir del curso</exit_desc>
+	<menu_print>Imprimir el índice de contenidos</menu_print>
+	<chapter_desc>Capítulo</chapter_desc>
+	<sub_chapter_desc>Subcapítulo</sub_chapter_desc>
+	<movie>Vídeo</movie>
+	<duration_desc>Duración</duration_desc>
+	<total_duration_desc>Duración Total</total_duration_desc>
+	<overlay_close_help>Cerrar la ayuda</overlay_close_help>
+	
+	
+	
+	<mct_core>mctcore.swf</mct_core>
+	<mct_question>Pregunta</mct_question>
+	<mct_submit_button_label>Obtener una respuesta</mct_submit_button_label>
+	<mct_close_button_label>Cerrar el test</mct_close_button_label>
+	<mct_next_button_label>pregunta siguiente</mct_next_button_label>
+	<mct_help_button_label>Consejos</mct_help_button_label>
+	<mct_result_button_label>Resultado</mct_result_button_label>
+	<mct_result_sentence_a>Has obtenido</mct_result_sentence_a>
+	<mct_result_sentence_b>Obtenido</mct_result_sentence_b>
+	<mct_result_sentence_c>Esto conlleva</mct_result_sentence_c>
+	<mct_percent_wording>Porcentaje</mct_percent_wording>
+	<mct_status_label>Tu estado</mct_status_label>
+	
+	
+	<my_bm_label>Mis marcadores</my_bm_label>
+	<my_bm_desc>Has establecido los siguientes marcadores.</my_bm_desc>
+	<my_bm_teaser_info_label>Información</my_bm_teaser_info_label>
+	<my_bm_teaser_info_desc>Selecciona un marcador</my_bm_teaser_info_desc>
+	<my_bm_no_bookmarks_desc>No has establecido aún ningún marcador</my_bm_no_bookmarks_desc>
+	<my_bm_start_video_desc>Reproducir el vídeo a partir de este marcador.</my_bm_start_video_desc>
+	<my_bm_show_legend>false</my_bm_show_legend>
+	<my_bm_legend_desc>mis marcadores</my_bm_legend_desc>
+	<my_bm_pd_legend_desc>marcadores de video2brain</my_bm_pd_legend_desc>
+	
+	
+	<allow_bookmarks>true</allow_bookmarks>
+	<bookmark_desc>Marcadores del vídeo</bookmark_desc>
+	<bookmark_longdesc>Marcadores en este vídeo</bookmark_longdesc>
+	<set_bookmark_desc>Establecer marcadores</set_bookmark_desc>
+	<edit_bookmark_desc>Editar marcadores</edit_bookmark_desc>
+	<predefined_bookmark_desc>marcadores de video2brain</predefined_bookmark_desc>
+	<tooltip_bookmark>Establecer marcadores</tooltip_bookmark>
+	<tooltip_next_bookmark>Marcador siguiente</tooltip_next_bookmark>
+	<tooltip_prev_bookmark>Marcador anterior</tooltip_prev_bookmark>
+	<bookmark_time_desc>Marca de tiempo</bookmark_time_desc>
+	<bookmark_label>Título</bookmark_label>
+	<bookmark_notes>Nota</bookmark_notes>
+	<bookmark_save_button_desc>Guardar</bookmark_save_button_desc>
+	<bookmark_cancle_button_desc>Cancelar</bookmark_cancle_button_desc>
+	<bookmark_del_desc>Borrar marcadores</bookmark_del_desc>
+	<bookmark_del_question>¿Quieres borrar realmente el marcador/es?</bookmark_del_question>
+	<bookmark_del_confirm>Sí</bookmark_del_confirm>
+	<bookmark_del_negate>No</bookmark_del_negate>
+	<unnamed_bookmark_desc>Sin título</unnamed_bookmark_desc>
+
+	
+	<vcore>vcore.swf</vcore>
+	<video_init_delay>2000</video_init_delay>
+	<full_video_mode_display>false</full_video_mode_display>
+	<scrub_rate>2</scrub_rate>
+	<close_video_button_desc>Cerrar vídeo</close_video_button_desc>
+	<startup_show_video_title>true</startup_show_video_title>
+	<allow_video_side_bar>true</allow_video_side_bar>
+	<next_video_button_desc>Vídeo siguiente</next_video_button_desc>
+	<prev_video_button_desc>Vídeo anterior</prev_video_button_desc>
+	
+	<next_chapter_button_desc>Capítulo siguiente</next_chapter_button_desc>
+	<prev_chapter_button_desc>Capítulo anterior</prev_chapter_button_desc>
+	
+	<chapter_videos_label>Vídeos del capítulo</chapter_videos_label>
+	<videojump_ondrag_allowed>true</videojump_ondrag_allowed>
+	<default_volume>85</default_volume>
+	<black_video_background_alpha>85</black_video_background_alpha>
+	<allow_fullscreen>true</allow_fullscreen>
+	<allow_overlay>false</allow_overlay>
+	<actualsize_label>Dimensión actual</actualsize_label>
+	<sizetofit_label>Tamaño de ventana</sizetofit_label>
+	<tooltip_fullscreen_on>Activar pantalla completa</tooltip_fullscreen_on>
+	<tooltip_fullscreen_off>Desactivar pantalla completa</tooltip_fullscreen_off>
+	<tooltip_size_option>Opciones de vídeo</tooltip_size_option>
+	<movieinfo_desc>Información del vídeo</movieinfo_desc>
+	<movieinfo_longdesc>Información del vídeo actual</movieinfo_longdesc>
+	<sidebar_label>Barra de información</sidebar_label>
+	<tooltip_open_sidebar>Abrir la barra de información</tooltip_open_sidebar>
+	<tooltip_close_sidebar>Cerrar la barra de información</tooltip_close_sidebar>
+	<chapter_video_desc>Vídeos del capítulo</chapter_video_desc>
+	<toolbar_video_desc>Vídeos de la paleta de herramientas</toolbar_video_desc>
+	<chapter_video_longdesc>Otros vídeos de este capítulo</chapter_video_longdesc>
+	<toolbar_video_longdesc>Otros vídeos de la paleta de herramientas</toolbar_video_longdesc>
+	<toolbar_back_desc>Volver a la paleta de herramientas</toolbar_back_desc>
+	<tooltip_caption_on>Activar subtítulos</tooltip_caption_on>
+	<tooltip_caption_off>Desactivar subtítulos</tooltip_caption_off>
+	<smooth_video_on>Activar calidad superior</smooth_video_on>
+	<smooth_video_off>Activar calidad estándar</smooth_video_off>
+	<fp_button_rollover_text>Texto descriptivo del vídeo</fp_button_rollover_text>
+	<wf_button_rollover_text>Abrir la carpeta de archivos base</wf_button_rollover_text>
+	<b2v_button_rollover_text>volver al vídeo</b2v_button_rollover_text>
+	<livemode_label>Interfaz reducida</livemode_label>
+	<standardmode_label>Interfaz estándar</standardmode_label>
+	<livemode_width>600</livemode_width>
+	<livemode_height>390</livemode_height>
+	<autoplay_next_movie>false</autoplay_next_movie>
+	
+	<hotspot_left_x>10</hotspot_left_x>
+    <hotspot_bottom_y>10</hotspot_bottom_y>
+    <hotspot_align>right</hotspot_align>
+    <hotspot_valign>bottom</hotspot_valign>
+    <hotspot_native_width>450</hotspot_native_width>
+    <hotspot_native_height>250</hotspot_native_height>
+    <hotspot_alpha>0</hotspot_alpha>
+    <show_channel>false</show_channel>
+    <channel_label>Switch to channel</channel_label>
+    <channel_switch_margin>1</channel_switch_margin>
+
+	<inlay_player_width>1024</inlay_player_width>
+	<inlay_player_height>576</inlay_player_height>
+	
+	<movie_tooltip>Empezar el vídeo</movie_tooltip>
+	<toolbar_tooltip>Activar la paleta de herramientas</toolbar_tooltip>
+	<mct_tooltip>Empezar el test</mct_tooltip>
+	<summary_tooltip>Mostrar el texto resumen</summary_tooltip>
+	
+	<tooltip_delay_timespan>1000</tooltip_delay_timespan>
+	<tooltip_type_speed>0</tooltip_type_speed>
+	
+	<demo_only_sentence>Contenido exclusivo de la versión completa del DVD</demo_only_sentence>
+
+	<cd_id>1</cd_id>
+	<media>DVD</media>
+</settings>
+

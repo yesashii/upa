@@ -1,0 +1,3511 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+	<parametro formulario="botonera">
+		<botones nombre="lanzadera"> 
+			<tipoTexto>SALIR</tipoTexto>
+			<accion>NAVEGAR</accion>
+			<url>../lanzadera/lanzadera.asp</url>
+		</botones>
+		<botones nombre="buscar">
+			<tipoTexto>BUSCAR</tipoTexto>
+			<accion>BUSCAR</accion>
+			<formulario>buscador</formulario>
+		</botones>
+		<botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>selector.asp</url>
+      </botones>
+	  <botones nombre="salir2" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+		<botones nombre="imprimir">
+			<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Imprimir</texto>
+			<accion>JAVASCRIPT</accion>
+			<funcion>imprimir()</funcion>
+		</botones>
+		<botones nombre="ingresar">
+			<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Ingresar</texto>
+			<accion>GUARDAR</accion>
+			<formulario>edicion</formulario>
+			<url>direccionador.asp</url>
+		</botones>
+		<botones nombre="guardar"> 
+		  <tipoTexto>GUARDAR</tipoTexto>
+		  <accion>GUARDAR</accion>
+		  <formulario>edicion</formulario>
+		  </botones>
+	</parametro>
+
+<parametro formulario="buscador" variable="bu">
+		
+		<campos nombre="anos_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Año</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>anos</destino>
+		 <filtro>anos_ccod > 2008</filtro>
+         <union>anos_ccod</union>
+         <salida>anos_ccod</salida>
+		 <orden>anos_ccod asc</orden>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="sede_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione una Sede</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>sedes</destino>
+		 <filtro>sede_ccod in (1,2,4,8)</filtro>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+		 <orden>sede_tdesc asc</orden>
+		 <id>NU-N</id>
+      </campos>
+
+</parametro>
+
+	<parametro formulario="f_mantenedor_base_1_1_a" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+        </campos>
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="base_indi_1_1_a" >
+			 <descripcion>Dato Base (%)</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>4</caracteres>
+			 <maxCaracteres>3</maxCaracteres>
+			 <id>NU-N</id>
+      </campos>
+ 	  <campos nombre="sede_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+      </campos>
+		   <campos nombre="carr_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="jorn_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="tcar_ccod">
+         	 <tipo>INPUT</tipo>
+             <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_real_1_1_a" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+		
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="carrera">
+			 <descripcion>Carrea</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	 	
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="real_indi_1_1_a" >
+         <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_estimativo_1_1_a" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+		mensajeError="No se encontraron datos">
+		
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	 	
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="estimativo_indi_1_1_a" >
+         <descripcion>Dato Estimativo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="insert_indi_1_1_a" variable="ma" >
+	 <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="anos_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tipo_mantenedora">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="tipo_indi">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="estimativo_indi_1_1_a">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="real_indi_1_1_a">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="base_indi_1_1_a">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_base_1_1_b" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+        </campos>
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="base_indi_1_1_b" >
+			 <descripcion>Dato Base(%)</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>5</caracteres>
+			 <maxCaracteres>3</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+ 	  <campos nombre="sede_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+      </campos>
+		   <campos nombre="carr_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="jorn_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="tcar_ccod">
+         	 <tipo>INPUT</tipo>
+             <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_real_1_1_b" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+		
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="carrera">
+			 <descripcion>Carrea</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	 	
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="real_indi_1_1_b" >
+         <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_estimativo_1_1_b" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+		mensajeError="No se encontraron datos">
+		
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	 	
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="estimativo_indi_1_1_b" >
+         <descripcion>Dato Estimativo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="insert_indi_1_1_b" variable="ma" >
+	 <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="anos_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tipo_mantenedora">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="tipo_indi">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="estimativo_indi_1_1_b">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="real_indi_1_1_b">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="base_indi_1_1_b">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	 
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_base_1_2" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="base_indi_1_2" >
+			<descripcion>Dato Base</descripcion>
+			 <tipo>BOLEANO</tipo>
+			 <objeto>CHECKBOX</objeto>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <valorVerdadero>1</valorVerdadero>
+			 <valorFalso>0</valorFalso>
+        </campos>
+ 	  	<campos nombre="sede_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+        </campos>
+	    <campos nombre="carr_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+        </campos>
+	    <campos nombre="jorn_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+        </campos>
+	    <campos nombre="tcar_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+       </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_real_1_2" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+		
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	 	
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="real_indi_1_2" >
+		<descripcion>Dato Real</descripcion>
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_estimativo_1_2" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+		mensajeError="No se encontraron datos">
+		
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	 	
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="estimativo_indi_1_2" >
+		<descripcion>Dato Estimativo</descripcion>
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="insert_indi_1_2" variable="ma" >
+	 <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="anos_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tipo_mantenedora">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="tipo_indi">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="estimativo_indi_1_2">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="real_indi_1_2">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="base_indi_1_2">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	 
+	</parametro>
+	<parametro formulario="f_mantenedor_base_1_5_a" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+		mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="base_indi_1_5_a" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>BOLEANO</tipo>
+			 <objeto>CHECKBOX</objeto>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <valorVerdadero>1</valorVerdadero>
+			 <valorFalso>0</valorFalso>
+        </campos>
+ 	    <campos nombre="sede_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+        </campos>
+	    <campos nombre="carr_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+        </campos>
+	   <campos nombre="jorn_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+       </campos>
+	   <campos nombre="tcar_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_real_1_5_a" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	    <campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="real_indi_1_5_a" >
+		<descripcion>Dato Real</descripcion>
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_estimativo_1_5_a" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+		mensajeError="No se encontraron datos">
+		
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	 	
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="estimativo_indi_1_5_a" >
+		<descripcion>Dato Estimativo</descripcion>
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="insert_indi_1_5_a" variable="ma" >
+	 <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="anos_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tipo_mantenedora">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="tipo_indi">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="estimativo_indi_1_5_a">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="real_indi_1_5_a">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="base_indi_1_5_a">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	 
+	</parametro>
+	<parametro formulario="f_mantenedor_base_1_5_b" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+		mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="base_indi_1_5_b" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>BOLEANO</tipo>
+			 <objeto>CHECKBOX</objeto>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <valorVerdadero>1</valorVerdadero>
+			 <valorFalso>0</valorFalso>
+        </campos>
+ 	    <campos nombre="sede_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+        </campos>
+	    <campos nombre="carr_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+        </campos>
+	    <campos nombre="jorn_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+        </campos>
+	   <campos nombre="tcar_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+       </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_real_1_5_b" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	    <campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="real_indi_1_5_b" >
+			<descripcion>Dato Real</descripcion>
+			 <tipo>BOLEANO</tipo>
+			 <objeto>CHECKBOX</objeto>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <valorVerdadero>1</valorVerdadero>
+			 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_estimativo_1_5_b" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+		mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	 	
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="estimativo_indi_1_5_b" >
+		<descripcion>Dato Base</descripcion>
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="insert_indi_1_5_b" variable="ma" >
+	 <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="anos_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tipo_mantenedora">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="tipo_indi">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="estimativo_indi_1_5_b">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="real_indi_1_5_b">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="base_indi_1_5_b">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	 
+	</parametro>
+    <parametro formulario="f_mantenedor_base_1_5_c" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+		mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="base_indi_1_5_c" >
+			<descripcion>Dato Base</descripcion>
+			 <tipo>BOLEANO</tipo>
+			 <objeto>CHECKBOX</objeto>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <valorVerdadero>1</valorVerdadero>
+			 <valorFalso>0</valorFalso>
+      </campos>
+ 	  <campos nombre="sede_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="carr_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="jorn_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="tcar_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_real_1_5_c" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	 	<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="real_indi_1_5_c" >
+		<descripcion>Dato Real</descripcion>
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_estimativo_1_5_c" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+		mensajeError="No se encontraron datos">
+		
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	 	
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="estimativo_indi_1_5_c" >
+		<descripcion>Dato Base</descripcion>
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="insert_indi_1_5_c" variable="ma" >
+	 <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="anos_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tipo_mantenedora">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="tipo_indi">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="estimativo_indi_1_5_c">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="real_indi_1_5_c">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="base_indi_1_5_c">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	 
+	</parametro>
+	<parametro formulario="f_mantenedor_base_1_6" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+		mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="base_indi_1_6" >
+			<descripcion>Dato Base</descripcion>
+			 <tipo>BOLEANO</tipo>
+			 <objeto>CHECKBOX</objeto>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <valorVerdadero>1</valorVerdadero>
+			 <valorFalso>0</valorFalso>
+      </campos>
+ 	  <campos nombre="sede_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_real_1_6" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	    <campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="real_indi_1_6" >
+		<descripcion>Dato Real</descripcion>
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_estimativo_1_6" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+		mensajeError="No se encontraron datos">
+		
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	 	
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="estimativo_indi_1_6" >
+		<descripcion>Dato Base</descripcion>
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="insert_indi_1_6" variable="ma" >
+	 <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="anos_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tipo_mantenedora">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="tipo_indi">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="estimativo_indi_1_6">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="real_indi_1_6">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="base_indi_1_6">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	 
+	</parametro>
+	<parametro formulario="f_mantenedor_base_1_7_b" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+		mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="base_indi_1_7_b" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>4</caracteres>
+			 <maxCaracteres>3</maxCaracteres>
+			 <id>NU-N</id>
+      </campos>
+ 	  <campos nombre="sede_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="tcar_ccod">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_real_1_7_b" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+		
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	 	
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="real_indi_1_7_b" >
+         <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_estimativo_1_7_b" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+		
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	 	
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="estimativo_indi_1_7_b" >
+         <descripcion>Dato Estimativo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="insert_indi_1_7_b" variable="ma" >
+	 <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="anos_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tipo_mantenedora">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="tipo_indi">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="estimativo_indi_1_7_b">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="real_indi_1_7_b">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="base_indi_1_7_b">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	 
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_base_2_1_a" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+		mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="base_indi_2_1_a" >
+         <descripcion>Dato Base</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+		 <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_real_2_1_a" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	 	
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="real_indi_2_1_a" >
+         <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+		 <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_estimativo_2_1_a" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+		mensajeError="No se encontraron datos">
+			
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	 	
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="estimativo_indi_2_1_a" >
+         <descripcion>Dato Estimativo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+		 <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="insert_indi_2_1_a" variable="ma" >
+	 <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="anos_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tipo_mantenedora">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="tipo_indi">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="estimativo_indi_2_1_a">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="real_indi_2_1_a">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="base_indi_2_1_a">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	 
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_base_2_1_b" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+		mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="base_indi_2_1_b" >
+         <descripcion>Dato Base</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_real_2_1_b" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+		
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	 	
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="real_indi_2_1_b" >
+         <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_estimativo_2_1_b" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+		mensajeError="No se encontraron datos">
+		
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	 	
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="estimativo_indi_2_1_b" >
+         <descripcion>Dato Estimativo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="insert_indi_2_1_b" variable="ma" >
+	 <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="anos_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tipo_mantenedora">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="tipo_indi">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="estimativo_indi_2_1_b">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="real_indi_2_1_b">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="base_indi_2_1_b">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	 
+	</parametro>
+	<parametro formulario="f_mantenedor_base_2_2_a" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+		mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="base_indi_2_2_a" >
+         <descripcion>Dato Base</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_real_2_2_a" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	    <campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="real_indi_2_2_a" >
+         <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_estimativo_2_2_a" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+		
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	 	
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="estimativo_indi_2_2_a" >
+         <descripcion>Dato Estimativo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="insert_indi_2_2_a" variable="ma" >
+	 <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="anos_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tipo_mantenedora">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="tipo_indi">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="estimativo_indi_2_2_a">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="real_indi_2_2_a">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="base_indi_2_2_a">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	 
+	</parametro>
+
+	<parametro formulario="f_mantenedor_base_2_3_a" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+		mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="tipo_carrera">
+			 <descripcion>tipo_carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="base_indi_2_3_a_sem_I" >
+			 <descripcion>Dato Base I Semetre</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>11</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>FE-N</id>
+        </campos>
+	    <campos nombre="base_indi_2_3_a_sem_II" >
+			 <descripcion>Dato Base II Semestre</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>11</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>FE-N</id>
+        </campos>
+	    <campos nombre="base_indi_2_3_a_tri_III" >
+			 <descripcion>Dato Base III Trimestre</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>11</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>FE-S</id>
+        </campos>
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_real_2_3_a" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	    <campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="real_indi_2_3_a_sem_I" >
+         <descripcion>Dato Real I Semestre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+        </campos>
+	  	<campos nombre="real_indi_2_3_a_sem_II" >
+         <descripcion>Dato Real II Semestre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+      </campos>
+	  	<campos nombre="real_indi_2_3_a_tri_III" >
+         <descripcion>Dato Real III Trimestre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_estimativo_2_3_a" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+		
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	 	
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="estimativo_indi_2_3_a_sem_I" >
+         <descripcion>Dato Estimativo I Semestre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_2_3_a_sem_II" >
+         <descripcion>Dato Estimativo II Semestre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_2_3_a_tri_III" >
+         <descripcion>Dato Estimativo III Trimestre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="insert_indi_2_3_a" variable="ma" >
+	 <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="anos_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tipo_mantenedora">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="tipo_indi">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="estimativo_indi_2_3_a_sem_I">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="estimativo_indi_2_3_a_sem_II">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="estimativo_indi_2_3_a_tri_III">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="real_indi_2_3_a_sem_I">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="real_indi_2_3_a_sem_II">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="real_indi_2_3_a_tri_III">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="base_indi_2_3_a_sem_I">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	 	   <campos nombre="base_indi_2_3_a_sem_II">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="base_indi_2_3_a_tri_III">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_base_2_3_b" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+		mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="base_indi_2_3_b_sem_I" >
+			 <descripcion>Dato Base I Semetre</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>11</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>FE-N</id>
+      </campos>
+	  <campos nombre="base_indi_2_3_b_sem_II" >
+			 <descripcion>Dato Base II Semestre</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>11</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>FE-N</id>
+      </campos>
+	  <campos nombre="base_indi_2_3_b_tri_III" >
+			 <descripcion>Dato Base III Trimestre</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>11</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>FE-S</id>
+      </campos>
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_real_2_3_b" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+		
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	 	
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="real_indi_2_3_b_sem_I" >
+         <descripcion>Dato Real I Semestre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+      </campos>
+	  	<campos nombre="real_indi_2_3_b_sem_II" >
+         <descripcion>Dato Real II Semestre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+      </campos>
+	  	<campos nombre="real_indi_2_3_b_tri_III" >
+         <descripcion>Dato Real III Trimestre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_estimativo_2_3_b" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+		mensajeError="No se encontraron datos">
+		
+		<campos nombre="sede">
+		     <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="carrera">
+		     <descripcion>Carrera</descripcion>
+         	 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="jornada">
+		     <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	 	
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="estimativo_indi_2_3_b_sem_I" >
+         <descripcion>Dato Estimativo I Semestre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_2_3_b_sem_II" >
+         <descripcion>Dato Estimativo II Semestre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_2_3_b_tri_III" >
+         <descripcion>Dato Estimativo III Trimestre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="insert_indi_2_3_b" variable="ma" >
+	 <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="anos_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tipo_mantenedora">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="tipo_indi">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="estimativo_indi_2_3_b_sem_I">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="estimativo_indi_2_3_b_sem_II">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="estimativo_indi_2_3_b_tri_III">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="real_indi_2_3_b_sem_I">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="real_indi_2_3_b_sem_II">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="real_indi_2_3_b_tri_III">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="base_indi_2_3_b_sem_I">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	 	   <campos nombre="base_indi_2_3_b_sem_II">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="base_indi_2_3_b_tri_III">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+
+	</parametro>
+	<parametro formulario="f_mantenedor_base_3_4_b" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+		mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="base_indi_3_4_b" >
+         <descripcion>Dato Base</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_real_3_4_b" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE">
+		
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	 	
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="real_indi_3_4_b" >
+         <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_estimativo_3_4_b" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+		mensajeError="No se encontraron datos">
+		
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="carrera">
+			 <descripcion>Carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="jornada">
+			 <descripcion>Jornada</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	 	
+		<campos nombre="tipo_carrera">
+			 <descripcion>Tipo carrera</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		
+		<campos nombre="estimativo_indi_3_4_b" >
+         <descripcion>Dato Estimativo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+	  
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="insert_indi_3_4_b" variable="ma" >
+	 <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="anos_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tipo_mantenedora">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="tipo_indi">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="estimativo_indi_3_4_b">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="real_indi_3_4_b">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="base_indi_3_4_b">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	 
+	</parametro>
+<parametro formulario="f_mantenedor_base_3_1_a" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	<campos nombre="base_indi_3_1_a" >
+         <descripcion>Dato Base Sede</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="base_indi_3_1_2_a_sala" >
+         <descripcion>Dato Base Sala</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="base_indi_3_1_2_a_laboratorio" >
+         <descripcion>Dato Base Laboratorio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-S</id>
+      </campos>
+	   <campos nombre="base_indi_3_1_2_a_taller" >
+         <descripcion>Dato Base Taller</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-S</id>
+      </campos>
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_real_3_1_a" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+		mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="real_indi_3_1_1_a" >
+         <descripcion>Dato Real Sede</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-S</id>
+      </campos>
+	  <campos nombre="real_indi_3_1_2_a_sala" >
+         <descripcion>Dato Real Sala</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-S</id>
+      </campos>
+	  <campos nombre="real_indi_3_1_2_a_laboratorio" >
+         <descripcion>Dato Real Laboratorio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-S</id>
+      </campos>
+	  <campos nombre="real_indi_3_1_2_a_taller" >
+         <descripcion>Dato Real Taller</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  </parametro>
+	<parametro formulario="f_mantenedor_estimativo_3_1_a" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+		
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		 <campos nombre="estimativo_indi_3_1_1_a" >
+         <descripcion>Dato Estimativo Sede</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>		
+	
+	  <campos nombre="estimativo_indi_3_1_2_a_sala" >
+         <descripcion>Dato Estimativo Sala</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_3_1_2_a_laboratorio" >
+         <descripcion>Dato Estimativo Laboratorio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-S</id>
+      </campos>
+	   <campos nombre="estimativo_indi_3_1_2_a_taller" >
+         <descripcion>Dato Estimativo Taller</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-S</id>
+      </campos>
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="insert_indi_3_1_a" variable="ma" >
+	 <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   
+	   <campos nombre="tipo_mantenedora">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="tipo_indi">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="estimativo_indi_3_1_1_a">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="estimativo_indi_3_1_2_a_sala">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="estimativo_indi_3_1_2_a_laboratorio">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="estimativo_indi_3_1_2_a_taller">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="real_indi_3_1_2_a_sala">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="real_indi_3_1_2_a_laboratorio">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="real_indi_3_1_2_a_taller">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="base_indi_3_1_2_a_sala">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="base_indi_3_1_2_alaboratoio">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	    <campos nombre="base_indi_3_1_2_a_taller">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_base_3_4_a" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+		mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="base_indi_3_4_a_obligatoria" >
+         <descripcion>Dato Base Obligatoria</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="base_indi_3_4_a_complementaria" >
+         <descripcion>Dato Base Complementaria</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_real_3_4_a" variable="ma" colorSeleccionado="#CCCCCC" 
+		colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+		mensajeError="No se encontraron datos">
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="real_indi_3_4_a_obligatoria" >
+         <descripcion>Dato Real Obligatoria</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="real_indi_3_4_a_complementaria" >
+         <descripcion>Dato Real Complementaria</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_estimativo_3_4_a" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" nroRegistros="100" maxLista="100"   anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+		
+		<campos nombre="sede">
+			 <descripcion>Sede</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+		</campos>
+	
+		<campos nombre="estimativo_indi_3_4_a_obligatoria" >
+         <descripcion>Dato Estimativo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+	  	<campos nombre="estimativo_indi_3_4_a_complementaria" >
+         <descripcion>Dato Estimativo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+ 	  <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="insert_indi_3_4_a" variable="ma" >
+	 <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="anos_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tipo_mantenedora">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="tipo_indi">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="estimativo_indi_3_4_a_obligatoria">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="estimativo_indi_3_4_a_complementaria">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="real_indi_3_4_a_obligatoria">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="real_indi_3_4_a_complementaria">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="base_indi_3_4_a_obligatoria">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="base_indi_3_4_a_complementaria">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	</parametro>
+
+ </Parametros>

@@ -1,0 +1,131 @@
+<Parametros>
+     <parametro formulario="busqueda" columnas="1" camposObligatorios="TRUE" anchoTabla="100%" variable="b">
+	  	 <campos nombre="anos_ccod">
+     	 <tipo>SELECT</tipo>
+	  	 <destino>anos</destino> 
+	  	 <union>anos_ccod</union>
+	 	 <salida>anos_ccod</salida>
+	 	 <permiso>LECTURAESCRITURA</permiso>
+	 	 <anulable>true</anulable>
+	  	 <alineamiento>Left</alineamiento>
+		 <filtro>anos_ccod>2004 and cast(datepart(year,getdate()) as numeric)+1>=anos_ccod</filtro>
+	 	 <mensajeNulo>--Año--</mensajeNulo>
+	 	 <descripcion>Unidad Fomento por Año</descripcion>
+	  	 </campos>
+	  </parametro> 
+		<parametro formulario="botonera">
+       				<botones nombre="buscar">
+	      			<tipoTexto>BUSCAR</tipoTexto>
+		  			<accion>BUSCAR</accion>
+		  			<formulario>buscador</formulario>
+				    </botones>
+					       <botones nombre="salir">
+	      			    	<tipoTexto>SALIR</tipoTexto>
+		  				    <accion>NAVEGAR</accion>
+						    <url>../lanzadera/lanzadera.asp</url>
+						   </botones>
+				<botones nombre="AGREGAR">
+                <tipoTexto>GUARDAR</tipoTexto>
+                <accion>GUARDAR</accion>
+				<url>../Mantenedores/proc_mantener_ufomento.asp</url>
+				<formulario>ufomento</formulario>
+               </botones>
+			   						<botones nombre="volver">
+	      			            	<tipoTexto>DEFINIR</tipoTexto>
+									<texto>volver</texto>
+					             	<accion>NAVEGAR</accion>
+									</botones>
+		</parametro>
+		<parametro formulario="uf" variable="uf" anchoTabla="100%" clave="dia" nroRegistros="31" maxLista="5" 
+			mensajeError="No existen datos de acuerdo al criterio de busqueda">
+      		<tablas nombre="uf" accion="M"/>
+			 <campos nombre="DIA">
+				  <descripcion>DIA</descripcion>
+				  <tipo>INPUT</tipo>
+				  <permiso>LECTURA</permiso>
+				  <accion>NAVEGAR</accion>
+       		  </campos>
+			  	<campos nombre="ENERO">
+				   <descripcion>ENERO</descripcion>
+	  	   			<tipo>INPUT</tipo>
+         			<permiso>LECTURA</permiso>
+       			</campos>
+				<campos nombre="FEBRERO">
+				   <descripcion>FEBRERO</descripcion>
+	  	   			<tipo>INPUT</tipo>
+         			<permiso>LECTURA</permiso>
+       			</campos>
+				<campos nombre="MARZO">
+				   <descripcion>MARZO</descripcion>
+	  	   			<tipo>INPUT</tipo>
+         			<permiso>LECTURA</permiso>
+       			</campos>
+				<campos nombre="ABRIL">
+				   <descripcion>ABRIL</descripcion>
+	  	   			<tipo>INPUT</tipo>
+         			<permiso>LECTURA</permiso>
+       			</campos>
+				<campos nombre="MAYO">
+				   <descripcion>MAYO</descripcion>
+	  	   			<tipo>INPUT</tipo>
+         			<permiso>LECTURA</permiso>
+       			</campos>
+				<campos nombre="JUNIO">
+				   <descripcion>JUNIO</descripcion>
+	  	   			<tipo>INPUT</tipo>
+         			<permiso>LECTURA</permiso>
+       			</campos>
+				<campos nombre="JULIO">
+				   <descripcion>JULIO</descripcion>
+	  	   			<tipo>INPUT</tipo>
+         			<permiso>LECTURA</permiso>
+       			</campos>
+				<campos nombre="AGOSTO">
+				   <descripcion>AGOSTO</descripcion>
+	  	   			<tipo>INPUT</tipo>
+         			<permiso>LECTURA</permiso>
+       			</campos>
+				<campos nombre="SEPTIEMBRE">
+				   <descripcion>SEPTIEMBRE</descripcion>
+	  	   			<tipo>INPUT</tipo>
+         			<permiso>LECTURA</permiso>
+       			</campos>
+				<campos nombre="OCTUBRE">
+				   <descripcion>OCTUBRE</descripcion>
+	  	   			<tipo>INPUT</tipo>
+         			<permiso>LECTURA</permiso>
+       			</campos>
+				<campos nombre="NOVIEMBRE">
+				   <descripcion>NOVIEMBRE</descripcion>
+	  	   			<tipo>INPUT</tipo>
+         			<permiso>LECTURA</permiso>
+       			</campos>
+				<campos nombre="DICIEMBRE">
+				   <descripcion>DICIEMBRE</descripcion>
+	  	   			<tipo>INPUT</tipo>
+         			<permiso>LECTURA</permiso>
+       			</campos>
+			  </parametro>
+
+				<parametro formulario="ufomento" variable="ufomento" clave="ufom_ncorr" columnas="1" camposObligatorios="TRUE" anchoTabla="100%" 
+					paginaEdicion="../Mantenedores/mantener_ufo.asp" nuevaVentanaAlto="450" nuevaVentanaAncho="750">
+	  	           <tablas nombre="uf" accion="M"/>
+				   <campos nombre="ufom_mvalor">
+					   <tipo>INPUT</tipo>
+					   <permiso>LECTURAESCRITURA</permiso>
+					   <descripcion>Valor de la UF</descripcion>
+					   <alineamiento>CENTER</alineamiento>
+					   <caracteres>10</caracteres>
+					   <maxCaracteres>8</maxCaracteres>
+					   <id>NU-N</id>	
+				   </campos>  
+					<campos nombre="ufom_fuf">
+		                <tipo>INPUT</tipo>
+		                <permiso>OCULTO</permiso>
+	                </campos>
+					<campos nombre="ufom_ncorr">
+		                <tipo>INPUT</tipo>
+		                <permiso>OCULTO</permiso>
+	                </campos>
+				</parametro> 
+</Parametros>

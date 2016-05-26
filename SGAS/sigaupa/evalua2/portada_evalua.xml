@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+	<parametro formulario="btn_portada" >
+	   <botones nombre="aceptar"> 
+		  <tipoTexto>Aceptar</tipoTexto>
+		  <accion>GUARDAR</accion>
+	      <url>proc_portada_evalua.asp</url>
+	      <formulario>valida</formulario>
+		</botones> 
+		
+	</parametro>	
+   <parametro formulario="botonera_olvido_clave">
+      <botones nombre="buscar">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Aceptar</texto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+	  <botones nombre="aceptar">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>enviar(document.formulario)</funcion>
+      </botones>
+	   <botones nombre="cancelar">
+         <tipoTexto>CANCELAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  <botones nombre="solicitar"> 
+      	 <tipoTexto>DEFINIR</tipoTexto>
+	     <texto>Solicitar</texto>
+	     <accion>GUARDAR</accion>
+	     <url>proc_solicitud_reporte_alumno.asp</url> 
+		 <formulario>buscador</formulario>
+	  </botones>
+   </parametro>
+   
+   <parametro formulario="f_datos" variable="datos">
+   	<campos nombre="pers_nrut">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURAESCRITURA</permiso> 
+	  <caracteres>10</caracteres> 
+	  <maxCaracteres>8</maxCaracteres> 
+	  <id>NU-N</id> 
+	</campos>
+	<campos nombre="pers_xdv">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURAESCRITURA</permiso> 
+	  <caracteres>1</caracteres> 
+	  <maxCaracteres>1</maxCaracteres> 
+	  <id>LN-N</id> 
+	  <script>onBlur="this.value=this.value.toUpperCase();"</script> 
+	</campos>
+   </parametro>
+   
+   <parametro formulario="busqueda" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>LN-N</id>
+      </campos>
+   </parametro>
+   
+</Parametros>

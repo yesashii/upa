@@ -1,0 +1,136 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+        
+      </botones>
+      <botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_solicitud_credito_cae.asp</url>
+		 <funcionValidacion>ValidaRadios(document.edicion);</funcionValidacion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	  <botones nombre="salir2">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Salir</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>salir()</funcion>
+      </botones>
+	  <botones nombre="imprimir">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Imprimir</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>imprimir()</funcion>
+      </botones>
+   </parametro>
+   
+   <parametro formulario="busqueda" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-N</id>
+      </campos>
+	   <campos nombre="post_ncorr">
+         <tipo>SELECT</tipo>
+		 <destino>(Select ) a</destino>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <union>post_ncorr</union>
+		 <salida>carrera</salida>
+		 <columnas>2</columnas>
+		 <anulable>false</anulable>
+		 <mensajeNulo>Seleccione una carrera</mensajeNulo>
+		 <mensajeVacio>No hay carreras</mensajeVacio>
+		 <estilo>anchofijo</estilo>
+		 <id>TO-S</id>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="solicitud_credito_cae" variable="cae" anchoTabla="98%" mensajeError="No ha enviado su postulación.">
+      <tablas nombre="solicitud_credito_cae" accion="M"/>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="ofer_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="post_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="socc_bsolicita">
+		 <tipo>BOLEANO</tipo>
+		 <objeto>RADIO</objeto>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <afirmacion>SI</afirmacion>
+		 <negacion>NO</negacion>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+		 <alineamiento>CENTER</alineamiento>
+		  <script>onClick="Solicita(this.value)"</script>
+		 <id>TO-N</id>
+      </campos>
+      <campos nombre="socc_brenovante">
+		 <tipo>BOLEANO</tipo>
+		 <objeto>RADIO</objeto>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <afirmacion>LICITADO</afirmacion>
+		 <negacion>RENOVANTE</negacion>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+		 <alineamiento>CENTER</alineamiento>
+		 <id>TO-N</id>
+      </campos>
+      <campos nombre="socc_bmonto_solicitado">
+		 <tipo>BOLEANO</tipo>
+		 <objeto>RADIO</objeto>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <afirmacion>ARANCEL DE REFERENCIA</afirmacion>
+		 <negacion>OTRO MONTO</negacion>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+		 <alineamiento>CENTER</alineamiento>
+		 <script>onClick="CopiaMonto(this.value)"</script>
+		 <id>TO-N</id>
+      </campos>
+      <campos nombre="socc_bcurso_superior">
+		 <tipo>BOLEANO</tipo>
+		 <objeto>RADIO</objeto>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <afirmacion>SUPERIOR</afirmacion>
+		 <negacion>NUEVO</negacion>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+		 <alineamiento>CENTER</alineamiento>
+		 <id>TO-N</id>
+      </campos>	  
+      <campos nombre="socc_mmonto_solicitado">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+		 <script>onBlur="EsNumerico(this);"</script>
+      </campos>
+   </parametro>
+   
+</Parametros>

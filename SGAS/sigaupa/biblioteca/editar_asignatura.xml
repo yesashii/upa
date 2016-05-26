@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+	<parametro formulario="edicion_asig" clave="asig_ccod" variable="m" mensajeError="No hay Asignaturas que cumplan la condición"
+		 colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="true" 
+		 eliminar="true" agregar="true" nuevaVentana="false" paginaEdicion="editar_asig.asp?asig_ccod=%asig_ccod%" 
+		 maxLista="10" nroRegistros="10">
+		
+		<campos nombre="asig_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<caracteres>65</caracteres>
+			<maxCaracteres>65</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+
+		<campos nombre="asig_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso> 
+		</campos>
+
+		<campos nombre="codigo">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso> 
+		</campos>
+
+		<campos nombre="asig_nhoras">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>6</caracteres>
+			<maxCaracteres>40</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+		<campos nombre="asig_nhoras_laboratorio">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>6</caracteres>
+			<maxCaracteres>40</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+		<campos nombre="asig_nhoras_terreno">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>6</caracteres>
+			<maxCaracteres>40</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+		<campos nombre="asig_nhoras_ayudantia">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>6</caracteres>
+			<maxCaracteres>40</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+		<campos nombre="asig_nhoras_elearning">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>6</caracteres>
+			<maxCaracteres>40</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+		<campos nombre="asig_ffin_vigencia">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>12</caracteres>
+			<maxCaracteres>40</maxCaracteres>
+			<id>FE-S</id>
+		</campos>
+
+		<campos nombre="asig_fini_vigencia">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>12</caracteres>
+			<maxCaracteres>40</maxCaracteres>
+			<id>FE-N</id>
+		</campos>
+
+		<campos nombre="easi_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<destino>estado_asignatura</destino>
+			<union>easi_ccod</union>
+			<salida>easi_tdesc</salida>
+			<caracteres>10</caracteres>
+			<maxCaracteres>40</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+		
+		<campos nombre="cred_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<destino>creditos_asignatura</destino>
+			<union>cred_ccod</union>
+			<salida>cred_tdesc</salida>
+			<mensajeNulo>Selecione Crédito</mensajeNulo>
+            <mensajeVacio>Selecione Crédito</mensajeVacio>
+		    <anulable>TRUE</anulable>
+			<id>TO-S</id>
+		</campos>
+		
+		<campos nombre="area_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<destino>area_asignatura</destino>
+			<union>area_ccod</union>
+			<salida>area_tdesc</salida>
+			<mensajeNulo>Selecione Area</mensajeNulo>
+            <mensajeVacio>Selecione Area</mensajeVacio>
+		    <anulable>TRUE</anulable>
+			<id>TO-S</id>
+		</campos>
+		
+		<campos nombre="duas_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<destino>(select duas_ccod,duas_tdesc from duracion_asignatura where duas_ccod not in (4))s</destino>
+			<union>duas_ccod</union>
+			<salida>duas_tdesc</salida>
+			<orden>duas_tdesc</orden>
+			<id>TO-N</id>
+		</campos>
+
+		<campos nombre="tasg_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<destino>(select * from tipos_asignatura where tasg_ccod in (1,2,3,6,7))a</destino>
+			<union>tasg_ccod</union>
+			<salida>tasg_tdesc</salida>
+			<caracteres>10</caracteres>
+			<maxCaracteres>40</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+
+		<campos nombre="asig_nnivel_ayudante">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<destino>niveles_ayudante</destino>
+			<union>niay_ccod</union>
+			<salida>niay_tdesc</salida>
+			<caracteres>6</caracteres>
+			<maxCaracteres>6</maxCaracteres>
+			<mensajeNulo>Sin Ayudante</mensajeNulo>
+            <mensajeVacio>Sin Ayudante</mensajeVacio>
+		    <anulable>TRUE</anulable>
+			<id>TO-S</id>
+		</campos>
+
+		<campos nombre="clas_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<destino>clases_asignatura</destino>
+			<union>clas_ccod</union>
+			<salida>clas_tdesc</salida>
+			<id>TO-S</id>
+		</campos>
+	</parametro>
+	
+	<parametro formulario="btn_edita_asignaturas">
+    	<botones nombre="guardar"> 
+      		<tipoTexto>GUARDAR</tipoTexto>
+	  		<accion>JAVASCRIPT</accion>
+	  		<funcion>guardar(document.edicion)</funcion>
+		</botones> 
+    
+		<botones nombre="volver"> 
+      		<tipoTexto>DEFINIR</tipoTexto>
+	  		<texto>Volver</texto>
+	  		<accion>JAVASCRIPT</accion>
+	  		<funcion>volver()</funcion>
+		</botones> 
+ 	</parametro>
+ 	
+	<parametro formulario="mantiene_asignatura" variable="m" >
+		<tablas nombre="asignaturas" accion="M" />
+ 	</parametro>	
+</Parametros>
+

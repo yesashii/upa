@@ -1,0 +1,216 @@
+<Parametros>
+   <parametro formulario="botonera">
+     <botones nombre="mensaje_companero">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Enviar Mensaje a Compañero</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>mensaje_companero(document.edicion)</funcion>
+      </botones>
+	  <botones nombre="mensaje_profesor">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Enviar Mensaje a Profesor</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>mensaje_profesor(document.edicion)</funcion>
+      </botones>
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <formulario>edicion</formulario>
+         <url>eliminar_mensajes_proc.asp</url>
+      </botones>
+      <botones nombre="enviar">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Enviar Mensaje</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>editar_mensaje_proc.asp</url>
+      </botones>
+	  <botones nombre="mensaje_alumno">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Enviar Mensaje a alumno</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>mensaje_alumno(document.edicion)</funcion>
+      </botones>
+	  <botones nombre="mensaje_seccion">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Enviar Mensaje a Sección</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>mensaje_seccion(document.edicion)</funcion>
+      </botones>
+	  <botones nombre="cerrar">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Cerrar</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>cerrar()</funcion>
+      </botones>
+	  <botones nombre="responder">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Responder</texto>
+         <accion>NAVEGAR</accion>
+         <formulario>edicion</formulario>
+         <url>editar_mensaje.asp</url>
+      </botones>
+   </parametro>
+   <parametro colorResaltado="#DCDCB8" colorSeleccionado="99FFFF" 
+    paginaEdicion="editar_mensaje.asp?mepe_ncorr=%mepe_ncorr%&amp;pers_ncorr=%pers_ncorr%&amp;tipo=%tipo_origen%"
+	 nuevaVentanaAlto="440" 
+	formulario="mensajes" nuevaVentanaAncho="600" eliminar="true" clave="mepe_ncorr" mensajeError="No existen mensajes en su bandeja de entrada." 
+	colorBase="#F1F1E4" editar="true" anchoTabla="98%" nuevaVentana="true" variable="em">
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="foto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="fecha">
+         <descripcion>Fecha</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="de">
+         <descripcion>De</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="titulo">
+         <descripcion>Asunto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>left</alineamiento>
+      </campos>
+      <campos nombre="origen">
+         <descripcion>Origen</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="edita_mensaje"  variable="m"  clave="mepe_ncorr" >
+     <tablas nombre="mensajes_entre_personas" accion="M" />
+	 <campos nombre="mepe_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>	
+	  <campos nombre="pers_ncorr_destino">
+         <tipo>SELECT</tipo>
+		 <union>pers_ncorr_destino</union>
+         <salida>nombre</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>TRUE</anulable>
+         <mensajeNulo>Destino</mensajeNulo>
+		 <orden>nombre ASC</orden>
+		 <id>TO-N</id>
+      </campos>
+	  <campos nombre="titulo">
+         <descripcion>Asunto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>50</caracteres>
+		 <maxCaracteres>50</maxCaracteres>
+		 <id>TO-N</id>
+      </campos>
+	 <campos nombre="fecha_vencimiento">
+         <descripcion>Expiración</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <tipoDato>FECHA</tipoDato>
+		 <id>FE-N</id>
+      </campos>
+      <campos nombre="contenido">
+         <descripcion>Contenido</descripcion>
+         <tipo>TEXTAREA</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		<filas>10</filas>
+		<caracteres>60</caracteres>
+		 <id>TO-N</id>
+      </campos>
+	  <campos nombre="TICO_CCOD">
+         <descripcion>Tipo Comentario</descripcion>
+         <tipo>SELECT</tipo>
+		 <destino>tipos_comentarios</destino>
+		 <union>tico_ccod</union>
+         <salida>tico_tdesc</salida>
+		 <permiso>LECTURAEscritura</permiso>
+		 <anulable>TRUE</anulable>
+         <mensajeNulo>Elija Tipo </mensajeNulo>
+		 <id>TO-N</id>
+      </campos>
+	  <campos nombre="mandar_copia">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+   </parametro>
+     <parametro formulario="editar_mensaje_seccion" variable="m"  clave="mepe_ncorr" >
+     <tablas nombre="mensajes_entre_personas" accion="M" />
+	    <listas nombre="lBusqueda">
+			<item clave="sede_ccod" valor="sede_tdesc" />
+			<item clave="carr_ccod" valor="carr_tdesc" />
+			<item clave="jorn_ccod" valor="jorn_tdesc" />
+			<item clave="secc_ccod" valor="secc_tdesc" />
+		</listas>
+	  <campos nombre="mepe_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+		<campos nombre="sede_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="jorn_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="secc_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="titulo">
+         <descripcion>Asunto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>50</caracteres>
+		 <maxCaracteres>50</maxCaracteres>
+		 <id>TO-N</id>
+      </campos>
+	 <campos nombre="fecha_vencimiento">
+         <descripcion>Expiración</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <tipoDato>FECHA</tipoDato>
+		 <id>FE-N</id>
+      </campos>
+      <campos nombre="contenido">
+         <descripcion>Contenido</descripcion>
+         <tipo>TEXTAREA</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		<filas>10</filas>
+		<caracteres>60</caracteres>
+		 <id>TO-N</id>
+      </campos>
+	  <campos nombre="mandar_copia">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	</parametro>
+</Parametros>

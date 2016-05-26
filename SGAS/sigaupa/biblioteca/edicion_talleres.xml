@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>talleres.asp</url>
+      </botones>
+	   <botones nombre="salir2" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+        <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  
+	<botones nombre="excel">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Agregar Alumno</texto>
+      </botones>
+	  <botones nombre="volver">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Volver</texto>
+      </botones>
+	  <botones nombre="guardar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Guardar Cambios</texto>
+        <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>edicion_alumnos_talleres_proc.asp</url>
+		 
+	</botones>
+	
+	  <botones nombre="guardar2">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Guardar Cambios</texto>
+        <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>edicion_talleres_proc.asp</url>
+		 
+	</botones>
+	 <botones nombre="eliminar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Eliminar Alumno</texto>
+         <accion>ELIMINAR</accion>
+		 <formulario>edicion2</formulario>
+         <url>elimina_alumno_taller_proc.asp</url>
+		 
+	</botones>
+	   </parametro>
+ 
+   <parametro  formulario="busqueda" variable="b" columnas="3" >
+        
+<campos nombre="peri_ccod">
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Periodo Academico</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>periodos_academicos</destino>
+		 <filtro>anos_ccod > 2005</filtro>
+         <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+		 <orden>peri_ccod asc</orden>
+		 <id>NU-S</id>
+      </campos>
+	    <campos nombre="tasi_ncorr" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Taller</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>talleres_sicologia </destino>
+		 <union>tasi_ncorr</union>
+         <salida>tasi_tdesc</salida>
+		 <orden>tasi_ncorr asc</orden>
+		 <id>NU-S</id>
+      </campos>
+	  
+	   
+	     <campos nombre="sede_ccod">
+        <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione una Sede</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>sedes </destino>
+		 <filtro>sede_ccod in (1,2,4,7,8)</filtro>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+		  <id>NU-S</id>
+		  </campos>
+	  
+   </parametro>
+   
+  <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="cheques" nroRegistros="15"
+		 maxLista="10" mensajeError="No se encontranron Alumnos ." colorBase="#F1F1E4" editar="false" anchoTabla="100%"	 nuevaVentana="false" variable="a"  clave="tasi_ncorr" >  
+      <campos nombre="tasi_tdesc">
+		<descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  
+	   <campos nombre="tasi_ncorr">
+		<descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  
+   </parametro>
+   
+     <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="dictados" nroRegistros="15"
+		 maxLista="10" mensajeError="No se encontranron Alumnos ." colorBase="#F1F1E4" editar="false" anchoTabla="100%"	 nuevaVentana="false" variable="b">  
+         
+		 <campos nombre="tdsi_ncorr">
+		<descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+		<campos nombre="peri_ccod">
+		<descripcion>Periodo Academico</descripcion>
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Periodo Academico</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>periodos_academicos</destino>
+		 <filtro>anos_ccod >(2005)</filtro>
+         <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+		 <orden>peri_ccod asc</orden>
+		 <id>NU-N</id>
+      </campos>
+	    <campos nombre="tasi_ncorr" >
+		<descripcion>Taller</descripcion>
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Taller</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>talleres_sicologia </destino>
+		 <union>tasi_ncorr</union>
+         <salida>tasi_tdesc</salida>
+		 <orden>tasi_ncorr asc</orden>
+		 <id>NU-N</id>
+      </campos>
+	  
+	   
+	     <campos nombre="sede_ccod">
+		 <descripcion>Sede</descripcion>
+        <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione una Sede</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>sedes </destino>
+		 <filtro>sede_ccod in (1,2,4,7,8)</filtro>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+		  <id>NU-N</id>
+		  </campos>
+		 
+   		<campos nombre="fecha">
+		<descripcion>Fecha de Realizacion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>11</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+          
+      </campos>
+	  	
+	  
+   </parametro>
+        <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion="edicion_alumnos_talleres.asp?tdsi_ncorr=%tdsi_ncorr%"  formulario="dictados_busqueda" nroRegistros="15"
+		 maxLista="10" mensajeError="No se encontranron Talleres ." colorBase="#F1F1E4" editar="true" anchoTabla="100%"	 nuevaVentana="false" variable="b" >  
+         
+		<campos nombre="tdsi_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+         
+      </campos>
+		 
+		<campos nombre="peri_ccod">
+		<descripcion>Perido Academico</descripcion>
+         <tipo>SELECT</tipo>
+         <permiso>LECTURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Periodo Academico</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>periodos_academicos</destino>
+		 <filtro>anos_ccod >(2005)</filtro>
+         <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+		 <orden>peri_ccod asc</orden>
+		 <id>NU-N</id>
+      </campos>
+	    <campos nombre="tasi_ncorr" >
+         <tipo>SELECT</tipo>
+		 <descripcion>Taller</descripcion>
+         <permiso>LECTURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Taller</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>talleres_sicologia </destino>
+		 <union>tasi_ncorr</union>
+         <salida>tasi_tdesc</salida>
+		 <orden>tasi_ncorr asc</orden>
+		 <id>NU-N</id>
+      </campos>
+	  
+	   
+	     <campos nombre="sede_ccod">
+        <tipo>SELECT</tipo>
+		<descripcion>Sede</descripcion>
+         <permiso>LECTURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione una Sede</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>sedes </destino>
+		 <filtro>sede_ccod in (1,2,4,7,8)</filtro>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+		  <id>NU-N</id>
+		  </campos>
+		 
+   		<campos nombre="fecha">
+		<descripcion>Fecha de Realizacion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <caracteres>11</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+          
+      </campos>
+	  	
+	  
+   </parametro>
+    <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="listado" nroRegistros="15"
+		 maxLista="10" mensajeError="No se encontranron Alumnos ." colorBase="#F1F1E4" editar="false" anchoTabla="100%"	eliminar="true" nuevaVentana="false" variable="b" clave="pers_ncorr">  
+      
+	  
+	     <campos nombre="nombre">
+		<descripcion>Nombre Alumno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  	   
+	   <campos nombre="tdsi_ncorr">
+		<descripcion>Nombre Alumno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  
+   </parametro>
+   
+</Parametros>

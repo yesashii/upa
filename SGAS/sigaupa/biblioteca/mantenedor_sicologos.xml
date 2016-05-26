@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      
+	  
+	  <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+	  
+	  <botones nombre="guardar">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Agregar Sicologo</texto>
+		  <formulario>buscador</formulario>
+         <url>agregar_sicologo_proc.asp</url>
+		  <funcionValidacion>Validar();</funcionValidacion>
+      </botones> 
+	  
+	    <botones nombre="guardar2">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Guardar</texto>
+		  <formulario>edicion</formulario>
+         <url>editar_sicologo_proc.asp</url>
+      </botones> 
+	
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  
+	  
+	<botones nombre="vovler">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Volver</texto>
+	   <url>mantenedor_de_sicologos.asp</url>
+      </botones>
+   
+   </parametro>
+   <parametro formulario="busqueda" variable="b" columnas="3" >
+      <campos nombre="pers_nrut" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>NU-N</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+		 
+      </campos>
+	   <campos nombre="pers_xdv" >
+         <descripcion>Nº Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+      	 <script>onBlur="Validar_rut();"</script>
+      </campos>
+	   <campos nombre="email" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>EM-N</id>
+         <caracteres>40</caracteres>
+         <maxCaracteres>39</maxCaracteres>
+      </campos>
+	  	   <campos nombre="sede_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todas las Sedes</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>sedes </destino>
+		 <filtro>sede_ccod in (1,2,4,7,8)</filtro>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+      </campos>
+	  <campos nombre="lascondes">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="baquedano">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="lyon">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="melipilla">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+   </parametro>
+   
+  <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion="editar_sicologo.asp?pers_ncorr=%pers_ncorr%"  formulario="sicologos" nroRegistros="15"
+		 maxLista="10" mensajeError="No se encontranron Sicologos ." colorBase="#F1F1E4" editar="true" anchoTabla="100%"	 nuevaVentana="false" variable="a">  
+     
+	  <campos nombre="nombre">
+		<descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="rut" >
+		 <descripcion>Rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="email" >
+		 <descripcion>Email</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="sede">
+		 <descripcion>Sedes</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+		<formato>Fecha</formato>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="editar" variable="b" columnas="3" >
+        <campos nombre="sico_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>Oculto</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	   <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>Oculto</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="rut" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>NU-N</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+		 
+      </campos>
+	   <campos nombre="email" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>EM-N</id>
+         <caracteres>40</caracteres>
+         <maxCaracteres>39</maxCaracteres>
+      </campos>
+	  	   <campos nombre="sede_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todas las Sedes</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>sedes </destino>
+		 <filtro>sede_ccod in (1,2,4,7,8)</filtro>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+      </campos>
+	  <campos nombre="lascondes">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="baquedano">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="lyon">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="melipilla">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+   </parametro>
+</Parametros>

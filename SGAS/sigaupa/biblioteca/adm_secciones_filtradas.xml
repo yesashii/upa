@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="btn_adm_secciones">
+   <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	</botones> 
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+   </parametro>
+    <parametro formulario="btn_edicion_secc_asig">
+   <botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>proc_btn_clickeado(document.buscador,3);_HabilitarBoton(this,false);</funcion>
+  	  <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+   <botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>proc_btn_clickeado(document.buscador,2);</funcion>
+	</botones> 
+   <botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>proc_btn_clickeado(document.buscador,1);_HabilitarBoton(this,false);</funcion>
+  	  <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>cerrarVentana()</funcion>
+	</botones>
+   </parametro>
+    <parametro formulario="pl_academica2_titulos" clave="secc_ccod" variable="pl" mensajeError="Revise el filtro" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="true" eliminar="true" agregar="true" nuevaVentana="false" paginaEdicion="det_plan.asp?secc_ccod=%secc_ccod%" maxLista="10" nroRegistros="10" anchoTabla="100%">
+      <listas nombre="lBusqueda">
+         <item clave="carr_ccod" valor="carr_tdesc"/>
+         <item clave="espe_ccod" valor="espe_tdesc"/>
+         <item clave="plan_ccod" valor="plan_ncorrelativo"/>
+      </listas>
+      <campos nombre="carrera">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Carrera.</descripcion>
+      </campos>
+      <campos nombre="especialidad">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Especialidad</descripcion>
+      </campos>
+      <campos nombre="nivel">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nivel</descripcion>
+      </campos>
+      <campos nombre="plan1">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Plan</descripcion>
+      </campos>
+   </parametro>
+   <parametro formulario="pl_academica" clave="bloq_ccod" variable="pl" mensajeError="No hay registros que cumplan la condición" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" eliminar="true" agregar="true" nuevaVentana="false" maxLista="10" nroRegistros="10">
+      <tablas nombre="anos" accion=""/>
+      <tablas nombre="periodos_academicos" accion=""/>
+      <tablas nombre="carreras" accion=""/>
+      <tablas nombre="asignaturas" accion=""/>
+      <tablas nombre="salas" accion=""/>
+      <tablas nombre="profesores" accion=""/>
+      <tablas nombre="secciones" accion=""/>
+      <tablas nombre="dias_semana" accion=""/>
+      <tablas nombre="niveles" accion=""/>
+      <tablas nombre="especialidades" accion=""/>
+      <campos nombre="espe_ccod">
+         <tipo>SELECT</tipo>
+         <destino>especialidades</destino>
+         <union>espe_ccod</union>
+         <salida>espe_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onchange='document.buscador.submit()'</script>
+      </campos>
+      <campos nombre="plan_ccod">
+         <tipo>SELECT</tipo>
+         <destino>planes_estudio</destino>
+         <union>plan_ccod</union>
+         <salida>plan_ncorrelativo</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="espe_ccod">
+         <tipo>SELECT</tipo>
+         <destino>especialidades</destino>
+         <union>espe_ccod</union>
+         <salida>espe_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="peri_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="carr_ccod">
+         <tipo>select</tipo>
+         <destino>carreras</destino>
+         <union>carr_ccod</union>
+         <salida>carr_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onchange='document.buscador.submit()'</script>
+         <columnas>4</columnas>
+      </campos>
+      <campos nombre="nive_ccod">
+         <tipo>select</tipo>
+         <destino>niveles</destino>
+         <union>nive_ccod</union>
+         <salida>nive_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+      </campos>
+      <campos nombre="dias_ccod">
+         <tipo>select</tipo>
+         <destino>dias_semana</destino>
+         <union>dias_ccod</union>
+         <salida>dias_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+      </campos>
+      <campos nombre="sala_ccod">
+         <tipo>select</tipo>
+         <destino>salas</destino>
+         <union>sala_ccod</union>
+         <salida>sala_ccod</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+      </campos>
+      <campos nombre="nom">
+         <tipo>select</tipo>
+         <destino>(select cast(a.pers_nrut as varchar)+ '-' + cast(a.pers_xdv as varchar) as rut  , cast(a.pers_tape_paterno as varchar)+ ' ' + cast(a.PERS_TAPE_MATERNO as varchar)+ ' ' + cast(a.pers_tnombre as varchar) as nom , a.pers_ncorr, b.sede_ccod from personas a, profesores b, direcciones c where a.pers_ncorr=b.pers_ncorr and b.pers_ncorr=c.pers_ncorr order by nom) b</destino>
+         <codigo>pers_ncorr</codigo>
+         <salida>nom</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+      </campos>
+      <campos nombre="Asignatura_Seccion">
+         <tipo>SELECT</tipo>
+         <destino>(SELECT DISTINCT cast(a.asig_ccod as varchar)+ '  -  ' + cast(a.asig_tdesc as varchar)+'  -  ' + cast(b.secc_tdesc as varchar) AS asignatura_seccion, c.nive_ccod, b.secc_ccod FROM asignaturas a,secciones b,malla_curricular c,planes_estudio d,especialidades e WHERE a.asig_ccod = b.asig_ccod AND c.plan_ccod = d.plan_ccod
+   AND a.asig_ccod = c.asig_ccod and d.espe_ccod=e.espe_ccod) a</destino>
+         <codigo>secc_ccod</codigo>
+         <salida>Asignatura_Seccion</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+      </campos>
+      <campos nombre="Bloque_Horario">
+         <tipo>SELECT</tipo>
+         <destino>(select cast(b.hora_ccod as varchar)+' - '+ cast(datePart(hour,a.hora_hinicio) as varchar)+':'+ cast(datePart(minute,a.hora_hinicio) as varchar) +' - '+ cast(datePart(hour,a.hora_htermino) as varchar)+':'+ cast(datePart(minute,a.hora_htermino) as varchar) as Bloque_Horario, a.sede_ccod from horarios_sedes a, horarios b where a.hora_ccod=b.hora_ccod order by b.hora_ccod ) a</destino>
+         <codigo>sede_ccod</codigo>
+         <salida>Bloque_Horario</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+      </campos>
+   </parametro>
+   <parametro formulario="2" variable="bsec">
+		<listas nombre="lBusqueda">
+			<item clave="carr_ccod" valor="carr_tdesc" />
+			<item clave="espe_ccod" valor="espe_tdesc" />
+			<item clave="plan_ccod" valor="plan_tdesc" />
+		</listas>
+		<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="espe_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="plan_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<orden>asc</orden>
+		</campos>
+		<campos nombre="peri_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="nive_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<destino>niveles</destino>
+			<union>nive_ccod</union>
+			<salida>nive_tdesc</salida>
+			<mensajeNulo>TODOS</mensajeNulo>
+			<mensajeVacio>TODOS</mensajeVacio>
+			<anulable>true</anulable>
+		</campos>
+	</parametro>
+	<parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" 
+		 paginaEdicion="edicion_secc_asig_filtrado.asp?sede_ccod=%sede_ccod%&amp;asig_ccod=%asig_ccod%&amp;carr_ccod=%carr_ccod%&amp;periodo=%periodo%&amp;nive_ccod=%nive_ccod%&amp;plan_ccod=%plan_ccod%&amp;espe_ccod=%espe_ccod%" 
+		 formulario="3"  agregar="false" eliminar="false"
+		 maxLista="10" clave="asig_ccod" mensajeError="No hay secciones que coincidan con el criterio de búsqueda" 
+		 colorBase="#F1F1E4" anchoTabla="100%" editar="true" nuevaVentana="true" variable="sec" >
+		<campos nombre="asig_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Código</descripcion>
+		</campos>
+		<campos nombre="sede_ccod">
+			<tipo>TEXT</tipo>
+			<permiso>INVISIBLE</permiso>
+		</campos>
+		<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>INVISIBLE</permiso>
+		</campos>
+		<campos nombre="periodo">
+			<tipo>INPUT</tipo>
+			<permiso>INVISIBLE</permiso>
+		</campos>
+		<campos nombre="nive_ccod">
+			<tipo>INPUT</tipo>
+		    <permiso>INVISIBLE</permiso>
+		</campos>
+		<campos nombre="plan_ccod">
+			<tipo>INPUT</tipo>
+		    <permiso>INVISIBLE</permiso>
+		</campos>
+		<campos nombre="espe_ccod">
+			<tipo>INPUT</tipo>
+		    <permiso>INVISIBLE</permiso>
+		</campos>
+		<campos nombre="asig_tdesc">
+			<tipo>TEXT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Asignatura</descripcion>
+		</campos>
+		<campos nombre="nro_secciones">
+			<tipo>TEXT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Secciones</descripcion>
+			<alineamiento>right</alineamiento>			
+		</campos>
+		<campos nombre="cupo">
+			<tipo>TEXT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Cupos</descripcion>
+			<alineamiento>right</alineamiento>			
+		</campos>
+		<campos nombre="minimo"> 
+			<tipo>TEXT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nº mínimo de alumnos</descripcion>
+			<alineamiento>right</alineamiento>			
+		</campos>
+	</parametro>
+	<parametro formulario="4tt">
+		<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Codigo de Carrera</descripcion>
+		</campos>	
+		<campos nombre="carr_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Programa de estudios</descripcion>
+		</campos>
+		<campos nombre="asig_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Asignatura</descripcion>
+		</campos>		
+		<campos nombre="asig_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Asignatura</descripcion>
+		</campos>
+	</parametro>
+	<parametro formulario="4" variable="esec"
+	 colorSeleccionado="99FFFF" colorResaltado="#DCDCB8"  colorBase="#F1F1E4"
+	  nroRegistros="10" agregar="true"  eliminar="true" maxLista="10" 
+	  clave="secc_ccod_paso" mensajeError="No hay secciones creadas para esta asignatura" 
+	  editar="true" nuevaVentana="false" paginaEdicion="javascript:subsecciones(%secc_ccod%)" anchoTabla="100%" >
+		 <campos nombre="secc_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		 <campos nombre="ssec_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="secc_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Secc</descripcion>
+			<alineamiento>center</alineamiento>
+			<caracteres>2</caracteres>
+			<maxCaracteres>2</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+		<campos nombre="secc_ccod_paso">
+			<tipo>INPUT</tipo>
+			<permiso>INVISIBLE</permiso>
+			<id>TO-S</id>
+		</campos>
+		<campos nombre="carr_ccod">
+			<tipo>SELECT</tipo>
+			<destino>carreras</destino>
+			<union>carr_ccod</union>
+			<salida>carr_tdesc</salida>
+			<permiso>INVISIBLE</permiso>
+			<descripcion>Programa de estudios</descripcion>
+			<id>TO-S</id>
+		</campos>
+		<campos nombre="asig_ccod">
+			<tipo>INPUT</tipo>
+			<descripcion>Asignatura</descripcion>
+			<permiso>OCULTO</permiso>
+			<alineamiento>center</alineamiento>
+			<caracteres>6</caracteres>
+			<maxCaracteres>3</maxCaracteres>
+		</campos>
+		<campos nombre="secc_ncupo">
+			<tipo>INPUT</tipo>
+			<descripcion>Cupo</descripcion>
+			<permiso>LECTURAESCRITURA</permiso>
+			<alineamiento>right</alineamiento>
+			<caracteres>4</caracteres>
+			<maxCaracteres>3</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+		<campos nombre="secc_nquorum">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Mínimo &lt;br&gt; de alumnos</descripcion>
+			<alineamiento>center</alineamiento>
+			<caracteres>4</caracteres>
+			<maxCaracteres>3</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+		<campos nombre="secc_finicio_sec">
+			<tipo>INPUT</tipo>
+			<tipoDato>FECHA</tipoDato>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Fecha de inicio</descripcion>
+			<alineamiento>center</alineamiento>
+			<caracteres>12</caracteres>
+			<maxCaracteres>10</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+		<campos nombre="secc_ftermino_sec">
+			<tipo>INPUT</tipo>
+			<tipoDato>FECHA</tipoDato>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Fecha de término</descripcion>
+			<alineamiento>center</alineamiento>
+			<caracteres>12</caracteres>
+			<maxCaracteres>10</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+		<campos nombre="moda_ccod">
+			<tipo>SELECT</tipo>
+			<destino>Modalidades</destino>
+			<union>moda_ccod</union> 
+			<salida>moda_tdesc</salida>
+			<columnas>3</columnas>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Modalidad</descripcion>
+			<alineamiento>center</alineamiento>
+			<script>onChange="corregir(this.name,this.value)"</script>
+			<id>TO-S</id>
+		</campos>
+		<campos nombre="secc_nhoras_pagar">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Horas a Pagar</descripcion>
+			<alineamiento>center</alineamiento>
+			<caracteres>3</caracteres>
+			<maxCaracteres>4</maxCaracteres>
+			<id>TO-S</id>
+		</campos>
+		<campos nombre="secc_nhoras_ayudante">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Horas Ayudantía</descripcion>
+			<alineamiento>center</alineamiento>
+			<caracteres>3</caracteres>
+			<maxCaracteres>4</maxCaracteres>
+			<id>NU-S</id>
+		</campos>
+		<campos nombre="jorn_ccod">
+			<tipo>RADIO</tipo>
+			<destino>jornadas</destino>
+			<union>jorn_ccod</union> 
+			<salida>jorn_tdesc_corta</salida>
+			<columnas>2</columnas>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Jornada</descripcion>
+			<alineamiento>center</alineamiento>
+			<id>NU-N</id>
+		</campos>
+		<campos nombre="subsecciones">
+			<tipo>input</tipo>
+			<permiso>lectura</permiso>
+			<descripcion>Subsecciones</descripcion>
+			<alineamiento>center</alineamiento>
+		</campos>
+	</parametro>
+	<parametro formulario="planificacion_elec" variable="esec"
+	 colorSeleccionado="99FFFF" colorResaltado="#DCDCB8"  colorBase="#F1F1E4"
+	  nroRegistros="10" agregar="true"  eliminar="true" maxLista="10" 
+	  clave="secc_ccod" mensajeError="No hay secciones creadas para esta asignatura" 
+	  editar="false" nuevaVentana="false" paginaEdicion="javascript:subsecciones(%secc_ccod%)" anchoTabla="100%" >
+		<campos nombre="asignatura">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Asignaturas ELectivas</descripcion>
+			<alineamiento>left</alineamiento>
+		</campos>
+		<campos nombre="SECC_NCUPO">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Cupo</descripcion>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="SECC_NQUORUM">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Mínimo de Alumnos</descripcion>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="SECC_FINICIO_SEC">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Fecha De Inicio</descripcion>
+			<alineamiento>center</alineamiento>
+		</campos>
+		<campos nombre="SECC_FTERMINO_SEC">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Fecha De Termino</descripcion>
+			<alineamiento>center</alineamiento>
+		</campos>
+		<campos nombre="JORN_TDESC">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Jornada</descripcion>
+			<alineamiento>left</alineamiento>
+		</campos>
+		<campos nombre="asig_elctiva">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Tipo De Asignatura</descripcion>
+			<alineamiento>left</alineamiento>
+		</campos>
+	</parametro>
+		<parametro formulario="4.1" variable="esec">
+		 <tablas nombre="secciones" accion="M" />
+		 <tablas nombre="sub_secciones" accion="M" />
+		 <campos nombre="secc_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<tipoDato>SECUENCIA</tipoDato>
+			<secuencia>secc_ccod_seq</secuencia>
+		</campos>
+		 <campos nombre="ssec_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<tipoDato>SECUENCIA</tipoDato>
+			<secuencia>ssec_ncorr_seq</secuencia>
+		</campos>
+	</parametro>
+	<parametro formulario="f_electivos" variable="ESEC">
+  		<tablas nombre="electivos" accion="M"/>
+ 	</parametro>
+	<parametro formulario="4.2" variable="esec">
+		 <tablas nombre="sub_secciones" accion="B" />
+		 <tablas nombre="secciones" accion="B" />
+		 <campos nombre="secc_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<tipoDato>SECUENCIA</tipoDato>
+			<secuencia>secc_ccod_seq</secuencia>
+		</campos>
+	</parametro>
+</Parametros>

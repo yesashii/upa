@@ -1,0 +1,1207 @@
+<!-- #include file = "../biblioteca/_conexion_encuesta_rr_pp.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+<!-- #include file = "../biblioteca/revisa_session_encuesta_rr_pp.asp"-->
+<%
+
+''---------------------------------------------------------------------------------------------------
+set pagina = new CPagina
+pagina.Titulo = "Encuesta"
+''---------------------------------------------------------------------------------------------------
+set conexion = new CConexion
+conexion.Inicializar "upacifico"
+
+set negocio = new CNegocio
+negocio.Inicializa conexion
+
+set f_botonera = new CFormulario
+f_botonera.Carga_Parametros "encuesta_rr_pp.xml", "botonera"
+
+
+q_pers_nrut=negocio.obtenerUsuario
+
+set f_encuesta = new CFormulario
+f_encuesta.Carga_Parametros "encuesta_rr_pp.xml", "encuesta"
+f_encuesta.Inicializar conexion
+
+consulta = " select ''" 
+		   
+		   
+
+'response.Write("<pre>"&consulta&"</pre>")
+f_encuesta.Consultar consulta
+f_encuesta.Siguiente
+
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Encuesta Universidad del Pac&iacute;fico</title>
+<style type="text/css">
+<!--
+body {
+	background-color: #dae4fa;
+}
+.Estilo27 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16pt;
+	font-weight: bold;
+	color: #FF7F00;
+}
+.Estilo31 {
+	font-size: 10pt;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.Estilo34 {font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; }
+.Estilo35 {
+	font-weight: bold;
+	font-size: 36px;
+	font-style: italic;
+	color: #FF7F00;
+}
+.Estilo42 {font-size: 10pt; color: #000000; font-family: Arial, Helvetica, sans-serif;}
+.Estilo45 {font-family: Arial, Helvetica, sans-serif; font-size: 12px; }
+-->
+</style>
+
+<script language="JavaScript" src="../biblioteca/tabla.js"></script>
+<script language="JavaScript" src="../biblioteca/funciones.js"></script>
+<script language="JavaScript" src="../biblioteca/validadores.js"></script>
+
+<script language="JavaScript">
+
+function ValidarMarcados(){
+
+var preg_9
+var preg_10 
+var preg_12
+var preg_14
+var preg_15
+var preg_16
+var preg_17
+var preg_18
+var preg_19
+var preg_20
+var preg_21
+
+{ 
+  var cantidad;
+  var elemento;
+  var contestada;
+  var cant_radios;
+  var divisor;
+  var i; 
+  contestada=0;
+  cant_radios=0;
+  divisor=4;//cantidad de alternativas de respuesta por pregunta
+  cantidad=document.edicion.length;
+  for(i=0;i<cantidad;i++)
+  {
+  elemento=document.edicion.elements[i];
+  	if ((elemento.type=="radio") && (elemento.name=="encu[0][preg_9]"))
+  		{cant_radios++;
+		  if(elemento.checked){contestada++;}
+  		}
+  }
+
+  if (contestada==((cant_radios)/divisor))
+  { 
+	 preg_9=1
+  }
+  else
+  {
+   alert("Debes selecionar una opcion en la pregunta 9.");
+   
+  }
+}
+
+{ 
+  var cantidad;
+  var elemento;
+  var contestada;
+  var cant_radios;
+  var divisor;
+  var i; 
+  contestada=0;
+  cant_radios=0;
+  divisor=7;//cantidad de alternativas de respuesta por pregunta
+  cantidad=document.edicion.length;
+  for(i=0;i<cantidad;i++)
+  {
+  elemento=document.edicion.elements[i];
+  	if ((elemento.type=="radio") && (elemento.name=="encu[0][preg_10]"))
+  		{cant_radios++;
+		  if(elemento.checked){contestada++;}
+  		}
+  }
+
+  if (contestada==((cant_radios)/divisor))
+  { 
+	 preg_10=1
+  }
+  else
+  {
+   alert("Debes selecionar una opcion en la pregunta 10.");
+   
+  }
+}
+{ 
+  var cantidad;
+  var elemento;
+  var contestada;
+  var cant_radios;
+  var divisor;
+  var i; 
+  contestada=0;
+  cant_radios=0;
+  divisor=7;//cantidad de alternativas de respuesta por pregunta
+  cantidad=document.edicion.length;
+  for(i=0;i<cantidad;i++)
+  {
+  elemento=document.edicion.elements[i];
+  	if ((elemento.type=="radio") && (elemento.name=="encu[0][preg_11]"))
+  		{cant_radios++;
+		  if(elemento.checked){contestada++;}
+  		}
+  }
+
+  if (contestada==((cant_radios)/divisor))
+  { 
+	 preg_11=1
+  }
+  else
+  {
+   alert("Debes selecionar una opcion en la pregunta 11.");
+   
+  }
+}
+
+{ 
+  var cantidad;
+  var elemento;
+  var contestada;
+  var cant_radios;
+  var divisor;
+  var i; 
+  contestada=0;
+  cant_radios=0;
+  divisor=7;//cantidad de alternativas de respuesta por pregunta
+  cantidad=document.edicion.length;
+  for(i=0;i<cantidad;i++)
+  {
+  elemento=document.edicion.elements[i];
+  	if ((elemento.type=="radio") && (elemento.name=="encu[0][preg_12]"))
+  		{cant_radios++;
+		  if(elemento.checked){contestada++;}
+  		}
+  }
+
+  if (contestada==((cant_radios)/divisor))
+  { 
+	 preg_12=1
+  }
+  else
+  {
+   alert("Debes selecionar una opcion en la pregunta 12.");
+   
+  }
+}
+
+{ 
+  var cantidad;
+  var elemento;
+  var contestada;
+  var cant_radios;
+  var divisor;
+  var i; 
+  contestada=0;
+  cant_radios=0;
+  divisor=7;//cantidad de alternativas de respuesta por pregunta
+  cantidad=document.edicion.length;
+  for(i=0;i<cantidad;i++)
+  {
+  elemento=document.edicion.elements[i];
+  	if ((elemento.type=="radio") && (elemento.name=="encu[0][preg_13]"))
+  		{cant_radios++;
+		  if(elemento.checked){contestada++;}
+  		}
+  }
+
+  if (contestada==((cant_radios)/divisor))
+  { 
+	 preg_13=1
+  }
+  else
+  {
+   alert("Debes selecionar una opcion en la pregunta 13.");
+   
+  }
+}
+
+{ 
+  var cantidad;
+  var elemento;
+  var contestada;
+  var cant_radios;
+  var divisor;
+  var i; 
+  contestada=0;
+  cant_radios=0;
+  divisor=7;//cantidad de alternativas de respuesta por pregunta
+  cantidad=document.edicion.length;
+  for(i=0;i<cantidad;i++)
+  {
+  elemento=document.edicion.elements[i];
+  	if ((elemento.type=="radio") && (elemento.name=="encu[0][preg_14]"))
+  		{cant_radios++;
+		  if(elemento.checked){contestada++;}
+  		}
+  }
+
+  if (contestada==((cant_radios)/divisor))
+  { 
+	 preg_14=1
+  }
+  else
+  {
+   alert("Debes selecionar una opcion en la pregunta 14.");
+   
+  }
+}
+
+{ 
+  var cantidad;
+  var elemento;
+  var contestada;
+  var cant_radios;
+  var divisor;
+  var i; 
+  contestada=0;
+  cant_radios=0;
+  divisor=7;//cantidad de alternativas de respuesta por pregunta
+  cantidad=document.edicion.length;
+  for(i=0;i<cantidad;i++)
+  {
+  elemento=document.edicion.elements[i];
+  	if ((elemento.type=="radio") && (elemento.name=="encu[0][preg_15]"))
+  		{cant_radios++;
+		  if(elemento.checked){contestada++;}
+  		}
+  }
+
+  if (contestada==((cant_radios)/divisor))
+  { 
+	 preg_15=1
+  }
+  else
+  {
+   alert("Debes selecionar una opcion en la pregunta 15.");
+   
+  }
+}
+
+{ 
+  var cantidad;
+  var elemento;
+  var contestada;
+  var cant_radios;
+  var divisor;
+  var i; 
+  contestada=0;
+  cant_radios=0;
+  divisor=7;//cantidad de alternativas de respuesta por pregunta
+  cantidad=document.edicion.length;
+  //alert(cantidad);
+  for(i=0;i<cantidad;i++)
+  {
+  elemento=document.edicion.elements[i];
+  	if ((elemento.type=="radio") &&  (elemento.name=="encu[0][preg_16]"))
+  		{cant_radios++;
+		  if(elemento.checked){contestada++;}
+  		}
+  }
+
+  if (contestada==((cant_radios)/divisor))
+  { 
+	 preg_16=1
+  }
+  else
+  {
+   alert("Debes selecionar una opcion en la pregunta 16.");
+   
+  }
+}
+
+{ 
+  var cantidad;
+  var elemento;
+  var contestada;
+  var cant_radios;
+  var divisor;
+  var i; 
+  contestada=0;
+  cant_radios=0;
+  divisor=7;//cantidad de alternativas de respuesta por pregunta
+  cantidad=document.edicion.length;
+  
+  for(i=0;i<cantidad;i++)
+  {
+  elemento=document.edicion.elements[i];
+  	if ((elemento.type=="radio") && (elemento.name=="encu[0][preg_17]"))
+  		{cant_radios++;
+		  if(elemento.checked){contestada++;}
+  		}
+  }
+
+  if (contestada==((cant_radios)/divisor))
+  { 
+	 preg_17=1
+	 
+  }
+  else
+  {
+   alert("Debes selecionar una opcion en la pregunta 17.");
+   
+  }
+
+{ 
+  var cantidad;
+  var elemento;
+  var contestada;
+  var cant_radios;
+  var divisor;
+  var i; 
+  contestada=0;
+  cant_radios=0;
+  divisor=7;//cantidad de alternativas de respuesta por pregunta
+  cantidad=document.edicion.length;
+  
+  for(i=0;i<cantidad;i++)
+  		{
+  elemento=document.edicion.elements[i];
+  	if ((elemento.type=="radio") && (elemento.name=="encu[0][preg_18]"))
+  			{cant_radios++;
+		  if(elemento.checked){contestada++;}
+  			}
+  		}
+
+  if (contestada==((cant_radios)/divisor))
+  		{ 
+	 preg_18=1
+	 
+  		}
+  else
+  		{
+   alert("Debes selecionar una opcion en la pregunta 18.");
+   
+  		}		
+	}
+
+}
+
+{ 
+var preg_19_a;
+var preg_19_b;
+var preg_19_c;
+
+ preg_19_a=document.edicion.elements["encu[0][preg_19_a]"].value
+ preg_19_b=document.edicion.elements["encu[0][preg_19_b]"].value
+ preg_19_c=document.edicion.elements["encu[0][preg_19_c]"].value
+
+
+  if ((preg_19_a!=preg_19_b)&&(preg_19_a!=preg_19_c)&&(preg_19_b!=preg_19_c))
+  		{ 
+			 preg_19=1
+	 
+  		}
+  else
+  		{
+   alert("Debes selecionar distintas opciones en la pregunta 19.");
+  			 preg_19=0
+  		}		
+	
+
+}
+
+
+
+
+
+{ 
+  var cantidad;
+  var elemento;
+  var contestada;
+  var cant_radios;
+  var divisor;
+  var i; 
+  var respuestas
+  var respondidas
+  contestada=0;
+  cant_radios=0;
+  divisor=24;//cantidad de alternativas de respuesta por pregunta
+  cantidad=document.edicion.length;
+  for(i=0;i<cantidad;i++)
+  {
+  elemento=document.edicion.elements[i];
+  	if ((elemento.type=="checkbox")&& (elemento.name!="encu[0][preg_21_1]")&& (elemento.name!="encu[0][preg_21_2]")&& (elemento.name!="encu[0][preg_21_3]")&& (elemento.name!="encu[0][preg_21_4]")&& (elemento.name!="encu[0][preg_21_5]")&& (elemento.name!="encu[0][preg_21_6]")&& (elemento.name!="encu[0][preg_21_7]")&& (elemento.name!="encu[0][preg_21_8]")&& (elemento.name!="encu[0][preg_21_9]")&& (elemento.name!="encu[0][preg_21_10]")&& (elemento.name!="encu[0][preg_21_11]")&& (elemento.name!="encu[0][preg_21_12]")&& (elemento.name!="encu[0][preg_21_13]")&& (elemento.name!="encu[0][preg_21_14]")&& (elemento.name!="encu[0][preg_21_15]")&& (elemento.name!="encu[0][preg_21_16]")&& (elemento.name!="encu[0][preg_21_17]")&& (elemento.name!="encu[0][preg_21_18]")&& (elemento.name!="encu[0][preg_21_19]")&& (elemento.name!="encu[0][preg_21_20]")&& (elemento.name!="encu[0][preg_21_21]")&& (elemento.name!="encu[0][preg_21_22]")&& (elemento.name!="encu[0][preg_21_23]")&& (elemento.name!="encu[0][preg_21_24]") )
+  		{cant_radios++;
+		  if(elemento.checked){contestada++;}
+  		}
+  }
+
+  if (contestada==3)
+  { 
+	 preg_20=1
+  }
+  else
+  {
+ 
+  respondidas=3-contestada
+   alert('Te faltan  '+ respondidas +' opciones por selecionar en la pregunta 20.');
+   preg_20=0
+  }
+}
+{ 
+  var cantidad2;
+  var elemento2;
+  var contestada2;
+  var cant_radios;
+  var divisor2;
+  var i; 
+  var respuestas2
+  var respondidas2
+  contestada2=0;
+  cant_radios=0;
+  divisor=24;//cantidad de alternativas de respuesta por pregunta
+  cantidad2=document.edicion.length;
+  for(i=0;i<cantidad2;i++)
+  {
+  elemento2=document.edicion.elements[i];
+  	if ((elemento2.type=="checkbox")&& (elemento2.name!="encu[0][preg_20_1]")&& (elemento2.name!="encu[0][preg_20_2]")&& (elemento2.name!="encu[0][preg_20_3]")&& (elemento2.name!="encu[0][preg_20_4]")&& (elemento2.name!="encu[0][preg_20_5]")&& (elemento2.name!="encu[0][preg_20_6]")&& (elemento2.name!="encu[0][preg_20_7]")&& (elemento2.name!="encu[0][preg_20_8]")&& (elemento2.name!="encu[0][preg_20_9]")&& (elemento2.name!="encu[0][preg_20_10]")&& (elemento2.name!="encu[0][preg_20_11]")&& (elemento2.name!="encu[0][preg_20_12]")&& (elemento2.name!="encu[0][preg_20_13]")&& (elemento2.name!="encu[0][preg_20_14]")&& (elemento2.name!="encu[0][preg_20_15]")&& (elemento2.name!="encu[0][preg_20_16]")&& (elemento2.name!="encu[0][preg_20_17]")&& (elemento2.name!="encu[0][preg_20_18]")&& (elemento2.name!="encu[0][preg_20_19]")&& (elemento2.name!="encu[0][preg_20_20]")&& (elemento2.name!="encu[0][preg_20_21]")&& (elemento2.name!="encu[0][preg_20_22]")&& (elemento2.name!="encu[0][preg_20_23]")&& (elemento2.name!="encu[0][preg_20_24]"))
+  		{cant_radios++;
+		  if(elemento2.checked){contestada2++;}
+  		}
+  }
+//alert(contestada2)
+  if (contestada2==3)
+  { 
+	 preg_21=1
+  }
+  else
+  {
+
+  respondidas2=3-contestada2
+   alert('Te faltan  '+ respondidas2 +' opciones por selecionar en la pregunta 21.');
+   preg_21=0
+  }
+}
+
+
+
+
+if ((preg_9==1) && (preg_10==1) && (preg_11==1) && (preg_12==1)&& (preg_13==1) && (preg_14==1) && (preg_15==1) && (preg_16==1) && (preg_17==1) && (preg_18==1)&&(preg_19==1)&& (preg_20==1)&& (preg_21==1))
+{
+ 	return true;
+}
+else
+{
+	
+	return false;
+}
+
+}
+
+//Número máximo de casillas marcadas por cada fila 
+var maxi=3; 
+var maxi2=3;
+//El contador es un arrayo de forma que cada posición del array es una linea del formulario 
+var contador=new Array(0,0); 
+var contador2=new Array(0,0); 
+
+function validarcheckbo(preg,grupo) { 
+   //Compruebo si la casilla está marcada
+   
+   elemento=preg.name;
+
+    //alert(elemento);
+    check=document.edicion.elements[elemento];
+   //alert(check.checked);
+   if (check.checked==true){ 
+       //está marcada, entonces aumento en uno el contador del grupo 
+      contador[grupo]++; 
+       //compruebo si el contador ha llegado al máximo permitido 
+       if (contador[grupo]>maxi) { 
+          //si ha llegado al máximo, muestro mensaje de error 
+        alert('No se pueden elegir más de '+maxi+' casillas a la vez.'); 
+          //desmarco la casilla, porque no se puede permitir marcar 
+         check.checked=false; 
+          //resto una unidad al contador de grupo, porque he desmarcado una casilla 
+          contador[grupo]--; 
+       } 
+  }else { 
+       //si la casilla no estaba marcada, resto uno al contador de grupo 
+       contador[grupo]--; 
+   } 
+   
+   var elemento2=document.edicion.elements["encu[0][preg_20_24]"];
+	
+	
+	if ((elemento=="encu[0][preg_20_24]") &&(check.checked==true))
+	{
+	var valor=1
+	//alert('1');
+	valida_trabajo(valor);
+	
+	}
+	//alert(elemento);
+	if ((elemento!="encu[0][preg_20_24]") &&(elemento2.checked==false))
+	{
+	//alert('0');
+	var valor=0
+	valida_trabajo(valor);
+	
+	}
+		if ((elemento=="encu[0][preg_20_24]") &&(check.checked==false))
+	{
+	//alert('0');
+	var valor=0
+	valida_trabajo(valor);
+	
+	}
+
+} 
+
+function validarcheckbo2(preg2,grupo2) { 
+   //Compruebo si la casilla está marcada
+   
+   elemento2=preg2.name;
+
+    //alert(elemento);
+    check=document.edicion.elements[elemento2];
+   //alert(check.checked);
+   if (check.checked==true){ 
+       //está marcada, entonces aumento en uno el contador del grupo 
+      contador2[grupo2]++; 
+       //compruebo si el contador ha llegado al máximo permitido 
+       if (contador2[grupo2]>maxi2) { 
+          //si ha llegado al máximo, muestro mensaje de error 
+        alert('No se pueden elegir más de '+maxi2+' casillas a la vez.'); 
+          //desmarco la casilla, porque no se puede permitir marcar 
+         check.checked=false; 
+          //resto una unidad al contador de grupo, porque he desmarcado una casilla 
+          contador2[grupo2]--; 
+       } 
+  }else { 
+       //si la casilla no estaba marcada, resto uno al contador de grupo 
+       contador2[grupo2]--; 
+   } 
+   
+    var elemento3=document.edicion.elements["encu[0][preg_21_24]"];
+	
+	
+	if ((elemento2=="encu[0][preg_21_24]") &&(check.checked==true))
+	{
+	var valor=1
+	//alert('1');
+	valida_trabajo2(valor);
+	
+	}
+	//alert(elemento);
+	if ((elemento2!="encu[0][preg_21_24]") &&(elemento3.checked==false))
+	{
+	//alert('0');
+	var valor=0
+	valida_trabajo2(valor);
+	
+	}
+		if ((elemento2=="encu[0][preg_21_24]") &&(check.checked==false))
+	{
+	//alert('0');
+	var valor=0
+	valida_trabajo2(valor);
+	
+	}
+
+}
+
+function valida_trabajo(valor)
+{
+//alert("valor "+valor);
+	if (valor ==1)
+	{
+		
+		document.edicion.elements["encu[0][preg_20_otro]"].disabled=false;	
+		
+	}
+	else
+	{
+			
+		document.edicion.elements["encu[0][preg_20_otro]"].disabled=true;
+	}
+
+}
+
+function valida_trabajo2(valor)
+{
+//alert("valor "+valor);
+	if (valor ==1)
+	{
+		
+		document.edicion.elements["encu[0][preg_21_otro]"].disabled=false;	
+		
+	}
+	else
+	{
+			
+		document.edicion.elements["encu[0][preg_21_otro]"].disabled=true;
+	}
+
+}
+
+</script>
+</head>
+
+<body>
+<!--<p align="center" class="Estilo35">&quot;Encuesta Egresados de RR PP&quot;</p>-->
+<p align="center"><span class="Estilo34"> </span></p>
+<table width="100%" border="0">
+<tr valign="top">
+<td width="100%" align="center">
+<form name="edicion">
+<input type="hidden" name="encu[0][pers_nrut]" value="<%=q_pers_nrut%>">
+
+
+
+<table width="700" border="0" cellpadding="0" cellspacing="0">
+
+<tr>
+	<td width="25" height="24" background="images/lado_izquierda.jpg" align="right"><img width="25" height="24" src="images/superior_izquierda.jpg"></td>
+	<td width="646" height="24" background="images/borde_superior.jpg">&nbsp;</td>
+	<td width="29" height="24"><img width="29" height="24" src="images/superior_derecha.jpg"></td>
+</tr>
+<tr>
+    <td width="25" background="images/lado_izquierda.jpg" align="right">&nbsp;</td>
+	<td bgcolor="#FFFFFF" aling="left" width="646">
+		<table width="763" border="0" align="left" cellpadding="10" cellspacing="10" bgcolor="#FFFFFF">
+		  <tr>
+			<td width="723" align="left">
+			
+			    <% if contestada <> "S" then %>
+			
+			 
+				<br />
+			  <p class="Estilo42"><strong><em> 9) </em></strong>Considera que su formaci&oacute;n profesional en el  momento de incorporarse a su puesto de trabajo era:</p>
+			  <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
+				<tr>
+					<td width="100%" align="center" valign="top" class="Estilo31"><%f_encuesta.dibujaCampo("preg_9")%></td>
+				</tr>
+			  </table>
+			  <br />
+							<hr align="left" width="100%" size="1" noshade="noshade" />
+							<p class="Estilo42">En el siguiente cuadro usted encontrará una serie de criterios para evaluar la formación entregada por la carrera de Relaciones Públicas de la Universidad del Pacífico cuando usted estudió.</p>
+							<p class="Estilo42"> <strong>CALIFIQUE EN UNA ESCALA DE 1 A 7, CONSIDERANDO QUE 7 ES MUY BUENA Y 1 MUY DEFICIENTE.</strong> </p>
+							<table width="100%" border="1" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+				   <tr>
+					
+					<td width="79%" align="center" valign="top" bgcolor="#FFFFFF"class="Estilo31"><font size="2" color="#000000">ASPECTOS A EVALUAR.</font></td>
+				  	<td width="3%" align="center" valign="top" bgcolor="#FFFFFF" class="Estilo31"><font size="2" color="#000000">1.</font></td>
+					<td width="3%" align="center" valign="top" bgcolor="#FFFFFF" class="Estilo31"><font size="2" color="#000000">2.</font></td>
+					<td width="3%" align="center" valign="top" bgcolor="#FFFFFF" class="Estilo31"><font size="2" color="#000000">3.</font></td>
+					<td width="3%" align="center" valign="top" bgcolor="#FFFFFF" class="Estilo31"><font size="2" color="#000000">4.</font></td>
+					<td width="3%" align="center" valign="top" bgcolor="#FFFFFF" class="Estilo31"><font size="2" color="#000000">5.</font></td>
+					<td width="3%" align="center" valign="top" bgcolor="#FFFFFF" class="Estilo31"><font size="2" color="#000000">6.</font></td>
+					<td width="3%" align="center" valign="top" bgcolor="#FFFFFF" class="Estilo31"><font size="2" color="#000000">7.</font></td>
+			     </tr>
+				 
+				 <tr>
+				 <td width="79%" align="left" valign="top" bgcolor="FFFFFF" class="Estilo31"><font size="2" color="#000000"><strong>10. Comunicaci&oacute;n:</strong> Capacidad para utilizar el conocimiento, la experiencia y el razonamiento para emitir juicios fundados.  </font></td>
+				  	<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_10]" type="radio" value="1"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_10]" type="radio" value="2"  />
+					</p></td>
+						<td width="3%" align="center" valign="top"  bgcolor="#CCCCCC"class="Estilo31"><p align="center">
+						<input name="encu[0][preg_10]" type="radio" value="3"  />
+					</p></td>
+						<td width="3%" align="center" valign="top"  bgcolor="#CCCCCC"class="Estilo31"><p align="center">
+						<input name="encu[0][preg_10]" type="radio" value="4"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_10]" type="radio" value="5"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_10]" type="radio" value="6"  />
+					</p></td>
+						<td width="3%" align="center" valign="top"  bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_10]" type="radio" value="7"  />
+					</p></td>
+				 </tr>
+				 <tr>
+				 <td width="79%" align="left" valign="top" bgcolor="FFFFFF" class="Estilo31"><font size="2" color="#000000"><strong>11. Pensamiento crítico: </strong> Capacidad para comunicarse de manera efectiva a través del lenguaje (oral, escrito, lenguaje técnico y computacional) que es necesario para el ejercicio de la profesión. </font></td>
+				  	<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+				  	  <input name="encu[0][preg_11]" type="radio" value="1"  />
+				  	</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_11]" type="radio" value="2"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_11]" type="radio" value="3"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_11]" type="radio" value="4"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_11]" type="radio" value="5"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_11]" type="radio" value="6"  />
+					</p></td>
+						<td width="3%" align="center" valign="top"  bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_11]" type="radio" value="7"  />
+					</p></td>
+				 </tr>
+				  <tr>
+				 <td width="79%" align="left" valign="top" bgcolor="FFFFFF"class="Estilo31"><font size="2" color="#000000"><strong>12. Solución de problemas:  </strong> Capacidad para identificar problemas, planificar estrategias y enfrentarlos.  </font></td>
+				  	<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_12]" type="radio" value="1"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_12]" type="radio" value="2"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_12]" type="radio" value="3"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_12]" type="radio" value="4"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_12]" type="radio" value="5"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_12]" type="radio" value="6"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_12]" type="radio" value="7"  />
+					</p></td>
+				 </tr>
+				  <tr>
+				 <td width="79%" align="left" valign="top" bgcolor="FFFFFF" class="Estilo31"><font size="2" color="#000000"><strong>13. Interacción social </strong> Capacidad para formar parte de equipos de trabajo, y participar en proyectos grupales. </font></td>
+				  	<td width="3%" align="center" valign="top"bgcolor="#CCCCCC"  class="Estilo31"><p align="center">
+						<input name="encu[0][preg_13]" type="radio" value="1"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_13]" type="radio" value="2"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_13]" type="radio" value="3"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_13]" type="radio" value="4"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_13]" type="radio" value="5"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_13]" type="radio" value="6"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_13]" type="radio" value="7"  />
+					</p></td>
+				 </tr>
+				  <tr>
+				 <td width="79%" align="left" valign="top" bgcolor="FFFFFF" class="Estilo31"><font size="2" color="#000000"><strong>14. Autoaprendizaje e iniciativa personal </strong> Inquietud y búsqueda permanente de nuevos conocimientos. Capacidad de aplicar y perfeccionar los conocimientos anteriores.  </font></td>
+				  	<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_14]" type="radio" value="1"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_14]" type="radio" value="2"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_14]" type="radio" value="3"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_14]" type="radio" value="4"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_14]" type="radio" value="5"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_14]" type="radio" value="6"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_14]" type="radio" value="7"  />
+					</p></td>
+				 </tr>
+				  <tr>
+				 <td width="79%" align="left" valign="top" bgcolor="FFFFFF" class="Estilo31"><font size="2" color="#000000"><strong> 15. Formación y consistencia ética: </strong> Capacidad para asumir principios éticos y respetar los principios del otro, como norma de convivencia social.  </font></td>
+				  	<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_15]" type="radio" value="1"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_15]" type="radio" value="2"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_15]" type="radio" value="3"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_15]" type="radio" value="4"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_15]" type="radio" value="5"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_15]" type="radio" value="6"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_15]" type="radio" value="7"  />
+					</p></td>
+				 </tr>
+				  <tr>
+				 <td width="79%" align="left" valign="top" bgcolor="FFFFFF" class="Estilo31"><font size="2" color="#000000"><strong>16. Pensamiento Globalizado:  </strong>Capacidad para comprender los aspectos y relaciones de contexto del mundo globalizado.  </font></td>
+				  	<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_16]" type="radio" value="1"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_16]" type="radio" value="2"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_16]" type="radio" value="3"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_16]" type="radio" value="4"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_16]" type="radio" value="5"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_16]" type="radio" value="6"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_16]" type="radio" value="7"  />
+					</p></td>
+				 </tr>
+				  <tr>
+				 <td width="79%" align="left" valign="top" bgcolor="FFFFFF" class="Estilo31" ><font size="2" color="#000000"><strong>17. Formación Ciudadana: </strong> Capacidad para integrarse a la comunidad y participar responsablemente en la vida ciudadana. </font></td>
+				  	<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_17]" type="radio" value="1"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_17]" type="radio" value="2"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_17]" type="radio" value="3"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_17]" type="radio" value="4"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_17]" type="radio" value="5"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_17]" type="radio" value="6"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_17]" type="radio" value="7"  />
+					</p></td>
+				 </tr>
+				  <tr>
+				 <td width="79%" align="left" valign="top" bgcolor="FFFFFF" class="Estilo31"><font size="2" color="#000000"><strong>18. Sensibilidad estética:</strong> Capacidad de apreciar y valorar diversas formas artísticas y los contextos de donde provienen.  </font></td>
+				  	<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_18]" type="radio" value="1"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_18]" type="radio" value="2"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_18]" type="radio" value="3"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_18]" type="radio" value="4"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_18]" type="radio" value="5"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_18]" type="radio" value="6"  />
+					</p></td>
+						<td width="3%" align="center" valign="top" bgcolor="#CCCCCC" class="Estilo31"><p align="center">
+						<input name="encu[0][preg_18]" type="radio" value="7"  />
+					</p></td>
+				 </tr>
+				</table>
+			  <br />
+				<hr align="left" width="100%" size="1" noshade="noshade" />
+				<p class="Estilo31"><strong><em> 19) </em></strong>	Desde su punto de vista y experiencia, cuales son las principales <strong>competencias que usted posee para desempeñarse en su actual cargo</strong>, <strong>marque en orden de preferencia</strong> : </p>
+				<table width="50%" border="1" cellpadding="0" align="center" cellspacing="0" bgcolor="#FFFFFF">
+				   <tr>
+					
+					<td width="7%" align="center" valign="top" class="Estilo31">Prioridad</td>
+					<td width="93%" align="center" valign="top" class="Estilo31">COMPETENCIAS</td>
+				  </tr>
+				  <tr>
+					<td width="7%" align="center" valign="top" class="Estilo31">1</td>
+					<td width="93%" align="center" valign="top" class="Estilo31"><%f_encuesta.dibujaCampo("preg_19_a")%></td>
+					
+				  </tr>
+				    <tr>
+					<td width="7%" align="center" valign="top" class="Estilo31">2</td>
+					<td width="93%" align="center" valign="top" class="Estilo31"><%f_encuesta.dibujaCampo("preg_19_b")%></td>
+					
+				  </tr>
+				    <tr>
+					<td width="7%" align="center" valign="top" class="Estilo31">3</td>
+					<td width="93%" align="center" valign="top" class="Estilo31"><%f_encuesta.dibujaCampo("preg_19_c")%></td>
+					
+				  </tr>
+				  
+				</table>  
+				<br />
+				<hr align="left" width="100%" size="1" noshade="noshade" />
+				<p class="Estilo31"><strong><em> 20) </em></strong>En su formación profesional, cuales de los siguientes contenidos de materias son <strong>fortalezas cognitivas (conocimientos)</strong> en su actual desempeño laboral: <strong>(marque 3)</strong></p>
+				<table width="100%" border="1" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+                  <tr>
+                    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF" class="Estilo31"><font size="2" color="#000000">Ceremonial y Protocolo </font></td>
+                    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"class="Estilo31"><font size="2" color="#000000">
+                      <input type="checkbox" name="encu[0][preg_20_1]" value="1" onclick='validarcheckbo(this,0)'   />
+                    </font></td>
+                    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF" class="Estilo31"><p>Redacci&oacute;n</p></td>
+                    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+                      <input type="checkbox" name="encu[0][preg_20_2]" value="2" onclick='validarcheckbo(this,0)'   />
+                    </font></td>
+                    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31"><p>Metodolog&iacute;a de la<br />
+                      Investigaci&oacute;n<font size="2" color="#000000">.</font></p></td>
+                    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+                      <input type="checkbox" name="encu[0][preg_20_3]" value="3" onclick='validarcheckbo(this,0)'  />
+                    </font></td>
+                    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF" class="Estilo31"><p>Planificaci&oacute;n de  Medios y Media Training</p></td>
+                    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+                      <input type="checkbox" name="encu[0][preg_20_4]" value="4" onclick='validarcheckbo(this,0)'   />
+                    </font></td>
+                  </tr>
+                  <tr>
+                    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31"><p>Marketing</p></td>
+                    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+                      <input type="checkbox" name="encu[0][preg_20_5]" value="5" onclick='validarcheckbo(this,0)'   />
+                    </font></td>
+                    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31"><p>Historia de Chile  y la Cultura</p></td>
+                    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+                      <input type="checkbox" name="encu[0][preg_20_6]" value="6" onclick='validarcheckbo(this,0)'   />
+                    </font></td>
+                    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31"><p>Comunicaci&oacute;n<br />
+                      Estrat&eacute;gica</p></td>
+                    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+                      <input type="checkbox" name="encu[0][preg_20_7]" value="7" onclick='validarcheckbo(this,0)'  />
+                    </font></td>
+                    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31"><p>Redacci&oacute;n Period&iacute;stica</p></td>
+                    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+                      <input type="checkbox" name="encu[0][preg_20_8]" value="8" onclick='validarcheckbo(this,0)' />
+                    </font></td>
+                  </tr>
+                  <tr>
+                    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31"><p>Administraci&oacute;n<br />
+                      General</p></td>
+                    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+                      <input type="checkbox" name="encu[0][preg_20_9]" value="9" onclick='validarcheckbo(this,0)'  />
+                    </font></td>
+                    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31"><p>Psicolog&iacute;a Social</p></td>
+                    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+                      <input type="checkbox" name="encu[0][preg_20_10]" value="10" onclick='validarcheckbo(this,0)'  />
+                    </font></td>
+                    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31"><font size="2" color="#000000">Teor&iacute;a de la Comunicaci&oacute;n .</font></td>
+                    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+                  <input type="checkbox" name="encu[0][preg_20_11]" value="11" onclick='validarcheckbo(this,0)'  />
+                    </font></td>
+                    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31"><table border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td width="167" valign="top"><font size="2" color="#000000">
+                            <p>Gesti&oacute;n    de Personas</p>
+                          </font></td>
+                        </tr>
+                    </table></td>
+                    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+                      <input type="checkbox" name="encu[0][preg_20_l2]" value="12" onclick='validarcheckbo(this,0)'  />
+                    </font></td>
+                  </tr>
+                  <tr>
+                    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31"><p>Desarrollo<br />
+                      Organizaciona<font size="2" color="#000000">.</font></p></td>
+                    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+                      <input type="checkbox" name="encu[0][preg_20_13]" value="13" onclick='validarcheckbo(this,0)'   />
+                    </font></td>
+                    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31"><font size="2" color="#000000">Ingl&eacute;s.</font></td>
+                    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+                      <input type="checkbox" name="encu[0][preg_20_14]" value="14" onclick='validarcheckbo(this,0)'  />
+                    </font></td>
+                    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31"><p>Legislación </p></td>
+                    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+                      <input type="checkbox" name="encu[0][preg_20_15]" value="15" onclick='validarcheckbo(this,0)'   />
+                    </font></td>
+                    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31">Planificac&iacute;on Estrat&eacute;gica </td>
+                    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+                      <input type="checkbox" name="encu[0][preg_20_16]" value="16" onclick='validarcheckbo(this,0)'   />
+                    </font></td>
+                  </tr>
+                  <tr>
+                    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31">Opini&oacute;n P&uacute;blica </td>
+                    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+                      <input type="checkbox" name="encu[0][preg_20_17]" value="17" onclick='validarcheckbo(this,0)'   />
+                    </font></td>
+                    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31">Gesti&oacute;n y producci&oacute;n de Eventos</td>
+                    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+                      <input type="checkbox" name="encu[0][preg_20_18]" value="18" onclick='validarcheckbo(this,0)'   />
+                    </font></td>
+                    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31">Relaciones P&uacute;blicas</td>
+                    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+                      <input type="checkbox" name="encu[0][preg_20_19]" value="19" onclick='validarcheckbo(this,0)'   />
+                    </font></td>
+                    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31">Fundamentos de Econom&iacute;a</td>
+                    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+                      <input type="checkbox" name="encu[0][preg_20_20]" value="20" onclick='validarcheckbo(this,0)'  />
+                    </font></td>
+                  </tr>
+                  <tr>
+                    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31">Gesti&oacute;n de Conflictos</td>
+                    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+                      <input type="checkbox" name="encu[0][preg_20_21]" value="21" onclick='validarcheckbo(this,0)'   />
+                    </font></td>
+                    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31">Liderazgo</td>
+                    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+                      <input type="checkbox" name="encu[0][preg_20_22]" value="22" onclick='validarcheckbo(this,0)'   />
+                    </font></td>
+                    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31">Lenguaje Audiovisual</td>
+                    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+                      <input type="checkbox" name="encu[0][preg_20_23]" value="23" onclick='validarcheckbo(this,0)' />
+                    </font></td>
+                    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31"><p>Otro, se&ntilde;alar</p></td>
+                    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+                      <input type="checkbox" name="encu[0][preg_20_24]" value="24" onclick='validarcheckbo(this,0)'   />
+                    </font></td>
+                  </tr>
+                
+                </table>
+				<br />
+				 <table width="100%" border="0" cellpadding="0" cellspacing="0" >
+				  <tr>
+				  <td width="12%" align="left" valign="top" class="Estilo31" ><p>Indicar Otro</p></td>
+					<td width="88%" align="left" valign="top" class="Estilo31" ><%f_encuesta.dibujaCampo("preg_20_otro")%></td>
+				  </tr>
+			  </table>
+				<br />
+				<hr align="left" width="100%" size="1" noshade="noshade" />
+			  <p class="Estilo31"><strong><em> 21) </em></strong>En su formación profesional, cuales de los siguientes contenidos de materias son <strong>poco útiles y/o irrelevantes </strong>para su actual desempeño como profesional: <strong>(marque 3)</strong></p>
+			  <table width="100%" border="1" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
+				  <tr>
+				    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF" class="Estilo31"><font size="2" color="#000000">Ceremonial y Protocolo </font></td>
+				    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"class="Estilo31"><font size="2" color="#000000"><input type="checkbox" name="encu[0][preg_21_1]" value="1" onclick='validarcheckbo2(this,0)'  ></font></td>
+					<td width="19%" align="left" valign="top" bgcolor="#FFFFFF" class="Estilo31"><p>Redacci&oacute;n</p></td>
+					<td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000"><input type="checkbox" name="encu[0][preg_21_2]" value="2" onclick='validarcheckbo2(this,0)' ></font></td>
+					<td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31"><p>Metodolog&iacute;a de la<br />Investigaci&oacute;n<font size="2" color="#000000">.</font></p>					  </td>
+				    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000"><input type="checkbox" name="encu[0][preg_21_3]" value="3" onclick='validarcheckbo2(this,0)' ></font></td>
+					<td width="19%" align="left" valign="top" bgcolor="#FFFFFF" class="Estilo31"><p>Planificaci&oacute;n de  Medios y Media Training</p></td>
+					<td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000"><input type="checkbox" name="encu[0][preg_21_4]" value="4" onclick='validarcheckbo2(this,0)' ></font></td>
+  			     </tr>
+				  <tr>
+				    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31"><p>Marketing</p></td>
+				    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000"><input type="checkbox" name="encu[0][preg_21_5]" value="5" onclick='validarcheckbo2(this,0)' ></font></td>
+					<td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31"><p>Historia de Chile  y la Cultura</p></td>
+					<td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000"><input type="checkbox" name="encu[0][preg_21_6]" value="6" onclick='validarcheckbo2(this,0)' ></font></td>
+					<td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31"><p>Comunicaci&oacute;n<br />
+					  Estrat&eacute;gica</p></td>
+				    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000"><input type="checkbox" name="encu[0][preg_21_7]" value="7" onclick='validarcheckbo2(this,0)' ></font></td>
+					<td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31"><p>Redacci&oacute;n Period&iacute;stica</p></td>
+					<td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000"><input type="checkbox" name="encu[0][preg_21_8]" value="8" onclick='validarcheckbo2(this,0)' ></font></td>
+  			     </tr>
+				  <tr>
+				    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31"><p>Administraci&oacute;n<br /> General</p></td>
+				    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000"><input type="checkbox" name="encu[0][preg_21_9]" value="9" onclick='validarcheckbo2(this,0)' ></font></td>
+					<td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31"><p>Psicolog&iacute;a Social</p></td>
+					<td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000"><input type="checkbox" name="encu[0][preg_21_10]" value="10" onclick='validarcheckbo2(this,0)'></font></td>
+					<td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31"><font size="2" color="#000000">Teor&iacute;a de la Comunicaci&oacute;n .</font></td>
+				    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+				      <input type="checkbox" name="encu[0][preg_21_11]" value="11" onclick='validarcheckbo2(this,0)' />
+				    </font></td>
+					<td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31"><table border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="167" valign="top"><font size="2" color="#000000"><p>Gesti&oacute;n    de Personas</p></font></td>
+                      </tr>
+                    </table></td>
+					<td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000"><input type="checkbox" value="12" name="encu[0][preg_21_12]"  onclick='validarcheckbo2(this,0)' ></font></td>
+  			     </tr>
+				  <tr>
+				    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31"><p>Desarrollo<br />
+					   Organizaciona<font size="2" color="#000000">.</font></p></td>
+				    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000"><input type="checkbox" value="13" name="encu[0][preg_21_13]"  onclick='validarcheckbo2(this,0)' ></font></td>
+					<td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31">Ingl&eacute;s</td>
+					<td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000"><input type="checkbox" value="14" name="encu[0][preg_21_14]"  onclick='validarcheckbo2(this,0)' ></font></td>
+					<td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31"><p>Legislaci&oacute;n</p></td>
+				    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+				      <input type="checkbox" value="15" name="encu[0][preg_21_15]"  onclick='validarcheckbo2(this,0)' />
+				    </font></td>
+					<td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31">Planificaci&oacute;n Estrat&eacute;gica</td>
+					<td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000"><input type="checkbox" value="16" name="encu[0][preg_21_16]"  onclick='validarcheckbo2(this,0)' ></font></td>
+  			     </tr>
+				  <tr>
+				    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31">Opini&oacute;n P&uacute;blica</td>
+				    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000"><input type="checkbox" value="17" name="encu[0][preg_21_17]"  onclick='validarcheckbo2(this,0)' ></font></td>
+					<td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31">Gesti&oacute;n y producci&oacute;n de Eventos</td>
+					<td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000"><input type="checkbox" value="18" name="encu[0][preg_21_18]"  onclick='validarcheckbo2(this,0)' ></font></td>
+					<td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31">Relaciones P&uacute;blicas</td>
+				    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000">
+				      <input type="checkbox" value="19"name="encu[0][preg_21_19]"  onclick='validarcheckbo2(this,0)' />
+				    </font></td>
+					<td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31">Fundamentos de Econom&iacute;a</td>
+					<td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000"><input type="checkbox" value="20" name="encu[0][preg_21_20]"  onclick='validarcheckbo2(this,0)' ></font></td>
+  			     </tr>
+				  <tr>
+				    <td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31">Gesti&oacute;n de Conflictos</td>
+				    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000"><input type="checkbox" value="21" name="encu[0][preg_21_21]"  onclick='validarcheckbo2(this,0)' ></font></td>
+					<td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31">Liderazgo</td>
+					<td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000"><input type="checkbox" value="22" name="encu[0][preg_21_22]"  onclick='validarcheckbo2(this,0)' ></font></td>
+					<td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31">Lenguaje Audiovisual</td>
+				    <td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000"><input type="checkbox" value="23" name="encu[0][preg_21_23]"  onclick='validarcheckbo2(this,0)' ></font></td>
+					<td width="19%" align="left" valign="top" bgcolor="#FFFFFF"class="Estilo31"><p>Otro, se&ntilde;alar</p></td>
+					<td width="5%" align="left" valign="top" bgcolor="#e0e0e0"><font size="2" color="#000000"><input type="checkbox" value="24" name="encu[0][preg_21_24]"  onclick='validarcheckbo2(this,0)' ></font></td>
+  			     </tr>
+				</table>
+				<br />
+				 <table width="100%" border="0" cellpadding="0" cellspacing="0" >
+				  <tr>
+				  <td width="12%" align="left" valign="top" class="Estilo31" ><p>Indicar Otro</p></td>
+					<td width="88%" align="left" valign="top" class="Estilo31" ><%f_encuesta.dibujaCampo("preg_21_otro")%></td>
+				  </tr>
+			  </table>
+				 <br />
+			   <br />
+				  <table width="100%">
+			   <tr>
+			  	   <td width="79%" align="rigth" valign="top" class="Estilo31"></td>
+					<td width="79%" align="center" valign="top" class="Estilo31"><%f_botonera.dibujaboton("guardar2")%></td>
+					<td width="79%" align="left" valign="top" class="Estilo31">&nbsp;</td>
+				  </tr>
+			  </table>
+			  <%end if%>
+			  <br /></td>
+		  </tr>
+		</table>
+</td>
+	<td width="29" background="images/lado_derecha.gif"></td>
+</tr>
+<tr>
+	<td width="25" height="27" background="images/borde_inferior.jpg"><img width="25" height="27" src="images/inferior_izquierda.jpg"></td>
+	<td width="646" height="27" background="images/borde_inferior.jpg">&nbsp;</td>
+	<td width="29" height="27"><img width="29" height="27" src="images/inferior_derecha.jpg"></td>
+</tr>
+</table>
+
+</form>
+<p align="center"><strong>&nbsp;<span class="Estilo45">&iexcl;Muchas gracias por  tu colaboraci&oacute;n! </span></strong><span class="Estilo45"><br /></p>
+<p align="center" class="Estilo31">&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</td>
+</tr>
+</table>
+</body>
+
+</html>

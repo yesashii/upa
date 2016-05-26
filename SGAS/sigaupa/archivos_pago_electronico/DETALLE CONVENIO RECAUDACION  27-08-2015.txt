@@ -1,0 +1,2 @@
+RUT ,ID,NombreCliente,TipoMoneda,ValorCuota,ValorMora,MontoRecaudado,FechaVcto,FechaRecaudacion
+181629169,439989,SAAVEDRA TOBAR OSCAR,Pesos,129000,0,129000,30/08/2015,27/08/2015

@@ -1,0 +1,178 @@
+<Parametros>
+   <parametro formulario="botonera">
+         <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>salir()</funcion>
+      </botones>
+      <botones nombre="buscar">
+  		<tipoTexto>BUSCAR</tipoTexto> 
+  		<accion>JAVASCRIPT</accion> 
+  		<funcion>enviar();</funcion> 
+	  </botones>
+	  
+	  <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+      </botones>
+   </parametro>
+ 
+ <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="list_alumnos" clave="pers_nrut"
+		 mensajeError="No se encontraron pases de matricula para los parametros de busqueda ingresados." colorBase="#F1F1E4" editar="false" anchoTabla="100%" 		 nuevaVentana="false" variable="a">  
+		<campos nombre="rut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>RIGHT</alineamiento>
+			<descripcion>RUT</descripcion>
+		</campos>
+		<campos nombre="nombre">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Nombre Persona</descripcion>
+    	</campos>
+		<campos nombre="carrera">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Carrera</descripcion>
+    	</campos>
+		<campos nombre="porc_matricula">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Porc. Matri.</descripcion>
+    	</campos>
+		<campos nombre="porc_colegiatura">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Porc. Coleg.</descripcion>
+    	</campos>
+		<campos nombre="tipo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Tipo Tratamiento</descripcion>
+    	</campos>
+		<campos nombre="fecha">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Fecha</descripcion>
+    	</campos>
+		<campos nombre="estado">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Estado</descripcion>
+    	</campos>
+		<campos nombre="peri_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Descripcion del Periodo</descripcion>
+    	</campos>
+	</parametro>  
+   <parametro formulario="f_busqueda" variable="busqueda">
+    <campos nombre="pers_nrut">
+  		<tipo>INPUT</tipo> 
+  		<permiso>LECTURAESCRITURA</permiso> 
+  		<caracteres>10</caracteres> 
+  		<maxCaracteres>8</maxCaracteres> 
+  		<id>NU-S</id> 
+  	</campos>
+	<campos nombre="pers_xdv">
+  		<tipo>INPUT</tipo> 
+  		<permiso>LECTURAESCRITURA</permiso> 
+  		<caracteres>1</caracteres> 
+  		<maxCaracteres>1</maxCaracteres> 
+  		<script>onBlur="this.value=this.value.toUpperCase();"</script> 
+  		<id>LN-S</id> 
+  	</campos>
+    <campos nombre="sede_ccod" >
+      <tipo>SELECT</tipo> 
+      <destino>sedes</destino>
+      <union>sede_ccod</union> 
+      <salida>sede_tdesc</salida> 
+      <permiso>LECTURAESCRITURA</permiso> 
+	  <mensajeNulo>Seleccione una Sede</mensajeNulo>
+	  <mensajeVacio>Seleccione una Sede</mensajeVacio>
+  	  <script>onChange="CargarCarreras(this.form, this.value)"</script>
+	  <id>TO-S</id>
+	</campos>
+	<campos nombre="carr_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>carreras</destino> 
+	  <union>carr_ccod</union>
+	  <salida>CARR_TDESC</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <orden>carr_tdesc</orden>
+	  <mensajeNulo>Seleccione una Carrera</mensajeNulo>
+      <mensajeVacio>Seleccione una Carrera</mensajeVacio>
+	  <script>onChange="CargarJornadas(this.form, this.value)"</script>
+	  <id>TO-S</id>
+   </campos> 
+   <campos nombre="jorn_ccod" >
+      <tipo>SELECT</tipo> 
+      <destino>jornadas</destino>
+      <union>jorn_ccod</union> 
+      <salida>jorn_tdesc</salida> 
+      <permiso>LECTURAESCRITURA</permiso> 
+	  <orden>jorn_tdesc</orden>
+	  <mensajeNulo>Seleccione una Jornada</mensajeNulo>
+	  <mensajeVacio>Seleccione una Jornada</mensajeVacio>
+	  <id>TO-S</id>
+	</campos>
+  </parametro>
+  <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="list_alumnos1" nroRegistros="20" clave="pers_nrut"
+		 maxLista="10" mensajeError="No se encontraron pases de matricula para los parametros de busqueda ingresados." colorBase="#F1F1E4" editar="false" anchoTabla="100%" 		 nuevaVentana="false" variable="a">  
+		<campos nombre="rut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>RIGHT</alineamiento>
+			<descripcion>RUT</descripcion>
+		</campos>
+		<campos nombre="nombre">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Nombre Persona</descripcion>
+    	</campos>
+		<campos nombre="carrera">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Carrera</descripcion>
+    	</campos>
+		<campos nombre="tipo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Tipo Tratamiento</descripcion>
+    	</campos>
+		<campos nombre="fecha">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Fecha</descripcion>
+    	</campos>
+		<campos nombre="estado">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Estado</descripcion>
+    	</campos>
+		
+		<campos nombre="peri_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Periodo Academico</descripcion>
+		</campos>
+	</parametro>  
+  
+</Parametros>

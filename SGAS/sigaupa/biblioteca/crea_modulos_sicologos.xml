@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>edicion</formulario>
+      </botones>
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+        <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	    <botones nombre="busca">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Buscar</texto>
+         <accion>Navegar</accion>
+		 <script>buscar()</script>
+		</botones>
+		<botones nombre="modifica_horario">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Modificar Horario de Atencion</texto>
+         <accion>Navegar</accion>
+		 <formulario>edicion</formulario>
+		</botones>
+		   <botones nombre="redacta">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Escribir Mensaje</texto>
+         <accion>JAVASCRIPT</accion>
+		 <funcion>javascript:redacta_mensaje()</funcion>
+		</botones>
+	
+     <botones nombre="siguiente">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Siguiente</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>crear_modulos_sicologos_proc.asp</url>
+		 <funcionValidacion>Eshora()</funcionValidacion>
+		</botones>
+		  <botones nombre="siguiente2">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Siguiente</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>bloques_sicologos_anula_proc.asp</url>
+		</botones>
+		<botones nombre="siguiente3">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Finalizar</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>habilita_bloques_sicologos_proc.asp</url>
+		</botones>
+   
+    <botones nombre="editar">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Editar</texto>
+      </botones>
+  
+  	 <botones nombre="anterior2">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Anterior</texto>
+	   <url>bloques_sicologos_anula.asp</url>
+      </botones>
+	  
+	  
+	   <botones nombre="excel">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Excel</texto>
+      </botones>
+	  
+	  <botones nombre="excel_alum">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>alumno_estado_horas_mes_excel.asp</url>
+		</botones>
+   </parametro>
+   
+   
+  <parametro formulario="crea" variable="a" anchoTabla="100%">
+ 
+      
+	  <campos nombre="peri_ccod">
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Periodo Academico</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>periodos_academicos</destino>
+		 <filtro>anos_ccod > 2009</filtro>
+         <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+		 <orden>peri_ccod asc</orden>
+		 <id>NU-N</id>
+      </campos>
+        <campos nombre="sede_ccod">
+        <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione una Sede</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>sedes </destino>
+		 <filtro>sede_ccod in (1,2,4,8)</filtro>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+		  <id>NU-N</id>
+		  </campos>
+		 
+   		<campos nombre="hora_ini">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+		 <maxCaracteres>5</maxCaracteres>
+		 <script>onKeyUp="mascara(this,':',patron,true);"</script>
+		 <id>TO-N</id>
+       </campos>
+     	<campos nombre="hora_fin">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+		 <maxCaracteres>5</maxCaracteres>
+		 <script>onKeyUp="mascara(this,':',patron,true);"</script>
+		 <id>TO-N</id>
+       </campos>
+	   <campos nombre="intervalo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>3</caracteres>
+		 <maxCaracteres>2</maxCaracteres>
+		 <id>Nu-N</id>
+       </campos>
+    
+      
+   </parametro>
+   
+   <parametro formulario="sede_sicologos" variable="ff" anchoTabla="100%">
+   	 	<campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+       </campos>
+	   <campos nombre="sede_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+       </campos>
+   </parametro>
+   
+    <parametro formulario="actualiza_estado_bloque" variable="b" anchoTabla="100%">
+   	 	<campos nombre="blsi_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+       </campos>
+   </parametro>
+   
+   <parametros formulario="bloques" variable="cambiar" anchoTabla="100%">
+	 <campos nombre="hora">
+	 <descripcion>Horario</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+     </campos>
+	 <campos nombre="blsi_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+     </campos>
+	 <campos nombre="lunes">
+	 <descripcion>Lunes</descripcion>
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+		  <alineamiento>CENTER</alineamiento>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="martes">
+	 <descripcion>Martes</descripcion>
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+		  <alineamiento>CENTER</alineamiento>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="miercoles">
+	 <descripcion>Miercoles</descripcion>
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+		  <alineamiento>CENTER</alineamiento>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="jueves">
+	 <descripcion>Jueves</descripcion>
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+		  <alineamiento>CENTER</alineamiento>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="viernes">
+	 <descripcion>Viernes</descripcion>
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+		  <alineamiento>CENTER</alineamiento>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+   </parametros>
+   
+   
+   <parametros formulario="cambia_bloques"  variable="cambiar" >
+	  
+	  <campos nombre="blsi_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+     </campos>
+	 
+	  <campos nombre="lunes">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+     </campos>
+	 
+	  <campos nombre="martes">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+     </campos>
+	 
+	  <campos nombre="miercoles">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+     </campos>
+	 
+	  <campos nombre="jueves">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+     </campos>
+	 
+	  <campos nombre="viernes">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+     </campos>
+	 
+   </parametros>
+    <parametros formulario="muestra_bloques" variable="b" anchoTabla="100%">
+	 <campos nombre="hora">
+	 <descripcion>Horario</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+     </campos>
+	 <campos nombre="blsi_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+     </campos>
+	 <campos nombre="lunes">
+	 <descripcion>Lunes</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="martes">
+	 <descripcion>Martes</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="miercoles">
+	 <descripcion>Miercoles</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="jueves">
+	 <descripcion>Jueves</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="viernes">
+	 <descripcion>Viernes</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametros>
+     <parametro formulario="cheques" variable="a" anchoTabla="100%">
+	  <campos nombre="peri_ccod">
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Periodo Academico</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>periodos_academicos</destino>
+		 <filtro>anos_ccod > 2009</filtro>
+         <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+		 <orden>peri_ccod asc</orden>
+		 <id>NU-N</id>
+      </campos>
+        <campos nombre="sede_ccod">
+        <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione una Sede</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>sedes </destino>
+		 <filtro>sede_ccod in (1,2,4,8)</filtro>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+		  <id>NU-N</id>
+		  </campos>
+		  <campos nombre="mes_ccod">
+        <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Mes</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>meses </destino>
+         <union>mes_ccod</union>
+         <salida>mes_tdesc</salida>
+		  <id>TO-N</id>
+		  </campos>
+		  <campos nombre="anos_ccod">
+        <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un año</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>anos </destino>
+		 <filtro>anos_ccod >= (2010)</filtro>
+         <union>anos_ccod</union>
+         <salida>anos_tdesc</salida>
+		  <id>NU-N</id>
+		  </campos>
+		  <campos nombre="esho_ccod">
+        <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un estado</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>estado_horas</destino>
+         <union>esho_ccod</union>
+         <salida>esho_tdesc</salida>
+		  <id>TO-N</id>
+		  </campos>
+   		<campos nombre="fecha_consulta">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>11</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+       </campos>
+   </parametro>
+   <parametro formulario="hora" variable="a" >
+	  <campos nombre="peri_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+        <campos nombre="sede_ccod">
+        <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		  </campos>
+   		<campos nombre="fecha_consulta">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>11</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+       </campos>
+	   <campos nombre="hora">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+       </campos>
+	    <campos nombre="lunes">
+	 <descripcion>Lunes</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="martes">
+	 <descripcion>Martes</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="miercoles">
+	 <descripcion>Miercoles</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="jueves">
+	 <descripcion>Jueves</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="viernes">
+	 <descripcion>Viernes</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+</Parametros>

@@ -1,0 +1,8 @@
+16550646,VARELA MONTENEGRO CRISTOBAL IGNACIO,,16550646-4,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18250594,JIMENEZ MUÑOZ MIGUEL ANGEL,,18250594-3,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18638236,ANANIA RIDERELLI RENATO IGNACIO,,18638236-6,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18955844,SALINAS WALSEN MATIAS RICARDO,,18955844-9,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+19077535,ABUSLEME ESCAFF CATALINA PAZ,,19077535-6,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+21838968,SOTO DE LA PLAZA ANDREA IGNACIA,,21838968-6,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+23701355,CALI MOLINA VALENTINA,,23701355-7,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+23955612,ZAMBRANO ORTEGA ALDO STALYN,,23955612-4,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

@@ -1,0 +1,217 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+      <botones nombre="agregar">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>AGREGAR</accion>
+         <url>adm_personas_rut.asp</url>
+         <alto>120</alto>
+         <ancho>280</ancho>
+         <posicionX>200</posicionX>
+         <posicionY>200</posicionY>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="aceptar">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_editar_persona.asp</url>
+      </botones>
+      <botones nombre="cancelar">
+         <tipoTexto>CANCELAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+      <botones nombre="aceptar_rut">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <funcionValidacion>Validar();</funcionValidacion>
+         <url>editar_persona.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+   </parametro>
+   <parametro formulario="busqueda" variable="b">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>LN-S</id>
+      </campos>
+      <campos nombre="pers_tape_paterno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+      </campos>
+      <campos nombre="pers_tape_materno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+      </campos>
+      <campos nombre="pers_tnombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+      </campos>
+   </parametro>
+   <parametro formulario="personas" variable="persona" anchoTabla="100%" nroRegistros="20" maxLista="10" 
+   editar="TRUE" paginaEdicion="editar_persona.asp?persona[0][pers_nrut]=%pers_nrut%" 
+   nuevaVentana="TRUE" mensajeError="Ingrese criterio de búsqueda." nuevaVentanaAlto="400" nuevaVentanaAncho="450" >
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="rut">
+         <descripcion>R.U.T.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="pers_tape_paterno">
+         <descripcion>Ap. Paterno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="pers_tape_materno">
+         <descripcion>Ap. Materno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="pers_tnombre">
+         <descripcion>Nombres</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="rut_persona" variable="persona">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+         <script>onChange="pers_nrut_change();"</script>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>LN-N</id>
+         <script>onBlur="this.value = this.value.toUpperCase();"</script>
+      </campos>
+   </parametro>
+   <parametro formulario="datos_persona" variable="persona" anchoTabla="100%" camposObligatorios="TRUE">
+      <tablas nombre="personas" accion="M"/>
+      <tablas nombre="direcciones" accion="M"/>
+      <tablas nombre="personas_postulante" accion="A"/>
+      <tablas nombre="direcciones_publica" accion="A"/>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <tipoDato>SECUENCIA</tipoDato>
+         <secuencia>personas</secuencia>
+      </campos>
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pers_tape_paterno">
+         <descripcion>A.Paterno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_tape_materno">
+         <descripcion>A.Materno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_tnombre">
+         <descripcion>Nombres</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_tfono">
+         <descripcion>Fono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>15</maxCaracteres>
+         <id>TE-S</id>
+      </campos>
+      <campos nombre="dire_tcalle">
+         <descripcion>Calle</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tnro">
+         <descripcion>Número</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="ciud_ccod">
+         <descripcion>Ciudad</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>ciudades</destino>
+         <union>ciud_ccod</union>
+         <salida>ciud_tdesc</salida>
+         <orden>ciud_tdesc asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione ciudad</mensajeNulo>
+         <id>TO-S</id>
+      </campos>
+   </parametro>
+   <parametro formulario="ingreso_rut_persona" variable="persona">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>LN-N</id>
+         <script>onBlur="this.value = this.value.toUpperCase();"</script>
+      </campos>
+   </parametro>
+</Parametros>

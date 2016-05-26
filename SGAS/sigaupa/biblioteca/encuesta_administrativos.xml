@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>	
+	<parametro formulario="botonera">	
+		<botones nombre="Volver"> 
+      		<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Volver</texto>		
+	  		<accion>JAVASCRIPT</accion>
+	  		<funcion>volver();</funcion>	   		
+		</botones>
+		 <botones nombre="guardar_encuesta">
+			 <tipoTexto>GUARDAR</tipoTexto>
+			 <accion>GUARDAR</accion>
+			 <funcionValidacion>validar();</funcionValidacion>
+			 <url>encuesta_administrativos_proc.asp</url>
+			 <formulario>edicion</formulario>
+      </botones>
+	   <botones nombre="buscar">
+		  <tipoTexto>BUSCAR</tipoTexto> 
+		  <accion>BUSCAR</accion> 
+		  <formulario>buscador</formulario> 
+		  <funcionValidacion>ValidaBusqueda();</funcionValidacion> 
+	  </botones>
+	</parametro>
+	<parametro formulario="guardar_encuesta" variable="p">
+      <tablas nombre="encuestas_administrativos" accion="M"/>
+   </parametro>
+   <parametro formulario="datos_adicionales" mensajeError="" 
+		      editar="false" anchoTabla="100%" nuevaVentana="false" variable="p" >  
+	   <campos nombre="sexo_ccod">
+         <tipo>RADIO</tipo>
+         <destino>sexos</destino>
+         <union>sexo_ccod</union>
+         <salida>sexo_tdesc</salida>
+         <orden>sexo_tdesc ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>2</columnas>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="anio_ingreso">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>4</caracteres>
+         <maxCaracteres>4</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+	   <campos nombre="edad">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>2</caracteres>
+         <maxCaracteres>2</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+	  <campos nombre="espacios_escenograficos">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="espacios_equipamiento">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="espacios_efimeras">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="espacios_sustentable">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="espacios_comerciales">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="espacios_exposiciones">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="espacios_intervenciones">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="espacios_otros">
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>100</caracteres>
+		 <maxCaracteres>100</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  
+	  </parametro>
+	  <parametro formulario="datos_adicionales_profesores" mensajeError="" 
+		      editar="false" anchoTabla="100%" nuevaVentana="false" variable="p" >  
+	   <campos nombre="sexo_ccod">
+         <tipo>RADIO</tipo>
+         <destino>sexos</destino>
+         <union>sexo_ccod</union>
+         <salida>sexo_tdesc</salida>
+         <orden>sexo_tdesc ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>2</columnas>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="profesion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>80</caracteres>
+         <maxCaracteres>100</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="clases_disenio">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="clases_disenio_grafico">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="espacios_escenograficos">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="espacios_equipamiento">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="espacios_efimeras">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="espacios_sustentable">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="espacios_comerciales">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="espacios_exposiciones">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="espacios_intervenciones">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="espacios_otros">
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>100</caracteres>
+		 <maxCaracteres>100</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  </parametro>
+	  <parametro formulario="busqueda" variable="b">
+	  <campos nombre="pers_nrut">
+		  <tipo>INPUT</tipo> 
+		  <permiso>LECTURAESCRITURA</permiso> 
+		  <caracteres>10</caracteres> 
+		  <maxCaracteres>8</maxCaracteres> 
+		  <id>NU-N</id> 
+	  </campos>
+	 <campos nombre="pers_xdv">
+		  <tipo>INPUT</tipo> 
+		  <permiso>LECTURAESCRITURA</permiso> 
+		  <caracteres>1</caracteres> 
+		  <maxCaracteres>1</maxCaracteres> 
+		  <id>LN-N</id> 
+		  <script>onBlur="this.value=this.value.toUpperCase();"</script> 
+	  </campos>
+  </parametro>
+  <parametro formulario="datos_adicionales_profesionales" mensajeError="" 
+		      editar="false" anchoTabla="100%" nuevaVentana="false" variable="p" >  
+	  <campos nombre="nombre_profesional">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>70</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="apellidos_profesional">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>70</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="profesion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>70</caracteres>
+         <maxCaracteres>100</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="empresa_profesional">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>70</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="espacios_escenograficos">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="espacios_equipamiento">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="espacios_efimeras">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="espacios_sustentable">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="espacios_comerciales">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="espacios_exposiciones">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="espacios_intervenciones">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="espacios_otros">
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>100</caracteres>
+		 <maxCaracteres>100</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  </parametro>
+</Parametros>

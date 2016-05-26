@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="botonera">
+    <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+		 <soloUnClick>TRUE</soloUnClick>
+      </botones> 
+	<botones nombre="guardar_arancel">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>guardar_aranceles.asp</url>
+    </botones>
+	<botones nombre="todos"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Listar Todos</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>listar()</funcion>
+	</botones>
+	 <botones nombre="excel">
+       <tipoTexto>DEFINIR</tipoTexto>
+	   <texto>Generar Listado Excel</texto>
+       <accion>NAVEGAR</accion>	   
+	   <url>seguimiento_otec_excel.asp</url>
+   </botones>
+   	<botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>proc_guardar_seguimiento.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>
+	<botones nombre="anterior">
+      <tipoTexto>ANTERIOR</tipoTexto>
+      <accion>NAVEGAR</accion>
+	  <url>listado_postulaciones.asp</url>
+    </botones>
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>	 
+	</botones>
+ </parametro>
+ 
+  <parametro formulario="f_busqueda_persona" variable="b">
+  			<campos nombre="pers_nrut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>9</caracteres>
+			<maxCaracteres>8</maxCaracteres>
+			<id>NU-N</id>
+			</campos>
+			<campos nombre="pers_xdv">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>1</caracteres>
+			<maxCaracteres>1</maxCaracteres>
+			<script>Onblur="buscar()"</script>
+			<id>TO-N</id>
+			</campos> 
+  </parametro>
+ <parametro formulario="f_busqueda" variable="b">
+        <listas nombre="lBusqueda">
+		    <item clave="anio_admision" valor="anio_admision" />
+		    <item clave="sede_ccod" valor="sede_tdesc" />
+			<item clave="dcur_ncorr" valor="dcur_tdesc" />
+		</listas>
+		<campos nombre="anio_admision">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="sede_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="dcur_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		
+		<campos nombre="epot_ccod">
+			  <tipo>SELECT</tipo>
+			  <destino>estados_postulacion_otec</destino> 
+			  <union>epot_ccod</union>
+			  <salida>epot_tdesc</salida>
+			  <orden>epot_ccod asc </orden>	  
+			  <permiso>LECTURAESCRITURA</permiso>
+			  <anulable>true</anulable>
+			  <mensajeNulo>Seleccione Estado</mensajeNulo>
+			  <mensajeVacio>Seleccione Estado</mensajeVacio>
+			  <id>TO-S</id>
+		   </campos>
+		  <campos nombre="f_inicio">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>12</caracteres>
+			<maxCaracteres>40</maxCaracteres>
+			<id>FE-S</id>
+		</campos> 
+		<campos nombre="f_termino">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>12</caracteres>
+			<maxCaracteres>40</maxCaracteres>
+			<id>FE-S</id>
+		</campos>   
+  </parametro>
+  <parametro formulario="datos_generales" clave="dgso_ncorr" variable="m" mensajeError=""
+		 colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" 
+		 eliminar="false" agregar="false" nuevaVentana="false" paginaEdicion="" 
+		 maxLista="10" nroRegistros="10">
+		
+		<campos nombre="dcur_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso> 
+		</campos>
+		<campos nombre="sede_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso> 
+		</campos>
+		<campos nombre="dgso_finicio">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<caracteres>12</caracteres>
+			<maxCaracteres>40</maxCaracteres>
+		</campos>
+		<campos nombre="dgso_ftermino">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<caracteres>12</caracteres>
+			<maxCaracteres>40</maxCaracteres>
+		</campos>
+		<campos nombre="dgso_ncupo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<caracteres>6</caracteres>
+			<maxCaracteres>3</maxCaracteres>
+		</campos>
+		<campos nombre="dgso_nquorum">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<caracteres>6</caracteres>
+			<maxCaracteres>3</maxCaracteres>
+		</campos>
+		<campos nombre="ofot_nmatricula">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>10</caracteres>
+			<maxCaracteres>7</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+        <campos nombre="ofot_narancel">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>10</caracteres>
+			<maxCaracteres>7</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+   </parametro>
+   <parametro formulario="mantiene_datos_generales" variable="m" >
+		<tablas nombre="datos_generales_secciones_otec" accion="M" />
+   </parametro>	
+   <parametro formulario="mantiene_secciones" variable="m" >
+		<tablas nombre="secciones_otec" accion="M" />
+   </parametro>	
+    <parametro formulario="busqueda" variable="b">
+		<campos nombre="pers_nrut">
+		  <tipo>INPUT</tipo> 
+		  <permiso>LECTURAESCRITURA</permiso> 
+		  <caracteres>10</caracteres> 
+		  <maxCaracteres>8</maxCaracteres> 
+		  <id>NU-N</id> 
+		  </campos>
+		 <campos nombre="pers_xdv">
+		  <tipo>INPUT</tipo> 
+		  <permiso>LECTURAESCRITURA</permiso> 
+		  <caracteres>1</caracteres> 
+		  <maxCaracteres>1</maxCaracteres> 
+		  <id>LN-N</id> 
+		  <script>onBlur="this.value=this.value.toUpperCase();"</script> 
+		  </campos>
+  </parametro>  
+   <parametro formulario="f_listado" clave="dgso_ncorr" variable="m" 
+ nuevaVentana="false" mensajeError="No existe información de alumnos postulados a este programa" 
+ colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" 
+ editar="false" eliminar="false" agregar="false"
+  paginaEdicion="" maxLista="20" nroRegistros="20" anchoTabla="98%">
+   <campos nombre="rut">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Rut</descripcion> 
+	  <alineamiento>CENTER</alineamiento> 
+  </campos>
+  <campos nombre="pers_nrut">
+	  <tipo>INPUT</tipo> 
+	  <permiso>OCULTO</permiso> 
+  </campos>
+  <campos nombre="pers_xdv">
+	  <tipo>INPUT</tipo> 
+	  <permiso>OCULTO</permiso> 
+  </campos>
+ <campos nombre="alumno">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Nombre Alumno</descripcion> 
+	  <alineamiento>CENTER</alineamiento> 
+  </campos>
+  <campos nombre="estado_postulacion">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Estado</descripcion> 
+	  <alineamiento>CENTER</alineamiento> 
+  </campos>
+  <campos nombre="forma_pago">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Forma de Pago</descripcion> 
+	  <alineamiento>CENTER</alineamiento> 
+  </campos>
+  <campos nombre="fecha_postulacion">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Fecha Postulación</descripcion> 
+	  <alineamiento>CENTER</alineamiento> 
+  </campos>
+</parametro>
+ <parametro formulario="f_listado_postulantes" clave="dgso_ncorr" variable="m" 
+ nuevaVentana="false" mensajeError="No existe información de alumnos postulados" 
+ colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" 
+ editar="true" eliminar="false" agregar="false"
+  paginaEdicion="detalle_seguimiento_otec.asp?pers_ncorr=%pers_ncorr%" maxLista="20" nroRegistros="20" anchoTabla="98%">
+   <campos nombre="rut">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Rut</descripcion> 
+	  <alineamiento>CENTER</alineamiento> 
+  </campos>
+  <campos nombre="pers_nrut">
+	  <tipo>INPUT</tipo> 
+	  <permiso>OCULTO</permiso> 
+  </campos>
+   <campos nombre="pers_ncorr">
+	  <tipo>INPUT</tipo> 
+	  <permiso>OCULTO</permiso> 
+  </campos>
+  <campos nombre="pers_xdv">
+	  <tipo>INPUT</tipo> 
+	  <permiso>OCULTO</permiso> 
+  </campos>
+ <campos nombre="alumno">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Nombre Postulante</descripcion> 
+	  <alineamiento>CENTER</alineamiento> 
+  </campos>
+  
+  <campos nombre="n_programas">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>N° de Programas Postulados</descripcion> 
+	  <alineamiento>CENTER</alineamiento> 
+  </campos>
+  <campos nombre="gestionado">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Gestionado</descripcion> 
+	  <alineamiento>CENTER</alineamiento> 
+  </campos>
+  <campos nombre="ultima_gestion">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Última Gestión</descripcion> 
+	  <alineamiento>CENTER</alineamiento> 
+  </campos>
+</parametro>
+<parametro formulario="f_listado_programas" clave="dgso_ncorr" variable="m" 
+ nuevaVentana="false" mensajeError="No existe información de alumnos postulados" 
+ colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" 
+ editar="false" eliminar="false" agregar="false"
+  paginaEdicion="" maxLista="20" nroRegistros="20" anchoTabla="98%">
+   <campos nombre="rut">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Rut</descripcion> 
+	  <alineamiento>CENTER</alineamiento> 
+  </campos>
+  <campos nombre="pers_nrut">
+	  <tipo>INPUT</tipo> 
+	  <permiso>OCULTO</permiso> 
+  </campos>
+   <campos nombre="pers_ncorr">
+	  <tipo>INPUT</tipo> 
+	  <permiso>OCULTO</permiso> 
+  </campos>
+  <campos nombre="pers_xdv">
+	  <tipo>INPUT</tipo> 
+	  <permiso>OCULTO</permiso> 
+  </campos>
+ <campos nombre="alumno">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Nombre Postulante</descripcion> 
+	  <alineamiento>CENTER</alineamiento> 
+  </campos>
+  
+  <campos nombre="n_programas">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>N° de Programas Postulados</descripcion> 
+	  <alineamiento>CENTER</alineamiento> 
+  </campos>
+  <campos nombre="fecha_ingreso">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Fecha Postulación</descripcion> 
+	  <alineamiento>CENTER</alineamiento> 
+  </campos>
+</parametro>
+ <parametro formulario="f_insertar" anchoTabla="100%" 
+   colorResaltado="#CCCCCC"  mensajeError="el alumno no tiene  información de postulaciones"
+   colorSeleccionado="#CCCCCC" eliminar="FALSE" seleccionarTodo="FALSE"
+   editar="FALSE" 	paginaEdicion="" clave="pote_ncorr" nuevaVentana="FALSE" variable="alumnos" nroRegistros="15" maxLista="15" >
+    <tablas nombre="observaciones_postulacion_otec" accion="M"/>
+	<campos nombre="dgso_ncorr">
+	   <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+    </campos>
+	<campos nombre="pote_ncorr">
+	   <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+    </campos>
+	 <campos nombre="estado_examen">
+	    <descripcion>Est.Test</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="matriculado">
+	    <descripcion>Matr.</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="eopo_ccod">
+         <tipo>SELECT</tipo>
+		 <descripcion>Estado</descripcion>
+		 <permiso>LECTURAESCRITURA</permiso>
+         <destino>(select eopo_ccod,eopo_tdesc from estado_observaciones_postulacion where eopo_ccod in (1,13,14,15,16,17,18,19,20,22,23,24,25,27,28,29,30))a</destino>
+         <union>eopo_ccod</union>
+         <salida>eopo_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>FALSE</anulable>
+		 <orden>eopo_tdesc</orden>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="obpo_tobservacion">
+	    <descripcion>Observación</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>30</caracteres>
+		<maxCaracteres>150</maxCaracteres>
+	 </campos>
+	 <campos nombre="fecha_llamado">
+	    <descripcion>Llamar el día...</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>12</caracteres>
+		<maxCaracteres>10</maxCaracteres>
+		<id>FE-S</id>
+	 </campos>
+	  <campos nombre="htes_ccod">
+         <tipo>SELECT</tipo>
+		 <descripcion>Hora</descripcion>
+		 <permiso>LECTURAESCRITURA</permiso>
+         <destino>(select htes_ccod,htes_hinicio from horarios_test)a</destino>
+         <union>htes_ccod</union>
+         <salida>htes_hinicio</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>FALSE</anulable>
+		 <orden>htes_ccod</orden>
+         <id>TO-S</id>
+      </campos>
+   </parametro>
+   
+      <parametro formulario="f_detalle" anchoTabla="100%" 
+   colorResaltado="#CCCCCC"  mensajeError="el alumno no tiene  información de postulaciones"
+   colorSeleccionado="#CCCCCC" eliminar="FALSE" seleccionarTodo="FALSE"
+   editar="FALSE" 	paginaEdicion="" clave="post_ncorr" nuevaVentana="FALSE" variable="alumnos" nroRegistros="15" maxLista="15" >
+    <tablas nombre="observaciones_postulacion" accion="M"/>
+	<campos nombre="dgso_ncorr">
+	   <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+    </campos>
+	<campos nombre="pote_ncorr">
+	   <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+    </campos>
+	<campos nombre="sede">
+	    <descripcion>Sede</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="programa">
+	    <descripcion>Programa</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="estado_postulacion">
+	    <descripcion>Est.Postulacion</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="matriculado">
+	    <descripcion>Matr.</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="eopo_ccod">
+         <tipo>SELECT</tipo>
+		 <descripcion>Estado</descripcion>
+		 <permiso>LECTURAESCRITURA</permiso>
+         <destino>(select eopo_ccod,eopo_tdesc from estado_observaciones_postulacion where eopo_ccod in (1,13,14,15,16,17,18,19,20,22,23,24,25,27,28,29,30))a</destino>
+         <union>eopo_ccod</union>
+         <salida>eopo_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>FALSE</anulable>
+		 <orden>eopo_tdesc</orden>
+		 <script>onChange="evaluar_indicador(this)"</script>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="obpo_tobservacion">
+	    <descripcion>Observación</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>30</caracteres>
+		<maxCaracteres>150</maxCaracteres>
+	 </campos>
+	 <campos nombre="fecha_llamado">
+	    <descripcion>Llamar el día...</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>10</maxCaracteres>
+		<id>FE-S</id>
+	 </campos>
+	 <campos nombre="fecha_entrevista">
+	    <descripcion>Fecha entrevista</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>10</maxCaracteres>
+		<id>FE-S</id>
+	 </campos>
+	 <campos nombre="htes_ccod">
+         <tipo>SELECT</tipo>
+		 <descripcion>Hora</descripcion>
+		 <permiso>LECTURAESCRITURA</permiso>
+         <destino>(select htes_ccod,htes_hinicio from horarios_test)a</destino>
+         <union>htes_ccod</union>
+         <salida>htes_hinicio</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>FALSE</anulable>
+		 <orden>htes_ccod</orden>
+         <id>TO-S</id>
+      </campos>
+   </parametro>
+       <parametro formulario="f_historico_postulaciones" anchoTabla="100%" 
+   colorResaltado="#CCCCCC"  mensajeError="el alumno no presenta histórico de postulaciones en este periodo"
+   colorSeleccionado="#CCCCCC" eliminar="FALSE" seleccionarTodo="FALSE"
+   editar="FALSE" 	paginaEdicion="" nroRegistros="15" maxLista="15" >
+	<campos nombre="dgso_ncorr">
+	   <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+    </campos>
+	<campos nombre="pote_ncorr">
+	   <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+    </campos>
+	<campos nombre="programa">
+	    <descripcion>Programa</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="estado_postulacion">
+	    <descripcion>Est.Postulacion</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="estado">
+        <descripcion>Estado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	  <campos nombre="obpo_tobservacion">
+	    <descripcion>Observación</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="fecha_llamado">
+	    <descripcion>Llamar el día...</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="fecha_entrevista">
+	    <descripcion>Fecha entrevista</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>10</maxCaracteres>
+		<id>FE-S</id>
+	 </campos>
+	 <campos nombre="fecha_modificacion">
+	    <descripcion>Fecha entrevista</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>10</maxCaracteres>
+		<id>FE-S</id>
+	 </campos>
+   </parametro>
+
+</Parametros>

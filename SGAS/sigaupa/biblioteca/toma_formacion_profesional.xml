@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="BotoneraTomaCarga">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador);_HabilitarBoton(this,false);</funcion>
+	</botones> 
+    <botones nombre="ELIMINAR"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>elim_asig(document.edicion);</funcion>
+	</botones> 
+    <botones nombre="GUARDAR"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>guardar(document.edicion);_HabilitarBoton(this,false);</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones>
+	<botones nombre="GUARDAR2"> 
+       <tipoTexto>DEFINIR</tipoTexto>
+	   <texto>Guardar</texto>
+       <accion>GUARDAR</accion>
+       <formulario>edicion</formulario>
+	   <url>toma_carga_proc.asp</url>
+	</botones> 
+	<botones nombre="HORARIO"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Horario</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>horario()</funcion>	  
+	</botones>
+	<botones nombre="NOTAS"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Ver Notas</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>ver_notas()</funcion>	  
+	</botones>	
+	<botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>inicio_toma_carga.asp</url>
+    </botones>
+    <botones nombre="SALIR">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>	
+ </parametro>
+ <parametro formulario="toma_carga" 
+			clave="mcaj_ncorr" variable="toma_carga" 
+			mensajeError="No hay secciones planificadas para asignaturas de formación profesional electiva en tu carrera"
+			colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="false" editar="false" agregar="true" nuevaVentana="true" 
+			 anchoTabla="100%">
+		<tablas nombre="cargas_academicas" accion="I" />
+		<campos nombre="matr_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="asig_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="grabar">
+			 <tipo>BOLEANO</tipo>
+			 <objeto>CHECKBOX</objeto>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <valorVerdadero>1</valorVerdadero>
+		     <valorFalso>0</valorFalso>
+			 <script>onClick="revisar_check_grabar(this.name,this.checked);"</script> 
+        </campos>
+		<campos nombre="asignatura">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>left</alineamiento>
+			<descripcion>Asignatura</descripcion>
+		</campos>
+		<campos nombre="nive_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<descripcion>Nivel</descripcion>
+		</campos>
+		<campos nombre="secc_ccod">
+			<tipo>SELECT</tipo>
+			<destino>(SELECT a.*, 'SEC '+
+               cast(a.secc_tdesc as varchar)+ ' -> '+ cast(protic.horario(a.secc_ccod)as varchar) AS horario
+          FROM secciones a, sub_secciones b
+         WHERE a.secc_ccod = b.secc_ccod
+           AND cast(b.tsse_ccod as varchar)= '1') a</destino>
+			<union>secc_ccod</union>
+			<salida>horario</salida>
+			<orden>cast(secc_tdesc as varchar)</orden>
+			<permiso>LECTURAESCRITURA</permiso>
+			<alineamiento>center</alineamiento>
+			<descripcion>Sección</descripcion>
+			<anulable>true</anulable>
+			<mensajeNulo>Sin sección asignada</mensajeNulo>
+			<mensajeVacio>No hay secciones disponibles</mensajeVacio>
+			<estilo>anchofijo</estilo>
+			<deshabilitado>TRUE</deshabilitado>
+		</campos>
+		<campos nombre="sit_asignatura">
+		</campos>
+	</parametro>
+	<parametro formulario="carga_tomada_eliminar" clave="secc_ccod2" anchoTabla="100%" variable="carga" maxLista="25" nroRegistros="25"
+   mensajeError="No existe Carga Académica tomada para este alumno." eliminar="true" nuevaVentana="false" >
+       <campos nombre="matr_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+       </campos>
+	   <campos nombre="secc_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+       </campos>
+	   <campos nombre="eliminar">
+			 <tipo>BOLEANO</tipo>
+			 <objeto>CHECKBOX</objeto>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <valorVerdadero>1</valorVerdadero>
+		     <valorFalso>0</valorFalso>
+       </campos>
+	   <campos nombre="cod_asignatura">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Cod. Asignatura</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="asignatura">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Asignatura</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="creditos">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Créditos</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="seccion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Sección</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="horario">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Horario</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="tipo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Concepto</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+</Parametros>

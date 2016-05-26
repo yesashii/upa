@@ -1,0 +1,85 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="aceptar">
+         <accion>GUARDAR</accion>
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <formulario>edicion</formulario>
+         <url>proc_editar_director.asp</url>
+      </botones>
+      <botones nombre="cancelar">
+         <accion>CERRAR</accion>
+         <tipoTexto>CANCELAR</tipoTexto>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+   </parametro>
+   <parametro paginaEdicion="editar_director.asp?d[0][carr_ccod]=%carr_ccod%&amp;d[0][sede_ccod]=%sede_ccod%&amp;d[0][jorn_ccod]=%jorn_ccod%&amp;d[0][pers_nrut]=%pers_nrut%" 
+   formulario="carreras" editar="TRUE" anchoTabla="100%" nuevaVentana="TRUE" nuevaVentanaAncho="600" nuevaVentanaAlto="270">
+      <campos nombre="sede">
+         <descripcion>Sede</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="carr_tdesc">
+         <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="jornada">
+         <descripcion>Jornada</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre_director">
+         <descripcion>Director</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+    </parametro>
+   <parametro formulario="edicion_director" anchoTabla="100%" variable="d">
+      <tablas nombre="cargos_carrera" accion="M"/>
+      <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="carr_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="jorn_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tcar_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+       <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="pers_nrut_blur(this);"</script>
+         <id>LN-N</id>
+      </campos>
+      <campos nombre="nombre_director">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nombre</descripcion>
+      </campos>
+   </parametro>
+</Parametros>

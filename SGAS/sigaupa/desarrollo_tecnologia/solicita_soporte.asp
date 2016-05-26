@@ -1,0 +1,204 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+
+<%
+maqu_ncorr=request.Querystring("maq")
+
+set errores= new CErrores
+
+set conexion = new CConexion
+conexion.Inicializar "upacifico"
+
+set negocio = new CNegocio
+negocio.Inicializa conexion
+
+set pagina = new cPagina
+
+
+set botonera = new CFormulario
+botonera.carga_parametros "solicita_soporte.xml", "botonera"
+
+ 
+ set f_peticion = new CFormulario
+f_peticion.Carga_Parametros "solicita_soporte.xml", "solicita"
+f_peticion.Inicializar conexion
+
+sql_descuentos= "select ''"
+
+'response.write(sql_descuentos)'
+f_peticion.Consultar sql_descuentos
+f_peticion.siguiente
+
+%>
+
+<html>
+<head>
+<title><%=pagina.Titulo%></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../estilos/estilos.css" rel="stylesheet" type="text/css">
+<link href="../estilos/tabla.css" rel="stylesheet" type="text/css">
+
+<script language="JavaScript" src="../biblioteca/tabla.js"></script>
+<script language="JavaScript" src="../biblioteca/funciones.js"></script>
+<script language="JavaScript" src="../biblioteca/validadores.js"></script>
+<script language="JavaScript" src="../biblioteca/PopCalendar.js"></script>
+<script language="JavaScript">
+function Validar_rut()
+{
+	formulario = document.edicion;
+	rut_alumno = formulario.elements["b[0][pers_nrut]"].value + "-" + formulario.elements["b[0][pers_xdv]"].value;	
+	if (formulario.elements["b[0][pers_nrut]"].value  != ''){
+	  	  if (!valida_rut(rut_alumno)) {
+		  alert("Ingrese un RUT válido");
+		formulario.elements["b[0][pers_nrut]"].focus();
+		formulario.elements["b[0][pers_nrut]"].select();
+		return false;
+	  }
+	}
+
+	return true;
+}
+function agrega_tercero(valor)
+{
+	if (valor==1)
+	{
+		td1=document.getElementById("1tercero")
+		td2=document.getElementById("2tercero")
+		
+		txto1="<strong>Rut</strong>"
+		txto2="<strong>:</strong>&nbsp;&nbsp;<input type='text'  name='b[0][pers_nrut]' value='' size='10'  maxlength='8'  id='NU-S' >"
+		txto2=txto2+"&nbsp-&nbsp;<input type='text'  name='b[0][pers_xdv]' value='' size='1'  maxlength='1'  id='TO-S' >"
+		txto2=txto2+"&nbsp;&nbsp;<a href=\"javascript:buscar_persona('b[0][pers_nrut]', 'b[0][pers_xdv]');\"><img src=\"../imagenes/lupa_f2.gif\" width=\"16\" height=\"15\" border=\"0\"></a><input type=\"hidden\" value =1 name=\"solicita\"/>" 
+
+		td1.innerHTML=txto1;
+		td2.innerHTML=txto2;
+		
+	}
+	else
+	{
+		td1.innerHTML='';
+		td2.innerHTML='';
+	
+	}
+
+
+}
+</script>
+</head>
+<body bgcolor="#CC6600" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../imagenes/botones/buscar_f2.gif','../images/bot_deshabilitar_f2.gif','../images/agregar2_f2_p.gif','im&amp;#225;genes/marco1_r3_c2_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c4_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c6_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c8_f2.gif');MM_preloadImages('../imagenes/botones/cargar_f2.gif','../imagenes/botones/continuar_f2.gif')">
+<form name="edicion">
+<input type="hidden" name="b[0][pers_ncorr]" value="<%=pers_ncorr%>" />
+<table width="750" height="300" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="62" valign="top"><img src="../imagenes/vineta2_r1_c1.gif" width="750" height="62" border="0"></td>
+  </tr>
+  <%pagina.DibujarEncabezado()%>  
+  <tr>
+    <td valign="top" bgcolor="#EAEAEA">
+	<br>
+	<br>
+	<table width="90%"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#D8D8DE">
+      <tr>
+        <td width="9" height="8"><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+        <td height="8" background="../imagenes/top_r1_c2.gif"></td>
+        <td width="7" height="8"><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+      </tr>
+      <tr>
+        <td width="9" background="../imagenes/izq.gif">&nbsp;</td>
+        <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><%
+				
+				 lenguetas=Array("Solicitar Soporte")
+					
+					pagina.DibujarLenguetas lenguetas, 1 %></td>
+          </tr>
+          <tr>
+            <td height="2" background="../imagenes/top_r3_c2.gif"></td>
+          </tr>
+          <tr>
+            <td>
+				<table width="450" align="center">
+					<tr>
+						<td><strong>Solicitar&aacute; para otra persona</strong></td>
+						<td>:Si<input type="radio" name="b[0][solicita_tercero]" value="1" onClick="agrega_tercero(this.value)"> &nbsp;No<input type="radio" name="b[0][solicita_tercero]" value="2" checked="checked" onClick="agrega_tercero(this.value)"> </td>
+					</tr>
+					<tr >
+						<td id="1tercero"></td>
+						<td id="2tercero"></td>
+					</tr>
+					<tr>
+						<td><strong>Cargo</strong></td>
+						<td><strong>:</strong>&nbsp;<%f_peticion.DibujaCampo("peso_tcargo")%></td>
+					</tr>
+					<tr>
+						<td><strong>Email de Contacto</strong></td>
+						<td><strong>:</strong>&nbsp;<%f_peticion.DibujaCampo("peso_temail")%></td>
+					</tr>
+					<tr>
+						<td><strong>Telefono</strong></td>
+						<td><strong>:</strong>&nbsp;<%f_peticion.DibujaCampo("peso_tfono")%></td>
+					</tr>
+					<tr>
+						<td><strong>Sede</strong></td>
+						<td><strong>:</strong>&nbsp;<%f_peticion.DibujaCampo("sede_ccod")%></td>
+					</tr>
+					<tr>
+						<td><strong>Depto o Área</strong></td>
+						<td><strong>:</strong>&nbsp;<%f_peticion.DibujaCampo("peso_tdepto")%></td>
+					</tr>
+					<tr>
+						<td><strong>Ubicación</strong></td>
+						<td><strong>:</strong>&nbsp;<%f_peticion.DibujaCampo("peso_tubicacion")%>Ej: Piso 1</td>
+					</tr>
+					</table>
+					<table align="center" width="450">
+					<tr>
+						<td valign="top"><strong>Descripcion del problema o solicitud</strong>&nbsp;</td>
+						<td ><textarea name="b[0][peso_tdescripcion]" cols="60" style="height:100px"></textarea>
+					</tr>
+					
+				</table>	
+			
+            </td>
+		</tr>
+        </table></td>
+        <td width="7" background="../imagenes/der.gif">&nbsp;</td>
+      </tr>
+    <tr>
+        <td width="9" height="28"><img src="../imagenes/abajo_r1_c1.gif" width="9" height="28"></td>
+        <td height="28"><table width="100%" height="28"  border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="13%" height="20"><div align="center">
+              <table width="90%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td><div align="center">
+                    
+					<% 
+					botonera.DibujaBoton"guardar"
+					%></div></td>
+					<td><div align="center">
+                    
+					<%botonera.DibujaBoton"salir" %></div></td>
+                  </tr>
+              </table>
+            </div></td>
+            <td width="87%" rowspan="2" background="../imagenes/abajo_r1_c4.gif"><img src="../imagenes/abajo_r1_c3.gif" width="12" height="28"></td>
+            </tr>
+          <tr>
+            <td height="8" background="../imagenes/abajo_r2_c2.gif"></td>
+          </tr>
+        </table></td>
+        <td width="7" height="28"><img src="../imagenes/abajo_r1_c5.gif" width="7" height="28"></td>
+      </tr>
+    </table>
+	<br>
+	<br>
+	
+	<br>
+	<br>
+	</td>
+  </tr>  
+</table> </form>
+</body>
+</html>

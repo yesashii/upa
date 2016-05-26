@@ -1,0 +1,167 @@
+<Parametros>
+  <parametro formulario="botonera">
+     <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+	 <botones nombre="cancelar"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>CERRAR</accion>
+	 </botones>
+	 <botones nombre="buscar"> 
+        <tipoTexto>BUSCAR</tipoTexto>
+	    <accion>BUSCAR</accion>
+	    <formulario>buscador</formulario>
+		<soloUnClick>TRUE</soloUnClick>
+	 </botones>
+	 <botones nombre="nueva"> 
+        <tipoTexto>AGREGAR</tipoTexto>
+	    <accion>AGREGAR</accion>
+	    <posicionX>100</posicionX>
+	    <posicionY>50</posicionY>
+	    <ancho>750</ancho>
+	    <alto>400</alto>	   
+	 </botones>
+	 <botones nombre="guardar"> 
+        <tipoTexto>GUARDAR</tipoTexto>
+	    <accion>GUARDAR</accion>
+	    <url>exp_tit_permisos_carrera_proc.asp</url>
+	    <formulario>edicion</formulario>
+	</botones>
+	<botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>ELIMINAR</accion>
+	  <formulario>edicion</formulario>
+	  <url>especialidades_eliminar.asp</url>
+	</botones> 
+  </parametro>
+ 
+ <parametro formulario="f_busqueda" variable="busqueda">
+   <campos nombre="carr_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>carreras</destino> 
+	  <union>carr_ccod</union>
+	  <salida>CARR_TDESC</salida>
+      <orden>CARR_TDESC asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione una Carrera</mensajeNulo>
+	  <mensajeVacio>Seleccione una Carrera</mensajeVacio>
+	  <id>TO-N</id>
+   </campos>
+  </parametro>
+  <parametro formulario="f_busqueda_tyg" variable="busqueda">
+   <campos nombre="carr_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>carreras</destino> 
+	  <union>carr_ccod</union>
+	  <salida>CARR_TDESC</salida>
+      <orden>CARR_TDESC asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione una Carrera</mensajeNulo>
+	  <mensajeVacio>Seleccione una Carrera</mensajeVacio>
+	  <script>onchange="cargar();"</script>
+	  <id>TO-N</id>
+   </campos>
+  </parametro>
+  
+   <parametro paginaEdicion="" formulario="f_encargados" nroRegistros="10" eliminar="FALSE" clave="pers_ncorr" maxLista="10"
+	  mensajeError="No se encontraron encargados de escuela" seleccionarTodo="FALSE"  anchoTabla="100%" editar="FALSE" 
+ 	  nuevaVentana="FALSE" variable="especialidades" >
+      <campos nombre="sede">
+	    <descripcion>Sede</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	  </campos>
+	  <campos nombre="carrera">
+	    <descripcion>Carrera</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	  </campos>
+	  <campos nombre="jornada">
+	    <descripcion>Jornada</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	  </campos>
+	  <campos nombre="encargado">
+	    <descripcion>Encargado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	  </campos>
+	  <campos nombre="email_encargado">
+	    <descripcion>Email</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	  </campos>	 
+   </parametro>
+ <parametro formulario="t_permisos" variable="permisos" clave="carr_ccod">
+      <tablas nombre="PERMISOS_EVT_CARRERA" accion="M"/>
+      <campos nombre="carr_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="PECA_DAT_PERSONAL">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+      <campos nombre="PECA_DOC_ENTREGADOS">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+      <campos nombre="PECA_HIS_NOTAS">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+      <campos nombre="PECA_PRA_PROFESIONAL">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+      <campos nombre="PECA_FEC_EGRESO">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+      <campos nombre="PECA_REG_SALIDA">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+      <campos nombre="PECA_SEM_TESIS">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+      <campos nombre="PECA_CON_NOTAS">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+   </parametro>  
+ </Parametros>

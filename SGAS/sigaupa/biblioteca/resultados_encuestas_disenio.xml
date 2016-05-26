@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="formu_carga" anchoTabla="100%" 
+   colorResaltado="#CCCCCC"  mensajeError="El docente buscado no presenta carga para el año 2005"
+   colorSeleccionado="#CCCCCC" eliminar="FALSE" seleccionarTodo="FALSE"
+    editar="TRUE" 	paginaEdicion="puntaje_profesor.asp?secc_ccod=%secc_ccod%&amp;pers_ncorr=%pers_ncorr%" nuevaVentana="FALSE" variable="carga">
+     <campos nombre="secc_ccod">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="pers_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="sede">
+	    <descripcion>Sede</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="carrera">
+	    <descripcion>Carrera</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="jornada">
+	    <descripcion>Jornada</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="asignatura">
+	    <descripcion>Asignatura</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="seccion">
+	    <descripcion>Sección</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="periodo">
+	    <descripcion>Periodo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="evaluado">
+	    <descripcion>Evaluado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="puntaje_obtenido">
+	    <descripcion>Puntaje</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+   </parametro> 
+  <parametro formulario="botonera">
+   	 <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	</botones>
+   	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>	 
+	</botones>	
+	<botones nombre="excel">
+       <tipoTexto>DEFINIR</tipoTexto>
+	   <texto>Listado de comentarios</texto>
+       <accion>NAVEGAR</accion>	   
+	   <formulario>edicion</formulario>
+   </botones>
+   </parametro>
+<parametro formulario="busqueda_encuesta" variable="busqueda">
+      <campos nombre="tipo">
+		   <tipo>SELECT</tipo>
+		   <permiso>LECTURAESCRITURA</permiso>
+		   <union>tipo</union>
+		   <salida>descripcion</salida>
+		   <anulable>TRUE</anulable>
+		   <mensajeNulo>Seleccione tipo de persona encuestada</mensajeNulo>
+		   <id>TO-N</id>
+	   </campos>
+</parametro>
+</Parametros>

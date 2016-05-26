@@ -1,0 +1,125 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+<%
+'*******************************************************************
+'DESCRIPCION		:
+'FECHA CREACIÓN		:
+'CREADO POR 		:
+'ENTRADA		:NA
+'SALIDA			:NA
+'MODULO QUE ES UTILIZADO: 
+'
+'--ACTUALIZACION--
+'
+'FECHA ACTUALIZACION 	:19/08/2013
+'ACTUALIZADO POR	:JAIME PAINEMAL A.
+'MOTIVO			:PROYECTO ENCUESTAS
+'LINEA			:54 - 60 - 72
+'*******************************************************************
+'for each k in request.form
+'response.Write(k&" = "&request.Form(k)&"<br>")
+'next
+'response.End()
+ 
+set conectar = new cconexion
+conectar.inicializar "upacifico"
+set negocio = new CNegocio
+negocio.Inicializa conectar
+
+set f_agrega = new CFormulario
+f_agrega.Carga_Parametros "encuesta_rr_pp.xml", "encuesta"
+f_agrega.Inicializar conectar
+f_agrega.ProcesaForm
+
+	for filai = 0 to f_agrega.CuentaPost - 1
+
+	edad  = f_agrega.ObtenerValorPost (filai, "edad")
+	fecha_ini = f_agrega.ObtenerValorPost (filai, "fecha_ini")
+	fecha_fin = f_agrega.ObtenerValorPost (filai, "fecha_fin")
+	preg_1 = f_agrega.ObtenerValorPost (filai, "preg_1")
+	preg_2 = f_agrega.ObtenerValorPost (filai, "preg_2")
+	preg_3 = f_agrega.ObtenerValorPost (filai, "preg_3")
+	preg_4 = f_agrega.ObtenerValorPost (filai, "preg_4")
+	preg_4_otro=f_agrega.ObtenerValorPost (filai, "preg_4_otro")
+	preg_5 = f_agrega.ObtenerValorPost (filai, "preg_5")
+	preg_5_otro = f_agrega.ObtenerValorPost (filai, "preg_5_otro")
+	preg_6 = f_agrega.ObtenerValorPost (filai, "preg_6")
+	preg_7 = f_agrega.ObtenerValorPost (filai, "preg_7")
+	preg_8 = f_agrega.ObtenerValorPost (filai, "preg_8")
+	preg_8_otro = f_agrega.ObtenerValorPost (filai, "preg_8_otro")
+	sexo = f_agrega.ObtenerValorPost (filai, "sexo_ccod")
+	pers_nrut= f_agrega.ObtenerValorPost (filai, "pers_nrut")
+
+	'existe =conectar.ConsultaUno("select case count(pers_nrut)when 0 then 'N' else 'S' end from encuesta_rr_pp where pers_nrut="&pers_nrut&"")
+	existe =conectar.ConsultaUno("select case count(pers_nrut)when 0 then 'N' else 'S' end from encuesta_rr_pp_02 where pers_nrut="&pers_nrut&"")
+
+		if existe="N" then 
+
+			'strInser="insert into encuesta_rr_pp (pers_nrut,sexo_ccod,anio_ini,anio_fin,edad,preg_1,preg_2,preg_3,preg_4,preg_4_otro,preg_5,preg_5_otro,preg_6,preg_7,preg_8,preg_8_otro) values("&pers_nrut&","&sexo&","& fecha_ini &","& fecha_fin &","&edad&" ,"& preg_1 &",'"& preg_2& "','"& preg_3 &"',"& preg_4 &",'"&preg_4_otro&"',"& preg_5&",'"& preg_5_otro&"',"&preg_6&","&preg_7&","&preg_8&",'"&preg_8_otro&"')"
+			
+			strInser="insert into encuesta_rr_pp_02 ( "&_
+							" pers_nrut, edad, anio_ini, anio_fin, preg_1, preg_2 ,preg_3, "&_
+							" preg_4, preg_4_otro, preg_5, preg_5_otro, preg_6, preg_7, preg_8, preg_8_otro) "&_
+							" values( "&_
+							" "&pers_nrut&", "&edad&", "&fecha_ini&", "&fecha_fin&", "&sexo&", "&preg_1&", '"&preg_2& "', "&_
+							" "& preg_4 &", '"&preg_4_otro&"', "&preg_5&", '"&preg_5_otro&"', "&preg_6&", "&preg_7&", "&preg_8&", '"&preg_8_otro&"')"
+
+			conectar.ejecutaS (strInser)
+		else
+
+		'updEnc="update encuesta_rr_pp set  sexo_ccod="&sexo&" ,anio_ini="&fecha_ini&",anio_fin="&fecha_ini&",edad="&edad&",preg_1="& preg_1 &",preg_2='"& preg_2& "',preg_3='"& preg_3 &"',preg_4="& preg_4 &",preg_4_otro='"&preg_4_otro&"',preg_5="& preg_5&",preg_5_otro='"& preg_5_otro&"',preg_6="&preg_6&",preg_7="&preg_7&",preg_8="&preg_8&",preg_8_otro='"&preg_8_otro&"' where pers_nrut="&pers_nrut&""
+		
+		updEnc="update encuesta_rr_pp_02 "&_
+							" set edad="&edad&", anio_ini="&fecha_ini&", anio_fin="&fecha_fin&" "&_
+							" , preg_1="&sexo&", preg_2="&preg_1&", preg_3='"&preg_2&"' "&_
+							" , preg_4="&preg_4&", preg_4_otro='"&preg_4_otro&"', preg_5="&preg_5&" ,preg_5_otro='"& preg_5_otro&"' "&_
+							" , preg_6="&preg_6&", preg_7="&preg_7&", preg_8="&preg_8&", preg_8_otro='"&preg_8_otro&"' "&_
+							" where pers_nrut="&pers_nrut&""
+		
+		conectar.ejecutaS (updEnc)
+		end if
+
+	'RESPONSE.WRITE(" existe : "&existe&"<BR>")
+	'RESPONSE.WRITE(" strInser : "&strInser&"<BR>")
+	'RESPONSE.WRITE(" updEnc : "&updEnc&"<BR>")
+	'RESPONSE.END()
+		
+	next
+
+'response.Write("<pre>rut= "&pers_nrut&"</pre>")	
+'response.Write("<pre>xdv= "&pers_xdv&"</pre>")
+'response.Write("<pre>usu= "&usu&"</pre>")
+'response.Write("<pre>peri= "&peri_ccod&"</pre>")
+'response.Write("<pre>pos= "&post_ncorr&"</pre>")
+'response.Write("<pre>tdet= "&tdet_ccod&"</pre>")
+'response.Write("<pre>tiene = "&tiene_beca&"</pre>")
+'response.Write("<pre>tiene = "&cuenta_post&"</pre>")
+'response.Write("respuesta "&Respuesta)
+'response.End()
+
+Respuesta = conectar.ObtenerEstadoTransaccion()
+'----------------------------------------------------
+'response.Write("respuesta "&Respuesta)
+
+'if post_ncorr <>""  and tiene_beca="N" then
+
+if Respuesta = true then
+	'session("mensaje_error")=  " El alumno fue ingresado con Éxito"
+	url="encuesta_parte2.asp"
+else
+	session("mensaje_error")=  "Error al guardar "
+	url=request.ServerVariables("HTTP_REFERER")
+end if
+'response.End()
+'
+'response.Redirect("encuesta_parte2.asp")
+response.Redirect(url)
+'end if
+'if pag=2 then
+'response.Redirect("encuesta_parte3.asp")
+'end if
+' if pag=3 then
+' response.Redirect("encuesta_parte4.asp")
+'end if
+
+%>

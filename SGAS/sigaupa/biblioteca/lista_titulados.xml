@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="f_busqueda" variable="busqueda" mensajeError="&amp;nbsp;">
+      <campos nombre="peri_ccod">
+         <tipo>SELECT</tipo>
+         <destino>(SELECT peri_ccod, anos_ccod || ' ' || peri_tdesc AS descripcion FROM periodos_academicos )</destino>
+         <union>peri_ccod</union>
+         <salida>descripcion</salida>
+         <orden>peri_ccod DESC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="carr_ccod">
+         <tipo>SELECT</tipo>
+         <destino>carreras</destino>
+         <union>carr_ccod</union>
+         <salida>carr_tdesc</salida>
+         <orden>carr_tdesc ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>-- Seleccione una carrera --</mensajeNulo>
+         <script>onChange="CargarEspecialidades(this.form, this.value)"</script>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="espe_ccod">
+         <tipo>SELECT</tipo>
+         <destino>(select * from especialidades where 1=2)</destino>
+         <union>espe_ccod</union>
+         <salida>espe_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onChange="CargarPlanes(this.form, this.value)"</script>
+         <id>TO-N</id>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>-- Seleccione especialidad --</mensajeNulo>
+      </campos>
+      <campos nombre="plan_ccod">
+         <tipo>SELECT</tipo>
+         <destino>(select * from planes_estudio where 1=2)</destino>
+         <union>plan_ccod</union>
+         <salida>plan_ncorrelativo</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>-- Seleccione plan --</mensajeNulo>
+      </campos>
+      <campos nombre="sede_ccod">
+         <tipo>SELECT</tipo>
+         <destino>sedes</destino>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+         <orden>sede_tdesc ASC</orden>
+      </campos>
+   </parametro>
+   <parametro formulario="f_datos" variable="datos">
+      <campos nombre="INST_TRAZON_SOCIAL">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Institucion</descripcion>
+      </campos>
+      <campos nombre="sede_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Sede</descripcion>
+      </campos>
+      <campos nombre="carr_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>carrera</descripcion>
+      </campos>
+      <campos nombre="espe_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Especialidad</descripcion>
+      </campos>
+      <campos nombre="plan_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Plan</descripcion>
+      </campos>
+   </parametro>
+   <parametro formulario="titulados" nroRegistros="10" maxLista="10" mensajeError="No se encontraron alumnos titulados para los parametros ingresados" anchoTabla="100%" editar="TRUE" nuevaVentana="TRUE" paginaEdicion="../mantenedores/historico_notas.asp?ch[0][plan_ccod]=%p1_historico%&amp;rut=%p2_historico%&amp;dv=%p3_historico%">
+      <campos nombre="n">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>N°</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="nombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nombre Alumno</descripcion>
+      </campos>
+      <campos nombre="rut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>RUT</descripcion>
+      </campos>
+      <campos nombre="periodo_ingreso">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>F/I</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="periodo_egreso">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>F/T</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="nota_titulacion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>PROM.</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="html_aceg_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>N° Acta</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="actas_titulacion" anchoTabla="100%" editar="TRUE" colorResaltado="#DCDCB8" paginaEdicion="http://tm_apino/EgresoTitulacion/ActaTitulacion.aspx?acti_ncorr=%acti_ncorr%" mensajeError="No existen actas de titulación para los parámetros ingresados.">
+      <campos nombre="acti_ncorr">
+         <descripcion>N° Acta</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="acti_femision">
+         <descripcion>Fecha Emisión</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="ntitulados">
+         <descripcion>N° Titulados</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="nueva_acta" variable="acta">
+      <tablas nombre="actas_titulacion" accion="I"/>
+   </parametro>
+</Parametros>

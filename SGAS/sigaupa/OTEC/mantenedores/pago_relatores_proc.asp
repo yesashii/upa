@@ -1,0 +1,99 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+<%
+on error resume next
+set conectar = new cconexion
+set formulario = new cformulario
+
+conectar.inicializar "upacifico"
+
+set negocio = new CNegocio
+negocio.Inicializa conectar
+
+'for each k in request.form
+'	response.write(k&"="&request.Form(k)&"<br>")
+'next
+'response.End()
+
+set formulario = new cformulario
+formulario.carga_parametros "pago_relatores.xml", "f_horario"
+formulario.inicializar conectar
+formulario.procesaForm
+
+'---------- IP DE PRUEBA ----------
+ip_usuario = Request.ServerVariables("REMOTE_ADDR")
+'response.Write("ip_usuario = "&ip_usuario&"</br>") 
+ip_de_prueba = "172.16.100.91"
+'----------------------------------
+
+if ip_usuario = ip_de_prueba then
+'response.Write("seot_ncorr = "&seot_ncorr&"</br>") 
+'response.Write("pers_ncorr = "&pers_ncorr&"</br>") 
+'response.Write("monto_asignado = "&monto_asignado&"</br>") 
+'response.Write("hora_asignada = "&hora_asignada&"</br>") 
+'response.Write("valor_hora = "&valor_hora&"</br>") 
+'response.Write("TROT_CCOD = "&TROT_CCOD&"</br>") 
+end if
+
+for i=0 to formulario.cuentaPost - 1
+	seot_ncorr=formulario.obtenerValorPost(i,"seot_ncorr")
+	pers_ncorr=formulario.obtenerValorPost(i,"pers_ncorr")
+	monto=formulario.obtenerValorPost(i,"monto_asignado")
+	hora=formulario.obtenerValorPost(i,"hora_asignada")
+	valor_hora=formulario.obtenerValorPost(i,"valor_hora")
+	TROT_CCOD=formulario.obtenerValorPost(i,"TROT_CCOD")
+	
+	if ip_usuario = ip_de_prueba then
+	'response.Write("seot_ncorr = "&seot_ncorr&"</br>") 
+	'response.Write("pers_ncorr = "&pers_ncorr&"</br>") 
+	'response.Write("monto_asignado = "&monto_asignado&"</br>") 
+	'response.Write("hora_asignada = "&hora_asignada&"</br>") 
+	'response.Write("valor_hora = "&valor_hora&"</br>") 
+	'response.Write("TROT_CCOD = "&TROT_CCOD&"</br>") 
+	end if
+
+	if EsVacio(valor_hora) then
+	valor_hora=0
+	end if
+	
+	if not EsVacio(seot_ncorr) and not EsVacio(pers_ncorr) then
+	  
+	  if EsVacio(monto) then
+	  		monto="null"
+	  end if
+	  if EsVacio(hora) then
+	  		hora="null"
+	  end if
+	  
+	  tiene_contrato= conectar.consultaUno("select count(*) from contratos_docentes_otec a, anexos_otec b, detalle_anexo_otec c where a.cdot_ncorr=b.cdot_ncorr and b.anot_ncorr=c.anot_ncorr and c.seot_ncorr="&seot_ncorr&" and pers_ncorr="&pers_ncorr&" and ecdo_ccod=1 and eane_ccod=1")
+     
+	 ya_grabado = conectar.consultaUno("select case count(*) when 0 then 'N' else 'S' end  from pago_relatores_otec where cast(pers_ncorr as varchar)='"&pers_ncorr&"' and cast(seot_ncorr as varchar)='"&seot_ncorr&"' and TROT_CCOD="&TROT_CCOD&"")
+	 
+		 if tiene_contrato="0" then
+			  
+			  if ya_grabado = "N" then
+				  SQL="insert into pago_relatores_otec(seot_ncorr,pers_ncorr,monto_asignado,valor_hora,hora_asignada,TROT_CCOD,audi_tusuario,audi_fmodificacion)"&_
+						"values ("&seot_ncorr&","&pers_ncorr&","&monto&","&valor_hora&","&hora&","&TROT_CCOD&",'"&negocio.obtenerUsuario&"',getDate())"
+					'response.Write("<br>"&SQL)
+					
+			  else
+				 SQL = "Update pago_relatores_otec set monto_asignado="&monto&",valor_hora="&valor_hora&",hora_asignada="&hora&", audi_tusuario='"&negocio.obtenerUsuario&"',audi_fmodificacion=getDate() where cast(pers_ncorr as varchar)='"&pers_ncorr&"' and cast(seot_ncorr as varchar)='"&seot_ncorr&"' and TROT_CCOD="&TROT_CCOD&""
+			  end if
+		  			'response.Write("<br>"&SQL)
+		  'response.End()
+		  conectar.EstadoTransaccion conectar.EjecutaS(SQL)
+		
+		else
+		session("mensajeerror")= "No Puede Modificar por que un tiene contrato asociado"
+		end if
+	end if
+next
+
+
+'response.Write(consulta)
+'response.End()
+'conectar.ejecutaS consulta
+response.Redirect(request.ServerVariables("HTTP_REFERER"))
+
+
+%>

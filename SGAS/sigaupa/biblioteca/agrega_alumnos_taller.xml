@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+     
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  
+		  
+	<botones nombre="agregar">
+       <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+	  
+	  
+	   <botones nombre="crear">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Agregar Alumno</texto>
+      </botones>
+	   <botones nombre="guardar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Ingresar Alumno</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>agrega_alumnos_taller_proc.asp</url>
+		 
+	</botones>
+	
+	   <botones nombre="volver">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>volver</texto>
+      </botones>
+  
+   </parametro>
+   <parametro  formulario="ingreso" variable="b"  >
+          <campos nombre="pers_nrut">
+         <descripcion>Nº Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>NU-S</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+      
+      </campos>
+	   <campos nombre="pers_xdv" >
+         <descripcion>Nº Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <script>onBlur="Validar_rut_papa();"</script>
+         <id>TO-S</id>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+       </campos>
+	
+	  
+   </parametro>
+   
+  <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="cheques" nroRegistros="15"
+		 maxLista="10" mensajeError="No se encontranron Alumnos ." colorBase="#F1F1E4" editar="false" anchoTabla="100%"	 nuevaVentana="false" variable="b"  clave="pers_ncorr" >  
+      <campos nombre="nombre">
+		<descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	   <campos nombre="tdsi_ncorr">
+		<descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	   <campos nombre="pers_ncorr">
+		<descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  
+	    <campos nombre="pagi">
+		<descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   
+     <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="listado" nroRegistros="15"
+		 maxLista="10" mensajeError="No se encontranron Alumnos ." colorBase="#F1F1E4" editar="false" anchoTabla="100%"	 nuevaVentana="false" variable="b"  clave="pers_ncorr" >  
+      <campos nombre="nombre">
+		<descripcion>Nombre </descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	 
+   </parametro>
+   
+</Parametros>

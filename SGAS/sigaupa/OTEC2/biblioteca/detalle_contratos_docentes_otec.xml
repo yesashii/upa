@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="botonera">
+     <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+	 <botones nombre="cancelar"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>CERRAR</accion>
+	 </botones>
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>ValidaBusqueda();</funcionValidacion>
+      </botones>
+	<botones nombre="guardar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Guardar</texto>
+	  <accion>GUARDAR</accion>
+	  <formulario>edicion</formulario>
+	  <url>proc_guardar_anexos_otec.asp</url>
+	  <funcionValidacion>Guardar_Anexos(document.edicion);</funcionValidacion>
+	</botones>
+	<botones nombre="anular"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Anular</texto>
+	  <accion>GUARDAR</accion>
+	  <formulario>edicion</formulario>
+	  <url>proc_anular_anexos_otec.asp</url>
+	  <funcionValidacion>Anula_Anexos(document.edicion);</funcionValidacion>
+	</botones>
+	<botones nombre="anular_contrato"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Anular Contrato</texto>
+	  <accion>GUARDAR</accion>
+	  <formulario>contrato</formulario>
+	  <url>proc_anular_contrato_otec.asp</url>
+	  <funcionValidacion>Anula_Contrato(document.contrato);</funcionValidacion>
+	</botones>
+		<botones nombre="cerrar_contrato"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Cierra Contrato</texto>
+	  <accion>GUARDAR</accion>
+	  <formulario>contrato</formulario>
+	  <url>proc_cerrar_contrato_otec.asp</url>
+	  <funcionValidacion>Cerrar_Contrato(document.contrato);</funcionValidacion>
+	</botones>
+	<botones nombre="guardar_contrato"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Guarda Contrato</texto>
+	  <accion>GUARDAR</accion>
+	  <formulario>contrato</formulario>
+	  <url>proc_guardar_contrato_otec.asp</url>
+	  <funcionValidacion>Guardar_Contrato(document.contrato);</funcionValidacion>
+	</botones>
+ 	<botones nombre="volver">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>history.back()</funcion>
+    </botones>	  
+  </parametro>
+  
+  
+  <parametro formulario="contrato_creados" variable="cdot" anchoTabla="98%" 
+  	nroRegistros="10"   eliminar="true"  maxLista="10" clave="cdot_ncorr" mensajeError="No hay contratos creados para el docente " >
+    <tablas  nombre="contratos_docentes_otec" accion="M" />
+	  
+	   <campos nombre="cdot_ncorr">
+	   	 <descripcion>Nº Contrato</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>NU-S</id>
+       </campos>	  
+	      <campos nombre="cdot_FINICIO">
+			<descripcion>Fecha Inicio</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<tipoDato>FECHA</tipoDato>
+		 	<caracteres>12</caracteres> 
+			<id>FE-N</id>
+		</campos>
+        <campos nombre="cdot_FFIN">
+			<descripcion>Fecha fin</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<tipoDato>FECHA</tipoDato>
+		 	<caracteres>12</caracteres>
+			<id>FE-N</id> 
+		</campos>    
+		<campos nombre="ANO_CONTRATO">
+			<descripcion>Año</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso> 
+		</campos>
+		
+		<campos nombre="estado_contrato">
+			<descripcion>Estado_contrato</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso> 
+		</campos>
+		
+			  <campos nombre="tcdo_ccod">
+	  <descripcion>Tipo Contrato</descripcion>
+      <tipo>SELECT</tipo>
+	  <destino>tipos_contratos_docentes</destino> 
+	  <union>tcdo_ccod</union>
+	  <salida>tcdo_tdesc</salida>
+      <orden>tcdo_ccod asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>false</anulable>
+	  <mensajeNulo>Seleccione Tipo Contrato</mensajeNulo>
+	  <id>TO-N</id> 
+      </campos>	
+	 	<campos nombre="ecdo_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos> 
+		</parametro>
+		
+		
+		
+	
+	
+	
+	   <parametro 
+	   	paginaEdicion="detalles_anexos_otec.asp?pers_ncorr=%pers_ncorr%&amp;cdot_ncorr=%contrato%&amp;anot_ncorr=%anot_ncorr%" 
+		formulario="detalle_anexos_contratos"  agregar="true"  
+    	nroRegistros="10" eliminar="true" clave="cdot_ncorr"  maxLista="10"
+		mensajeError="No hay anexos creados para el docente para es curso" seleccionarTodo="FALSE" editar="true" anchoTabla="98%" nuevaVentana="true" variable="m" >
+    
+	<campos nombre="eane_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="anot_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+
+	  <campos nombre="cdot_ncorr">
+	   	 <descripcion>Nº Contrato</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>NU-S</id>
+       </campos>
+       <campos nombre="anot_ncodigo">
+	   	 <descripcion>Nº Anexo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>NU-S</id>
+       </campos>
+	   <campos nombre="estado_anexo">
+	   	 <descripcion>Estado Anexo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>NU-S</id>
+       </campos>
+	  	  
+	      <campos nombre="anot_FINICIO">
+			<descripcion>Fecha Inicio</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<tipoDato>FECHA</tipoDato>
+		 	<caracteres>12</caracteres> 
+			<id>FE-N</id>
+		</campos>
+        <campos nombre="anot_FFIN">
+			<descripcion>Fecha fin</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<tipoDato>FECHA</tipoDato>
+		 	<caracteres>12</caracteres>
+			<id>FE-N</id> 
+		</campos>
+		<campos nombre="anot_ncuotas">
+	   	 <descripcion>N° Cuotas</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>NU-S</id>
+       </campos>
+	         
+   </parametro>
+   
+      <parametro formulario="detalle_anexos" variable="busqueda" anchoTabla="98%">
+	   
+	   <campos nombre="cdot_ncorr">
+	   	 <descripcion>Nº Contrato</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+       </campos>
+	   
+	   <campos nombre="anot_ncodigo">
+	   	 <descripcion>Nº Anexo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+       </campos>
+	   <campos nombre="mote_CCOD">
+			<descripcion>Cod. Asig.</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso> 
+		</campos>
+		
+		<campos nombre="seot_tdesc">
+			<descripcion>Seccion</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso> 
+		</campos>
+		<campos nombre="bhot_CCOD">
+			<descripcion>Bloque</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso> 
+		</campos>
+		<campos nombre="mote_tdesc">
+			<descripcion>Asignatura</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso> 
+		</campos>
+        <campos nombre="daot_nhora">
+			<descripcion>Horas</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso> 
+		</campos>    
+		
+    </parametro>
+
+   
+   
+ 	<parametro formulario="detalle_contratos" clave="pers_ncorr"  variable="m" >
+    	<tablas nombre="contratos" accion="M"/>
+	</parametro>
+		<parametro formulario="det_anexos_otec" clave="anot_ncorr"  variable="m" >
+    	<tablas nombre="anexos_otec" accion="M"/>
+	</parametro>
+	
+	
+ 
+</Parametros>
+

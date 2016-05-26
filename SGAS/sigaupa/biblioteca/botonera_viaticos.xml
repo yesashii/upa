@@ -1,0 +1,28 @@
+<Parametros>
+   <parametro formulario="botonera">
+     <botones nombre="detalle_viatico">
+        <tipoTexto>DEFINIR</tipoTexto>
+	     <texto>Detalle Viaticos</texto>
+		 <accion>BUSCAR</accion>
+		   <formulario>buscador</formulario>
+    </botones>	  
+     <botones nombre="consolidado_viatico">
+        <tipoTexto>DEFINIR</tipoTexto>
+	     <texto>Viaticos Consolidados</texto>
+		 <accion>BUSCAR</accion>
+		   <formulario>buscador</formulario>
+    </botones>	 
+     <botones nombre="viaticos_semanal">
+        <tipoTexto>DEFINIR</tipoTexto>
+	     <texto>Viaticos Semanales</texto>
+		 <accion>BUSCAR</accion>
+		   <formulario>buscador</formulario>
+    </botones>	
+     <botones nombre="viaticos_mensual">
+        <tipoTexto>DEFINIR</tipoTexto>
+	     <texto>Viaticos Mensuales</texto>
+		 <accion>BUSCAR</accion>
+		   <formulario>buscador</formulario>
+    </botones>	 	 	
+   </parametro>
+</Parametros>

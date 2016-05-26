@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+<parametro colorSeleccionado="99FFFF"
+		 colorResaltado="#DCDCB8" 
+		 formulario="fdatos_persona" nroRegistros="10" agregar="false" eliminar="false"  
+		 maxLista="10" clave="pers_ncorr" 
+		 colorBase="#F1F1E4" anchoTabla="80%" editar="false" nuevaVentana="false" variable="m" >
+		<tablas nombre="personas" accion="A"/>
+		<campos nombre="pers_ncorr">
+			<tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="sexo_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<destino>sexos</destino>
+			<union>sexo_ccod</union>
+			<salida>sexo_tdesc</salida>
+			<descripcion>Sexo</descripcion>
+		</campos>
+		<campos nombre="tens_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<destino>tipos_ensenanza_media</destino>
+			<union>tens_ccod</union>
+			<salida>tens_tdesc</salida>
+			<descripcion>Tipo Enseñanza</descripcion>
+		</campos>
+		<campos nombre="cole_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<destino>colegios</destino>
+			<union>cole_ccod</union>
+			<salida>cole_tdesc</salida>
+			<descripcion>Colegio</descripcion>
+		</campos>
+		<campos nombre="eciv_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<destino>estados_civiles</destino>
+			<union>eciv_ccod</union>
+			<salida>eciv_tdesc</salida>
+			<descripcion>Colegio</descripcion>
+		</campos>
+		<campos nombre="pais_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<destino>paises</destino>
+			<union>pais_ccod</union>
+			<salida>pais_tdesc</salida>
+			<descripcion>País</descripcion>
+		</campos>
+		<campos nombre="rut">
+		    <tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="pers_tape_paterno">
+		    <tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-N</id>
+			<caracteres>30</caracteres>
+			<maxCaracteres>30</maxCaracteres>
+		</campos>
+		<campos nombre="pers_tape_materno">
+		    <tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-N</id>
+			<caracteres>30</caracteres>
+			<maxCaracteres>30</maxCaracteres>
+		</campos>
+		<campos nombre="pers_tnombre">
+		    <tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-N</id>
+			<caracteres>30</caracteres>
+			<maxCaracteres>30</maxCaracteres>
+		</campos>
+		<campos nombre="pers_fnacimiento">
+		    <tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>FE-N</id>
+			<tipoDato>fecha</tipoDato>
+			<caracteres>13</caracteres>
+			<maxCaracteres>10</maxCaracteres>
+		</campos>
+		<campos nombre="pers_fdefuncion">
+		    <tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-S</id>
+			<tipoDato>fecha</tipoDato>
+			<caracteres>13</caracteres>
+			<maxCaracteres>10</maxCaracteres>
+		</campos>
+		<campos nombre="pers_tempresa">
+		    <tipo>INPUT</tipo>
+			<id>TO-S</id>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>40</caracteres>
+			<maxCaracteres>40</maxCaracteres>
+		</campos>
+		<campos nombre="pers_tfono_empresa">
+		    <tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-S</id>
+			<caracteres>15</caracteres>
+			<maxCaracteres>15</maxCaracteres>
+		</campos>
+		<campos nombre="pers_tcargo">
+		    <tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-S</id>
+			<caracteres>30</caracteres>
+			<maxCaracteres>30</maxCaracteres>
+		</campos>
+		<campos nombre="pers_tprofesion">
+		    <tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-S</id>
+			<caracteres>30</caracteres>
+			<maxCaracteres>30</maxCaracteres>
+		</campos>
+		<campos nombre="pers_tfono">
+		    <tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-S</id>
+			<caracteres>15</caracteres>
+			<maxCaracteres>15</maxCaracteres>
+		</campos>
+		<campos nombre="pers_tfax">
+		    <tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-N</id>
+			<caracteres>15</caracteres>
+			<maxCaracteres>15</maxCaracteres>
+		</campos>
+		<campos nombre="pers_tcelular">
+		    <tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-S</id>
+			<caracteres>15</caracteres>
+			<maxCaracteres>15</maxCaracteres>
+		</campos>
+		<campos nombre="pers_temail">
+		    <tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>EM-S</id>
+			<caracteres>30</caracteres>
+			<maxCaracteres>30</maxCaracteres>
+		</campos>
+		<campos nombre="pers_tpasaporte">
+		    <tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-S</id>
+			<caracteres>10</caracteres>
+			<maxCaracteres>10</maxCaracteres>
+		</campos>
+		<campos nombre="pers_femision_pas">
+		    <tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<tipoDato>fecha</tipoDato>
+			<id>FE-S</id>
+			<caracteres>10</caracteres>
+			<maxCaracteres>11</maxCaracteres>
+		</campos>
+		<campos nombre="pers_fvencimiento_pas">
+		    <tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>FE-S</id>
+			<tipoDato>fecha</tipoDato>
+			<caracteres>10</caracteres>
+			<maxCaracteres>11</maxCaracteres>
+		</campos>
+		<campos nombre="pers_nnota_ens_media">
+		    <tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>NU-S</id>
+			<caracteres>4</caracteres>
+			<maxCaracteres>3</maxCaracteres>
+		</campos>
+		<campos nombre="pers_tcole_egreso">
+		    <tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-S</id>
+			<caracteres>30</caracteres>
+			<maxCaracteres>30</maxCaracteres>
+		</campos>
+		<campos nombre="pers_nano_egr_media">
+		    <tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>NU-S</id>
+			<caracteres>4</caracteres>
+			<maxCaracteres>4</maxCaracteres>
+		</campos>
+	</parametro>
+	<parametro
+		 colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="list_alumnos" nroRegistros="20" clave="pers_nrut"
+		 maxLista="10" mensajeError="No se encontraron alumnos para los parametros de busqueda ingresados." colorBase="#F1F1E4" editar="false" anchoTabla="98%" 		 nuevaVentana="false" variable="a">  
+		<campos nombre="pers_ncorr">
+			<tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="pers_nrut">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="pers_xdv">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="rut">
+			<tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+			</campos>
+		<campos nombre="v_rut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>RIGHT</alineamiento>
+			<descripcion>RUT</descripcion>
+			<ancho>70</ancho>
+		</campos>
+		<campos nombre="nombre">
+			<tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>	
+		<campos nombre="v_nombre">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Nombre Persona</descripcion>
+			<ancho>400</ancho>
+		</campos>
+	</parametro>
+  <parametro formulario="btn_buscador_personas">
+   <botones nombre="aceptar"> 
+      <tipoTexto>SIGUIENTE</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+   </parametro>
+
+</Parametros>

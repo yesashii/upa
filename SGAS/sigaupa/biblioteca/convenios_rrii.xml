@@ -1,0 +1,1082 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	   <botones nombre="volver" >
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Volver</texto>
+         <accion>navegar</accion>
+         <url>agrega_ciudad_convenio.asp</url>
+      </botones>
+	  <botones nombre="volver2" >
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Volver</texto>
+         <accion>navegar</accion>
+         <url>busca_convenio.asp</url>
+      </botones>
+	   <botones nombre="volver3" >
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Volver</texto>
+         <accion>navegar</accion>
+      </botones>
+	  <botones nombre="terminar" >
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Salir</texto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	   <botones nombre="editar" >
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Editar</texto>
+		 <accion>navegar</accion>
+         <url>agrega_convenio.asp</url>
+      </botones>
+	  <botones nombre="imprimir_alu" >
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Imprimir Información Alumno</texto>
+         <accion>javascript</accion>
+		 <funcion>abre_ventana_mensaje()</funcion>
+       </botones>
+	   <botones nombre="imprimir" >
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Imprimir Información</texto>
+         <accion>javascript</accion>
+		 <funcion>abre_ventana_mensaje2()</funcion>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	 <botones nombre="guardar_contactos">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Guardar</texto>
+		  <formulario>ingresados</formulario>
+         <url>agrega_carreras_convenio.asp</url>
+		  <funcionValidacion>Validar();</funcionValidacion>
+      </botones>
+	   <botones nombre="guardar_contactos2">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Siguiente</texto>
+		  <formulario>contacto</formulario>
+         <url>editar_datos_contacto_proc.asp</url>
+      </botones>  
+	  <botones nombre="crear_ano_siguiente">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Crear Convenio año Siguiente</texto>
+		  <formulario>resultado</formulario>
+		  <mensajeConfirmacion>Esta apunto de generar el o los convenio para el año siguiente</mensajeConfirmacion>
+		  <funcionValidacion>Validar_marcaje()</funcionValidacion>
+         <url>crea_convenio_ano_siguiente_proc.asp</url>
+      </botones> 
+	  <botones nombre="siguiente_universidad">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Siguiente</texto>
+		  <formulario>ciudad_universidad</formulario>
+         <url>universidad_ciudad_proc.asp</url>
+      </botones> 
+	    <botones nombre="agregar_contactos">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Agregar Contacto</texto>
+		  <formulario>contacto</formulario>
+         <url>agrega_datos_contacto_proc.asp</url>
+      </botones>
+	    <botones nombre="agregar_universidad">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Agregar Universidad</texto>
+		  <formulario>universidad</formulario>
+         <url>agrega_universidad_proc.asp</url>
+      </botones>
+	  <botones nombre="agregar_ciudad">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Agregar Contacto</texto>
+		  <formulario>contacto</formulario>
+         <url>agrega_datos_contacto_proc.asp</url>
+      </botones>
+	   <botones nombre="agregar_cconvenio">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Siguiente</texto>
+		  <formulario>convenio</formulario>
+         <url>agrega_convenio_proc.asp</url>
+      </botones>  
+		  <botones nombre="finalizar_carreras">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Finalizar</texto>
+		  <formulario>contacto</formulario>
+		   <funcionValidacion>Validar();</funcionValidacion>
+         <url>muestra_convenio_final.asp</url>
+      </botones> 
+	  <botones nombre="agregar_carreras">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Agregar Carrera</texto>
+		  <formulario>contacto</formulario>
+         <url>agrega_carrera_convenio_proc.asp</url>
+      </botones>  
+	   <botones nombre="eliminar_carreras">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Eliminar Carrera</texto>
+		  <formulario>carreras</formulario>
+         <url>eliminar_carrera_convenio_proc.asp</url>
+		  <funcionValidacion>Validar_borrado(this.form);</funcionValidacion>
+      </botones>
+	  <botones nombre="eliminar_encargado">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Eliminar Responsable</texto>
+		  <formulario>ingresados</formulario>
+         <url>eliminar_datos_contacto_proc.asp</url>
+		 <funcionValidacion>Validar_borrado(this.form);</funcionValidacion>
+      </botones>   
+	<botones nombre="guardar_ciudad">
+         <accion>GUARDAR</accion>
+         <tipoTexto>GUARDAR</tipoTexto>
+		  <formulario>ciudad</formulario>
+         <url>agrega_ciudad_proc.asp</url>
+      </botones>
+	  <botones nombre="editar_ciudad">
+         <accion>GUARDAR</accion>
+         <tipoTexto>GUARDAR</tipoTexto>
+		  <formulario>ciudad</formulario>
+         <url>editar_ciudad_proc.asp</url>
+      </botones>
+	    <botones nombre="agregar_costo_vida">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Guardar</texto>
+		  <formulario>costo_vida</formulario>
+         <url>agrega_costo_vida_proc.asp</url>
+      </botones>
+	   <botones nombre="crear">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Agregar Alumno</texto>
+      </botones>
+	   <botones nombre="excel">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Excel</texto>
+      </botones>
+	   <botones nombre="pdf">
+         <accion>javascript</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>PDF</texto>
+	    <funcion>nueva_ventana()</funcion>
+      </botones>
+	   <botones nombre="elimina_costo">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Eliminar</texto>
+		  <formulario>ingresados</formulario>
+         <url>eliminar_costo_vida_proc.asp</url>
+		  <funcionValidacion>Validar_check();</funcionValidacion>
+      </botones>
+	  <botones nombre="Crear_siguiente">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Crear para siguiente año</texto>
+		  <formulario>edicion</formulario>
+         <url>convenio_ano_siguiente_total_proc.asp</url>
+      </botones>  
+   </parametro>
+   
+   <parametro  formulario="busqueda" variable="b">
+	   <campos nombre="pais_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todos</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>paises</destino>
+		 <filtro>pais_ccod >1</filtro>
+		  <union>pais_ccod</union>
+         <salida>pais_tdesc</salida>
+		 <orden>pais_tdesc</orden>
+		 <script>OnChange="cambiar_pais();"</script>
+		 <id>NU-S</id>
+      </campos>
+	<campos nombre="anos_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>anos</destino>
+		 <filtro>anos_ccod >2009</filtro>
+		  <union>anos_ccod</union>
+         <salida>anos_tdesc</salida>
+		 <orden>anos_tdesc</orden>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="carr_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todas</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>carreras</destino>
+		 <filtro>carr_ccod in (36,830,800,16,17,14,23,21,840,32,51,850,970,860,880,950,41,870,43,45,47,49,104,106,108) and carr_ccod not in ('001')</filtro>
+		  <union>carr_ccod</union>
+         <salida>carr_tdesc</salida>
+		 <orden>carr_tdesc</orden>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="fecha_ini_1">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+	   <campos nombre="fecha_fin_1">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+	   <campos nombre="fecha_ini_2">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+	   <campos nombre="fecha_fin_2">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+   </parametro>
+   
+   <parametro  formulario="convenio" variable="b">
+	   <campos nombre="pais_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todos</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>paises</destino>
+		 <filtro>pais_ccod >1</filtro>
+		  <union>pais_ccod</union>
+         <salida>pais_tdesc</salida>
+		 <orden>pais_tdesc</orden>
+		 <script>OnChange="cambiar_pais();"</script>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="univ_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todos</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>universidades</destino>
+		 <filtro>univ_ccod >1</filtro>
+		  <union>univ_ccod</union>
+         <salida>univ_tdesc</salida>
+		 <orden>univ_tdesc</orden>
+		 <script>OnChange="cambiar_pais();"</script>
+		 <id>NU-N</id>
+      </campos>
+	<campos nombre="anos_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>anos</destino>
+		 <filtro>anos_ccod >2009</filtro>
+		  <union>anos_ccod</union>
+         <salida>anos_tdesc</salida>
+		 <orden>anos_tdesc</orden>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="univ_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>91</caracteres>
+         <maxCaracteres>90</maxCaracteres>
+		  <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>TO-N</id>
+      </campos>
+	   <campos nombre="web">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>71</caracteres>
+         <maxCaracteres>70</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+	    <campos nombre="escala">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>91</caracteres>
+         <maxCaracteres>90</maxCaracteres>
+		  <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="cupo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+		  <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>NU-N</id>
+      </campos>
+	   <campos nombre="daco_tcomentario_cupo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>200</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+		  <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>NU-N</id>
+      </campos>
+	   <campos nombre="asig">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>201</caracteres>
+         <maxCaracteres>200</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="idio_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+	    <mensajeNulo>Selecione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>idioma</destino>
+		  <filtro>idio_ccod not in (8)</filtro>
+		  <union>idio_ccod</union>
+         <salida>idio_tdesc</salida>
+		 <orden>idio_tdesc</orden>
+		 <id>TO-N</id>
+      </campos>
+	  <campos nombre="test_idioma">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>51</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+		  <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="flimite_post_sem1_upa">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+	   <campos nombre="flimite_post_sem1">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+	   <campos nombre="fini_clase_sem1">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+	  <campos nombre="ffin_clase_sem1">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+	    <campos nombre="flimite_post_sem2_upa">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+	   <campos nombre="flimite_post_sem2">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+	  <campos nombre="fini_clase_sem2">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+	   <campos nombre="ffin_clase_sem2">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+	  <campos nombre="daco_fconvenio_ini">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+	   <campos nombre="daco_fconvenio_fin">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+   </parametro>
+   <parametro formulario="agrega_contacto" variable="b">
+   	<campos nombre="nombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>53</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+   		<campos nombre="cargo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>52</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="dire">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>101</caracteres>
+         <maxCaracteres>100</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="email">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>40</caracteres>
+         <maxCaracteres>100</maxCaracteres>
+         <id>EM-N</id>
+      </campos>
+	   <campos nombre="fono">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>41</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	   <campos nombre="fax">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>41</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+    </parametro>
+	
+	<parametro  formulario="carreras" variable="b">
+   		 <campos nombre="carr_ccod">
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         </campos>
+		 <campos nombre="carr_tdesc">
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         </campos>
+   </parametro>
+	
+	
+	 <parametro formulario="carreras_agregadas" variable="b" colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  nroRegistros="15"
+		 maxLista="10" mensajeError="No hay Carreras Ingresadas." colorBase="#F1F1E4" eliminar="true" editar="" anchoTabla="100%" nuevaVentana="false" clave="daco_ncorr" >
+   	<campos nombre="carr_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Carrera</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="carr_ccod">
+		 <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         </campos>
+    </parametro>
+	
+	 <parametro formulario="contactos" variable="b" colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion="editar_datos_contacto.asp?euco_ncorr=%euco_ncorr%&amp;daco_ncorr=%daco_ncorr%"  nroRegistros="15"
+		 maxLista="10" mensajeError="No hay Contactos Ingresados." colorBase="#F1F1E4" eliminar="true" clave="euco_ncorr" editar="true" anchoTabla="100%" nuevaVentana="false" >
+	  <campos nombre="nombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Nombre</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+    </parametro>
+	
+   <parametro  formulario="ciudad_extranjera" variable="b">
+   		 <campos nombre="ciex_ccod">
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         </campos>
+		 <campos nombre="cied_tdesc">
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         </campos>
+   </parametro>
+    <parametro  formulario="editar_extranjera" variable="b">
+   		 <campos nombre="ciex_tdesc">
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>51</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+		 <script>onBlur="this.value=this.value.toUpperCase();"</script>
+		 <descripcion>Ciudades</descripcion>
+		 <id>TO-N</id>
+         </campos>
+		 <campos nombre="ciex_ccod">
+         <tipo>INPUT</tipo>
+          <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   
+      <parametro  formulario="agrega_ciudad_extranjera" variable="b">
+   		 <campos nombre="ciex_tdesc">
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>51</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+		 <deshabilitado>true</deshabilitado>
+		 <script>onBlur="this.value=this.value.toUpperCase();"</script>
+		 <id>TO-N</id>
+         </campos>
+		 <campos nombre="pais_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todos</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>paises</destino>
+		 <filtro>pais_ccod >1</filtro>
+		  <union>pais_ccod</union>
+         <salida>pais_tdesc</salida>
+		 <orden>pais_tdesc</orden>
+		 <script>OnChange="envia();"</script>
+		 <id>NU-N</id>
+      </campos>
+   </parametro>
+     <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion="editar_ciudad_convenio.asp?ciex_ccod=%ciex_ccod%&amp;pais_ccod=%pais_ccod%"  formulario="muestra_ciudad" nroRegistros="15"
+		 maxLista="10" mensajeError="No hay Ciudades para el Pais Selecionado." colorBase="#F1F1E4" editar="true" anchoTabla="100%"	 nuevaVentana="false" variable="b"  clave="acre_ncorr" >  
+	  	 <campos nombre="ciex_ccod">
+		 <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+         </campos>
+		  <campos nombre="pais_ccod2">
+		 <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+         </campos>
+		 <campos nombre="ciex_tdesc">
+		 <descripcion>Ciudades</descripcion>
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		  <alineamiento>CENTER</alineamiento>
+         </campos>
+	  </parametro>
+     <parametro  formulario="universidades_extranjeras" variable="b">
+   		 <campos nombre="univ_ccod">
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         </campos>
+		 <campos nombre="univ_tdesc">
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         </campos>
+   </parametro>
+	
+  <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="convenio_final" nroRegistros="15"
+		 maxLista="10" mensajeError="No se encontranron Alumnos ." colorBase="#F1F1E4" editar="true" anchoTabla="100%"	 nuevaVentana="false" variable="b"  clave="acre_ncorr" >  
+     
+	<campos nombre="pais_ccod2">
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         </campos>
+	<campos nombre="ciex_ccod2">
+		 <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+         </campos>
+	<campos nombre="univ_ccod2">
+		 <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+         </campos>
+	<campos nombre="unci_ncorr2">
+		 <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+         </campos>
+	<campos nombre="daco_ncorr">
+		 <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+         </campos>
+	  <campos nombre="pais_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="ciex_ccod" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="univ_tdesc" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="carreras_convenio">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+       <campos nombre="daco_ncupo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	   <campos nombre="cupo_restante">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	   <campos nombre="daco_tramos_cursar">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  	  <campos nombre="daco_flimite_pos_sem1">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="daco_flimite_pos_sem1_upa">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	   <campos nombre="daco_fini_clase_sem1">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="daco_ffin_clase_sem1">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="daco_flimite_post_sem2_upa">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	   <campos nombre="daco_flimite_post_sem2">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="daco_fini_clase_sem2">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	   <campos nombre="daco_ffin_clase_sem2">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="idio_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="daco_ttest_idioma">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	 <campos nombre="daco_tescala_avalu">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+     <campos nombre="daco_tweb">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	 <campos nombre="daco_fconvenio_ini">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+     <campos nombre="daco_fconvenio_fin">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>	  
+   </parametro>
+   
+   
+      <parametro  formulario="costo_vida" variable="b">
+	   <campos nombre="pais_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todos</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>paises</destino>
+		 <filtro>pais_ccod >1</filtro>
+		  <union>pais_ccod</union>
+         <salida>pais_tdesc</salida>
+		 <orden>pais_tdesc</orden>
+		 <script>OnChange="cambiar_pais();"</script>
+		 <id>NU-N</id>
+      </campos>
+	<campos nombre="anos_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>anos</destino>
+		 <filtro>anos_ccod >2009</filtro>
+		  <union>anos_ccod</union>
+         <salida>anos_tdesc</salida>
+		 <orden>anos_tdesc</orden>
+		 <script>OnChange="cambiar_anos();"</script>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="tcvi_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>tipo_costo_vida</destino>
+		  <union>tcvi_ccod</union>
+         <salida>tcvi_tdesc</salida>
+		 <orden>tcvi_ccod</orden>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="monto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>51</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+		  <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+   
+   <parametro  formulario="costos_" variable="b">
+   <campos nombre="tcvi_tdesc" >
+      <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   <campos nombre="covi_monto" >
+      <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="covi_comentario" >
+      <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   
+   <parametro  formulario="tipos_costos" variable="b">
+   <campos nombre="tcvi_ccod" >
+      <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   <campos nombre="tcvi_tdesc" >
+      <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+
+<parametro  formulario="agrega_costo_vida" variable="b">
+	   <campos nombre="pais_ccod" >
+        <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	<campos nombre="anos_ccod" >
+        <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="tcvi_ccod" >
+      <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="monto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="comentario">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="covi_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   <parametro  formulario="editar_costo_vida" variable="b">
+	   <campos nombre="pais_tdesc" >
+        <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="ciex_tdesc" >
+        <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	<campos nombre="anos_ccod" >
+        <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="pais_ccod" >
+        <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="ciex_ccod" >
+        <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="tcvi_ccod" >
+      <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="monto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="comentario">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="covi_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="tcvi_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion="editar_costo_vida.asp?covi_ncorr=%covi_ncorr%"  formulario="muestra_costo_vida" nroRegistros="15"
+		 maxLista="10" mensajeError="No Hay Costos Ingresados ." colorBase="#F1F1E4" editar="true" anchoTabla="100%"	eliminar="true" nuevaVentana="false" variable="b"  clave="covi_ncorr" >  
+	   <campos nombre="anos_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+	  <campos nombre="tcvi_tdesc">
+		<descripcion>Tipos Costo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="anos_ccod" >
+		 <descripcion>Año</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	   <campos nombre="monto" >
+		 <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="comentario" >
+		 <descripcion>Comentario</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro  formulario="contacto" variable="b">
+	   <campos nombre="euco_tnombre" >
+        <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	<campos nombre="euco_tcargo" >
+        <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="euco_temail" >
+      <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="euco_tfono">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="euco_tfax">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="euco_direccion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="muestra_resumen_convenio" variable="b" colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion="muestra_convenio_final.asp?daco_ncorr=%daco_ncorr%&amp;desdebusca=S&amp;anos_ccod=%anos_ccod%&amp;carr_ccod=%carr_ccod%&amp;univ_ccod=%univ_ccod%&amp;pais_ccod=%pais_ccod%&amp;ciex_ccod=%ciex_ccod%&amp;fecha_ini_1=%fecha_ini_1%&amp;fecha_fin_1=%fecha_fin_1%&amp;fecha_ini_2=%fecha_ini_2%&amp;fecha_fin_2=%fecha_fin_2%"  nroRegistros="15"
+		 maxLista="10" mensajeError="No hay Convenio Registrado." colorBase="#F1F1E4" eliminar="false" editar="true" anchoTabla="100%" nuevaVentana="false" clave="" >
+   	 <campos nombre="daco_ncorr">
+		 <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         </campos>
+	<campos nombre="univ_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Institución</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="pais_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Pais</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	    <campos nombre="ciex_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Ciudad</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="univ_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Institución</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	 <campos nombre="daco_ncupo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Cupo Total/Disponible </descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="carreras_convenio">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Carrera UPA en Convenio</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="daco_flimite_pos_sem1_upa">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>F. Limite Pos. 1° sem. </descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="daco_flimite_pos_sem2_upa">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>F.Limite Post. 2° sem. </descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+  </parametro>
+   <parametro  formulario="ubicacion_universidad" variable="b">
+   		 <campos nombre="univ_ccod">
+		 <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	     <mensajeNulo>Todos</mensajeNulo>
+		 <mensajeVacio>''</mensajeVacio>
+		 <destino>universidades</destino>
+		 <union>univ_ccod</union>
+         <salida>univ_tdesc</salida>
+		 <orden>univ_tdesc</orden>
+		 <id>TO-N</id>
+         </campos>
+		 <campos nombre="pais_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todos</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>paises</destino>
+		 <filtro>pais_ccod >1</filtro>
+		  <union>pais_ccod</union>
+         <salida>pais_tdesc</salida>
+		 <orden>pais_tdesc</orden>
+		 <script>OnChange="envia();"</script>
+		 <id>NU-N</id>
+      </campos>
+   </parametro>
+   <parametro  formulario="edita_convenio" variable="b">
+   <campos nombre="pais_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todos</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>paises</destino>
+		 <filtro>pais_ccod >1</filtro>
+		  <union>pais_ccod</union>
+         <salida>pais_tdesc</salida>
+		 <orden>pais_tdesc</orden>
+		 <script>OnChange="envia();"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="anos_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleciones</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>anos</destino>
+		 <filtro>anos_ccod >2009</filtro>
+		  <union>anos_ccod</union>
+         <salida>anos_tdesc</salida>
+		 <orden>anos_tdesc</orden>
+		 <script>OnChange="envia_ano();"</script>
+		 <id>NU-N</id>
+      </campos>
+   </parametro>
+      <parametro formulario="muestra_universidad_ciudad" variable="b" colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion="agrega_convenio.asp?b[0][daco_ncorr]=%daco_ncorr%&amp;b[0][pais_ccod]=%pais_ccod%&amp;b[0][ciex_ccod]=%ciex_ccod%&amp;b[0][univ_ccod]=%univ_ccod%&amp;b[0][unci_ncorr]=%ciex_ccod%"  nroRegistros="15"
+		 maxLista="10" mensajeError="No hay Convenio Registrado." colorBase="#F1F1E4" eliminar="true" seleccionarTodo="true" editar="true" anchoTabla="100%" nuevaVentana="false" clave="daco_ncorr" >
+	   	 <campos nombre="univ_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Universidad</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	   <campos nombre="anos_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Año</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   
+   
+   <parametro  formulario="termino_convenios" variable="t" colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9"
+		 eliminar="true" seleccionarTodo="true" mensajeError="No hay Vencimiento de Convenios." colorBase="#F1F1E4" anchoTabla="100%" clave="daco_ncorr">
+		 <campos nombre="univ_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Universidad</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos> 
+	  <campos nombre="pais_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Pais</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="ciex_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Ciudad</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="fin_convenio2">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Fecha de vencimiento</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>		 
+   </parametro>  
+   
+</Parametros>

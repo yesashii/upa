@@ -1,0 +1,217 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="lanzadera">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>BUSCAR</accion>
+         <url>Reporte_Pagares_Excel.asp</url>
+         <formulario>buscador</formulario>
+      </botones>
+	  <botones nombre="excel_avanzado">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel Avanzado</texto>
+         <accion>BUSCAR</accion>
+         <url>reporte_pagares_avanzado.asp</url>
+         <formulario>buscador</formulario>
+      </botones>
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>Validar();</funcionValidacion>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+      <botones nombre="imprimir">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Imprimir</texto>
+      </botones>
+   </parametro>
+   
+   <parametro formulario="busqueda_pagares" variable="busqueda">
+      <campos nombre="sede_ccod">
+         <tipo>SELECT</tipo>
+         <destino>sedes</destino>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>true</anulable>
+         <mensajeNulo>Seleccione Sede</mensajeNulo>
+      </campos>
+      <campos nombre="inicio">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+      <campos nombre="termino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+      <campos nombre="code_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="code_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="vencimiento">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+      <campos nombre="edin_ccod">
+         <tipo>SELECT</tipo>
+         <destino>estados_detalle_ingresos</destino>
+		 <filtro>edin_ccod in (1,6,56) </filtro>
+         <union>edin_ccod</union>
+         <salida>edin_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>true</anulable>
+         <mensajeNulo>Seleccione Estado Pagare</mensajeNulo>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="f_pagares" clave="envi_ncorr" variable="letras" nroRegistros="15" maxLista="10" anchoTabla="100%" mensajeError="No se encontraron Pagares...">
+      <campos nombre="ding_ndocto">
+         <descripcion>Pagare</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <ancho>50</ancho>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="edin_tdesc">
+         <descripcion>Estado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="ingr_fpago">
+         <descripcion>F. Emision</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_fdocto">
+         <descripcion>F. Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_mdocto">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="rut_alumno">
+         <descripcion>Rut Alumno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="rut_apoderado">
+         <descripcion>Rut Apoderado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+	  <campos nombre="institucion">
+         <descripcion>Institucion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+   </parametro>
+   
+
+   <parametro formulario="f_pagares_excel" clave="envi_ncorr" variable="letras" anchoTabla="100%" mensajeError="No se encontraron Pagares...">
+      <campos nombre="ding_ndocto">
+         <descripcion>Letra</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <ancho>50</ancho>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="edin_tdesc">
+         <descripcion>Estado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="ingr_fpago">
+         <descripcion>F. Emision</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_fdocto">
+         <descripcion>F. Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_mdocto">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+      </campos>
+      <campos nombre="rut_alumno">
+         <descripcion>Rut Alumno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="rut_apoderado">
+         <descripcion>Rut Apoderado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+</Parametros>

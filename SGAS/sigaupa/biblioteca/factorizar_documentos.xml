@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+<parametro formulario="botonera">
+   <botones nombre="salir"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	</botones>
+   <botones nombre="salir_02"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../COMPRAS/FACTORING.ASP</url>
+	</botones>
+	<botones nombre="guardar">
+		 <tipoTexto>GUARDAR</tipoTexto>
+		 <accion>GUARDAR</accion>
+		 <url>FACTORING_02.asp</url>
+		 <formulario>datos</formulario>
+		 <funcionValidacion>verificar();</funcionValidacion>
+	</botones>					
+	<botones nombre="factorizar">
+		 <tipoTexto>GUARDAR</tipoTexto>
+	    <accion>GUARDAR</accion>
+		 <url>FACTORING_proc.asp</url>
+		 <formulario>factorizar</formulario>
+		 <funcionValidacion>Enviar();</funcionValidacion>
+	</botones>		
+	<botones nombre="buscar">
+		<tipoTexto>BUSCAR</tipoTexto>
+		<accion>BUSCAR</accion>
+		<formulario>datos_1</formulario>
+		<soloUnClick>TRUE</soloUnClick>
+	</botones>
+</parametro>
+
+
+<parametro formulario="buscador" variable="datos_1">
+	<campos nombre="sogi_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-S</id>
+	</campos>
+	<campos nombre="dsgi_ndocto">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-S</id>
+	</campos>
+	<campos nombre="pers_nrut">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<script>onBlur="genera_digito(this.value);"</script>
+		<id>NU-S</id>
+	</campos>
+	<campos nombre="pers_xdv">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>1</caracteres>
+		<maxCaracteres>1</maxCaracteres>
+		<script>READONLY</script>
+		<id>TO-S</id>
+	</campos>	
+	<campos nombre="nombre_02">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>40</caracteres>
+		<maxCaracteres>40</maxCaracteres>
+		<id>TO-N</id>
+	</campos>	
+</parametro>
+
+<parametro formulario="cheques" variable="datos" clave="sogi_ncorr" eliminar="true" 
+maxLista="5" anchoTabla="100%" nroRegistros="10" mensajeError="No existen registros de solicitudes disponibles" >
+
+	<campos nombre="sogi_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+	</campos>
+	<campos nombre="RUT">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTUR</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>12</maxCaracteres>
+		 <id>NU-N</id>
+	</campos>
+	<campos nombre="tdoc_tdesc">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>10</caracteres>
+	</campos>
+	<campos nombre="dsgi_ndocto">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>12</maxCaracteres>
+		 <script>Readonly</script>
+		 <id>NU-N</id>
+	</campos>
+	<campos nombre="TOTAL">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>12</maxCaracteres>
+		 <script>Readonly</script>
+		 <id>NU-N</id>
+	</campos>
+	<campos nombre="dogi_fecha_documento">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTUR</permiso>
+		 <caracteres>10</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+	</campos>
+	<campos nombre="DPVA_FPAGO">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>10</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+	</campos>
+	<campos nombre="tdoc_ccod_02">
+		  <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_documento</destino>
+		 <union>tdoc_ccod</union>
+		 <salida>tdoc_tdesc </salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>tdoc_tdesc</orden>		 
+	</campos>
+	<campos nombre="SOLICITUD">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-S</id>
+	</campos>
+</parametro> 
+
+<parametro formulario="factorizar" variable="datos">
+
+	<campos nombre="RUT">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTUR</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>12</maxCaracteres>
+		 <id>NU-N</id>
+	</campos>
+	<campos nombre="tdoc_tdesc">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>10</caracteres>
+	</campos>
+	<campos nombre="TOTAL">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>12</maxCaracteres>
+		 <script>Readonly</script>
+		 <id>NU-N</id>
+	</campos>
+	<campos nombre="dogi_fecha_documento">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTUR</permiso>
+		 <caracteres>10</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+	</campos>
+	<campos nombre="DPVA_FPAGO">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>10</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+	</campos>
+	<campos nombre="SOLICITUD">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-S</id>
+	</campos>
+	
+	<campos nombre="sogi_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-S</id>
+	</campos>
+	<campos nombre="dsgi_ndocto">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-S</id>
+	</campos>
+	<campos nombre="pers_nrut">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<script>onBlur="genera_digito(this.value);"</script>
+		<id>NU-S</id>
+	</campos>
+	<campos nombre="pers_xdv">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>1</caracteres>
+		<maxCaracteres>1</maxCaracteres>
+		<script>READONLY</script>
+		<id>TO-S</id>
+	</campos>	
+	<campos nombre="nombre_02">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>40</caracteres>
+		<maxCaracteres>40</maxCaracteres>
+		<id>TO-N</id>
+	</campos>	
+</parametro> 
+
+</Parametros>

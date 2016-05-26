@@ -1,0 +1,28 @@
+Para buscar el numero de ingreso a partir del compromiso
+
+SELECT protic.documento_asociado_cuota(TCOM_CCOD, INST_CCOD, COMP_NDOCTO, DCOM_NCOMPROMISO, 'ting_ccod'), 
+	protic.documento_asociado_cuota(tcom_ccod, inst_ccod, comp_ndocto, dcom_ncompromiso, 'ding_ndocto') FROM DETALLE_COMPROMISOS WHERE COMP_NDOCTO= N° Compromiso
+
+
+Revisar detalle ingreso
+
+SELECT * FROM DETALLE_INGRESOS WHERE DING_NDOCTO= numero de ingreso
+
+Pasar a cartera
+
+UPDATE DETALLE_INGRESOS SET EDIN_CCOD=1 WHERE DING_NDOCTO= numero de ingreso AND TING_CCOD=4 (4 para letras)
+
+
+
+
+
+-----------------------------------------------------
+
+OTRA FORMA
+
+
+SELECT INGR_NCORR FROM INGRESOS WHERE INGR_NFOLIO_REFERENCIA = NUMERO DE FOLIO REFERENCIA
+
+SELECT * FROM  DETALLE_INGRESOS WHERE INGR_NCORR IN (VALORES ANTERIOR) AND EDIN_CCOD=10
+
+UPDATE DETALLE_INGRESOS SET EDIN_CCOD=1 WHERE INGR_NCORR IN (VALORES ANTERIOR) AND EDIN_CCOD=10

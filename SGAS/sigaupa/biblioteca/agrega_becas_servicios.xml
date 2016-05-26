@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../dae/becas_servicios.asp</url>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  
+	
+     <botones nombre="guardar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Grabar</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>agregar_alumno_proc.asp</url>
+		 
+	</botones>
+   
+   </parametro>
+   
+   
+  <parametro formulario="cheques" variable="a" anchoTabla="100%">
+  <tablas nombre="alumno_credito" accion="M"/>  
+      
+	  <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+         </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="Validar_rut_papa();"</script>
+         <id>LN-N</id>
+      </campos>
+	  
+	  <campos nombre="peri_ccod">
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Periodo Academico</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>periodos_academicos</destino>
+		 <filtro>anos_ccod > 2004</filtro>
+         <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+		 <orden>peri_ccod asc</orden>
+		 <id>NU-N</id>
+      </campos>
+	    <campos nombre="tdet_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione una Beca</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>tipos_detalle </destino>
+		 <filtro>tdet_ccod in (1549)</filtro>
+         <union>tdet_ccod</union>
+         <salida>tdet_tdesc</salida>
+		 <orden>tdet_tdesc asc</orden>
+		 <id>NU-N</id>
+      </campos>
+      
+   </parametro>
+   
+   
+   
+</Parametros>

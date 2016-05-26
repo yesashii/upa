@@ -1,0 +1,105 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="cancelar">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Salir</texto>
+         <accion>CERRAR</accion>
+      </botones>
+      <botones nombre="guardar_encuesta">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <funcionValidacion>Validar();</funcionValidacion>
+         <url>encuesta_publicidad_empleadores_proc.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+   </parametro>
+   <parametro formulario="guardar_encuesta" variable="e">
+      <tablas nombre="encuesta_publicidad_empleadores" accion="M"/>
+   </parametro>
+   <parametro formulario="f_busqueda" variable="e">
+   <campos nombre="carr_ccod">
+      <tipo>SELECT</tipo>
+	  <union>carr_ccod</union>
+	  <salida>CARR_TDESC</salida>
+      <orden>CARR_TDESC asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione una Carrera</mensajeNulo>
+	  <mensajeVacio>Seleccione una Carrera</mensajeVacio>
+	  <id>TO-N</id>
+   </campos>
+  </parametro>
+  <parametro formulario="busqueda_usuarios" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+  </parametro>
+  <parametro formulario="botonera_egresados">
+      <botones nombre="cancelar">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Salir</texto>
+         <accion>CERRAR</accion>
+      </botones>
+      <botones nombre="guardar_encuesta">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <funcionValidacion>Validar2();</funcionValidacion>
+         <url>encuesta_publicidad_egresados_proc.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+	  <botones nombre="SALIR">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>	
+	  <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	   <funcionValidacion>Validar();</funcionValidacion>
+	</botones>
+   </parametro>
+   <parametro formulario="guardar_encuesta_egresados" variable="e">
+      <tablas nombre="encuesta_publicidad_egresados" accion="M"/>
+   </parametro>
+   <parametro formulario="botonera_docentes">
+      <botones nombre="cancelar">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Salir</texto>
+         <accion>CERRAR</accion>
+      </botones>
+      <botones nombre="guardar_encuesta">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <funcionValidacion>Validar2();</funcionValidacion>
+         <url>encuesta_publicidad_docentes_proc.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+	  <botones nombre="SALIR">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>	
+	  <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	   <funcionValidacion>Validar();</funcionValidacion>
+	</botones>
+   </parametro>
+   <parametro formulario="guardar_encuesta_docentes" variable="e">
+      <tablas nombre="encuesta_publicidad_docentes" accion="M"/>
+   </parametro>
+</Parametros>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="btn_adm_salidas">
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_tipo_salida.asp</url>
+         <formulario>edicion</formulario>
+      </botones> 
+    <botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agrega_carrera(document.edicion)</funcion>
+	</botones> 
+      <botones nombre="SALIR">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>	
+  </parametro>
+  <parametro formulario="btn_agregar_salida">
+    <botones nombre="GUARDAR"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agregar(document.editar)</funcion>
+	</botones> 	
+  <botones nombre="SALIR"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>salir(document.edicion)</funcion>
+	</botones> 
+ </parametro>
+
+ 	<parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8"
+	 paginaEdicion="agregar_tipo_salida.asp?tsca_ccod=%tsca_ccod%" 
+	 formulario="tabla_salidas" eliminar="true" clave="tsca_ccod" nroRegistros="10" maxLista="10"
+	 mensajeError="No existen tipos de salidas ingresas al sistema." 
+	 colorBase="#F1F1E4" editar="true" 	anchoTabla="98%" variable="em" nuevaVentana="true" nuevaVentanaAlto="130" nuevaVentanaAncho="500" >
+	<tablas nombre="TIPOS_SALIDAS_CARRERA" accion="B"/>
+	<campos nombre="tsca_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>CODIGO</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	<campos nombre="tsca_tdesc">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>TIPO SALIDA</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	</parametro>
+	<parametro colorSeleccionado="99FFFF" variable="em" colorResaltado="#DCDCB8" paginaEdicion="" 
+		 formulario="tabla_valores" eliminar="true" clave="tsca_ccod" colorBase="#F1F1E4" editar="false"
+		 mensajeError="" anchoTabla="98%"  nuevaVentana="true">
+		<campos nombre="tsca_ccod">
+				<tipo>INPUT</tipo>
+				<permiso>LECTUR</permiso>
+		</campos>
+		<campos nombre="tsca_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<id>TO-N</id>
+			<caracteres>50</caracteres>
+			<maxCaracteres>50</maxCaracteres>
+		</campos>
+  </parametro>
+
+  <parametro formulario="mantiene_salidas" variable="em">
+      <tablas nombre="TIPOS_SALIDAS_CARRERA" accion="M"/>
+   </parametro>
+
+  <parametro formulario="eliminar_salidas" variable="em">
+      <tablas nombre="TIPOS_SALIDAS_CARRERA" accion="B"/>
+   </parametro>
+  
+  <parametro formulario="datos_extras" variable="em">
+	    <listas nombre="lBusqueda">
+			<item clave="acar_ccod" valor="acar_tdesc" />
+			<item clave="saca_ccod" valor="saca_tdesc" />
+		</listas>
+		<campos nombre="acar_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="saca_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+	</parametro>
+
+</Parametros>

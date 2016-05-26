@@ -1,0 +1,5 @@
+70417500,  CORP. CAPACITACION Y EMPLEO SOFOFA,,70417500-0,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+73048900,  CORPORACION DE LA BANCAPARA LA PROMOCION DE LA CAPACITACION,,73048900-5,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+73315900,  CENTRO INTERMED DE CAPAC. DE ASEXMA,,73315900-6,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+96645790,  SOCOFIN SA,,96645790-2,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+96883290,  SODEXO SERVICIOS DE GESTION,,96883290-5,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

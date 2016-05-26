@@ -1,0 +1,847 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+
+
+<parametro formulario="docentes_totales" variable="dt" >
+           
+		   
+		<campos nombre="DOCTORADO">
+		<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+
+	   <campos nombre="LICENCIADO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	   <campos nombre="MAESTRIA" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	  <campos nombre="MAGISTER" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		
+	  	<campos nombre="PROFESIONAL" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		<campos nombre="SIN_TITULO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		<campos nombre="TECNICO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+	  
+	      
+   </parametro>
+   <parametro formulario="docentes_doctorado_1_19" variable="dd" >
+           
+		   
+		<campos nombre="profesores_1_a_19_Diurnos_DOCTORADO_MASCULINO">
+		<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+      
+      
+	   <campos nombre="profesores_19_a_32__DIURNO_DOCTORADO_FEMENINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	   <campos nombre="profesores_1_a_19__DIURNO_TOTAl" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	  <campos nombre="profesores_1_a_19_VESPERTINO_DOCTORADO_MASCULINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		
+	  	<campos nombre="profesores_1_a_19_VESPERTINO_DOCTORADO_FEMENINO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		<campos nombre="profesores_1_a_19_VESPERTINO_total_DOCTORADO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+	  
+	      
+   </parametro>
+   
+      <parametro formulario="docentes_doctorado_20_32" variable="dd" >
+           
+		   
+		<campos nombre="profesores_20_a_32_Diurnos_DOCTORADO_MASCULINO">
+		<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+      
+      
+	   <campos nombre="profesores_20_a_32__DIURNO_DOCTORADO_FEMENINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	   <campos nombre="profesores_20_a_32__DIURNO_TOTAl" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	  <campos nombre="profesores_20_a_32_VESPERTINO_DOCTORADO_MASCULINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		
+	  	<campos nombre="profesores_20_a_32_VESPERTINO_DOCTORADO_FEMENINO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		<campos nombre="profesores_20_a_32_VESPERTINO_total_DOCTORADO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+	  
+	      
+   </parametro>
+   
+   <parametro formulario="docentes_doctorado_33_44" variable="dd" >
+           
+		   
+		<campos nombre="profesores_33_a_44_Diurnos_DOCTORADO_MASCULINO">
+		<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+      
+      
+	   <campos nombre="profesores_33_a_44__DIURNO_DOCTORADO_FEMENINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	   <campos nombre="profesores_33_a_44__DIURNO_TOTAl" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	  <campos nombre="profesores_33_a_44_VESPERTINO_DOCTORADO_MASCULINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		
+	  	<campos nombre="profesores_33_a_44_VESPERTINO_DOCTORADO_FEMENINO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		<campos nombre="profesores_33_a_44_VESPERTINO_total_DOCTORADO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+	  
+	      
+   </parametro>
+   
+   <parametro formulario="docentes_magister_1_19" variable="dd" >
+           
+		   
+		<campos nombre="profesores_1_a_19_Diurnos_MAGISTER_MASCULINO">
+		<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+      
+      
+	   <campos nombre="profesores_1_a_19__DIURNO_MAGISTER_FEMENINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	   <campos nombre="profesores_1_a_19__DIURNO_TOTAl" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	  <campos nombre="profesores_1_a_19_VESPERTINO_MAGISTER_MASCULINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		
+	  	<campos nombre="profesores_1_a_19_VESPERTINO_MAGISTER_FEMENINO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		<campos nombre="profesores_1_a_19_VESPERTINO_total_DOCTORADO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+	  
+	      
+   </parametro>
+   
+   <parametro formulario="docentes_magister_20_32" variable="dd" >
+           
+		   
+		<campos nombre="profesores_20_a_32_Diurnos_MAGISTER_MASCULINO">
+		<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+      
+      
+	   <campos nombre="profesores_20_a_32__DIURNO_MAGISTER_FEMENINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	   <campos nombre="profesores_20_a_32__DIURNO_TOTAl" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	  <campos nombre="profesores_20_a_32_VESPERTINO_MAGISTER_MASCULINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		
+	  	<campos nombre="profesores_20_a_32_VESPERTINO_MAGISTER_FEMENINO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		<campos nombre="profesores_20_a_32_VESPERTINO_total_DOCTORADO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+	  
+	      
+   </parametro>
+   
+   <parametro formulario="docentes_magister_33_44" variable="dd" >
+           
+		   
+		<campos nombre="profesores_33_a_44_Diurnos_MAGISTER_MASCULINO">
+		<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+      
+      
+	   <campos nombre="profesores_33_a_44__DIURNO_MAGISTER_FEMENINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	   <campos nombre="profesores_33_a_44__DIURNO_TOTAl" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	  <campos nombre="profesores_33_a_44_VESPERTINO_MAGISTER_MASCULINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		
+	  	<campos nombre="profesores_33_a_44_VESPERTINO_MAGISTER_FEMENINO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		<campos nombre="profesores_33_a_44_VESPERTINO_total_MAGISTER" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+	  
+	      
+   </parametro>
+   
+   
+     <parametro formulario="docentes_licenciado_1_19" variable="dd" >
+           
+		   
+		<campos nombre="profesores_1_a_19_Diurnos_LICENCIADO_MASCULINO">
+		<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+      
+      
+	   <campos nombre="profesores_1_a_19__DIURNO_LICENCIADO_FEMENINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	   <campos nombre="profesores_1_a_19__DIURNO_TOTAl" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	  <campos nombre="profesores_1_a_19_VESPERTINO_LICENCIADO_MASCULINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		
+	  	<campos nombre="profesores_1_a_19_VESPERTINO_LICENCIADO_FEMENINO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		<campos nombre="profesores_1_a_19_VESPERTINO_total_LICENCIADO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+	  
+	      
+   </parametro>
+   
+   
+   <parametro formulario="docentes_licenciado_20_32" variable="dd" >
+           
+		   
+		<campos nombre="profesores_20_a_32_Diurnos_LICENCIADO_MASCULINO">
+		<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+      
+      
+	   <campos nombre="profesores_20_a_32__DIURNO_LICENCIADO_FEMENINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	   <campos nombre="profesores_20_a_32__DIURNO_TOTAl" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	  <campos nombre="profesores_20_a_32_VESPERTINO_LICENCIADO_MASCULINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		
+	  	<campos nombre="profesores_20_a_32_VESPERTINO_LICENCIADO_FEMENINO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		<campos nombre="profesores_20_a_32_VESPERTINO_total_LICENCIADO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+	  
+	      
+   </parametro>
+   
+    <parametro formulario="docentes_licenciado_33_44" variable="dd" >
+           
+		   
+		<campos nombre="profesores_33_a_44_Diurnos_LICENCIADO_MASCULINO">
+		<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+      
+      
+	   <campos nombre="profesores_33_a_44__DIURNO_LICENCIADO_FEMENINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	   <campos nombre="profesores_33_a_44__DIURNO_TOTAl" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	  <campos nombre="profesores_33_a_44_VESPERTINO_LICENCIADO_MASCULINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		
+	  	<campos nombre="profesores_33_a_44_VESPERTINO_LICENCIADO_FEMENINO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		<campos nombre="profesores_33_a_44_VESPERTINO_total_LICENCIADO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+	  
+	      
+   </parametro>
+   
+     <parametro formulario="docentes_profesional_1_19" variable="dd" >
+           
+		   
+		<campos nombre="profesores_1_a_19_Diurnos_PROFESIONAL_MASCULINO">
+		<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+      
+      
+	   <campos nombre="profesores_1_a_19__DIURNO_PROFESIONAL_FEMENINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	   <campos nombre="profesores_1_a_19__DIURNO_TOTAl" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	  <campos nombre="profesores_1_a_19_VESPERTINO_PROFESIONAL_MASCULINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		
+	  	<campos nombre="profesores_1_a_19_VESPERTINO_PROFESIONAL_FEMENINO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		<campos nombre="profesores_1_a_19_VESPERTINO_total_PROFESIONAL" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+	  
+	      
+   </parametro>
+    <parametro formulario="docentes_profesional_20_32" variable="dd" >
+           
+		   
+		<campos nombre="profesores_20_a_32_Diurnos_PROFESIONAL_MASCULINO">
+		<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+      
+      
+	   <campos nombre="profesores_20_a_32__DIURNO_PROFESIONAL_FEMENINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	   <campos nombre="profesores_20_a_32__DIURNO_TOTAl" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	  <campos nombre="profesores_20_a_32_VESPERTINO_PROFESIONAL_MASCULINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		
+	  	<campos nombre="profesores_20_a_32_VESPERTINO_PROFESIONAL_FEMENINO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		<campos nombre="profesores_20_a_32_VESPERTINO_total_PROFESIONAL" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+	  
+	      
+   </parametro>
+   
+   <parametro formulario="docentes_profesional_33_44" variable="dd" >
+           
+		   
+		<campos nombre="profesores_33_a_44_Diurnos_PROFESIONAL_MASCULINO">
+		<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+      
+      
+	   <campos nombre="profesores_33_a_44__DIURNO_PROFESIONAL_FEMENINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	   <campos nombre="profesores_33_a_44__DIURNO_TOTAl" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	  <campos nombre="profesores_33_a_44_VESPERTINO_PROFESIONAL_MASCULINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		
+	  	<campos nombre="profesores_33_a_44_VESPERTINO_PROFESIONAL_FEMENINO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		<campos nombre="profesores_33_a_44_VESPERTINO_total_PROFESIONAL" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+	  
+	      
+   </parametro>
+   
+   
+      <parametro formulario="docentes_tecnico_1_19" variable="dd" >
+           
+		   
+		<campos nombre="profesores_1_a_19_Diurnos_TECNICO_MASCULINO">
+		<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+      
+      
+	   <campos nombre="profesores_1_a_19__DIURNO_TECNICO_FEMENINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	   <campos nombre="profesores_1_a_19__DIURNO_TOTAl" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	  <campos nombre="profesores_1_a_19_VESPERTINO_TECNICO_MASCULINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		
+	  	<campos nombre="profesores_1_a_19_VESPERTINO_TECNICO_FEMENINO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		<campos nombre="profesores_1_a_19_VESPERTINO_total_TECNICO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+	  
+	      
+   </parametro>
+   
+    <parametro formulario="docentes_tecnico_20_32" variable="dd" >
+           
+		   
+		<campos nombre="profesores_20_a_32_Diurnos_TECNICO_MASCULINO">
+		<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+      
+      
+	   <campos nombre="profesores_20_a_32__DIURNO_TECNICO_FEMENINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	   <campos nombre="profesores_20_a_32__DIURNO_TOTAl" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	  <campos nombre="profesores_20_a_32_VESPERTINO_TECNICO_MASCULINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		
+	  	<campos nombre="profesores_20_a_32_VESPERTINO_TECNICO_FEMENINO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		<campos nombre="profesores_20_a_32_VESPERTINO_total_TECNICO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+	  
+	      
+   </parametro>
+   
+     <parametro formulario="docentes_tecnico_33_44" variable="dd" >
+           
+		   
+		<campos nombre="profesores_33_a_44_Diurnos_TECNICO_MASCULINO">
+		<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+      
+      
+	   <campos nombre="profesores_33_a_44__DIURNO_TECNICO_FEMENINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	   <campos nombre="profesores_33_a_44__DIURNO_TOTAl" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	  <campos nombre="profesores_33_a_44_VESPERTINO_TECNICO_MASCULINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		
+	  	<campos nombre="profesores_33_a_44_VESPERTINO_TECNICO_FEMENINO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		<campos nombre="profesores_33_a_44_VESPERTINO_total_TECNICO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+	  
+	      
+   </parametro>
+   
+    <parametro formulario="docentes_sintitulo_1_19" variable="dd" >
+           
+		   
+		<campos nombre="profesores_1_a_19_Diurnos_SIN_TITULO_MASCULINO">
+		<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+      
+      
+	   <campos nombre="profesores_1_a_19__DIURNO_SIN_TITULO_FEMENINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	   <campos nombre="profesores_1_a_19__DIURNO_TOTAl" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	  <campos nombre="profesores_1_a_19_VESPERTINO_SIN_TITULO_MASCULINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		
+	  	<campos nombre="profesores_1_a_19_VESPERTINO_SIN_TITULO_FEMENINO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		<campos nombre="profesores_1_a_19_VESPERTINO_total_SIN_TITULO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+	  
+	      
+   </parametro>
+   
+    <parametro formulario="docentes_sintitulo_20_32" variable="dd" >
+           
+		   
+		<campos nombre="profesores_20_a_32_Diurnos_SIN_TITULO_MASCULINO">
+		<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+      
+      
+	   <campos nombre="profesores_20_a_32__DIURNO_SIN_TITULO_FEMENINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	   <campos nombre="profesores_20_a_32__DIURNO_TOTAl" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	  <campos nombre="profesores_20_a_32_VESPERTINO_SIN_TITULO_MASCULINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		
+	  	<campos nombre="profesores_20_a_32_VESPERTINO_SIN_TITULO_FEMENINO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		<campos nombre="profesores_20_a_32_VESPERTINO_total_SIN_TITULO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+	  
+	      
+   </parametro>
+   
+    <parametro formulario="docentes_sintitulo_33_44" variable="dd" >
+           
+		   
+		<campos nombre="profesores_33_a_44_Diurnos_SIN_TITULO_MASCULINO">
+		<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+      
+      
+	   <campos nombre="profesores_33_a_44__DIURNO_SIN_TITULO_FEMENINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	   <campos nombre="profesores_33_a_44__DIURNO_TOTAl" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+	  <campos nombre="profesores_33_a_44_VESPERTINO_SIN_TITULO_MASCULINO" >
+       	<descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		
+	  	<campos nombre="profesores_33_a_44_VESPERTINO_SIN_TITULO_FEMENINO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+		
+		<campos nombre="profesores_33_a_44_VESPERTINO_total_SIN_TITULO" >
+        <descripcion>Nombre</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        </campos>
+	  
+	      
+   </parametro>
+   
+  </Parametros>

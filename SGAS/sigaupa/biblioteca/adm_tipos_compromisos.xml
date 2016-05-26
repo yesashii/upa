@@ -1,0 +1,93 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="agregar">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>AGREGAR</accion>
+         <alto>200</alto>
+         <ancho>500</ancho>
+         <posicionX>100</posicionX>
+         <posicionY>100</posicionY>
+         <url>agregar_tipos_compromisos.asp</url>
+      </botones>
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_elimina_tipos_compromisos.asp</url>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cerrar">
+         <tipoTexto>CANCELAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+      <botones nombre="crear_cargo">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_agregar_tipo_compromiso.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="tipos_compromisos" variable="tipos_compromisos" anchoTabla="100%" eliminar="TRUE" clave="tcom_ccod" editar="TRUE" paginaEdicion="edicion_tipo_compromiso.asp?tcom_ccod=%tcom_ccod%">
+      <tablas nombre="tipos_compromisos" accion="B"/>
+      <campos nombre="c_tcom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tcom_tdesc">
+         <descripcion>Tipo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nitems">
+         <descripcion>Nº Ítems</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="tipos_beneficios" variable="tipos_beneficios" 
+   anchoTabla="100%" eliminar="TRUE" clave="tcom_ccod" editar="TRUE" paginaEdicion="edicion_tipo_descuentos.asp?tben_ccod=%tben_ccod%">
+      <campos nombre="c_tben_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tben_tdesc">
+         <descripcion>Tipo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nitems">
+         <descripcion>Nº Ítems</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="agregar_tipo" variable="tipos_compromisos" anchoTabla="100%" camposObligatorios="TRUE">
+      <tablas nombre="tipos_compromisos" accion="M"/>
+      <campos nombre="tcom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <tipoDato>secuencia</tipoDato>
+         <secuencia>tipos_compromisos</secuencia>
+      </campos>
+      <campos nombre="tcom_tdesc">
+         <descripcion>Nombre Tipo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+         <caracteres>30</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+      </campos>
+      <campos nombre="tcom_bcargo">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+</Parametros>

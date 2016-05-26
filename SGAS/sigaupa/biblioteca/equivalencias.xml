@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+	<parametro formulario="cargas" variable="d" clave="matr_ncorr" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" eliminar="true" >
+	<tablas nombre="cargas_academicas" accion="I"/>
+		<campos nombre="matr_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="secc_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+	</parametro>
+	<parametro formulario="equivalencias" variable="d" clave="matr_ncorr" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" eliminar="true" >
+	<tablas nombre="cargas_academicas" accion="I"/>
+	<tablas nombre="equivalencias" accion="I"/>
+	
+		<campos nombre="matr_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="secc_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="mall_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="asig_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+	</parametro>
+</Parametros>

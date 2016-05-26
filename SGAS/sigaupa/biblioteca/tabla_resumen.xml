@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+	<parametro formulario="tabla_resumen" variable="d" clave="secc_ccod" mensajeError="No hay equivalencias para el alumno."
+		 maxLista="10" nroRegistros="10" anchoTabla="99%" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" eliminar="true" >
+		<campos nombre="a_plan">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Asignatura del Plan</descripcion>
+			<ancho>33%</ancho>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="a_destino">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Asignatura a Cursar</descripcion>
+			<ancho>33%</ancho>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="seccion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Sección - Horario</descripcion>
+			<ancho>33%</ancho>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+	</parametro>
+	<parametro formulario="tabla_resumen_otra_sede" variable="d" clave="secc_ccod" mensajeError="No hay equivalencias para el alumno."
+		 maxLista="10" nroRegistros="10" anchoTabla="99%" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" eliminar="true" >
+		<campos nombre="a_plan">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Asignatura del Plan</descripcion>
+			<ancho>25%</ancho>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="a_destino">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Asignatura a Cursar</descripcion>
+			<ancho>25%</ancho>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="seccion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Sección - Horario</descripcion>
+			<ancho>25%</ancho>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="sede">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Sede</descripcion>
+			<ancho>25%</ancho>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+	</parametro>
+</Parametros>

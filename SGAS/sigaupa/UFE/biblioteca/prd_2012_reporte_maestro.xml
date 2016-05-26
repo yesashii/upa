@@ -1,0 +1,646 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="botonera">
+     <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+	 <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Generar Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>buscador</formulario>
+     </botones>
+	  <botones nombre="sel_todo">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Seleccionar Todos</texto>
+         <accion>JAVASCRIPT</accion>
+		 <funcion>cliquearTodo()</funcion>
+     </botones>
+	 <botones nombre="desel_todo">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Deseleccionar Todos</texto>
+         <accion>JAVASCRIPT</accion>
+		 <funcion>descliquearTodo()</funcion>
+     </botones>
+</parametro>
+ 
+ <parametro formulario="f_busqueda" variable="busqueda">
+   <campos nombre="carr_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>carreras</destino> 
+	  <union>carr_ccod</union>
+	  <salida>CARR_TDESC</salida>
+      <orden>CARR_TDESC asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Todas</mensajeNulo>
+	  <mensajeVacio>Todas</mensajeVacio>
+	  <id>TO-S</id>
+   </campos>
+   <campos nombre="peri_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>(select peri_ccod,peri_tdesc from periodos_academicos where anos_ccod=2005) a</destino> 
+	  <union>peri_ccod</union>
+	  <salida>peri_tdesc</salida>
+      <orden>peri_ccod asc</orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione un Periodo</mensajeNulo>
+	  <mensajeVacio>''</mensajeVacio>
+	  <id>TO-N</id>
+   </campos>
+   <campos nombre="aran_nano_ingreso">
+      <tipo>SELECT</tipo>
+	  <union>aran_nano_ingreso</union>
+	  <salida>aran_nano_ingreso</salida>
+      <orden>aran_nano_ingreso desc</orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <filtro>aran_nano_ingreso>2005</filtro>
+	  <mensajeNulo>Todos</mensajeNulo>
+	  <mensajeVacio>Todos</mensajeVacio>
+	  <id>TO-S</id>
+   </campos>
+   <campos nombre="emat_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>estados_matriculas</destino>
+	  <union>emat_ccod</union>
+	  <salida>emat_tdesc</salida>
+      <orden>emat_tdesc asc</orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Todos</mensajeNulo>
+	  <mensajeVacio>Todos</mensajeVacio>
+	  <id>TO-S</id>
+   </campos>
+    <campos nombre="escae">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+		 <script>onClick="bloquea_taca()"; </script>
+         <ancho>100</ancho>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	  <campos nombre="noescae">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick='bloquea_escae();'</script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	  <campos nombre="taca_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>ufe_tipo_alumnos_cae</destino>
+	  <union>taca_ccod</union>
+	  <salida>taca_tdesc</salida>
+      <orden>taca_tdesc asc</orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <script>disabled="true"</script>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Todos</mensajeNulo>
+	  <mensajeVacio>Todos</mensajeVacio>
+	  <id>TO-S</id>
+   </campos>
+   <campos nombre="beca_mineduc">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+		 <script>onClick="bloquea_tdet()"; </script>
+         <ancho>100</ancho>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	   <campos nombre="nobeca_mineduc">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+		 <script>onClick="bloquea_beca_mineduc()"; </script>
+         <ancho>100</ancho>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	  <campos nombre="tdet_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todas</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>tipos_detalle </destino>
+		 <filtro>tdet_ccod in (910,1390,1446,1537,1538,1539,1912)</filtro>
+		  <script>disabled="true"</script>
+         <union>tdet_ccod</union>
+         <salida>tdet_tdesc</salida>
+		 <orden>tdet_tdesc asc</orden>
+      </campos>
+   <campos nombre="post_nano_paa">
+      <tipo>SELECT</tipo>
+	  <union>post_nano_paa</union>
+	  <salida>post_nano_paa</salida>
+      <orden>post_nano_paa asc</orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Todos</mensajeNulo>
+	  <mensajeVacio>Todos</mensajeVacio>
+	  <id>TO-S</id>
+   </campos>
+    <campos nombre="estado_matricula">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <ancho>100</ancho> 
+         <alineamiento>center</alineamiento>
+      </campos>
+	   <campos nombre="tipo_alumno">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	      <campos nombre="esmoroso">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	  <campos nombre="emailupa">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2 </valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="ano_ingreso">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="carrera">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="facultad">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	   <campos nombre="jornada">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="sede">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="psu_matematica">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="psu_lenguaje">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	   <campos nombre="psu_promedio">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="nem">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	   <campos nombre="direccion">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	   <campos nombre="celular">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	    <campos nombre="telefono">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	    <campos nombre="region">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	    <campos nombre="ciudad">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="codeudor">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+		 
+      </campos>
+	  <campos nombre="banco">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+		 <script>disabled="true"</script>
+      </campos>
+	  <campos nombre="tipo_alumno_cae">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+		 <script>disabled="true"</script>
+      </campos>
+	  <campos nombre="monto_beca_mineduc">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+		 <script>disabled="true"</script>
+      </campos>
+	   <campos nombre="ano_adjudicacion_beca">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="codigo_carrera_mineduc">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="codigo_carrera_ingresa">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="codigo_sede_ingresa">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="codigo_sede_mineduc">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="rut_banco">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="ofam_nversion_car">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="ofam_nmodalidad_car">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="codigo_estado_renovante">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	   <campos nombre="ano_licitacion">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="tipo_titulo_ing">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="nivel_estudio">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	    <campos nombre="peri_ccod_desde">
+      <tipo>SELECT</tipo>
+	  <destino>periodos_academicos</destino> 
+	  <union>peri_ccod</union>
+	  <salida>peri_tdesc</salida>
+      <orden>peri_ccod asc</orden>
+	  <filtro>anos_ccod >2005</filtro>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <script>onChange="bloquea_periodos()"</script>
+	  <mensajeNulo>Seleccione un Periodo</mensajeNulo>
+	  <mensajeVacio>''</mensajeVacio>
+	  <id>TO-S</id>
+   </campos>
+     <campos nombre="peri_ccod_hasta">
+      <tipo>SELECT</tipo>
+	  <destino>periodos_academicos</destino> 
+	  <union>peri_ccod</union>
+	  <salida>peri_tdesc</salida>
+      <orden>peri_ccod asc</orden>	 
+	  <filtro>anos_ccod >2005</filtro> 
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <script>onChange="bloquea_periodos()"</script>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione un Periodo</mensajeNulo>
+	  <mensajeVacio>''</mensajeVacio>
+	  <id>TO-S</id>
+   </campos>
+  </parametro>
+</Parametros>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>edicion</formulario>
+      </botones>
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+        <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	   <botones nombre="volver" >
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Volver</texto>
+         <accion>navegar</accion>
+        <url>muestra_horas.asp</url>
+      </botones>
+	  
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	    <botones nombre="busca">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Buscar</texto>
+         <accion>Navegar</accion>
+		 <script>buscar()</script>
+		</botones>
+		
+		 <botones nombre="busca">
+         <tipoTexto>BUCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+		<formulario>buscador</formulario>
+		</botones>
+	
+     <botones nombre="anular">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Anular Hora</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>anular_hora_proc.asp</url>
+		</botones>
+		  <botones nombre="asiste">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Marcar Asistencia</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>marcar_asistencia_proc.asp</url>
+		</botones>
+		  <botones nombre="siguiente2">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Siguiente</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>bloques_sicologos_anula_proc.asp</url>
+		</botones>
+		<botones nombre="siguiente3">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Finalizar</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>habilita_bloques_sicologos_proc.asp</url>
+		</botones>
+   
+    <botones nombre="editar">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Editar</texto>
+      </botones>
+  
+  	 <botones nombre="anterior2">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Anterior</texto>
+	   <url>bloques_sicologos_anula.asp</url>
+      </botones>
+	  
+   </parametro>
+   
+   
+  <parametro formulario="hora" variable="a" anchoTabla="100%">
+ 
+      
+	    <campos nombre="esho_ccod">
+        <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione una Sede</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>estado_horas </destino>
+		 <filtro>esho_ccod in (1,4)</filtro>
+         <union>esho_ccod</union>
+         <salida>esho_tdesc</salida>
+		  <id>TO-N</id>
+		  </campos>
+		 
+   		<campos nombre="nombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+       </campos>
+     	<campos nombre="fecha">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+       </campos>
+	   <campos nombre="email">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+       </campos>
+	   <campos nombre="fono">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+       </campos>
+	    <campos nombre="celular">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+       </campos>
+   </parametro>
+   
+   <parametro formulario="toma_hora" variable="a">
+   		<campos nombre="peri_ccod">
+        <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>periodos_academicos </destino>
+		 <filtro>peri_ccod > 217</filtro>
+         <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+		  <id>TO-N</id>
+		  </campos>
+		  
+	   <campos nombre="nombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+       </campos>
+	   <campos nombre="rut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>9</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+		 <id>TO-N</id>
+       </campos>
+	   <campos nombre="dv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>2</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+		  <id>TO-N</id>
+       </campos>
+	   <campos nombre="fecha_consulta_r">
+         <tipo>INPUT</tipo>
+        <permiso>LECTURAESCRITURA</permiso>
+		<caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+       </campos>
+   </parametro>
+
+</Parametros>

@@ -1,0 +1,2 @@
+RUT,ID,NombreCliente,TipoMoneda,ValorCuota,ValorMora,MontoRecaudado,FechaVcto,FechaRecaudacion
+183124986,725205,CORNEJO SOTO LORENA,Pesos,338300,0,338300,05/07/2015,18/05/2015

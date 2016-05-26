@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+	<parametro formulario="botonera">
+		<botones nombre="lanzadera"> 
+			<tipoTexto>SALIR</tipoTexto>
+			<accion>NAVEGAR</accion>
+			<url>../lanzadera/lanzadera.asp</url>
+		</botones>
+		<botones nombre="buscar">
+			<tipoTexto>BUSCAR</tipoTexto>
+			<accion>BUSCAR</accion>
+			<formulario>buscador</formulario>
+		</botones>
+		<botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>menu_alumno.asp</url>
+      </botones>
+		<botones nombre="imprimir">
+			<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Imprimir</texto>
+			<accion>JAVASCRIPT</accion>
+			<funcion>imprimir()</funcion>
+		</botones>
+		<botones nombre="pagina2">
+			<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Ir a página 2</texto>
+			<accion>navegar</accion>
+			<url>javascript:irPagina2();</url>
+		</botones>
+		<botones nombre="escape">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>mensajes.asp</url>
+        </botones>
+		<botones nombre="guardar"> 
+		  <tipoTexto>GUARDAR</tipoTexto>
+		  <accion>GUARDAR</accion>
+		</botones>
+	</parametro>
+
+	<parametro formulario="busqueda" variable="busqueda">
+		<campos nombre="pers_nrut">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<caracteres>10</caracteres>
+			<maxCaracteres>8</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+		<campos nombre="pers_xdv">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<caracteres>1</caracteres>
+			<maxCaracteres>1</maxCaracteres>
+			<script>onBlur="this.value=this.value.toUpperCase();"</script>
+			<id>LN-N</id>
+		</campos>
+	</parametro>
+
+	<parametro formulario="f_datos_antecedentes" variable="antec" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" nroRegistros="10" maxLista="10" 
+	eliminar="FALSE" seleccionarTodo="FALSE" anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+		<campos nombre="nombre">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		<campos nombre="rut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>			
+		</campos>
+
+	</parametro>
+	
+
+
+<parametro formulario="encuesta" variable="encu"  >
+
+		 <campos nombre="preg_7">
+         <tipo>RADIO</tipo>
+         <destino>(select trps_ccod as preg_7, trps_tdesc from tipos_respuestas_psicologia where trps_categoria=14)a</destino>
+         <union>preg_7</union>
+         <salida>trps_tdesc</salida>
+		 <orden>preg_7 desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>3</columnas>
+         <id>TO-N</id>
+         <ancho>90%</ancho>
+      </campos>
+	  
+	  <campos nombre="preg_18">
+        <tipo>TEXTAREA</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <filas>5</filas>
+         <caracteres>80</caracteres>
+		 <id>TO-N</id>
+		  <ancho>90%</ancho>
+       </campos>
+	   
+	   	<campos nombre="preg_3_otro">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-N</id>
+			   <caracteres>40</caracteres>
+         <maxCaracteres>39</maxCaracteres>
+		</campos>
+	
+	 	<campos nombre="preg_4_otro">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			<id>TO-N</id>	
+			   <caracteres>40</caracteres>
+         <maxCaracteres>39</maxCaracteres>
+		</campos>
+	</parametro>
+	
+
+
+
+	
+
+
+
+	   
+
+	
+	
+	
+
+		
+	
+	
+	
+	
+
+	
+ </Parametros>

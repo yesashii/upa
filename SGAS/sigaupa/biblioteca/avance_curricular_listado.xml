@@ -1,0 +1,119 @@
+<Parametros>
+  <parametro formulario="botonera">
+     <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+	 <botones nombre="cancelar"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>CERRAR</accion>
+	 </botones>
+	 <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 	
+	 <botones nombre="nueva"> 
+        <tipoTexto>AGREGAR</tipoTexto>
+	    <accion>AGREGAR</accion>
+	    <posicionX>100</posicionX>
+	    <posicionY>50</posicionY>
+	    <ancho>750</ancho>
+	    <alto>400</alto>	   
+	 </botones>
+	 <botones nombre="excel">
+       <tipoTexto>DEFINIR</tipoTexto>
+	   <texto>Generar archivo Excel</texto>
+       <accion>GUARDAR</accion>	   
+	   <formulario>edicion</formulario>
+   </botones>   
+	
+  </parametro>
+  
+  <parametro formulario="f_busqueda" variable="busqueda">
+   <campos nombre="ufco_ncorr">
+      <tipo>SELECT</tipo>
+	  <destino>(select ufco_ncorr,ufco_tdescripcion
+				from ufe_comparador a
+				where exists (select 1 
+							  from pro_tabla_campos 
+							  where table_name = a.ufco_ttabla))a</destino> 
+	  <union>ufco_ncorr</union>
+	  <salida>ufco_tdescripcion</salida>
+      <orden>ufco_tdescripcion asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione un listado</mensajeNulo>
+	  <mensajeVacio>Seleccione un listado</mensajeVacio>
+      <id>TO-N</id>
+   </campos>
+  </parametro>
+  
+   <parametro
+    paginaEdicion="avance_curricular_listado_detalle.asp?carr_ccod=%carr_ccod%&amp;plan_ccod=%plan_ccod%&amp;pers_ncorr=%pers_ncorr%" 
+	nuevaVentanaAlto="360" formulario="f_listado" nroRegistros="10" nuevaVentanaAncho="500" eliminar="false" clave="pers_ncorr" maxLista="10"
+	mensajeError="No se encontraron coincidencias con alumnos matriculados" 
+	seleccionarTodo="false" anchoTabla="100%" editar="TRUE" nuevaVentana="TRUE" variable="m" >
+	  <campos nombre="pers_ncorr">
+	    <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	  </campos>
+	  <campos nombre="carr_ccod">
+	    <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	  </campos>
+	  <campos nombre="plan_ccod">
+	    <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	  </campos>
+      <campos nombre="rut">
+	    <descripcion>Rut</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="nombre">
+	    <descripcion>Nombre</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="carrera">
+	    <descripcion>Carrera</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="ingreso">
+	    <descripcion>Ingreso</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="estado">
+	    <descripcion>Estado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="periodo">
+	    <descripcion>Periodo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="total_ramos_malla">
+	    <descripcion>Total ramos malla</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="total_ramos_aprobados_o_en_curso">
+	    <descripcion>Aprobados o en curso</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+   </parametro>
+ </Parametros>

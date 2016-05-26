@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="btn_adm_ceremonia">
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_ceremonia.asp</url>
+         <formulario>edicion</formulario>
+      </botones> 
+    <botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agrega_ceremonia(document.edicion)</funcion>
+	</botones> 
+      <botones nombre="SALIR">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>	
+  </parametro>
+  <parametro formulario="btn_agregar_ceremonia">
+    <botones nombre="GUARDAR"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agregar(document.editar)</funcion>
+	</botones> 	
+  <botones nombre="SALIR"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>salir(document.edicion)</funcion>
+	</botones> 
+ </parametro>
+
+ 	<parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8"
+	 paginaEdicion="agregar_ceremonia.asp?id_ceremonia=%id_ceremonia%" 
+	 formulario="tabla_ceremonias" eliminar="true" clave="id_ceremonia" nroRegistros="10" maxLista="10"
+	 mensajeError="No existen fechas de ceremonia ingresadas al sistema." 
+	 colorBase="#F1F1E4" editar="true" 	anchoTabla="98%" variable="em" nuevaVentana="true" nuevaVentanaAlto="230" nuevaVentanaAncho="500" >
+	<tablas nombre="ceremonias_titulacion" accion="B"/>
+	<campos nombre="fecha">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Fecha Ceremonia</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	<campos nombre="sede">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Sede</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	<campos nombre="hora_inicio">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Hora inicio</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	<campos nombre="lugar">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Lugar</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	<campos nombre="total_alumnos">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Total Alumnos</descripcion>
+			<alineamiento>center</alineamiento>
+	</campos>
+	</parametro>
+	<parametro colorSeleccionado="99FFFF" variable="em" colorResaltado="#DCDCB8" paginaEdicion="" 
+		 formulario="tabla_valores" eliminar="true" clave="id_ceremonia" colorBase="#F1F1E4" editar="false"
+		 mensajeError="" anchoTabla="98%"  nuevaVentana="true">
+		<campos nombre="id_ceremonia">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="fecha_ceremonia">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<id>FE-N</id>
+			<caracteres>20</caracteres>
+			<maxCaracteres>10</maxCaracteres>
+		</campos>
+		<campos nombre="sede_ccod">
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>(select sede_ccod,sede_tdesc from sedes where sede_ccod in (1,2,4,7,8)) a</destino>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+         <orden>sede_tdesc asc</orden>
+         <anulable>TRUE</anulable>
+         <id>TO-N</id>
+		 <mensajeVacio>Seleccione Sede</mensajeVacio>
+         <mensajeNulo>Seleccione Sede</mensajeNulo>
+      </campos>
+	  <campos nombre="hora_inicio">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<id>TO-S</id>
+			<caracteres>10</caracteres>
+			<maxCaracteres>5</maxCaracteres>
+		</campos>
+	   <campos nombre="lugar">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<id>TO-S</id>
+			<caracteres>50</caracteres>
+			<maxCaracteres>50</maxCaracteres>
+		</campos>	
+  </parametro>
+
+  <parametro formulario="mantiene_ceremonia" variable="em">
+      <tablas nombre="ceremonias_titulacion" accion="M"/>
+   </parametro>
+
+  <parametro formulario="eliminar_ceremonia" variable="em">
+      <tablas nombre="ceremonias_titulacion" accion="B"/>
+   </parametro>
+  
+  <parametro formulario="datos_extras" variable="em">
+	    <listas nombre="lBusqueda">
+			<item clave="acar_ccod" valor="acar_tdesc" />
+			<item clave="saca_ccod" valor="saca_tdesc" />
+		</listas>
+		<campos nombre="acar_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="saca_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+	</parametro>
+
+</Parametros>

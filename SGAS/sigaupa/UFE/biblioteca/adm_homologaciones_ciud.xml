@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="btn_adm_homologaciones_ciud">
+    
+	<botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>	 
+	</botones> 
+    
+	  <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_homologaciones_ciud.asp</url>
+         <formulario>edicion</formulario>
+      </botones> 
+    
+	<botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agrega_carrera(document.edicion)</funcion>
+	</botones> 
+    
+	  <botones nombre="SALIR">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>	
+	
+	  <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones> 
+	
+	 <botones nombre="excel_general">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel Datos Generales</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones> 	
+ 
+ </parametro>
+ 
+ 
+  <parametro formulario="btn_agregar_carrera">
+    <botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agregar(document.editar)</funcion>
+	</botones> 
+    <botones nombre="GUARDAR"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agregar(document.editar)</funcion>
+	</botones> 	
+  <botones nombre="SALIR"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>salir(document.edicion)</funcion>
+	</botones> 
+ </parametro>
+
+
+ 	
+	<parametro colorSeleccionado="99FFFF" variable="em" colorResaltado="#DCDCB8" paginaEdicion="" 
+		 formulario="tabla_valores" eliminar="true"  colorBase="#F1F1E4" editar="true"
+		 mensajeError="No Existen Datos Para Los Parámetros De Búsqueda." 
+			anchoTabla="98%"  nuevaVentana="true">
+		
+	   <campos nombre="ciud_ccod">
+         <tipo>select</tipo>
+         <destino>(select ciud_ccod, (ciud_tcomuna+' / '+ciud_tdesc) as DireccionB from ciudades WHERE (CIUD_CCOD NOT IN
+                          (SELECT CIUD_CCOD FROM ufe_ciudades_homologadas)) ) b 
+		 </destino>
+         <union>ciud_ccod</union>
+         <salida>DireccionB</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <mensajeNulo>SIN ASIGNAR</mensajeNulo>
+         <mensajeVacio>SIN ASIGNAR</mensajeVacio>
+		 <anulable>TRUE</anulable>
+		  <orden>DireccionB</orden>
+         <columnas>4</columnas>
+		  <id>TO-N</id>
+       </campos>
+				
+		<campos nombre="uhciu_ccod">
+         <tipo>select</tipo>
+         <destino>(select uhciu_ccod, (nombre_comuna+' / '+nombre_ciudad) as DireccionA from ufe_ciudades) a </destino>
+         <union>uhciu_ccod</union>
+         <salida>DireccionA</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <mensajeNulo>SIN ASIGNAR</mensajeNulo>
+         <mensajeVacio>SIN ASIGNAR</mensajeVacio>
+		 <anulable>TRUE</anulable>
+		 <orden>DireccionA</orden>
+         <columnas>4</columnas>
+		
+       </campos>
+ </parametro>	
+		
+
+  <parametro formulario="mantiene_homologaciones" variable="em">
+      <tablas nombre="ufe_ciudades_homologadas" accion="M"/>
+   </parametro>
+
+  <parametro formulario="eliminar_homologaciones" variable="em">
+      <tablas nombre="ufe_ciudades_homologadas" accion="B"/>
+   </parametro>
+  
+  <parametro formulario="datos_extras" variable="em">
+	    <listas nombre="lBusqueda">
+			<item clave="acar_ccod" valor="acar_tdesc" />
+			<item clave="saca_ccod" valor="saca_tdesc" />
+		</listas>
+		<campos nombre="acar_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="saca_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+	</parametro>
+	<parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8"
+	 paginaEdicion="agregar_homologaciones_ciud.asp?ciudh_ccod=%ciudh_ccod%" 
+	 formulario="tabla" eliminar="true" clave="eliminar" nroRegistros="10" maxLista="10"
+	 mensajeError="No Existen Datos Para Los Parámetros De Búsqueda." 
+	 colorBase="#F1F1E4" editar="true" 	anchoTabla="98%" variable="em" nuevaVentana="true" nuevaVentanaAlto="400" nuevaVentanaAncho="750" >
+	<tablas nombre="ciudades" accion="B"/>
+	<campos nombre="ciudh_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+	</campos>
+	<campos nombre="DireccionB">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Comuna/Ciudad SGA</descripcion>
+			<alineamiento>left</alineamiento>
+			
+	</campos>
+	<campos nombre="DireccionA">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Comuna/Ciudad Ingresa </descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	
+	</parametro>
+</Parametros>

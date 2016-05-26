@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="agregar">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Agregar</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_postulacion_1.asp</url>
+      </botones>
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <formulario>f_eliminar</formulario>
+         <url>elimina_postulacion_1.asp</url>
+      </botones>
+	  
+      <botones nombre="siguiente">
+         <tipoTexto>siguiente</tipoTexto>
+         <accion>navegar</accion>
+         <url>postulacion_2.asp</url>
+      </botones>
+	  
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>log_out.asp</url>
+      </botones>
+      <botones nombre="cambiar_oferta">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Cambiar de carrera...</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <mensajeConfirmacion>¿Está seguro que desea cambiar la carrera?\n\nSi lo hace, será reconocido como alumno nuevo para calcular su arancel, incluso si vuelve a elegir la misma carrera.</mensajeConfirmacion>
+         <url>proc_cambiar_carrera.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="oferta_academica" variable="oferta">
+      <campos nombre="sede_ccod">
+         <tipo>SELECT</tipo>
+         <destino>sedes</destino>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione sede</mensajeNulo>
+         <mensajeVacio>No existen ofertas disponibles</mensajeVacio>
+         <script>onChange="FiltrarCarreras(this.form);"</script>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="c_sede_ccod">
+         <tipo>SELECT</tipo>
+         <destino>sedes</destino>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+         <permiso>OCULTO</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione sede</mensajeNulo>
+         <mensajeVacio>No existen ofertas disponibles</mensajeVacio>
+         <script>onChange="FiltrarCarreras(this.form);"</script>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="carr_ccod">
+         <tipo>SELECT</tipo>
+         <destino>carreras</destino>
+         <union>carr_ccod</union>
+         <salida>carr_tdesc</salida>
+         <filtro>1=2</filtro>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione carrera</mensajeNulo>
+         <script>onChange="FiltrarEspecialidades(this.form);"</script>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="c_carr_ccod">
+         <tipo>SELECT</tipo>
+         <destino>carreras</destino>
+         <union>carr_ccod</union>
+         <salida>carr_tdesc</salida>
+         <permiso>OCULTO</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione carrera</mensajeNulo>
+         <script>onChange="FiltrarEspecialidades(this.form);"</script>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="espe_ccod">
+         <tipo>SELECT</tipo>
+         <destino>especialidades</destino>
+         <union>espe_ccod</union>
+         <salida>espe_tdesc</salida>
+         <filtro>1=2</filtro>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione especialidad</mensajeNulo>
+         <script>onChange="FiltrarJornadas(this.form);"</script>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="jorn_ccod">
+         <tipo>SELECT</tipo>
+         <destino>jornadas</destino>
+         <union>jorn_ccod</union>
+         <salida>jorn_tdesc</salida>
+         <filtro>1=2</filtro>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione jornada</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+	  
+	  <campos nombre="c_jorn_ccod">
+         <tipo>SELECT</tipo>
+         <destino>jornadas</destino>
+         <union>jorn_ccod</union>
+         <salida>jorn_tdesc</salida>
+         <permiso>OCULTO</permiso>
+         <id>TO-N</id>
+      </campos>
+	  
+   </parametro>
+   
+   
+   <parametro formulario="lista_ofertas" variable="oferta_academica">
+      <listas nombre="oferta_academica">
+         <item clave="sede_ccod" valor="sede_tdesc"/>
+         <item clave="carr_ccod" valor="carr_tdesc"/>
+         <item clave="espe_ccod" valor="espe_tdesc"/>
+         <item clave="jorn_ccod" valor="jorn_tdesc"/>
+      </listas>
+   </parametro>
+   <parametro formulario="postulacion" variable="postulacion">
+      <tablas nombre="detalle_postulantes" accion="M"/>
+   </parametro>
+    <parametro formulario="postulacion_antiguo" variable="postulacion">
+      <tablas nombre="postulantes" accion="M"/>
+	  
+   </parametro>
+   
+   <parametro formulario="eliminar_postulacion" variable="m">
+	  <tablas nombre="observaciones_postulacion" accion="B"/>
+	  <tablas nombre="detalle_postulantes" accion="B"/>
+   </parametro>
+
+<parametro formulario="carrera_postulante" 
+			clave="ofer_ncorr" variable="m" 
+			mensajeError="No Existen Postulaciones"
+			colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="true" editar="false" agregar="true" nuevaVentana="true" 
+			maxLista="10" nroRegistros="10" anchoTabla="100%" >
+		
+		<campos nombre="post_ncorr">
+			<tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+
+		<campos nombre="carr_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Carrera</descripcion>
+		</campos>
+		<campos nombre="espe_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Especialidad/Mención</descripcion>
+		</campos>
+		<campos nombre="sede_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Sede</descripcion>
+		</campos>
+		<campos nombre="jorn_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Jornada</descripcion>
+		</campos>
+		<campos nombre="EEPO_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Estado del Exámen</descripcion>
+		</campos>
+
+</parametro>	   
+<parametro formulario="carrera_postulante2" 
+			clave="post_ncorr" variable="m" 
+			mensajeError="No Existen Postulaciones"
+			colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="true" editar="false" agregar="true" nuevaVentana="true" 
+			maxLista="10" nroRegistros="10" anchoTabla="100%" >
+		<!--<campos nombre="post_ncorr">
+			<tipo>HIDDEN</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>-->
+		<campos nombre="epos_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="carr_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Carrera</descripcion>
+		</campos>
+		<!--<campos nombre="espe_ccod">
+			<descripcion>Especialidad/Mención</descripcion>
+         	<tipo>SELECT</tipo>
+         	<destino>especialidades</destino>
+         	<union>espe_ccod</union>
+         	<salida>espe_tdesc</salida>
+         	<filtro>cast(carr_ccod as varchar)='%carr_ccod%'</filtro>
+         	<permiso>LECTURAESCRITURA</permiso>
+         	<anulable>TRUE</anulable>
+         	<mensajeNulo>Seleccione especialidad</mensajeNulo>
+         	<id>TO-N</id>
+      	</campos>-->
+		<campos nombre="espe_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Especialidad/Mención</descripcion>
+		</campos>
+		<campos nombre="sede_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Sede</descripcion>
+		</campos>
+		<campos nombre="jorn_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Jornada</descripcion>
+		</campos>
+		<campos nombre="epos_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Estado Postulación</descripcion>
+		</campos>
+		<campos nombre="ano_ingreso">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Año Ingreso</descripcion>
+		</campos>
+		<campos nombre="tipo_alumno">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Tipo_Alumno</descripcion>
+		</campos>
+		<!--<campos nombre="EEPO_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Estado del Exámen</descripcion>
+		</campos>-->
+
+</parametro>	   
+
+</Parametros>

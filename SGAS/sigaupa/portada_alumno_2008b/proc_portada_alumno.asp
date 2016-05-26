@@ -1,0 +1,205 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+<%'response.End()
+Session.Contents.RemoveAll()
+v_hora_sys	=	Hour(now())
+v_minuto_sys=	Minute(now())
+v_dia_sys	=	WeekDay(now())
+v_dia_actual 	= 	Day(now())
+v_mes_actual	= 	Month(now())
+
+v_numero_alumnos=40 ' numero por defecto
+
+if (v_dia_actual=25 and v_mes_actual=12 )or (v_dia_actual=1 and v_mes_actual=1) then
+	v_numero_alumnos=105
+else
+	' si el dia es 1=domingo o 7= sabado, se amplia el numero de alumnos permitidos
+	if v_dia_sys=1 or v_dia_sys=7 then
+		v_numero_alumnos=500    '100
+	else
+	' se restringe el numero entre las 8:00 hrs. de la mañana y las 20:00 hrs. de la noche (dias de semana)
+		if cint(v_hora_sys)<20 and cint(v_hora_sys)>8 then
+			v_numero_alumnos=500    '80
+			'v_numero_alumnos=0
+		else
+			v_numero_alumnos=500    '80
+			'v_numero_alumnos=0
+		end if
+	end if
+end if
+ '------------------------------------------------------------
+ login = request("datos[0][login]")
+ clave_alumno = request("datos[0][clave]")
+
+
+set conexion_logeo = new CLogin
+conexion_logeo.Inicializa
+
+if login <> "16125125-9" and login <> "10389199-k" and login <> "17029051-8" and login <> "16742613-1" and login <>"16608757-0" then
+	conexion_logeo.ControlaNumeroAlumnos v_numero_alumnos
+end if
+conexion_logeo.CierraConexionesInactivasAlumnos
+
+ 'Conexión para el servidor sbd02 alumnos
+ 'set conexion2 = new CConexion2
+ 'conexion2.Inicializar "upacifico"
+ 
+ 'Conexión para el servidor de producción
+ set conexion = new CConexion
+ conexion.Inicializar "upacifico"
+ 
+
+' response.Write("<hr>"&v_cantidad&"<hr>")
+' response.End()
+ 'set negocio = new CNegocio
+ 'negocio.Inicializa conexion
+'-----------------------------------------------------------------------
+
+
+ set f_login = new CFormulario
+ f_login.Carga_Parametros "parametros.xml", "tabla"
+ f_login.Inicializar conexion 
+
+
+  sql_login = "SELECT * FROM sis_usuarios WHERE upper(susu_tlogin) ='" & Ucase(login) & "'"
+
+  f_login.Consultar sql_login
+  f_login.Siguiente
+  
+  password 		= f_login.ObtenerValor ("susu_tclave")
+  pers_ncorr 	= f_login.ObtenerValor ("pers_ncorr")
+  
+
+'response.end()
+  if ucase(password) =  ucase(clave_alumno) then
+     sql = "SELECT pers_nrut FROM personas WHERE pers_ncorr=" & pers_ncorr
+	 RUT =  conexion.ConsultaUno(sql)
+     ano_ingreso_universidad = conexion.consultaUno("select protic.ANO_INGRESO_UNIVERSIDAD("&pers_ncorr&")") 
+	 
+	 if RUT <> "" then
+
+	   'debemos ver si la persona que ingresa es estudiante, sino no puede entrar
+	   es_alumno= conexion.consultaUno("select isnull(count(*),0) from sis_roles_usuarios where cast(pers_ncorr as varchar)='"&pers_ncorr&"' and srol_ncorr=4")
+	   if es_alumno <> "0" then
+		'############################################################################################
+			'********** 	maneja usuarios conectados 		**********
+			sql_pers_ncorr = "SELECT pers_ncorr FROM personas WHERE pers_nrut=" & RUT
+			v_pers_ncorr =  conexion.ConsultaUno(sql_pers_ncorr)
+			
+			sql_login="Select count(*) from login_usuarios where elog_ccod=1 and pers_ncorr="&v_pers_ncorr
+			v_existe=conexion.ConsultaUno(sql_login)
+			
+			if v_existe >0 then ' el usuario ya tenia una sesion , pero debe validarse que no haya exedido los 10 minutos de conexion
+					
+					sql_atualiza="update login_usuarios set lusu_factualiza=getdate() where pers_ncorr="&v_pers_ncorr&" and elog_ccod=1"
+					conexion.ejecutaS(sql_atualiza)
+			
+					'############## comentado para aumentar la velocidad ###########################			
+					'			sql_tiempo_logeo=	"select datediff(mi,lusu_factualiza,getdate()) as minutos from login_usuarios where pers_ncorr="&v_pers_ncorr&" and elog_ccod=1"
+					'			v_tiempo_logeo	=	conexion.ConsultaUno(sql_tiempo_logeo) ' tiempo en minutos
+					'			
+					'				if v_tiempo_logeo <=10 then
+					'					sql_atualiza="update login_usuarios set lusu_factualiza=getdate() where pers_ncorr="&v_pers_ncorr&" and elog_ccod=1"
+					'					conexion.ejecutaS(sql_atualiza)
+					'				else
+					'					sql_atualiza="update login_usuarios set elog_ccod=2 where pers_ncorr="&v_pers_ncorr&" and elog_ccod=1"
+					'					conexion.ejecutaS(sql_atualiza)
+					'					'*********************************************************************
+					'						' se debe crear un nuevo registro de conexion
+					'						v_num_logeo=conexion.ConsultaUno("exec ObtenerSecuencia 'numero_logeo'")
+					'						sql_inserta_login=  " Insert into login_usuarios "&_
+					'											" (lusu_ncorr,pers_ncorr, elog_ccod,lusu_flogeo,lusu_factualiza, lusu_tusuario) "&_
+					'											" values ("&v_num_logeo&","&v_pers_ncorr&",1,getdate(),getdate(),'A') "
+					'						conexion.ejecutaS(sql_inserta_login)
+					'					'*********************************************************************
+					'				end if
+	
+			else
+			' el usuario no tenia una sesion activa, se crea un nuevo registro
+				v_num_logeo=conexion.ConsultaUno("exec ObtenerSecuencia 'numero_logeo'")
+			
+				sql_inserta_login=  " Insert into login_usuarios "&_
+									" (lusu_ncorr,pers_ncorr, elog_ccod,lusu_flogeo,lusu_factualiza,lusu_tusuario) "&_
+									" values ("&v_num_logeo&","&v_pers_ncorr&",1,getdate(),getdate(),'A') "
+				conexion.ejecutaS(sql_inserta_login)
+			
+			end if
+		'############################################################################################
+
+'			'********** cuenta a cuantos alumnos esta avalando **************
+'			sql_rut_alu= " Select count(*) as cantidad from  "&_
+'							 " (select distinct a.pers_nrut,a.pers_xdv, a.pers_tnombre, a.pers_tape_paterno, a.pers_tape_materno "&_
+'							 " from personas a, postulantes b, periodos_academicos c "&_
+'							 " where a.pers_ncorr=b.pers_ncorr "&_
+'							 " and b.post_ncorr in (select post_ncorr from codeudor_postulacion cp, personas pr where cp.pers_ncorr=pr.pers_ncorr and pers_nrut="&RUT&") "&_
+'							 " and b.peri_ccod=c.peri_ccod "&_
+'							 " and a.pers_nrut not in ("&RUT&") "&_
+'							 " and c.anos_ccod>=year(getdate())-2) as tabla"
+'				
+'				
+'			cantidad_alumnos= conexion.consultaUno(sql_rut_alu)
+'				
+'			if cantidad_alumnos=0 then ' aval de si mismo
+'				sql_rut_alu= " select distinct a.pers_nrut "&_
+'							" from personas a, postulantes b "&_
+'							" where a.pers_ncorr=b.pers_ncorr "&_
+'							" and pers_nrut="&RUT&" "
+'				rut_alumno= conexion.consultaUno(sql_rut_alu)
+'			
+'				session("rut_usuario") = rut_alumno	
+'				response.Redirect("../informacion_alumno_2008b/inicio.html")
+'			else
+'				session("rut_usuario") = RUT
+'				session("rut_apoderado") = RUT
+'				response.Redirect("seleccionar_alumno.asp") 
+'			end if
+			session("rut_usuario") = RUT	
+	   		response.Redirect("../informacion_alumno_2008b/inicio.html")
+ 		else 
+	   		'#######	SI NO ES ALUMNO, DEBE SER UN APODERADO	#######
+	   		
+'	   		es_apoderado= conexion.consultaUno("select isnull(count(*),0) from sis_roles_usuarios where cast(pers_ncorr as varchar)='"&pers_ncorr&"' and srol_ncorr=5")
+'			if es_apoderado <> "0" then
+'				session("rut_usuario") = RUT
+'				sql_rut_alu= " Select count(*) as cantidad from  "&_
+'							 " (select distinct a.pers_nrut,a.pers_xdv, a.pers_tnombre, a.pers_tape_paterno, a.pers_tape_materno "&_
+'							 " from personas a, postulantes b "&_
+'							 " where a.pers_ncorr=b.pers_ncorr "&_
+'							 " and b.post_ncorr in (select post_ncorr from codeudor_postulacion cp, personas pr where cp.pers_ncorr=pr.pers_ncorr and pers_nrut="&RUT&")) as tabla"
+'				
+'				
+'				cantidad_alumnos= conexion.consultaUno(sql_rut_alu)
+'				
+'				
+'				if cantidad_alumnos=1 then ' aval de un alumno distinto a si mismo
+'					sql_rut_alu= " select distinct a.pers_nrut "&_
+'								" from personas a, postulantes b "&_
+'								" where a.pers_ncorr=b.pers_ncorr "&_
+'								" and b.post_ncorr in (select post_ncorr from codeudor_postulacion cp, personas pr where cp.pers_ncorr=pr.pers_ncorr and pers_nrut="&RUT&")"
+'					rut_alumno= conexion.consultaUno(sql_rut_alu)
+'				
+'					session("rut_apoderado") = RUT
+'					session("rut_usuario") = rut_alumno	
+'					response.Redirect("../informacion_apoderado/inicio.html")
+'				else 'tiene a mas de un alumno avalado
+'					session("rut_apoderado") = RUT
+'					session("rut_usuario") = RUT	
+'					response.Redirect("seleccionar_alumno.asp") 
+'				end if
+'			
+'			end if' fin (if es_apoderado <> "0" then)
+			
+	   		session("mensajeerror")= "Esta persona no se encuentra registrada como Alumno o Apoderado en el sistema."
+		    response.Redirect("portada_alumno.asp") 
+	   end if
+	 else
+	   session("mensajeerror")= "Nombre de Usuario o Clave incorrecta.\nAsegurece de ingresar los datos reales."
+	   response.Redirect("portada_alumno.asp") 
+	 end if
+  else
+    session("mensajeerror")= "Nombre de Usuario o Clave incorrecta.\nAsegurece de ingresar los datos reales."
+    response.Redirect("portada_alumno.asp")
+	'response.session("mensajeerror")
+  end if 
+ 
+ %>

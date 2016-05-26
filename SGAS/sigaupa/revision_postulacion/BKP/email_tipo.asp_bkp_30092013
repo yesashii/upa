@@ -1,0 +1,234 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+
+<%
+set pagina = new CPagina
+
+tipo = request.querystring("tipo")
+pers_ncorr = request.querystring("pers_ncorr")
+	
+
+'---------------------------------------------------------------------------------------------------
+set conexion = new CConexion
+conexion.Inicializar "upacifico"
+
+set negocio = new CNegocio
+negocio.Inicializa conexion
+
+'----------------------------------------------------------------
+set botonera = new CFormulario
+botonera.Carga_Parametros "detalle_postulacion_new.xml", "botonera"
+'----------------------------------------------------------------
+postulante   = conexion.consultauno("SELECT protic.initCap(pers_tnombre + ' ' + pers_tape_paterno + ' ' + pers_tape_materno) FROM personas_postulante WHERE cast(pers_ncorr as varchar) = '"&pers_ncorr&"'")
+rut      = conexion.consultauno("SELECT cast(pers_nrut as varchar)+'-'+pers_xdv FROM personas_postulante WHERE cast(pers_ncorr as varchar) = '"&pers_ncorr&"'")
+email_postulante    = conexion.consultauno("SELECT lower(pers_temail) FROM personas_postulante WHERE cast(pers_ncorr as varchar) = '"&pers_ncorr&"'")
+nombre   = conexion.consultauno("SELECT protic.initCap(pers_tnombre) FROM personas_postulante WHERE cast(pers_ncorr as varchar) = '"&pers_ncorr&"'")
+rut_agente = negocio.obtenerUsuario
+if rut_agente = "17176569" then
+	rut_agente =  "14632983" 
+end if
+agente   = conexion.consultauno("SELECT protic.initCap(pers_tnombre + ' ' + pers_tape_paterno + ' ' + pers_tape_materno) FROM personas WHERE cast(pers_nrut as varchar) = '"&rut_agente&"'")
+pers_ncorr_agente   = conexion.consultauno("SELECT pers_ncorr FROM personas WHERE cast(pers_nrut as varchar) = '"&rut_agente&"'")
+email_agente   = conexion.consultauno("SELECT pers_temail FROM agentes_postulacion WHERE cast(pers_ncorr as varchar) = '"&pers_ncorr_agente&"'")
+fono_agente   = conexion.consultauno("SELECT pers_tfono FROM agentes_postulacion WHERE cast(pers_ncorr as varchar) = '"&pers_ncorr_agente&"'")
+sede_agente   = conexion.consultauno("SELECT protic.initCap(sede_tdesc) FROM agentes_postulacion a, sedes b WHERE a.sede_ccod=b.sede_ccod and cast(pers_ncorr as varchar) = '"&pers_ncorr_agente&"'")
+if esVacio(email_agente) then
+	email_agente   = conexion.consultauno("SELECT pers_temail FROM admi_agentes_postulacion WHERE cast(pers_ncorr as varchar) = '"&pers_ncorr_agente&"'")
+	fono_agente   = conexion.consultauno("SELECT pers_tfono FROM admi_agentes_postulacion WHERE cast(pers_ncorr as varchar) = '"&pers_ncorr_agente&"'")
+	sede_agente   = "UNIVERSIDAD DEL PACIFICO"
+end if 
+if rut_agente = "6289563" then ' para mostrar a Susana Arancibia los postulados a magister
+	agente            = "Ana Susana Arancibia Olguín"
+	pers_ncorr_agente = "23706"
+	email_agente      = "sarancibia@upacifico.cl"
+	fono_agente       = "+56 (2) 3526930"
+	sede_agente       = "Campus Baquedano"
+elseif rut_agente = "14461680" then ' para mostrar a Patrick Laureau los postulados a magister
+	agente            = "Patrick Laureau"
+	pers_ncorr_agente = "152584"
+	email_agente      = "plaureau@upacifico.cl"
+	fono_agente       = "+56 (2) 3306400 / +56 (2) 3306407"
+	sede_agente 	  = "Campus Lyon"
+elseif rut_agente = "6939582" then ' para mostrar a Sonia Soler los postulados a magister
+	agente            = "Sonia Soler"
+	pers_ncorr_agente = "11412"
+	email_agente      = "ssoler@upacifico.cl"
+	fono_agente       = "+56 (2) 8625322"
+	sede_agente 	  = "Sede Las Condes"
+elseif rut_agente = "11592558" then ' para mostrar a Sonia Soler los postulados a magister
+	agente            = "Marco Perelli H."
+	pers_ncorr_agente = "24180"
+	email_agente      = "mperelli@upacifico.cl"
+	fono_agente       = "+56 (2) 8625311"
+	sede_agente 	  = "Sede Las Condes"			
+end if
+'----------------------------------------------------------------
+nombre_p          = conexion.consultauno("SELECT protic.initcap(substring(pers_tnombre,0, case charindex(' ' ,pers_tnombre) when 0 then 20 else charindex(' ' ,pers_tnombre) end  )) FROM personas_postulante WHERE cast(pers_ncorr as varchar) = '"&pers_ncorr&"'")
+apellido_p        = conexion.consultauno("SELECT replace(protic.initCap(pers_tape_paterno) ,' ','%20') FROM personas_postulante WHERE cast(pers_ncorr as varchar) = '"&pers_ncorr&"'")
+rut_p             = conexion.consultauno("SELECT cast(pers_nrut as varchar) + '-' + pers_xdv FROM personas_postulante WHERE cast(pers_ncorr as varchar) = '"&pers_ncorr&"'")
+email_p           = email_postulante
+cod_sede   	      = conexion.consultauno("SELECT b.sede_ccod FROM agentes_postulacion a, sedes b WHERE a.sede_ccod=b.sede_ccod and cast(pers_ncorr as varchar) = '"&pers_ncorr_agente&"'")
+cod_agente_sede   = conexion.consultauno("SELECT id FROM agentes_postulacion WHERE cast(pers_ncorr as varchar) = '"&pers_ncorr_agente&"'")
+tipo_mensaje      = tipo
+'----------------------------------------------------------------
+if tipo = "1" then
+	pagina.Titulo = "Email<br>Cuando no viene a una entrevista"
+	mensaje_email = "Hola "&nombre&", te estuvimos llamando, pero no te pudimos contactar. Queremos saber si aun tienes considerado  venir a dar tu test de admisión. Si es así envíame una nueva fecha y hora, y te responderemos a la brevedad. <br><br> "&_
+					"<input type='text' name='texto' size='80' maxlength='100' style='background=#CCCCCC;color=#FFFFFF;border: none;'><br><br>&nbsp;<br><br>"&_
+					"<center>"&agente&"<br>"&sede_agente&"<br>"&email_agente&"<br>"&fono_agente&"</center"
+elseif tipo = "2" then
+	pagina.Titulo = "Email<br>Cuando no se puede contactar con el postulante"
+	mensaje_email = "Hola "&nombre&", te estuvimos llamando pero no te pudimos contactar. Queríamos saber si aún tienes considerado estudiar en nuestra Universidad. Cualquier duda que tengas o cualquier cosa que necesites no dudes en contactarme.<br><br> "&_
+					"<input type='text' name='texto' size='80' maxlength='100' style='background=#CCCCCC;color=#FFFFFF;border: none;'><br><br>"&_
+					"<center>"&agente&"<br>"&sede_agente&"<br>"&email_agente&"<br>"&fono_agente&"</center"					
+elseif tipo = "3" then
+	pagina.Titulo = "Email<br>Para avisar que quedan pocos cupos"
+	mensaje_email = "Hola "&nombre&", ya estamos prontos a cerrar las matriculas ya que  quedan pocos cupos. Queríamos saber si aun tienes considerado estudiar con nosotros.<br><br> "&_
+					"<input type='text' name='texto' size='80' maxlength='100' style='background=#CCCCCC;color=#FFFFFF;border: none;'><br><br>&nbsp;<br><br>"&_
+					"<center>"&agente&"<br>"&sede_agente&"<br>"&email_agente&"<br>"&fono_agente&"</center"
+elseif tipo = "4" then
+	pagina.Titulo = "Email<br>Para que actualicen y verifiquen sus datos"
+	mensaje_email = "Hola "&nombre&", por alguna razón en nuestro sistema, alguno de tus datos de postulación aparece incorrecto. Te agradeceríamos si mediante este correo nos puedes enviar un teléfono de contacto para regularizar tu postulación.<br><br> "&_
+					"<input type='text' name='texto' size='80' maxlength='100' style='background=#CCCCCC;color=#FFFFFF;border: none;'><br><br>&nbsp;<br><br>"&_
+					"<center>"&agente&"<br>"&sede_agente&"<br>"&email_agente&"<br>"&fono_agente&"</center"
+elseif tipo = "5" then
+	pagina.Titulo = "Email<br>Cuando obtienen el crédito con aval del estado"
+	mensaje_email = "Hola "&nombre&".  supimos que  obtuviste el Crédito con Aval del Estado, Felicitaciones. Te estuvimos llamando pero no te pudimos contactar. Queríamos saber si aún consideras  estudiar en nuestra Universidad.<br><br> "&_
+					"<input type='text' name='texto' size='80' maxlength='100' style='background=#CCCCCC;color=#FFFFFF;border: none;'><br><br>&nbsp;<br><br>"&_
+					"<center>"&agente&"<br>"&sede_agente&"<br>"&email_agente&"<br>"&fono_agente&"</center"															
+elseif tipo = "6" then
+	pagina.Titulo = "Email<br>Cuando no obtienen el crédito con aval del estado en el 1er intento."
+	mensaje_email = "Hola "&nombre&", te estuvimos llamando pero no te pudimos contactar. Te invitamos a conocer las distintas alternativas en  créditos y becas que la Universidad tiene para ti.<br><br> "&_
+					"<input type='text' name='texto' size='80' maxlength='100' style='background=#CCCCCC;color=#FFFFFF;border: none;'><br><br>&nbsp;<br><br>"&_
+					"<center>"&agente&"<br>"&sede_agente&"<br>"&email_agente&"<br>"&fono_agente&"</center"
+elseif tipo = "7" then
+	pagina.Titulo = "Email<br>Cuando no obtienen el crédito con aval del estado en el 2do y último intento."
+	mensaje_email = "Hola "&nombre&", Te estuvimos llamando pero no te pudimos contactar. Te invitamos a que vengas para que  veamos cómo podemos resolver tu situación y darte a conocer las distintas alternativas en créditos y becas que la Universidad tiene para ti.<br><br> "&_
+					"<input type='text' name='texto' size='80' maxlength='100' style='background=#CCCCCC;color=#FFFFFF;border: none;'><br><br>&nbsp;<br><br>"&_
+					"<center>"&agente&"<br>"&sede_agente&"<br>"&email_agente&"<br>"&fono_agente&"</center"
+elseif tipo = "8" then
+	pagina.Titulo = "Email<br>Para alumnos de Regiones"
+	mensaje_email = "Hola "&nombre&", te estuvimos llamando, pero no te pudimos contactar. Queríamos saber si tienes alguna duda o necesitas que te enviemos algún tipo de información especial. Sabemos que no eres de Santiago y obviamente nuestra intención es poder ayudarte en todo lo que necesites para venir a estudiar con nosotros. Nos encantaría conversar contigo directamente y saber si durante estas fechas vas a viajar a Santiago para invitarte a conocer nuestra Universidad y que puedas conocer más sobre tus carreras de interés.<br><br> "&_
+					"<input type='text' name='texto' size='80' maxlength='100' style='background=#CCCCCC;color=#FFFFFF;border: none;'><br><br>&nbsp;<br><br>"&_
+					"<center>"&agente&"<br>"&sede_agente&"<br>"&email_agente&"<br>"&fono_agente&"</center"															
+end if
+%>
+
+
+<html>
+<head>
+<title><%=pagina.Titulo%></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../estilos/estilos.css" rel="stylesheet" type="text/css">
+<link href="../estilos/tabla.css" rel="stylesheet" type="text/css">
+
+<script language="JavaScript" src="../biblioteca/tabla.js"></script>
+<script language="JavaScript" src="../biblioteca/funciones.js"></script>
+<script language="JavaScript" src="../biblioteca/validadores.js"></script>
+<script language="JavaScript" src="../biblioteca/PopCalendar.js"></script>
+
+<script language="JavaScript">
+</script>
+
+</head>
+<body bgcolor="#D8D8DE" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../imagenes/botones/buscar_f2.gif','../images/bot_deshabilitar_f2.gif','../images/agregar2_f2_p.gif','im&amp;#225;genes/marco1_r3_c2_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c4_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c6_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c8_f2.gif');MM_preloadImages('../imagenes/botones/cargar_f2.gif','../imagenes/botones/continuar_f2.gif')" onBlur="revisaVentana();">
+<table width="495" height="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  
+  <tr> 
+    <td valign="top" bgcolor="#EAEAEA"> <br> <br> <table width="90%"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#D8D8DE">
+        <tr> 
+          <td width="9" height="8"><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+          <td height="8" background="../imagenes/top_r1_c2.gif"></td>
+          <td width="7" height="8"><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+        </tr>
+        <tr> 
+          <td width="9" background="../imagenes/izq.gif">&nbsp;</td>
+          <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+              <tr> 
+                <td><%pagina.DibujarLenguetas Array("Email Tipo"), 1 %></td>
+              </tr>
+              <tr> 
+                <td height="2" background="../imagenes/top_r3_c2.gif"></td>
+              </tr>
+              <tr> 
+                <td><div align="center"><br>
+                    <%pagina.DibujarTituloPagina%>
+                    <br><BR>
+                  </div>
+				   
+                  <form name="edicion" method="post">
+				            <input type="hidden" name="nombre_p" value="<%=nombre_p%>">
+							<input type="hidden" name="apellido_p" value="<%=apellido_p%>">
+							<input type="hidden" name="rut_p" value="<%=rut_p%>">
+							<input type="hidden" name="email_p" value="<%=email_p%>">
+							<input type="hidden" name="cod_sede" value="<%=cod_sede%>">
+							<input type="hidden" name="cod_agente_sede" value="<%=cod_agente_sede%>">
+							<input type="hidden" name="tipo_mensaje" value="<%=tipo_mensaje%>">
+							<table width="99%" border="0" align="left" cellpadding="0" cellspacing="0">
+								 <tr> 
+									<td colspan="3" align="center"><font color="#990000" size="2">&nbsp;</font></td>
+								  </tr>
+								 <tr> 
+									<td width="16%"><font color="#666677" size="2">De</font></td>
+									<td width="3%"><font color="#666677" size="2">:</font></td>
+									<td width="81%"><%=email_agente%></td>
+								  </tr>
+								  <tr> 
+									<td width="16%"><font color="#666677" size="2">Para</font></td>
+									<td width="3%"><font color="#666677" size="2">:</font></td>
+									<td width="81%"><%=email_postulante%></td>
+								  </tr>
+								  <tr> 
+									<td width="16%"><font color="#666677" size="2">CC</font></td>
+									<td width="3%"><font color="#666677" size="2">:</font></td>
+									<td width="81%"><input type="text" name="email_cc" size="30" maxlength="50" style="background=#CCCCCC;color=#FFFFFF;border: none;"></td>
+								  </tr>
+								  <tr> 
+									<td width="16%"><font color="#666677" size="2">Asunto</font></td>
+									<td width="3%"><font color="#666677" size="2">:</font></td>
+									<td width="81%">Email Universidad del Pacífico</td>
+								  </tr>
+								  <tr> 
+									<td colspan="3"><hr></td>
+								  </tr>
+								  <tr> 
+									<td colspan="3"><div align="justify"><%=mensaje_email%></div></td>
+								  </tr>									  
+							</table>
+				</form></td>
+              </tr>
+            </table></td>
+          <td width="7" background="../imagenes/der.gif">&nbsp;</td>
+        </tr>
+        <tr> 
+          <td width="9" height="28"><img src="../imagenes/abajo_r1_c1.gif" width="9" height="28"></td>
+          <td height="28"><table width="100%" height="28"  border="0" cellpadding="0" cellspacing="0">
+              <tr> 
+                <td width="19%" height="20"><div align="center"> 
+                    <table width="90%"  border="0" cellspacing="0" cellpadding="0">
+                      <tr> 
+                        <td width="47%"><div align="center">
+                            <% 'botonera.agregaBotonParam "enviar","deshabilitado","true"
+							   botonera.agregaBotonParam "enviar","url","http://admision.upacifico.cl/postulacion/www/envia_email_tipo.php"
+							   botonera.dibujaBoton "enviar" %>
+                          </div></td>
+                        <td width="53%"><div align="center">
+                            <%botonera.dibujaBoton "cancelar" %>
+                          </div></td>
+                      </tr>
+                    </table>
+                  </div></td>
+                <td width="81%" rowspan="2" background="../imagenes/abajo_r1_c4.gif"><img src="../imagenes/abajo_r1_c3.gif" width="12" height="28"></td>
+              </tr>
+              <tr> 
+                <td height="8" background="../imagenes/abajo_r2_c2.gif"></td>
+              </tr>
+            </table></td>
+          <td width="7" height="28"><img src="../imagenes/abajo_r1_c5.gif" width="7" height="28"></td>
+        </tr>
+      </table>
+      <br> </td>
+  </tr>
+</table>
+</body>
+</html>

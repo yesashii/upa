@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="tabla"/>
+   <parametro formulario="consulta"/>
+   <parametro formulario="datos_persona">
+      <campos nombre="rut_persona">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre_completo_persona">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="ftotales">
+      <campos nombre="total">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+      </campos>
+      <campos nombre="comp_mneto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+      </campos>
+      <campos nombre="comp_mdescuento">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+      </campos>
+      <campos nombre="comp_miva">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+      </campos>
+      <campos nombre="comp_mdocumento">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+      </campos>
+      <campos nombre="total_bruto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+      </campos>
+   </parametro>
+   <parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" paginaEdicion="cta_corr_cargo_detalle.asp?tcom_ccod=%tcom_ccod%&amp;inst_ccod=%inst_ccod%&amp;comp_ndocto=%comp_ndocto%" formulario="cargos_cta_corr" agregar="true" eliminar="true" clave="comp_ndocto" mensajeError="No se registran cargos a la cuenta corriente del alumno." colorBase="#F1F1E4" anchoTabla="98%" editar="true" nuevaVentana="true" variable="m">
+      <tablas nombre="compromisos" accion="A"/>
+      <tablas nombre="detalle_compromisos" accion="A"/>
+      <campos nombre="comp_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nº Documento</descripcion>
+      </campos>
+      <campos nombre="inst_trazon_social">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Institución</descripcion>
+      </campos>
+      <campos nombre="tcom_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Tipo de Documento</descripcion>
+      </campos>
+      <campos nombre="comp_fdocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Fecha Documento</descripcion>
+         <alineamiento>Center</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="comp_mdocumento">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Total</descripcion>
+         <alineamiento>Right</alineamiento>
+         <ancho>70</ancho>
+         <formato>MONEDA</formato>
+      </campos>
+      <campos nombre="tcom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="inst_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ecom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="dcom_ncompromiso">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="cargos_cta_corr_detalle" clave="" variable="m" mensajeError="No se registran cargos a la cuenta corriente del alumno." colorBase="#F1F1E4" colorSeleccionado="99FFFF" anchoTabla="98%">
+      <campos nombre="tdet_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>HIDDEN</permiso>
+      </campos>
+      <campos nombre="tdet_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Ítem</descripcion>
+      </campos>
+      <campos nombre="deta_ncantidad">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Cantidad</descripcion>
+         <alineamiento>Right</alineamiento>
+      </campos>
+      <campos nombre="deta_mvalor_unitario">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Valor Unitario</descripcion>
+         <alineamiento>Right</alineamiento>
+         <formato>MONEDA</formato>
+      </campos>
+      <campos nombre="deta_msubtotal">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Total</descripcion>
+         <alineamiento>Right</alineamiento>
+         <ancho>80</ancho>
+         <formato>MONEDA</formato>
+      </campos>
+   </parametro>
+   <parametro formulario="fcargos" clave="" variable="m" mensajeError="">
+      <tablas nombre="compromisos" accion="I"/>
+      <tablas nombre="detalles" accion="I"/>
+      <tablas nombre="detalle_compromisos" accion="I"/>
+      <campos nombre="inst_ccod">
+         <tipo>SELECT</tipo>
+         <destino>instituciones</destino>
+         <union>inst_ccod</union>
+         <salida>inst_trazon_social</salida>
+         <orden>inst_ccod asc </orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione institución</mensajeNulo>
+      </campos>
+      <campos nombre="tcom_ccod">
+         <tipo>SELECT</tipo>
+         <destino>tipos_compromisos</destino>
+         <filtro>tcom_bcargo = 'S'</filtro>
+         <union>tcom_ccod</union>
+         <salida>tcom_tdesc</salida>
+         <orden>tcom_ccod asc </orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onChange="RecargarComboTiposDetalle(this.form, this.value)"</script>
+      </campos>
+      <campos nombre="comp_fdocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="tdet_ccod">
+         <tipo>SELECT</tipo>
+         <destino>tipos_detalle</destino>
+         <filtro>(tcom_ccod=8) AND (tdet_mvalor_unitario &lt;&gt; 0)</filtro>
+         <union>tdet_ccod</union>
+         <salida>tdet_tdesc</salida>
+         <orden>tdet_ccod asc </orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onChange="CambiarCombo(this.value, this.form)"</script>
+         <anulable>TRUE</anulable>
+      </campos>
+      <campos nombre="deta_ncantidad">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script> onBlur="if (ValidarEntero(this)) CalcularSubtotal(this.form)"</script>
+      </campos>
+      <campos nombre="deta_mvalor_unitario">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onBlur="if (ValidarEnteroPositivo(this)) CalcularSubtotal(this.form)"</script>
+      </campos>
+      <campos nombre="deta_msubtotal">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <soloLectura>TRUE</soloLectura>
+      </campos>
+      <campos nombre="comp_mdescuento">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onBlur="if (ValidarEnteroPositivo(this)) CalcularTotalDocumento(this.form)"</script>
+      </campos>
+      <campos nombre="comp_mdocumento">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <soloLectura>TRUE</soloLectura>
+      </campos>
+      <campos nombre="comp_ncuotas">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="ecom_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="comp_mneto">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="comp_miva">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="comp_mexento">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="comp_ndocto">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <tipoDato>SECUENCIA</tipoDato>
+         <secuencia>comp_ndocto_seq</secuencia>
+      </campos>
+      <campos nombre="dcom_ncompromiso">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="dcom_fcompromiso">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="dcom_mcompromiso">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="peri_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="fcertificado" variable="m">
+      <tablas nombre="certificados" accion="I"/>
+      <campos nombre="cert_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="inst_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="tice_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="sede_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="cert_fcertificado">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="espe_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="comp_ndocto">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="tcom_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="cert_nimpreso">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="cert_tobserv1">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="cert_tobserv2">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="cert_tvalidez">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   <parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" paginaEdicion="" formulario="fListaContratosPersonaPagare" agregar="false" eliminar="true" clave="cont_ncorr" mensajeError="" colorBase="#F1F1E4" anchoTabla="98%" editar="false" nuevaVentana="" variable="m">
+      <campos nombre="cont_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nº Contrato</descripcion>
+      </campos>
+      <campos nombre="cont_fcontrato">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Fecha Contrato</descripcion>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="paga_npagare">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nº Pagaré</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="econ_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Estado</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="inst_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="econ_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ecom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="fAnulaContrato" variable="m">
+      <tablas nombre="contratos" accion="A"/>
+      <campos nombre="econ_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="fAnulaCompromiso" variable="m">
+      <tablas nombre="compromisos" accion="A"/>
+      <campos nombre="ecom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="fTraspasoCajas" clave="mcaj_ncorr" variable="m" anchoTabla="100%" colorSeleccionado="#99FFFF" eliminar="true" mensajeError="No hay cajas para traspasar">
+      <campos nombre="rownum">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <descripcion>&amp;nbsp;</descripcion>
+      </campos>
+      <campos nombre="nombre_cajero">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Cajero</descripcion>
+      </campos>
+      <campos nombre="ecua_ccod">
+         <tipo>SELECT</tipo>
+         <destino>estados_cuadre</destino>
+         <union>ecua_ccod</union>
+         <salida>ecua_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <descripcion>Estado cuadre</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="eren_ccod">
+         <tipo>SELECT</tipo>
+         <destino>estados_rendicion</destino>
+         <union>eren_ccod</union>
+         <salida>eren_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <descripcion>Estado rendición</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="mcaj_finicio">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Inicio</descripcion>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="mcaj_ftermino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Término</descripcion>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="mcaj_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Folio caja</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="f_boletas" anchoTabla="100%" mensajeError="No existen ingresos para este movimiento de caja" resumen="TRUE">
+      <campos nombre="rownum">
+         <descripcion>&amp;nbsp;</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+      </campos>
+      <campos nombre="rut_persona">
+         <descripcion>RUT Alumno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="ting_ccod">
+         <descripcion>Tipo</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ingr_nfolio_referencia">
+         <descripcion>Folio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+      </campos>
+      <campos nombre="ingr_mefectivo">
+         <descripcion>Monto en efectivo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+         <resumen>suma</resumen>
+      </campos>
+      <campos nombre="ingr_mdocto">
+         <descripcion>Monto en documentos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+         <resumen>suma</resumen>
+      </campos>
+      <campos nombre="ingr_mtotal">
+         <descripcion>Monto total</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+         <resumen>suma</resumen>
+      </campos>
+      <campos nombre="ingr_fpago">
+         <descripcion>Fecha de pago</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="eing_ccod">
+         <descripcion>Estado</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>estados_ingresos</destino>
+         <union>eing_ccod</union>
+         <salida>eing_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="f_total_boletas" anchoTabla="100%">
+      <campos nombre="t_total">
+         <descripcion>&amp;nbsp;</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="total_mefectivo">
+         <descripcion>TOTAL EFECTIVO</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+      </campos>
+      <campos nombre="total_mdocto">
+         <descripcion>TOTAL DOCUMENTOS</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+      </campos>
+      <campos nombre="total_mtotal">
+         <descripcion>TOTAL</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+      </campos>
+   </parametro>
+    <parametro formulario="btn_det_abono"> <!--botonera para det_abono y det_montos_alumno-->
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>window.close()</funcion>
+	</botones>
+   </parametro>
+  <parametro formulario="btn_inf_ingresos">
+   <botones nombre="salir"> 
+     <tipoTexto>DEFINIR</tipoTexto>
+	 <texto>Cerrar</texto>
+	 <accion>JAVASCRIPT</accion>
+	 <funcion>self.close()</funcion>
+	</botones> 
+   <botones nombre="volver"> 
+     <tipoTexto>DEFINIR</tipoTexto>
+	 <texto>Volver</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>volver(1)</funcion>
+	</botones> 
+   <botones nombre="imprimir"> 
+     <tipoTexto>DEFINIR</tipoTexto>
+	 <texto>Imprimir</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>print()</funcion>
+	</botones> 
+</parametro>
+
+</Parametros>

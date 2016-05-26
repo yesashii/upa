@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+<parametro formulario="codigo_presupuesto" variable="datos">
+	<campos nombre="cod_pre">
+		 <tipo>SELECT</tipo>
+		 <destino>presupuesto_upa.protic.codigos_presupuesto</destino>
+		 <union>cod_pre</union>
+		 <salida>cod_pre</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+	</campos>
+</parametro>
+
+<parametro formulario="detalle_presupuesto" variable="presupuesto">
+	<campos nombre="cod_pre">
+		 <tipo>SELECT</tipo>
+		 <destino>presupuesto_upa.protic.presupuesto_upa_2010</destino>
+		 <union>cod_pre</union>
+		 <salida>valor</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>false</deshabilitado>
+		 <anulable>false</anulable>	  
+	</campos>
+	<campos nombre="anos_ccod">
+		  <tipo>SELECT</tipo>
+		  <destino>anos</destino> 
+		  <union>anos_ccod</union>
+		  <salida>anos_ccod</salida>
+		  <filtro>anos_ccod between year(getdate())-1 and year(getdate())+1</filtro>
+		  <permiso>LECTURAESCRITURA</permiso>
+		  <deshabilitado>false</deshabilitado>
+		  <id>TO-N</id>		  
+	</campos>
+	<campos nombre="mes_ccod">
+		  <tipo>SELECT</tipo>
+		  <destino>meses</destino> 
+		  <union>mes_ccod</union>
+		  <salida>mes_tdesc</salida>
+		  <permiso>LECTURAESCRITURA</permiso>
+		  <anulable>false</anulable>
+		  <mensajeNulo>Seleccione Mes</mensajeNulo>
+		  <deshabilitado>false</deshabilitado>
+		  <id>TO-N</id>		  
+	</campos>
+	<campos nombre="psol_mpresupuesto">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<deshabilitado>false</deshabilitado>
+		<script>onBlur="SumaTotalPresupuesto(this);"</script>
+		<id>NU-N</id>
+	</campos>
+</parametro> 
+
+<parametro formulario="detalle_presupuesto_lectura" variable="presupuesto">
+	<campos nombre="cod_pre">
+		 <tipo>SELECT</tipo>
+		 <destino>presupuesto_upa.protic.presupuesto_upa_2010</destino>
+		 <union>cod_pre</union>
+		 <salida>valor</salida>
+		 <permiso>LECTURA</permiso>
+		 <deshabilitado>false</deshabilitado>
+		 <anulable>false</anulable>	  
+	</campos>
+	<campos nombre="anos_ccod">
+		  <tipo>SELECT</tipo>
+		  <destino>anos</destino> 
+		  <union>anos_ccod</union>
+		  <salida>anos_ccod</salida>
+		  <filtro>anos_ccod between year(getdate())-1 and year(getdate())+1</filtro>
+		  <permiso>LECTURA</permiso>
+		  <deshabilitado>false</deshabilitado>
+		  <id>TO-N</id>		  
+	</campos>
+	<campos nombre="mes_ccod">
+		  <tipo>SELECT</tipo>
+		  <destino>meses</destino> 
+		  <union>mes_ccod</union>
+		  <salida>mes_tdesc</salida>
+		  <permiso>LECTURA</permiso>
+		  <anulable>false</anulable>
+		  <mensajeNulo>Seleccione Mes</mensajeNulo>
+		  <deshabilitado>false</deshabilitado>
+		  <id>TO-N</id>		  
+	</campos>
+	<campos nombre="psol_mpresupuesto">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<deshabilitado>false</deshabilitado>
+		<script>onBlur="SumaTotalPresupuesto(this);"</script>
+		<id>NU-N</id>
+	</campos>
+</parametro> 
+
+ 
+</Parametros>

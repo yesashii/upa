@@ -1,0 +1,132 @@
+<Parametros>
+  <parametro formulario="botonera">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 	
+   <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+  <botones nombre="imprimir"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Imprimir</texto>
+		<accion>GUARDAR</accion>
+		<formulario>edicion</formulario>
+		<target>_BLANK</target>
+   </botones>
+   <botones nombre="imprimir_1"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Imprimir Evaluacion</texto>
+		<accion>GUARDAR</accion>
+		<formulario>edicion</formulario>
+		<target>_BLANK</target>
+   </botones>
+   <botones nombre="imprimir_2"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Imprimir Asistencia</texto>
+		<accion>GUARDAR</accion>
+		<formulario>edicion</formulario>
+		<target>_BLANK</target>
+   </botones>
+   <botones nombre="imprimir_3"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Nomina Alumnos</texto>
+		<accion>GUARDAR</accion>
+		<formulario>edicion</formulario>
+		<target>_BLANK</target>
+   </botones>
+    <botones nombre="portada"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Portada</texto>
+		<accion>GUARDAR</accion>
+		<formulario>edicion</formulario>
+		<target>_BLANK</target>
+   </botones>	 
+   <botones nombre="excel">
+       <tipoTexto>DEFINIR</tipoTexto>
+	   <texto>Excel</texto>
+       <accion>GUARDAR</accion>	   
+	   <formulario>edicion</formulario>
+   </botones>   
+   <botones nombre="cerrar_actualizar"> 
+      <tipoTexto>SALIR</tipoTexto>
+      <accion>JAVASCRIPT</accion>
+	 <funcion>salir();</funcion>	   
+	</botones>
+   <botones nombre="cancelar"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+	<botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+    </botones>
+     <botones nombre="siguiente">
+         <tipoTexto>SIGUIENTE</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_postulacion_4.asp</url>
+         <funcionValidacion>Validar();</funcionValidacion>
+      </botones>
+   </parametro>
+   <parametro formulario="busqueda" variable="busqueda">
+  		 <listas nombre="lBusqueda">
+			<item clave="carr_ccod" valor="carr_tdesc" />
+			<item clave="jorn_ccod" valor="jorn_tdesc" />
+    	</listas>
+		<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="jorn_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+  </parametro>
+
+<parametro formulario="f_alumnos" clave="rut"  variable="secciones" 
+      colorSeleccionado="#CCCCCC" colorResaltado="#999999" nroRegistros="15" maxLista="10" 
+	  paginaEdicion="" eliminar="FALSE" 
+      seleccionarTodo="FALSE"  anchoTabla="100%" editar="FALSE"  nuevaVentana="FALSE" 
+	  mensajeError="No se encontraron alumnos egresados ni títulados...">	
+	 <campos nombre="rut">
+	    <descripcion>RUT</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>	    
+	 <campos nombre="alumno">
+	    <descripcion>Nombre Alumno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>	 
+	 <campos nombre="estado">
+	    <descripcion>Estado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="realizado">
+	    <descripcion>Realizado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="en_SIGAF">
+	    <descripcion>En Sistema</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	</campos>
+	<campos nombre="egreso_fox">
+	    <descripcion>Egreso en Fox</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	</campos>	 
+ </parametro> 
+</Parametros>

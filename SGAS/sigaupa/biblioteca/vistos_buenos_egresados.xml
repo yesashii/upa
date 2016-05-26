@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="agregar">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>AGREGAR</accion>
+         <url>adm_salidas_carrera_agregar.asp</url>
+         <alto>400</alto>
+         <ancho>750</ancho>
+         <posicionX>50</posicionX>
+         <posicionY>50</posicionY>
+         <scroll>TRUE</scroll>
+      </botones>
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_salidas_carrera.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="v_b_titulos">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Dar V°B° Egreso</texto>
+         <accion>GUARDAR</accion>
+         <url>vistos_buenos_egresados_aprobar.asp</url>
+         <soloUnClick>TRUE</soloUnClick>
+         <formulario>edicion</formulario>
+      </botones>
+	  <botones nombre="egresar_candidato">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Asignar egreso</texto>
+         <accion>GUARDAR</accion>
+         <url>vistos_buenos_egresados_dar_egreso.asp</url>
+         <soloUnClick>TRUE</soloUnClick>
+         <formulario>edicion_egreso</formulario>
+      </botones>
+	  <botones nombre="rechazar">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Rechazar Candidato</texto>
+         <accion>GUARDAR</accion>
+         <url>vistos_buenos_egresados_rechazar.asp</url>
+         <soloUnClick>TRUE</soloUnClick>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="cambio_estado_salida">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Guardar Salidas</texto>
+         <accion>GUARDAR</accion>
+         <url>vistos_buenos_egresados_rechazar_particular.asp</url>
+         <soloUnClick>TRUE</soloUnClick>
+         <formulario>edicion</formulario>
+      </botones>
+	  <botones nombre="cambio_estado_salida_ti">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Asignar Salidas</texto>
+         <accion>GUARDAR</accion>
+         <url>vistos_buenos_egresados_asignar_particular.asp</url>
+         <soloUnClick>TRUE</soloUnClick>
+         <formulario>edicion2</formulario>
+      </botones>
+      <botones nombre="guardar_nuevo">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Guardar/Nuevo</texto>
+         <accion>GUARDAR</accion>
+         <url>proc_adm_titulados_agregar_2.asp?seguir=S</url>
+         <soloUnClick>TRUE</soloUnClick>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="cerrar">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Cerrar</texto>
+         <accion>CERRAR</accion>
+      </botones>
+	  <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+		 <soloUnClick>TRUE</soloUnClick>
+      </botones>
+	  <botones nombre="buscar_alumnos">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Buscar Candidatos</texto>
+         <accion>JAVASCRIPT</accion>
+	     <funcion>enviar(document.buscador)</funcion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	  <botones nombre="guardar_vb">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Solicitar Egreso</texto>
+         <accion>GUARDAR</accion>
+         <url>predictivo_dir_escuela_vb_proc.asp</url>
+         <soloUnClick>TRUE</soloUnClick>
+         <formulario>edicion</formulario>
+      </botones>
+	  <botones nombre="cancelar_vb">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Cancelar solicitud</texto>
+         <accion>GUARDAR</accion>
+         <url>predictivo_dir_escuela_vb_cancelar.asp</url>
+         <soloUnClick>TRUE</soloUnClick>
+         <formulario>edicion</formulario>
+      </botones>
+	  <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Reporte Excel</texto>
+         <accion>NAVEGAR</accion>
+         <formulario>form_excel</formulario>
+     </botones>
+	 <botones nombre="imprimir_portada">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Imprimir Portada</texto>
+         <accion>AGREGAR</accion>
+         <url>portada_candidatos.asp</url>
+         <alto>550</alto>
+         <ancho>750</ancho>
+         <posicionX>50</posicionX>
+         <posicionY>50</posicionY>
+         <scroll>TRUE</scroll>
+      </botones>
+   </parametro>
+   <parametro formulario="f_busqueda" variable="busqueda">
+    <campos nombre="carr_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>carreras</destino> 
+	  <union>carr_ccod</union>
+	  <salida>CARR_TDESC</salida>
+      <orden>CARR_TDESC asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione una Carrera</mensajeNulo>
+	  <mensajeVacio>Seleccione una Carrera</mensajeVacio>
+	  <id>TO-N</id>
+    </campos>
+   </parametro>
+   <parametro formulario="encabezado" anchoTabla="100%" columnas="2">
+      <campos nombre="carr_tdesc">
+         <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="espe_tdesc">
+         <descripcion>Especialidad</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="plan_tdesc">
+         <descripcion>Plan</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="tsca_tdesc">
+         <descripcion>Tipo de Salida</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="saca_tdesc">
+         <descripcion>Salida</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="saca_npond_asignaturas">
+         <descripcion>Pond. Asignaturas</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="total">
+         <descripcion>Total Asignaturas</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   <parametro
+   colorSeleccionado="#CCCCCC" 
+   colorResaltado="#CCCCCC" 	paginaEdicion="vistos_buenos_egresados_revisar.asp?pers_ncorr=%pers_ncorr%&amp;carr_ccod=%carr_ccod%&amp;plan_ccod=%plan_ccod%" nuevaVentanaAlto="450" 
+   formulario="candidatos" nroRegistros="200"  nuevaVentanaAncho="750" eliminar="false" 
+   maxLista="10"  mensajeError="No se han encontrado candidatos para la carrera consultada" seleccionarTodo="FALSE"
+    editar="TRUE" anchoTabla="100%" nuevaVentana="TRUE" variable="candidato" >
+	 <campos nombre="Rut">
+		<descripcion>Rut</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="Nombre_completo">
+	    <descripcion>Nombre</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="plan_">
+	    <descripcion>Plan de estudio</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="fecha_solicitud">
+	    <descripcion>Fecha solicitud</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="vb_escuela">
+	    <descripcion>V°B° Escuela</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>center</alineamiento>
+	 </campos>
+	 <campos nombre="vb_titulos">
+	    <descripcion>V°B° Títulos</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>center</alineamiento>
+	 </campos> 
+	 <campos nombre="reenvios_rechazos">
+	    <descripcion>Reenvios / rechazos</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>center</alineamiento>
+	 </campos>
+   </parametro>
+   <parametro formulario="encabezado_vb" anchoTabla="100%" columnas="2">
+      <campos nombre="rut">
+         <descripcion>Rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="apellidos">
+         <descripcion>Apellidos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombres">
+         <descripcion>Nombres</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="carrera">
+         <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   <parametro paginaEdicion="" nuevaVentanaAlto="450" formulario="salidas_vb" enumerarLista="TRUE" eliminar="true" clave="saca_ncorr" 
+	mensajeError="Al alumno no se le asignaron salidas." editar="FALSE" anchoTabla="98%" nuevaVentana="FALSE" variable="salidas">
+	  <campos nombre="tsca_tdesc">
+         <descripcion>Tipo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="saca_tdesc">
+         <descripcion>Salida</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="asignaturas">
+         <descripcion>Nº Asignaturas&lt;br&gt;Req.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="eceg_ccod">
+         <descripcion>Estado</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>(select eceg_ccod,eceg_tdesc from estado_candidatos_egreso where eceg_ccod not in (0))a</destino>
+         <union>eceg_ccod</union>
+         <salida>eceg_tdesc</salida>
+ 		 <orden>eceg_tdesc asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <script>onChange="habilitarMotivo(this.value,this.name);"</script>
+         <id>TO-S</id>
+	  </campos>
+      <campos nombre="cegr_motivo_rechazo">
+         <descripcion>Motivo rechazo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>25</caracteres>
+		 <maxcaracteres>50</maxcaracteres>
+         <alineamiento>CENTER</alineamiento>
+		 <deshabilitado>true</deshabilitado>
+      </campos>
+      <campos nombre="x">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+  </parametro>
+  <parametro paginaEdicion="" nuevaVentanaAlto="450" formulario="salidas_ti" enumerarLista="TRUE" eliminar="true" clave="saca_ncorr" 
+	mensajeError="Al alumno no se le asignaron salidas." editar="FALSE" anchoTabla="98%" nuevaVentana="FALSE" variable="salidas_ti">
+	  <campos nombre="tsca_tdesc">
+         <descripcion>Tipo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="saca_tdesc">
+         <descripcion>Salida</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="asignaturas">
+         <descripcion>Nº Asignaturas&lt;br&gt;Req.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="eceg_ccod">
+         <descripcion>Estado</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>estado_candidatos_egreso</destino>
+         <union>eceg_ccod</union>
+         <salida>eceg_tdesc</salida>
+ 		 <orden>eceg_tdesc asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <script>onChange="habilitarMotivoTi(this.value,this.name);"</script>
+         <id>TO-S</id>
+	  </campos>
+      <campos nombre="cegr_motivo_rechazo">
+         <descripcion>Motivo rechazo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>25</caracteres>
+		 <maxcaracteres>50</maxcaracteres>
+         <alineamiento>CENTER</alineamiento>
+		 <deshabilitado>true</deshabilitado>
+      </campos>
+      <campos nombre="x">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+  </parametro>
+</Parametros>
+

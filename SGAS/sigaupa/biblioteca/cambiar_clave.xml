@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  	<parametro formulario="botonera">
+	   <botones nombre="cancelar"> 
+		  <tipoTexto>SALIR</tipoTexto>
+		  <accion>CERRAR</accion>
+		</botones>
+		<botones nombre="guardar"> 
+		  <tipoTexto>GUARDAR</tipoTexto>
+		  <accion>GUARDAR</accion>
+		  <url>proc_cambiar_clave.asp</url>
+		  <formulario>edicion</formulario>
+		<funcionValidacion>Validar();</funcionValidacion> 
+		</botones>
+		<botones nombre="salir"> 
+		  <tipoTexto>SALIR</tipoTexto>
+		  <accion>NAVEGAR</accion>
+		  <url>../lanzadera/lanzadera.asp</url>	 
+		</botones>
+		<botones nombre="escape">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>mensajes.asp</url>
+        </botones>
+	</parametro>
+
+	<parametro formulario="f_datos" variable="datos">
+	   <tablas nombre="sis_usuarios" accion="M"/>
+		<campos nombre="pers_ncorr">
+		  <tipo>INPUT</tipo>
+		  <permiso>OCULTO</permiso>
+	   </campos>
+		<campos nombre="susu_tclave">
+		  <tipo>INPUT</tipo>
+		  <permiso>OCULTO</permiso>
+	   </campos>
+	   <campos nombre="susu_tlogin">
+		  <tipo>INPUT</tipo>
+		  <permiso>LECTURA</permiso>
+		  <caracteres>10</caracteres>
+		  <maxCaracteres>10</maxCaracteres>
+		  <id>TO-N</id>
+	   </campos>
+		<campos nombre="anterior">
+		  <tipo>CLAVE</tipo>
+		  <permiso>LECTURAESCRITURA</permiso>
+		  <caracteres>10</caracteres>
+		  <maxCaracteres>8</maxCaracteres>
+		  <id>TO-N</id>
+	   </campos>
+		<campos nombre="nueva">
+		  <tipo>CLAVE</tipo>
+		  <permiso>LECTURAESCRITURA</permiso>
+		  <caracteres>10</caracteres>
+		  <maxCaracteres>8</maxCaracteres>
+		  <id>TO-N</id>
+	   </campos>
+		<campos nombre="confirmacion">
+		  <tipo>CLAVE</tipo>
+		  <permiso>LECTURAESCRITURA</permiso>
+		  <caracteres>10</caracteres>
+		  <maxCaracteres>8</maxCaracteres>
+		  <id>TO-N</id>
+	   </campos>
+	</parametro>
+
+<parametro formulario="f_datos_alumno" variable="datos">
+	   	<tablas nombre="sis_usuarios" accion="M"/>
+		<tablas nombre="usuarios" accion="M"/>
+</parametro>
+
+</Parametros>

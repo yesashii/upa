@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+	<parametro formulario="botonera">
+		<botones nombre="buscar_perfiles"> 
+		  <tipoTexto>BUSCAR</tipoTexto>
+		  <accion>BUSCAR</accion>
+		  <formulario>buscador</formulario>
+		  <soloUnClick>TRUE</soloUnClick>
+	   </botones>
+	   <botones nombre="salir"> 
+			<tipoTexto>SALIR</tipoTexto>
+			<accion>NAVEGAR</accion>
+			<url>../lanzadera/lanzadera.asp</url>
+		</botones>
+		<botones nombre="excel">
+			 <tipoTexto>DEFINIR</tipoTexto>
+			 <texto>Excel</texto>
+			 <accion>BUSCAR</accion>
+			 <url>reporte_eventos_excel.asp</url>
+			 <formulario>buscador</formulario>
+		</botones>
+	</parametro>
+
+	<parametro formulario="busqueda_perfiles" variable="busqueda">
+		<campos nombre="tiop_ccod">
+			  <tipo>SELECT</tipo>
+			  <destino>(Select 1 as tiop_ccod, 'PERFILES COLEGIOS' as tiop_tdesc union select 2 as tiop_ccod, 'PREFERENCIAS POR PERFIL' as tiop_tdesc ) a</destino>			  
+			  <union>tiop_ccod</union>
+			  <salida>tiop_tdesc</salida>
+			  <permiso>LECTURAESCRITURA</permiso>
+			  <anulable>true</anulable>
+			  <mensajeNulo>Elija Opcion</mensajeNulo>
+			  <id>TO-N</id>
+		</campos>
+		<campos nombre="pcol_ccod">
+			  <tipo>SELECT</tipo>
+			  <destino>perfil_colegio</destino> 
+			  <union>pcol_ccod</union>
+			  <salida>pcol_tdesc</salida>
+			  <permiso>LECTURAESCRITURA</permiso>
+			  <anulable>true</anulable>
+			  <mensajeNulo>Todos los Perfiles</mensajeNulo>
+		</campos>
+		<campos nombre="even_fevento">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>12</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>FE-S</id>
+		</campos>
+		<campos nombre="fecha_termino">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>12</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>FE-S</id>
+		</campos>
+  </parametro> 
+
+	<parametro formulario="datos_colegios" clave="pers_ncorr_alumno" variable="cajas"  
+			mensajeError="No hay cajas disponibles para la busqueda realizada" colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="false" agregar="true"  maxLista="10" nroRegistros="30" anchoTabla="100%">
+		<campos nombre="even_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="Fecha">
+			<tipo>INPUT</tipo>
+			<descripcion>Fecha</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="Perfil_Colegio">
+			<tipo>INPUT</tipo>
+			<descripcion>Perfil Colegio</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="Colegio">
+			<tipo>INPUT</tipo>
+			<descripcion>Colegio</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="Ciudad">
+			<tipo>INPUT</tipo>
+			<descripcion>Ciudad</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="Comuna">
+			<tipo>INPUT</tipo>
+			<descripcion>Comuna</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>							
+	</parametro>
+
+	<parametro formulario="primera_preferencia" maxLista="10" nroRegistros="30" anchoTabla="100%">
+		<campos nombre="perfil">
+			<tipo>INPUT</tipo>
+			<descripcion>Perfil</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="tipo_evento">
+			<tipo>INPUT</tipo>
+			<descripcion>Tipo Evento</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="Preferencia">
+			<tipo>INPUT</tipo>
+			<descripcion>Carreras</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="Cantidad">
+			<tipo>INPUT</tipo>
+			<descripcion>Cantidad</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>							
+	</parametro>
+	<parametro formulario="segunda_preferencia" maxLista="10" nroRegistros="30" anchoTabla="100%" >
+		<campos nombre="perfil">
+			<tipo>INPUT</tipo>
+			<descripcion>Perfil</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="tipo_evento">
+			<tipo>INPUT</tipo>
+			<descripcion>Tipo Evento</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="Preferencia">
+			<tipo>INPUT</tipo>
+			<descripcion>Carreras</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="Cantidad">
+			<tipo>INPUT</tipo>
+			<descripcion>Cantidad</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>							
+	</parametro>
+
+	<parametro formulario="tercera_preferencia" maxLista="10" nroRegistros="30" anchoTabla="100%">
+		<campos nombre="perfil">
+			<tipo>INPUT</tipo>
+			<descripcion>Perfil</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="tipo_evento">
+			<tipo>INPUT</tipo>
+			<descripcion>Tipo Evento</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="Preferencia">
+			<tipo>INPUT</tipo>
+			<descripcion>Carreras</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="Cantidad">
+			<tipo>INPUT</tipo>
+			<descripcion>Cantidad</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>							
+	</parametro>
+</Parametros>

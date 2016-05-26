@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="datos_alumno">
+      <campos nombre="nombre_alumno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="convalidaciones" variable="convalidaciones">
+      <tablas nombre="convalidaciones" accion="A"/>
+      <campos nombre="matr_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="acon_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="asig_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="conv_nnota">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>4</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="desc_asignatura">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+    <parametro formulario="botonera">
+   <botones nombre="aceptar"> 
+      <tipoTexto>ACEPTAR</tipoTexto>
+	  <accion>javascript</accion>
+	  <funcion>Aceptar(edicion);</funcion>	
+	  <soloUnClick>TRUE</soloUnClick>
+	</botones>
+    <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>javascript</accion>
+	  <funcion>Salir();</funcion>	
+	  <soloUnClick>TRUE</soloUnClick>
+	</botones>
+  </parametro>
+</Parametros>

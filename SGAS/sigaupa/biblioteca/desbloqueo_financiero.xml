@@ -1,0 +1,97 @@
+﻿<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="desbloquear">
+         <accion>GUARDAR</accion>
+         <tipoTexto>GUARDAR</tipoTexto>
+         <formulario>edicion</formulario>
+         <mensajeConfirmacion>¿Está seguro que desea continuar?</mensajeConfirmacion>
+         <url>proc_desbloqueo_financiero.asp</url>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+   </parametro>
+   <parametro formulario="busqueda" variable="busqueda">
+   	<campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+     <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>   
+      <campos nombre="rut">
+         <descripcion>RUT Alumno</descripcion>
+         <tipo>RUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <campoRut>pers_nrut</campoRut>
+         <campoDv>pers_xdv</campoDv>
+         <buscador>TRUE</buscador>
+         <id>RU-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="encabezado" anchoTabla="80%">
+      <campos nombre="peri_ccod">
+         <descripcion>Período Académico</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>periodos_academicos</destino>
+         <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="alumno" anchoTabla="100%" mensajeError="No se ha encontrado al alumno." variable="desbloqueos">
+      <campos nombre="dees_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="peri_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tdes_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="rut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>RUT</descripcion>
+      </campos>
+      <campos nombre="nombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nombre</descripcion>
+      </campos>
+      <campos nombre="moroso">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Moroso</descripcion>
+         <afirmacion>SI</afirmacion>
+         <negacion>NO</negacion>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="desbloqueado">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <objeto>CHECKBOX</objeto>
+         <descripcion>Desbloqueado</descripcion>
+         <afirmacion>SI</afirmacion>
+         <negacion>NO</negacion>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+</Parametros>

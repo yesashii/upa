@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="btn_edita_malla">   
+    <botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agrega_req(document.editar)</funcion>
+	</botones> 
+    <botones nombre="eliminar"> 
+      <tipoTexto>Eliminar</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>elimina_req(document.editar)</funcion>
+	</botones> 
+    <botones nombre="volver"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Volver</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>volver(document.editar)</funcion>
+	</botones> 
+    <botones nombre="nivel"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Cambiar Nivel</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.editar)</funcion>
+	</botones> 
+	<botones nombre="agregar_homologacion"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	    <accion>AGREGAR</accion>
+	    <posicionX>100</posicionX>
+	    <posicionY>50</posicionY>
+	    <ancho>750</ancho>
+	    <alto>600</alto>
+	    <url>homologacion_agregar.asp</url>
+	</botones> 
+	<botones nombre="eliminar_homologacion"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>ELIMINAR</accion>
+	  <formulario>editar</formulario>
+	</botones> 
+	 <botones nombre="buscar_homologacion"> 
+        <tipoTexto>BUSCAR</tipoTexto>
+	    <accion>BUSCAR</accion>
+	    <formulario>buscador</formulario>
+		<soloUnClick>TRUE</soloUnClick>
+	 </botones>
+	 <botones nombre="guardar_homologacion"> 
+        <tipoTexto>GUARDAR</tipoTexto>
+	    <accion>GUARDAR</accion>
+	    <url>Proc_Homologacion_Agregar.asp</url>
+	    <formulario>edicion</formulario>		
+	</botones>
+	<botones nombre="salir"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>JAVASCRIPT</accion>	   
+	</botones>
+	<botones nombre="eliminar_detalle_homologacion"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>ELIMINAR</accion>
+	  <formulario>edicion</formulario>
+	  <url>Homologacion_Detalle_Eliminar.asp</url>
+	</botones>
+ </parametro>
+
+ <parametro formulario="edicion_malla" clave="mall_ccod" 
+	mensajeError="Debe seleccionar parametros de búsqueda." 
+		anchoTabla="100%"  variable="em" 
+		eliminar="false" editar="false" paginaEdicion="editar_malla.asp?mall_ccod=%mall_ccod%">
+		<tablas nombre="malla_curricular" accion="M" />	
+		<campos nombre="mall_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>INVISIBLE</permiso>
+		</campos>
+		<campos nombre="plan_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>INVISIBLE</permiso>
+		</campos>
+
+		<campos nombre="asig_ccod">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Código</descripcion>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="asig_tdesc">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Asignatura</descripcion>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="asig_nhoras">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Horas</descripcion>
+			<alineamiento>CENTER</alineamiento>
+		</campos>	
+
+		<campos nombre="nive_ccod">	
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Nivel</descripcion>
+			<caracteres>3</caracteres>
+			<maxcaracteres>2</maxcaracteres>
+			<alineamiento>CENTER</alineamiento>
+			<id>NU-N</id>
+		</campos>
+	</parametro>
+	<parametro formulario="tabla"/>
+	<parametro formulario="AsgReq"   clave="mall_crequisito" colorResaltado="#DCDCB8" colorSeleccionado="99FFFF"
+	    mensajeError="Asignatura Sin Requisitos." 
+		anchoTabla="100%"  colorBase="#F1F1E4" eliminar="true" variable = "me" seleccionarTodo="TRUE">	
+		<tablas nombre="malla_curricular" accion="M" />
+		<campos nombre="mall_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+
+		<campos nombre="asignatura">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Código</descripcion>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="Asig_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Asignatura</descripcion>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="Asig_nhoras">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Horas</descripcion>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="nive_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nivel</descripcion>
+			<caracteres>2</caracteres>
+			<maxcaracteres>2</maxcaracteres>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+	</parametro>
+  <parametro formulario="btn_editar_malla">
+	<botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>elimina_req(document.editar)</funcion>
+	</botones> 	
+	<botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agrega_req(document.editar)</funcion>
+	</botones>
+   <botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.editar)</funcion>
+	</botones> 
+   <botones nombre="volver"> 
+     <tipoTexto>DEFINIR</tipoTexto>
+	 <texto>Volver</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>history.go(-1)</funcion>
+	</botones> 
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones> 		 
+	
+</parametro>	
+
+<parametro  formulario="f_homologaciones" mensajeError="No se Encontraton Homologaciones"  clave ="homo_ccod"
+   anchoTabla="100%"  eliminar="true" variable = "homologaciones" editar="TRUE" seleccionarTodo="TRUE"
+   paginaEdicion="Homologacion_Editar.asp?homo_ccod=%homo_ccod%" nuevaVentana="TRUE"
+   nuevaVentanaAncho="770" nuevaVentanaAlto="550">
+    <tablas nombre="homologacion" accion="B"/> 
+   <campos nombre="c_homo_ccod">
+	  <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>	 	
+   </campos>
+   <campos nombre="homologaciones">
+	  <descripcion>Asignaturas</descripcion>
+	  <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>	 
+	  <alineamiento>LEFT</alineamiento>
+   </campos> 
+    <campos nombre="cant_asig">
+	  <descripcion>Nro. Asignaturas</descripcion>
+	  <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>	 
+	  <alineamiento>CENTER</alineamiento>
+   </campos> 
+   <campos nombre="total_ponderacion">
+	  <descripcion>Total Ponderacion</descripcion>
+	  <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>	 
+	  <alineamiento>CENTER</alineamiento>
+   </campos>	
+</parametro>
+
+<parametro formulario="f_busqueda_asignaturas" variable="busqueda">	
+  <campos nombre="nombre_asig">
+     <tipo>INPUT</tipo>
+     <permiso>LECTURAESCRITURA</permiso>
+     <caracteres>30</caracteres>
+     <maxCaracteres>30</maxCaracteres>
+	 <script>onBlur="this.value=this.value.toUpperCase();"</script>	
+    </campos>
+	<campos nombre="codigo_asig">
+     <tipo>INPUT</tipo>
+     <permiso>LECTURAESCRITURA</permiso>
+     <caracteres>30</caracteres>
+     <maxCaracteres>30</maxCaracteres>
+	 <script>onBlur="this.value=this.value.toUpperCase();"</script>	
+    </campos>
+  </parametro>
+
+<parametro  formulario="f_asignaturas_encontradas" mensajeError="No se Encontraton Asignaturas" nroRegistros="8" maxLista="10" 
+   anchoTabla="100%"  eliminar="true" variable = "asignaturas" clave="asig_ccod" seleccionarTodo="TRUE">	
+   <campos nombre="homo_ccod">
+	  <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>	 	
+   </campos>
+   <campos nombre="c_asig_ccod">
+	  <descripcion>Codigo Asignatura</descripcion>
+	  <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>	 	
+   </campos>
+   <campos nombre="asig_tdesc">
+	  <descripcion>Asignatura</descripcion>
+	  <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>	 
+	  <alineamiento>LEFT</alineamiento>
+   </campos>  
+   <campos nombre="hfue_nponderacion">
+	   <descripcion>Ponderacion</descripcion>
+	   <tipo>INPUT</tipo>
+	   <permiso>LECTURAESCRITURA</permiso>
+	   <caracteres>5</caracteres>
+       <maxCaracteres>4</maxCaracteres>
+	   <alineamiento>CENTER</alineamiento>	
+	   <id>NU-S</id> 	  
+   </campos>    
+   <campos nombre="destino">
+     <tipo>INPUT</tipo>
+	 <permiso>OCULTO</permiso>
+   </campos>
+</parametro>
+
+<parametro  formulario="f_agregar_homologacion" variable = "asignaturas">
+  <tablas nombre="homologacion" accion="M"/>
+   <tablas nombre="homologacion_fuente" accion="M"/>
+</parametro>
+
+<parametro  formulario="f_homologacion_destino" variable = "asignaturas">
+   <tablas nombre="homologacion_destino" accion="M"/>
+</parametro>
+
+<parametro  formulario="f_detalle_homologacion" mensajeError="No se Encontraton Asignaturas"  clave ="homo_ccod"
+   anchoTabla="100%"  eliminar="true" seleccionarTodo="TRUE" variable = "homologaciones" editar="FALSE" nuevaVentana="FALSE">
+    <tablas nombre="homologacion_fuente" accion="B"/> 
+   <campos nombre="asig_ccod">
+	  <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>	 
+   </campos> 
+   <campos nombre="c_homo_ccod">
+	  <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>	 	
+   </campos>
+   <campos nombre="c_asig_ccod">
+	  <descripcion>codigo Asignatura</descripcion>
+	  <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>	 
+	  <alineamiento>LEFT</alineamiento>
+   </campos>  
+   <campos nombre="asig_tdesc">
+	  <descripcion>Asignatura</descripcion>
+	  <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>	 
+	  <alineamiento>LEFT</alineamiento>
+   </campos>  
+    <campos nombre="hfue_nponderacion">
+	  <descripcion>Ponderacion</descripcion>
+	  <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>	 
+	  <alineamiento>CENTER</alineamiento>
+   </campos>	
+</parametro>
+
+
+</Parametros>

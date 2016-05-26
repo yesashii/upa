@@ -1,0 +1,6 @@
+10747678,BUSTOS ARCE MAYURY MARY,,10747678-4,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17684083,BUSTOS BUSTOS CAMILO NICOLAS,,17684083-8,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18119613,MEDINA GONZALEZ MATIAS IGNACIO,,18119613-0,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18487318,MEDINA VEAS PAULA ANDREA,,18487318-4,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18760422,CATALAN UZABEAGA GERALDINE ALEJANDRA,,18760422-2,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18778714,NUÑEZ GONZALEZ ALEX HUMBERTO,,18778714-9,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

@@ -1,0 +1,2 @@
+RUT , ID, NombreCliente , TipoMoneda , ValorCuota , ValorMora , MontoRecaudado , FechaVcto. , FechaRecaudacion 
+89568641,350472,zapata zurita gustavo alejandro,Pesos,148750,0,148750,20/09/2012,12/09/2012

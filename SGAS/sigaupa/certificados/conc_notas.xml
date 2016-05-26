@@ -1,0 +1,179 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="imprimir">
+         <tipoTexto>IMPRIMIR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <url>/reportesnet/conc_notas.aspx</url>
+         <formulario>edicion</formulario>
+         <target>_BLANK</target>
+      </botones>
+      <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>NAVEGAR</accion>
+         <url>conc_notas_excel.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="busqueda" variable="b" columnas="2" separacionColumnas="30" separacion="20" anchoTabla="100%">
+      <campos nombre="rut">
+         <descripcion>RUT</descripcion>
+         <tipo>RUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <campoRut>pers_nrut</campoRut>
+         <campoDv>pers_xdv</campoDv>
+         <id>RU-N</id>
+         <buscador>TRUE</buscador>
+         <autoDv>TRUE</autoDv>
+      </campos>
+      <campos nombre="solo_aprobadas">
+         <descripcion>Sólo Aprobadas</descripcion>
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <objeto>CHECKBOX</objeto>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+      </campos>
+      <campos nombre="peri_ccod">
+         <descripcion>Semestre</descripcion>
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>(select peri_ccod, anos_ccod || ' - ' || plec_ccod || 'º Semestre ' as desc_periodo from periodos_academicos)</destino>
+         <union>peri_ccod</union>
+         <salida>desc_periodo</salida>
+         <orden>peri_ccod desc</orden>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Todos</mensajeNulo>
+      </campos>
+   </parametro>
+   <parametro formulario="notas" anchoTabla="100%" mensajeError="No se encontraron notas.">
+      <campos nombre="asig_ccod">
+         <descripcion>Código</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="asig_tdesc">
+         <descripcion>Asignatura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nota_final">
+         <descripcion>Nota</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="sitf_ccod">
+         <descripcion>Situacion Final</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="anos_ccod">
+         <descripcion>Año</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="plec_ccod">
+         <descripcion>Semestre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="encabezado" anchoTabla="100%" columnas="2">
+      <campos nombre="rut">
+         <descripcion>RUT</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="carrera">
+         <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="duas_tdesc">
+         <descripcion>Régimen</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="ano_ingreso_plan">
+         <descripcion>Año Ingreso al Plan de Estudios</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="param_impresion" anchoTabla="100%" variable="p">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="peri_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="peri_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="solo_aprobadas">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="plan_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tdes_ccod">
+         <descripcion>Motivo de Extensión</descripcion>
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>tipos_descripciones</destino>
+         <union>tdes_ccod</union>
+         <salida>tdes_tdesc</salida>
+         <orden>tdes_tdesc asc</orden>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione motivo</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="agrupar_periodo">
+         <descripcion>Agrupar por periodo</descripcion>
+         <tipo>BOLEANO</tipo>
+         <permiso>OCULTO</permiso>
+         <objeto>CHECKBOX</objeto>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+      </campos>
+      <campos nombre="sep1">
+         <tipo>separador</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="incluir_promedio">
+         <descripcion>Incluir promedio</descripcion>
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <objeto>CHECKBOX</objeto>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <onClick>incluir_promedio_click(this);</onClick>
+      </campos>
+      <campos nombre="promedio">
+         <descripcion>Promedio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>5</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>NT-N</id>
+         <deshabilitado>TRUE</deshabilitado>
+      </campos>
+   </parametro>
+</Parametros>

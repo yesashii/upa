@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<content override_swf="">
+	<area area="left" header="" subheader="">
+		<element type="grand_video_teaser" file="media/00_00.mp4" smoothing="true" inline="true" previewimage="media/00_00.jpg" header="Bienvenid@ a tu curso video2brain Primeros pasos en la programación con Python" text="Presentación del curso y sus objetivos" />
+		<element type="last_seen_video" header="Último vídeo visto" text="Sigue donde lo dejaste." />
+	</area>
+	
+	<area area="right" header="Información práctica" subheader="Contenidos adicionales">
+		<element type="file_teaser" folder="videos" previewimage="media/tablets.jpg" header="video2brain móvil" text="Vídeos para iPhone, iPad, dispositivos móviles y tabletas" link="" />
+		<element type="link_teaser" folder="" previewimage="media/abo.jpg" header="Suscripciones video2brain" text="Aprende a tu ritmo con video2brain y accede por un año a todo nuestro catálogo de cursos" link="https://www.video2brain.com/es/suscribete-ahora" />
+</area>
+</content>

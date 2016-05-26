@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+	  
+	  <botones nombre="ver_arancel">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Arancel</texto>
+         <accion>JAVASCRIPT</accion>
+		 <funcion>irA('harancel.asp', '1', 800, 600)</funcion>	
+      </botones>
+	  <botones nombre="ver_carreras">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Carreras</texto>
+         <accion>JAVASCRIPT</accion>
+		 <funcion>irA('hcarreras.asp', '1', 800, 600)</funcion>	
+      </botones>
+	  <botones nombre="ver_general">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>H. Datos Personales</texto>
+         <accion>JAVASCRIPT</accion>
+		 <funcion>irA('hpersonal.asp', '1', 800, 600)</funcion>	
+      </botones>
+	  
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	  
+	  <botones nombre="subir">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Subir Archivo</texto>
+         <accion>NAVEGAR</accion>
+         <url>subir_excel.asp</url>
+      </botones>
+	  <botones nombre="volver_ini">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Volver</texto>
+         <accion>NAVEGAR</accion>
+         <url>index.asp</url>
+      </botones>
+	   <botones nombre="continuar">
+	   	 <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Continuar</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>limitar_archivo()</funcion>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+     <botones nombre="comparar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Comparar</texto>
+        <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+		 <funcionValidacion>verifica_desde_hasta()</funcionValidacion>
+         <url>comparador_excel_sga.asp</url>
+	</botones>
+   
+   </parametro>
+   <parametro formulario="subida" variable="a">
+       <campos nombre="descrip" >
+          <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>50</caracteres>
+         <maxCaracteres>49</maxCaracteres>
+      	 <id>TO-N</id>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="compara" variable="a">
+   		<campos nombre="ufco_tdescripcion">
+         <tipo>select</tipo>
+         <destino>ufe_comparador</destino>
+         <union>ufco_ttabla</union>
+         <salida>ufco_tdescripcion</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>TRUE</anulable>
+		  <mensajeNulo>Seleccione</mensajeNulo>
+		 <mensajeVacio>No hay Registros</mensajeVacio>
+		 <filtro>ufco_ttabla is not null</filtro>
+		 <id>TO-N</id>
+        </campos>
+   		<campos nombre="carrera">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+		 <negacion>No habilitado</negacion>
+        </campos>
+		<campos nombre="peri_solo">
+         <tipo>select</tipo>
+         <destino>(select peri_ccod,peri_tdesc from MATRICULAS_TOTALES_UFE a,periodos_academicos b where a.periodo_aca=b.peri_ccod group by peri_ccod,peri_tdesc) a order by peri_ccod</destino>
+         <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>TRUE</anulable>
+		 <script>onChange="bloquea_desde_hasta(this.value)"</script>
+		  <mensajeNulo>Todos</mensajeNulo>
+		 <mensajeVacio>No hay Registros</mensajeVacio>
+        </campos>	
+		<campos nombre="desde">
+         <tipo>select</tipo>
+         <destino>(select peri_ccod,peri_tdesc from MATRICULAS_TOTALES_UFE a,periodos_academicos b where a.periodo_aca=b.peri_ccod group by peri_ccod,peri_tdesc) a order by peri_ccod</destino>
+         <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+		  <mensajeNulo>Seleccionar</mensajeNulo>
+		 <mensajeVacio>No hay Registros</mensajeVacio>
+		  <id>TO-S</id>
+        </campos>
+		<campos nombre="hasta">
+         <tipo>select</tipo>
+         <destino>(select peri_ccod,peri_tdesc from MATRICULAS_TOTALES_UFE a,periodos_academicos b where a.periodo_aca=b.peri_ccod group by peri_ccod,peri_tdesc) a order by peri_ccod desc</destino>
+         <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+		  <mensajeNulo>Seleccionar</mensajeNulo>
+		 <mensajeVacio>No hay Registros</mensajeVacio>
+		 <id>TO-S</id>
+        </campos>	
+   </parametro>
+  
+</Parametros>

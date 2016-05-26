@@ -1,0 +1,117 @@
+<Parametros>
+  <parametro formulario="botonera">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	   <funcionValidacion>Validar();</funcionValidacion>
+	</botones>
+   <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+   <botones nombre="agregar_bloqueo"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>AGREGAR</accion>
+	  <posicionX>200</posicionX>
+	  <posicionY>200</posicionY>
+	  <ancho>420</ancho>
+	  <alto>170</alto>	 
+	 </botones>
+	 <botones nombre="guardar_nuevo_bloqueo"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>	
+	  <formulario>edicion</formulario>
+	</botones>
+	<botones nombre="cancelar"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>		
+  </parametro> 
+  
+ <parametro formulario="busqueda_bloqueos" variable="busqueda">
+ <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+ </parametro>
+ 
+ <parametro formulario="f_bloqueos" clave="bloq_ncorr"  variable="bloqueos"  nroRegistros="15" maxLista="10" 
+    anchoTabla="100%" mensajeError="No se encontraron bloqueos asociados al alumno..." eliminar="FALSE">
+  	 <campos nombre="bloq_ncorr">
+	   <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+	 </campos>
+     <campos nombre="pers_ncorr">
+	   	<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="TBLO_TDESC">
+	    <descripcion>Tipo Bloqueo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>	 
+	 <campos nombre="bloq_tobservacion">
+	    <descripcion>Observacion</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	  <campos nombre="eblo_tdesc">
+	    <descripcion>Estado Bloqueo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="BLOQ_FBLOQUEO">
+	    <descripcion>Fecha Bloqueo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 	 <campos nombre="bloq_fdesbloqueo">
+	    <descripcion>Fecha Desbloqueo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>	
+   </parametro>
+
+ <parametro formulario="f_nuevo" clave="bloq_ncorr"  variable="bloqueos">
+  <tablas nombre="bloqueos" accion="M"/>
+  	  <campos nombre="bloq_ncorr">
+	   <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+	 </campos>
+	  <campos nombre="tblo_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>tipos_bloqueos</destino> 
+	  <union>tblo_ccod</union>
+	  <salida>tblo_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Tipo Bloqueo</mensajeNulo>
+	  <id>TO-N</id>
+	</campos>	 
+	 <campos nombre="bloq_tobservacion">
+	   	<tipo>TEXTAREA</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>41</caracteres>
+		<maxCaracteres>150</maxCaracteres>
+		<id>TO-N</id>
+	 </campos> 
+   </parametro>
+
+ </Parametros>

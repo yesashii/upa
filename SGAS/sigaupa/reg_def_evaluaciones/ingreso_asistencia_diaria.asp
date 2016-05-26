@@ -1,0 +1,1196 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+
+<%
+set pagina = new CPagina
+set botonera =  new CFormulario
+botonera.carga_parametros "ingreso_asistencia_diaria.xml", "botonera"
+
+
+secc_ccod= request.QueryString("m[0][secc_tdesc]")
+asig_tdesc=request.QueryString("m[0][secc_ccod]")
+ip_usuario=Request.ServerVariables("REMOTE_ADDR")
+mes2=request.QueryString("m[0][mes_ccod]")
+
+set conectar = new cConexion
+set negocio = new cnegocio
+set formbusqueda = new cformulario
+set formsecciones = new cformulario
+set formmeses = new cformulario
+set formprofesores = new cformulario
+
+conectar.inicializar "upacifico"
+negocio.inicializa conectar
+sede = negocio.obtenerSede
+carrera= conectar.consultaUno("Select carr_tdesc from secciones a, carreras b where a.carr_ccod=b.carr_ccod and cast(a.secc_ccod as varchar)='"&secc_ccod&"'")
+set errores = new CErrores
+
+formbusqueda.carga_parametros "ingreso_asistencia_diaria.xml", "busqueda"
+formmeses.carga_parametros "ingreso_asistencia_diaria.xml", "meses"
+formsecciones.carga_parametros "ingreso_asistencia_diaria.xml", "secciones"
+formprofesores.carga_parametros "ingreso_asistencia_diaria.xml", "profesores"
+
+formbusqueda.inicializar conectar
+formmeses.inicializar conectar
+formsecciones.inicializar conectar 
+formprofesores.inicializar conectar
+
+periodo= negocio.ObtenerPeriodoAcademico("PLANIFICACION")
+		
+PerSel = conectar.consultauno("select peri_tdesc  from periodos_academicos where cast(peri_ccod as varchar)='"&periodo&"'")
+anos_ccod = conectar.consultauno("select anos_ccod  from periodos_academicos where cast(peri_ccod as varchar)='"&periodo&"'")
+sem1 = conectar.consultauno("select peri_ccod  from periodos_academicos where cast(anos_ccod as varchar)='"&anos_ccod&"' and plec_ccod=1")
+
+Sql="select pers_ncorr from personas where cast(pers_nrut as varchar)='"&negocio.obtenerUsuario&"'"
+pers_ncorr=conectar.consultaUno(Sql)
+
+sedeprofesor=   ""& vbCrLf &_
+		"select distinct cast(a.pers_ncorr as varchar) + ' '         "& vbCrLf &_
+		"                + cast(a.sede_ccod as varchar) + ' '        "& vbCrLf &_
+		"                + e.sede_tdesc as profesor_sede,            "& vbCrLf &_
+		"                e.sede_tdesc   as sede,                     "& vbCrLf &_
+		"                d.peri_ccod                                 "& vbCrLf &_
+		"from   profesores a,                                        "& vbCrLf &_
+		"       bloques_profesores b,                                "& vbCrLf &_
+		"       bloques_horarios c,                                  "& vbCrLf &_
+		"       secciones d,                                         "& vbCrLf &_
+		"       sedes e                                              "& vbCrLf &_
+		"where  a.pers_ncorr = b.pers_ncorr                          "& vbCrLf &_
+		"       and a.sede_ccod = b.sede_ccod                        "& vbCrLf &_
+		"       and b.bloq_ccod = c.bloq_ccod                        "& vbCrLf &_
+		"       and c.secc_ccod = d.secc_ccod                        "& vbCrLf &_
+		"       and a.sede_ccod = e.sede_ccod                        "& vbCrLf &_
+		"       and cast(d.peri_ccod as varchar) = '"&periodo&"'     "& vbCrLf &_
+		"       and cast(b.pers_ncorr as varchar) = '"&pers_ncorr&"' "
+'---------------------------------------DEBUG>>
+'response.Write("<pre>"&sedeprofesor&"</pres>")		
+'---------------------------------------DEBUG<<
+
+mesesprofesor=  ""& vbCrLf &_
+		"select distinct a.mes_ccod,                                      "& vbCrLf &_
+		"                a.mes_tdesc                                      "& vbCrLf &_
+		"from   meses a,                                                  "& vbCrLf &_
+		"       bloques_horarios b,                                       "& vbCrLf &_
+		"       bloques_profesores c,                                     "& vbCrLf &_
+		"       secciones d                                               "& vbCrLf &_
+		"where  a.mes_ccod >= Datepart(month, b.bloq_finicio_modulo)      "& vbCrLf &_
+		"       and a.mes_ccod <= Datepart(month, b.bloq_ftermino_modulo) "& vbCrLf &_
+		"       and b.bloq_ccod = c.bloq_ccod                             "& vbCrLf &_
+		"       and c.tpro_ccod = 1                                       "& vbCrLf &_
+		"       and Cast(c.pers_ncorr as varchar) = '"&pers_ncorr&"'      "& vbCrLf &_
+		"       and b.secc_ccod = d.secc_ccod                             "& vbCrLf &_
+		"       and Cast(d.peri_ccod as varchar) = '"&periodo&"'          "
+				
+'response.Write(mesesprofesor)				
+consprofesor = "select '"&request.QueryString("m[0][sede_ccod]")&"' as sede_ccod"
+consmes = "select '"&request.QueryString("m[0][mes_ccod]")&"' as mes_ccod"
+
+formprofesores.consultar consprofesor
+formprofesores.agregacampoparam "sede_ccod","destino","("& sedeprofesor &") aa" 
+formprofesores.siguiente
+
+
+formmeses.consultar consmes
+formmeses.agregacampoparam "mes_ccod","destino","("& mesesprofesor &") aa" 
+formmeses.siguiente
+
+
+set f_avance_meses = new CFormulario
+f_avance_meses.Carga_Parametros "tabla_vacia.xml", "tabla"
+f_avance_meses.Inicializar conectar
+c_avance_meses =    ""& vbCrLf &_
+		"select distinct a.mes_ccod,                                           "& vbCrLf &_
+		"                a.mes_tdesc,                                          "& vbCrLf &_
+		"                (select case Count(*)                                 "& vbCrLf &_
+		"                          when 0 then 'NO'                            "& vbCrLf &_
+		"                          else 'SI'                                   "& vbCrLf &_
+		"                        end                                           "& vbCrLf &_
+		"                 from   ada_asistencias_diarias_alumnos tt            "& vbCrLf &_
+		"                 where  tt.secc_ccod = d.secc_ccod                    "& vbCrLf &_
+		"                        and Datepart(month, fecha_clase) = a.mes_ccod "& vbCrLf &_
+		"                        and isnull(asiste, 0) = 1) as registrado      "& vbCrLf &_
+		"from   meses a,                                                       "& vbCrLf &_
+		"       bloques_horarios b,                                            "& vbCrLf &_
+		"       bloques_profesores c,                                          "& vbCrLf &_
+		"       secciones d                                                    "& vbCrLf &_
+		"where  a.mes_ccod >= Datepart(month, b.bloq_finicio_modulo)           "& vbCrLf &_
+		"       and a.mes_ccod <= Datepart(month, b.bloq_ftermino_modulo)      "& vbCrLf &_
+		"       and b.bloq_ccod = c.bloq_ccod                                  "& vbCrLf &_
+		"       and c.tpro_ccod = 1                                            "& vbCrLf &_
+		"       and b.secc_ccod = d.secc_ccod                                  "& vbCrLf &_
+		"       and Cast(c.pers_ncorr as varchar) = '"&pers_ncorr&"'           "& vbCrLf &_
+		"       and Cast(d.peri_ccod as varchar) = '"&periodo&"'               "& vbCrLf &_
+		"       and Cast(d.secc_ccod as varchar) = '"&secc_ccod&"'             "& vbCrLf &_
+		"order  by a.mes_ccod asc                                              "
+
+f_avance_meses.Consultar c_avance_meses
+nro_meses = f_avance_meses.nroFilas
+
+if nro_meses > 0 then
+	ancho_celda = cint(100 / cint(nro_meses))
+else
+	ancho_celda = 100
+end if
+consulta="select '"&request.QueryString("m[0][secc_ccod]")&"' as secc_ccod"
+formbusqueda.consultar consulta
+formbusqueda.agregacampocons	"secc_ccod", asig_tdesc
+formbusqueda.siguiente
+
+consulta2="select '"&request.QueryString("m[0][secc_tdesc]")&"' as secc_tdesc"
+formsecciones.consultar consulta2
+formsecciones.siguiente
+
+asignaturas=""& vbCrLf &_
+		"select distinct a.sede_ccod,                                "& vbCrLf &_
+		"                e.asig_ccod,                                "& vbCrLf &_
+		"                e.asig_tdesc,                               "& vbCrLf &_
+		"                a.pers_ncorr                                "& vbCrLf &_
+		"from   profesores a,                                        "& vbCrLf &_
+		"       bloques_profesores b,                                "& vbCrLf &_
+		"       bloques_horarios c,                                  "& vbCrLf &_
+		"       secciones d,                                         "& vbCrLf &_
+		"       asignaturas e                                        "& vbCrLf &_
+		"where  a.pers_ncorr = b.pers_ncorr                          "& vbCrLf &_
+		"       and a.sede_ccod = b.sede_ccod                        "& vbCrLf &_
+		"       and b.bloq_ccod = c.bloq_ccod                        "& vbCrLf &_
+		"       and c.secc_ccod = d.secc_ccod                        "& vbCrLf &_
+		"       and d.asig_ccod = e.asig_ccod                        "& vbCrLf &_
+		"       and cast(d.peri_ccod as varchar) = '"&periodo&"'     "& vbCrLf &_
+		"       and cast(a.pers_ncorr as varchar) = '"&pers_ncorr&"' "
+			
+
+
+conectar.Ejecuta asignaturas
+
+set rec_asignaturas = conectar.ObtenerRS
+
+Secciones =""& vbCrLf &_
+		"select distinct a.pers_ncorr,                                                "& vbCrLf &_
+		"                d.sede_ccod,                                                 "& vbCrLf &_
+		"                d.secc_ccod,                                                 "& vbCrLf &_
+		"                d.secc_tdesc,                                                "& vbCrLf &_
+		"                e.asig_ccod,                                                 "& vbCrLf &_
+		"                e.asig_tdesc,                                                "& vbCrLf &_
+		"                d.secc_tdesc + ' - '                                         "& vbCrLf &_
+		"                + isnull(f.carr_tsigla, '-') + ' ' + case d.jorn_ccod when 1 "& vbCrLf &_
+		"                then '(D)' when 2                                            "& vbCrLf &_
+		"                then '(V)' else '' end as descripcion                        "& vbCrLf &_
+		"from   profesores a,                                                         "& vbCrLf &_
+		"       bloques_profesores b,                                                 "& vbCrLf &_
+		"       bloques_horarios c,                                                   "& vbCrLf &_
+		"       secciones d,                                                          "& vbCrLf &_
+		"       asignaturas e,                                                        "& vbCrLf &_
+		"       carreras f                                                            "& vbCrLf &_
+		"where  a.pers_ncorr = b.pers_ncorr                                           "& vbCrLf &_
+		"       and a.sede_ccod = b.sede_ccod                                         "& vbCrLf &_
+		"       and b.bloq_ccod = c.bloq_ccod                                         "& vbCrLf &_
+		"       and c.secc_ccod = d.secc_ccod                                         "& vbCrLf &_
+		"       and d.asig_ccod = e.asig_ccod                                         "& vbCrLf &_
+		"       and d.carr_ccod = f.carr_ccod                                         "& vbCrLf &_
+		"       and cast(d.peri_ccod as varchar) = '"&periodo&"'                      "& vbCrLf &_
+		"       and cast(a.pers_ncorr as varchar) = '"&pers_ncorr&"'                  "
+
+
+
+conectar.Ejecuta Secciones
+set rec_secciones = conectar.ObtenerRS
+
+
+set f_asignatura = new CFormulario
+f_asignatura.Carga_Parametros "agregar_evaluacion.xml", "f_datos_asignaturas"
+f_asignatura.Inicializar conectar
+dotos_asignatura=   " "& vbCrLf &_
+		"select a.asig_ccod,                                                      "& vbCrLf &_
+		"       a.secc_tdesc + ' - '                                              "& vbCrLf &_
+		"       + isnull(e.carr_tsigla, '-') + ' ' + case a.jorn_ccod when 1 then "& vbCrLf &_
+		"       '(DIURNA)'                                                        "& vbCrLf &_
+		"       when 2 then '(VESPERTINA)' else '' end as secc_tdesc,             "& vbCrLf &_
+		"       d.tasg_tdesc,                                                     "& vbCrLf &_
+		"       b.asig_tdesc,                                                     "& vbCrLf &_
+		"       b.asig_nhoras,                                                    "& vbCrLf &_
+		"       c.sede_tdesc                                                      "& vbCrLf &_
+		"from   secciones a,                                                      "& vbCrLf &_
+		"       asignaturas b,                                                    "& vbCrLf &_
+		"       sedes c,                                                          "& vbCrLf &_
+		"       tipos_asignatura d,                                               "& vbCrLf &_
+		"       carreras e                                                        "& vbCrLf &_
+		"where  a.asig_ccod = b.asig_ccod                                         "& vbCrLf &_
+		"       and a.sede_ccod = c.sede_ccod                                     "& vbCrLf &_
+		"       and a.carr_ccod = e.carr_ccod                                     "& vbCrLf &_
+		"       and isnull(a.tasg_ccod, b.tasg_ccod) = d.tasg_ccod                "& vbCrLf &_
+		"       and cast(a.secc_ccod as varchar) = '"&secc_ccod&"'                "& vbCrLf &_
+		"       and cast(a.peri_ccod as varchar) = '"&periodo&"'                  "
+		
+f_asignatura.Consultar dotos_asignatura
+f_asignatura.Siguiente
+
+nombre=conectar.consultauno("select pers_tnombre +' '+ pers_tape_paterno +' '+ pers_tape_materno from personas where cast(pers_ncorr as varchar)='"&pers_ncorr&"'")
+
+
+set f_cal = new CFormulario
+f_cal.Carga_Parametros "tabla_vacia.xml", "tabla"
+f_cal.Inicializar conectar
+
+c_cal = ""& vbCrLf &_
+"select distinct f.cale_fcalendario,                                                                         "& vbCrLf &_
+"                protic.trunc(f.cale_fcalendario)                                            as fecha,       "& vbCrLf &_
+"                protic.trunc(f.cale_fcalendario)                                            as fecha2,      "& vbCrLf &_
+"                h.dias_tdesc                                                                as dia,         "& vbCrLf &_
+"                b.bloq_ccod,                                                                                "& vbCrLf &_
+"                b.hora_ccod,                                                                                "& vbCrLf &_
+"                case isnull(b.bloq_ayudantia, 0)                                                            "& vbCrLf &_
+"                  when 0 then 'C'                                                                           "& vbCrLf &_
+"                  when 1 then 'A'                                                                           "& vbCrLf &_
+"                  when 2 then 'L'                                                                           "& vbCrLf &_
+"                  when 3 then 'T'                                                                           "& vbCrLf &_
+"                  when 4 then 'E'                                                                           "& vbCrLf &_
+"                end                                                                         as tipo_bloque, "& vbCrLf &_
+"                (select Count(*)                                                                            "& vbCrLf &_
+"                 from   libros_clases tt,                                                                   "& vbCrLf &_
+"                        prestamos_libros t2                                                                 "& vbCrLf &_
+"                 where  tt.pers_ncorr = c.pers_ncorr                                                        "& vbCrLf &_
+"                        and tt.secc_ccod = a.secc_ccod                                                      "& vbCrLf &_
+"                        and tt.libr_ncorr = t2.libr_ncorr                                                   "& vbCrLf &_
+"                        and t2.bloq_ccod = c.bloq_ccod                                                      "& vbCrLf &_
+"                        and pres_estado_prestamo = 6                                                        "& vbCrLf &_
+"                        and protic.trunc(f.cale_fcalendario) = protic.trunc(pres_fprestamo))as inasistencia "& vbCrLf &_
+"from   secciones a,                                                                                         "& vbCrLf &_
+"       bloques_horarios b,                                                                                  "& vbCrLf &_
+"       bloques_profesores c,                                                                                "& vbCrLf &_
+"       carreras d,                                                                                          "& vbCrLf &_
+"       asignaturas e,                                                                                       "& vbCrLf &_
+"       calendario f,                                                                                        "& vbCrLf &_
+"       dias_semana h,                                                                                       "& vbCrLf &_
+"       horarios i                                                                                           "& vbCrLf &_
+"where  a.secc_ccod = b.secc_ccod                                                                            "& vbCrLf &_
+"       and b.bloq_ccod = c.bloq_ccod                                                                        "& vbCrLf &_
+"       and b.dias_ccod = h.dias_ccod                                                                        "& vbCrLf &_
+"       and b.hora_ccod = i.hora_ccod                                                                        "& vbCrLf &_
+"       and a.carr_ccod = d.carr_ccod                                                                        "& vbCrLf &_
+"       and a.asig_ccod = e.asig_ccod                                                                        "& vbCrLf &_
+"       and convert(datetime, f.cale_fcalendario, 103) between convert(datetime, b.bloq_finicio_modulo, 103) "& vbCrLf &_
+"		and case                                                                                             "& vbCrLf &_
+"         when convert(datetime, b.bloq_ftermino_modulo, 103) <                                              "& vbCrLf &_
+"              convert(datetime, Getdate(), 103) then                                                        "& vbCrLf &_
+"         convert(datetime, b.bloq_ftermino_modulo, 103)                                                     "& vbCrLf &_
+"         else convert(datetime, Getdate(), 103)                                                             "& vbCrLf &_
+"       end                                                                                                  "& vbCrLf &_
+"       and Datepart(weekday, f.cale_fcalendario) = b.dias_ccod                                              "& vbCrLf &_
+"       and Cast(a.peri_ccod as varchar) = case e.duas_ccod                                                  "& vbCrLf &_
+"                                            when 3 then '"&sem1&"'                                          "& vbCrLf &_
+"                                            else '"&periodo&"'                                              "& vbCrLf &_
+"                                          end                                                               "& vbCrLf &_
+"       and Cast(c.pers_ncorr as varchar) = '"&pers_ncorr&"'                                                 "& vbCrLf &_
+"       and Datepart(year, f.cale_fcalendario) = '"&anos_ccod&"'                                             "& vbCrLf &_
+"       and Cast(a.secc_ccod as varchar) = '"&secc_ccod&"'                                                   "& vbCrLf &_
+"       and Cast(Datepart(month, f.cale_fcalendario) as varchar) = '"&mes2&"'                                "& vbCrLf &_
+"union                                                                                                       "& vbCrLf &_
+"select distinct f.cale_fcalendario,                                                                         "& vbCrLf &_
+"                protic.trunc(f.cale_fcalendario)    as fecha,                                               "& vbCrLf &_
+"                protic.trunc(t3.fecha_recuperacion) as fecha2,                                              "& vbCrLf &_
+"                h.dias_tdesc                        as dia,                                                 "& vbCrLf &_
+"                b.bloq_ccod,                                                                                "& vbCrLf &_
+"                b.hora_ccod,                                                                                "& vbCrLf &_
+"                'R'                                 as tipo_bloque,                                         "& vbCrLf &_
+"                0                                   as inasistencia                                         "& vbCrLf &_
+"from   secciones a,                                                                                         "& vbCrLf &_
+"       bloques_horarios b,                                                                                  "& vbCrLf &_
+"       bloques_profesores c,                                                                                "& vbCrLf &_
+"       carreras d,                                                                                          "& vbCrLf &_
+"       asignaturas e,                                                                                       "& vbCrLf &_
+"       calendario f,                                                                                        "& vbCrLf &_
+"       dias_semana h,                                                                                       "& vbCrLf &_
+"       horarios i,                                                                                          "& vbCrLf &_
+"       libros_clases tt,                                                                                    "& vbCrLf &_
+"       prestamos_libros t2,                                                                                 "& vbCrLf &_
+"       registro_recuperativas t3                                                                            "& vbCrLf &_
+"where  a.secc_ccod = b.secc_ccod                                                                            "& vbCrLf &_
+"       and b.bloq_ccod = c.bloq_ccod                                                                        "& vbCrLf &_
+"       and b.dias_ccod = h.dias_ccod                                                                        "& vbCrLf &_
+"       and b.hora_ccod = i.hora_ccod                                                                        "& vbCrLf &_
+"       and a.carr_ccod = d.carr_ccod                                                                        "& vbCrLf &_
+"       and a.asig_ccod = e.asig_ccod                                                                        "& vbCrLf &_
+"       and tt.pers_ncorr = c.pers_ncorr                                                                     "& vbCrLf &_
+"       and tt.secc_ccod = a.secc_ccod                                                                       "& vbCrLf &_
+"       and tt.libr_ncorr = t2.libr_ncorr                                                                    "& vbCrLf &_
+"       and t2.bloq_ccod = c.bloq_ccod                                                                       "& vbCrLf &_
+"       and t2.pres_estado_prestamo = 6                                                                      "& vbCrLf &_
+"       and protic.trunc(f.cale_fcalendario) = protic.trunc(t2.pres_fprestamo)                               "& vbCrLf &_
+"       and t2.pres_ncorr = t3.pres_ncorr                                                                    "& vbCrLf &_
+"       and convert(datetime, f.cale_fcalendario, 103) between convert(datetime, b.bloq_finicio_modulo, 103) "& vbCrLf &_
+"		and case                                                                                             "& vbCrLf &_
+"          when convert(datetime, b.bloq_ftermino_modulo, 103) <                                             "& vbCrLf &_
+"               convert(datetime, Getdate(), 103) then                                                       "& vbCrLf &_
+"          convert(datetime, b.bloq_ftermino_modulo, 103)                                                    "& vbCrLf &_
+"          else convert(datetime, Getdate(), 103)                                                            "& vbCrLf &_
+"        end                                                                                                 "& vbCrLf &_
+"       and Datepart(weekday, f.cale_fcalendario) = b.dias_ccod                                              "& vbCrLf &_
+"       and Cast(a.peri_ccod as varchar) = case e.duas_ccod                                                  "& vbCrLf &_
+"                                            when 3 then '"&sem1&"'                                          "& vbCrLf &_
+"                                            else '"&periodo&"'                                              "& vbCrLf &_
+"                                          end                                                               "& vbCrLf &_
+"       and Cast(c.pers_ncorr as varchar) = '"&pers_ncorr&"'                                                 "& vbCrLf &_
+"       and Datepart(year, f.cale_fcalendario) = '"&anos_ccod&"'                                             "& vbCrLf &_
+"       and Cast(a.secc_ccod as varchar) = '"&secc_ccod&"'                                                   "& vbCrLf &_
+"       and Cast(Datepart(month, f.cale_fcalendario) as varchar) = '"&mes2&"'                                "& vbCrLf &_
+"order  by fecha                                                                                             "
+'response.Write("<pre>"&c_cal&"</pre>")
+f_cal.Consultar c_cal
+nro_cal = f_cal.nroFilas
+
+ 
+'response.Write(total_ponderado)
+set f_alumnos = new CFormulario
+f_alumnos.Carga_Parametros "tabla_vacia.xml", "tabla"
+f_alumnos.Inicializar conectar
+
+c_alumnos = ""& vbCrLf &_
+"select a.matr_ncorr, 																									"& vbCrLf &_
+"       Cast(c.pers_nrut as varchar) + '-' + c.pers_xdv														as rut,     "& vbCrLf &_
+"       protic.initcap(pers_tape_paterno + ' ' + pers_tape_materno + ', ' + pers_tnombre)  					as nombre,  "& vbCrLf &_
+"       (select top 1 Lower(email_nuevo) from   cuentas_email_upa ttt where  ttt.pers_ncorr = c.pers_ncorr)	as email    "& vbCrLf &_
+"from   cargas_academicas a,                                                                                            "& vbCrLf &_
+"       alumnos b,                                                                                                      "& vbCrLf &_
+"       personas c                                                                                                      "& vbCrLf &_
+"where  a.matr_ncorr = b.matr_ncorr                                                                                     "& vbCrLf &_
+"       and b.pers_ncorr = c.pers_ncorr                                                                                 "& vbCrLf &_
+"       and b.emat_ccod <> 9                                                                                            "& vbCrLf &_
+"       and Cast(a.secc_ccod as varchar) = '"&secc_ccod&"'                                                              "& vbCrLf &_
+"order  by nombre                                                                                                       "
+
+f_alumnos.Consultar c_alumnos
+nro_alumnos = f_alumnos.nroFilas
+'asignatura cerrada-----------------
+asig_cerrada = conectar.consultaUno("select isnull(estado_cierre_ccod,1) from secciones where cast(secc_ccod as varchar)='"&secc_ccod&"'")
+
+if secc_ccod <> "" then
+	jorn_ccod = conectar.consultaUno("select jorn_ccod from secciones where cast(secc_ccod as varchar)='"&secc_ccod&"'")
+    es_anual  = conectar.consultaUno("select count(*) from secciones a, asignaturas b where cast(secc_ccod as varchar)='"&secc_ccod&"' and a.asig_ccod=b.asig_ccod and b.duas_ccod = 3")
+end if
+'response.Write(sys_cierra_notas)
+
+tipo_asignatura = conectar.consultaUno("select b.tasg_ccod from secciones a, asignaturas b where a.asig_ccod=b.asig_ccod and cast(secc_ccod as varchar)='"&secc_ccod&"'")
+
+anos_ccod = conectar.consultaUno("select anos_ccod from periodos_academicos where cast(peri_ccod as varchar)='"&periodo&"'")
+'response.Write(anos_ccod)
+bloqueado_cambio = false
+if anos_ccod < "2007" then
+	 bloqueado_cambio = true
+else
+	sys_cierra_notas = false	 
+end if
+
+if ip_usuario="172.16.100.82" OR ip_usuario="172.16.16.163" OR ip_usuario="10.10.2.17" OR ip_usuario="10.10.2.184" OR ip_usuario="172.16.16.165" OR ip_usuario="172.16.100.83"then
+	autorizar = true
+end if
+
+'response.Write("autorizar"&autorizar)
+carr_seccion = conectar.consultaUno("select ltrim(rtrim(carr_ccod)) from secciones where cast(secc_ccod as varchar)='"&secc_ccod&"'")
+bloquear_todo = "N"
+if anos_ccod < "2010" then
+	if jorn_ccod="1" and autorizar=false  and es_anual="0"  then
+			bloquear_todo= conectar.consultaUno("select case when convert(datetime,getDate(),103) >= convert(datetime,'01/01/2009',103) then 'S' else 'N' end ")
+	elseif jorn_ccod="2" and autorizar=false  and es_anual="0"  then
+			bloquear_todo= conectar.consultaUno("select case when convert(datetime,getDate(),103) >= convert(datetime,'01/01/2009',103) then 'S' else 'N' end ")
+	end if
+	
+	if carr_seccion="7" and (anos_ccod="2008" or anos_ccod="2007" or anos_ccod="2009") then
+			bloquear_todo = "N"
+			autorizar = true
+	end if
+end if
+ 
+if anos_ccod = "2013" then  
+	if secc_ccod <> "" and periodo <> ""  then
+		duracion_asignatura = conectar.consultaUno("select b.duas_ccod from secciones a, asignaturas b where a.asig_ccod=b.asig_ccod and cast(secc_ccod as varchar)='"&secc_ccod&"'")
+		plec_ccod = conectar.consultaUno("select plec_ccod from periodos_academicos where cast(peri_ccod as varchar)='"&periodo&"'")
+        sede_ccod = conectar.consultaUno("select sede_ccod from secciones where cast(secc_ccod as varchar)='"&secc_ccod&"'") 
+		
+		if plec_ccod="1" then
+			bloquear_todo = "N"
+		end if
+		
+		if sede_ccod <> "4" then 
+			fecha_cierre= conectar.consultaUno("select case when convert(datetime,protic.trunc(getDate()),103) > convert(datetime,'22/07/2013',103) then 'S' else 'N' end ")
+		else
+			fecha_cierre= conectar.consultaUno("select case when convert(datetime,protic.trunc(getDate()),103) > convert(datetime,'22/07/2013',103) then 'S' else 'N' end ")
+		end if
+		
+		if fecha_cierre="S" then
+			bloquear_todo = "S"
+		else
+			bloquear_todo = "N"
+		end if
+		
+		if carr_seccion="7" or carr_seccion="500" or carr_seccion="400" or carr_seccion="600" then
+			bloquear_todo = "N"
+			'autorizar = true
+		end if
+		
+		if carr_seccion="900" then
+			bloquear_todo = "N"
+		end if
+		
+		'if plec_ccod="2" then
+		'	bloquear_todo = "N"
+		'end if
+		
+	end if
+end if	
+
+
+sede_tdesc_temp = conectar.consultaUno("select sede_tdesc from secciones a, sedes b where cast(a.secc_ccod as varchar)='"&secc_ccod&"' and a.sede_ccod=b.sede_ccod")
+carr_tdesc_temp = conectar.consultaUno("select carr_tdesc from secciones a, carreras b where cast(a.secc_ccod as varchar)='"&secc_ccod&"' and a.carr_ccod=b.carr_ccod")
+asig_ccod_temp  = conectar.consultaUno("select ltrim(rtrim(asig_ccod)) from secciones a where cast(a.secc_ccod as varchar)='"&secc_ccod&"'")	
+asig_tdesc_temp = conectar.consultaUno("select asig_tdesc from secciones a, asignaturas b where cast(a.secc_ccod as varchar)='"&secc_ccod&"' and a.asig_ccod=b.asig_ccod")
+secc_tdesc_temp = conectar.consultaUno("select secc_tdesc from secciones a where cast(a.secc_ccod as varchar)='"&secc_ccod&"'")
+profe_temp      = conectar.consultaUno("select pers_tnombre + ' ' + pers_tape_paterno + ' ' + pers_tape_materno from personas where cast(pers_ncorr as varchar)='"&pers_ncorr&"'")
+
+%>
+
+<html>
+<head>
+<title>Ingreso asistencia diaria</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../estilos/estilos.css" rel="stylesheet" type="text/css">
+<link href="../estilos/tabla.css" rel="stylesheet" type="text/css">
+
+<script language="JavaScript" src="../biblioteca/tabla.js"></script>
+<script language="JavaScript" src="../biblioteca/funciones.js"></script>
+<script language="JavaScript" src="../biblioteca/validadores.js"></script>
+
+<script language="JavaScript">
+arreglo_calificaciones = new Array();
+rec_asignaturas = new Array();
+
+<%
+if (rec_asignaturas.BOF <> rec_asignaturas.EOF) then
+
+rec_asignaturas.MoveFirst
+i = 0
+while not rec_asignaturas.Eof
+%>
+rec_asignaturas[<%=i%>] = new Array();
+rec_asignaturas[<%=i%>]["pers_ncorr"] = '<%=rec_asignaturas("pers_ncorr")%>';
+rec_asignaturas[<%=i%>]["asig_ccod"] = '<%=rec_asignaturas("asig_ccod")%>';
+rec_asignaturas[<%=i%>]["asig_tdesc"] = '<%=rec_asignaturas("asig_tdesc")%>';
+rec_asignaturas[<%=i%>]["sede_ccod"] = '<%=rec_asignaturas("sede_ccod")%>';
+
+<%	
+	rec_asignaturas.MoveNext
+	i = i + 1
+wend
+end if
+%>
+
+
+rec_secciones = new Array();
+<%
+
+if (rec_secciones.BOF <> rec_secciones.EOF) then
+rec_secciones.MoveFirst
+j = 0
+while not rec_secciones.Eof
+%>
+rec_secciones[<%=j%>] = new Array();
+rec_secciones[<%=j%>]["pers_ncorr"] = '<%=rec_secciones("pers_ncorr")%>';
+rec_secciones[<%=j%>]["asig_ccod"] = '<%=rec_secciones("asig_ccod")%>';
+rec_secciones[<%=j%>]["asig_tdesc"] = '<%=rec_secciones("asig_tdesc")%>';
+rec_secciones[<%=j%>]["sede_ccod"] = '<%=rec_secciones("sede_ccod")%>';
+rec_secciones[<%=j%>]["secc_tdesc"] = '<%=rec_secciones("secc_tdesc")%>';
+rec_secciones[<%=j%>]["secc_ccod"] = '<%=rec_secciones("secc_ccod")%>';
+rec_secciones[<%=j%>]["descripcion"] = '<%=rec_secciones("descripcion")%>';
+<%	
+	rec_secciones.MoveNext
+	j = j + 1
+wend
+end if
+%>
+
+function CargarAsignaturas(formulario, profesor_sede)
+{
+ var cadena, pers_ncorr, sede_ccod
+ cadena=profesor_sede.split(" ");
+ pers_ncorr=cadena[0];
+ sede_ccod=cadena[1];
+
+	formulario.elements["m[0][secc_ccod]"].length = 0;
+	
+	op = document.createElement("OPTION");
+	op.value = "-1";
+	op.text = "-- Seleccione Una Asignaturas --";
+	formulario.elements["m[0][secc_ccod]"].add(op)
+	
+	for (i = 0; i < rec_asignaturas.length; i++) {
+		if ((rec_asignaturas[i]["pers_ncorr"] == pers_ncorr) && (rec_asignaturas[i]["sede_ccod"] == sede_ccod)) {
+			op = document.createElement("OPTION");
+			op.value = rec_asignaturas[i]["asig_ccod"];
+			op.text = rec_asignaturas[i]["asig_ccod"]+"-"+rec_asignaturas[i]["asig_tdesc"];
+			formulario.elements["m[0][secc_ccod]"].add(op)
+			
+		}
+	}	
+}
+
+var t_evaluaciones;
+
+function InicioPagina(formulario)
+{
+	t_evaluaciones = new CTabla("em");
+/*formulario = document.busqueda;*/
+a="<%=asig_tdesc%>"
+if (a !="")
+{
+CargarAsignaturas(formulario, formulario.elements["m[0][sede_ccod]"].value)
+formulario.elements["m[0][secc_ccod]"].value = "<%=asig_tdesc%>";
+
+CargarSecciones(formulario,formulario.elements["m[0][secc_ccod]"].value)
+formulario.elements["m[0][secc_tdesc]"].value = "<%=secc_ccod%>";
+sec=formulario.elements["m[0][secc_tdesc]"].value;
+}
+	
+}
+
+function CargarSecciones(formulario,asig_ccod){
+var cadena,cadena2, pers_ncorr, sede_ccod
+ cadena= formulario.elements["m[0][sede_ccod]"].value.split(" ");
+ cadena2=asig_ccod.split(" ");
+ pers_ncorr=cadena[0];
+ sede_ccod=cadena[1];
+asig=cadena2[0];
+asig_ccod=formulario.elements["m[0][secc_ccod]"].value
+
+	formulario.elements["m[0][secc_tdesc]"].length = 0;
+	
+	op2 = document.createElement("OPTION");
+	op2.value = "-1";
+	op2.text = "-- Secciones --";
+	formulario.elements["m[0][secc_tdesc]"].add(op2)
+	
+	
+	for (i = 0; i < rec_secciones.length; i++) {
+		if ((rec_secciones[i]["pers_ncorr"] == pers_ncorr) && (rec_secciones[i]["sede_ccod"] == sede_ccod) && (rec_secciones[i]["asig_ccod"]== asig_ccod)) {
+			op2 = document.createElement("OPTION");
+			op2.value = rec_secciones[i]["secc_ccod"];
+			op2.text = rec_secciones[i]["descripcion"];
+			formulario.elements["m[0][secc_tdesc]"].add(op2)
+			
+		}
+	}
+}
+
+function ValidarBusqueda(formulario){
+	if (formulario.elements["m[0][sede_ccod]"].value == "") {
+		alert('Seleccione una Sede.');
+		formulario.elements["m[0][sede_ccod]"].focus();
+		return false ;
+	}
+	if (formulario.elements["m[0][secc_ccod]"].value == "-1") {
+		alert('Seleccione una Asignatura.');
+		formulario.elements["m[0][secc_ccod]"].focus();
+		return false;
+	}
+	
+	if (formulario.elements["m[0][secc_tdesc]"].value == "-1") {
+		alert('Seleccione una Sección.');
+		formulario.elements["m[0][secc_tdesc]"].focus();
+		return false ;
+	}
+	return true;
+ }
+
+function enviar(formulario)
+{
+	/*var pers_ncorr,sede_ccod,asig_ccod,secc_ccod,cadena*/
+  	if(ValidarBusqueda(formulario))
+	{
+	  document.getElementById("texto_alerta").style.visibility="visible";
+	  formulario.action = 'ingreso_asistencia_diaria.asp'
+   	  formulario.submit();
+	}
+ }
+
+function cambiarperiodo(formulario){
+	  
+	   formulario.action = 'matar_sesion.asp'
+   	   formulario.submit();
+}
+
+function ProcEliminar(formulario)
+{
+	//alert('ok');
+	
+	formulario.method="post";
+	formulario.target="_self";
+	formulario.action = 'eliminar_eval.asp';
+	formulario.submit();
+	
+}
+
+
+function eliminar(formulario)
+{
+	var nseleccionados = t_evaluaciones.CuentaSeleccionados("cali_ncorr");
+	var str_alerta = "";
+	var bnotas = false;
+	var str_mensaje;
+	
+	if (nseleccionados > 0) {
+		//if (nseleccionados == 1) {			
+			
+			for (var i = 0; i < t_evaluaciones.filas.length; i++) {
+				
+				if ( (t_evaluaciones.filas[i].campos["cali_ncorr"].objeto.checked) && (parseInt(t_evaluaciones.ObtenerValor(i, "nnotas")) > 0) ) {
+					str_alerta = str_alerta + "Evaluación Nº " + t_evaluaciones.ObtenerValor(i, "c_cali_nevaluacion") + " : " + t_evaluaciones.ObtenerValor(i, "nnotas") + " alumnos con nota.\n";
+					bnotas = true;						
+				}				
+			}
+			
+			if (bnotas)
+				str_mensaje = "Las siguientes evaluaciones tienen notas puestas. Si las elimina, también eliminará las notas asociadas a ellas.\n\n" + str_alerta + "\n¿Desea continuar?";
+			else 
+				str_mensaje = "¿Está seguro que desea eliminar las evaluaciones seleccionadas?";
+			
+			if (confirm(str_mensaje))
+				ProcEliminar(formulario);
+			
+		/*}
+		else {
+			alert('No puede seleccionar más de una evaluación para eliminar.');
+		}*/
+	}
+	else {
+		alert('No ha seleccionado una evaluación para eliminar.');
+	}	
+
+}
+
+function eliminar_(formulario){
+	if (vcheck_eliminar(formulario)==1){
+		formulario.method="post";
+		formulario.target="_self"
+		formulario.action = 'eliminar_eval.asp'
+		formulario.submit();
+	}
+	else {
+		if (vcheck_eliminar(formulario)==0){
+			alert('No ha seleccionado una evaluación para eliminar');
+		}
+		else {
+			alert('No puede seleccionar más de una evaluación para eliminar');
+		}
+	}
+}
+
+function vcheck_eliminar(formulario) {
+	num=formulario.elements.length;
+	c=0;
+	for (i=0;i<num;i++){
+		//alert(formulario.elements[i].name);
+		nombre = formulario.elements[i].name;
+		var elem = new RegExp ("cali_ncorr","gi");
+		if (elem.test(nombre)){
+			if((formulario.elements[i].checked==true)){
+				c=c+1;
+			}
+		}
+	}
+	if (c==1){
+		valor=1;
+	}
+	else {
+		if (c==0){
+			valor=0;
+		}
+		else{
+			valor=2;
+		}
+	}
+return(valor);	
+}
+
+function agregar(formulario){
+//if(ValidarBusqueda(formulario)){
+	 direccion="agregar_evaluacion.asp?secc_ccod="+"<%=secc_ccod%>";
+     resultado=window.open(direccion, "ventana1","width=600,height=400,scrollbars=yes, left=0, top=0");
+//	}
+}	
+
+ 
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_nbGroup(event, grpName) { //v6.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])? args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+
+function clipFloat(num,decimales)
+{ 
+	//creamos variable local String 
+	var t=num+""; 
+	/*Al string lo delimitamos desde 0 (inicio) hasta el punto, mas los decimales y 1 (el punto), y lo convertimos a numero flotante (real) 
+	*/ 
+	num = parseFloat(t.substring(0,(t.indexOf(".")+decimales+1))); 
+	//regresamos el valor 
+	return (num) 
+} 
+
+var modificado_nota = false;
+
+
+function calcular_nota(indice,nombre_campo)
+{
+	var nota_total = 0.0;
+	var valor_temporal = 0.0;
+	var nota_ingresada = "";
+	var numero = 0.0;
+	var valor_ingresado = document.edicion.elements[nombre_campo].value;
+	if ((isNota(valor_ingresado))&&(valor_ingresado > "0") &&(valor_ingresado <= 7))
+	{
+		for (i in arreglo_calificaciones)
+		{ 
+		   numero =  (arreglo_calificaciones[i]/100);
+		   nota_ingresada = document.edicion.elements["m["+indice+"][cali_"+i+"]"].value;
+		   if (nota_ingresada == "")
+		   {
+			 nota_ingresada = "1.0";
+		   }
+		   valor_temporal = (nota_ingresada * 1 ) * numero;
+		   nota_total = nota_total + valor_temporal;
+		}
+		nota_total = clipFloat(nota_total,1);
+		document.edicion.elements["f["+indice+"]"].value = nota_total;
+		document.edicion.elements[nombre_campo].style.backgroundColor ="#ffffff";
+		modificado_nota = true;//para cuando se modifique un registro que alerte antes de enviar email
+	}
+	else
+	{
+		alert("Ingrese una nota entre 1.0 y 7.0(la separación es con un punto)");
+		document.edicion.elements[nombre_campo].value="";
+		document.edicion.elements[nombre_campo].style.backgroundColor ="#ed583b";
+	}
+}
+
+function guardar(formulario)
+{
+     formulario.method='post';
+	 formulario.target = "_self";
+	 formulario.action ='ingreso_asistencia_diaria_proc.asp';
+	 formulario.submit();
+}
+
+</script>
+
+</head>
+<body bgcolor="#D8D8DE" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="InicioPagina(document.busqueda);MM_preloadImages('../imagenes/botones/buscar_f2.gif','../images/bot_deshabilitar_f2.gif','../images/agregar2_f2_p.gif','../__base/im&amp;#225;genes/marco1_r3_c2_f2.gif');MM_preloadImages('../__base/im&amp;#225;genes/marco1_r3_c4_f2.gif');MM_preloadImages('../__base/im&amp;#225;genes/marco1_r3_c6_f2.gif');MM_preloadImages('../__base/im&amp;#225;genes/marco1_r3_c8_f2.gif');MM_preloadImages('../imagenes/botones/cargar_f2.gif','../imagenes/botones/continuar_f2.gif')" onBlur="revisaVentana();">
+<table width="750" height="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="62" valign="top"><img src="../imagenes/vineta2_r1_c1.gif" width="100%" height="62" border="0"></td>
+  </tr>
+  <%pagina.DibujarEncabezado()%>  
+  <tr>
+    <td valign="top" bgcolor="#EAEAEA">
+	<br>
+	<table width="90%"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#D8D8DE">
+      <tr>
+        <td width="9" height="8"><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+        <td height="8" background="../imagenes/top_r1_c2.gif"></td>
+        <td width="7" height="8"><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+      </tr>
+      <tr>
+        <td width="9" background="../imagenes/izq.gif"></td>
+        <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><%pagina.DibujarLenguetas Array("Búsqueda de Asignaturas"), 1 %></td>
+          </tr>
+          <tr>
+            <td height="2" background="../imagenes/top_r3_c2.gif"></td>
+          </tr>
+          <tr>
+            <td>
+			<form action="" method="get" name="busqueda" id="busqueda">
+              <br>
+              <table width="98%"  border="0" align="center">
+                <tr>
+                  <td width="81%"><div align="center"> 
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+							  	<td width="14%"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Sede</font></td>
+								<td width="1%"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">:</font></td>
+								<td width="85%" align="left"><%formprofesores.dibujacampo("sede_ccod")%></td>
+							  </tr>
+							  <tr>
+							  	<td width="14%"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Asignaturas</font></td>
+								<td width="1%"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">:</font></td>
+								<td width="85%" align="left"><%formbusqueda.dibujacampo("secc_ccod")%></td>
+							  </tr>
+							  <tr>
+							  	<td width="14%"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Secci&oacute;n</font></td>
+								<td width="1%"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">:</font></td>
+								<td width="85%" align="left"><%formsecciones.dibujacampo("secc_tdesc")%></td>
+							  </tr>
+							  <tr>
+							  	<td width="14%"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Mes</font></td>
+								<td width="1%"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">:</font></td>
+								<td width="85%" align="left"><%formmeses.dibujacampo("mes_ccod")%></td>
+							  </tr>
+                            </table>
+                          </div></td>
+                  
+                </tr><input name="sesi_ccod" type="hidden" value="<%=id_sesion%>">
+              </table>
+             <table width="98%" border="0">
+                            <tr> 
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr> 
+                              <td>Nota : Ud. esta ingresando asistencia diaria para el per&iacute;odo acad&eacute;mico de:<strong> 
+                                <%response.Write(PerSel)%>
+                                </strong> &nbsp;</td>
+                            </tr>
+							<tr> 
+                            <td align="right"><div  align="center" id="texto_alerta" style="visibility: hidden;"><font color="#0000FF" size="-1">Buscando...</font></div><%botonera.dibujaboton "buscar"%></td>
+                            </tr>
+                  </table>
+        
+            </form></td>
+          </tr>
+        </table></td>
+        <td width="7" background="../imagenes/der.gif"></td>
+      </tr>
+      <tr>
+        <td width="9" height="13"><img src="../imagenes/base1.gif" width="9" height="13"></td>
+        <td height="13" background="../imagenes/base2.gif"></td>
+        <td width="7" height="13"><img src="../imagenes/base3.gif" width="7" height="13"></td>
+      </tr>
+    </table>
+	<br>
+	<%if secc_ccod <> "" then%>
+	<table width="90%"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#D8D8DE">
+      <tr>
+        <td width="9" height="8"><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+        <td height="8" background="../imagenes/top_r1_c2.gif"></td>
+        <td width="7" height="8"><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+      </tr>
+      <tr valign="top">
+        <td width="9" background="../imagenes/izq.gif">&nbsp;</td>
+        <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+                <td>
+                  <%pagina.DibujarLenguetas Array("Evaluación de Asignaturas"), 1 %>
+                </td>
+          </tr>
+          <tr>
+            <td height="2" background="../imagenes/top_r3_c2.gif"></td>
+          </tr>
+          <tr valign="top">
+            <td><div align="center">
+                    <p align="left"> 
+                      <% if secc_ccod <>"" then %>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <p align="left">Resultado de La busqueda <br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sede :<strong>&nbsp;<%=f_asignatura.obtenervalor("sede_tdesc")%></strong><br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Carrera :<strong><%=carrera%></strong> <br>
+					  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Asignatura :<strong> 
+                      <%=f_asignatura.obtenervalor("asig_ccod")%> &nbsp; <%=f_asignatura.obtenervalor("asig_tdesc")%></strong> <br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tipo Asignatura :<strong> 
+                      <%=f_asignatura.obtenervalor("tasg_tdesc")%> </strong> <br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seccion :<strong> <%=f_asignatura.obtenervalor("secc_tdesc")%></strong> <br>
+                      <%end if %>
+                    </p>
+                    <form action="" method="post" name="edicion" id="edicion">
+					  <input type="hidden" name="secc_ccod" value="<%=secc_ccod%>">
+					  <input type="hidden" name="audi_tusuario" value="<%=negocio.obtenerUsuario%>">
+					  <input type="hidden" name="mes2" value="<%=mes2%>">
+					  <div align="left">
+                        <input name="url" type="hidden" value="<%=request.ServerVariables("HTTP_REFERER")%>">
+                      </div>
+                      <table width="98%" border="0" align="center" cellpadding="5" cellspacing="0" >
+                        <%if ((bloqueado_cambio = true and autorizar = false) or (bloquear_todo="S")) then %>
+						<tr> 
+                          <td align="center"><font color="#0000FF" size="2"><strong>Atención: </strong><br>
+                          No se pueden hacer modificaciones en las actas ya que el proceso fue cerrado según reglamento académico, si desea hacer cambios en ella diríjase al departamento de registro curricular.</font>
+                          </td>
+                        </tr>
+						<%end if%>
+						<tr>
+							<td align="center">&nbsp;</td>
+						</tr>
+						<!--<tr>
+							<td align="center">
+								<table width="95%" cellpadding="2" cellspacing="3" border="1" bordercolor="#666666">
+									<tr>
+										<%while f_avance_meses.siguiente
+										   mes_tdesc2 = f_avance_meses.obtenerValor("mes_tdesc")
+										   registrado = f_avance_meses.obtenerValor("registrado")
+										   color_celda_avance = "#999999"
+										   if registrado = "SI" then
+										      color_celda_avance = "#339900"
+										   end if
+										%>
+										   <td width="<%=ancho_celda%>%" align="center" bgcolor="<%=color_celda_avance%>"><%=mes_tdesc2%></td>  
+										<%wend%>
+									</tr>
+								</table>
+							</td>
+						</tr>-->
+						<script language='javaScript1.2'> colores = Array(3);   colores[0] = ''; colores[1] = '#FFECC6'; colores[2] = '#FFECC6'; </script>
+						<tr>
+						   <td align="center">&nbsp;</td>
+						</tr>
+						<tr>
+						   <td align="Left"><font color="#333333" face="Times New Roman, Times, serif" size="2"><strong>Ingreso de asistencia diaria (Favor marque sólo los recuadros de asistencias realizadas)</strong></font></td>
+						</tr>
+						<tr>
+						   <td align="center"></td>
+						</tr>
+						<tr>
+						   <td align="left">
+						   		<table class=v1 width='98%' border='1' cellpadding='0' cellspacing='0' bordercolor='#999999' bgcolor='#ADADAD' id='tb_em'>
+									<tr bgcolor='#C4D7FF' bordercolor='#999999' valign="bottom">
+										<th><font color='#333333'>N</font></th>
+										<th><font color='#333333'>Alumno</font></th>
+										<%fila=0
+										  f_cal.primero
+										  while f_cal.siguiente
+										      fechita = f_cal.obtenerValor("fecha2")
+											  hora = f_cal.obtenerValor("hora_ccod")
+											  tipo = f_cal.obtenerValor("tipo_bloque")
+											  inasistencia = f_cal.obtenerValor("inasistencia")
+											  
+											  dia = f_cal.obtenerValor("dia")
+											  fila = fila + 1
+											  color_celda = "#ADADAD"
+											  if tipo = "C" then
+											    color_celda = "#98c0cc"
+											  elseif tipo = "A" then
+											    color_celda = "#ddb985"
+											  elseif tipo = "L" then
+											    color_celda = "#e7f7bf"
+											  elseif tipo = "T" then
+											    color_celda = "#cfb493"
+											  elseif tipo = "E" then
+											    color_celda = "#dddcd9"
+											   elseif tipo = "R" then
+											    color_celda = "#FFFF33"			
+											  end if
+											  
+											  color_enc = ""
+											  if inasistencia <> "0" then
+											     color_celda = "#FF6600"
+											  end if
+										  %>
+											  <th align="center">
+											  	<table width="100%" cellpadding="0" cellspacing="0">
+													<tr valign="top">
+														<th align="center" style="writing-mode:tb-rl; filter:flipv() fliph()"><%=fechita%></th>
+													</tr>
+													<tr valign="top">
+														<th align="center" bgcolor="<%=color_celda%>"><%=hora%>-<%=tipo%></th>
+													</tr>
+												</table>
+											  </th>
+											  
+										  <%wend%>
+									</tr>
+									<%num = 1
+									  while f_alumnos.siguiente
+									   matr= f_alumnos.obtenerValor("matr_ncorr")
+									   secc = secc_ccod
+									   nombre= f_alumnos.obtenerValor("nombre")
+									   rut= f_alumnos.obtenerValor("rut")
+									   email= f_alumnos.obtenerValor("email")
+									  %>
+									   <tr bgcolor="#FFFFFF">
+											<td align='CENTER'  onMouseOver='resaltar(this)' onMouseOut='desResaltar(this)'><%=num%></td>
+											<td align='LEFT' onMouseOver='resaltar(this)' onMouseOut='desResaltar(this)'><%=nombre%></td>
+											<%fila=0
+											  color_celda = "#FFFFFF"
+											  f_cal.primero
+											  while f_cal.siguiente
+											  fechita = f_cal.obtenerValor("fecha2")
+											  hora = f_cal.obtenerValor("hora_ccod")
+											  tipo = f_cal.obtenerValor("tipo_bloque")
+											  bloque = f_cal.obtenerValor("bloq_ccod")
+											  inasistencia = f_cal.obtenerValor("inasistencia")
+											  fila = fila + 1
+											  grabado = conectar.consultaUno("select isnull((select asiste from ADA_ASISTENCIAS_DIARIAS_ALUMNOS where cast(matr_ncorr as varchar)='"&matr&"' and cast(secc_ccod as varchar)='"&secc&"' and cast(bloq_ccod as varchar)='"&bloque&"' and convert(datetime,FECHA_CLASE,103) = convert(datetime,'"&fechita&"',103)),'2') ")
+											  chequeado = ""
+											  if grabado = "1" then
+											  	chequeado = "checked"
+											  end if
+											  deshabilitado = ""
+											  if inasistencia <> "0" then
+											     deshabilitado = "disabled"
+												 chequeado = ""
+											  end if
+											  color_celda = "#FFFFFF"
+											  if tipo = "C" then
+											    color_celda = "#98c0cc"
+											  elseif tipo = "A" then
+											    color_celda = "#ddb985"
+											  elseif tipo = "L" then
+											    color_celda = "#e7f7bf"
+											  elseif tipo = "T" then
+											    color_celda = "#cfb493"
+											  elseif tipo = "E" then
+											    color_celda = "#dddcd9"
+											  elseif tipo = "R" then
+											    color_celda = "#FFFF33"		
+											  end if
+											  %>
+											  <td align='CENTER' onMouseOver='resaltar(this)' onMouseOut='desResaltar(this)'>
+											  		<input type="checkbox" style="background-color:<%=color_celda%>"  <%=deshabilitado%> name="m[<%=matr%>][<%=bloque%>_<%=fechita%>]" value="1" title="Asistencia para <%=fechita%>" <%=chequeado%>>
+													<input type="hidden"  <%=deshabilitado%> name="o[<%=matr%>][<%=bloque%>_<%=fechita%>]" value="<%=grabado%>">
+											  </td>
+											  <% fechita = ""
+											     wend%>
+										</tr>
+									 <%num = num + 1
+									 wend%>		
+						        </table>
+						   </td>
+						</tr>
+						<tr>
+						   <td align="center"></td>
+						</tr>
+						<tr>
+						   <td align="right">
+								<%if no_permite > 0 and asig_cerrada = "1"  then 
+									 botonera.agregaBotonParam "guardar","deshabilitado","FALSE"
+								  end if
+								  if asig_cerrada <> "1" or (sys_cierra_notas = TRUE ) or bloqueado_cambio = true or bloquear_botones="S" then
+									 botonera.agregaBotonParam "guardar","deshabilitado","TRUE"
+								  end if 
+								  if ((bloqueado_cambio = true and autorizar = false) or (bloquear_todo="S")) then
+									 botonera.agregaBotonParam "guardar","deshabilitado","TRUE"
+								  End if
+								  if autorizar then
+									 botonera.agregaBotonParam "guardar","deshabilitado","FALSE"
+								  end if
+								  botonera.dibujaBoton "guardar"
+								%>
+						   </td>
+						</tr>
+						<tr>
+						   <td align="center"></td>
+						</tr>
+						<tr>
+						   <td align="center">
+						   	 <table width="80%" cellpadding="3" cellspacing="3">
+							 	<tr>
+									<td width="3%"><img width="13" height="13" src="../imagenes/inasistencia.png"></td>
+									<td width="30%">Inasistencia</td>
+									<td width="4%"><img width="13" height="13" src="../imagenes/recuperacion.png"></td>
+									<td width="30%">Recuperaci&oacute;n</td>
+									<td width="3%"><img width="13" height="13" src="../imagenes/catedra.png"></td>
+									<td width="30%">C&aacute;tedra</td>
+								</tr>
+								<tr>
+									<td width="3%"><img width="13" height="13" src="../imagenes/ayudantia.png"></td>
+									<td width="30%">Ayudant&iacute;a</td>
+									<td width="4%"><img width="13" height="13" src="../imagenes/laboratorio.png"></td>
+									<td width="30%">Laboratorio</td>
+									<td width="3%"><img width="13" height="13" src="../imagenes/terreno.png"></td>
+									<td width="30%">Terreno</td>
+								</tr>
+								<tr>
+									<td width="3%" height="24"><img width="13" height="13" src="../imagenes/elearning.png"></td>
+									<td width="30%">Elearning</td>
+									<td width="4%">&nbsp;</td>
+									<td width="30%">&nbsp;</td>
+									<td width="3%">&nbsp;</td>
+									<td width="30%">&nbsp;</td>
+								</tr>
+							 </table>
+						   </td>
+						</tr>
+                      </table>
+                    </form>
+                    <br>
+					<%if asig_cerrada <> "1" then%>
+						<font color="#0000FF"><b>Observaci&oacute;n :</b></font>&nbsp;La 
+                                  evaluación de esta asignatura se encuentra <b>Cerrada</b>, 
+                                  por lo tanto si desea hacer cualquier cambio 
+                                  en ella se debe comunicar con la dirección de 
+                                  la escuela.
+				    <%end if%>
+                    <p><br>
+                    </p>
+                  </div>
+                </td>
+              </tr>
+        </table></td>
+        <td width="7" background="../imagenes/der.gif">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="9" height="28"><img src="../imagenes/abajo_r1_c1.gif" width="9" height="28"></td>
+        <td height="28"><table width="100%" height="28"  border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="18%" height="20"><div align="center">
+              <table width="90%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td><div align="center">
+                            <%botonera.dibujaboton "salir"%>
+                          </div></td>
+                </tr>
+              </table>
+            </div></td>
+            <td width="82%" rowspan="2" background="../imagenes/abajo_r1_c4.gif"><img src="../imagenes/abajo_r1_c3.gif" width="12" height="28"></td>
+            </tr>
+          <tr>
+            <td height="8" background="../imagenes/abajo_r2_c2.gif"></td>
+          </tr>
+        </table></td>
+        <td width="7" height="28"><img src="../imagenes/abajo_r1_c5.gif" width="7" height="28"></td>
+      </tr>
+    </table>
+	<%end if%>
+	<br>
+	<br>
+	</td>
+  </tr>  
+</table>
+</body>
+</html>

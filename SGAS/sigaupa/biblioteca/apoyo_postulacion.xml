@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="formu_clave" anchoTabla="100%" 
+   colorResaltado="#CCCCCC"  mensajeError="No existe información del alumno"
+   colorSeleccionado="#CCCCCC" eliminar="FALSE" seleccionarTodo="FALSE"
+    editar="FALSE" 	paginaEdicion="" nuevaVentana="FALSE" variable="usuarios">
+     <campos nombre="usua_tpregunta">
+	    <descripcion>Pregunta Secreta</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="usua_trespuesta">
+	    <descripcion>Respuesta</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="usua_tusuario">
+	    <descripcion>Usuario</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="usua_tclave">
+	    <descripcion>Clave</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+   </parametro> 
+ <parametro formulario="postulaciones" anchoTabla="100%" 
+   colorResaltado="#CCCCCC"  mensajeError="No existe información de carreras seleccionadas para esta persona"
+   colorSeleccionado="#CCCCCC" eliminar="FALSE" seleccionarTodo="FALSE"
+    editar="FALSE" 	paginaEdicion="" nuevaVentana="FALSE" variable="postulacion">
+     <campos nombre="sede">
+	    <descripcion>Sede</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="carrera">
+	    <descripcion>Carrera</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="jornada">
+	    <descripcion>Jorn.</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="estado_pos">
+	    <descripcion>Estado Postulación</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="estado_examen">
+	    <descripcion>Estado Test</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="estado">
+	    <descripcion>Condición</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="observacion">
+	    <descripcion>Observacion</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+ </parametro> 
+ <parametro formulario="matriculas" anchoTabla="100%" 
+   colorResaltado="#CCCCCC"  mensajeError="No existe información del alumno"
+   colorSeleccionado="#CCCCCC" eliminar="FALSE" seleccionarTodo="FALSE"
+    editar="FALSE" 	paginaEdicion="" nuevaVentana="FALSE" variable="matri">
+     <campos nombre="peri_ccod">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="num_con">
+	    <descripcion>Num.Contr.</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="num_matricula">
+	    <descripcion>Num.Matr.</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="num_pos">
+	    <descripcion>Num.Post.</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="periodo">
+	    <descripcion>Periodo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="sede">
+	    <descripcion>Sede</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="carrera">
+	    <descripcion>Carrera</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="jornada">
+	    <descripcion>Jorn.</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="mension">
+	    <descripcion>Especialidad</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="estado_alumno">
+	    <descripcion>Est Matricula</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="fecha">
+	    <descripcion>Fecha Matricula</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="estado_matricula">
+	    <descripcion>Est Alumno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="plan_estu">
+	    <descripcion>Plan Estudios</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="espe_plan">
+	    <descripcion>Espe. Plan</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+ </parametro>     
+ <parametro formulario="botonera">
+   	 <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	   <funcionValidacion>Validar();</funcionValidacion>
+	</botones>
+   	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>	 
+	</botones>	
+	 <botones nombre="siguiente">
+         <tipoTexto>SIGUIENTE</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_apoyo_postulacion.asp</url>
+      </botones>
+   </parametro>
+<parametro formulario="busqueda_usuarios" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+</parametro>
+<parametro formulario="grilla_familiares" variable="padre" editar="true"  eliminar="false" 
+   paginaEdicion="" nuevaVentana="false" clave="pers_ncorr"
+   anchoTabla="98%" maxLista="10" nroRegistros="20" mensajeError="No existen Familiares ingresados para esta postulacion">
+      	  <campos nombre="post_ncorr">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+		  </campos>
+		  <campos nombre="pers_ncorr">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+		  </campos>
+         <campos nombre="nombre_familiar">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Nombre</descripcion>
+			 <id>TO-N</id>
+		  </campos>
+		  <campos nombre="rut_familiar">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Rut</descripcion>
+			 <id>NU-S</id>
+		  </campos>
+		  <campos nombre="parentesco">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Parentesco</descripcion>
+		  </campos>
+		  <campos nombre="fecha_nacimiento">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Fecha Nacimiento</descripcion>
+		  </campos>
+	</parametro>
+</Parametros>

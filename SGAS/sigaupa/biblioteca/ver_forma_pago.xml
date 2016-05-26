@@ -1,0 +1,98 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="cerrar">
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+   </parametro>
+   <parametro formulario="contrato" anchoTabla="100%" columnas="2">
+      <campos nombre="cont_ncorr">
+         <descripcion>Nº Interno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="econ_ccod">
+         <descripcion>Estado</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>estados_contrato</destino>
+         <union>econ_ccod</union>
+         <salida>econ_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="cont_fcontrato">
+         <descripcion>Fecha Contrato</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="total_contrato">
+         <descripcion>Total Contrato</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+      </campos>
+   </parametro>
+   <parametro formulario="detalle_pagos" variable="detalle_pagos" anchoTabla="100%" resumen="TRUE">
+      <campos nombre="dcom_ncompromiso">
+         <descripcion>Nº Cuota</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ting_ccod">
+         <descripcion>Tipo&lt;br&gt;Docto.</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <descripcion>Nº&lt;br&gt;Docto.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="banc_ccod">
+         <descripcion>Banco</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>bancos</destino>
+         <union>banc_ccod</union>
+         <salida>banc_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="plaz_ccod">
+         <descripcion>Plaza</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>plazas</destino>
+         <union>plaz_ccod</union>
+         <salida>plaz_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <anulable>TRUE</anulable>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="comp_fdocto">
+         <descripcion>Fecha&lt;br&gt;Emisión</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_fdocto">
+         <descripcion>Fecha&lt;br&gt;Venc.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="dcom_mcompromiso">
+         <descripcion>Monto Docto.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+         <resumen>SUMA_JC</resumen>
+      </campos>
+   </parametro>
+</Parametros>

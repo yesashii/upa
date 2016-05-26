@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  
+		  
+	<botones nombre="excel">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Excel</texto>
+      </botones>
+	  
+	  <botones nombre="ir">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>opciones</formulario>
+         <url>inserta_registros_proc.asp</url>
+       </botones>
+	  
+	   <botones nombre="crear">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Agregar Alumno</texto>
+      </botones>
+   </parametro>
+   
+   <parametro  formulario="formu" variable="b" columnas="3" >
+	 <campos nombre="pers_nrut" >
+         <descripcion>Nº Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>NU-N</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+      </campos>
+	   <campos nombre="pers_xdv" >
+         <descripcion>Nº Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+		  <script>onchange='Validar_rut()'</script>
+      </campos>
+	   <campos nombre="peri_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Periodo Académico</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>periodos_academicos </destino>
+		 <filtro>anos_ccod > 2009 </filtro>
+         <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+		 <orden>peri_ccod </orden>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="talu_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Tipo de Alumno</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>tipos_alumnos </destino>
+		 <filtro>talu_ccod > 1 </filtro>
+         <union>talu_ccod</union>
+         <salida>talu_tdesc</salida>
+		 <orden>talu_ccod </orden>
+		 <id>NU-N</id>
+      </campos>
+   </parametro>
+
+
+ 
+
+   
+   
+</Parametros>

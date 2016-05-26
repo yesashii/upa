@@ -1,0 +1,125 @@
+<Parametros>
+   <parametro formulario="persona" anchoTabla="100%" camposObligatorios="TRUE">
+   
+      <tablas nombre="personas" accion="M"/>
+      <tablas nombre="direcciones" accion="M"/>
+      <tablas nombre="personas_postulante" accion="M"/>
+      <tablas nombre="direcciones_publica" accion="M"/> 
+
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="rut">
+         <descripcion>R.U.T.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="pers_tape_paterno">
+         <descripcion>Apellido Paterno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_tape_materno">
+         <descripcion>Apellido Materno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_tnombre">
+         <descripcion>Nombres</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="dire_tcalle">
+         <descripcion>Calle</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>50</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="dire_tnro">
+         <descripcion>Nº</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>15</caracteres>
+         <maxCaracteres>15</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="ciud_ccod">
+         <descripcion>Ciudad</descripcion>
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>ciudades</destino>
+         <union>ciud_ccod</union>
+         <salida>ciud_tdesc</salida>
+         <orden>ciud_tdesc asc</orden>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione ciudad</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_tfono">
+         <descripcion>Fono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TE-S</id>
+         <caracteres>15</caracteres>
+         <maxCaracteres>15</maxCaracteres>
+      </campos>
+   </parametro>
+   <parametro formulario="rut" variable="rut_codeudor">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>LN-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="botonera">
+      <botones nombre="aceptar">
+         <tipoTexto>SIGUIENTE</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_agregar_persona_pactacion.asp</url>
+      </botones>
+      <botones nombre="cancelar">
+         <tipoTexto>CANCELAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+      <botones nombre="copiar_info">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Copiar datos</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>CopiarInformacion();</funcion>
+      </botones>
+   </parametro>
+   
+   <parametro formulario="postulacion" variable="postulacion">
+      <tablas nombre="postulantes" accion="M"/>
+   </parametro>
+   
+   <parametro formulario="codeudor_postulacion" variable="codeudor_postulacion">
+      <tablas nombre="codeudor_postulacion" accion="M"/>
+   </parametro>
+</Parametros>

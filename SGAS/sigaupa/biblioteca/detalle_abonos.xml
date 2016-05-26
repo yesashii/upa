@@ -1,0 +1,165 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="cerrar">
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+   </parametro>
+   <parametro formulario="abonos" anchoTabla="100%" resumen="FALSE" mensajeError="No se registran abonos para este compromiso.">
+      <campos nombre="abon_fabono">
+         <descripcion>Fecha Abono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="abon_mabono">
+         <descripcion>Abono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+         <resumen>SUMA</resumen>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="eing_ccod">
+         <descripcion>Estado Ingreso</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>estados_ingresos</destino>
+         <union>eing_ccod</union>
+         <salida>eing_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ting_ccod">
+         <descripcion>Docto. Emitido</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <destino>ting_tdesc</destino>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ingr_nfolio_referencia">
+         <descripcion>Folio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ingr_mefectivo">
+         <descripcion>Efectivo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="ingr_mdocto">
+         <descripcion>Documentos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="ting_ccod_documento">
+         <descripcion>Docto.</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <destino>ting_tdesc</destino>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <descripcion>Nº Docto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_fdocto">
+         <descripcion>Fecha Docto.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="edin_ccod">
+         <descripcion>Estado</descripcion>
+         <tipo>SELECT</tipo>
+         <permiso>LECTURA</permiso>
+         <destino>estados_detalle_ingresos</destino>
+         <union>edin_ccod</union>
+         <salida>edin_tdesc</salida>
+      </campos>
+	  <campos nombre="banc_ccod">
+         <descripcion>Banco</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="cuota" anchoTabla="100%" columnas="2" separacionColumnas="50">
+      <campos nombre="rut">
+         <descripcion>R.U.T.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre_completo">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="comp_ndocto">
+         <descripcion>Nº Compromiso</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="tcom_ccod">
+         <descripcion>Tipo</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_compromisos</destino>
+         <union>tcom_ccod</union>
+         <salida>tcom_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="dcom_ncompromiso">
+         <descripcion>Nº Cuota</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="dcom_fcompromiso">
+         <descripcion>Fecha Venc.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="dcom_mcompromiso">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+      </campos>
+      <campos nombre="Num_Docto">
+         <descripcion>N. Docto. Ref.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="detalle_cargo" anchoTabla="100%">
+      <campos nombre="tdet_tdesc">
+         <descripcion>Detalle</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="valor">
+         <descripcion>Valor</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+      </campos>
+   </parametro>
+</Parametros>

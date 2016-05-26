@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+         <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>salir()</funcion>
+      </botones>
+      <botones nombre="buscar">
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+  	  </botones>
+	  <botones nombre="excel">
+        <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>BUSCAR</accion>
+         <url>contratos_x_caja_excel.asp</url>
+         <formulario>buscador</formulario>
+     </botones>
+   </parametro>
+ 
+ 
+   <parametro formulario="busqueda" variable="busqueda">
+   	  <campos nombre="sede_ccod">
+         <tipo>SELECT</tipo>
+		 <destino>sedes</destino>
+		 <union>sede_ccod</union>
+		 <salida>sede_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+		 <anulable>True</anulable>
+		 <mensajeNulo>Todas las Sedes</mensajeNulo>
+		 <mensajeVacio>Elija Sede</mensajeVacio>
+         <id>NU-S</id>
+      </campos>
+	  <campos nombre="pers_ncorr">
+		<tipo>SELECT</tipo>
+		<destino>(select pers_ncorr,protic.obtener_nombre(pers_ncorr,'n') as nombre from cajeros where caje_cestado not in (3) group by pers_ncorr)  a order by a.nombre</destino>
+		<union>pers_ncorr</union>
+		<salida>nombre</salida>
+		<permiso>LECTURAESCRITURA</permiso>
+		<anulable>true</anulable>
+		<mensajeNulo>Seleccione Cajero</mensajeNulo>
+		<id>TO-S</id>
+	</campos>
+	<campos nombre="periodo">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="inicio">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+      <campos nombre="termino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+   </parametro>
+ 
+ <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="lista_contratos" nroRegistros="20"
+		 maxLista="10" mensajeError="No se encontraron alumnos con contrato en la fecha indicada." colorBase="#F1F1E4" editar="false" anchoTabla="100%"	 nuevaVentana="false" variable="a">  
+		<campos nombre="n_contrato">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>N° Contrato</descripcion>
+		</campos>
+		<campos nombre="mcaj_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>N° Caja</descripcion>
+		</campos>
+		<campos nombre="econ_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Estado Contrato</descripcion>
+    	</campos>
+		<campos nombre="tipo_alumno">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Tipo Contrato</descripcion>
+    	</campos>
+		<campos nombre="alumno">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Alumno</descripcion>
+    	</campos>
+		<campos nombre="sede_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Sede</descripcion>
+    	</campos>
+		<campos nombre="jorn_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Jornada</descripcion>
+    	</campos>
+		<campos nombre="carrera">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Carrera</descripcion>
+    	</campos>
+		<campos nombre="fecha">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Fecha Contrato</descripcion>
+    	</campos>
+		<campos nombre="cajero">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Cajero</descripcion>
+    	</campos>
+	</parametro>  
+	
+</Parametros>

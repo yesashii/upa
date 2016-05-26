@@ -1,0 +1,1227 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	   <botones nombre="volver" >
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Volver</texto>
+         <accion>navegar</accion>
+         <url>agrega_ciudad_convenio.asp</url>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	 <botones nombre="guardar_proceso">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Guardar</texto>
+		  <formulario>proceso</formulario>
+         <url>proceso_alumnos_intercambio_upa_proc.asp</url>
+      </botones>
+	   <botones nombre="guardar_postulacion">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Guardar</texto>
+		  <formulario>postulacion</formulario>
+         <url>postulacion_alumnos_intercambio_upa_proc.asp</url>
+      </botones>
+	   <botones nombre="crear">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Agregar Alumno</texto>
+      </botones>
+	   <botones nombre="excel">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Excel</texto>
+      </botones>
+	   <botones nombre="pdf">
+         <accion>javascript</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>PDF</texto>
+	    <funcion>nueva_ventana()</funcion>
+      </botones>
+	 
+   </parametro>
+   
+   <parametro  formulario="busqueda" variable="b">
+   <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>9</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+	  <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>2</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	   <campos nombre="pais_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todos</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>paises</destino>
+		 <filtro>pais_ccod in (select pais_ccod from ciudades_extranjeras a ,universidad_ciudad b ,datos_convenio c where a.ciex_ccod=b.ciex_ccod and b.unci_ncorr=c.unci_ncorr)</filtro>
+		  <union>pais_ccod</union>
+         <salida>pais_tdesc</salida>
+		 <orden>pais_tdesc</orden>
+		 <script>OnChange="cambiar_pais();"</script>
+		 <id>NU-S</id>
+      </campos>
+	<campos nombre="peri_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>periodos_academicos</destino>
+		 <filtro>peri_ccod >=218 and peri_tdesc not like 'TERCER%'</filtro>
+		  <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+		 <orden>peri_ccod</orden>
+		  <script>OnChange="activa_pais(this.value);"</script>
+		  <id>NU-N</id>
+      </campos>
+	    <campos nombre="con_diau_fconsulta_esc">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaSin(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	   <campos nombre="sin_diau_fconsulta_esc">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaCon(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	  
+	  
+	  
+	  
+	   <campos nombre="sin_doie_fenvio_memo_esc">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaCon(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	  
+	   <campos nombre="con_diau_respuesta_esc">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaSin(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	   <campos nombre="sin_diau_respuesta_esc">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaCon(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	  
+	  <campos nombre="con_diau_fenvio_carta_apoderado">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaSin(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	   <campos nombre="sin_diau_fenvio_carta_apoderado">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaCon(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	  
+	    <campos nombre="con_diau_fpeticion_certi_alum_reg">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaSin(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	   <campos nombre="sin_diau_fpeticion_certi_alum_reg">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaCon(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	  
+	   <campos nombre="con_diau_frecepcion_certi_alum_reg">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaSin(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	   <campos nombre="sin_diau_frecepcion_certi_alum_reg">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaCon(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	  
+	   <campos nombre="con_diau_fpeticion_certi_notas">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaSin(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	   <campos nombre="sin_diau_fpeticion_certi_notas">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaCon(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	  
+	  <campos nombre="con_diau_frecepcion_certi_notas">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaSin(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	   <campos nombre="sin_diau_frecepcion_certi_notas">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaCon(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	  
+	  <campos nombre="con_diau_estado_ramos">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaSin(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	   <campos nombre="sin_diau_estado_ramos">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaCon(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	  
+	  <campos nombre="con_diau_fenvio_memo_es">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaSin(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	  <campos nombre="sin_diau_fenvio_memo_es">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaCon(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	   <campos nombre="con_diau_fenvio_ramos_esc">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaSin(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	  
+	  <campos nombre="sin_diau_fenvio_ramos_esc">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaCon(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	  
+	  <campos nombre="con_diau_fenvio_doctos_extranjero">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaSin(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	  
+	  <campos nombre="sin_diau_fenvio_doctos_extranjero">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaCon(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	  
+	    <campos nombre="con_diau_frecepcion_carta_acepta">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaSin(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	  
+	  <campos nombre="sin_diau_frecepcion_carta_acepta">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaCon(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	  
+	   <campos nombre="con_diau_frecepcion_acuerdo_preconva">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaSin(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	  
+	  <campos nombre="sin_diau_frecepcion_acuerdo_preconva">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaCon(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	  
+	    <campos nombre="con_diau_ffirma">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaSin(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	  
+	  <campos nombre="sin_diau_ffirma">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+         <ancho>100</ancho>
+		 <script>onClick="deshabilitaCon(this.name)"; </script>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+      </campos>
+	  
+	  
+   </parametro>
+   
+   <parametro  formulario="estados" variable="b">
+	   <campos nombre="espi_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>estado_postulacion_intercambio</destino>
+		  <union>espi_ccod</union>
+         <salida>espi_tdesc</salida>
+		 <orden>espi_tdesc</orden>
+		 <id>NU-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="agrega_contacto" variable="b">
+   	<campos nombre="nombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>53</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+   		<campos nombre="cargo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>52</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="dire">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>101</caracteres>
+         <maxCaracteres>100</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="email">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>31</caracteres>
+         <maxCaracteres>100</maxCaracteres>
+         <id>EM-N</id>
+      </campos>
+	   <campos nombre="fono">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>41</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	   <campos nombre="fax">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>41</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+    </parametro>
+	
+	<parametro  formulario="carreras" variable="b">
+   		 <campos nombre="carr_ccod">
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         </campos>
+		 <campos nombre="carr_tdesc">
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         </campos>
+   </parametro>
+   
+	<parametros formulario="datos" variable="a">
+	 <campos nombre="nombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="pais_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="ciex_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="univ_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="peri_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="ano_intercambio">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	</parametros>
+  
+   <parametro formulario="muestra_proceso" variable="a" >
+   	 <campos nombre="paiu_ncorr">
+	 <tipo>INPUT</tipo>
+	 <permiso>OCULTO</permiso>
+	 </campos>
+	 
+	 <campos nombre="dtil_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURA</permiso>
+		 <destino>rrii_doble_titulacion</destino>
+		 <union>dtil_ccod</union>
+         <salida>dtil_tdesc</salida>
+		 <orden>dtil_ccod</orden>
+		 <id>TO-N</id>
+     </campos>
+	<campos nombre="paiu_finscripcion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="diau_durancion_intercambio">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		  <caracteres>31</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="diau_fconsulta_esc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		  <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+		 <script>onKeyUp="mascara(this,'/',patron,true)"</script>
+      </campos>
+	    <campos nombre="diau_respuesta_esc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="diau_tcomentario_consulta_esc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	 <campos nombre="diau_fenvio_carta_apoderado">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		   <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+		 <script>onKeyUp="mascara(this,'/',patron,true)"</script>
+      </campos>
+	  <campos nombre="diau_frecepcion_carta_apoderado">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		    <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+		 <script>onKeyUp="mascara(this,'/',patron,true)"</script>
+      </campos>
+	  <campos nombre="diau_fpeticion_certi_alum_reg">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		    <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+		 <script>onKeyUp="mascara(this,'/',patron,true)"</script>
+      </campos>
+	  <campos nombre="diau_frecepcion_certi_alum_reg">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		    <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+		 <script>onKeyUp="mascara(this,'/',patron,true)"</script>
+      </campos>
+	  <campos nombre="diau_fpeticion_certi_notas">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		   <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+		  <script>onKeyUp="mascara(this,'/',patron,true)"</script>
+      </campos>
+	   <campos nombre="diau_frecepcion_certi_notas">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		   <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+		 <script>onKeyUp="mascara(this,'/',patron,true)"</script>
+      </campos>
+	  <campos nombre="diau_estado_ramos">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	 
+	  <campos nombre="diau_fenvio_ramos_esc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		   <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+		 <script>onKeyUp="mascara(this,'/',patron,true)"</script>
+      </campos>
+	  <campos nombre="diau_frecepcion_acuerdo_preconva">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		   <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+		 <script>onKeyUp="mascara(this,'/',patron,true)"</script>
+      </campos>
+	  <campos nombre="diau_fenvio_doctos_extranjero">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		   <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+		 <script>onKeyUp="mascara(this,'/',patron,true)"</script>
+      </campos>
+	  
+	    <campos nombre="diau_comen_envio_doctos_extranjero">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  
+	  <campos nombre="diau_comen_recepcion_carta_apoderado">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  
+	  <campos nombre="diau_comen_recepcion_certi_alum_reg">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  
+	  <campos nombre="diau_comen_recepcion_certi_notas">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="diau_comen_envio_ramos_esc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="diau_comen_recepcion_acuerdo_preconva">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  
+	  <campos nombre="diau_comen_recepcion_carta_acepta">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="diau_comen_firma">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  
+	  <campos nombre="diau_frecepcion_carta_acepta">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		   <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+		 <script>onKeyUp="mascara(this,'/',patron,true)"</script>
+      </campos>
+	   <campos nombre="diau_ffirma">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		   <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+		 <script>onKeyUp="mascara(this,'/',patron,true)"</script>
+      </campos>
+	
+	  <campos nombre="espi_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>estado_postulacion_intercambio</destino>
+		  <union>espi_ccod</union>
+         <salida>espi_tdesc</salida>
+		 <orden>espi_tdesc</orden>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="tdin_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>rrii_tipos_duracion_intercambio</destino>
+		  <union>tdin_ccod</union>
+         <salida>tdin_tdesc</salida>
+		 <orden>tdin_ccod</orden>
+		 <id>NU-N</id>
+      </campos>
+
+	  <campos nombre="diau_fficha_inscripcion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+		 <script>onKeyUp="mascara(this,'/',patron,true)"</script>
+      </campos>
+	   <campos nombre="diau_fentrevista_apoderado">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+		 <script>onKeyUp="mascara(this,'/',patron,true)"</script>
+      </campos>	  
+	  <campos nombre="diau_fseguro_salud">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+		 <script>onKeyUp="mascara(this,'/',patron,true)"</script>
+      </campos>	  
+	  <campos nombre="diau_tcomentario_ficha">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="diau_tcomentario_entrevista">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="diau_tcomentario_seguro">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+  </parametro>
+
+    <parametro  formulario="ciudad_extranjera" variable="b">
+   		 <campos nombre="ciex_ccod">
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         </campos>
+		 <campos nombre="cied_tdesc">
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         </campos>
+   </parametro>
+    <parametro  formulario="universidades_extranjeras" variable="b">
+   		 <campos nombre="univ_ccod">
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         </campos>
+		 <campos nombre="univ_tdesc">
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         </campos>
+   </parametro>
+  <parametro formulario="alumnos" variable="b" colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion="proceso_alumnos_intercambio_upa.asp?paiu_ncorr=%paiu_ncorr%&amp;pers_nrut=%pers_nrut%&amp;pers_xdv=%pers_xdv%&amp;pais_ccod=%pais_ccod%&amp;ciex_ccod=%ciex_ccod%&amp;univ_ccod=%univ_ccod%&amp;peri_ccod=%peri_ccod%"  nroRegistros="15"
+		 maxLista="10" mensajeError="No hay Postulantes." colorBase="#F1F1E4" eliminar="false" clave="euco_ncorr" editar="true" anchoTabla="100%" nuevaVentana="false" >
+	  <campos nombre="nombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Nombre</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="univ_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Universidad</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="ciex_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Ciudad</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	   <campos nombre="pais_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Pais</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	   <campos nombre="espi_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Estado</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="estados_docs">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Estado Avance</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+    </parametro>
+	
+	<parametro formulario="universidades_convenio"  variable="a">
+		<listas nombre="lBusqueda">
+			<item clave="pais_ccod" valor="pais_tdesc" />
+			<item clave="ciex_ccod" valor="ciex_tdesc" />
+			<item clave="univ_ccod" valor="univ_tdesc" />
+		</listas>
+		<campos nombre="pais_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="univ_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="ciex_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+	</parametro>
+	
+	<parametro formulario="postulacion"  variable="a">
+	<campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+		 <caracteres>9</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+      </campos>
+	  <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+		 <caracteres>2</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+      </campos>
+		<campos nombre="pers_tnombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Nombre</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="pers_tape_paterno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Nombre</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="pers_tape_materno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Nombre</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="es_moroso">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="pers_tfono">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Nombre</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="pers_tcelular">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Nombre</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	   <campos nombre="direccion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Nombre</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="paiu_temail">
+          <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+		 <caracteres>60</caracteres>
+         <maxCaracteres>100</maxCaracteres>
+		 <id>EM-S</id>
+      </campos>
+	  <campos nombre="peri_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>periodos_academicos</destino>
+		 <filtro>anos_ccod >=2010 and peri_tdesc not like 'TERCER%'</filtro>
+		  <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+		 <orden>peri_ccod</orden>
+		 <script>onChange="verifica_periodos(this.value,this.name)"</script>
+		  <id>NU-N</id>
+      </campos>
+	   <campos nombre="peri_ccod_fin" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>periodos_academicos</destino>
+		 <filtro>anos_ccod >=2010 and peri_tdesc not like 'TERCER%'</filtro>
+		  <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+		 <orden>peri_ccod</orden>
+		 <script>onChange="verifica_periodos(this.value,this.name)"</script>
+      </campos>
+	  <campos nombre="tdin_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>rrii_tipos_duracion_intercambio</destino>
+		  <union>tdin_ccod</union>
+         <salida>tdin_tdesc</salida>
+		 <script>onChange="AgregaPeri(this.value)"</script>
+		 <orden>tdin_ccod</orden>
+		  <id>NU-N</id>
+      </campos>
+	  <campos nombre="peri_ccod_busqueda" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		<filtro>peri_ccod >223 and peri_tdesc not like 'TERCER%'</filtro>
+		 <destino>periodos_academicos</destino>
+		  <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+		 <orden>peri_ccod</orden>
+		 <id>NU-N</id>
+      </campos>
+	    <campos nombre="idio_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>idioma</destino>
+		  <union>idio_ccod</union>
+         <salida>idio_tdesc</salida>
+		 <orden>idio_ccod</orden>
+		 <script>onChange="bloqueacombo(this.value)";</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="nidi_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>niveles_idioma</destino>
+		  <union>nidi_ccod</union>
+         <salida>nidi_tdesc</salida>
+		 <orden>nidi_ccod</orden>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="carr_tdesc" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <descripcion>Nombre</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="paiu_fvuelta_upa">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <descripcion>Nombre</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+ 		 <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		  <script>onKeyUp="mascara(this,'/',patron,true)"</script>
+		  <id>FE-N</id>
+      </campos>
+	  <campos nombre="cpiu_tnombre" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <descripcion>Nombre</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+		 <caracteres>60</caracteres>
+         <maxCaracteres>80</maxCaracteres>
+		 <id>TO-N</id>
+      </campos>
+	  <campos nombre="pare_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>parentescos</destino>
+		 <filtro>pare_ccod > 0</filtro>
+		  <union>pare_ccod</union>
+         <salida>pare_tdesc</salida>
+		 <orden>pare_ccod</orden>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="cpiu_tfono" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <descripcion>Nombre</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+		 <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		  <id>TO-N</id>
+      </campos>
+	   <campos nombre="cpiu_tfax" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <descripcion>Nombre</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+		 <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+      </campos>
+	   <campos nombre="cpiu_temail" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <descripcion>Nombre</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+		 <caracteres>50</caracteres>
+         <maxCaracteres>100</maxCaracteres>
+		  <id>TO-N</id>
+      </campos>
+	  <campos nombre="cpiu_tdireccion" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <descripcion>Nombre</descripcion>
+		 <alineamiento>CENTER</alineamiento>
+		 <caracteres>90</caracteres>
+         <maxCaracteres>90</maxCaracteres>
+		  <id>TO-N</id>
+      </campos>
+	  <campos nombre="dtil_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <destino>rrii_doble_titulacion</destino>
+		 <union>dtil_ccod</union>
+         <salida>dtil_tdesc</salida>
+		 <orden>dtil_ccod</orden>
+		 <id>TO-N</id>
+      </campos>
+	</parametro>
+		<parametro formulario="postulacion_proc"  variable="a">
+		
+	<campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  
+	  <campos nombre="peri_ccod" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	    <campos nombre="idio_ccod" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="nidi_ccod" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="paiu_temail" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="carr_tdesc" >
+        <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="paiu_fvuelta_upa">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="cpiu_tnombre" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="pare_ccod" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="cpiu_tfono" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="cpiu_tfax" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="cpiu_temail" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="cpiu_tdireccion" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	</parametro>
+
+</Parametros>

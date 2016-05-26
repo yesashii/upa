@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>ValidaBusqueda();</funcionValidacion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="anular">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Anular</texto>
+         <url>pre_anular_factura.asp</url>
+         <funcionValidacion>valida_pagos(this.form)</funcionValidacion>
+         <formulario>edicion</formulario>
+         <accion>GUARDAR</accion>
+      </botones>
+      <botones nombre="anular_x_reimprimir">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Anular</texto>
+         <url>proc_cambiar_factura.asp</url>
+         <funcionValidacion>valida_pagos(this.form)</funcionValidacion>
+         <formulario>edicion</formulario>
+         <accion>GUARDAR</accion>
+      </botones>
+      <botones nombre="anular_x_compartido">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Siguiente</texto>
+         <url>pre_compartir_orden.asp</url>
+         <funcionValidacion>valida_pagos(this.form)</funcionValidacion>
+         <formulario>edicion</formulario>
+         <accion>GUARDAR</accion>
+      </botones>		  	  
+      <botones nombre="continuar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Continuar</texto>
+         <url>proc_anular_factura.asp</url>
+         <funcionValidacion>valida_pagos(this.form)</funcionValidacion>
+         <formulario>edicion</formulario>
+         <accion>GUARDAR</accion>
+      </botones>
+      <botones nombre="continuar_oc">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Continuar</texto>
+         <url>proc_compartir_orden.asp</url>
+         <funcionValidacion>valida_pagos(this.form)</funcionValidacion>
+         <formulario>edicion</formulario>
+         <accion>GUARDAR</accion>
+      </botones>		  	  	  
+   </parametro>
+
+   <parametro formulario="busqueda" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>LN-N</id>
+      </campos>
+      <campos nombre="fact_nfactura">
+         <descripcion>Nº Factura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>		 
+      </campos>
+      <campos nombre="ding_ndocto">
+         <descripcion>Nº Docto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>		 
+      </campos>	  	  	  
+   </parametro>
+
+<parametro formulario="facturas" variable="fact" 
+   mensajeError="No existen facturas para mostrar." anchoTabla="100%" 
+   eliminar="TRUE" clave="fact_ncorr" seleccionarTodo="TRUE">
+      <campos nombre="monto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="num_factura">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>	  
+	  <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="fact_nfactura">
+         <descripcion>N° factura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="fact_mtotal">
+         <descripcion>Monto bruto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="efac_ccod">
+         <descripcion>Estado Factura</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>estados_facturas</destino>
+         <union>efac_ccod</union>
+         <salida>efac_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="tfac_ccod">
+         <descripcion>Tipo Factura</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_facturas</destino>
+         <union>tfac_ccod</union>
+         <salida>tfac_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="pers_tnombre">
+         <descripcion>Empresa</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="mcaj_ncorr">
+         <descripcion>Nº Caja</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="comprobante">
+         <descripcion>N° Comprobante</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>   
+
+<parametro formulario="facturas_ralacionadas"   mensajeError="No existen facturas para mostrar." anchoTabla="100%" >
+	  <campos nombre="num_factura">
+         <descripcion>N° factura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="monto_factura">
+         <descripcion>Monto factura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="efac_ccod">
+         <descripcion>Estado Factura</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>estados_facturas</destino>
+         <union>efac_ccod</union>
+         <salida>efac_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="tfac_ccod">
+         <descripcion>Tipo Factura</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_facturas</destino>
+         <union>tfac_ccod</union>
+         <salida>tfac_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="rut_empresa">
+         <descripcion>Empresa</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="num_caja">
+         <descripcion>Nº Caja</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="comprobante">
+         <descripcion>N° Comprobante</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>   
+
+
+<parametro formulario="ordenes_compra" variable="oc" 
+   mensajeError="No existen ordenes de compra para mostrar." anchoTabla="100%" 
+   eliminar="TRUE" clave="ingr_ncorr" seleccionarTodo="TRUE">
+      <campos nombre="num_orden">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>	
+      <campos nombre="monto_orden">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>	  	    
+	  <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="pers_ncorr_empresa">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>	  	  
+	  <campos nombre="ding_ndocto">
+         <descripcion>N° Orden</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ingr_mtotal">
+         <descripcion>Monto Otic</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="edin_ccod">
+         <descripcion>Estado Orden</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>estados_detalle_ingresos</destino>
+         <union>edin_ccod</union>
+         <salida>edin_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="pers_tnombre">
+         <descripcion>Empresa</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="monto_empresa">
+         <descripcion>Monto Empresa</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="rut_empresa">
+         <descripcion>Rut Empresa</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>	
+      <campos nombre="nombre_empresa">
+         <descripcion>Nombre Empresa</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>	 	    	  
+   </parametro>   
+
+  <parametro formulario="f_facturas" variable="fact">
+  </parametro>
+
+  <parametro formulario="f_ordenes" variable="oc">
+  </parametro>
+
+  <parametro formulario="f_alumnos" variable="oc2">
+  </parametro>  
+
+</Parametros>

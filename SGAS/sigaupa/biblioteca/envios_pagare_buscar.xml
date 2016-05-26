@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="btn_envios_pagare_buscar">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	    <funcionValidacion>Validar();</funcionValidacion>
+	</botones> 
+    <botones nombre="agregar_letra"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>AGREGAR</accion>
+	  <posicionX>100</posicionX>
+	  <posicionY>50</posicionY>
+	  <ancho>750</ancho>
+	  <alto>600</alto>
+	 </botones> 
+	 
+	<botones nombre="guardar_pagare"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>Proc_Envios_Pagare_Buscar.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>
+	
+	<botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>ELIMINAR</accion>
+	  <formulario>edicion</formulario>
+	</botones>
+	
+	 <botones nombre="cancelar"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+ </parametro>
+
+
+
+ <parametro formulario="busqueda_letras" variable="busqueda">
+   
+	<campos nombre="inicio">
+     <tipo>INPUT</tipo>
+     <permiso>LECTURAESCRITURA</permiso>
+     <caracteres>12</caracteres>
+     <maxCaracteres>10</maxCaracteres>
+	 <id>FE-S</id>
+    </campos>
+	<campos nombre="termino">
+     <tipo>INPUT</tipo>
+     <permiso>LECTURAESCRITURA</permiso>
+     <caracteres>12</caracteres>
+     <maxCaracteres>10</maxCaracteres>
+	 <id>FE-S</id>
+    </campos>
+	<campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+     <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+	  <campos nombre="code_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="code_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+    <campos nombre="paga_ncorr">
+       <tipo>INPUT</tipo>
+       <permiso>LECTURAESCRITURA</permiso>
+       <caracteres>12</caracteres>
+       <maxCaracteres>10</maxCaracteres>
+	   <id>NU-S</id>
+    </campos>
+ 
+  </parametro> 
+  
+
+<parametro formulario="listado_letras" clave="envi_ncorr"  variable="Pagares" 
+    colorSeleccionado="#CCCCCC" colorResaltado="#999999" nroRegistros="10" maxLista="10" 
+    eliminar="TRUE" seleccionarTodo="true"  anchoTabla="95%" editar="FALSE"  nuevaVentana="FALSE" 
+	mensajeError="No se encontraron pagare...">
+	<tablas nombre="detalle_envios" accion="M"/>
+	 <campos nombre="ting_ccod">
+	    <descripcion>N° Tipo Ingreso</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="DING_NDOCTO">
+	    <descripcion>N° Pagare</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="DING_NDOCTO2">
+	    <descripcion>N° Pagare</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 
+	 <campos nombre="INGR_NCORR">
+	    <descripcion>N° Ingreso</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="EDIN_CCOD">
+	    <descripcion>N° EDIN</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="cuota">
+	    <descripcion>Cuotas Pendientes</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<ancho>50</ancho>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+		 <descripcion>Rut</descripcion>
+         <permiso>LECTURA</permiso>
+         
+      </campos>
+	<campos nombre="DING_Mdocto">
+	    <descripcion>Monto $</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="DING_FDOCTO">
+	    <descripcion>Fecha Vencimiento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+ 	 
+	 <campos nombre="EDIN_TDESC">
+	    <descripcion>Estado</descripcion>
+		<tipo>INPUT</tipo>
+		
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="envio">
+	    <descripcion>Enviar</descripcion>
+		<tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>OCULTO</permiso>
+		 <alineamiento>CENTER</alineamiento>
+	</campos>	
+   </parametro>
+   
+   
+</Parametros>
+

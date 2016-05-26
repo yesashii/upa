@@ -1,0 +1,115 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cancelar">
+         <tipoTexto>Cerrar</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>cerrarVentana()</funcion>
+      </botones>
+	  <botones nombre="guardar">
+         <tipoTexto>guardar</tipoTexto>
+         <accion>guardar</accion>
+         <formulario>edicion</formulario>
+         <url>proc_cambio_ntarjeta.asp</url>
+      </botones>	
+   </parametro>
+   
+   <parametro formulario="buscador" variable="buscador">
+      <campos nombre="ding_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+   </parametro>
+
+   <parametro formulario="datos_Alumno" >	    
+   	  <campos nombre="pers_ncorr">
+         <descripcion>codigo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="ding_ndocto">
+         <descripcion>ncodigo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>	  
+	  <campos nombre="nombre">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="rut">
+         <descripcion>Rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>	 
+	  <campos nombre="DING_TCUENTA_CORRIENTE">
+         <descripcion>cuenta corriente</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>	 
+	  <campos nombre="CUENTA_CORRIENTE">
+         <descripcion>cuenta corriente</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <maxCaracteres>23</maxCaracteres>
+         <caracteres>25</caracteres>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="datos_pagare" anchoTabla="80%" separacion="30" variable="a" mensajeError="No se encontraron condiciones...">
+	  <campos nombre="ding_ndocto">
+         <descripcion>Nº Docto.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="ncompromiso">
+         <descripcion>Nº Compromiso/ (contrato)</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos> 
+	  <campos nombre="tcom_tdesc">
+         <descripcion>Ítem</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>  
+	  <campos nombre="ncuota">
+         <descripcion>Nº Cuota</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos> 	  
+	  <campos nombre="comp_fdocto">
+         <descripcion>Fecha Emisión</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos> 
+	  <campos nombre="dcom_fcompromiso">
+         <descripcion>Fecha Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>  
+	  <campos nombre="edin_tdesc">
+         <descripcion>Estado Doc.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos> 
+	  <campos nombre="dcom_mcompromiso">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos> 
+   </parametro>
+   
+   
+</Parametros>

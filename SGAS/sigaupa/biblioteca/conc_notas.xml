@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+    <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+		 <soloUnClick>TRUE</soloUnClick>
+		 <funcionValidacion>ValidaFormBusqueda(document.buscador)</funcionValidacion> 
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="imprimir">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Imprimir Conc. Notas</texto>
+         <accion>GUARDAR</accion>
+         <url>conc_notas_imprimible.asp</url>
+         <formulario>edicion</formulario>
+         <target>_BLANK</target>
+      </botones>
+	   <botones nombre="imprimir_titulado">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Imprimir Conc. Notas Titulados</texto>
+         <accion>GUARDAR</accion>
+         <url>conc_notas_imprimible.asp?TITULADO=SI</url>
+         <formulario>edicion</formulario>
+         <target>_BLANK</target>
+      </botones>
+      <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>NAVEGAR</accion>
+         <url>conc_notas_excel.asp</url>
+      </botones>
+	  <botones nombre="certificado_1">
+  		<tipoTexto>DEFINIR</tipoTexto> 
+  		<texto>Certificado Alumno</texto> 
+  		<accion>JAVASCRIPT</accion> 
+  		<funcion>certificado_1()</funcion> 
+  	  </botones>
+	  <botones nombre="guardar_notas">
+  		<tipoTexto>DEFINIR</tipoTexto> 
+  		<texto>Guardar Solicitud Certificado Notas</texto> 
+  		<accion>JAVASCRIPT</accion> 
+  		<funcion>guarda_notas()</funcion> 
+  	  </botones>
+	  <botones nombre="guardar_alumno">
+  		<tipoTexto>DEFINIR</tipoTexto> 
+  		<texto>Guardar Solicitud Certificado Alumno</texto> 
+  		<accion>JAVASCRIPT</accion> 
+  		<funcion>guarda_alumno()</funcion> 
+  	  </botones>
+	  <botones nombre="guardar_listado"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Guardar Notas Seleccionadas</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agregar_asig(document.edicion);</funcion>
+	</botones> 
+   </parametro>
+   <parametro formulario="busqueda" variable="b">
+	  <campos nombre="pers_nrut">
+ 		 <tipo>INPUT</tipo> 
+  		 <permiso>LECTURAESCRITURA</permiso> 
+  		 <caracteres>10</caracteres> 
+  		 <maxCaracteres>8</maxCaracteres> 
+  		 <id>NU-N</id> 
+  	  </campos>
+	  <campos nombre="pers_xdv">
+  		 <tipo>INPUT</tipo> 
+  		 <permiso>LECTURAESCRITURA</permiso> 
+         <caracteres>1</caracteres> 
+         <maxCaracteres>1</maxCaracteres> 
+         <script>onBlur="this.value=this.value.toUpperCase();"</script> 
+         <id>LN-N</id> 
+      </campos>
+      <campos nombre="solo_aprobadas">
+         <descripcion>Sólo Aprobadas</descripcion>
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <objeto>CHECKBOX</objeto>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+      </campos>
+      <campos nombre="peri_ccod">
+         <descripcion>Semestre</descripcion>
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>(select peri_ccod, cast(anos_ccod as varchar)+ ' - ' + cast(plec_ccod as varchar) + 'Nº Semestre ' as desc_periodo from periodos_academicos)t</destino>
+         <union>peri_ccod</union>
+         <salida>desc_periodo</salida>
+         <orden>peri_ccod desc</orden>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Todos</mensajeNulo>
+      </campos>
+   </parametro>
+   <parametro formulario="notas" anchoTabla="100%" mensajeError="No se encontraron notas.">
+      <campos nombre="asig_ccod">
+         <descripcion>Código</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="asig_tdesc">
+         <descripcion>Asignatura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nota_final">
+         <descripcion>Nota</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="sitf_ccod">
+         <descripcion>Sit.Final</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="anos_ccod">
+         <descripcion>Periodo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="plec_ccod">
+         <descripcion>Carácter</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="horas">
+         <descripcion>Horas</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="cantidad">
+         <descripcion>Oportunidad</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="encabezado" anchoTabla="100%" columnas="2" variable="enca">
+      <campos nombre="rut">
+         <descripcion>RUT</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="carrera">
+         <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="duas_tdesc">
+         <descripcion>Duración</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="ano_ingreso_plan">
+         <descripcion>Año Ingreso al Plan de Estudios</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="carreras_alumno">
+         <descripcion>Carrera</descripcion>
+         <tipo>SELECT</tipo>
+         <permiso>OCULTO</permiso>
+         <destino>carreras</destino>
+         <union>carr_ccod</union>
+         <salida>carr_tdesc</salida>
+         <orden>carr_tdesc desc</orden>
+         <anulable>TRUE</anulable>
+		 <!--<script>onchange='javascript:dibujar2(document.edicion);'</script>-->
+		 <script>onchange='javascript:recargar(this.value,this.options[this.selectedIndex].text);'</script>
+         <mensajeNulo>Todas</mensajeNulo>
+      </campos>
+   </parametro>
+   <parametro formulario="param_impresion" anchoTabla="100%" variable="p">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="peri_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="peri_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="solo_aprobadas">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="plan_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="carrera">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="tiene_salida_intermedia">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tdes_ccod">
+         <descripcion>Motivo de Extensión</descripcion>
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>tipos_descripciones</destino>
+         <union>tdes_ccod</union>
+         <salida>tdes_tdesc</salida>
+         <orden>tdes_tdesc asc</orden>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione motivo</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="agrupar_periodo">
+         <descripcion>Agrupar por periodo</descripcion>
+         <tipo>BOLEANO</tipo>
+         <permiso>OCULTO</permiso>
+         <objeto>CHECKBOX</objeto>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+      </campos>
+      <campos nombre="sep1">
+         <tipo>separador</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="incluir_promedio">
+         <descripcion>Incluir promedio</descripcion>
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <objeto>CHECKBOX</objeto>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <onClick>incluir_promedio_click(this);</onClick>
+      </campos>
+      <campos nombre="promedio">
+         <descripcion>Promedio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>5</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>NT-N</id>
+         <deshabilitado>TRUE</deshabilitado>
+      </campos>
+   </parametro>
+   <parametro formulario="notas_nuevo" anchoTabla="100%" 
+    mensajeError="No se encontraron notas." clave="esta_guardada"  variable ="nt">
+      <campos nombre="esta_guardada">
+		<tipo>BOLEANO</tipo>
+	    <objeto>CHECKBOX</objeto>
+		<permiso>LECTURAESCRITURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos> 
+	  <campos nombre="asig_ccod">
+         <descripcion>Código</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="asig_ccod_guardar">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="asig_tdesc">
+         <descripcion>Asignatura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="asig_tdesc_guardar">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="nota_final">
+         <descripcion>Nota</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="nota_final_guardar">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="sitf_ccod">
+         <descripcion>Sit.Final</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="sitf_guardar">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="anos_ccod">
+         <descripcion>Periodo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="anos_guardar">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="plec_ccod">
+         <descripcion>Carácter</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="plec_guardar">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="horas">
+         <descripcion>Horas</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="horas_guardar">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="cantidad">
+         <descripcion>Oportunidad</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="cantidad_guardar">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+</Parametros>

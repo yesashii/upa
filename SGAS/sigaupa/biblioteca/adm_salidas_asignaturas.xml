@@ -1,0 +1,113 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>adm_salidas.asp</url>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+      <botones nombre="agregar">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>AGREGAR</accion>
+         <alto>500</alto>
+         <ancho>800</ancho>
+         <url>adm_salidas_asignaturas_agregar.asp</url>
+         <scroll>TRUE</scroll>
+      </botones>
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_asignaturas_salida.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="aceptar">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <url>proc_adm_salidas_asignaturas_agregar.asp</url>
+         <formulario>edicion</formulario>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+   </parametro>
+   <parametro formulario="encabezado" anchoTabla="100%" columnas="2">
+      <campos nombre="carr_tdesc">
+         <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="espe_tdesc">
+         <descripcion>Especialidad</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="plan_tdesc">
+         <descripcion>Plan</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="peri_tdesc">
+         <descripcion>Periodo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="tspl_tdesc">
+         <descripcion>Tipo de Salida</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="sapl_tdesc">
+         <descripcion>Descripción</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="sapl_npond_asignaturas">
+         <descripcion>% Pond. Asignaturas</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="asignaturas" anchoTabla="100%" mensajeError="No se han agregado asignaturas." eliminar="TRUE" clave="mall_ccod" seleccionarTodo="TRUE" variable="as" nroRegistros="10" maxLista="10" enumerarLista="TRUE">
+      <tablas nombre="asignaturas_salidas" accion="B"/>
+      <campos nombre="nive_ccod">
+         <descripcion>Nivel</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="asig_ccod">
+         <descripcion>Código</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="asig_tdesc">
+         <descripcion>Asignatura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="sapl_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="asignaturas_malla" anchoTabla="100%" eliminar="TRUE" clave="mall_ccod" seleccionarTodo="TRUE" variable="as" mensajeError="No se pueden agregar más asignaturas.">
+      <tablas nombre="asignaturas_salidas" accion="M"/>
+      <campos nombre="nive_ccod">
+         <descripcion>Nivel</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="asig_ccod">
+         <descripcion>Código</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="asig_tdesc">
+         <descripcion>Nombre Asignatura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="sapl_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+</Parametros>

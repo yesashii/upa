@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+<parametro formulario="botonera">
+ 	<botones nombre="buscar_cajas"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	  <soloUnClick>TRUE</soloUnClick>
+   </botones>
+   <botones nombre="salir"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	<botones nombre="excel">
+		 <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Excel</texto>
+		 <accion>BUSCAR</accion>
+		 <url>recaudacion_diaria_cajas_excel.asp</url>
+		 <formulario>buscador</formulario>
+	</botones>
+</parametro>
+
+
+	<parametro formulario="recaudacion_de_cajas" clave="mcaj_ncorr" variable="cajas" tabla="movimientos_cajas" 
+			mensajeError="No hay cajas disponibles para la busqueda realizada" colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="false"  agregar="true" nuevaVentana="true" maxLista="10" nroRegistros="30" anchoTabla="100%">
+		<campos nombre="mcaj_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="nombre">
+			<tipo>INPUT</tipo>
+			<descripcion>Cajero</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="fecha">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Inicio</descripcion>
+			<tipoDato>FECHA</tipoDato>
+			<alineamiento>center</alineamiento>
+		</campos>
+		<campos nombre="mes">
+			<descripcion>Mes</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>Left</alineamiento>
+		</campos>
+		<campos nombre="caja">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Folio caja</descripcion>
+			<formato>ENTERO</formato>
+			<alineamiento>center</alineamiento>
+		</campos>
+		<campos nombre="sede">
+		  	<descripcion>Sede</descripcion>
+		  	<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="comprobantes">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Comprobantes</descripcion>
+			<alineamiento>center</alineamiento>
+		</campos>
+		<campos nombre="monto">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Monto</descripcion>
+			<alineamiento>center</alineamiento>
+			<formato>Moneda</formato>
+		</campos>
+	</parametro>
+	
+	<parametro formulario="busqueda_cajas" variable="busqueda">
+   	<campos nombre="sede_ccod">
+		  <tipo>SELECT</tipo>
+		  <destino>sedes</destino> 
+		  <union>sede_ccod</union>
+		  <salida>sede_tdesc</salida>
+		  <permiso>LECTURAESCRITURA</permiso>
+		  <anulable>true</anulable>
+		  <mensajeNulo>Seleccione Sede</mensajeNulo>
+	</campos>
+	<campos nombre="mcaj_finicio">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+    </campos>
+	<campos nombre="caje_ccod">
+		<tipo>SELECT</tipo>
+		<destino>(select pers_ncorr as caje_ccod,protic.obtener_nombre(pers_ncorr,'n') as nombre from cajeros group by pers_ncorr)  a</destino>
+		<union>caje_ccod</union>
+		<salida>nombre</salida>
+		<orden>nombre</orden>
+		<permiso>LECTURAESCRITURA</permiso>
+		<anulable>true</anulable>
+		<mensajeNulo>Seleccione Cajero</mensajeNulo>
+	</campos>
+	<campos nombre="fecha_termino">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+    </campos>
+	<campos nombre="mcaj_ncorr">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>NU-S</id>
+    </campos>
+  </parametro> 
+	
+</Parametros>

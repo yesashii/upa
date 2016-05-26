@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<menu>
+	<item item_label="Inicio" item_url="index.asp" item_url_target="_self" />
+	<item item_label="Solicitud Certificados" item_url="solicitud_tyg.asp" item_url_target="_self" />
+	<item item_label="Reglamento" item_url="regla.asp" item_url_target="_self" />
+	<item item_label="Procedimiento" item_url="proce.asp" item_url_target="_self" />
+
+	<item item_label="Pago Certificados" item_url="cance.asp" item_url_target="_self" />
+	<item item_label="Validar Certificado" item_url="vali.asp" item_url_target="_self" />
+
+	<item item_label="Horario" item_url="hora.asp" item_url_target="_self" />
+	<item item_label="Contacto" item_url="contacto.asp" item_url_target="_self" />
+	<item item_label="Nómina Convocados" item_url="nomina_tyg.asp" item_url_target="_self" />
+	
+	<item item_label="Galería Fotos" item_url="http://www.upacifico.cl/galeria/" item_url_target="_blank" />
+	
+</menu>

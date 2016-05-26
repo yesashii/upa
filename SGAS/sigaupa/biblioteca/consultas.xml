@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+<parametro formulario="botonera">
+ 	<botones nombre="buscar_cajas"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	  <soloUnClick>TRUE</soloUnClick>
+   </botones>
+   <botones nombre="salir"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	<botones nombre="eliminar">
+		 <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Eliminar</texto>
+		 <accion>NAVEGAR</accion>
+		 <url>javascript:EliminaDetalle();</url>
+	</botones>
+	<botones nombre="traspasar_solicitudes">
+		 <tipoTexto>GUARDAR</tipoTexto>
+		 <accion>GUARDAR</accion>
+		 <url>carga_contable_proc.asp</url>
+		 <formulario>datos</formulario>
+		 <funcionValidacion>Enviar();</funcionValidacion>
+	</botones>	
+	  <botones nombre="buscar">
+		 <tipoTexto>BUSCAR</tipoTexto>
+		 <accion>BUSCAR</accion>
+		 <formulario>buscador</formulario>
+		 <soloUnClick>TRUE</soloUnClick>
+	  </botones>
+</parametro>
+
+<parametro formulario="buscador" variable="busqueda">
+	<campos nombre="solicitud">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-N</id>
+	</campos>
+	<campos nombre="tsol_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_solicitud</destino>
+		 <union>tsol_ccod</union>
+		 <salida>tsol_tdesc</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <mensajeNulo>-SELECCIONE UN TIPO DE SOLICITUD-</mensajeNulo>
+		 <anulable>TRUE</anulable>		 
+		 <id>NU-N</id>
+	</campos>
+	<campos nombre="anos_ccod">
+		  <tipo>SELECT</tipo>
+		  <destino>(select anos_ccod, case when anos_ccod=year(getdate()) then 1 else 0 end as orden 
+from anos where anos_ccod between year(getdate())-1 and year(getdate())+1) as tabla </destino> 
+		  <union>anos_ccod</union>
+		  <salida>anos_ccod</salida>
+		  <filtro>anos_ccod between year(getdate())-1 and year(getdate())+1</filtro>
+		  <permiso>LECTURAESCRITURA</permiso>
+		  <orden>orden desc</orden>
+		  <deshabilitado>false</deshabilitado>
+		  <id>TO-N</id>		  
+	</campos>	
+</parametro>
+
+
+<parametro formulario="solicitudes" variable="datos" clave="cod_solicitud" anchoTabla="100%" mensajeError="No hay solicitudes disponibles para listar" >
+	<campos nombre="vibo_ccod">
+		 <tipo>SELECT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <destino>ocag_visto_bueno</destino>
+		 <union>vibo_ccod</union>
+		 <salida>vibo_tsalida</salida>
+		 <filtro>vibo_ccod not in (5)</filtro>
+		<descripcion>Visto Bueno</descripcion>
+		<caracteres>30</caracteres>		 
+	</campos>	
+	<campos nombre="estado">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<descripcion>Estado</descripcion>
+    </campos>		
+	<campos nombre="fecha_valida">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<descripcion>Fecha</descripcion>
+	</campos>
+</parametro>
+
+<parametro formulario="info_solicitud" variable="datos">
+	<campos nombre="monto">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+     	<formato>MONEDA</formato>
+	</campos>
+	<campos nombre="proveedor">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	</campos>
+</parametro>
+ 
+
+</Parametros>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="botonera">
+     <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+	 <botones nombre="cancelar"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>CERRAR</accion>
+	 </botones>
+	 <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 	
+	 <botones nombre="nueva"> 
+        <tipoTexto>AGREGAR</tipoTexto>
+	    <accion>AGREGAR</accion>
+	    <posicionX>100</posicionX>
+	    <posicionY>50</posicionY>
+	    <ancho>750</ancho>
+	    <alto>400</alto>	   
+	 </botones>
+	 <botones nombre="excel">
+       <tipoTexto>DEFINIR</tipoTexto>
+	   <texto>Generar archivo Excel</texto>
+       <accion>GUARDAR</accion>	   
+	   <formulario>buscador</formulario>
+	   <url>renovantes_historicos_estado_excel.asp</url>
+   </botones>   
+	
+  </parametro>
+  
+  <parametro formulario="f_busqueda" variable="busqueda" maxLista="15" nroRegistros="10">
+   <campos nombre="pers_nrut">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>10</caracteres>
+			 <maxCaracteres>8</maxCaracteres>
+			 <id>NU-S</id>
+	</campos>
+    <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>TO-S</id>
+    </campos>
+	<campos nombre="esre_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>UFE_estados_renovantes </destino>
+         <union>esre_ccod</union>
+         <salida>esre_tdesc</salida>
+		 <orden>esre_ccod</orden>
+		 <id>TO-N</id>
+      </campos>
+	
+  </parametro>
+  
+   <parametro nuevaVentanaAlto="360" formulario="f_listado" nroRegistros="10" nuevaVentanaAncho="500" eliminar="false" clave="pers_ncorr" maxLista="15"
+	mensajeError="No se encontraron datos para la persona solicitada" 
+	seleccionarTodo="false" anchoTabla="100%" editar="false" nuevaVentana="false" variable="m" >
+       <campos nombre="importancia">
+	    <descripcion> </descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>center</alineamiento>
+	 </campos>
+	  <campos nombre="esre_timportancia">
+	    <descripcion>Importancia</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>center</alineamiento>
+	 </campos>
+	  <campos nombre="rut">
+	    <descripcion>Rut</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="nombre">
+	    <descripcion>Nombre</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="esre_tdesc">
+	    <descripcion>Estado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="esre_ccod">
+	    <descripcion>codigo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>center</alineamiento>
+	 </campos>
+	  <campos nombre="esre_tprocedimiento">
+	    <descripcion>Procedimiento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+   </parametro>
+ 
+ </Parametros>

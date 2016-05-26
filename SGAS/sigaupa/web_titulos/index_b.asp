@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+  <meta name="description" content="Your description goes here" />
+  <meta name="keywords" content="your,keywords,goes,here" />
+  <link rel="stylesheet" type="text/css" href="andreas00.css" media="screen,projection" />
+  <title>Web de T&iacute;tulos y Grados</title>
+<script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+<div id="wrap">
+    <div id="header">
+      <script type="text/javascript">
+AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0','width','760','height','100','src','swf/top_2','quality','high','pluginspage','http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash','movie','swf/top_2' ); //end AC code
+      </script>
+      <noscript>
+      <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" width="760" height="100">
+        <param name="movie" value="swf/top_2.swf" />
+        <param name="quality" value="high" />
+        <embed src="swf/top_2.swf" quality="high" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="760" height="100"></embed>
+      </object>
+      </noscript>
+    </div>
+    <div id="menu2"> 
+      
+      <div align="left"></div>
+  </div>
+
+<div id="avmenu">
+  <script type="text/javascript">
+AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0','width','154','height','400','src','menu_2','quality','high','pluginspage','http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash','movie','menu_2' ); //end AC code
+        </script>
+  <noscript>
+  <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" width="154" height="400">
+    <param name="movie" value="menu_2.swf" />
+    <param name="quality" value="high" />
+    <embed src="menu_2.swf" quality="high" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="154" height="400"></embed>
+  </object>
+  </noscript>
+  </li>
+    </ul>
+  </div>
+<div id="extras">
+      <form id="form1" method="post" action="">
+        <table width="99%">
+          <tr>
+            <td colspan="2"><strong>Ingrese sus Datos</strong> <strong>Aqu&iacute;</strong></td>
+          </tr>
+          <tr>
+            <td width="33%">Usuario</td>
+            <td width="67%"><label>
+            <input type="text" name="usuario" id="usuario" />
+             
+            </label></td>
+          </tr>
+          <tr>
+            <td>Clave</td>
+            <td><label>
+              <input type="password" name="clave" id="clave" />
+            </label></td>
+          </tr>
+          <tr>
+            <td colspan="2"><label>
+              <div align="center">
+                <input type="submit" name="ingreso" id="ingreso" value="Ingresar" />
+              </div>
+              <p><br />
+              Para solicitar certificaci&oacute;n de Post&iacute;tulos, Diplomados, Cursos, Seminarios, dirigirse a este correo</p>
+            </td>
+          </tr>
+        </table>
+    </form>
+      <p><strong>Pr&oacute;ximas Ceremonias</strong>:<br />
+      Diciembre 11, Ceremonia de Graduaci&oacute;n, Carrera Periodismo.<br />
+      <br />
+      Enero 5, Ceremonia de Graduaci&oacute;n, Carrera Periodismo.</p>
+    </div>
+
+    <div id="content">
+      <h3>
+        <script type="text/javascript">
+AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0','width','440','height','400','src','swf/Tex/colores/bienve_2','quality','high','pluginspage','http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash','movie','swf/Tex/colores/bienve_2' ); //end AC code
+        </script>
+        <noscript>
+        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" width="440" height="400">
+          <param name="movie" value="swf/Tex/colores/bienve_2.swf" />
+          <param name="quality" value="high" />
+          <embed src="swf/Tex/colores/bienve_2.swf" quality="high" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="440" height="400"></embed>
+        </object>
+        </noscript>
+      </h3>
+  </div>
+
+<div id="footer">
+      <p>Universidad del Pac&iacute;fico - Derechos Reservados</p>
+    </div>
+  </div>
+  <script type="text/javascript">
+<!--
+
+//-->
+  </script>
+</body>
+</html>

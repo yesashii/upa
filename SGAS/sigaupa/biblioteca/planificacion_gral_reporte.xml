@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="lanzadera">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cancelar">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+      <botones nombre="excel">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>BUSCAR</accion>
+		 <url>planificacion_gral_excel.asp</url>
+         <formulario>buscador</formulario>
+      </botones>
+	  <botones nombre="excel_alumnos">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel Servidor Alumnos</texto>
+         <accion>BUSCAR</accion>
+		 <url>planificacion_gral_alumnos_excel.asp</url>
+         <formulario>buscador</formulario>
+      </botones>
+      <botones nombre="imprimir">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Imprimir</texto>
+         <accion>AGREGAR</accion>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+      </botones>
+   </parametro>
+   <parametro formulario="f_depositar" clave="envi_ncorr" variable="depositos">
+      <tablas nombre="envios" accion="M"/>
+   </parametro>
+   <parametro formulario="busqueda_depositos" variable="busqueda">
+	  <campos nombre="carr_ccod">
+	     <tipo>SELECT</tipo>
+		 <destino>carreras</destino>
+		 <union>carr_ccod</union>
+		 <salida>carr_tdesc</salida>
+		 <orden>carr_tdesc</orden>
+		 <anulable>TRUE</anulable>
+		 <mensajeNulo>Todas</mensajeNulo>
+		 <mensajeVacio>No hay carreras creadas</mensajeVacio>
+		 <permiso>LECTURAESCRITURA</permiso>
+	  </campos>
+   </parametro>
+   
+  <parametro formulario="carreras_comunes" variable="carreras" anchoTabla="100%" 
+  clave="asignado" nroRegistros="15" maxLista="15" >
+	<campos nombre="secc_ccod">
+	   	<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	</campos>
+	<campos nombre="sede_ccod">
+	   	<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	</campos>
+	<campos nombre="carr_ccod">
+	   	<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	</campos>
+	<campos nombre="jorn_ccod">
+	   	<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	</campos>
+	<campos nombre="sede">
+	   <descripcion>Sede</descripcion>
+		<tipo>INPUT</tipo>
+	   <permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="carrera">
+	   <descripcion>Carrera</descripcion>
+		<tipo>INPUT</tipo>
+	   <permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="jornada">
+	   <descripcion>Jornada</descripcion>
+		<tipo>INPUT</tipo>
+	   <permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="asignado">
+	   <descripcion>Asignado</descripcion>
+		<tipo>BOLEANO</tipo>
+	    <objeto>CHECKBOX</objeto>
+		<permiso>LECTURAESCRITURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos> 
+ </parametro>
+
+</Parametros>   

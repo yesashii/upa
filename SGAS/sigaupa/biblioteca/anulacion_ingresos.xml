@@ -1,0 +1,113 @@
+﻿<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+      <botones nombre="anular">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Anular</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_anulacion_ingresos.asp</url>
+         <mensajeConfirmacion>¿Está seguro que desea anular este ingreso?</mensajeConfirmacion>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="busqueda" variable="busqueda">
+      <campos nombre="ingr_nfolio_referencia">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>15</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="ting_ccod">
+         <tipo>SELECT</tipo>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <filtro>ting_ccod in (7, 16, 17, 33, 34, 10, 8, 2,15)</filtro>
+         <orden>ting_tdesc asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione tipo</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="ingreso" variable="ingreso" anchoTabla="100%" mensajeError="No se encontraron ingresos.">
+      <campos nombre="ting_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ingr_nfolio_referencia">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c_ting_ccod">
+         <descripcion>Tipo</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="c_ingr_nfolio_referencia">
+         <descripcion>Folio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="total_ingreso">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="mcaj_ncorr">
+         <descripcion>Caja</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ingr_fpago">
+         <descripcion>Fecha</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="rut_alumno">
+         <descripcion>R.U.T. Alumno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="nombre_alumno">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="eing_ccod">
+         <descripcion>Estado</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>estados_ingresos</destino>
+         <union>eing_ccod</union>
+         <salida>eing_tdesc</salida>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+</Parametros>

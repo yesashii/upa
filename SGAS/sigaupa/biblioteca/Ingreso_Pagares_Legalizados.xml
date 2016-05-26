@@ -1,0 +1,151 @@
+<Parametros>
+  <parametro formulario="botonera">
+    <botones nombre="legalizar_pagares"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Ingresar</texto>
+	  <accion>GUARDAR</accion>
+	  <url>Proc_ingreso_pagares_Legalizados.asp</url>
+	  <formulario>edicion</formulario>
+	  <mensajeConfirmacion>Esta seguro que desea ingresar los pagares seleccionadas</mensajeConfirmacion>
+	</botones>
+    <botones nombre="cancelar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Salir</texto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	<botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	   <funcionValidacion>Validar();</funcionValidacion>
+	</botones>
+  </parametro>
+
+ <parametro formulario="busqueda_letras" variable="busqueda">
+   <campos nombre="inen_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>instituciones_envio</destino> 
+	  <union>inen_ccod</union>
+	  <salida>inen_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <filtro>tine_ccod=2</filtro>
+	  <mensajeNulo>Seleccione Notaria</mensajeNulo>
+	 </campos>
+	<campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+     <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+	  <campos nombre="code_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="code_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+    <campos nombre="paga_ncorr">
+       <tipo>INPUT</tipo>
+       <permiso>LECTURAESCRITURA</permiso>
+       <caracteres>12</caracteres>
+       <maxCaracteres>10</maxCaracteres>
+	   <id>NU-S</id>
+    </campos>
+	 <campos nombre="enpa_ncorr">
+       <tipo>INPUT</tipo>
+       <permiso>LECTURAESCRITURA</permiso>
+       <caracteres>12</caracteres>
+       <id>NU-S</id>
+    </campos>
+ 
+  </parametro> 
+ <parametro formulario="f_letras" clave="enpa_ncorr"  variable="letras" 
+    colorSeleccionado="#CCCCCC" colorResaltado="#999999" nroRegistros="15" maxLista="10" 
+    eliminar="TRUE" seleccionarTodo="TRUE"  anchoTabla="95%" 
+	mensajeError="No se encontraron letras...">
+	<tablas nombre="detalle_envios_pagares" accion="M"/>
+	<tablas nombre="pagares" accion="M"/>
+	 <campos nombre="paga_ncorr">
+	    <descripcion>nro_pagare</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	
+	 <campos nombre="enpa_ncorr_c">
+	    <descripcion>Envio</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<ancho>50</ancho>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="nro_pagare">
+	    <descripcion>Pagare</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<ancho>50</ancho>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+     <campos nombre="EPAG_TDESC">
+	    <descripcion>Estado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	
+	<campos nombre="rut_post">
+	    <descripcion>Rut Alumno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="rut_codeudor">
+	    <descripcion>Rut Apoderado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="valor_pagar">
+	    <descripcion>Monto U.F.</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+		
+	 </campos>
+	 
+	 	<campos nombre="paga_fpagare">
+	    <descripcion>F Emision</descripcion>
+		<tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        <alineamiento>RIGHT</alineamiento>
+		<nowrap>TRUE</nowrap>
+	 </campos>
+	 
+	 	 
+	 	<campos nombre="paga_finicio_pago">
+	    <descripcion>F Inicio Vencimiento</descripcion>
+		<tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+        <alineamiento>RIGHT</alineamiento>
+		<nowrap>TRUE</nowrap>
+	 </campos>	
+   </parametro>
+ 
+ </Parametros>

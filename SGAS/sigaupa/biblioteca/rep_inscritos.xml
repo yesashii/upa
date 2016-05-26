@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="tabla"/>
+   <parametro formulario="busqueda" camposObligatorios="TRUE" variable="b">
+      <campos nombre="sede_ccod">
+         <descripcion>Sede</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>sedes</destino>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+         <orden>sede_tdesc asc</orden>
+         <id>TO-N</id>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione sede</mensajeNulo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="peri_ccod">
+         <descripcion>Semestre</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>(select peri_ccod,peri_tdesc from periodos_academicos where anos_ccod=2005)a</destino>
+         <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+         <orden>peri_ccod asc</orden>
+         <id>TO-N</id>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione semestre</mensajeNulo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="carr_ccod">
+         <descripcion>Carrera</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>carreras</destino>
+         <union>carr_ccod</union>
+         <salida>carr_tdesc</salida>
+         <orden>carr_tdesc asc</orden>
+         <id>TO-S</id>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Todas</mensajeNulo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="inscritos" anchoTabla="100%" nroRegistros="20" maxLista="10" enumerarLista="TRUE" variable="i" 
+   mensajeError="Seleccione los parámetros de búsqueda." paginaEdicion="listado_alumnos.asp?secc_ccod=%secc_ccod%"
+   nuevaVentanaAlto="500" nuevaVentanaAncho="650" nuevaVentana="true" editar="true" >
+      <campos nombre="carrera">
+         <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="secc_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="asig_ccod">
+         <descripcion>Cod. Asig</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="asignatura">
+         <descripcion>Asignatura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="seccion">
+         <descripcion>Sección</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="secc_ncupo">
+         <descripcion>Cupo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="jornada">
+         <descripcion>Jornada</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="nive_ccod">
+         <descripcion>Nivel</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="inscritos">
+         <descripcion>Inscritos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="botonera">
+      <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>NAVEGAR</accion>
+         <url>rep_inscritos_excel.asp</url>
+      </botones>
+	  <botones nombre="cancelar"> 
+      	<tipoTexto>SALIR</tipoTexto>
+	  	<accion>CERRAR</accion>
+	  </botones>
+	  <botones nombre="excel2">
+       <tipoTexto>DEFINIR</tipoTexto>
+	   <texto>Excel</texto>
+       <accion>GUARDAR</accion>	   
+	   <formulario>edicion</formulario>
+   </botones>  
+   </parametro>
+   <parametro formulario="f_alumnos" clave="matr_ncorr"  variable="alumnos" 
+      colorSeleccionado="#CCCCCC" colorResaltado="#999999" nroRegistros="15" maxLista="10" 
+	  paginaEdicion="" eliminar="FALSE" 
+      seleccionarTodo="FALSE"  anchoTabla="100%" editar="FALSE"  nuevaVentana="FALSE" 
+	  mensajeError="No se encontraron alumnos...">	
+	 <campos nombre="matr_ncorr">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>     
+	 <campos nombre="rut">
+	    <descripcion>RUT</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>	 
+	 <campos nombre="PERS_TAPE_PATERNO">
+	    <descripcion>Apellido Paterno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<nowrap>TRUE</nowrap>
+	 </campos>
+	 <campos nombre="PERS_TAPE_MATERNO">
+	    <descripcion>Apellido Materno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<nowrap>TRUE</nowrap>
+	 </campos>
+	 <campos nombre="PERS_TNOMBRE">
+	    <descripcion>Nombre Alumno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<nowrap>TRUE</nowrap>
+	</campos>
+	 <campos nombre="carr_ccod">
+	    <descripcion>codigo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+		<alineamiento>LEFT</alineamiento>
+	</campos>
+	 <campos nombre="CARR_TDESC">
+	    <descripcion>Carrera</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<nowrap>TRUE</nowrap>
+	</campos>
+	 <campos nombre="ESPE_TDESC">
+	    <descripcion>Especialidad</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<nowrap>TRUE</nowrap>
+	</campos>	 
+ </parametro>  
+ <parametro formulario="inscritos2" anchoTabla="100%"  enumerarLista="TRUE" variable="i" 
+   mensajeError="Seleccione los parámetros de búsqueda." paginaEdicion=""
+   nuevaVentana="false" editar="false" >
+      <campos nombre="carrera">
+         <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="secc_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="asig_ccod">
+         <descripcion>Cod. Asig</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="asignatura">
+         <descripcion>Asignatura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="seccion">
+         <descripcion>Sección</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>  
+	  <campos nombre="secc_ncupo">
+         <descripcion>Cupo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="jornada">
+         <descripcion>Jornada</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="nive_ccod">
+         <descripcion>Nivel</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="inscritos">
+         <descripcion>Inscritos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+</Parametros>
+

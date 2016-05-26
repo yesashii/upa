@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+	<parametro formulario="f_select" clave="regi_ccod" variable="m" 
+			mensajeError="No hay registros para los parametros de búsqueda"
+			colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="true" editar="true" agregar="true" nuevaVentana="true" 
+			 anchoTabla="75%"  paginaEdicion="estudio.asp?ciud_ccod=%ciud_ccod%"
+			 maxLista="10" nroRegistros="20" >
+ 		<campos nombre="regi_ccod">
+			<tipo>SELECT</tipo>
+		    <descripcion>Región</descripcion>			
+			<permiso>LECTURAESCRITURA</permiso>
+			<destino>regiones</destino>
+			<union>regi_ccod</union>
+			<salida>regi_tdesc</salida>
+			<anulable>TRUE</anulable>
+			<mensajeNulo>Elija una Región</mensajeNulo>
+			<id>TO-N</id>
+		</campos>		
+
+	</parametro>		 
+		<parametro formulario="f_prueba" clave="ciud_ccod" variable="m" 
+			mensajeError="No hay registros para los parametros de búsqueda"
+			colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="true" editar="true" agregar="true" nuevaVentana="true" 
+			 anchoTabla="75%"  paginaEdicion="estudio.asp?ciud_ccod=%ciud_ccod%"
+			 maxLista="10" nroRegistros="20" >
+ 		<campos nombre="ciud_tdesc">
+		    <descripcion>Ciudad</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>ESCRITURA</permiso>
+			<alineamiento>rigth</alineamiento>
+		</campos>
+ 		<campos nombre="ciud_tcomuna">
+		    <descripcion>Comuna</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>ESCRITURA</permiso>
+			<alineamiento>rigth</alineamiento>
+		</campos>
+ 		<campos nombre="regi_tdesc">
+		    <descripcion>Región</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>rigth</alineamiento>
+		</campos>
+
+	</parametro>
+</parametros>
+
+

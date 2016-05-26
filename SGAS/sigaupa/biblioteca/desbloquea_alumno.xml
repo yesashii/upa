@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	  
+       <botones nombre="desbloquear">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Debloquear</texto>
+		  <formulario>edicion</formulario>
+         <url>desbloquear_alumno_proc.asp</url>
+		  <funcionValidacion>Validar();</funcionValidacion>
+      </botones> 
+	  
+	<botones nombre="excel">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Excel</texto>
+      </botones>
+   
+   </parametro>
+   <parametro formulario="bloqueados" variable="b" colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  nroRegistros="15"
+		 maxLista="10" mensajeError="No hay alumnos bloqueados." colorBase="#F1F1E4" eliminar="true" editar="" anchoTabla="100%" nuevaVentana="false" clave="albs_ncorr">
+       <campos nombre="pers_ncorr" >
+         <tipo>input</tipo>
+         <permiso>oculto</permiso>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	   <campos nombre="rut" >
+         <descripcion>Rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	   <campos nombre="nombre" >
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+		</campos>
+	   <campos nombre="fecha_bloqueo" >
+         <descripcion>Fecha Bloqueo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+		</campos>
+   </parametro>
+   <parametro  formulario="bloqueo" variable="b">
+   		 <campos nombre="albs_ncorr">
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         </campos>
+		 <campos nombre="pers_ncorr">
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         </campos>
+   </parametro>
+
+   
+   
+</Parametros>

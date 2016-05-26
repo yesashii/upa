@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="botonera">
+     <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+	 <botones nombre="cancelar"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>CERRAR</accion>
+	 </botones>
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>ValidaBusqueda();</funcionValidacion>
+      </botones>
+	<botones nombre="guardar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Guardar</texto>
+	  <accion>GUARDAR</accion>
+	  <formulario>edicion</formulario>
+	  <url>proc_guardar_anexos.asp</url>
+	  <funcionValidacion>Guardar_Anexos(document.edicion);</funcionValidacion>
+	</botones>
+	<botones nombre="anular"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Anular</texto>
+	  <accion>GUARDAR</accion>
+	  <formulario>edicion</formulario>
+	  <url>proc_anular_anexos.asp</url>
+	  <funcionValidacion>Anula_Anexos(document.edicion);</funcionValidacion>
+	</botones>
+	<botones nombre="anular_contrato"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Anular Contrato</texto>
+	  <accion>GUARDAR</accion>
+	  <formulario>contrato</formulario>
+	  <url>proc_anular_contrato.asp</url>
+	  <funcionValidacion>Anula_Contrato(document.contrato);</funcionValidacion>
+	</botones>
+	<botones nombre="guardar_contrato"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Guarda Contrato</texto>
+	  <accion>GUARDAR</accion>
+	  <formulario>contrato</formulario>
+	  <url>proc_guardar_contrato.asp</url>
+	  <funcionValidacion>Guardar_Contrato(document.contrato);</funcionValidacion>
+	</botones>
+ 	<botones nombre="volver">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>history.back()</funcion>
+    </botones>	  
+  </parametro>
+  
+  
+  <parametro formulario="contrato_creados" variable="cdoc" anchoTabla="98%" 
+  	nroRegistros="10"   eliminar="true"  maxLista="10" clave="cdoc_ncorr" >
+    <tablas  nombre="contratos_docentes_upa" accion="M" />
+	   <campos nombre="cdoc_ncorr">
+	   	 <descripcion>Nº Contrato</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>NU-S</id>
+       </campos>
+	   <campos nombre="TPRO_CCOD">
+			<descripcion>Tipo Profesor</descripcion>
+			<tipo>SELECT</tipo> 
+			<destino>tipos_profesores</destino>
+			<union>tpro_ccod</union> 
+			<salida>tpro_tdesc</salida> 
+			<permiso>LECTURA</permiso>
+		</campos>       
+	   <campos nombre="CDOC_FINICIO">
+			<descripcion>Fecha Inicio</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<tipoDato>FECHA</tipoDato>
+		 	<caracteres>12</caracteres> 
+			<id>FE-N</id>
+		</campos>
+        <campos nombre="CDOC_FFIN">
+			<descripcion>Fecha fin</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<tipoDato>FECHA</tipoDato>
+		 	<caracteres>12</caracteres>
+			<id>FE-N</id> 
+		</campos>    
+		<campos nombre="ANO_CONTRATO">
+			<descripcion>Año</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso> 
+		</campos>
+		<campos nombre="TCDO_CCOD" >
+			<descripcion>Tipo Contrato</descripcion>
+			<tipo>SELECT</tipo> 
+			<destino>tipos_contratos_docentes</destino>
+			<union>tcdo_ccod</union> 
+			<salida>tcdo_tdesc</salida> 
+			<permiso>LECTURAESCRITURA</permiso> 
+		</campos>
+		<campos nombre="ECDO_CCOD">
+			<descripcion>Estado Contrato</descripcion>
+			<tipo>SELECT</tipo> 
+			<destino>estados_contratos_docentes</destino>
+			<union>ecdo_ccod</union> 
+			<salida>ecdo_tdesc</salida> 
+			<permiso>LECTURA</permiso> 
+		</campos>
+    </parametro>
+	
+	
+	   <parametro 
+	   	paginaEdicion="detalles_anexos.asp?pers_ncorr=%pers_ncorr%&amp;cdoc_ncorr=%contrato%&amp;anex_ncorr=%anex_ncorr%" 
+		formulario="detalle_anexos_contratos"  agregar="true"  
+    	nroRegistros="10" eliminar="true" clave="anex_ncorr"  maxLista="10"
+		mensajeError="No hay anexos creados para el docente en esta escuela" seleccionarTodo="FALSE" editar="true" anchoTabla="98%" nuevaVentana="true" variable="m" >
+     <tablas  nombre="anexos" accion="M" />
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="cdoc_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="estado">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="contrato">
+	   	 <descripcion>Contrato</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="anexo">
+	  	 <descripcion>Nº Anexo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="eane_tdesc">
+	  	 <descripcion>Estado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="anex_finicio">
+	  	 <descripcion>Fecha Inicio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <tipoDato>FECHA</tipoDato>
+		 <caracteres>12</caracteres>
+		 <id>FE-N</id>
+      </campos>	  
+      <campos nombre="anex_ffin">
+	  	 <descripcion>Fecha Fin</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <tipoDato>FECHA</tipoDato>
+		 <caracteres>12</caracteres>
+		 <id>FE-N</id>
+      </campos>	 
+      <campos nombre="anex_ncuotas">
+	  	 <descripcion>Nº Cuotas</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+      <campos nombre="anex_nhoras_coordina">
+	  	 <descripcion>Horas Coordinacion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>	  
+   </parametro>
+   
+     <parametro formulario="detalle_anexos" variable="busqueda" anchoTabla="98%">
+	   <campos nombre="cdoc_ncorr">
+	   	 <descripcion>Nº Contrato</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+       </campos>
+	   <campos nombre="anex_ncodigo">
+	   	 <descripcion>Nº Anexo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+       </campos>
+	   <campos nombre="ASIG_CCOD">
+			<descripcion>Cod. Asig.</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso> 
+		</campos>
+		<campos nombre="SECC_tdesc">
+			<descripcion>Seccion</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso> 
+		</campos>
+		<campos nombre="BLOQ_CCOD">
+			<descripcion>Bloque</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso> 
+		</campos>
+		<campos nombre="ASIG_tdesc">
+			<descripcion>Asignatura</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso> 
+		</campos>
+        <campos nombre="DANE_NSESIONES">
+			<descripcion>Horas</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso> 
+		</campos>    
+		<campos nombre="DUAS_CCOD">
+			<descripcion>Regimen</descripcion>
+			<tipo>SELECT</tipo> 
+			<destino>duracion_asignatura</destino>
+			<union>DUAS_CCOD</union> 
+			<salida>DUAS_TDESC</salida>
+			<permiso>LECTURA</permiso> 
+		</campos>
+    </parametro>
+
+   
+   
+ 	<parametro formulario="detalle_contratos" clave="pers_ncorr"  variable="m" >
+    	<tablas nombre="contratos" accion="M"/>
+	</parametro>
+	
+	
+	
+ 
+</Parametros>
+

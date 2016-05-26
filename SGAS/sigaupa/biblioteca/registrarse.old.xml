@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="edicion_ficha_postulante" clave="pers_ncorr" variable="a" mensajeError="No hay docentes que cumplan la condición" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="true" eliminar="true" agregar="true" nuevaVentana="false" paginaEdicion="" maxLista="10" nroRegistros="5">
+      <tablas nombre="personas_postulante" accion="M"/>
+      <tablas nombre="usuarios" accion="M"/>
+      <campos nombre="pers_ncorr">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <tipoDato>SECUENCIA</tipoDato>
+         <secuencia>pers_ncorr_seq</secuencia>
+      </campos>
+      <campos nombre="pers_tape_paterno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>25</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_tape_materno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>25</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_tnombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_temail">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>40</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+         <id>EM-S</id>
+      </campos>
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>NU-N</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <script>readonly</script>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>LN-N</id>
+         <caracteres>2</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>readonly</script>
+      </campos>
+      <campos nombre="tvis_ccod">
+         <tipo>select</tipo>
+         <destino>tipos_visa</destino>
+         <union>tvis_ccod</union>
+         <salida>tvis_tdesc</salida>
+         <orden>tvis_ccod asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="pais_ccod">
+         <tipo>select</tipo>
+         <destino>paises</destino>
+         <union>pais_ccod</union>
+         <salida>pais_tdesc</salida>
+         <!--<orden>pais_ccod asc</orden>-->
+		 <orden>pais_tdesc</orden>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Selecciona País</mensajeNulo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onChange='habilita(this.value, this.form);'</script>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_tpasaporte">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-S</id>
+         <caracteres>15</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+      </campos>
+      <campos nombre="pers_tfono">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>15</caracteres>
+         <maxCaracteres>15</maxCaracteres>
+         <id>TE-N</id>
+      </campos>
+      <campos nombre="pers_femision_pas">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+      <campos nombre="pers_fvencimiento_pas">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+      <campos nombre="pers_ftermino_visa">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+      <campos nombre="usua_tusuario">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="usua_tclave">
+         <tipo>CLAVE</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="usua_tpregunta">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>25</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="usua_trespuesta">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>25</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="mantiene_personas" clave="pers_ncorr" variable="a" mensajeError="No hay docentes que cumplan la condición" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="true" eliminar="true" agregar="true" nuevaVentana="false" paginaEdicion="" maxLista="10" nroRegistros="5">
+      <tablas nombre="personas" accion="I"/>
+      <campos nombre="pers_ncorr">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <tipoDato>SECUENCIA</tipoDato>
+         <secuencia>pers_ncorr_seq</secuencia>
+      </campos>
+      <campos nombre="pers_tape_paterno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>25</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <id>NO-N</id>
+      </campos>
+      <campos nombre="pers_tape_materno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>25</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <id>NO-N</id>
+      </campos>
+      <campos nombre="pers_tnombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+         <id>NO-N</id>
+      </campos>
+      <campos nombre="pers_temail">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+         <id>EM-S</id>
+      </campos>
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>NU-N</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <script>readonly</script>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>LN-N</id>
+         <caracteres>2</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>readonly</script>
+      </campos>
+      <campos nombre="tvis_ccod">
+         <tipo>select</tipo>
+         <destino>tipos_visa</destino>
+         <union>tvis_ccod</union>
+         <salida>tvis_tdesc</salida>
+         <orden>tvis_ccod asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="pais_ccod">
+         <tipo>select</tipo>
+         <destino>paises</destino>
+         <union>pais_ccod</union>
+         <salida>pais_tdesc</salida>
+         <orden>pais_ccod asc</orden>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Selecciona País</mensajeNulo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onChange='habilita(this.value, this.form);'</script>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_tpasaporte">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-S</id>
+         <caracteres>15</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+      </campos>
+      <campos nombre="pers_tfono">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>15</caracteres>
+         <maxCaracteres>15</maxCaracteres>
+         <id>TE-N</id>
+      </campos>
+      <campos nombre="pers_femision_pas">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+      <campos nombre="pers_fvencimiento_pas">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+   </parametro>
+   <parametro formulario="botonera">
+      <botones nombre="siguiente">
+         <tipoTexto>SIGUIENTE</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>enviar(document.formulario1);</funcion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>inicio.asp</url>
+      </botones>
+   </parametro>
+</Parametros>

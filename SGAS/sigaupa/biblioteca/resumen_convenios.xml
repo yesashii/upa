@@ -1,0 +1,146 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+      <botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_entrega_recursos.asp</url>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	  <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+      </botones>
+	  <botones nombre="salir2">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Salir</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>salir()</funcion>
+      </botones>
+	  <botones nombre="imprimir">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Imprimir</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>imprimir()</funcion>
+      </botones>
+   </parametro>
+   <parametro formulario="busqueda" variable="busqueda">
+   <campos nombre="sede_ccod">
+  	<tipo>SELECT</tipo> 
+  	<destino>sedes</destino> 
+  	<union>sede_ccod</union> 
+  	<salida>sede_tdesc</salida> 
+  	<orden>sede_tdesc</orden> 
+  	<permiso>LECTURAESCRITURA</permiso> 
+  	<anulable>TRUE</anulable> 
+  	<mensajeNulo>Seleccione una Sede</mensajeNulo> 
+  </campos>
+  <campos nombre="econ_ccod">
+  	<tipo>SELECT</tipo> 
+  	<destino>estados_contrato</destino> 
+  	<union>econ_ccod</union> 
+  	<salida>econ_tdesc</salida> 
+  	<orden>econ_tdesc</orden> 
+  	<permiso>LECTURAESCRITURA</permiso> 
+  	<anulable>TRUE</anulable> 
+  	<mensajeNulo>Seleccione un Estado</mensajeNulo> 
+  </campos>
+  </parametro>
+   <parametro formulario="convenios" variable="convenios" anchoTabla="100%" mensajeError="No existen Convenios asociados." 
+    clave="cont_ncorr" nroRegistros="20" maxLista="10">
+      <campos nombre="fecha">
+         <descripcion>Fecha</descripcion>
+         <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="contrato">
+         <descripcion>Contrato</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="rut">
+         <descripcion>Rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="escuela">
+         <descripcion>Escuela</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="cod_carrera">
+         <descripcion>Cod. Esc.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="promocion">
+         <descripcion>Promocion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="caja">
+         <descripcion>Caja</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="estado">
+         <descripcion>Estado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+      <parametro formulario="convenios2" variable="convenios" anchoTabla="100%" mensajeError="No existen Convenios asociados." 
+    clave="cont_ncorr">
+      <campos nombre="fecha">
+         <descripcion>Fecha</descripcion>
+         <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="contrato">
+         <descripcion>Contrato</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="rut">
+         <descripcion>Rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="escuela">
+         <descripcion>Escuela</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="cod_carrera">
+         <descripcion>Cod. Esc.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="promocion">
+         <descripcion>Promocion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="caja">
+         <descripcion>Caja</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="estado">
+         <descripcion>Estado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+ </Parametros>

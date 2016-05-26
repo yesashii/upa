@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="form_ingr_asig" clave="asig_ccod" variable="m" mensajeError="No hay Asignaturas que coincidan con el criterio de búsqueda" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" eliminar="true" agregar="true" nuevaVentana="false" maxLista="10" nroRegistros="8" anchoTabla="98%">
+      <tablas nombre="malla_curricular" accion="M"/>
+      <campos nombre="asig_ccod">
+         <tipo>input</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Código</descripcion>
+      </campos>
+      <campos nombre="mall_ccod">
+         <tipo>input</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Código</descripcion>
+      </campos>
+      <campos nombre="nive_ccod">
+         <tipo>input</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Código</descripcion>
+      </campos>
+      <campos nombre="plan_ccod">
+         <tipo>input</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Código</descripcion>
+      </campos>
+   </parametro>
+   <parametro formulario="f_agregar_asignatura" clave="asig_ccod" variable="m">
+      <campos nombre="plan">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="nivel">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>4</caracteres>
+         <maxCaracteres>2</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="mall_nota_presentacion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="mall_porcentaje_presentacion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="mall_nevaluacion_minima">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>4</caracteres>
+         <maxCaracteres>2</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="mall_porcentaje_asistencia">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="mall_nota_eximicion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="form_agrega_asig" clave="asig_ccod" variable="m" 
+   mensajeError="No hay Asignaturas que coincidan con el criterio de búsqueda" 
+   colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" 
+   eliminar="true" agregar="true" nuevaVentana="false" paginaEdicion="lista_alumnos.asp?asig_ccod=%asig_ccod%"
+    maxLista="10" nroRegistros="8" anchoTabla="98%">
+      <tablas nombre="malla_curricular" accion="M"/>
+      <campos nombre="asig_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Código</descripcion>
+      </campos>
+      <campos nombre="asig_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nombre Asignatura</descripcion>
+         <maxCaracteres>3</maxCaracteres>
+         <caracteres>5</caracteres>
+         <etiqueta>false</etiqueta>
+         <alineamiento>center</alineamiento>
+      </campos>
+      <campos nombre="mall_ccod">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="nive_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="plan_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="btn_busca_malla">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>enviar(document.buscador)</funcion>
+      </botones>
+      <botones nombre="AGREGAR">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Agregar Como Asignatura Común</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>agregar_asig(document.edicion)</funcion>
+      </botones>
+	  <botones nombre="ELIMINAR">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Eliminar Asignatura Común</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>eliminar_asig(document.edicion2)</funcion>
+      </botones>
+      <botones nombre="SALIR">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>  
+	  <botones nombre="excel">
+  		<tipoTexto>DEFINIR</tipoTexto> 
+  		<texto>Excel</texto> 
+  		<accion>GUARDAR</accion> 
+  		<formulario>edicion2</formulario> 
+  	  </botones>
+   </parametro>
+   <parametro formulario="buscador" variable="a">
+	    <listas nombre="lBusqueda">
+			<item clave="carr_ccod" valor="carr_tdesc" />
+			<item clave="espe_ccod" valor="espe_tdesc" />
+			<item clave="plan_ccod" valor="plan_tdesc" />
+		</listas>
+		<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="espe_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="plan_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+	</parametro>
+	<parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" 
+	paginaEdicion="" formulario="asignaturas_plan" eliminar="true" clave="mall_ccod" mensajeError="No existen asignaturas a compartir para el plan seleccionado." 
+	colorBase="#F1F1E4" anchoTabla="98%" editar="false" variable="apl" nroRegistros="10" maxLista="10">
+	<tablas nombre="asignaturas_comunes" accion="M"/>
+      <campos nombre="asig_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="mall_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>invisible</permiso>
+      </campos>
+      <campos nombre="plan_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="nive_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="nivel">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nivel</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="cod_asig">
+         <tipo>IMPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Código</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="asignatura">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Asignatura</descripcion>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="asig_nhoras">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Horas</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="duracion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Duración</descripcion>
+      </campos>
+	  <campos nombre="planificada">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Planificada</descripcion>
+      </campos>
+   </parametro>
+   <parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" 
+	paginaEdicion="" formulario="asignaturas_comunes" eliminar="true" clave="mall_ccod" mensajeError="No existen asignaturas Comunes para esta carrera." 
+	colorBase="#F1F1E4" anchoTabla="98%" editar="false" variable="acomun" nroRegistros="20" maxLista="10">
+      <tablas nombre="asignaturas_comunes" accion="E"/>
+	  <campos nombre="mall_ccod2">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="nivel">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nivel</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="especialidad">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Especialidad</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="plan_est">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Plan Estudios</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="cod_asignatura">
+         <tipo>IMPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Código</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="asignatura">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Asignatura</descripcion>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="asig_nhoras">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Horas</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+</Parametros>

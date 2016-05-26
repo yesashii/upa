@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametros formulario="botonera">
+ <botones nombre="buscar">
+  <tipoTexto>BUSCAR</tipoTexto> 
+  <accion>BUSCAR</accion> 
+  <formulario>buscador</formulario> 
+  <funcionValidacion>ValidaBusqueda();</funcionValidacion> 
+  </botones>
+ <botones nombre="guardar">
+  <tipoTexto>GUARDAR</tipoTexto> 
+  <accion>GUARDAR</accion> 
+  <formulario>edicion</formulario> 
+  <url>proc_encasillar_alumno.asp</url> 
+  <mensajeConfirmacion>¿Está seguro que desea cambiar el estado del alumno?</mensajeConfirmacion> 
+  </botones>
+ <botones nombre="salir">
+  <tipoTexto>SALIR</tipoTexto> 
+  <accion>navegar</accion> 
+  <url>../lanzadera/lanzadera.asp</url> 
+  </botones>
+  </parametros>
+ <parametro formulario="busqueda" variable="b">
+<campos nombre="pers_nrut">
+  <tipo>INPUT</tipo> 
+  <permiso>LECTURAESCRITURA</permiso> 
+  <caracteres>10</caracteres> 
+  <maxCaracteres>8</maxCaracteres> 
+  <id>NU-N</id> 
+  </campos>
+ <campos nombre="pers_xdv">
+  <tipo>INPUT</tipo> 
+  <permiso>LECTURAESCRITURA</permiso> 
+  <caracteres>1</caracteres> 
+  <maxCaracteres>1</maxCaracteres> 
+  <id>LN-N</id> 
+  <script>onBlur="this.value=this.value.toUpperCase();"</script> 
+  </campos>
+  </parametro>
+ <parametro formulario="alumno" variable="alumno" anchoTabla="100%" mensajeError="No se encuentra el alumno.">
+  <tablas nombre="alumnos" accion="M" /> 
+ <campos nombre="sede_ccod">
+  <tipo>INPUT</tipo> 
+  <permiso>OCULTO</permiso> 
+  </campos>
+  <campos nombre="peri_ccod">
+  <tipo>INPUT</tipo> 
+  <permiso>OCULTO</permiso> 
+  </campos>
+  <campos nombre="jorn_ccod">
+  <tipo>INPUT</tipo> 
+  <permiso>OCULTO</permiso> 
+  </campos>
+ <campos nombre="matr_ncorr">
+  <tipo>INPUT</tipo> 
+  <permiso>OCULTO</permiso> 
+  </campos>
+ <campos nombre="rut">
+  <descripcion>R.U.T.</descripcion> 
+  <tipo>INPUT</tipo> 
+  <permiso>OCULTO</permiso> 
+  <alineamiento>CENTER</alineamiento> 
+  <nowrap>TRUE</nowrap> 
+  </campos>
+ <campos nombre="peri_tdesc">
+  <descripcion>Periodo</descripcion> 
+  <tipo>INPUT</tipo> 
+  <permiso>LECTURA</permiso> 
+  </campos>
+<campos nombre="nombre_alumno">
+  <descripcion>Nombre</descripcion> 
+  <tipo>INPUT</tipo> 
+  <permiso>OCULTO</permiso> 
+  <alineamiento>CENTER</alineamiento> 
+  </campos>
+ <campos nombre="sede">
+  <descripcion>Sede</descripcion> 
+  <tipo>INPUT</tipo> 
+  <permiso>LECTURA</permiso> 
+  </campos>
+ <campos nombre="carrera">
+  <descripcion>Carrera</descripcion> 
+  <tipo>INPUT</tipo> 
+  <permiso>LECTURA</permiso> 
+  </campos>
+  <campos nombre="jornada">
+  <descripcion>Jornada</descripcion> 
+  <tipo>INPUT</tipo> 
+  <permiso>LECTURA</permiso> 
+  </campos>
+ <campos nombre="especialidad">
+  <descripcion>Especialidad</descripcion> 
+  <tipo>SELECT</tipo> 
+  <destino>(SELECT a.espe_ccod, espe_tdesc,a.carr_ccod, b.jorn_ccod,b.peri_ccod FROM especialidades a, ofertas_academicas b WHERE a.eesp_ccod = 1 AND a.espe_ccod = b.espe_ccod) c</destino> 
+  <union>espe_ccod</union> 
+  <salida>espe_tdesc</salida> 
+  <permiso>LECTURAESCRITURA</permiso> 
+  <alineamiento>LEFT</alineamiento> 
+  <anulable>TRUE</anulable> 
+  <script>onChange="CargarPlanes(this.form, this.value)"</script> 
+  <id>TO-N</id> 
+  </campos>
+ <!--<campos nombre="emat_ccod">
+  <descripcion>Estado matrícula</descripcion> 
+  <tipo>SELECT</tipo> 
+  <destino>estados_matriculas</destino> 
+  <union>emat_ccod</union> 
+  <salida>emat_tdesc</salida> 
+  <filtro>emat_ccod <> 9</filtro> 
+  <permiso>LECTURAESCRITURA</permiso> 
+  <alineamiento>CENTER</alineamiento> 
+  <anulable>TRUE</anulable> 
+  <id>TO-N</id> 
+  </campos>-->
+<campos nombre="plan_ccod">
+  <descripcion>Plan</descripcion> 
+  <tipo>SELECT</tipo> 
+  <destino>planes_estudio</destino> 
+  <union>plan_ccod</union> 
+  <salida>plan_tdesc</salida> 
+  <orden>plan_ncorrelativo asc</orden> 
+  <permiso>LECTURAESCRITURA</permiso> 
+  <alineamiento>LEFT</alineamiento> 
+  <anulable>TRUE</anulable> 
+  <id>TO-N</id> 
+  </campos>
+  <campos nombre="estado_alumno">
+  <descripcion>Estado</descripcion> 
+  <tipo>INPUT</tipo> 
+  <permiso>LECTURA</permiso> 
+  </campos>
+  </parametro>
+  </Parametros>

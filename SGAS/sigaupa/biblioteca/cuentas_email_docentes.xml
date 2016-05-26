@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro 
+   colorResaltado="#CCCCCC"
+   colorSeleccionado="#CCCCCC" 	paginaEdicion="" formulario="listado_docentes" nroRegistros="10" eliminar="false" 
+   maxLista="10"  mensajeError="No existen docentes asociados a los filtros de búsqueda consultados" seleccionarTodo="FALSE" anchoTabla="100%"
+    editar="FALSE" nuevaVentana="FALSE" 
+	variable="docente" >
+     <campos nombre="anos_ccod">
+	    <descripcion>Año</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="carrera">
+	    <descripcion>Carrera</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="rut">
+	    <descripcion>Rut</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="docente">
+	    <descripcion>docente</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="email_upa">
+	    <descripcion>Email</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+   </parametro>   
+   
+  <parametro formulario="botonera">
+   <botones nombre="cancelar"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+	<botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	</botones>
+   	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>	 
+	</botones>
+	<botones nombre="excel_carrera">
+  	  <tipoTexto>DEFINIR</tipoTexto> 
+      <texto>Listado Carrera</texto> 
+      <accion>GUARDAR</accion> 
+      <formulario>edicion</formulario> 
+    </botones>
+	<botones nombre="excel_total">
+  	  <tipoTexto>DEFINIR</tipoTexto> 
+      <texto>Listado total</texto> 
+      <accion>GUARDAR</accion> 
+      <formulario>edicion</formulario> 
+    </botones>
+   </parametro>
+
+<parametro formulario="buscador" variable="a">
+<listas nombre="filtros">
+    <item clave="anos_ccod" valor="anos_ccod" />
+	<item clave="sede_ccod" valor="sede_tdesc" />
+	<item clave="carr_ccod" valor="carr_tdesc" />
+	<item clave="jorn_ccod" valor="jorn_tdesc" />
+</listas>
+<campos nombre="anos_ccod">
+	<tipo>INPUT</tipo>
+	<permiso>LECTURA</permiso>
+</campos>
+<campos nombre="sede_ccod">
+	<tipo>INPUT</tipo>
+	<permiso>LECTURA</permiso>
+</campos>
+<campos nombre="carr_ccod">
+	<tipo>INPUT</tipo>
+	<permiso>LECTURA</permiso>
+</campos>
+<campos nombre="jorn_ccod">
+	<tipo>INPUT</tipo>
+	<permiso>LECTURA</permiso>
+</campos>
+</parametro>
+</Parametros>

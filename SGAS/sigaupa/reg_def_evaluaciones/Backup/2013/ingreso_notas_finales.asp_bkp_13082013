@@ -1,0 +1,1641 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+
+<%
+set pagina = new CPagina
+pagina.Titulo = "Ingreso Notas Finales"
+set botonera =  new CFormulario
+botonera.carga_parametros "notas.xml", "btn_ingreso_notas_finales"
+
+
+'session("rut_usuario") = 10696122
+ip_usuario=Request.ServerVariables("REMOTE_ADDR")
+'response.Write(ip_usuario)
+
+Response.Buffer = True
+Response.ExpiresAbsolute = Now() - 1
+Response.Expires = 0
+Response.CacheControl = "no-cache"
+
+cali_ncorr	= request.QueryString("not[0][cali_ncorr]")
+secc_ccod = request.QueryString("not[0][secc_tdesc]")
+asig_tdesc = request.QueryString("not[0][secc_ccod]")
+botonera.agregabotonurlparam "Planilla_notas_excel","secc_ccod",secc_ccod
+
+'response.Write(secc_ccod)
+
+set conectar		=	new cconexion
+set negocio			=	new cnegocio
+set alumnos			=	new cformulario
+set docente			=	new cformulario
+set secciones		=	new cformulario
+set n_cali_alum		=	new cformulario
+set notas_asig		=	new cformulario
+set errores         =   new cerrores	
+'-----------------------------------------------------------
+set formbusqueda = new cformulario
+set formsecciones = new cformulario
+set formprofesores = new cformulario
+
+formbusqueda.inicializar conectar
+formsecciones.inicializar conectar 
+formprofesores.inicializar conectar
+'-----------------------------------------------------------
+
+conectar.inicializar	"upacifico"
+negocio.inicializa	conectar
+
+Sql="select pers_ncorr from personas where cast(pers_nrut as varchar)='"&negocio.obtenerUsuario&"'"
+pers_ncorr=conectar.consultaUno(Sql)
+carrera= conectar.consultaUno("Select carr_tdesc from secciones a, carreras b where a.carr_ccod=b.carr_ccod and cast(a.secc_ccod as varchar)='"&secc_ccod&"'")
+
+asig_cerrada= conectar.consultaUno("Select estado_cierre_ccod from secciones where cast(secc_ccod as varchar)='"&secc_ccod&"'")
+'response.Write("asig "&asig_cerrada)
+
+if not esVacio(secc_ccod) then
+	'actualización de datos de examen de repetición de examen cuando estan con valor cero se le colocará valor null
+	'response.Write("select count(*) from cargas_Academicas where carg_nnota_repeticion <> null and carg_nnota_repeticion < 1 and cast(secc_ccod as varchar)='"&secc_ccod&"'")
+	cantidad_malos = conectar.consultaUno("select count(*) from cargas_Academicas where isnull(cast(carg_nnota_repeticion as varchar),'C') <> 'C' and carg_nnota_repeticion < 1 and cast(secc_ccod as varchar)='"&secc_ccod&"'")
+	'response.Write(cantidad_malos)
+	if cint(cantidad_malos) > 0 then
+		consulta_actualizacion= "update cargas_academicas set carg_nnota_repeticion=null where isnull(cast(carg_nnota_repeticion as varchar),'C') <> 'C' and carg_nnota_repeticion < 1 and cast(secc_ccod as varchar)='"&secc_ccod&"'"
+		conectar.ejecutaS consulta_actualizacion
+	end if	
+end if
+ 
+fecha	=	conectar.consultauno("select convert(datetime,getDate(),103) as fecha")
+usuario = negocio.obtenerUsuario
+
+sede = negocio.obtenersede
+periodo	= negocio.obtenerperiodoacademico("PLANIFICACION")
+PerSel=conectar.consultauno("select peri_tdesc from periodos_academicos where cast(peri_ccod as varchar)='"&periodo&"'")
+
+NombreUsuario	=	conectar.consultauno("select pers_tnombre + ' ' + pers_tape_paterno + ' ' + pers_tape_materno as nombre_usuario from personas where cast(pers_ncorr as varchar)='"& pers_ncorr &"'")	
+
+alumnos.inicializar			conectar
+docente.inicializar			conectar
+secciones.inicializar		conectar
+notas_asig.inicializar		conectar		
+
+docente.carga_parametros		"notas.xml","docente"
+secciones.carga_parametros		"notas.xml","secciones"
+notas_asig.carga_parametros		"paulo.xml","tabla"
+
+seccion	=	"select '' as curso, '' as secc_ccod"
+'_______________________________________________________________________________________________________________________________________________
+
+formbusqueda.carga_parametros "notas.xml", "busqueda"
+formsecciones.carga_parametros "notas.xml", "secciones_J"
+formprofesores.carga_parametros "notas.xml", "profesores"
+
+sedeprofesor=   " select distinct  cast(a.pers_ncorr as varchar)+' '+ cast(a.sede_ccod as varchar)+ ' ' + e.sede_tdesc as profesor_sede, "& _
+				" e.sede_tdesc as sede,d.peri_ccod  "& _
+				" from profesores a,bloques_profesores b, "& _
+				" bloques_horarios c,secciones d, sedes e "& _
+				" where a.pers_ncorr = b.pers_ncorr "& _
+				" and a.sede_ccod = b.sede_ccod " & _
+				" and b.bloq_ccod = c.bloq_ccod "& _
+				" and c.secc_ccod = d.secc_ccod "& _
+				" and a.sede_ccod = e.sede_ccod "& _
+				" and cast(d.peri_ccod as varchar)='"&periodo&"' "& _
+				" and cast(b.pers_ncorr as varchar)= '"&pers_ncorr&"' " 
+
+consprofesor = "select '"&request.QueryString("not[0][sede_ccod]")&"' as sede_ccod"
+formprofesores.consultar consprofesor
+formprofesores.agregacampoparam "sede_ccod","destino","("& sedeprofesor &") aa"   
+formprofesores.siguiente
+
+consulta="select '"&request.QueryString("not[0][secc_ccod]")&"' as secc_ccod"
+formbusqueda.consultar consulta
+formbusqueda.agregacampocons	"secc_ccod", asig_tdesc
+formbusqueda.siguiente
+
+consulta2="select '"&request.QueryString("not[0][secc_tdesc]")&"' as secc_tdesc"
+formsecciones.consultar consulta2
+formsecciones.siguiente
+
+asignaturas=" select distinct a.sede_ccod,e.asig_ccod,e.asig_tdesc, a.pers_ncorr from  " & _
+			" profesores a, bloques_profesores b, " & _
+			" bloques_horarios c,secciones d, asignaturas e " & _
+			" where a.pers_ncorr =  b.pers_ncorr  " & _
+			" and a.sede_ccod = b.sede_ccod " & _
+			" and b.bloq_ccod = c.bloq_ccod  " & _
+			" and c.secc_ccod = d.secc_ccod " & _
+			" and d.asig_ccod = e.asig_ccod  " & _
+			" and cast(d.peri_ccod as varchar)= '"&periodo&"'" & _
+			" and cast(a.pers_ncorr as varchar)= '"&pers_ncorr&"' " & _
+			" order by asig_tdesc"
+'response.Write("<pre>"&asignaturas&"</pre>")
+
+conectar.Ejecuta asignaturas
+
+set rec_asignaturas = conectar.ObtenerRS
+
+Secciones_J =" select distinct a.pers_ncorr,d.sede_ccod, d.secc_tdesc + ' - ' + isnull(f.carr_tsigla,'-') + ' ' + case d.jorn_ccod when 1 then '(D)' when 2 then '(V)' else '' end as descripcion, " & _
+			" d.secc_ccod,d.secc_tdesc, " & _
+			" e.asig_ccod,e.asig_tdesc " & _
+			" from " & _
+			" profesores a, bloques_profesores b, " & _
+			" bloques_horarios c,secciones d,asignaturas e, carreras f " & _
+			" where a.pers_ncorr = b.pers_ncorr " & _
+			" and a.sede_ccod = b.sede_ccod " & _
+			" and b.bloq_ccod = c.bloq_ccod " & _
+			" and c.secc_ccod = d.secc_ccod " & _
+			" and d.asig_ccod = e.asig_ccod " & _
+			" and d.carr_ccod = f.carr_ccod " & _
+			" and cast(d.peri_ccod as varchar) = '"&periodo&"' " & _
+			" and cast(a.pers_ncorr as varchar) ='"&pers_ncorr&"' " 
+
+'response.Write("<pre>NOTA PRESENTACION : "&Secciones_J&"</pre>")
+
+
+conectar.Ejecuta Secciones_J
+set rec_secciones = conectar.ObtenerRS
+
+set f_asignatura = new CFormulario
+f_asignatura.Carga_Parametros "agregar_evaluacion.xml", "f_datos_asignaturas"
+f_asignatura.Inicializar conectar
+
+if (secc_ccod <> "" or isempty(secc_ccod)) then
+ponderacion	= conectar.consultauno("select isnull(sum(cali_nponderacion),0.0) as ponderacion from calificaciones_seccion where cast(secc_ccod as varchar)='"& secc_ccod &"'")
+ponderacion = conectar.consultaUno("select replace('"&ponderacion&"',',','.')")
+
+datos_asignatura=   " select a.asig_ccod,a.secc_tdesc + ' - ' + isnull(e.carr_tsigla,'-') + ' ' + case a.jorn_ccod when 1 then '(DIURNA)' when 2 then '(VESPERTINA)' else '' end as secc_tdesc,d.tasg_tdesc," & _
+	                " b.asig_tdesc,b.asig_nhoras,c.sede_tdesc " & _
+					" from secciones a,asignaturas b, sedes c,tipos_asignatura d, carreras e" & _
+					" where  a.asig_ccod=b.asig_ccod and" & _
+					"	     a.sede_ccod=c.sede_ccod and " & _
+					"	     b.tasg_ccod=d.tasg_ccod and  " & _					
+					"        a.carr_ccod = e.carr_ccod and " & _
+					"	     cast(a.secc_ccod as varchar)='"&secc_ccod&"' " & _
+					" and cast(a.peri_ccod as varchar)='"&periodo&"' "
+'response.Write("<pre>"&datos_asignatura&"</pre>")		
+f_asignatura.Consultar datos_asignatura
+f_asignatura.Siguiente
+asig_ccod=f_asignatura.obtenervalor("asig_ccod")
+'--------------------------------------------------------
+
+SQL =" select count(*) from ( select distinct b.cali_ncorr " & _
+				" from calificaciones_seccion a,calificaciones_alumnos b " & _
+				" where a.cali_ncorr = b.cali_ncorr  and " &_
+				"	  a.secc_ccod  = b.secc_ccod   and " & _
+				"	  cast(b.secc_ccod as varchar) = '"&secc_ccod&"')s " 
+	 
+'------------------------------	 
+'response.Write(SQL)
+SQL2 =" select count(*) from calificaciones_seccion where cast(secc_ccod as varchar)='"&secc_ccod&"'" 
+NumCaliAlumno=conectar.consultauno(sql)
+'response.Write(SQL2)
+'response.End()
+NumCaliAsignatura=conectar.consultauno(SQL2)
+
+end if
+
+'_______________________________________________________________________________________________________________________________________________
+consulta_secciones=" select distinct b.secc_ccod,cast(b.asig_ccod as varchar) +' '+ c.asig_tdesc +' Sección ' + b.secc_tdesc as curso " & _
+				"	 from  " & _
+				"		bloques_horarios a,secciones b,asignaturas c " & _
+				"	 where a.secc_ccod=b.secc_ccod " & _
+				"		 and b.asig_ccod=c.asig_ccod " & _
+				"		 and cast(peri_ccod as varchar) = '"& periodo &"'" & _
+				"		 and cast(pers_ncorr as varchar) = '"& pers_ncorr &"' " 
+'response.Write(consulta_secciones)
+secciones.consultar		seccion
+	secciones.agregacampoparam	"secc_ccod","destino", "("& consulta_secciones &")a"
+if usuario <> "" or not isnull(usuario) then 
+	secciones.agregacampocons	"secc_ccod", secc_ccod
+else
+	secciones.agregacampocons	"secc_ccod", " "
+end if
+
+secciones.siguiente
+
+
+'------------DATOS EVALUACION------------------------------------------------
+mall_ccod = conectar.consultauno("select mall_ccod from secciones where cast(secc_ccod as varchar)= '"&secc_ccod&"'")
+'response.Write(MALL_CCOD)
+
+set f_consulta = new CFormulario
+f_consulta.Carga_Parametros "consulta.xml", "consulta"
+f_consulta.Inicializar conectar
+
+'consulta = "select a.secc_ccod, " & vbCrLf &_
+'          "       cast(isnull(cast(a.secc_nota_presentacion as varchar), '30') as decimal(3,1)) as secc_nota_presentacion, " & vbCrLf &_
+'		   "	   isnull(a.secc_porcentaje_presentacion, 60) as secc_porcentaje_presentacion, " & vbCrLf &_
+'		   "	   replace(cast(isnull(a.secc_porcentaje_presentacion, 60) / 100 as decimal (2,1)),',','.') as porcentaje_presentacion, " & vbCrLf &_
+'		   "	   isnull(a.secc_eval_mini, 2) as secc_eval_mini, " & vbCrLf &_
+'		   "	   isnull(a.secc_porce_asiste, 50) as secc_porce_asiste, " & vbCrLf &_
+'		   "	   cast(isnull(cast(a.secc_nota_ex as varchar), '50') as decimal(3,1)) as secc_nota_ex, " & vbCrLf &_
+'		   "	   cast(isnull(cast(a.secc_min_examen as varchar), '3.1') as decimal(3,1)) as secc_min_examen, " & vbCrLf &_
+'		   "	   isnull(a.secc_eximision, 'S') as secc_eximision, " & vbCrLf &_
+'		   "       replace(cast(1 - (isnull(secc_porcentaje_presentacion, 60) / 100) as decimal(2,1)),',','.') as porc_examen " & vbCrLf &_
+'		   "from secciones a " & vbCrLf &_
+'		   "where cast(a.secc_ccod as varchar)= '" & secc_ccod & "'"
+		   
+
+consulta= "select a.secc_ccod, isnull(secc_con_examen,'S') as secc_con_examen, " & vbCrLf &_
+		  " replace(case a.secc_nota_presentacion when '1' then '1.0' when '2' then '2.0' when '3' then '3.0' when '4' then '4.0' when '5' then '5.0' when '6' then '6.0' when '7' then '7.0' else isnull(cast(a.secc_nota_presentacion as varchar),'3,0') end,',','.')as secc_nota_presentacion, " & vbCrLf &_
+		  "	isnull(a.secc_porcentaje_presentacion, 70) as secc_porcentaje_presentacion, " & vbCrLf &_
+		  "	replace(cast(isnull(a.secc_porcentaje_presentacion, 70) / 100 as numeric (3,2)),',','.') as porcentaje_presentacion, " & vbCrLf &_
+		  " isnull(a.secc_eval_mini, 2) as secc_eval_mini, " & vbCrLf &_
+		  " isnull(a.secc_porce_asiste, case a.jorn_ccod when 1 then 75 else 60 end ) as secc_porce_asiste, " & vbCrLf &_
+		  " replace(case a.secc_nota_ex when '1' then '1.0' when '2' then '2.0' when '3' then '3.0' when '4' then '4.0' when '5' then '5.0' when '6' then '6.0' when '7' then '7.0' else isnull(cast(a.secc_nota_ex as varchar),'4,0') end,',','.')as secc_nota_ex,  " & vbCrLf &_
+		  " replace(case a.secc_min_examen when '1' then '1.0' when '2' then '2.0' when '3' then '3.0' when '4' then '4.0' when '5' then '5.0' when '6' then '6.0' when '7' then '7.0' else isnull(cast(a.secc_min_examen as varchar),'3,0') end,',','.')as secc_min_examen, " & vbCrLf &_  
+		  " isnull(a.secc_eximision, 'S') as secc_eximision, " & vbCrLf &_
+		  " replace(cast(1 - (isnull(secc_porcentaje_presentacion, 70) / 100) as decimal(2,2)),',','.') as porc_examen " & vbCrLf &_
+		  " from secciones a " & vbCrLf &_
+		  " where cast(a.secc_ccod as varchar)= '"&secc_ccod&"'"
+		   		   
+'response.Write("<pre>"&consulta&"</pre>")
+'response.End()
+f_consulta.Consultar consulta
+f_consulta.Siguiente
+
+porcentaje_asistencia = f_consulta.ObtenerValor("secc_porce_asiste")
+NOTA_PRESENTACION = f_consulta.ObtenerValor("secc_nota_presentacion")
+NOTA_EXIMICION = f_consulta.ObtenerValor("secc_nota_ex")
+NOTA_MIN_EXAMEN = f_consulta.ObtenerValor("secc_min_examen")
+PORCENTAJE_PRESENTACION = f_consulta.ObtenerValor("porcentaje_presentacion")
+'response.Write(PORCENTAJE_PRESENTACION)
+v_porcentaje_presentacion = f_consulta.ObtenerValor("secc_porcentaje_presentacion")
+PORCENTAJE_EXAMEN = f_consulta.ObtenerValor("porc_examen")
+SECC_EXIMISION = f_consulta.ObtenerValor("secc_eximision")
+CON_EXAMEN = f_consulta.ObtenerValor("secc_con_examen")
+
+'Response.Write("<pre>NOTA PRESENTACION : "&NOTA_EXIMICION&"</pre>")
+
+parametro= CON_EXAMEN
+
+'/**********************************para evalauciones año 2006--------------------------------------------------
+'---------------------------------------------------------------------------------------------------------------
+if secc_ccod <> "" then
+	jorn_ccod = conectar.consultaUno("select jorn_ccod from secciones where cast(secc_ccod as varchar)='"&secc_ccod&"'")
+	es_anual = conectar.consultaUno("select count(*) from secciones a, asignaturas b where cast(secc_ccod as varchar)='"&secc_ccod&"' and a.asig_ccod=b.asig_ccod and b.duas_ccod = 3")
+end if
+
+anos_ccod = conectar.consultaUno("select anos_ccod from periodos_academicos where cast(peri_ccod as varchar)='"&periodo&"'")
+'response.Write(anos_ccod)
+bloqueado_cambio = false
+if anos_ccod < "2007" then
+	 bloqueado_cambio = true
+else
+	parametro="N"	 
+	sys_cierra_notas = false
+end if
+
+
+if ip_usuario="10.10.2.200" OR ip_usuario="10.10.2.27" OR ip_usuario="172.16.16.164" then
+	autorizar = true
+end if
+
+'response.Write("autorizar "&autorizar)
+carr_seccion = conectar.consultaUno("select ltrim(rtrim(carr_ccod)) from secciones where cast(secc_ccod as varchar)='"&secc_ccod&"'")
+bloquear_todo = "N"
+if anos_ccod < "2010" then
+	if jorn_ccod="1" and autorizar=false and es_anual="0" then
+		bloquear_todo= conectar.consultaUno("select case when convert(datetime,getDate(),103) >= convert(datetime,'01/01/2009',103) then 'S' else 'N' end ")
+	elseif jorn_ccod="2" and autorizar=false  and es_anual="0"  then
+		bloquear_todo= conectar.consultaUno("select case when convert(datetime,getDate(),103) >= convert(datetime,'01/01/2009',103) then 'S' else 'N' end ")
+	end if
+	
+	if carr_seccion="7" and (anos_ccod="2008" or anos_ccod="2007" or anos_ccod="2009") then
+		bloquear_todo = "N"
+		autorizar = true
+	end if
+		
+end if
+
+if anos_ccod = "2013" then
+	if secc_ccod <> "" and periodo <> "" then
+		duracion_asignatura = conectar.consultaUno("select b.duas_ccod from secciones a, asignaturas b where a.asig_ccod=b.asig_ccod and cast(secc_ccod as varchar)='"&secc_ccod&"'")
+		plec_ccod = conectar.consultaUno("select plec_ccod from periodos_academicos where cast(peri_ccod as varchar)='"&periodo&"'")
+		sede_ccod = conectar.consultaUno("select sede_ccod from secciones where cast(secc_ccod as varchar)='"&secc_ccod&"'")
+	
+	    if plec_ccod="1" then
+			bloquear_todo = "N"
+		end if
+		
+		if sede_ccod <> "9" then 
+			fecha_cierre= conectar.consultaUno("select case when convert(datetime,protic.trunc(getDate()),103) > convert(datetime,'22/07/2013',103) then 'S' else 'N' end ")
+		else
+			fecha_cierre= conectar.consultaUno("select case when convert(datetime,protic.trunc(getDate()),103) > convert(datetime,'05/08/2013',103) then 'S' else 'N' end ")
+		end if
+		
+		if fecha_cierre="N" then
+			bloquear_todo = "N"
+		else
+			bloquear_todo = "S"	
+		end if
+		
+		tcar_ccod = conectar.consultaUno("select tcar_ccod from carreras where carr_ccod='"&carr_seccion&"'")
+		 
+		
+		if carr_seccion="900" then
+			bloquear_todo = "N"
+		end if
+		
+		'if plec_ccod="1" and duracion_asignatura <> "3" then
+		'	bloquear_todo = "N"
+		'end if
+		
+		if tcar_ccod = "2"  or carr_seccion="600" then
+			bloquear_todo = "N"
+		end if
+		
+		if plec_ccod="2" then
+			bloquear_todo = "N"
+		end if
+		
+	end if
+end if
+'--------------------------------------------------------------------------------------------------------------------
+'--------------------------------------------------------------------------------------------------------------------
+'---------------------------------------------------------------------------------------------------------------------
+if parametro <> "N" then
+
+alumnos.carga_parametros		"notas.xml","alumnos_f"
+else
+
+botonera.agregabotonurlparam "Planilla_notas_excel","parametro",parametro
+
+alumnos.carga_parametros		"notas.xml","alumnos_sin_examen"
+
+porcentaje_asistencia = conectar.consultaUno("select isnull(secc_porce_asiste, case jorn_ccod when 1 then 75 else 60 end ) from secciones where cast(secc_ccod as varchar)='"&secc_ccod&"'")
+NOTA_PRESENTACION = 1.0
+NOTA_EXIMICION = 4.0
+NOTA_MIN_EXAMEN = 1.0
+PORCENTAJE_PRESENTACION = 100
+v_porcentaje_presentacion = 100
+PORCENTAJE_EXAMEN = 0
+SECC_EXIMISION = "S"
+end if
+
+if f_consulta.NroFilas = 0 then	
+	PORCENTAJE_PRESENTACION = "0"
+	PORCENTAJE_EXAMEN = "0"
+end if
+
+'Response.Write("<pre>NOTA PRESENTACION : "&NOTA_EXIMICION&"</pre>")
+'RESPONSE.End()
+
+
+'-----------------------si la asignatura es anual y el periodo es priemr sem 2006 no considere estados matr. 
+'---------------------------si es semestral o trimestral y el periodo mayor a 202 entonces no considere matr.
+duracion_asig = conectar.consultaUno("select duas_ccod from asignaturas where asig_ccod ='"&asig_ccod&"'")
+filtro_matr = " and b.emat_ccod in (1,2,16) "
+if duracion_asig = "3" and periodo >= "202" then
+	filtro_matr = " "
+elseif (duracion_asig = "1" or duracion_asig ="2") and periodo > "202" then
+    filtro_matr = " "
+end if
+'-----------------------------------------------------------------------------------------------------------
+
+
+
+
+consulta_alumnos="select distinct " & vbCrlf & _
+				 " isnull(c.carg_justi,0) as carg_justi," & vbCrlf & _
+				 " isnull(c.estado_cierre_ccod,1)as estado_cierre_ccod,c.matr_ncorr,c.matr_ncorr as v_matr_ncorr,  pers_tape_paterno,pers_tape_materno,pers_tnombre, " & vbCrlf & _
+				 " case b.alum_trabajador when 0 then  '<font color=black>' + cast(a.pers_nrut as varchar) + ' - ' + a.pers_xdv + '</font>' else" & vbCrlf & _
+				 "      cast(a.pers_nrut as varchar)+ ' - ' + a.pers_xdv end as rut,c.observacion, " & vbCrlf & _
+				 " case b.alum_trabajador when 0 then '<font color=black>' + pers_tape_paterno + ' '+ pers_tape_materno + ', ' + pers_tnombre + '</font>' else" & vbCrlf & _
+				 "      pers_tape_paterno + ' ' + pers_tape_materno + ', ' + pers_tnombre end as alumno," & vbCrlf & _
+				 " replace(case protic.NOTA_PRESENTACION(c.matr_ncorr,'"&secc_ccod&"') when '1' then '1.0' when '2' then '2.0' when '3' then '3.0' when '4' then '4.0' when '5' then '5.0' when '6' then '6.0' when '7' then '7.0' else isnull(protic.NOTA_PRESENTACION(c.matr_ncorr,'"&secc_ccod&"'),1) end,',','.') as carg_nnota_presentacion, " & vbCrlf & _
+				 "-- case b.alum_trabajador when 0 then '<font color=black>' + pers_tape_paterno +' '+ pers_tape_materno + ', ' +  pers_tnombre  + '</font>' else" & vbCrlf & _
+				 "--      pers_tape_paterno+' '+pers_tape_materno+', '+ pers_tnombre end as alumno," & vbCrlf & _
+				 " replace(case protic.NOTA_PRESENTACION(c.matr_ncorr,'"&secc_ccod&"') when '1' then '1.0' when '2' then '2.0' when '3' then '3.0' when '4' then '4.0' when '5' then '5.0' when '6' then '6.0' when '7' then '7.0' else isnull(protic.NOTA_PRESENTACION(c.matr_ncorr,'"&secc_ccod&"'),1) end,',','.') as carg_nnota_presentacion_paso, " & vbCrlf & _
+				 " replace(case c.carg_nnota_examen when '1' then '1.0' when '2' then '2.0' when '3' then '3.0' when '4' then '4.0' when '5' then '5.0' when '6' then '6.0' when '7' then '7.0' else c.carg_nnota_examen end,',','.') as carg_nnota_examen," & vbCrlf & _
+				 " replace(case c.carg_nnota_repeticion when '1' then '1.0' when '2' then '2.0' when '3' then '3.0' when '4' then '4.0' when '5' then '5.0' when '6' then '6.0' when '7' then '7.0' else c.carg_nnota_repeticion end,',','.') as carg_nnota_repeticion, " & vbCrlf & _
+				 " case isnull(carg_nnota_final,0) when 0 then" & vbCrlf & _
+				 " 	   replace(case protic.ALUMNOS_EXIMIDOS(c.matr_ncorr,'"&secc_ccod&"') when '1' then '1.0' when '2' then '2.0' when '3' then '3.0' when '4' then '4.0' when '5' then '5.0' when '6' then '6.0' when '7' then '7.0' else protic.ALUMNOS_EXIMIDOS(c.matr_ncorr,'"&secc_ccod&"') end,',','.') else " & vbCrlf & _
+				 "       replace(case carg_nnota_final when '1' then '1.0' when '2' then '2.0' when '3' then '3.0' when '4' then '4.0' when '5' then '5.0' when '6' then '6.0' when '7' then '7.0' else carg_nnota_final end ,',','.') end as carg_nnota_final, " & vbCrlf & _
+				 " c.sitf_ccod,isnull(c.carg_nasistencia, 100) as carg_nasistencia,isnull(b.talu_ccod,1) as talu_ccod ,isnull(b.alum_trabajador,1) as alum_trabajador, isnull(eexa_ccod,'NP') as EEXA_CCOD, eexa_ccod_rep as EEXA_CCOD_REP, " & vbCrlf & _
+				 " (select count(*) from calificaciones_alumnos ca where cast(ca.secc_ccod as varchar)='"&secc_ccod&"' and ca.matr_ncorr=c.matr_ncorr and cala_nnota is null) as parciales_nulas  " & vbCrlf & _
+				 "	from  " & vbCrlf & _
+				 "		personas a, " & vbCrlf & _
+				 "		alumnos b, " & vbCrlf & _
+				 "		cargas_academicas c, " & vbCrlf & _
+				 "		secciones f " & vbCrlf & _
+				 "	where  " & vbCrlf & _
+				 "		a.pers_ncorr        =   b.pers_ncorr  " & vbCrlf & _
+				 "		and b.matr_ncorr    =   c.matr_ncorr  " & vbCrlf & _
+				 "		"& filtro_matr & vbCrlf & _
+				 "		and c.carg_nsence is null  " & vbCrlf & _
+				 "		and c.secc_ccod     =   f.secc_ccod " & vbCrlf & _
+				 "		and c.matr_ncorr    not in (select matr_ncorr_destino from resoluciones_homologaciones  where cast(secc_ccod_destino as varchar)='"&secc_ccod&"') " & vbCrlf & _
+				 "      and c.matr_ncorr    not in (select matr_ncorr from convalidaciones where matr_ncorr=c.matr_ncorr and cast(asig_ccod as varchar)='"&asig_ccod&"') " & vbCrlf & _
+				 " 		and (c.sitf_ccod<>'EE' or c.sitf_ccod is null) " & vbCrlf & _
+				 "		and cast(c.secc_ccod as varchar) =   '"&secc_ccod&"' " & vbCrlf & _
+				 " AND cast(f.peri_ccod as varchar)='"&periodo&"'	" & vbCrlf & _
+				 " group by c.carg_justi,c.estado_cierre_ccod,c.matr_ncorr,a.pers_nrut,a.pers_xdv,pers_tape_paterno,pers_tape_materno,pers_tnombre,c.carg_nnota_presentacion, c.carg_nnota_examen,c.carg_nnota_repeticion, c.carg_nnota_final,c.sitf_ccod,c.carg_nasistencia,b.talu_ccod,b.alum_trabajador,eexa_ccod,eexa_ccod_rep,c.observacion  " '& vbCrlf & _
+				' "	order by pers_tape_paterno,pers_tape_materno,pers_tnombre"
+'----------------------------------------------------------------------------
+'consulta_alumnos="select distinct " & vbCrlf & _
+'				" isnull(c.carg_justi,0) as carg_justi," & vbCrlf & _
+'				" isnull(c.estado_cierre_ccod,1)as estado_cierre_ccod,c.matr_ncorr,c.matr_ncorr as v_matr_ncorr,  pers_tape_paterno,pers_tape_materno,pers_tnombre, " & vbCrlf & _
+'			    " case b.alum_trabajador when 0 then '<font color=blue>' + cast(a.pers_nrut as varchar) + ' - ' + a.pers_xdv + '</font>' else" & vbCrlf & _
+'				"      cast(a.pers_nrut as varchar)+ ' - ' + a.pers_xdv end as rut, " & vbCrlf & _
+'				" case b.alum_trabajador when 0 then '<font color=blue>' + pers_tape_paterno + ' '+ pers_tape_materno + ', ' + pers_tnombre + '</font>' else" & vbCrlf & _
+'               "      pers_tape_paterno + ' ' + pers_tape_materno + ', ' + pers_tnombre end as alumno,"& vbCrlf & _
+'   			" replace(decode(NOTA_PRESENTACION(c.matr_ncorr,'"&secc_ccod&"'),'1','1.0','2','2.0','3','3.0','4','4.0','5','5.0','6','6.0','7','7.0',NOTA_PRESENTACION(c.matr_ncorr,'"&secc_ccod&"')),',','.') as carg_nnota_presentacion, " & vbCrlf & _
+'								"decode(b.alum_trabajador,0,'<font color=blue>' || pers_tape_paterno||' '||pers_tape_materno||', '|| pers_tnombre  || '</font>'," & vbCrlf & _
+'               "      pers_tape_paterno||' '||pers_tape_materno||', '|| pers_tnombre) as alumno,"& vbCrlf & _
+'				"replace(decode(NOTA_PRESENTACION(c.matr_ncorr,'"&secc_ccod&"'),'1','1.0','2','2.0','3','3.0','4','4.0','5','5.0','6','6.0','7','7.0',NOTA_PRESENTACION(c.matr_ncorr,'"&secc_ccod&"')),',','.') as carg_nnota_presentacion_paso, " & vbCrlf & _
+'				" replace(decode(c.carg_nnota_examen,'1','1.0','2','2.0','3','3.0','4','4.0','5','5.0','6','6.0','7','7.0',c.carg_nnota_examen),',','.') as carg_nnota_examen," & vbCrlf & _
+'				"replace(decode(c.carg_nnota_repeticion,'1','1.0','2','2.0','3','3.0','4','4.0','5','5.0','6','6.0','7','7.0',c.carg_nnota_repeticion),',','.') as carg_nnota_repeticion, "&vbcrlf&_
+'				"decode(nvl(carg_nnota_final,0),0," & vbCrlf & _
+'				" 	 replace(decode(ALUMNOS_EXIMIDOS(c.matr_ncorr,'"&secc_ccod&"'),'1','1.0','2','2.0','3','3.0','4','4.0','5','5.0','6','6.0','7','7.0',ALUMNOS_EXIMIDOS(c.matr_ncorr,'"&secc_ccod&"')),',','.') , "&vbcrlf&_
+'				"    replace(decode(carg_nnota_final,'1','1.0','2','2.0','3','3.0','4','4.0','5','5.0','6','6.0','7','7.0',carg_nnota_final),',','.')) as carg_nnota_final, " & vbCrlf & _
+'				"c.sitf_ccod,nvl(c.carg_nasistencia, 100) as carg_nasistencia,nvl(b.talu_ccod,1) as talu_ccod ,nvl(b.alum_trabajador,1) as alum_trabajador, NVL(eexa_ccod,'NP') as EEXA_CCOD, eexa_ccod_rep as EEXA_CCOD_REP " & vbCrlf & _
+'				"	from  " & vbCrlf & _
+'				"		personas a, " & vbCrlf & _
+'				"		alumnos b, " & vbCrlf & _
+'				"		cargas_academicas c, " & vbCrlf & _
+'				"		secciones f " & vbCrlf & _
+'				"	where  " & vbCrlf & _
+'				"		a.pers_ncorr        =   b.pers_ncorr  " & vbCrlf & _
+'				"		and b.matr_ncorr    =   c.matr_ncorr  " & vbCrlf & _
+'				"		and b.emat_ccod     =   1  " & vbCrlf & _
+'				"		and c.carg_nsence is null  " & vbCrlf & _
+'				"		and c.secc_ccod     =   f.secc_ccod " & vbCrlf & _
+'				"		and c.matr_ncorr    not in (select matr_ncorr_destino from resoluciones_homologaciones  where secc_ccod_destino='"&secc_ccod&"') " & vbCrlf & _
+'				"		and c.matr_ncorr    not in (select matr_ncorr from convalidaciones where matr_ncorr=c.matr_ncorr and asig_ccod='"&asig_ccod&"') " & vbCrlf & _
+'				" 		and (c.sitf_ccod<>'EE' or c.sitf_ccod is null) " & vbCrlf & _
+'				"		and c.secc_ccod     =   '"& secc_ccod &"' " & vbCrlf & _
+'				" AND f.peri_ccod='"&periodo&"'" & _
+'				"	group by c.carg_justi,c.estado_cierre_ccod,c.matr_ncorr,a.pers_nrut,a.pers_xdv,pers_tape_paterno,pers_tape_materno,pers_tnombre,c.carg_nnota_presentacion, c.carg_nnota_examen,c.carg_nnota_repeticion, c.carg_nnota_final,c.sitf_ccod,c.carg_nasistencia,b.talu_ccod,b.alum_trabajador,eexa_ccod,eexa_ccod_rep  " & vbcrlf &  _
+'				"	order by pers_tape_paterno,pers_tape_materno,pers_tnombre"
+
+'response.Write("<pre>"&consulta_alumnos&"</pre>")
+'response.Write("<pre>NOTA PRESENTACION : "&NOTA_PRESENTACION&"</pre>")
+
+alumnos.consultar consulta_alumnos & "  order by pers_tape_paterno"
+cantidad_01=alumnos.nroFilas
+'response.End()
+
+i_ = 0
+examen = true
+while alumnos.Siguiente	
+	alumnos.AgregaCampoFilaParam i_, "EEXA_CCOD", "script", "readOnly"
+	
+	if alumnos.ObtenerValor("carg_nnota_repeticion") <> "" then ' or alumnos.ObtenerValor("EEXA_CCOD_REP") <> "" then
+	   	alumnos.AgregaCampoFilaParam i_, "carg_nnota_examen", "script", "readOnly"
+	end if
+		
+	if CDbl(alumnos.ObtenerValor("carg_nnota_presentacion")) < CDBL(NOTA_PRESENTACION) then
+		alumnos.AgregaCampoFilaParam i_, "carg_nnota_examen", "script", "readOnly"
+		'if alumnos.ObtenerValor("EEXA_CCOD_REP") = "" or isnull(alumnos.ObtenerValor("EEXA_CCOD_REP")) or isempty(alumnos.ObtenerValor("EEXA_CCOD_REP")) then
+		if EsVacio(alumnos.ObtenerValor("EEXA_CCOD_REP")) then
+			alumnos.AgregaCampoFilaCons	i_,	"carg_nnota_final",	alumnos.ObtenerValor("carg_nnota_presentacion")
+		end if
+		
+		alumnos.AgregaCampoFilaCons	i_,	"EEXA_CCOD", "SD"
+	else
+	    alumnos.AgregaCampoFilaCons	i_,	"EEXA_CCOD", ""
+	end if
+	'response.Write("<br>nota_presentacion "& cdbl(alumnos.ObtenerValor("carg_nnota_presentacion")) & " nota_fija "&cdbl(NOTA_EXIMICION))
+	if CDbl(alumnos.ObtenerValor("carg_nnota_presentacion")) >= CDBL(NOTA_EXIMICION) and SECC_EXIMISION = "S" then
+		'if (alumnos.ObtenerValor("sitf_ccod") = "" or isnull(alumnos.ObtenerValor("sitf_ccod")) or isempty(alumnos.ObtenerValor("sitf_ccod"))) then
+		if EsVacio(alumnos.ObtenerValor("sitf_ccod")) then
+		        alumnos.agregacampofilacons	i_,	"carg_nnota_final",	alumnos.ObtenerValor("carg_nnota_presentacion")
+				alumnos.agregacampofilacons	i_,	"EEXA_CCOD", "EX"
+		end if
+	end if 
+	
+	if alumnos.ObtenerValor("parciales_nulas") >  "0" then
+		        'alumnos.agregacampofilacons	i_,	"carg_nnota_final",	alumnos.ObtenerValor("carg_nnota_presentacion")
+				alumnos.agregacampofilacons	i_,	"EEXA_CCOD", "SP"
+				alumnos.AgregaCampoFilaParam i_, "carg_nnota_examen", "script", "readOnly"
+	end if 
+	
+	if EsVacio(alumnos.ObtenerValor("sitf_ccod")) then
+		examen = false
+	end if
+	
+	i_ = i_ + 1
+wend
+alumnos.Primero
+
+alumnos.AgregaCampoParam "cala_nnota", "descripcion", "Nota " & nro_nota
+alumnos.AgregaCampoParam "carg_nnota_presentacion", "script", "readOnly"
+alumnos.AgregaCampoParam "carg_nnota_repeticion", "script", "readOnly"
+
+
+registros = conectar.consultauno("select count(*) from ("& consulta_alumnos &")j")
+reg = alumnos.NroFilas
+regAlumnos = alumnos.NroFilas
+reg_sitfinal = conectar.consultauno("select count(*) from cargas_academicas where cast(secc_ccod as varchar) ='" & secc_ccod & "' and sitf_ccod is not null")
+
+'examen = FALSE
+
+'if reg = reg_sitfinal then
+'	examen = TRUE
+'end if
+
+
+if secc_ccod <> ""  then
+	tipo_asignatura	= conectar.consultauno("	select isnull(b.tasg_ccod,a.tasg_ccod) "  & vbcrlf & _
+											"	from  " & vbcrlf & _
+											"		asignaturas a, secciones b " & vbcrlf & _
+											"	where " & vbcrlf & _
+											"		a.asig_ccod=b.asig_ccod " & vbcrlf & _
+											"		and cast(b.secc_ccod as varchar)='"&secc_ccod&"'")
+end if
+
+
+if CInt(tipo_asignatura) <> 1 then
+	notas_asig.Consultar consulta_alumnos
+	for i_ = 0 to notas_asig.NroFilas - 1
+		notas_asig.Siguiente
+		alumnos.AgregaCampoFilaCons	i_,	"carg_nnota_final", notas_asig.obtenervalor("carg_nnota_presentacion")
+	next
+	
+	alumnos.agregacampoparam		"carg_nnota_examen",		"tipo",		"hidden"
+	alumnos.agregacampoparam		"carg_nnota_examen",		"permiso",	"oculto"
+	alumnos.agregacampoparam		"carg_nnota_repeticion",	"tipo",		"hidden"
+	alumnos.agregacampoparam		"carg_nnota_repeticion",	"permiso",	"oculto"	
+end if
+
+alumnos.agregacampoparam		"erep",		"tipo",		"hidden"
+alumnos.agregacampoparam		"erep",	"permiso",	"oculto"
+
+tasg_tdesc=conectar.consultauno("select tasg_tdesc from tipos_asignatura where cast(tasg_ccod as varchar)='"&tipo_asignatura&"'")
+v_tipo_asignatura=conectar.consultauno("select tasg_ccod from tipos_asignatura where cast(tasg_ccod as varchar)<>'"&tipo_asignatura&"'")
+v_tasg_tdesc=conectar.consultauno("select tasg_tdesc from tipos_asignatura where cast(tasg_ccod as varchar)<>'"&tipo_asignatura&"'")
+
+
+
+'------------------------------------------------------------------------------------------------
+botonera.AgregaBotonUrlParam "imprimir_acta", "secc_ccod", secc_ccod
+'response.Write("presentacion "&PORCENTAJE_PRESENTACION&" examen "&PORCENTAJE_EXAMEN)
+
+if ((ponderacion <> 100) and (secc_ccod <> "" ))   then 
+  %>
+		<script language="JavaScript">
+			alert('No puede ingresar notas.\nNo está completo el 100% de las calificaciones');
+		</script>
+ <%
+end if
+
+if anos_ccod >= "2006" then
+	alumnos.agregacampoparam		"carg_nnota_presentacion",	"permiso",	"oculto"
+end if
+
+
+
+es_trimestral = conectar.consultaUno("Select count(*) from secciones a, asignaturas b where cast(secc_ccod as varchar)='"&secc_ccod&"' and a.asig_ccod=b.asig_ccod and b.duas_ccod=1")
+
+'if   ip_usuario="172.16.11.147" or ip_usuario="172.16.11.127" or ip_usuario="172.16.11.94"  then
+'	autorizar = true
+'end if
+tiene_vacios = "NO"
+if secc_ccod <> "" then 
+	tiene_vacios = conectar.consultaUno("select case count(*) when 0 then 'NO' else 'SI' end  from cargas_academicas nolock where cast(secc_ccod as varchar)='"&secc_ccod&"' and (isnull(carg_nnota_final,0.0) = 0.0 or isnull(sitf_ccod,'T')='T')")
+end if
+'response.Write(tiene_vacios)
+%>
+
+
+<html>
+<head>
+<title><%=pagina.Titulo%></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../estilos/estilos.css" rel="stylesheet" type="text/css">
+<link href="../estilos/tabla.css" rel="stylesheet" type="text/css">
+
+<script language="JavaScript" src="../biblioteca/tabla.js"></script>
+<script language="JavaScript" src="../biblioteca/funciones.js"></script>
+<script language="JavaScript" src="../biblioteca/validadores.js"></script>
+
+<script language="JavaScript">
+
+porcentaje = parseFloat("<%=porcentaje_asistencia%>");
+
+
+rec_asignaturas = new Array();
+
+<%
+if (rec_asignaturas.BOF <> rec_asignaturas.EOF) then
+
+rec_asignaturas.MoveFirst
+i = 0
+while not rec_asignaturas.Eof
+%>
+rec_asignaturas[<%=i%>] = new Array();
+rec_asignaturas[<%=i%>]["pers_ncorr"] = '<%=rec_asignaturas("pers_ncorr")%>';
+rec_asignaturas[<%=i%>]["asig_ccod"] = '<%=rec_asignaturas("asig_ccod")%>';
+rec_asignaturas[<%=i%>]["asig_tdesc"] = '<%=rec_asignaturas("asig_tdesc")%>';
+rec_asignaturas[<%=i%>]["sede_ccod"] = '<%=rec_asignaturas("sede_ccod")%>';
+
+<%	
+	rec_asignaturas.MoveNext
+	i = i + 1
+wend
+end if
+%>
+
+rec_secciones = new Array();
+<%
+
+if (rec_secciones.BOF <> rec_secciones.EOF) then
+rec_secciones.MoveFirst
+j = 0
+while not rec_secciones.Eof
+%>
+rec_secciones[<%=j%>] = new Array();
+rec_secciones[<%=j%>]["pers_ncorr"] = '<%=rec_secciones("pers_ncorr")%>';
+rec_secciones[<%=j%>]["asig_ccod"] = '<%=rec_secciones("asig_ccod")%>';
+rec_secciones[<%=j%>]["asig_tdesc"] = '<%=rec_secciones("asig_tdesc")%>';
+rec_secciones[<%=j%>]["sede_ccod"] = '<%=rec_secciones("sede_ccod")%>';
+rec_secciones[<%=j%>]["secc_tdesc"] = '<%=rec_secciones("secc_tdesc")%>';
+rec_secciones[<%=j%>]["descripcion"] = '<%=rec_secciones("descripcion")%>';
+rec_secciones[<%=j%>]["secc_ccod"] = '<%=rec_secciones("secc_ccod")%>';
+
+<%	
+	rec_secciones.MoveNext
+	j = j + 1
+wend
+end if
+%>
+
+
+function CargarAsignaturas(formulario, profesor_sede)
+{
+ var cadena, pers_ncorr, sede_ccod
+ cadena=profesor_sede.split(" ");
+ pers_ncorr=cadena[0];
+ sede_ccod=cadena[1];
+	formulario.elements["not[0][secc_ccod]"].length = 0;
+	op = document.createElement("OPTION");
+	op.value = "-1";
+	op.text = "-- Seleccione Una Asignaturas --";
+	formulario.elements["not[0][secc_ccod]"].add(op)
+	for (i = 0; i < rec_asignaturas.length; i++) {
+		if ((rec_asignaturas[i]["pers_ncorr"] == pers_ncorr) && (rec_asignaturas[i]["sede_ccod"] == sede_ccod)) {
+			op = document.createElement("OPTION");
+			op.value = rec_asignaturas[i]["asig_ccod"];
+			op.text = rec_asignaturas[i]["asig_ccod"]+"-"+rec_asignaturas[i]["asig_tdesc"];
+			formulario.elements["not[0][secc_ccod]"].add(op)
+		}
+	}	
+}
+
+function CargarSecciones(formulario,asig_ccod){
+var cadena,cadena2, pers_ncorr, sede_ccod
+ cadena= formulario.elements["not[0][sede_ccod]"].value.split(" ");
+ cadena2=asig_ccod.split(" ");
+ pers_ncorr=cadena[0];
+ sede_ccod=cadena[1];
+asig=cadena2[0];
+	formulario.elements["not[0][secc_tdesc]"].length = 0;
+	
+	op2 = document.createElement("OPTION");
+	op2.value = "-1";
+	op2.text = "-- Secciones --";
+	formulario.elements["not[0][secc_tdesc]"].add(op2)
+	
+	for (i = 0; i < rec_secciones.length; i++) {
+		if ((rec_secciones[i]["pers_ncorr"] == pers_ncorr) && (rec_secciones[i]["sede_ccod"] == sede_ccod) && (rec_secciones[i]["asig_ccod"]== asig_ccod)) {
+			op2 = document.createElement("OPTION");
+			op2.value = rec_secciones[i]["secc_ccod"];
+			op2.text = rec_secciones[i]["descripcion"];
+			formulario.elements["not[0][secc_tdesc]"].add(op2)
+		}
+	}
+}
+
+ function enviar(formulario){
+	/*var pers_ncorr,sede_ccod,asig_ccod,secc_ccod,cadena*/	
+   	if(ValidarBusqueda(formulario)){
+	  formulario.action = 'ingreso_notas_finales.asp'
+   	  <%v_enviado_=0%>
+	  formulario.submit();}	
+ }
+
+function ValidarBusqueda(formulario){
+	if (formulario.elements["not[0][sede_ccod]"].value == "") {
+		alert('Seleccione una Sede.');
+		formulario.elements["not[0][sede_ccod]"].focus();
+		return false ;
+	}
+	if (formulario.elements["not[0][secc_ccod]"].value == "-1") {
+		alert('Seleccione una Asignatura.');
+		formulario.elements["not[0][secc_ccod]"].focus();
+		return false;
+	}
+	
+	if (formulario.elements["not[0][secc_tdesc]"].value == "-1") {
+		alert('Seleccione una Sección.');
+		formulario.elements["not[0][secc_tdesc]"].focus();
+		return false ;
+	}
+	return true;
+ }
+
+ function Enviar_ERepeticion (formulario){
+    secc_ccod = '<%=secc_ccod%>';
+	asig_tdesc = '<%=asig_tdesc%>'
+	sede_ccod='<%=request.QueryString("not[0][sede_ccod]")%>'
+	secc_tdesc ='<%=request.QueryString("not[0][secc_tdesc]")%>'
+	url = 'ingreso_nrepeticion.asp?secc_ccod='+secc_ccod+'&asig_tdesc='+asig_tdesc+'&sede_ccod='+sede_ccod+'&secc_tdesc='+secc_tdesc
+	formulario.action=url;
+	formulario.submit();
+ }
+
+function guardar(formulario){
+registros	= '<%=registros%>'
+if (parseInt(registros) ){
+	if(preValidaFormulario(formulario)){
+		formulario.method='post';
+		if (verifica_nota(formulario)){
+			if(valporcentaje(formulario)){
+			formulario.action ='guardar_notas_finales.asp';
+			formulario.submit();
+			}
+			else{alert("Los Porcentaje Deben Estar Entre 0% y 100%")}
+		}
+		else {
+			alert('Las notas deben estar entre 1.0 y 7.0.');
+		}
+	}
+}
+else {alert("No Existen Alumnos ")}	
+}
+
+function cambiarAsig(formulario){
+	registros	= '<%=registros%>'
+//	resgistros_peec = '<%=resgistros_peec%>'
+	if (parseInt(registros)>0 ){
+		formulario.method='post';
+		formulario.action ='cambiar_asignatura.asp';
+		formulario.submit();
+	}
+}
+
+function cerrar_asignatura(formulario)
+{   var mensaje;
+    var registros	= '<%=registros%>';
+	var tiene_vacios = '<%=tiene_vacios%>';
+	if(preValidaFormulario(formulario)){
+		formulario.method='post';
+		if (verifica_nota(formulario)){
+			if(valporcentaje(formulario)){
+				alert("No olvide guardar los cambios de la Evaluación antes de cerrarla");
+				if (tiene_vacios == "SI")
+				{
+					alert("FAVOR GUARDAR EL ACTA ANTES DE CERRARLA DEFINITIVAMENTE");
+				}
+				mensaje="¿Está seguro que desea cerrar la Asignatura? \n si hace esto ya no podrá volver a modificar los datos y deberá comunicarse con registro curricular \n por cualquier cambio que desee hacer";
+				formulario.method='post';
+				if(confirm(mensaje))
+					{ formulario.action ='cerrar_seccion.asp';
+					  formulario.submit();
+					}
+			}
+			else{alert("Los Porcentaje Deben Estar Entre 0% y 100%")}
+		}
+		else {
+			alert('Las notas deben estar entre 1.0 y 7.0.');
+		}
+	}
+	
+	
+//    alert("No olvide guardar los cambios de la Evaluación antes de cerrarla");
+//    mensaje="¿Está seguro que desea cerrar la Asignatura? \n si hace esto ya no podrá volver a modificar los datos y deberá comunicarse con registro curricular \n por cualquier cambio que desee hacer";
+//	if(preValidaFormulario(formulario)){
+//		formulario.method='post';
+//		if(confirm(mensaje))
+//			{ formulario.action ='cerrar_seccion.asp';
+//			  formulario.submit();
+//			}
+			
+//	}
+}
+
+function cerrar_alumno(formulario){
+resgistros='<%=reg%>'
+paso=true;
+for(i=0;i<resgistros;i++){
+	if (formulario.elements["not["+i+"][v_matr_ncorr]"].checked==true){
+		if (formulario.elements["not["+i+"][sitf_ccod]"].value=="" || formulario.elements["not["+i+"][carg_nasistencia]"].value=="" ) {
+			paso=false ;
+		}
+	}
+}
+
+	
+if (paso==true) {
+	if (verifica_nota(formulario)){
+		if(valporcentaje(formulario)){
+					formulario.method='post';
+					formulario.action ='cerrar_alumno.asp';
+					formulario.submit();
+		}
+		else{alert("Los Porcentaje Deben Estar Entre 0% y 100%")}	
+	}
+	else{alert('Las notas deben estar entre 1.0 y 7.0.');}
+}
+else{alert("Existen Campos Vacios")}
+}
+
+function verifica_nota(formulario)
+{
+n_mala=0;
+var num=formulario.elements.length;
+	for (i=0;i<num;i++){
+		nombre = formulario.elements[i].name;
+		var ingresada = new RegExp (/(carg_nnota_presentacion|carg_nnota_examen|carg_nnota_repeticion)/gi);
+		if (ingresada.test(nombre)){
+			nota = eval(formulario.elements[i].value);
+			if (nota < 1 || nota > 7) {
+				n_mala	=	n_mala+1;
+				mal		=	formulario.elements[i].focus();
+			}
+		}
+	}
+	if (n_mala > 0){
+		return(false);
+	}
+	else {
+		return(true);
+	}
+}
+
+function valporcentaje(formulario){
+p_mala=0;
+var num=formulario.elements.length;
+	for (i=0;i<num;i++){
+		nombre = formulario.elements[i].name;
+		var ingresada = new RegExp (/(carg_nasistencia)/gi);
+		if (ingresada.test(nombre)){
+			porcentaje = eval(formulario.elements[i].value);
+			if (porcentaje < 0 || porcentaje > 100) {
+				p_mala	=	p_mala+1;
+				p_mal		=	formulario.elements[i].focus();
+			}
+		}
+	}
+	if (p_mala > 0){
+		return(false);
+	}
+	else {
+		return(true);
+	}
+
+}
+
+function evalua_nota(objeto){
+	arr_indice=objeto.name.split(/[\[\]]/);
+	nota_eximicion=parseFloat("<%=NOTA_EXIMICION%>")
+	NOTA_PRESENTACION =parseFloat('<%=NOTA_PRESENTACION%>')
+	NOTA_MIN_EXAMEN = parseFloat('<%=NOTA_MIN_EXAMEN%>');	
+	ver_ne = MM_findObj('not['+arr_indice[1]+'][carg_nnota_examen]')
+	SECC_EXIMISION = '<%=SECC_EXIMISION%>';
+	parametro = '<%=parametro%>';//revisa si la asignatura presenta examen	
+	
+	if (SECC_EXIMISION == 'N') {
+		nota_eximicion = parseFloat(101);
+	}
+	
+	//alert(nota_eximicion);
+	var nf		= MM_findObj('not['+arr_indice[1]+'][carg_nnota_final]')
+	var np		= MM_findObj('not['+arr_indice[1]+'][carg_nnota_presentacion]')
+	var ne		= MM_findObj('not['+arr_indice[1]+'][carg_nnota_examen]')
+	var nr		= MM_findObj('not['+arr_indice[1]+'][carg_nnota_repeticion]')
+	var asist	= MM_findObj('not['+arr_indice[1]+'][carg_nasistencia]')
+	var sf		= MM_findObj('not['+arr_indice[1]+'][sitf_ccod]')
+	var at      = MM_findObj('not['+arr_indice[1]+'][alum_trabajador]')
+	var ta		= MM_findObj('not['+arr_indice[1]+'][talu_ccod]')
+	var ce		= MM_findObj('not['+arr_indice[1]+'][eexa_ccod]')
+	var cer		= MM_findObj('not['+arr_indice[1]+'][eexa_ccod_rep]')
+	var sin_eva = MM_findObj('not['+arr_indice[1]+'][parciales_nulas]')	
+	var carg_justi		= MM_findObj('not['+arr_indice[1]+'][carg_justi]')
+	var	t_asig	= '<%=tipo_asignatura%>';
+	var porcentaje_presentacion01='<%=PORCENTAJE_PRESENTACION%>';
+	//alert(porcentaje_presentacion01);
+	var porcentaje_examen01='<%=PORCENTAJE_EXAMEN%>';
+	var notafinal=0.0;
+	nota_final = nf.value
+	porcentaje = parseFloat("<%=porcentaje_asistencia%>");
+
+	/*if (ver_ne.disabled) 
+	{
+		valor_examen = np.value;
+	}
+	else 
+	{
+		valor_examen = ne.value;
+	}
+	
+	if (valor_examen != "") 
+	{
+		ce.value = "RE";
+	}
+	else 
+	{
+		if (ce.value != "EX") 
+		{
+			if (ce.value != "SD") 
+			{
+				ce.value = "NP";
+			}	
+		}
+	}
+	
+	if (ce.value == "NP") 
+	{
+		valor_examen = 1;
+	}*/
+	
+	if (t_asig == 1) 
+	{
+	 if (parametro=='N')
+	 {
+	 	nf.value = np.value;
+	 }
+	 else
+	 {  
+		notafinal =roundFun((eval_nota(np.value) * porcentaje_presentacion01) + (eval_nota(valor_examen) * porcentaje_examen01 ),10);
+		notafinal =roundFun(notafinal,1);
+		//alert(".."+porcentaje_examen01);
+		if (eval_nota(np.value) < 3.95 && notafinal < 3.95 && eval_nota(nr.value)!=0)
+		 {
+			notafinal = roundFun((eval_nota(np.value)*porcentaje_presentacion01)+(eval_nota(nr.value)* porcentaje_examen01 ), 10);
+			notafinal =roundFun(notafinal,1);
+			//alert("Entre al if");
+			if (notafinal >= 3.95) 
+			{
+				nf.value = 4.0;
+			}
+			else 
+			{
+				nf.value = notafinal;
+			}
+			
+		}
+		else 
+		{
+		//alert("Entre al else");			
+			if (eval_nota(np.value) >= 3.95 && notafinal < 3.95 && eval_nota(nr.value) != 0) 
+			{
+			   //alert("Entre al if interno");
+				notafinal = parseFloat(roundFun((eval_nota(np.value)* porcentaje_presentacion01)+(eval_nota(nr.value)* porcentaje_examen01 ),10));
+				notafinal = parseFloat(roundFun(notafinal,1));
+				
+				if (notafinal >= 3.95)
+				{
+					nf.value = 4.0;
+				}
+				else
+				{
+					nf.value=notafinal;
+				}
+			}
+			else 
+			{	
+			   // alert("Entre al else interno");			
+				nf.value=notafinal;
+			}
+		}
+		
+		if ((valor_examen < NOTA_MIN_EXAMEN) && (ce.value=="RE") ) 
+		{
+			nf.value = valor_examen;
+		}
+		
+		if ( (np.value >= nota_eximicion) && (ce.value=="NP" ||ce.value=="EX")) 
+		{
+			nf.value = np.value;
+			ce.value = "EX"; 			
+		}
+		
+		//if (ce.value=="NP" ) {
+		   // alert("Entre al 1");
+		//	nf.value = "1.0"
+		//}	
+		
+		if (ce.value == "SD" ) 
+		{
+			nf.value = np.value
+		}	
+		
+		if (cer.value=="RE" ) 
+		{
+			nf.value = nota_final
+		}
+		
+		}//fin del else de parametros, en este caso la asignatura requiere examen.
+		//alert(nf.value);
+		if (nf.value >= eval(3.95)) 
+		{
+		
+			if (parseInt(asist.value) >= porcentaje)
+			 {
+				if (validar_porc(asist))
+				{
+					sf.value="A";
+				}
+			 }
+			else
+			{
+				sf.value="RI";
+				nf.value = 1.0;
+			}
+		}
+		else
+		{
+			//sf.value="R";
+			if (parseInt(asist.value)>=porcentaje)
+			{  
+				sf.value="R";
+			}
+			else
+			{
+				sf.value="RI";
+				nf.value = 1.0;
+			}
+		}
+	}
+	else
+	{ 
+		nf.value=roundFun(eval_nota(np.value),1);
+		if (eval_nota(nf.value)>=eval(3.95))
+		{
+			if (parseInt(asist.value)>=porcentaje)
+			{  
+				sf.value="A";
+			}
+			else
+			{
+				sf.value="RI";
+				nf.value = 1.0;
+			}
+		}
+		else
+		{
+			if (parseInt(asist.value)>=porcentaje)
+			{  
+				sf.value="R";
+			}
+			else
+			{
+				sf.value="RI";
+				nf.value = 1.0;
+			}
+		}
+	}
+	
+	
+	if ( (!isEmpty(ne.value)) && (sf.value=="A") && (isEmpty(nr.value)) )
+	{		
+		cer.value = "";
+		nr.value= "";
+	}
+	
+	if ( sin_eva.value > 0 ) 
+	{		
+		sf.value = "SP";
+		ce.value = "SP";
+		ne.disabled=true;
+	}
+	
+	
+}
+
+
+function EsNota(p_nota)
+{   
+	if (isEmpty(p_nota))
+		return true;
+		
+	if (!isNumber(p_nota))
+		return false;
+		
+	if ((parseFloat(p_nota) < 1) || (parseFloat(p_nota) > 7))
+		return false;
+		
+	return true;
+}
+
+
+function ValidaNota(p_objeto)
+{
+	v_nota = p_objeto.value;
+	
+	if (!EsNota(v_nota)) {
+		alert('Ingrese una nota entre 1.0 y 7.0 utilizando un (.) como separador decimal, \no deje en blanco si el alumno no se presentó al examen.');
+		p_objeto.select();
+		p_objeto.focus();		
+	}
+}
+
+
+function EsAsistenciaValida(p_asistencia)
+{
+	if (isEmpty(p_asistencia))
+		return false;
+		
+	if (!isNumber(p_asistencia))
+		return false;
+		
+	if ((parseFloat(p_asistencia) < 0) || (parseFloat(p_asistencia) > 100))
+		return false;
+		
+	return true;
+}
+
+
+function BloquearNotaExamen(p_fila)
+{
+	var formulario = document.forms["lista"];
+	var v_asistencia = parseFloat(formulario.elements["not[" + p_fila + "][carg_nasistencia]"].value);
+	var o_eexa_ccod = MM_findObj('not[' + p_fila + '][eexa_ccod]');
+	var v_eexa_ccod = 'SD';//o_eexa_ccod.value;	
+	var b_habilitado;
+	var str_nota;
+	
+	if ((v_asistencia < porcentaje) || (v_eexa_ccod == 'SD') ) {
+		formulario.elements["not[" + p_fila + "][carg_nnota_examen]"].value = "";
+		formulario.elements["not[" + p_fila + "][carg_nnota_examen]"].setAttribute("readOnly", true);
+	}
+	else {
+		formulario.elements["not[" + p_fila + "][carg_nnota_examen]"].setAttribute("readOnly", false);
+	}
+} 
+
+
+function InicioPagina(formulario)
+{
+	a = "<%=asig_tdesc%>";	
+	if (a != "") {		
+		CargarAsignaturas(formulario, formulario.elements["not[0][sede_ccod]"].value)
+		formulario.elements["not[0][secc_ccod]"].value = '<%=asig_tdesc%>';
+		
+		CargarSecciones(formulario,formulario.elements["not[0][secc_ccod]"].value)
+		formulario.elements["not[0][secc_tdesc]"].value = '<%=secc_ccod%>';
+		sec=formulario.elements["not[0][secc_tdesc]"].value;
+	}
+	
+	for (var i = 0; i < <%=alumnos.NroFilas%>; i++) 
+	{
+		if (document.forms["lista"].elements["not[" + i + "][carg_nasistencia]"])
+		{
+			evalua_nota(document.forms["lista"].elements["not[" + i + "][carg_nasistencia]"]);
+			BloquearNotaExamen(i);
+		}
+	}	
+}
+
+
+function carg_nasistencia_blur(p_objeto)
+{
+	p_fila = _FilaCampo(p_objeto);
+	v_asistencia = p_objeto.value;
+	
+		
+	if (EsAsistenciaValida(v_asistencia)) {
+		BloquearNotaExamen(p_fila);
+	}
+	else {
+		alert('Ingrese un porcentaje de asistencia entre 1 y 100.');
+		p_objeto.select();
+		p_objeto.focus();		
+	}
+	
+}
+
+
+
+function eval_nota(n){
+if (n=="" || n==null)
+   {
+   return eval(0);}
+else
+   {return eval(roundFun(n,1));}
+}
+
+function validar_porc(n){
+		if (isNumber(n.value)==true){ 
+			if (eval(n.value)<eval(0) || eval(n.value)>eval(100)){
+				alert ('Debe ingresar valores númericos entre 0 y 100')
+				n.focus();
+				return false;
+			}
+		}
+		else{
+			alert ('Asegurese de ingresar valores númericos validos.')
+			n.focus();
+			return false;
+		 }
+	return true;
+}
+
+function dibujar(formulario){
+	formulario.action='ingreso_notas_finales.asp';
+	formulario.submit();
+}
+
+
+function aviso_email()
+{
+	 var seccion = '<%=secc_ccod%>';
+	 if (seccion == '')
+	 {
+	 	direccion="aviso_nuevo_email.asp";
+     	resultado=window.open(direccion, "ventana_aviso","width=380,height=559,scrollbars=no, left=0, top=0");
+	 }	
+}
+
+</script>
+
+</head>
+<body bgcolor="#D8D8DE" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../imagenes/botones/buscar_f2.gif','../images/bot_deshabilitar_f2.gif','../images/agregar2_f2_p.gif','../__base/im&amp;#225;genes/marco1_r3_c2_f2.gif');MM_preloadImages('../__base/im&amp;#225;genes/marco1_r3_c4_f2.gif');MM_preloadImages('../__base/im&amp;#225;genes/marco1_r3_c6_f2.gif');MM_preloadImages('../__base/im&amp;#225;genes/marco1_r3_c8_f2.gif');MM_preloadImages('../imagenes/botones/cargar_f2.gif','../imagenes/botones/continuar_f2.gif'); InicioPagina(document.busca_alumnos);" onBlur="revisaVentana();">
+<table width="750" height="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="62" valign="top"><img src="../imagenes/vineta2_r1_c1.gif" width="750" height="62" border="0"></td>
+  </tr>
+  <%pagina.DibujarEncabezado()%>  
+  <tr>
+    <td valign="top" bgcolor="#EAEAEA">
+	<br>
+	<table width="90%"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#D8D8DE">
+      <tr>
+        <td width="9" height="8"><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+        <td height="8" background="../imagenes/top_r1_c2.gif"></td>
+        <td width="7" height="8"><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+      </tr>
+      <tr>
+        <td width="9" background="../imagenes/izq.gif"></td>
+        <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+                <td>
+                  <%pagina.DibujarLenguetas Array("Búsqueda de Asignaturas"), 1 %>
+                </td>
+          </tr>
+          <tr>
+            <td height="2" background="../imagenes/top_r3_c2.gif"></td>
+          </tr>
+          <tr>
+            <td><form name="busca_alumnos" method="get">
+                    <input name="sesi_ccod" type="hidden" value="<%=sesi_ccod%>">
+                    <input name="cali_ncorr" type="hidden" value="<%=cali_ncorr%>">
+                    <input name="tipo_asignatura" type="hidden" value="<%=tipo_asignatura%>">
+                    <input name="secc_ccod" type="hidden" value="<%=secc_ccod%>">
+                    <br>
+              <table width="98%"  border="0" align="center">
+                <tr>
+                  <td width="81%"><div align="center">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr> 
+                                <td width="26%" align="left"> <font face="Verdana, Arial, Helvetica, sans-serif" size="1">Sede 
+                                  <br>
+                                  <%formprofesores.dibujacampo("sede_ccod")%>
+                                  </font></td>
+                                <td width="44%" align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">&nbsp; 
+                                  </font> <font face="Verdana, Arial, Helvetica, sans-serif" size="1">&nbsp; 
+                                  </font><font face="Verdana, Arial, Helvetica, sans-serif" size="1">&nbsp; 
+                                  Asignaturas<br>
+                                  <%formbusqueda.dibujacampo("secc_ccod")%>
+                                  </font></td>
+                                <td width="30%" align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Secci&oacute;n<br>
+                                  <%formsecciones.dibujacampo("secc_tdesc")%>
+                                  </font></td>
+                              </tr>
+                            </table>
+                          </div></td>
+                  </tr>
+              </table>
+                    <table width="97%" border="0" align="center">
+                      <tr> 
+                        <td align="left">*PARA VER UN CURSO SELECCIONES LOS PARAMETROS 
+                          DE BUSQUEDA Y PRESIONE EL BOTON <em><strong>&quot;BUSCAR&quot;</strong></em></td>
+                      </tr>
+                      <tr> 
+                        <td align="left">Nota : Ud. esta Ingresando Notas para 
+                          el periodo academico de :<strong> 
+                          <%response.Write(PerSel)%>
+                          </strong> &nbsp;</td>
+                      </tr>
+					  <tr> 
+                        <td align="right"><%botonera.dibujaboton "buscar"%></td>
+                        </tr>
+                    </table>
+                    <br>
+            </form></td>
+          </tr>
+        </table></td>
+        <td width="7" background="../imagenes/der.gif"></td>
+      </tr>
+      <tr>
+        <td width="9" height="13"><img src="../imagenes/base1.gif" width="9" height="13"></td>
+        <td height="13" background="../imagenes/base2.gif"></td>
+        <td width="7" height="13"><img src="../imagenes/base3.gif" width="7" height="13"></td>
+      </tr>
+    </table>
+	<br>
+	<table width="90%"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#D8D8DE">
+      <tr>
+        <td width="9" height="8"><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+        <td height="8" background="../imagenes/top_r1_c2.gif"></td>
+        <td width="7" height="8"><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+      </tr>
+      <tr>
+        <td width="9" background="../imagenes/izq.gif">&nbsp;</td>
+        <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+                <td>
+                  <%pagina.DibujarLenguetas Array("Ingresar Notas Finales"), 1 %>
+                </td>
+          </tr>
+          <tr>
+            <td height="2" background="../imagenes/top_r3_c2.gif"></td>
+          </tr>
+          <tr>
+            <td><div align="center"><br>
+              <%pagina.DibujarTituloPagina%><br>
+                </div>
+              <form name="lista" method="post">
+                    <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">
+                      <tr> 
+                        <td><p> 
+                            <% if secc_ccod <>"" then %>
+                            
+                          <table width="99%"  border="0">
+                            <tr>
+                              <td colspan="4">&nbsp;Resultado De La busqueda </td>
+                            </tr>
+                            <tr>
+                              <td width="26%">Sede</td>
+                              <td width="47%"><strong>: <%=f_asignatura.obtenervalor("sede_tdesc")%></strong></td>
+                              <td width="4%">&nbsp;</td>
+                              <td width="23%">&nbsp;</td>
+                            </tr>
+							<tr>
+                              <td width="26%">Carrera</td>
+                              <td width="47%"><strong>: <%=carrera%></strong></td>
+                              <td width="4%">&nbsp;</td>
+                              <td width="23%">&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td>Asignatura</td>
+                              <td><strong>: <%=f_asignatura.obtenervalor("asig_ccod")%> &nbsp; <%=f_asignatura.obtenervalor("asig_tdesc")%></strong> </td>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td>Tipo Asignatura</td>
+                              <td> : <strong>
+                                <%response.Write(tasg_tdesc)%>
+                              </strong></td>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td>Seccion</td>
+                              <td> : <strong><%=f_asignatura.obtenervalor("secc_tdesc")%></strong></td>
+                              <td><font color="#FF0000">&nbsp;</font></td>
+                              <td><font color="#FF0000">&nbsp;</font></td>
+                            </tr>
+                          </table>
+                          <br>
+                          <br>
+                          <table width="98%"  border="0">
+						   <%if parametro="N" then%>
+                            <tr>
+                              <td colspan="3">&nbsp;</td>
+                            </tr>
+							<%else%>
+							<tr>
+                              <td>Nota Presentaci&oacute;n : <b><%=NOTA_PRESENTACION%></b></td>
+                              <td>Nota Eximici&oacute;n : <b> 
+                                <%if SECC_EXIMISION = "S" then Response.Write(NOTA_EXIMICION) else Response.Write("Sin Eximición")%>
+                                </b></td>
+                              <td>Porcentaje Asistencia : <b><%=porcentaje_asistencia%></b> % </td>
+                            </tr>
+                            <tr>
+                              <td>Nota M&iacute;n. Examen : <b><%=NOTA_MIN_EXAMEN%></b></td>
+                              <td>Porc. Nota. Presentaci&oacute;n : <b><%=v_porcentaje_presentacion%></b> %</td>
+                              <td>&nbsp;</td>
+                            </tr>
+							<%end if%>
+                          </table>                          
+                          <br>
+                          <br>
+                          <table width="98%"  border="0">
+                            <tr>
+                              <td scope="col"><p>Sr. Profesor:</p>
+                                <%if parametro <>"N" then%><p>
+								   SAGAF calcula los estados finales de su asignatura a partir de los cinco par&aacute;metros que se encuentran en el encabezado de esta p&aacute;gina, por lo que si existiera alguna diferencia con ellos informarlos a su direcci&oacute;n de escuela.<br>
+                                   Para el caso de los Alumnos que no se presentaron a rendir examen, deje el campo sin nota y el sistema calculara el promedio con un 1.0, esto nos ayudara a calcular las estad&iacute;sticas de la asignatura con mayor precisi&oacute;n.<br>
+								   Si va a interrumpir el ingreso de notas por algunos minutos o si su asignatura tiene un n&uacute;mero elevado de alumnos, se recomienda guardar las notas cada 5 minutos.</p>
+								 <%end if%>
+                              </td>
+                            </tr>
+							<%if asig_cerrada="2" then%>
+							 <tr>
+                              <td scope="col">
+							  <p> <font color="#0000FF"><b>Observaci&oacute;n :</b></font>&nbsp;La 
+                                  evaluación de esta asignatura se encuentra <b>Cerrada</b>, 
+                                  por lo tanto si desea hacer cualquier cambio 
+                                  en ella se debe comunicar con la dirección de 
+                                  la escuela.</p>
+                              </td>
+                            </tr>
+							<%end if%>
+                          </table>                          <p>&nbsp;</p>
+                          <p> 
+                            <%end if %>
+                          </p>
+                          <input name="regAlumnos" type="hidden" value="<%=RegAlumnos%>"> 
+                          <%
+
+			   if secc_ccod<>""  then
+			   	
+					if NumCaliAsignatura=NumCaliAlumno and NumCaliAsignatura<>0 and NumCaliAlumno<>0 then
+					
+					
+			   %>
+                         
+                          <table width="100%" cellspacing="0" cellpadding="0">
+                            <tr> 
+                              <td align="center">
+                                <%pagina.DibujarSubtitulo "Lista de Alumnos"%>
+                              </td>
+                            </tr>
+                            <tr> 
+                              <td align="right">&nbsp; </td>
+                            </tr>
+						<%if ((bloqueado_cambio = true and autorizar = false) or (bloquear_todo="S")) then%>
+						<tr> 
+                          <td align="center"><font color="#0000FF" size="2"><strong>Atención: </strong><br>
+                          No se pueden hacer modificaciones en las actas ya que el proceso fue cerrado según reglamento académico, si desea hacer cambios en ella diríjase al departamento de registro curricular.</font>
+                          </td>
+                        </tr>
+						<tr> 
+                          <td align="center">&nbsp;</td>
+                        </tr>
+						<%end if%>
+                            <tr> 
+                              <td align="center"> 
+                                <%alumnos.dibujatabla()%>
+                                <input type="hidden" name="registros" value="<%=registros%>"> 
+                                <input type="hidden" name="not[0][secc_ccod]" value="<%=secc_ccod%>"> 
+                                <input name="sesi_ccod2" type="hidden" value="<%=sesi_ccod%>"> 
+                                <input name="cali_ncorr2" type="hidden" value="<%=cali_ncorr%>"> 
+                              </td>
+                            </tr>
+							<%if ((ponderacion <> 100) and (secc_ccod <> "" ))   then   %>
+							<tr> 
+                              <td align="center">&nbsp;		
+                              </td>
+                            </tr>
+							<tr> 
+                              <td align="center">&nbsp;		
+                              </td>
+                            </tr>
+							<tr> 
+                              <td align="center"><font color="#0000FF" size="2"><strong>La ponderaci&oacute;n acumulada para la nota de presentación de la asignatura corresponde a <%=ponderacion%> % (Para poder guardar las evaluaciones debe completar el 100%).</strong></font>	
+                              </td>
+                            </tr>
+							<%end if%>
+							<%if tiene_vacios ="SI" then%>
+							<tr> 
+                              <td align="center">&nbsp;		
+                              </td>
+                            </tr>
+							<tr> 
+                              <td align="center" bgcolor="#CC3300"><font color="#FFFFFF" size="3"><strong>NO OLVIDE GUARDAR LOS CAMBIOS ANTES DE CERRAR EL ACTA</strong></font>	
+                              </td>
+                            </tr>
+							<tr> 
+                              <td align="center">&nbsp;		
+                              </td>
+                            </tr>
+							<%end if%>
+                          </table>
+                          <p> 
+                            <%else
+				 	response.Write("<font face='Verdana, Arial, Helvetica, sans-serif' color='#CC3300' size='1'><center><b>NO PUEDE INGRESAR NOTAS FINALES, YA QUE EXISTEN NOTAS  PARCIALES NO INGRESADAS</b></center></font>")
+					
+				 end if%>
+                            <%end if%>
+                          </p>
+                          <p> 
+                            <%if cint(tipo_asignatura)=1   THEN%>
+                            <%if cint(NumCaliAsignatura)<>0 or cint(NumCaliAsignatura)<>0  or NumCaliAsignatura<> NumCaliAsignatura then  %>
+</p>
+                          <p>                         
+                          <table width="75%" align="right">
+                            <tr> 
+                              <td> <div align="right"><%
+							       
+								   if ((examen = TRUE) and (parametro <> "N") and (asig_cerrada <> "2") )  then %>
+                                  <% 'botonera.agregaBotonparam "examen_repeticion","deshabilitado","TRUE"
+								     botonera.dibujaboton "examen_repeticion"%>
+                                  <%end if%>
+                                </div></td>
+                            </tr>
+                          </table>
+                          <p> 
+                            <%end if%>
+                            <%end if%>
+                          </td>
+                      </tr>
+                    </table>
+                    <br>
+            </form></td></tr>
+        </table></td>
+        <td width="7" background="../imagenes/der.gif">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="9" height="28"><img src="../imagenes/abajo_r1_c1.gif" width="9" height="28"></td>
+        <td height="28"><table width="100%" height="28"  border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="53%" height="20"><div align="center"> 
+                    <table width="90%"  border="0" cellspacing="0" cellpadding="0">
+                      <tr> 
+                        <td><div align="center">
+                          <%botonera.dibujaboton "Planilla_notas_excel"%>
+                        </div></td>
+                        <td><div align="center">
+                            <%if secc_ccod <> "" then 
+							      if esVacio(asig_cerrada) and ponderacion = 100  then
+									botonera.agregaBotonParam "guardar","deshabilitado","FALSE"
+								  end if
+								  if asig_cerrada = "2" or (sys_cierra_notas = TRUE ) or bloqueado_cambio = true then
+									botonera.agregaBotonParam "guardar","deshabilitado","TRUE"
+								  end if
+								  
+								  
+								  'response.Write("es trimestral "&es_trimestral&" cerrada "&asig_cerrada)
+								  							 
+								 if asig_cerrada = "2"then
+										botonera.agregaBotonParam "guardar","deshabilitado","TRUE"
+								 end if
+								  
+								  if ((bloqueado_cambio = true and autorizar = false) or (bloquear_todo="S")) then
+											     botonera.agregaBotonParam "guardar","deshabilitado","TRUE"
+								  End if
+								  if autorizar  then 
+									 botonera.agregaBotonParam "guardar","deshabilitado","FALSE"
+								  end if
+								  botonera.dibujaBoton "guardar"
+								end if  
+							  %>
+                          </div></td>
+                        <td><div align="center">
+                          <%'botonera.agregaBotonparam "imprimir_acta","deshabilitado","TRUE"
+						    botonera.dibujaboton "imprimir_acta"%>
+                          </div></td>
+						<td><div align="center">
+                            <% if secc_ccod <> "" then
+									if esVacio(asig_cerrada) then
+ 									      botonera.agregaBotonParam "cerrar_asignatura","deshabilitado","FALSE"
+									end if 
+									if asig_cerrada <> "1" or (sys_cierra_notas = TRUE ) or bloqueado_cambio = true then
+										botonera.agregaBotonParam "cerrar_asignatura","deshabilitado","TRUE"
+									end if 
+									
+     								if es_trimestral<>"0" then
+										botonera.agregaBotonParam "cerrar_asignatura","deshabilitado","FALSE"
+									else
+										botonera.agregaBotonParam "cerrar_asignatura","deshabilitado","FALSE"
+									end if
+									
+									if asig_cerrada = "2"then
+										botonera.agregaBotonParam "cerrar_asignatura","deshabilitado","TRUE"
+									end if
+									
+									if ((bloqueado_cambio = true and autorizar = false) or (bloquear_todo="S")) then
+										botonera.agregaBotonParam "cerrar_asignatura","deshabilitado","TRUE"
+									End if
+									
+									if autorizar  then ' or ip_usuario="172.16.11.216" or ip_usuario="172.16.11.147" then 'or ip_usuario="172.16.11.143" or ip_usuario="172.16.11.147"  or ip_usuario="172.16.11.249" then
+										 botonera.agregaBotonParam "cerrar_asignatura","deshabilitado","FALSE"
+									end if
+									botonera.dibujaBoton "cerrar_asignatura"
+								end if
+							%>
+                        </div></td>
+                        <td><div align="center">
+                            <%botonera.dibujaboton "salir"%>
+                        </div></td>
+                      </tr>
+                    </table>
+                  </div></td>
+            <td width="47%" rowspan="2" background="../imagenes/abajo_r1_c4.gif"><img src="../imagenes/abajo_r1_c3.gif" width="12" height="28"></td>
+            </tr>
+          <tr>
+            <td height="8" background="../imagenes/abajo_r2_c2.gif"></td>
+          </tr>
+        </table></td>
+        <td width="7" height="28"><img src="../imagenes/abajo_r1_c5.gif" width="7" height="28"></td>
+      </tr>
+    </table>
+	<br>
+	<br>
+	</td>
+  </tr>  
+</table>
+</body>
+</html>

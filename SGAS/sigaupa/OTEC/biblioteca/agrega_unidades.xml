@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+
+	<parametro formulario="agregar_unidad" variable="agregar_unidad" >
+		<campos nombre="UDPO_TDESC">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+	</parametro>
+	
+	
+	
+
+	<parametro formulario="unidades" clave="UDPO_TDESC" variable="a" mensajeError="No existen Unidades"
+		 colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="true" 
+		 eliminar="true" agregar="false" nuevaVentana="true" paginaEdicion="editar_unidades.asp?UDPO_ccod=%UDPO_ccod%" 
+		 maxLista="10" nroRegistros="10" anchoTabla="98%">
+		
+		<campos nombre="UDPO_TDESC">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Unidades</descripcion>
+         	<alineamiento>center</alineamiento>
+		</campos>
+
+		<campos nombre="UDPO_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso> 
+		</campos>
+	</parametro>
+	
+	<parametro formulario="btn_edita_modulos">
+    	<botones nombre="guardar"> 
+      		<tipoTexto>GUARDAR</tipoTexto>
+	  		<accion>JAVASCRIPT</accion>
+	  		<funcion>guardar(document.edicion)</funcion>
+		</botones> 
+		<botones nombre="ir"> 
+      		<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Agregar Unidad</texto>
+			<accion>NAVEGAR</accion>
+	  		<url>agrega_unidades.asp</url>
+		</botones>
+		<botones nombre="volver1"> 
+      		<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Volver</texto>
+			<accion>NAVEGAR</accion>
+	  		<url>unidades.asp</url>
+		</botones>
+		<botones nombre="guardar1"> 
+      		<tipoTexto>GUARDAR</tipoTexto>
+			<accion>Guardar</accion>
+			<formulario>edicion</formulario>
+	  		<url>agregar_unidades_proc.asp</url>
+		</botones>
+    	<botones nombre="guardar2"> 
+      		<tipoTexto>GUARDAR</tipoTexto>
+			<accion>Guardar</accion>
+			<formulario>edicion</formulario>
+	  		<url>editar_unidades_proc.asp</url>
+		</botones>
+		<botones nombre="volver"> 
+      		<tipoTexto>DEFINIR</tipoTexto>
+	  		<texto>Cerrar</texto>
+	  		<accion>JAVASCRIPT</accion>
+	  		<funcion>volver()</funcion>
+		</botones> 
+		<botones nombre="eliminar"> 
+      		 <tipoTexto>DEFINIR</tipoTexto>
+			  <texto>Borra Unidad</texto>
+			  <accion>GUARDAR</accion>
+			  <formulario>edicion</formulario>
+			  <url>borrar_unidades_proc.asp</url>
+			  <funcionValidacion>Validar_Eliminacion(document.edicion);</funcionValidacion>
+		</botones> 
+		<botones nombre="deshabilitar"> 
+      		 <tipoTexto>DEFINIR</tipoTexto>
+			  <texto>Deshabilitar Unidad</texto>
+			  <accion>GUARDAR</accion>
+			  <formulario>edicion</formulario>
+			  <url>deshabilitar_unidades_proc.asp</url>
+			  <funcionValidacion>Validar_deshabilitar(document.edicion);</funcionValidacion>
+		</botones> 
+		<botones nombre="habilitar"> 
+      		 <tipoTexto>DEFINIR</tipoTexto>
+			  <texto>habilitar Unidad</texto>
+			  <accion>GUARDAR</accion>
+			  <formulario>edicion</formulario>
+			  <url>habilitar_unidades_proc.asp</url>
+			  <funcionValidacion>Validar_habilitar(document.edicion);</funcionValidacion>
+		</botones>
+ 	</parametro>
+ 	
+	
+	
+	
+</Parametros>
+

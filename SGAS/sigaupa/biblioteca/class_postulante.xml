@@ -1,0 +1,105 @@
+<Parametros>
+   <parametro formulario="datos_postulante" anchoTabla="100%" columnas="2" separacion="30">
+      <campos nombre="rut">
+         <descripcion>R.U.T.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre_completo">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="carrera">
+         <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="sede_tdesc">
+         <descripcion>Sede Postulación</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="direccion">
+         <descripcion>Direccion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre_codeudor">
+         <descripcion>Apoderado/Sostenedor</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="direccion_codeudor">
+         <descripcion>Dir. Apoderado/Sostenedor</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="pers_tfono_codeudor">
+         <descripcion>Fono Apoderado/Sostenedor</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	   <campos nombre="ano_ingreso">
+         <descripcion>Año de ingreso</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="tabla_valores" anchoTabla="100%" resumen="TRUE" variable="cp_valores">
+      <campos nombre="c_matricula">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c_arancel">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c_total">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ttipo">
+         <descripcion>&amp;nbsp;</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="matricula">
+         <descripcion>Matrícula</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+         <resumen>SUMA_JC</resumen>
+      </campos>
+      <campos nombre="arancel">
+         <descripcion>Arancel</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+         <resumen>SUMA_JC</resumen>
+      </campos>
+      <campos nombre="total">
+         <descripcion>Total</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+         <resumen>SUMA_JC</resumen>
+      </campos>
+   </parametro>
+   <parametro formulario="botonera">
+      <botones nombre="cambiar_info_codeudor">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Modificar Información</texto>
+         <accion>AGREGAR</accion>
+         <url>modificar_informacion.asp</url>
+         <ancho>800</ancho>
+         <alto>600</alto>
+         <posicionX>50</posicionX>
+         <posicionY>50</posicionY>
+         <scroll>TRUE</scroll>
+      </botones>
+   </parametro>
+</Parametros>

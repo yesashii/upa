@@ -1,0 +1,6 @@
+17600062,CHAHUAN MODAK CONSTANZA DE LOS ANGELES,,17600062-7,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+70200800,  CORPORACION DE CAPACITACION DE LA CONSTRUCCION,,70200800-K,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+74252300,  CENTRO ESPAÑOL INTERMEDIO DE CAPACITACION,,74252300-4,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+76503160,  TGA PRODUCCIONES LTDA.,,76503160-5,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+91637000,  LABORATORIO RECALCINE,,91637000-8,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+96568950,  DATANET SA,,96568950-8,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

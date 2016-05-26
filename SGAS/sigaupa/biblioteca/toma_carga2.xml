@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="BotoneraTomaCarga">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador);_HabilitarBoton(this,false);</funcion>
+	</botones> 
+    <botones nombre="ELIMINAR"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>elim_asig(document.edicion);_HabilitarBoton(this,false);</funcion>
+	 <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+    <botones nombre="GUARDAR"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>guardar(document.edicion);_HabilitarBoton(this,false);</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+	<botones nombre="HORARIO"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Horario</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>horario()</funcion>	  
+	</botones>	
+	<botones nombre="NOTAS">
+      <tipoTexto>DEFINIR</tipoTexto> 
+      <texto>Ver Notas</texto> 
+      <accion>JAVASCRIPT</accion> 
+      <funcion>ver_notas()</funcion> 
+    </botones>
+    <botones nombre="SALIR">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>	
+ </parametro>
+  <parametro formulario="BotoneraEQ">
+    <botones nombre="ELIMINAR"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	   <accion>JAVASCRIPT</accion>
+	  <funcion>eliminar(document.edicion);_HabilitarBoton(this,false);</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+    <botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>abrir();</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+ </parametro>
+  <parametro formulario="BotoneraSeccionesEQ">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 
+    <botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>guardar(document.edicion);</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+    <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>salir()</funcion>
+	</botones> 	
+ </parametro>
+
+<parametro formulario="toma_carga" variable="d">
+		<campos nombre="secc_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<union>secc_ccod</union>
+			<salida>horario</salida>
+			<columnas>2</columnas>
+			<anulable>true</anulable>
+			<mensajeNulo>Sin sección asignada</mensajeNulo>
+			<mensajeVacio>No hay secciones disponibles</mensajeVacio>
+			<estilo>anchofijo</estilo>
+			<id>TO-N</id>
+		</campos>
+		<campos nombre="asignatura">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<union>mall_ccod</union>
+			<salida>asignatura</salida>
+			<columnas>2</columnas>
+			<anulable>true</anulable>
+			<mensajeNulo>Seleccione asignatura equivalente</mensajeNulo>
+			<mensajeVacio>No hay asignaturas disponibles</mensajeVacio>
+			<estilo>anchofijo</estilo>
+			<id>TO-N</id>
+		</campos>
+	</parametro>
+</Parametros>

@@ -1,0 +1,109 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="cerrar">
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+
+	  <botones nombre="imprimir"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Imprimir</texto>
+	  <accion>GUARDAR</accion>
+	  <target>_BLANK</target>
+	  <url>imprimir_boleta.asp</url>
+      <formulario>edicion</formulario>
+	</botones> 
+
+	<botones nombre="boleta_electronica"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Boleta Electronica</texto>
+	  <accion>GUARDAR</accion>
+	  <target>_BLANK</target>
+	  <url>imprimir_boleta_electronica.asp</url>
+      <formulario>edicion</formulario>
+	</botones>
+
+   </parametro>
+
+
+   <parametro formulario="datos_alumno" anchoTabla="100%" variable="detalle" >
+      <campos nombre="rut_alumno">
+         <descripcion>rut_aval</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre_alumno">
+         <descripcion>Nombre</descripcion>
+          <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="datos_aval" anchoTabla="100%" columnas="2">
+      <campos nombre="rut_aval">
+         <descripcion>rut_aval</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre_aval">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="ciud_tdesc">
+         <descripcion>Comuna</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="ciud_tcomuna">
+         <descripcion>Ciudad</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="direccion">
+         <descripcion>Direccion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+
+   <parametro formulario="detalle_pagos" variable="detalle_pagos" anchoTabla="100%" resumen="TRUE">
+      <campos nombre="bole_nboleta">
+         <descripcion>Nº Boleta</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+		 <caracteres>5</caracteres>
+		 <maxCaracteres>5</maxCaracteres>
+      </campos>
+      <campos nombre="tdet_ccod">
+         <descripcion>Item</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_detalle</destino>
+         <union>tdet_ccod</union>
+         <salida>tdet_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <anulable>TRUE</anulable>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="tdet_tdesc">
+	    <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+	 </campos>
+	  <campos nombre="c_dbol_mtotal">
+         <descripcion>Total</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+
+      <campos nombre="dbol_mtotal">
+         <descripcion>Monto Docto.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+         <resumen>SUMA_JC</resumen>
+      </campos>
+   </parametro>
+</Parametros>

@@ -1,0 +1,1266 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="busqueda" variable="not" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" eliminar="false" agregar="true" nuevaVentana="false" maxLista="10" nroRegistros="10" anchoTabla="98%">
+      <campos nombre="secc_ccod">
+         <tipo>SELECT</tipo>
+         <destino>(SELECT -1 AS secc_ccod, '-- Seleccione Una Asignaturas --' AS blanco)s</destino>
+         <union>secc_ccod</union>
+         <salida>blanco</salida>
+         <alineamiento>center</alineamiento>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+         <alineamiento>center</alineamiento>
+         <script>onChange="CargarSecciones(this.form, this.value)" ;</script>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="profesores" variable="not" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" eliminar="false" agregar="true" nuevaVentana="false" maxLista="10" nroRegistros="10" anchoTabla="98%">
+      <campos nombre="sede_ccod">
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <union>profesor_sede</union>
+         <salida>sede</salida>
+         <anulable>true</anulable>
+         <mensajeNulo>-- Seleccione Sede --</mensajeNulo>
+         <mensajeVacio>-- Seleccione Sede --</mensajeVacio>
+         <script>onChange="CargarAsignaturas(this.form, this.value)"</script>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="secciones_J" variable="not" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" eliminar="false" agregar="true" nuevaVentana="false" maxLista="10" nroRegistros="10" anchoTabla="98%">
+      <campos nombre="secc_tdesc">
+         <tipo>SELECT</tipo>
+         <destino>(SELECT -1 AS secc_tdesc, '-- Secciones --' AS blanco)s</destino>
+         <union>secc_tdesc</union>
+         <salida>blanco</salida>
+         <alineamiento>center</alineamiento>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+   <parametro colorSeleccionado="99FFFF" formulario="seccionesss" variable="not">
+      <campos nombre="secc_ccod">
+         <tipo>SELECT</tipo>
+         <permiso>lecturaescritura</permiso>
+         <union>secc_ccod</union>
+         <salida>curso</salida>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Elija sección</mensajeNulo>
+         <mensajeVacio>No existen secciones</mensajeVacio>
+         <script>onchange='javascript:dibujar(this.form);'</script>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="secciones" variable="not" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" eliminar="false" agregar="true" nuevaVentana="false" maxLista="10" nroRegistros="10" anchoTabla="98%">
+      <campos nombre="secc_tdesc">
+         <tipo>SELECT</tipo>
+         <destino>(SELECT -1 AS secc_tdesc, '-- Secciones --' AS blanco)s</destino>
+         <union>secc_tdesc</union>
+         <salida>blanco</salida>
+         <alineamiento>center</alineamiento>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="alumnos" variable="not" clave="matr_ncorr" eliminar="false" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" maxLista="10" nroRegistros="150" anchoTabla="98%" mensajeError="No existen alumnos para los parametros de búsqueda seleccionados.">
+      <campos nombre="matr_ncorr">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="estado_cierre_ccod">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="rut">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Rut</descripcion>
+         <ancho>85</ancho>
+      </campos>
+      <campos nombre="alumno">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Alumno</descripcion>
+      </campos>
+      <campos nombre="cala_nnota">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <alineamiento>center</alineamiento>
+         <id>NU-N</id>
+         <script>onBlur="cala_nnota_blur(this);"</script>
+      </campos>
+	  <campos nombre="email">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+	  <campos nombre="alumno_oculto">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+   </parametro>
+   
+    <parametro formulario="cambio_alumnos" variable="not" clave="matr_ncorr" eliminar="false" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" maxLista="10" nroRegistros="150" anchoTabla="98%" mensajeError="No existen alumnos para los parametros de búsqueda seleccionados.">
+      <campos nombre="matr_ncorr">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="estado_cierre_ccod">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="rut">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Rut</descripcion>
+         <ancho>85</ancho>
+      </campos>
+      <campos nombre="alumno">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Alumnits</descripcion>
+      </campos>
+      <campos nombre="cala_nnota">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <alineamiento>center</alineamiento>
+         <id>NU-S</id>
+         <script>onBlur="cala_nnota_blur(this);"</script>
+      </campos>
+	  <campos nombre="cala_nnota_respaldo">
+         <tipo>input</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+	  <campos nombre="cala_nresolucion">
+		 <tipo>INPUT</tipo> 
+		 <descripcion>Resolución</descripcion> 
+		 <permiso>LECTURAESCRITURA</permiso> 
+		 <id>TO-S</id>
+		 <alineamiento>Center</alineamiento>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>60</maxCaracteres>
+		 <deshabilitado>true</deshabilitado>
+       </campos>
+	   <campos nombre="cala_tobservacion">
+		 <tipo>INPUT</tipo> 
+		 <descripcion>Observación</descripcion> 
+		 <permiso>LECTURAESCRITURA</permiso> 
+		 <id>TO-S</id>
+		 <alineamiento>Center</alineamiento>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>60</maxCaracteres>
+		 <deshabilitado>true</deshabilitado>
+       </campos>
+   </parametro>
+   
+   <parametro formulario="alumnos_f" variable="not" clave="v_matr_ncorr" eliminar="FALSE" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" maxLista="10" nroRegistros="150" anchoTabla="98%" mensajeError="No existen notas para esta sección.">
+      <campos nombre="matr_ncorr">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="carg_justi">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="estado_cierre_ccod">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="rut">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Rut</descripcion>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="alumno">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Alumno</descripcion>
+         <ancho>300</ancho>
+      </campos>
+      <campos nombre="carg_nnota_presentacion">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>Nota Presentación</descripcion>
+         <script>onKeyPress='evalua_nota(this);'</script>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="carg_nnota_examen">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>Nota Exámen</descripcion>
+         <script>onKeyUP='evalua_nota(this);' onBlur='ValidaNota(this);'</script>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="carg_nnota_repeticion">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>Nota Ex. Repetición</descripcion>
+         <script>onKeyUP='evalua_nota(this);'</script>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="carg_nasistencia">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>% Asistencia</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <script>onKeyUP='evalua_nota(this);' onBlur="carg_nasistencia_blur(this);"</script>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>IN-N</id>
+      </campos>
+      <campos nombre="carg_nnota_final">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>Nota Final</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <script>readOnly</script>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="sitf_ccod">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>Situación Final</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <script>readOnly</script>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="EEXA_CCOD">
+         <tipo>input</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Concepto&lt;br&gt;Examen</descripcion>
+         <alineamiento>center</alineamiento>
+         <caracteres>2</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="EEXA_CCOD_REP">
+         <tipo>input</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Concepto&lt;br&gt;Examen Rep</descripcion>
+         <alineamiento>center</alineamiento>
+         <caracteres>2</caracteres>
+         <script>readOnly</script>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="erep">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Derecho</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="alumnos_rep">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="alum_trabajador">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="talu_ccod">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="carg_nnota_presentacion_paso">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+	  <campos nombre="parciales_nulas">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+	  <campos nombre="observacion">
+         <tipo>input</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Observación</descripcion>
+         <alineamiento>center</alineamiento>
+         <caracteres>30</caracteres>
+         <maxCaracteres>120</maxCaracteres>
+      </campos>
+   </parametro>
+   <parametro formulario="alumnos_f_rep" variable="not" clave="v_matr_ncorr" eliminar="FALSE" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" maxLista="10" nroRegistros="150" anchoTabla="98%" mensajeError="No existen notas para esta sección.">
+      <campos nombre="matr_ncorr">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="carg_justi">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="estado_cierre_ccod">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="rut">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Rut</descripcion>
+         <ancho>95</ancho>
+      </campos>
+      <campos nombre="alumno">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Alumno</descripcion>
+         <ancho>300</ancho>
+      </campos>
+      <campos nombre="carg_nnota_presentacion">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>Nota Presentación</descripcion>
+         <script>onKeyPress='evalua_nota(this);'</script>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="carg_nnota_examen">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>Nota Exámen</descripcion>
+         <script>onKeyUP='evalua_nota(this);'readOnly</script>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="carg_nnota_repeticion">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>Nota Ex. Repetición</descripcion>
+         <script>onKeyUp='evalua_nota(this);' onBlur='ValidaNota(this);'</script>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="carg_nasistencia">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>% Asistencia</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <script>onKeyUP='evalua_nota(this);'readOnly</script>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>IN-N</id>
+      </campos>
+      <campos nombre="carg_nnota_final">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>Nota Final</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <script>readOnly</script>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="carg_nnota_final_paso">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="sitf_ccod">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>Situación Final</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <script>readOnly</script>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="EEXA_CCOD">
+         <tipo>input</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Concepto&lt;br&gt;Examen</descripcion>
+         <alineamiento>center</alineamiento>
+         <caracteres>2</caracteres>
+         <script>readOnly</script>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="EEXA_CCOD_REP">
+         <tipo>input</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Concepto&lt;br&gt;Examen Rep</descripcion>
+         <alineamiento>center</alineamiento>
+         <caracteres>2</caracteres>
+         <script>readOnly</script>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="erep">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Derecho</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="alumnos_rep">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="alum_trabajador">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="talu_ccod">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="alumnos_peec_f" variable="np" clave="v_matr_ncorr" eliminar="true" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" maxLista="10" nroRegistros="150" anchoTabla="98%" mensajeError="No existen notas para esta sección.">
+      <campos nombre="matr_ncorr">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="carg_justi">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="estado_cierre_ccod">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="rut">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Rut</descripcion>
+         <ancho>95</ancho>
+      </campos>
+      <campos nombre="alumno">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Alumno</descripcion>
+         <ancho>300</ancho>
+      </campos>
+      <campos nombre="carg_nnota_presentacion">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <script>onKeyPress='evalua_nota_peec(this);'</script>
+         <descripcion>Nota Presentación</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="carg_nnota_examen">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>Nota Exámen</descripcion>
+         <script>onKeyUP='evalua_nota_peec(this);'</script>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="carg_nnota_repeticion">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>Nota Ex. Repetición</descripcion>
+         <script>onKeyUP='evalua_nota_peec(this);'</script>
+         <alineamiento>CENTER</alineamiento>
+         <script>onBlur=' '</script>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="carg_nasistencia">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>% Asistencia</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <script>onKeyUp='evalua_nota_peec(this);'</script>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>IN-N</id>
+      </campos>
+      <campos nombre="carg_nnota_final">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>Nota Final</descripcion>
+         <script>readOnly</script>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="sitf_ccod">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>Situación Final</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <script>readOnly</script>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="erep">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Derecho</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="alumnos_rep">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="alum_trabajador">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="talu_ccod">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+   </parametro>
+   <parametro colorSeleccionado="99FFFF" formulario="notas" variable="not">
+      <campos nombre="cali_ncorr">
+         <tipo>SELECT</tipo>
+         <permiso>lecturaescritura</permiso>
+         <union>cali_ncorr</union>
+         <salida>cali_nevaluacion</salida>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Elija nro. de calificación</mensajeNulo>
+         <mensajeVacio>No existen calificaciones definidas</mensajeVacio>
+         <script>onchange='javascript:dibujar(this.form);'</script>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+   <parametro colorSeleccionado="99FFFF" formulario="guardar_nota" variable="not">
+      <tablas nombre="calificaciones_alumnos" accion="M"/>
+      <campos nombre="matr_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>lecturaescritura</permiso>
+      </campos>
+      <campos nombre="secc_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>lecturaescritura</permiso>
+      </campos>
+      <campos nombre="cali_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>lecturaescritura</permiso>
+      </campos>
+      <campos nombre="cala_nnota">
+         <tipo>INPUT</tipo>
+         <permiso>lecturaescritura</permiso>
+      </campos>
+   </parametro>
+   <parametro colorSeleccionado="99FFFF" formulario="guardar_nota_cambio" variable="not">
+      <tablas nombre="calificaciones_alumnos" accion="M"/>
+      <campos nombre="matr_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>lecturaescritura</permiso>
+      </campos>
+      <campos nombre="secc_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>lecturaescritura</permiso>
+      </campos>
+      <campos nombre="cali_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>lecturaescritura</permiso>
+      </campos>
+      <campos nombre="cala_nnota">
+         <tipo>INPUT</tipo>
+         <permiso>lecturaescritura</permiso>
+      </campos>
+	  <campos nombre="cala_nnota_respaldo">
+         <tipo>INPUT</tipo>
+         <permiso>lecturaescritura</permiso>
+      </campos>
+	  <campos nombre="cala_nresolucion">
+         <tipo>INPUT</tipo>
+         <permiso>lecturaescritura</permiso>
+      </campos>
+	  <campos nombre="cala_tobservacion">
+         <tipo>INPUT</tipo>
+         <permiso>lecturaescritura</permiso>
+      </campos>
+   </parametro>
+   <parametro colorSeleccionado="99FFFF" formulario="guardar_nota_peec" variable="np">
+      <tablas nombre="calificaciones_alumnos" accion="M"/>
+      <campos nombre="matr_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>lecturaescritura</permiso>
+      </campos>
+      <campos nombre="secc_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>lecturaescritura</permiso>
+      </campos>
+      <campos nombre="cali_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>lecturaescritura</permiso>
+      </campos>
+      <campos nombre="cala_nnota">
+         <tipo>INPUT</tipo>
+         <permiso>lecturaescritura</permiso>
+      </campos>
+   </parametro>
+   <parametro colorSeleccionado="99FFFF" formulario="guardar_nota_finales" variable="not">
+      <tablas nombre="cargas_academicas" accion="M"/>
+      <campos nombre="matr_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>lecturaescritura</permiso>
+      </campos>
+      <campos nombre="secc_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>lecturaescritura</permiso>
+      </campos>
+   </parametro>
+   <parametro colorSeleccionado="99FFFF" formulario="guardar_nota_finales_peec" variable="np">
+      <tablas nombre="cargas_academicas" accion="M"/>
+      <campos nombre="matr_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>lecturaescritura</permiso>
+      </campos>
+      <campos nombre="secc_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>lecturaescritura</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="alumnos_impresion" variable="not" clave="v_matr_ncorr" eliminar="false" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" maxLista="10" nroRegistros="150" anchoTabla="98%" mensajeError="No existen notas para esta sección.">
+      <campos nombre="matr_ncorr">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="estado_cierre_ccod">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="rut">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Rut</descripcion>
+         <ancho>95</ancho>
+      </campos>
+      <campos nombre="alumno">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Alumno</descripcion>
+         <ancho>300</ancho>
+      </campos>
+      <campos nombre="carg_nnota_presentacion">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Nota Presentación</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="carg_nnota_examen">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Nota Exámen</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="carg_nnota_repeticion">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Nota Ex. Repetición</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="carg_nasistencia">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>% Asistencia</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="carg_nnota_final">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Nota Final</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <ancho>50</ancho>
+      </campos>
+      <campos nombre="sitf_ccod">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Situación Final</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="alumnos_rep">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="alum_trabajador">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="talu_ccod">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="alumnos_peec_impresion" variable="np" clave="v_matr_ncorr" eliminar="false" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" maxLista="10" nroRegistros="150" anchoTabla="98%" mensajeError="No existen notas para esta sección.">
+      <campos nombre="matr_ncorr">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="estado_cierre_ccod">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="rut">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Rut</descripcion>
+         <ancho>95</ancho>
+      </campos>
+      <campos nombre="alumno">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Alumno</descripcion>
+         <ancho>300</ancho>
+      </campos>
+      <campos nombre="carg_nnota_presentacion">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Nota Presentación</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="carg_nnota_examen">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Nota Exámen</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="carg_nnota_repeticion">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Nota Ex. Repetición</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="carg_nasistencia">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>% Asistencia</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="carg_nnota_final">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Nota Final</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <ancho>50</ancho>
+      </campos>
+      <campos nombre="sitf_ccod">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Situación Final</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="alumnos_rep">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="alum_trabajador">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="talu_ccod">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="btn_ingreso_notas">
+      <botones nombre="buscar2">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <formulario>enviar(document.busca_alumnos)</formulario>
+      </botones>
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>busca_alumnos</formulario>
+      </botones>
+      <botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>guardar(document.lista)</funcion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	  <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Generar listado Excel</texto>
+		 <accion>NAVEGAR</accion>
+         <formulario>lista</formulario>
+     </botones>
+   </parametro>
+   <parametro formulario="btn_ingreso_notas_finales">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>enviar(document.busca_alumnos)</funcion>
+      </botones>
+      <botones nombre="cambiar">
+         <accion>JAVASCRIPT</accion>
+         <funcion>cambiarAsig(document.busca_alumnos)</funcion>
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Cambiar</texto>
+      </botones>
+      <botones nombre="Planilla_notas_excel">
+         <accion>NAVEGAR</accion>
+         <url>notas_parciales_excel.asp</url>
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Notas Parciales</texto>
+      </botones>
+      <botones nombre="examen_repeticion">
+         <accion>JAVASCRIPT</accion>
+         <funcion>Enviar_ERepeticion(document.lista)</funcion>
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Examen Repetición</texto>
+      </botones>
+      <botones nombre="examen">
+         <accion>JAVASCRIPT</accion>
+         <funcion>volver_examen(document.lista)</funcion>
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Volver Notas Finales </texto>
+      </botones>
+      <botones nombre="cerrar_asignatura">
+         <accion>JAVASCRIPT</accion>
+         <funcion>cerrar_asignatura(document.lista)</funcion>
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Cerrar Asignatura</texto>
+      </botones>
+      <botones nombre="cerrar_alumnos">
+         <accion>JAVASCRIPT</accion>
+         <funcion>cerrar_alumno(document.lista)</funcion>
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Cerrar Alumnos</texto>
+      </botones>
+      <botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>guardar(document.lista)</funcion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="imprimir_acta">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Imprimir Acta</texto>
+         <accion>AGREGAR</accion>
+         <url>../reportesnet/acta_final.aspx</url>
+      </botones>
+	  <botones nombre="imprimir_acta_complementaria">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Imprimir Acta Complementaria</texto>
+         <accion>AGREGAR</accion>
+         <url>../reportesnet/acta_final.aspx</url>
+      </botones>
+   </parametro>
+   <parametro formulario="btn_ingreso_nrepeticion">
+      <botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>guardar(document.lista)</funcion>
+      </botones>
+      <botones nombre="volver">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>history.go(-1)</funcion>
+      </botones>
+   </parametro>
+   <parametro formulario="alumnos_sin_examen" variable="not" clave="v_matr_ncorr" eliminar="FALSE" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" maxLista="10" nroRegistros="150" anchoTabla="98%" mensajeError="No existen notas para esta sección.">
+      <campos nombre="matr_ncorr">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="carg_justi">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="estado_cierre_ccod">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="rut">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Rut</descripcion>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="alumno">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Alumno</descripcion>
+         <ancho>300</ancho>
+      </campos>
+      <campos nombre="carg_nnota_presentacion">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>Nota Presentación</descripcion>
+         <script>onKeyPress='evalua_nota(this);'</script>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="carg_nnota_examen">
+         <tipo>input</tipo>
+         <permiso>oculto</permiso>
+         <script>onKeyUP='evalua_nota(this);' onBlur='ValidaNota(this);'</script>
+         <alineamiento>CENTER</alineamiento>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="carg_nnota_repeticion">
+         <tipo>input</tipo>
+         <permiso>oculto</permiso>
+         <script>onKeyUP='evalua_nota(this);'</script>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="carg_nasistencia">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>% Asistencia</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <script>onKeyUP='evalua_nota(this);' onBlur="carg_nasistencia_blur(this);"</script>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>IN-N</id>
+      </campos>
+      <campos nombre="carg_nnota_final">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>Nota Final</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <script>readOnly</script>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="sitf_ccod">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>Situación Final</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <script>readOnly</script>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="EEXA_CCOD">
+         <tipo>input</tipo>
+         <permiso>oculto</permiso>
+         <alineamiento>center</alineamiento>
+      </campos>
+      <campos nombre="EEXA_CCOD_REP">
+         <tipo>input</tipo>
+         <permiso>oculto</permiso>
+         <alineamiento>center</alineamiento>
+         <caracteres>2</caracteres>
+         <script>readOnly</script>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="erep">
+         <tipo>input</tipo>
+         <permiso>oculto</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="alumnos_rep">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="alum_trabajador">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="talu_ccod">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="carg_nnota_presentacion_paso">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+	  <campos nombre="parciales_nulas">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+	  <campos nombre="observacion">
+         <tipo>input</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Observación</descripcion>
+         <alineamiento>center</alineamiento>
+         <caracteres>30</caracteres>
+         <maxCaracteres>120</maxCaracteres>
+      </campos>
+   </parametro>
+   <parametro formulario="alumnos_f_cambio" variable="not" clave="v_matr_ncorr" eliminar="FALSE" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" maxLista="10" nroRegistros="150" anchoTabla="98%" mensajeError="No existen notas para esta sección.">
+      <campos nombre="matr_ncorr">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="carg_justi">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="estado_cierre_ccod">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="rut">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Rut</descripcion>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="alumno">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Alumno</descripcion>
+         <ancho>300</ancho>
+      </campos>
+      <campos nombre="carg_nnota_presentacion">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>Nota Presentación</descripcion>
+         <script>onKeyPress='evalua_nota(this);'</script>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="carg_nnota_examen">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>Nota Exámen</descripcion>
+         <script>onKeyUP='evalua_nota(this);' onBlur='ValidaNota(this);'</script>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="carg_nnota_repeticion">
+         <tipo>input</tipo>
+         <permiso>oculto</permiso>
+         <script>onKeyUP='evalua_nota(this);'</script>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="carg_nasistencia">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>% Asistencia</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <script>onKeyUP='evalua_nota(this);' onBlur="carg_nasistencia_blur(this);"</script>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>IN-N</id>
+      </campos>
+      <campos nombre="carg_nnota_final">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>Nota Final</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <script>readOnly</script>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+	  <campos nombre="carg_nnota_final_respaldo">
+         <tipo>input</tipo>
+         <permiso>OCULTO</permiso>
+         <script>readOnly</script>
+      </campos>
+      <campos nombre="sitf_ccod">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>Situación Final</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <script>readOnly</script>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="EEXA_CCOD">
+         <tipo>input</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Concepto&lt;br&gt;Examen</descripcion>
+         <alineamiento>center</alineamiento>
+         <caracteres>2</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="EEXA_CCOD_REP">
+         <tipo>input</tipo>
+         <permiso>OCULTO</permiso>
+         <alineamiento>center</alineamiento>
+         <caracteres>2</caracteres>
+         <script>readOnly</script>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="erep">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Derecho</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="alumnos_rep">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="alum_trabajador">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="talu_ccod">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="carg_nnota_presentacion_paso">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+	  <campos nombre="parciales_nulas">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="alumnos_sin_examen_cambio" variable="not" clave="v_matr_ncorr" eliminar="FALSE" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" maxLista="10" nroRegistros="150" anchoTabla="98%" mensajeError="No existen notas para esta sección.">
+      <campos nombre="matr_ncorr">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="carg_justi">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="estado_cierre_ccod">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="rut">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Rut</descripcion>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="alumno">
+         <tipo>input</tipo>
+         <permiso>lectura</permiso>
+         <descripcion>Alumno</descripcion>
+         <ancho>300</ancho>
+      </campos>
+      <campos nombre="carg_nnota_presentacion">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>Nota Presentación</descripcion>
+         <script>onKeyPress='evalua_nota(this);'</script>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="carg_nnota_examen">
+         <tipo>input</tipo>
+         <permiso>oculto</permiso>
+         <script>onKeyUP='evalua_nota(this);' onBlur='ValidaNota(this);'</script>
+         <alineamiento>CENTER</alineamiento>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="carg_nnota_repeticion">
+         <tipo>input</tipo>
+         <permiso>oculto</permiso>
+         <script>onKeyUP='evalua_nota(this);'</script>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="carg_nasistencia">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>% Asistencia</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <script>onKeyUP='evalua_nota(this);' onBlur="carg_nasistencia_blur(this);"</script>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>IN-N</id>
+      </campos>
+      <campos nombre="carg_nnota_final">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>Nota Final</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <script>readOnly</script>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+	  <campos nombre="carg_nnota_final_respaldo">
+         <tipo>input</tipo>
+         <permiso>OCULTO</permiso>
+         <script>readOnly</script>
+      </campos>
+      <campos nombre="sitf_ccod">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+         <descripcion>Situación Final</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <script>readOnly</script>
+         <caracteres>4</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="EEXA_CCOD">
+         <tipo>input</tipo>
+         <permiso>oculto</permiso>
+         <alineamiento>center</alineamiento>
+      </campos>
+      <campos nombre="EEXA_CCOD_REP">
+         <tipo>input</tipo>
+         <permiso>oculto</permiso>
+         <alineamiento>center</alineamiento>
+         <caracteres>2</caracteres>
+         <script>readOnly</script>
+         <maxCaracteres>3</maxCaracteres>
+      </campos>
+      <campos nombre="erep">
+         <tipo>input</tipo>
+         <permiso>oculto</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="alumnos_rep">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="alum_trabajador">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="talu_ccod">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="carg_nnota_presentacion_paso">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+	  <campos nombre="parciales_nulas">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+   </parametro>
+   
+</Parametros>

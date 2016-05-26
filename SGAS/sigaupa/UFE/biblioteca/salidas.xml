@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  
+	<botones nombre="excel">
+         <accion>Guardar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Siguiente</texto>
+	   <formulario>edicion</formulario>
+      </botones>
+	   <botones nombre="crear">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Agregar Alumno</texto>
+      </botones>
+   
+   </parametro>
+   <parametro formulario="busqueda" variable="b" columnas="3" >
+         
+	   <campos nombre="tisa_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione una salida</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>ufe_tipo_salidas</destino>
+         <union>tisa_ccod</union>
+         <salida>tisa_tdesc</salida>
+		 <orden>tisa_ccod</orden>
+		 <filtro>tisa_ccod not in(1,9,11)</filtro>
+		 <id>TO-N</id>
+      </campos>
+	  
+   </parametro>
+   
+   <parametro formulario="busqueda2" variable="b" columnas="3" >
+         
+	   <campos nombre="tisa_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione una salida</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>ufe_tipo_salidas</destino>
+         <union>tisa_ccod</union>
+         <salida>tisa_tdesc</salida>
+		 <orden>tisa_ccod</orden>
+		 <filtro>tisa_ccod in(1,9,11)</filtro>
+		 <id>TO-N</id>
+      </campos>
+	  
+   </parametro>
+   
+</Parametros>

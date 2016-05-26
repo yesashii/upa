@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="busqueda" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+      <campos nombre="pers_tape_paterno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <script>onKeyDown="return bloquearTeclas(event.keyCode,this)" onKeyUp="this.value=this.value.toUpperCase();"</script>
+         <id>LE-S</id>
+      </campos>
+      <campos nombre="pers_tape_materno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <script>onKeyDown="return bloquearTeclas(event.keyCode,this)" onKeyUp="this.value=this.value.toUpperCase();"</script>
+         <id>LE-S</id>
+      </campos>
+      <campos nombre="pers_tnombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <script>onKeyDown="return bloquearTeclas(event.keyCode,this)" onKeyUp="this.value=this.value.toUpperCase();"</script>
+         <id>LE-S</id>
+      </campos>
+   </parametro>
+
+   <parametro formulario="f_buscadoc"  clave="pers_ncorr" 
+	  variable="m" >
+      <tablas nombre="profesores" accion="B"/>
+   </parametro>
+
+   <parametro formulario="filtro_docentes" clave="pers_ncorr" variable="m" mensajeError="No hay docentes que coincidan con el criterio de búsqueda" colorResaltado="#97AAC6" colorSeleccionado="#C0C0C0" editar="true" eliminar="true" agregar="true" nuevaVentana="false" paginaEdicion="editar_docente.asp?pers_ncorr=%pers_ncorr%" nroRegistros="10" maxLista="10" anchoTabla="98%" seleccionarTodo="FALSE">
+      <campos nombre="pers_ncorr">
+         <tipo>HIDDEN</tipo>
+         <permiso>INVISIBLE</permiso>
+      </campos>
+      <campos nombre="sede_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tdir_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="rut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>NU-S</id>
+         <descripcion>Rut Docente</descripcion>
+         <maxCaracteres>3</maxCaracteres>
+         <caracteres>5</caracteres>
+         <etiqueta>false</etiqueta>
+         <alineamiento>center</alineamiento>
+      </campos>
+      <campos nombre="nom">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>LE-S</id>
+         <descripcion>Nombre del Docente</descripcion>
+      </campos>
+      <campos nombre="Habilitado">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>LE-S</id>
+         <descripcion>Habilitado</descripcion>
+      </campos>	  
+   </parametro>   
+   
+   <parametro colorSeleccionado="#C0C0C0" colorResaltado="#97AAC6" 
+   paginaEdicion="Contratacion_detalle.asp?pers_ncorr=%pers_ncorr%&amp;carr_ccod=%carr_ccod%" 
+   formulario="filtro_docentes2" nroRegistros="10" agregar="true" eliminar="true" maxLista="10" 
+   clave="pers_ncorr" mensajeError="No hay docentes que coincidan con el criterio de busqueda" 
+   seleccionarTodo="FALSE" anchoTabla="98%" editar="true" nuevaVentana="false" variable="m">
+      <campos nombre="pers_ncorr">
+         <tipo>HIDDEN</tipo>
+         <permiso>INVISIBLE</permiso>
+      </campos>
+      <campos nombre="sede_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tdir_ccod">
+         <tipo>HIDDEN</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="rut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>NU-S</id>
+         <descripcion>Rut Docente</descripcion>
+         <maxCaracteres>3</maxCaracteres>
+         <caracteres>5</caracteres>
+         <etiqueta>false</etiqueta>
+         <alineamiento>center</alineamiento>
+      </campos>
+      <campos nombre="nom">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>LE-S</id>
+         <descripcion>Nombre del Docente</descripcion>
+      </campos>
+      <campos nombre="PENDIENTES">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>LE-S</id>
+         <descripcion>BCA</descripcion>
+      </campos>	  
+      <campos nombre="CALCULADOS">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>LE-S</id>
+         <descripcion>Calculados</descripcion>
+      </campos>	  
+      <campos nombre="ANEXOSE">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>LE-S</id>
+         <descripcion>Anexos E.</descripcion>
+      </campos>	  
+      <campos nombre="ANEXOST">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>LE-S</id>
+         <descripcion>Anexos T.</descripcion>
+      </campos>	  	  
+      <campos nombre="TCAT_VALOR">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>LE-S</id>
+         <descripcion>Valor Cat.</descripcion>
+      </campos>	  
+      <campos nombre="DUAS_TDESC">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <id>LE-S</id>
+         <descripcion>Duracion Max</descripcion>
+      </campos>	  
+	  
+   </parametro>
+   
+   <parametro formulario="eliminar_docente" clave="pers_ncorr" variable="m" mensajeError="No se puede eliminar.">
+      <tablas nombre="profesores" accion="B"/>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="botonera">
+   	  <botones nombre="imprimir"> 
+      	  <tipoTexto>DEFINIR</tipoTexto>
+		  <texto>Imprimir</texto>
+		  <accion>GUARDAR</accion>
+		  <target>_BLANK</target>
+		  <funcionValidacion>ValidarImpresion();</funcionValidacion>
+	      <formulario>edicion</formulario>
+	  </botones> 
+      <botones nombre="buscar">
+         <accion>BUSCAR</accion>
+         <tipoTexto>BUSCAR</tipoTexto>
+         <formulario>buscador</formulario>
+      </botones>
+      <botones nombre="agregar">
+         <accion>AGREGAR</accion>
+         <tipoTexto>AGREGAR</tipoTexto>
+         <url>consultar.asp</url>
+         <posicionX>380</posicionX>
+         <posicionY>350</posicionY>
+         <ancho>250</ancho>
+         <alto>100</alto>
+      </botones>
+      <botones nombre="eliminar">
+         <accion>ELIMINAR</accion>
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <url>borrar_docente.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="enviar">
+         <accion>JAVASCRIPT</accion>
+         <funcion>enviar(document.formu)</funcion>
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Aceptar</texto>
+      </botones>
+   </parametro>
+      
+   <parametro formulario="f_nuevoM" variable="mmm" clave="CDOC_NCORR">
+    <tablas nombre="CONTRATOS_DOCENTES" accion="m"/>	
+	 <campos nombre="CDOC_NCORR">
+	 	<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="pers_ncorr">
+	 	<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>	
+ </parametro>         
+
+    <parametro formulario="fcontrato"  clave="CDOC_NCORR" 
+	  variable="mmm" >
+      <tablas nombre="CONTRATOS_DOCENTES" accion="B"/>
+   </parametro>
+
+</Parametros>

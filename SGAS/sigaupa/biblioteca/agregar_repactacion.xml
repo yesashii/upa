@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="aceptar">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>detalle_repactacion</formulario>
+         <url>proc_agregar_repactacion.asp</url>
+         <funcionValidacion>ActualizarVentana();</funcionValidacion>
+         <soloUnClick>TRUE</soloUnClick>
+         <mensajeConfirmacion>¿Está seguro de generar esta repactación?</mensajeConfirmacion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+      <botones nombre="calcular">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Calcular</texto>
+         <accion>GUARDAR</accion>
+         <formulario>repactacion</formulario>
+         <url>proc_calcular_repactacion.asp?tcom2_ccod=%tcom_ccod%</url>
+         <funcionValidacion>ValidarRepactacion();</funcionValidacion>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+      <botones nombre="cambiar_codeudor">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Cambiar codeudor</texto>
+         <accion>GUARDAR</accion>
+         <funcionValidacion>CambiarCodeudor();</funcionValidacion>
+         <target>wCodeudor</target>
+         <formulario>detalle_repactacion</formulario>
+         <url>cambiar_codeudor_repactacion.asp</url>
+      </botones>
+   </parametro>
+   
+   <parametro formulario="documentos_repactacion" anchoTabla="100%" variable="detalle_compromisos" resumen="TRUE">
+      <campos nombre="ting_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ingr_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tcom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="comp_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>	  
+      <campos nombre="c_comp_ndocto">
+         <descripcion>Nº Contrato</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="c_tcom_ccod">
+         <descripcion>Ítem</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_compromisos</destino>
+         <union>tcom_ccod</union>
+         <salida>tcom_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="cuota">
+         <descripcion>Nº Cuota</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="c_ting_ccod">
+         <descripcion>Documento Pactado</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="c_ding_ndocto">
+         <descripcion>Nº Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="edin_ccod">
+         <descripcion>Estado</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>estados_detalle_ingresos</destino>
+         <union>edin_ccod</union>
+         <salida>edin_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="comp_fdocto">
+         <descripcion>Fecha Emisión</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="dcom_fcompromiso">
+         <descripcion>Fecha Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="dcom_mcompromiso">
+         <descripcion>Monto Cuota</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="abonos">
+         <descripcion>Abonos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="saldo">
+         <descripcion>Saldo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+         <resumen>SUMA_JC</resumen>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="repactacion" variable="repactacion">
+      <tablas nombre="sim_repactaciones" accion="M"/>
+      <campos nombre="repa_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tcom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="comp_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="srep_ncuotas_repactar">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="srep_mrepactar">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="mrep_ccod">
+         <descripcion>Motivo de la repactación</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>motivos_repactacion</destino>
+         <union>mrep_ccod</union>
+         <salida>mrep_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+		 <filtro>mrep_bactivo='S'</filtro>
+         <mensajeNulo>Seleccione motivo</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="forma_repactacion" anchoTabla="100%" variable="forma_repactacion">
+      <tablas nombre="sim_forma_repactaciones" accion="M"/>
+      <campos nombre="repa_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ting_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pers_ncorr_codeudor">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="butiliza">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <objeto>CHECKBOX</objeto>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <alineamiento>CENTER</alineamiento>
+         <onClick>butiliza_click(this);</onClick>
+      </campos>
+      <campos nombre="c_ting_ccod">
+         <descripcion>&amp;nbsp;</descripcion>
+         <tipo>SELECT</tipo>
+         <permiso>LECTURA</permiso>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+      </campos>
+      <campos nombre="sfrp_ncuotas_">
+         <descripcion>Nº Cuotas</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>(select distinct tcom_ccod, ting_ccod, stpa_ncuotas, stpa_ncuotas as ncuotas from stipos_pagos order by tcom_ccod, ting_ccod, stpa_ncuotas)</destino>
+         <union>stpa_ncuotas</union>
+         <salida>ncuotas</salida>
+         <permiso>OCULTO</permiso>
+         <id>TO-N</id>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="sfrp_ncuotas">
+         <descripcion>Nº Cuotas</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>EP-N</id>
+         <caracteres>3</caracteres>
+         <maxCaracteres>2</maxCaracteres>
+      </campos>
+      <campos nombre="sfrp_mmonto">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>TO-N</id>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <onBlur>sfrp_mmonto_blur(this);</onBlur>
+      </campos>
+      <campos nombre="sfrp_finicio_pago">
+         <descripcion>F. Inicio Pago</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+		 <script>onblur='ValidarFecha(this,1);'</script>
+         <id>FE-N</id>
+      </campos>
+      <campos nombre="sfrp_nfrecuencia">
+         <descripcion>Frec.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>5</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>EP-N</id>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="sfrp_ndocto_inicial">
+         <descripcion>Nº Docto. Inicial</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+        <!-- <id>EP-S</id> -->
+		<id>TO-N</id>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="sfrp_tctacte">
+         <descripcion>Cuenta Corriente</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>15</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+         <id>TO-S</id>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="banc_ccod">
+         <descripcion>Banco</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>bancos</destino>
+         <union>banc_ccod</union>
+         <salida>banc_tdesc</salida>
+         <orden>banc_tdesc asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione banco</mensajeNulo>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="plaz_ccod">
+         <descripcion>Plaza</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>plazas</destino>
+         <union>plaz_ccod</union>
+         <salida>plaz_tdesc</salida>
+         <orden>plaz_ccod asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione plaza</mensajeNulo>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="sfrp_mtasa_interes">
+         <descripcion>% Interés</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <id>NU-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="elimina_forma_repactacion" variable="forma_repactacion">
+      <tablas nombre="sim_forma_repactaciones" accion="B"/>
+   </parametro>
+   <parametro formulario="detalles_repactacion" variable="detalles_repactacion" anchoTabla="100%" resumen="TRUE" mensajeError="Presione 'Calcular' para simular repactación.">
+      <tablas nombre="sim_detalles_repactacion" accion="M"/>
+      <campos nombre="repa_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="sdrp_ncuota">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pers_ncorr_codeudor">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c_ting_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="sdrp_monto_oculto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="bcambia_codeudor">
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+      </campos>
+      <campos nombre="c_sdrp_ncuota">
+         <descripcion>Nº</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ting_ccod">
+         <descripcion>Tipo Docto.</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+      <campos nombre="sdrp_ndocumento">
+         <descripcion>Nº Docto.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>8</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>EP-N</id>
+      </campos>
+      <campos nombre="sdrp_tctacte">
+         <descripcion>Cuenta Corriente</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>15</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+         <id>TO-N</id>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="banc_ccod">
+         <descripcion>Banco</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>bancos</destino>
+         <union>banc_ccod</union>
+         <salida>banc_tdesc</salida>
+         <orden>banc_tdesc asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="plaz_ccod">
+         <descripcion>Plaza</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>plazas</destino>
+         <union>plaz_ccod</union>
+         <salida>plaz_tdesc</salida>
+         <orden>plaz_ccod asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="rut_codeudor">
+         <descripcion>Apoderado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="sdrp_femision">
+         <descripcion>F. Emisión</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="sdrp_fvencimiento">
+         <descripcion>F. Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>CENTER</alineamiento>
+		 <script>onblur='ValidarFecha(this,2);'</script>
+      </campos>
+      <campos nombre="sdrp_mmonto">
+         <descripcion>Monto Docto.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+         <resumen>SUMA_JC</resumen>
+      </campos>
+
+   </parametro>
+   
+   <parametro formulario="detalle_ingresos" variable="detalle_ingresos">
+      <tablas nombre="detalle_ingresos" accion="M"/>
+      <campos nombre="ingr_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ting_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="repa_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="repactaciones" variable="repactaciones">
+      <campos nombre="repa_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="suma" variable="suma" columnas="4" separacionColumnas="10">
+      <campos nombre="fecha_actual">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="total_actual">
+         <descripcion>Total Actual</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <soloLectura>TRUE</soloLectura>
+         <formato>MONEDA</formato>
+         <caracteres>15</caracteres>
+      </campos>
+      <campos nombre="total_repactar">
+         <descripcion>Total a Repactar</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <soloLectura>TRUE</soloLectura>
+         <formato>MONEDA</formato>
+         <caracteres>15</caracteres>
+      </campos>
+      <campos nombre="diferencia">
+         <descripcion>Diferencia</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <soloLectura>TRUE</soloLectura>
+         <formato>MONEDA</formato>
+         <caracteres>15</caracteres>
+      </campos>
+   </parametro>
+</Parametros>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+		 <funcionValidacion>Validar();</funcionValidacion>
+		 <soloUnClick>TRUE</soloUnClick>		 
+      </botones>
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	<botones nombre="siguiente">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Ver Siguiente</texto>
+      </botones>
+	   <botones nombre="guardar_rol">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       	<texto>Guardar</texto>
+		<formulario>edicion</formulario>
+         <url>roles_usuarios_compras_proc.asp</url>
+      </botones>
+	  <botones nombre="guardar_solicitud">
+		<accion>GUARDAR</accion>
+		<tipoTexto>DEFINIR</tipoTexto>
+		<texto>Guardar</texto>
+		<formulario>edicion</formulario>
+		<url>agregar_solicitud_usuarios_proc.asp</url>
+      </botones>
+	  <botones nombre="agregar_permiso">
+		<tipoTexto>DEFINIR</tipoTexto>
+		<texto>Agregar Permiso</texto>
+		<accion>JAVASCRIPT</accion>
+		<funcion>ingresa_solicitud()</funcion>
+      </botones>
+	  <botones nombre="eliminar">
+         <accion>ELIMINAR</accion>
+         <tipoTexto>ELIMINAR</tipoTexto>
+		<formulario>edicion</formulario>
+        <url>eliminar_permiso_solicitud_usuarios.asp</url>
+      </botones>
+	  <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel x Rut</texto>
+         <accion>BUSCAR</accion>
+         <url>permisos_x_solicitud_oc_excel.asp</url>
+         <formulario>edicion</formulario>
+      </botones>	  
+   </parametro>
+   
+   <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="permisos_usuarios" nroRegistros="20"
+		 maxLista="20" mensajeError="No Permisos asociados." seleccionarTodo="true" colorBase="#F1F1E4" editar="false" eliminar="true" anchoTabla="100%"	 nuevaVentana="true" variable="b"  clave="pers_nrut" > 
+       <campos nombre="c_tsol_ccod">
+		<descripcion>Codigo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>	
+	   <campos nombre="tsol_tdesc">
+		<descripcion>Tipo Solicitud</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="tsol_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="busqueda_persona" variable="busqueda" > 
+		<campos nombre="pers_nrut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>10</caracteres>
+			<maxCaracteres>8</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+		<campos nombre="pers_xdv">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>1</caracteres>
+			<maxCaracteres>1</maxCaracteres>
+			<script>onBlur="this.value=this.value.toUpperCase();"</script>
+			<id>LN-N</id>
+		</campos>
+   </parametro>
+   
+   <parametro formulario="agregar_permisos" variable="b" > 
+		<campos nombre="tsol_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<anulable>true</anulable>
+			<mensajeNulo>Seleccione</mensajeNulo>
+			<mensajeVacio>''</mensajeVacio>
+			<destino>ocag_tipo_solicitud</destino>
+			<union>tsol_ccod</union>
+			<salida>tsol_tdesc</salida>
+			<orden>tsol_tdesc asc</orden>
+			<id>TO-N</id>      
+		</campos>
+   </parametro>
+   
+    <parametro formulario="agregar_rol" variable="b" > 
+	   <campos nombre="rusu_tdesc">
+	   <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>ocag_roles_usuarios</destino>
+         <union>rusu_ccod</union>
+         <salida>rusu_tdesc</salida>
+		 <orden>rusu_tdesc asc</orden>
+		 <id>TO-N</id>     
+		  </campos>
+   </parametro>
+   <parametro formulario="rol" variable="b" clave="rusu_ccod">
+   <tablas nombre="ocag_roles_usuarios" accion="M"/>  
+	   <campos nombre="rusu_tdesc">
+	   <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <caracteres>90</caracteres>
+		 <id>TO-N</id>     
+		  </campos>
+   </parametro>
+     <parametro formulario="elimina_permiso_solicitud" variable="b" >  
+	    <campos nombre="tsol_ccod">
+		<descripcion>Codigo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="pers_nrut">
+		<descripcion>Descripcion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   
+</Parametros>

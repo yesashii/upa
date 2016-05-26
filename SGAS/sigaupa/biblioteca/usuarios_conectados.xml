@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  	<parametro formulario="botonera">
+	   <botones nombre="cancelar"> 
+		  <tipoTexto>SALIR</tipoTexto>
+		  <accion>CERRAR</accion>
+		</botones>
+		<botones nombre="guardar"> 
+		  <tipoTexto>GUARDAR</tipoTexto>
+		  <accion>GUARDAR</accion>
+		  <url>proc_cambiar_clave.asp</url>
+		  <formulario>edicion</formulario>
+		<funcionValidacion>Validar();</funcionValidacion> 
+		</botones>
+		<botones nombre="salir"> 
+		  <tipoTexto>SALIR</tipoTexto>
+		  <accion>NAVEGAR</accion>
+		  <url>../lanzadera/lanzadera.asp</url>	 
+		</botones>
+	</parametro>
+
+	<parametro formulario="f_datos" variable="datos" colorSeleccionado="#CCCCCC" colorResaltado="#999999" 
+       nroRegistros="30" maxLista="30" seleccionarTodo="TRUE"  anchoTabla="100%" 
+		 mensajeError="No se encontraron usuarios conectados...">
+		<campos nombre="pers_ncorr">
+		  <tipo>INPUT</tipo>
+		  <permiso>OCULTO</permiso>
+
+	   </campos>
+		<campos nombre="tipo_usuario">
+		  	<tipo>INPUT</tipo>
+		  	<permiso>LECTURA</permiso>
+		 	<descripcion>Tipo</descripcion>
+			<alineamiento>CENTER</alineamiento>
+	   </campos>
+	   <campos nombre="nombre_usuario">
+		  <tipo>INPUT</tipo>
+		  <permiso>LECTURA</permiso>
+		 <descripcion>Nombre Usuario</descripcion>
+	   </campos>
+		<campos nombre="estado">
+		  <tipo>INPUT</tipo>
+		  <permiso>LECTURA</permiso>
+		 <descripcion>Estado</descripcion>
+	   </campos>
+		<campos nombre="inicio_login">
+		  <tipo>INPUT</tipo>
+		  <permiso>LECTURA</permiso>
+		 <descripcion>Fecha inicio</descripcion>
+	   </campos>
+		<campos nombre="ultima_actualizacion">
+		  <tipo>INPUT</tipo>
+		  <permiso>LECTURA</permiso>
+		 <descripcion>Fecha Actualizacion</descripcion>
+	   </campos>
+		<campos nombre="minutos_activo">
+		  <tipo>INPUT</tipo>
+		  <permiso>LECTURA</permiso>
+		 <descripcion>Minutos Conectado</descripcion>
+	   </campos>
+		<campos nombre="minutos_inactivo">
+		  <tipo>INPUT</tipo>
+		  <permiso>LECTURA</permiso>
+		 <descripcion>Minutos Inactivo</descripcion>
+	   </campos>
+		<campos nombre="actividad">
+		  <tipo>INPUT</tipo>
+		  <permiso>LECTURA</permiso>
+		 <descripcion>Actividad</descripcion>
+	   </campos>
+	</parametro>
+</Parametros>

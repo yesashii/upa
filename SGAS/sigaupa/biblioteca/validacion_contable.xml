@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+<parametro formulario="botonera">
+   <botones nombre="salir"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	<botones nombre="eliminar">
+		 <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Eliminar</texto>
+		 <accion>NAVEGAR</accion>
+		 <url>javascript:EliminaDetalle();</url>
+	</botones>
+	<botones nombre="guardar">
+		 <tipoTexto>GUARDAR</tipoTexto>
+		 <accion>GUARDAR</accion>
+		 <url>validacion_contable_proc.asp</url>
+		 <formulario>datos</formulario>
+		 <funcionValidacion>Enviar();</funcionValidacion>
+	</botones>	
+	  <botones nombre="buscar">
+		 <tipoTexto>BUSCAR</tipoTexto>
+		 <accion>BUSCAR</accion>
+		 <formulario>buscador</formulario>
+		 <soloUnClick>TRUE</soloUnClick>
+	  </botones>
+	<botones nombre="asientos">
+		 <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Ver Asientos</texto>
+		 <accion>NAVEGAR</accion>
+		 <url>javascript:VerAsientos();</url>
+	</botones>	  
+</parametro>
+
+<parametro formulario="buscador" variable="busqueda">
+	<campos nombre="solicitud">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-N</id>
+	</campos>
+	<campos nombre="tsol_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_solicitud</destino>
+		 <union>tsol_ccod</union>
+		 <salida>tsol_tdesc</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+		 <filtro>tsol_ccod not in (9)</filtro>
+	</campos>
+		<campos nombre="anos_ccod">
+		  <tipo>SELECT</tipo>
+		  <destino>(select anos_ccod, case when anos_ccod=year(getdate()) then 1 else 0 end as orden 
+from anos where anos_ccod between year(getdate())-1 and year(getdate())+1) as tabla </destino> 
+		  <union>anos_ccod</union>
+		  <salida>anos_ccod</salida>
+		  <filtro>anos_ccod between year(getdate())-1 and year(getdate())+1</filtro>
+		  <permiso>LECTURAESCRITURA</permiso>
+		  <orden>orden desc</orden>
+		  <deshabilitado>false</deshabilitado>
+		  <id>TO-N</id>		  
+	</campos>
+		<campos nombre="tgas_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_gasto</destino>
+		 <union>tgas_ccod</union>
+		 <salida>tgas_tdesc</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+	</campos>
+</parametro>
+
+<parametro formulario="datos_solicitud" variable="datos" clave="vcon_ncorr">
+ 	<tablas nombre="ocag_validacion_contable" accion="M"/>
+	<tablas nombre="ocag_autoriza_solicitud_giro" accion="M"/>
+	<campos nombre="vcon_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	</campos>
+	<campos nombre="cod_pre">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+	</campos>				
+	<campos nombre="pers_nrut">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-N</id>
+	</campos>
+	<campos nombre="pers_xdv">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>2</caracteres>
+		<maxCaracteres>2</maxCaracteres>
+		<id>TO-N</id>
+	</campos>
+	<campos nombre="pers_tnombre">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>25</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>TO-N</id>
+	</campos>
+	<campos nombre="v_nombre">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <id>TO-N</id>
+	</campos>	
+	<campos nombre="monto_solicitud">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>NU-N</id>
+	</campos>		
+	<campos nombre="tgas_tdesc">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+	</campos>
+	<campos nombre="tgas_cod_cuenta">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+	</campos>
+	<campos nombre="vcon_tdetalle_gasto">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>50</caracteres>
+		 <maxCaracteres>100</maxCaracteres>
+		 <id>TO-N</id>
+	</campos>
+	<campos nombre="aprueba">
+		 <objeto>RADIO</objeto>
+		 <tipo>BOLEANO</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <afirmacion>APROBAR</afirmacion>
+         <negacion>| RECHAZAR</negacion>
+		 <columnas>2</columnas>
+		 <alineamiento>CENTER</alineamiento>
+		 <script>onClick='CambiaValor(this)'</script>
+		 <id>TO-N</id>
+	</campos>
+	<campos nombre="vcon_brendicion_final">
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <permiso>LECTURAESCRITURA</permiso>
+	</campos>	
+	<campos nombre="vcon_tmotivo_rechazo">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>TRUE</deshabilitado>
+		 <caracteres>50</caracteres>
+		 <maxCaracteres>150</maxCaracteres>
+		 <id>TO-N</id>
+	</campos>				
+	<campos nombre="cpag_ccod">
+		<tipo>SELECT</tipo>
+		<destino>ocag_condiciones_de_pago</destino>
+		<union>cpag_ccod</union>
+		<salida>cpag_tdesc</salida>
+		<orden>cpag_tdesc</orden>
+		<permiso>LECTURAESCRITURA</permiso>
+		<anulable>true</anulable>
+		<mensajeNulo>Seleccione Condicion de Pago</mensajeNulo>
+		<id>TO-N</id>
+	</campos>
+</parametro> 
+
+<parametro formulario="detalle_pago" variable="detalle_pago" clave="dpva_ncorr">
+ 	<tablas nombre="ocag_detalle_pago_validacion" accion="M"/>
+	<campos nombre="dpva_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	</campos>
+	<campos nombre="dpva_fpago">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <alineamiento>right</alineamiento>
+		 <id>FE-N</id>
+	</campos>
+	<campos nombre="dpva_mdetalle">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <alineamiento>right</alineamiento>
+		 <script>onBlur="SumaDetallePago(this);"</script>		
+		 <id>NU-N</id>	 
+	</campos>		
+</parametro>
+
+<parametro formulario="detalle_costos" variable="centro_costo" clave="ccva_ncorr">
+ 	<tablas nombre="ocag_centro_costo_validacion" accion="M"/>
+	<campos nombre="ccva_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	</campos>	
+	<campos nombre="ccos_ncorr">
+		 <tipo>SELECT</tipo>
+		 <destino>(select '['+ccos_tcodigo+']-'+ccos_tdesc as centro_costo,ccos_ncorr from ocag_centro_costo) as a</destino>
+		 <union>ccos_ncorr</union>
+		 <salida>centro_costo</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+	</campos>
+	<campos nombre="ccva_mmonto">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <alineamiento>center</alineamiento>
+		 <script>onBlur="SumaCentroCosto(this);"</script>	
+		 <id>NU-N</id>
+	</campos>		
+</parametro>
+
+<parametro formulario="detalle_tipo_gasto" variable="tipo_gasto" clave="tgva_ncorr">
+ 	<tablas nombre="ocag_tipo_gasto_validacion" accion="M"/>
+	<campos nombre="vcon_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	</campos>	
+	<campos nombre="tgas_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_gasto</destino>
+		 <union>tgas_ccod</union>
+		 <salida>tgas_tdesc</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+	</campos>
+	<campos nombre="tgva_tcuenta_contable">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>25</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <alineamiento>center</alineamiento>
+		 <id>TO-N</id>
+	</campos>		
+	<campos nombre="tgva_mmonto">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <alineamiento>center</alineamiento>
+		 <script>onBlur="SumaTipoGasto(this);"</script>	
+		 <id>NU-N</id>
+	</campos>		
+</parametro>
+
+<parametro formulario="busqueda_20130808" variable="b">
+      <listas nombre="busqueda">
+         <item clave="tgas_ccod" valor="tgas_tdesc"/>
+         <item clave="tgas_cod_cuenta" valor="tgas_cod_cuenta"/>
+      </listas>
+</parametro>
+
+<parametro formulario="busqueda" variable="busqueda">
+	<campos nombre="tgas_ccod">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+	</campos>
+	<campos nombre="tgas_tdesc">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+	</campos>
+	<campos nombre="tgas_cod_cuenta">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+	</campos>
+</parametro>
+
+<parametro formulario="autoriza_solicitud_giro" variable="datos" >
+	<tablas nombre="ocag_autoriza_solicitud_giro" accion="M"/>
+</parametro>
+
+<parametro formulario="detalle_pago_validacion" variable="datos" >
+	<tablas nombre="ocag_detalle_pago_validacion" accion="M"/>
+</parametro>
+
+<parametro formulario="centro_costo" variable="datos">
+	<campos nombre="ccos_ncorr">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_centro_costo</destino>
+		 <union>ccos_ncorr</union>
+		 <salida>ccos_tdesc</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+	</campos>
+</parametro> 
+</Parametros>

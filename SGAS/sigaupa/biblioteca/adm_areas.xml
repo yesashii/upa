@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="btn_adm_areas">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>	 
+	</botones> 
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_area.asp</url>
+         <formulario>edicion</formulario>
+      </botones> 
+    <botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agrega_cuenta(document.edicion)</funcion>
+	</botones> 
+    <botones nombre="SALIR">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>	 	
+ </parametro>
+ 
+  <parametro formulario="btn_agregar_cuenta">
+    <botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agregar(document.editar)</funcion>
+	</botones> 
+    <botones nombre="GUARDAR"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agregar(document.editar)</funcion>
+	</botones> 	
+  <botones nombre="SALIR"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>salir(document.edicion)</funcion>
+	</botones> 
+	<botones nombre="enviar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Enviar</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.formu)</funcion>
+	</botones> 
+ </parametro>
+
+
+<parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8"
+	 paginaEdicion=""  formulario="tabla_valores" eliminar="true" clave="cod_area" 
+	 mensajeError="No Existen Datos Para Los Parámetros De Búsqueda." 
+	 colorBase="#F1F1E4" editar="true" 	anchoTabla="98%" variable="em" nuevaVentana="true">
+		
+		<campos nombre="area_tdesc">
+				<tipo>INPUT</tipo>
+				<permiso>LECTURAESCRITURA</permiso>
+				<alineamiento>left</alineamiento>
+				<caracteres>50</caracteres>
+				<id>TO-N</id>
+		</campos>
+		<campos nombre="area_ccod">
+				<tipo>INPUT</tipo>
+				<permiso>LECTURAESCRITURA</permiso>
+				<alineamiento>left</alineamiento>
+				<caracteres>30</caracteres>
+				<id>TO-N</id>
+		</campos>
+	</parametro>
+
+
+ 	<parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8"	 paginaEdicion="agregar_area.asp?area_ccod=%area_ccod%" 
+	 formulario="tabla" eliminar="true" clave="cod_area" nroRegistros="10" maxLista="10"
+	 mensajeError="No Existen Datos Para Los Parámetros De Búsqueda." 
+	 colorBase="#F1F1E4" editar="true" 	anchoTabla="98%" variable="em" nuevaVentana="true">
+
+		<campos nombre="area_ccod">
+				<tipo>INPUT</tipo>
+				<permiso>LECTURA</permiso>
+				<descripcion>Cod. Area</descripcion>
+				<alineamiento>left</alineamiento>
+		</campos>
+		<campos nombre="area_tdesc">
+				<tipo>IMPUT</tipo>
+				<permiso>LECTURA</permiso>
+				<descripcion>Nombre Area</descripcion>
+				<alineamiento>left</alineamiento>
+		</campos>
+	</parametro>
+	
+  <parametro formulario="eliminar_cuentas" variable="em">
+      <tablas nombre="cuentas_softland" accion="B"/>
+   </parametro>
+   	
+</Parametros>

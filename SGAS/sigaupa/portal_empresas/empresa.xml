@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+	<parametro formulario="botonera">
+		<botones nombre="lanzadera"> 
+			<tipoTexto>SALIR</tipoTexto>
+			<accion>NAVEGAR</accion>
+			<url>../lanzadera/lanzadera.asp</url>
+		</botones>
+		<botones nombre="buscar">
+			<tipoTexto>BUSCAR</tipoTexto>
+			<accion>BUSCAR</accion>
+			<formulario>buscador</formulario>
+		</botones>
+		<botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>menu_alumno.asp</url>
+      </botones>
+		<botones nombre="imprimir">
+			<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Imprimir</texto>
+			<accion>JAVASCRIPT</accion>
+			<funcion>imprimir()</funcion>
+		</botones>
+		<botones nombre="pagina2">
+			<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Ir a página 2</texto>
+			<accion>navegar</accion>
+			<url>javascript:irPagina2();</url>
+		</botones>
+		<botones nombre="escape">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>mensajes.asp</url>
+        </botones>
+		<botones nombre="guardar"> 
+		  <tipoTexto>GUARDAR</tipoTexto>
+		  <accion>GUARDAR</accion>
+		</botones>
+	</parametro>
+
+	<parametro formulario="busqueda" variable="busqueda">
+		<campos nombre="pers_nrut">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<caracteres>10</caracteres>
+			<maxCaracteres>8</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+		<campos nombre="pers_xdv">
+			<tipo>INPUT</tipo>
+			<permiso>Lectur</permiso>
+			<caracteres>1</caracteres>
+			<maxCaracteres>1</maxCaracteres>
+			<script>onClick="this.value=this.value.toUpperCase();"</script>
+			<id>LN-N</id>
+		</campos>
+	</parametro>
+
+	
+		<parametro formulario="f_datos_empresas" variable="daem" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" anchoTabla="100%" 
+	mensajeError="No se encontraron datos">
+	
+	<campos nombre="empr_tnombre">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>46</caracteres>
+         	<maxCaracteres>42</maxCaracteres>
+			<script>onBlur="this.value=this.value.toUpperCase();"</script>
+			<id>TO-N</id>			
+		</campos>
+		<campos nombre="empr_trazon_social">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>48</caracteres>
+         	<maxCaracteres>42</maxCaracteres>
+			<script>onBlur="this.value=this.value.toUpperCase();"</script>
+			<id>TO-N</id>			
+		</campos>
+		<campos nombre="rut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>10</caracteres>
+         	<maxCaracteres>8</maxCaracteres>
+			<id>NU-N</id>			
+		</campos>
+			<campos nombre="dv">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>1</caracteres>
+         	<maxCaracteres>1</maxCaracteres>
+			<script>onKeyPress="this.value=this.value.toUpperCase();"</script>
+			<id>TO-N</id>		
+		</campos>
+		<campos nombre="dire_tcalle">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>46</caracteres>
+         	<maxCaracteres>42</maxCaracteres>
+			<script>onBlur="this.value=this.value.toUpperCase();"</script>	
+			<id>TO-N</id>		
+		</campos>
+		<campos nombre="dire_tnro">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>7</caracteres>
+         	<maxCaracteres>6</maxCaracteres>	
+			<id>TO-N</id>		
+		</campos>
+		
+			<campos nombre="dire_tdepto">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>5</caracteres>
+         	<maxCaracteres>4</maxCaracteres>	
+			<id>TO-S</id>		
+		</campos>
+
+		 <campos nombre="regi_ccod">
+         <tipo>SELECT</tipo>
+         <destino>regiones</destino>
+         <union>regi_ccod</union>
+         <salida>regi_tdesc</salida>
+         <orden>regi_ccod ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onChange="_FiltrarCombobox(this.form.elements['daem[0][ciud_ccod]'], this.value, d_ciudades, 'regi_ccod', 'ciud_ccod', 'ciud_tdesc', '');"</script>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="ciud_ccod">
+         <tipo>SELECT</tipo>
+         <destino>ciudades</destino>
+         <union>ciud_ccod</union>
+         <salida>ciud_tdesc</salida>
+         <orden>ciud_tdesc ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-N</id>
+      </campos>
+	      <campos nombre="pais_ccod">
+         <tipo>SELECT</tipo>
+         <destino>paises</destino>
+         <union>pais_ccod</union>
+         <salida>pais_tdesc</salida>
+         <orden>pais_tdesc ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="sector">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>46</caracteres>
+         	<maxCaracteres>42</maxCaracteres>
+			<script>onBlur="this.value=this.value.toUpperCase();"</script>	
+			<id>TO-N</id>		
+		</campos>
+			  <campos nombre="n_trabajadores">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>6</caracteres>
+         	<maxCaracteres>5</maxCaracteres>	
+			<id>NU-N</id>		
+		</campos>
+		
+		<campos nombre="daem_pers_tnombre">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			 <caracteres>30</caracteres>
+         <maxCaracteres>28</maxCaracteres>
+		 <script>onBlur="this.value=this.value.toUpperCase();"</script>
+		  <id>TO-N</id>		
+		</campos>
+		<campos nombre="daem_pers_tape_paterno">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			 <caracteres>30</caracteres>
+         <maxCaracteres>28</maxCaracteres>
+		 <script>onBlur="this.value=this.value.toUpperCase();"</script>
+		  <id>TO-N</id>		
+		</campos>
+		<campos nombre="daem_pers_tape_materno">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			 <caracteres>30</caracteres>
+         <maxCaracteres>28</maxCaracteres>
+		 <script>onBlur="this.value=this.value.toUpperCase();"</script>
+		  <id>TO-N</id>		
+		</campos>
+		<campos nombre="rut_contacto">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>10</caracteres>
+         	<maxCaracteres>8</maxCaracteres>
+			<id>NU-N</id>			
+		</campos>
+			<campos nombre="dv_contacto">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>1</caracteres>
+         	<maxCaracteres>1</maxCaracteres>
+			<script>onBlur='Validar_rut("daem[0][rut_contacto]","daem[0][dv_contacto]");'</script>
+			<id>TO-N</id>		
+		</campos>
+		<campos nombre="cargo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			 <caracteres>50</caracteres>
+         <maxCaracteres>48</maxCaracteres>
+		 <script>onBlur="this.value=this.value.toUpperCase();"</script>
+		  <id>TO-N</id>		
+		</campos>
+		<campos nombre="fono">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			 <caracteres>9</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		 <id>NU-N</id>		
+		</campos>
+		<campos nombre="fax">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			 <caracteres>9</caracteres>
+         <maxCaracteres>7</maxCaracteres>
+		</campos>
+		<campos nombre="pers_temail">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			 <caracteres>50</caracteres>
+         <maxCaracteres>48</maxCaracteres>
+		 <script>onBlur="this.value=this.value.toUpperCase();"</script>		
+		</campos>
+	</parametro>
+	<parametro formulario="f_oferta_trabajo" variable="ofta" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" anchoTabla="100%">
+  		<campos nombre="cargo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			<caracteres>50</caracteres>
+         	<maxCaracteres>48</maxCaracteres>
+		 	<script>onBlur="this.value=this.value.toUpperCase();"</script>
+		 	<id>TO-N</id>			
+		</campos>
+		<campos nombre="vacantes">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			<caracteres>3</caracteres>
+         	<maxCaracteres>2</maxCaracteres>
+		 	<script>onBlur="this.value=this.value.toUpperCase();"</script>
+		 	<id>NU-N</id>			
+		</campos>
+		<campos nombre="tipo_cargo">
+         <tipo>SELECT</tipo>
+         <destino>cargos_ofertas_laborales</destino>
+         <union>CAOL_CCOD</union>
+         <salida>CAOL_TDESC</salida>
+         <orden>CAOL_TDESC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>0</mensajeVacio>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="area">
+         <tipo>SELECT</tipo>
+         <destino>areas_ofertas_laborales</destino>
+         <union>AROL_CCOD</union>
+         <salida>AROL_TDESC</salida>
+         <orden>AROL_TDESC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>0</mensajeVacio>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="jornada">
+         <tipo>SELECT</tipo>
+         <destino>jornadas_ofertas_laborales</destino>
+         <union>JOOL_CCOD</union>
+         <salida>JOOL_TDESC</salida>
+         <orden>JOOL_TDESC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>0</mensajeVacio>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="duracion_contrato">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			<caracteres>50</caracteres>
+         	<maxCaracteres>48</maxCaracteres>
+		 	<script>onBlur="this.value=this.value.toUpperCase();"</script>
+		 	<id>TO-N</id>			
+		</campos>
+		<campos nombre="salario">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			<caracteres>12</caracteres>
+         	<maxCaracteres>7</maxCaracteres>
+			<formato>MONEDA</formato>
+			<nowrap>TRUE</nowrap>	
+		 	<id>TO-N</id>			
+		</campos>
+		<campos nombre="cometario_salario">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			<caracteres>50</caracteres>
+         	<maxCaracteres>48</maxCaracteres>
+		 	<script>onBlur="this.value=this.value.toUpperCase();"</script>
+		 	<id>TO-N</id>			
+		</campos>
+		<campos nombre="fcaducidad_oferta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			<caracteres>11</caracteres>
+         	<maxCaracteres>10</maxCaracteres>
+		 	<id>FE-N</id>			
+		</campos>
+		<campos nombre="vigencia_oferta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			<caracteres>3</caracteres>
+         	<maxCaracteres>2</maxCaracteres>
+		 	<id>NU-N</id>			
+		</campos>
+		 <campos nombre="regi_ccod">
+         <tipo>SELECT</tipo>
+         <destino>regiones</destino>
+         <union>regi_ccod</union>
+         <salida>regi_tdesc</salida>
+         <orden>regi_ccod ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onChange="_FiltrarCombobox(this.form.elements['ofta[0][ciud_ccod]'], this.value, d_ciudades, 'regi_ccod', 'ciud_ccod', 'ciud_tdesc', '');"</script>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="ciud_ccod">
+         <tipo>SELECT</tipo>
+         <destino>ciudades</destino>
+         <union>ciud_ccod</union>
+         <salida>ciud_tdesc</salida>
+         <orden>ciud_tdesc ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="lugar_trabajo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			<caracteres>50</caracteres>
+         	<maxCaracteres>48</maxCaracteres>
+		 	<script>onBlur="this.value=this.value.toUpperCase();"</script>
+		 	<id>TO-N</id>			
+		</campos>
+		<campos nombre="anos_experiencia">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			<caracteres>3</caracteres>
+         	<maxCaracteres>2</maxCaracteres>
+		 	<id>NU-N</id>			
+		</campos>
+		<campos nombre="estudio_minimo">
+         <tipo>SELECT</tipo>
+         <destino>educacion_ofertas_laborales</destino>
+         <union>EDOL_CCOD</union>
+         <salida>EDOL_TDESC</salida>
+         <orden>EDOL_TDESC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>0</mensajeVacio>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="situacion_estudio">
+         <tipo>SELECT</tipo>
+         <destino>estado_estudio_ofertas_laborales</destino>
+         <union>EEOL_CCOD</union>
+         <salida>EEOL_TDESC</salida>
+         <orden>EEOL_TDESC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>0</mensajeVacio>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="idiomas">
+         <tipo>SELECT</tipo>
+         <destino>idioma</destino>
+         <union>idio_CCOD</union>
+         <salida>idio_TDESC</salida>
+         <orden>idio_TDESC</orden>
+		 <filtro>idio_ccod not in (8)</filtro>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>0</mensajeVacio>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="niveles_idioma">
+         <tipo>SELECT</tipo>
+         <destino>niveles_idioma</destino>
+         <union>nidi_CCOD</union>
+         <salida>nidi_TDESC</salida>
+         <orden>nidi_TDESC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>0</mensajeVacio>
+         <id>TO-S</id>
+      </campos>
+	</parametro>
+	<parametro formulario="publica_1" variable="ofta" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" anchoTabla="100%" 
+	mensajeError="No se encontraron datos">	
+			<campos nombre="empre_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			</campos>
+			<campos nombre="pers_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			</campos>
+			<campos nombre="cargo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			</campos>
+			<campos nombre="vacantes">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			</campos>
+			<campos nombre="tipo_cargo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			</campos>
+			<campos nombre="area">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			</campos>
+			<campos nombre="desc_oferta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			</campos>
+			<campos nombre="jornada">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			</campos>
+			<campos nombre="duracion_contrato">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			</campos>
+			<campos nombre="salario">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			
+			</campos>
+			<campos nombre="cometario_salario">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			</campos>
+			<campos nombre="fcaducidad_oferta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			</campos>
+			<campos nombre="vigencia_oferta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			</campos>
+			<campos nombre="regi_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			</campos>
+			<campos nombre="ciud_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			</campos>
+			<campos nombre="lugar_trabajo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			</campos>
+	
+	</parametro>
+	<parametro formulario="publica_2" variable="ofta" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" anchoTabla="100%" 
+	mensajeError="No se encontraron datos">	
+			<campos nombre="LISTADOCARRERA">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			</campos>
+			<campos nombre="anos_experiencia">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			</campos>
+			<campos nombre="estudio_minimo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			</campos>
+			<campos nombre="situacion_estudio">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			</campos>
+			<campos nombre="requisitos_minimos">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			</campos>
+			<campos nombre="LISTADOIDIOMAS">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			</campos>
+	
+	</parametro>
+	<parametros formulario="carreras">
+	<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>	
+	</campos>
+	<campos nombre="carr_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>	
+	</campos>
+	</parametros>
+			<parametro formulario="muestra_oferta" variable="ofta" colorSeleccionado="#CCCCCC"  
+	colorResaltado="#999999" nroRegistros="100" maxLista="10" paginaEdicion="detalle_ofertas.asp?ofta_ncorr=%ofta_ncorr%" clave="ofta_ncorr"
+	 anchoTabla="100%" editar="true" nuevaVentana="FALSE"  eliminar="true" seleccionarTodo="False"
+	mensajeError="No hay Ofertas para Mostrar">
+			<campos nombre="ofta_cargo">
+			<descripcion>Cargo</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>	
+			</campos>
+			<campos nombre="ofta_nvacante">
+			<descripcion>Vacantes</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>	
+			</campos>
+	</parametro>
+	<parametros formulario="muestra_oferta_completa">
+		 <campos nombre="cargo">
+			<permiso>LECTURA</permiso>			
+		</campos>
+		
+		<campos nombre="vacantes">
+			<permiso>LECTURA</permiso>			
+		</campos>
+		
+		<campos nombre="tipo_cargo">
+			<permiso>LECTURA</permiso>	
+		</campos>
+		
+		<campos nombre="area">
+			<permiso>LECTURA</permiso>	
+		</campos>
+		
+		<campos nombre="jornada">
+			<permiso>LECTURA</permiso>	
+		</campos>
+		
+		<campos nombre="descripcion_oferta">
+			<permiso>LECTURA</permiso>				
+		</campos>
+		
+		<campos nombre="duracion_contrato">
+			<permiso>LECTURA</permiso>				
+		</campos>
+		
+		<campos nombre="salario">
+			<permiso>LECTURA</permiso>				
+		</campos>
+		
+		<campos nombre="cometario_salario">
+			<permiso>LECTURA</permiso>				
+		</campos>
+		<campos nombre="fcaducidad_oferta">
+			<permiso>LECTURA</permiso>				
+		</campos>
+		
+		<campos nombre="vigencia_oferta">
+			<permiso>LECTURA</permiso>			
+		</campos>
+		
+		 <campos nombre="regi_ccod">
+		 <permiso>LECTURA</permiso>	
+		</campos>
+		
+		<campos nombre="ciud_ccod">
+			<permiso>LECTURA</permiso>	
+		</campos>
+		
+		<campos nombre="lugar_trabajo">
+			<permiso>LECTURA</permiso>				
+		</campos>
+		
+		<campos nombre="anos_experiencia">
+			<permiso>LECTURA</permiso>				
+		</campos>
+		<campos nombre="ofta_nexperiencia">
+			<permiso>LECTURA</permiso>				
+		</campos>
+		<campos nombre="estudio_minimo">
+			 <permiso>LECTURA</permiso>	
+		</campos>
+		
+		<campos nombre="situacion_estudio">
+			<permiso>LECTURA</permiso>	
+		</campos>
+		
+		<campos nombre="requisitos_minimos">
+			<permiso>LECTURA</permiso>	
+		</campos>
+		
+		<campos nombre="conocimientos_computacionales">
+			<permiso>LECTURA</permiso>	
+		</campos>
+	</parametros>
+	<parametros formulario="muestra_idiomas_oferta">
+	<campos nombre="idioma">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>	
+		</campos>
+	</parametros>
+	<parametros formulario="muestra_carreras_oferta">
+	<campos nombre="carr_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>	
+		</campos>
+	</parametros>
+	
+	<parametros formulario="elimina_oferta"  variable="ofta">
+		<campos nombre="ofta_ncorr">
+				<tipo>INPUT</tipo>
+				<permiso>LECTURAESCRITURA</permiso>	
+			</campos>
+			
+		<campos nombre="empre_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+		</campos>
+		
+		<campos nombre="pers_nrut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+		</campos>
+	</parametros>
+ </Parametros>

@@ -1,0 +1,357 @@
+<Parametros>
+  <parametro formulario="botonera">
+      <botones nombre="prorrogar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Prorrogar</texto>
+	  <!--<accion>GUARDAR</accion>
+	  <url>Proc_ingreso_Prorroga.asp</url>
+	  <mensajeConfirmacion>Esta seguro que desea prorrogar los documentos seleccionados</mensajeConfirmacion>-->
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>prorrogar();</funcion>	  
+	  <formulario>edicion</formulario>	  
+	</botones>
+   <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+   <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	   <funcionValidacion>Validar();</funcionValidacion>
+	</botones>
+	<botones nombre="imprimir"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Imprimir</texto>
+		<accion>GUARDAR</accion>
+		<target>_BLANK</target>
+	    <url>/REPORTESNET/Comprobante_Prorroga.aspx</url>
+	   <formulario>edicion</formulario>		
+	</botones>
+	<botones nombre="salir"> 
+        <tipoTexto>SALIR</tipoTexto>
+	   	<accion>CERRAR</accion>
+	</botones>
+	
+  </parametro>
+
+  <parametro formulario="busqueda" variable="busqueda">
+   	<campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+     <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+	  <campos nombre="code_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="code_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+    <campos nombre="ding_ndocto">
+       <tipo>INPUT</tipo>
+       <permiso>LECTURAESCRITURA</permiso>
+       <caracteres>12</caracteres>
+       <maxCaracteres>10</maxCaracteres>
+	   <id>NU-S</id>
+    </campos>
+	<campos nombre="ding_fdocto">
+       <tipo>INPUT</tipo>
+       <permiso>LECTURAESCRITURA</permiso>
+       <caracteres>12</caracteres>
+       <maxCaracteres>10</maxCaracteres>
+	   <id>FE-S</id>
+    </campos>
+  <campos nombre="edin_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>estados_detalle_ingresos</destino> 
+	  <union>edin_ccod</union>
+	  <salida>edin_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <filtro>edin_ccod not IN (5,6,11,12,16,17,18,21,22,23,24,25,26,27,28,29,30,36,37,38,39,41,42,43,44,45,46,99,51)</filtro>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Estado</mensajeNulo>
+	 </campos>
+	 <campos nombre="ting_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>tipos_ingresos</destino> 
+	  <union>ting_ccod</union>
+	  <salida>ting_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <filtro>ting_ccod IN (3,4,38,52,88,59,66)</filtro>
+	  <mensajeNulo>Seleccione tipo Documento</mensajeNulo>
+	 </campos>
+  </parametro> 
+ 
+ <parametro formulario="f_detalle_ingresos_log" variable="documentos" >
+    <tablas nombre="detalle_ingresos_log" accion="M"/>
+ </parametro>
+ 
+ <parametro formulario="f_cambia_fecha" variable="documentos" >
+    <tablas nombre="detalle_compromisos" accion="M"/>
+ </parametro>
+ 
+ <parametro paginaEdicion="ver_prorrogas.asp?ting_ccod=%ting_ccod%&amp;ding_ndocto=%ding_ndocto%&amp;ingr_ncorr=%ingr_ncorr%" nuevaVentanaAlto="600" formulario="f_documentos"  nroRegistros="10" nuevaVentanaAncho="800" eliminar="TRUE" clave="ding_ndocto" maxLista="10" mensajeError="No se encontraron documentos..." 
+    anchoTabla="100%"
+	editar="TRUE" 
+	nuevaVentana="TRUE"  variable="documentos">
+    <tablas nombre="detalle_ingresos" accion="M"/>    
+	<tablas nombre="compromisos" accion="M"/>
+	<tablas nombre="detalle_compromisos" accion="M"/>
+	<tablas nombre="detalles" accion="M"/>
+    <tablas nombre="referencias_cargos" accion="M"/>    			
+	  <campos nombre="fecha_hoy">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="ting_ccod">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	  <campos nombre="ingr_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	<campos nombre="ding_nsecuencia">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="pers_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+     <campos nombre="tcom_ccod">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="c_tcom_ccod">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	     <campos nombre="comp_ndocto">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	  <campos nombre="inst_ccod">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="c_edin_ccod">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	  <campos nombre="ding_ncorrelativo">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	  <campos nombre="ding_ncorrelativo">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	  <campos nombre="plaz_ccod">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	  <campos nombre="c_ding_fdocto">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="ding_mdetalle">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="c_ding_mdocto">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="ding_tcuenta_corriente">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="envi_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	  <campos nombre="repa_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="dcom_ncompromiso">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>	 
+	<campos nombre="ding_ndocto">	
+	    <descripcion>N. Docto.</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="ting_tdesc">
+	    <descripcion>Tipo Docto.</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+    <campos nombre="edin_tdesc">
+	    <descripcion>Estado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="ingr_fpago">
+	    <descripcion>F. Emision</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="ding_fdocto">
+	    <descripcion>F. Vencimiento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+     <campos nombre="rut_alumno">
+	    <descripcion>Rut Alumno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+		<nowrap>TRUE</nowrap>
+	 </campos>
+	 <campos nombre="rut_apoderado">
+	    <descripcion>Rut Apoderado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+		<nowrap>TRUE</nowrap>
+	 </campos>
+	 <campos nombre="ding_mdocto">
+	    <descripcion>Monto detalle</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>RIGHT</alineamiento>
+		<formato>MONEDA</formato>
+		<nowrap>TRUE</nowrap>
+	 </campos>
+	 <campos nombre="abon_mabono">
+	    <descripcion>Abonado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>RIGHT</alineamiento>
+		<formato>MONEDA</formato>
+		<nowrap>TRUE</nowrap>
+	 </campos>
+	 <campos nombre="nueva_fecha">
+	    <descripcion>Nueva Fecha</descripcion>
+		<tipo>INPUT</tipo>
+        <permiso>LECTURAESCRITURA</permiso>
+        <caracteres>12</caracteres>
+        <maxCaracteres>10</maxCaracteres>
+	    <id>FE-S</id>		
+	 </campos>
+	 <campos nombre="multa">
+	    <descripcion>Multa</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<alineamiento>RIGHT</alineamiento>
+		<caracteres>10</caracteres>
+        <maxCaracteres>8</maxCaracteres>
+		<formato>MONEDA</formato>	
+	 </campos>
+	  <campos nombre="reca_mmonto">
+	    <descripcion>Multas Cargadas</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>RIGHT</alineamiento>
+		<formato>MONEDA</formato>	
+	 </campos>	 
+   </parametro>
+  
+  <parametro formulario="f_prorrogas" clave="reca_ncorr"  variable="prorrogas"  nroRegistros="10" maxLista="10"
+   eliminar="TRUE">
+   <campos nombre="ding_ndocto">
+		<descripcion>N Docto</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="ting_tdesc">
+	    <descripcion>Tipo Docto</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	   <campos nombre="vencimiento_original">
+	    <descripcion>Vencimiento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+     <campos nombre="rut_alumno">
+	    <descripcion>Rut Alumno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+		<nowrap>TRUE</nowrap>
+	 </campos>
+	  <campos nombre="nombre_alumno">
+	    <descripcion>Nombre Alumno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<nowrap>TRUE</nowrap>
+	 </campos>	 
+	  <campos nombre="DING_TCUENTA_CORRIENTE">
+	    <descripcion>Cta. Cte.</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	    <campos nombre="banc_tdesc">
+	    <descripcion>Banco</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="ding_mdocto">
+	    <descripcion>Monto Docto</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>RIGHT</alineamiento>
+		<nowrap>TRUE</nowrap>
+	 </campos>
+	 	 <campos nombre="nueva_fecha">
+	    <descripcion>Nuevo Vencimiento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+		<id>FE-N</id>
+	 </campos>
+	 <campos nombre="interes">
+	    <descripcion>Multa</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>RIGHT</alineamiento>
+		<formato>MONEDA</formato>
+		<nowrap>TRUE</nowrap>
+	 </campos>
+</parametro>   
+  
+ </Parametros>

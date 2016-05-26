@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="botonera">
+    <botones nombre="buscar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Buscar</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 
+	<botones nombre="guardar_arancel">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>guardar_aranceles.asp</url>
+    </botones>
+ </parametro>
+ <parametro formulario="f_busqueda" variable="b">
+   <campos nombre="dcur_ncorr">
+      <tipo>SELECT</tipo>
+	  <destino>diplomados_cursos</destino> 
+	  <union>DCUR_NCORR</union>
+	  <salida>DCUR_TDESC</salida>
+      <orden>DCUR_TDESC asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Programa</mensajeNulo>
+	  <mensajeVacio>Seleccione Programa</mensajeVacio>
+	  <id>TO-N</id>
+   </campos>
+   <campos nombre="sede_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>(select sede_ccod,sede_tdesc from sedes where sede_ccod in (1,2,4,7,8))a</destino> 
+	  <union>sede_ccod</union>
+	  <salida>sede_tdesc</salida>
+      <orden>sede_ccod asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Sede</mensajeNulo>
+	  <mensajeVacio>Seleccione Sede</mensajeVacio>
+	  <id>TO-N</id>
+   </campos>
+  </parametro>
+  <parametro formulario="datos_generales" clave="dgso_ncorr" variable="m" mensajeError=""
+		 colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" 
+		 eliminar="false" agregar="false" nuevaVentana="false" paginaEdicion="" 
+		 maxLista="10" nroRegistros="10">
+		
+		<campos nombre="dcur_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso> 
+		</campos>
+		<campos nombre="sede_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso> 
+		</campos>
+		<campos nombre="dgso_finicio">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<caracteres>12</caracteres>
+			<maxCaracteres>40</maxCaracteres>
+		</campos>
+		<campos nombre="dgso_ftermino">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<caracteres>12</caracteres>
+			<maxCaracteres>40</maxCaracteres>
+		</campos>
+		<campos nombre="dgso_ncupo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<caracteres>6</caracteres>
+			<maxCaracteres>3</maxCaracteres>
+		</campos>
+		<campos nombre="dgso_nquorum">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<caracteres>6</caracteres>
+			<maxCaracteres>3</maxCaracteres>
+		</campos>
+		<campos nombre="ofot_nmatricula">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>10</caracteres>
+			<maxCaracteres>7</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+        <campos nombre="ofot_narancel">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>10</caracteres>
+			<maxCaracteres>7</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+		<campos nombre="anio_admision">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>10</caracteres>
+			<maxCaracteres>4</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+		<campos nombre="nro_resolucion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>10</caracteres>
+			<maxCaracteres>4</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+		<campos nombre="nro_resolucion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>10</caracteres>
+			<maxCaracteres>4</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+		<campos nombre="cod_presupuestario">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>40</caracteres>
+			<maxCaracteres>40</maxCaracteres>
+			<id>TO-S</id>
+		</campos>				
+		<campos nombre="udpo_ccod">
+		  <tipo>SELECT</tipo>
+		  <destino>(select udpo_ccod,udpo_tdesc from UNIDADES_DICTAN_PROGRAMAS_OTEC where udpo_bhabilitado='S')a</destino> 
+		  <union>udpo_ccod</union>
+		  <salida>udpo_TDESC</salida>
+		  <orden>udpo_TDESC asc </orden>	  
+		  <permiso>LECTURAESCRITURA</permiso>
+		  <anulable>true</anulable>
+		  <mensajeNulo>Seleccione Unidad</mensajeNulo>
+		  <mensajeVacio>Seleccione Unidad</mensajeVacio>
+		  <id>TO-N</id>
+	    </campos>
+		  <campos nombre="ofer_bpublica">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>S</valorVerdadero>
+		 <valorFalso>N</valorFalso>
+      </campos>
+   </parametro>
+   <parametro formulario="mantiene_datos_generales" variable="m" >
+		<tablas nombre="datos_generales_secciones_otec" accion="M" />
+   </parametro>	
+   <parametro formulario="mantiene_secciones" variable="m" >
+		<tablas nombre="secciones_otec" accion="M" />
+   </parametro>	  
+</Parametros>

@@ -1,0 +1,382 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+
+<%
+DCUR_NCORR = request.querystring("b[0][DCUR_NCORR]")
+sede_ccod = request.querystring("b[0][sede_ccod]")
+epot_ccod = request.querystring("b[0][epot_ccod]")
+f_inicio = request.querystring("b[0][f_inicio]")
+f_termino = request.querystring("b[0][f_termino]")
+'response.Write("detalle "&detalle)
+session("url_actual")= "../mantenedores/seguimiento_otec.asp?b[0][dcur_ncorr]="&dcur_ncorr&"&b[0][sede_ccod]="&sede_ccod&"&b[0][epot_ccod]="&epot_ccod&"&b[0][f_inicio]="&f_inicio&"&b[0][f_termino]="&f_termino
+'response.Write("../mantenedores/m_modulos.asp?mote_tdesc="&mote_tdesc&"&mote_ccod="&mote_ccod)
+set pagina = new CPagina
+pagina.Titulo = "Seguimiento de Postulaciones a Programas OTEC"
+
+set botonera =  new CFormulario
+botonera.carga_parametros "seguimiento_otec.xml", "botonera"
+'response.End()
+'---------------------------------------------------------------------------------------------------
+set conexion = new CConexion
+conexion.Inicializar "upacifico"
+
+set negocio = new CNegocio
+negocio.Inicializa conexion
+
+set errores 	= new cErrores
+
+
+usu=negocio.ObtenerUsuario()
+'response.Write(carr_ccod)
+dcur_tdesc = conexion.consultauno("SELECT dcur_tdesc FROM diplomados_cursos WHERE cast(dcur_ncorr as varchar)= '" & DCUR_NCORR & "'")
+'----------------------------------------------------------------------- 
+ set f_busqueda = new CFormulario
+ f_busqueda.Carga_Parametros "seguimiento_otec.xml", "f_busqueda"
+ 
+ f_busqueda.Inicializar conexion
+ 
+ consulta = "Select '"&dcur_ncorr&"' as dcur_ncorr, '"&sede_ccod&"' as sede_ccod"
+ f_busqueda.consultar consulta
+
+ consulta =  "select b.dcur_ncorr,b.dcur_tdesc,c.sede_ccod,c.sede_tdesc " & vbCrLf & _
+			 "from datos_generales_secciones_otec a, " & vbCrLf & _
+			 "diplomados_cursos b," & vbCrLf &_ 
+			 "sedes c," & vbCrLf & _
+			 "ofertas_otec d," & vbCrLf & _
+			 "responsable_unidad e," & vbCrLf & _
+			 "responsable_programa f" & vbCrLf & _
+			 "where a.dcur_ncorr=b.dcur_ncorr " & vbCrLf & _
+			 "and a.sede_ccod=c.sede_ccod " & vbCrLf & _
+			 "and a.dgso_ncorr=d.dgso_ncorr" & vbCrLf & _
+			 "and d.udpo_ccod=e.updo_ccod" & vbCrLf & _
+			 "and e.reun_ncorr=f.reun_ncorr" & vbCrLf & _
+			 "and a.dgso_ncorr=f.dgso_ncorr" & vbCrLf &_ 
+			 "and esre_ccod=1" & vbCrLf & _
+			 "and e.pers_ncorr=protic.Obtener_pers_ncorr("&usu&")"
+ 
+' " select b.dcur_ncorr,b.dcur_tdesc,c.sede_ccod,c.sede_tdesc " & vbCrLf & _
+'			" from datos_generales_secciones_otec a, diplomados_cursos b,sedes c " & vbCrLf & _
+'			" where a.dcur_ncorr=b.dcur_ncorr " & vbCrLf & _
+'		    " and a.sede_ccod=c.sede_ccod " & vbCrLf & _
+'			" and exists (select 1 from ofertas_otec cc where cc.dgso_ncorr=a.dgso_ncorr) order by b.dcur_tdesc desc" 
+	'response.Write(consulta)			
+ f_busqueda.inicializaListaDependiente "lBusqueda", consulta
+ f_busqueda.Siguiente
+ f_busqueda.agregaCampoCons "epot_ccod",epot_ccod
+ f_busqueda.agregaCampoCons "f_inicio",f_inicio
+ f_busqueda.agregaCampoCons "f_termino",f_termino
+
+tiene_datos_generales = conexion.consultaUno("select case count(*) when 0 then 'N' else 'S' end from datos_generales_secciones_otec where cast(DCUR_NCORR as varchar)='"&DCUR_NCORR&"' and cast(sede_ccod as varchar)='"&sede_ccod&"' and esot_ccod in (1,2)")
+
+dcur_tdesc = conexion.consultaUno("select dcur_tdesc from diplomados_cursos where cast(dcur_ncorr as varchar)='"&dcur_ncorr&"'")
+sede_tdesc = conexion.consultaUno("select sede_tdesc from sedes where cast(sede_ccod as varchar)='"&sede_ccod&"'")
+dcur_nsence = conexion.consultaUno("select dcur_nsence from diplomados_cursos where cast(dcur_ncorr as varchar)='"&dcur_ncorr&"'")
+dgso_ncorr = conexion.consultaUno("select dgso_ncorr from datos_generales_secciones_otec where cast(DCUR_NCORR as varchar)='"&DCUR_NCORR&"' and cast(sede_ccod as varchar)='"&sede_ccod&"' and esot_ccod in (1,2)")
+periodo_programa = conexion.consultaUno("select 'FECHA INICIO : <strong>'+ protic.trunc(dgso_finicio) + '</strong>    FECHA TERMINO : <strong>' + protic.trunc(dgso_ftermino) + '</strong>' from datos_generales_secciones_otec where cast(dgso_ncorr as varchar)='"&dgso_ncorr&"'")
+
+'response.Write(dgso_ncorr)
+
+'---------------------------------------------------------------------------------------------------
+set datos_generales = new cformulario
+datos_generales.carga_parametros "seguimiento_otec.xml", "datos_generales"
+datos_generales.inicializar conexion
+
+
+consulta= " select a.dgso_ncorr,a.dcur_ncorr,a.sede_ccod,protic.trunc(dgso_finicio) as dgso_finicio,protic.trunc(dgso_ftermino) as dgso_ftermino,dgso_ncupo,dgso_nquorum,ofot_nmatricula,ofot_narancel " & vbCrlf & _
+		  " from datos_generales_secciones_otec a left outer join ofertas_otec  b" & vbCrlf & _
+		  "  on a.dgso_ncorr = b.dgso_ncorr " & vbCrlf &_
+		  " where cast(a.dcur_ncorr as varchar)='"&DCUR_NCORR&"'  " & vbCrlf & _
+		  " and cast(a.sede_ccod as varchar)='"&sede_ccod&"' " 
+
+if tiene_datos_generales = "N" then
+	consulta = "select '' as dgso_ncorr"
+end if
+'response.write("<pre>"&consulta&"</pre>")
+datos_generales.consultar consulta 
+datos_generales.siguiente
+
+
+'--------------iniciamos variables de sessión con valor de sede y programa para la postulación------------
+if sede_ccod <> "" and dcur_ncorr <> "" then
+	session("sede_ccod_postulacion") = sede_ccod
+	session("dcur_ncorr_postulacion") = dcur_ncorr
+end if
+
+
+'---------------------------------------------------------------------------------------------------
+set listado_postulaciones = new cformulario
+listado_postulaciones.carga_parametros "seguimiento_otec.xml", "f_listado"
+listado_postulaciones.inicializar conexion
+
+
+consulta= " select cast(a.pers_nrut as varchar)+'-'+a.pers_xdv as rut,a.pers_nrut,a.pers_xdv, " & vbCrlf & _
+		  " pers_tnombre +' '+ pers_tape_paterno + ' ' + pers_tape_materno as alumno, " & vbCrlf & _
+		  " c.epot_tdesc as estado_postulacion, " & vbCrlf & _
+		  " case fpot_ccod when 1 then 'Persona Natural' when 2  then 'Empresa sin Sence' when 3 then 'Empresa con Sence' when 4 then 'Empresa y Otic' end as forma_pago, " & vbCrlf & _
+		  " protic.trunc(fecha_postulacion)as fecha_postulacion " & vbCrlf & _
+		  " from personas a, postulacion_otec b,estados_postulacion_otec c " & vbCrlf & _
+		  " where a.pers_ncorr=b.pers_ncorr and b.epot_ccod=c.epot_ccod " & vbCrlf & _
+		  " and cast(dgso_ncorr as varchar)='"&dgso_ncorr&"'  " 
+
+if epot_ccod <> "" then
+		consulta = consulta & " and cast(b.epot_ccod as varchar)='"&epot_ccod&"'"
+end if
+
+if f_inicio <> "" then
+		consulta = consulta & " and convert(datetime,convert(varchar,fecha_postulacion,103),103) >= convert(datetime,'"&f_inicio&"',103)"
+end if
+
+if f_termino <> "" then
+		consulta = consulta & " and convert(datetime,convert(varchar,fecha_postulacion,103),103) <= convert(datetime,'"&f_termino&"',103)"
+end if
+
+'response.write("<pre>"&consulta&"</pre>")
+
+listado_postulaciones.consultar consulta 
+'listado_postulaciones.siguiente
+
+%>
+
+
+<html>
+<head>
+<title><%=pagina.Titulo%></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../estilos/estilos.css" rel="stylesheet" type="text/css">
+<link href="../estilos/tabla.css" rel="stylesheet" type="text/css">
+
+<script language="JavaScript" src="../biblioteca/tabla.js"></script>
+<script language="JavaScript" src="../biblioteca/funciones.js"></script>
+<script language="JavaScript" src="../biblioteca/validadores.js"></script>
+<script language="JavaScript" src="../biblioteca/PopCalendar.js"></script>
+
+
+<script language="JavaScript">
+function enviar(formulario){
+	formulario.elements["detalle"].value="2";
+  	if(preValidaFormulario(formulario)){	
+		formulario.submit();
+		
+	}
+}
+function abrir() {
+	
+	direccion = "editar_diplomados_curso.asp";
+	resultado=window.open(direccion, "ventana1","width=550,height=250,scrollbars=no, left=380, top=150");
+	
+ // window.close();
+}
+function abrir_programa() {
+	var DCUR_NCORR = '<%=DCUR_NCORR%>';
+	direccion = "editar_programas_dcurso.asp?dcur_ncorr=" + DCUR_NCORR;
+	resultado=window.open(direccion, "ventana2","width=550,height=400,scrollbars=yes, left=380, top=100");
+	
+ // window.close();
+}
+
+function agregar_nuevo(formulario){
+  	if(preValidaFormulario(formulario)){	
+		formulario.action = "agrega_postulantes.asp";
+		formulario.submit();
+		
+	}
+}
+</script>
+<%
+	set calendario = new FCalendario
+	calendario.IniciaFuncion
+	calendario.MuestraFecha "b[0][f_inicio]","1","buscador","fecha_oculta_f_inicio"
+	calendario.MuestraFecha "b[0][f_termino]","2","buscador","fecha_oculta_f_termino"
+	calendario.FinFuncion
+	
+%>
+<% f_busqueda.generaJS %>
+</head>
+<body bgcolor="#EAEAEA" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../imagenes/botones/buscar_f2.gif','../images/bot_deshabilitar_f2.gif','../images/agregar2_f2_p.gif','im&amp;#225;genes/marco1_r3_c2_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c4_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c6_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c8_f2.gif');MM_preloadImages('../imagenes/botones/cargar_f2.gif','../imagenes/botones/continuar_f2.gif')" onBlur="revisaVentana();">
+<%calendario.ImprimeVariables%>
+<table width="580" height="100%">
+<tr valign="top" height="30">
+	<td bgcolor="#EAEAEA">
+</td>
+</tr>
+<tr valign="top">
+	<td bgcolor="#EAEAEA">
+<table width="652" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td valign="top" bgcolor="#EAEAEA" align="center">
+	<table width="90%">
+	<tr>
+		<td align="center">
+	
+	<table width="65%"  border="0" align="left" cellpadding="0" cellspacing="0" bgcolor="#D8D8DE">
+      <tr>
+        <td width="9" height="8"><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+        <td height="8" background="../imagenes/top_r1_c2.gif"></td>
+        <td width="7" height="8"><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+      </tr>
+      <tr>
+        <td width="9" background="../imagenes/izq.gif"></td>
+        <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><%pagina.DibujarLenguetas Array("Buscador"), 1 %></td>
+          </tr>
+          <tr>
+            <td height="2" background="../imagenes/top_r3_c2.gif"></td>
+          </tr>
+          <tr>
+            <td align="left"><form name="buscador">
+              <br>
+              <table width="98%"  border="0" align="center">
+                <tr>
+                    <td width="20%"><div align="center"><strong>Módulo</strong></td>
+					<td width="3%"><div align="center"><strong>:</strong></td>
+                    <td><%f_busqueda.dibujaCampoLista "lBusqueda", "dcur_ncorr"%></td>
+                 </tr>
+				  <tr>
+                    <td width="20%"><div align="center"><strong>Sede</strong></td>
+					<td width="3%"><div align="center"><strong>:</strong></td>
+                    <td><%f_busqueda.dibujaCampoLista "lBusqueda", "sede_ccod" %></td>
+                 </tr>
+				 <tr>
+                    <td width="20%"><div align="center"><strong>Estado Postulación</strong></td>
+					<td width="3%"><div align="center"><strong>:</strong></td>
+                    <td><%f_busqueda.dibujaCampo "epot_ccod" %></td>
+                 </tr>
+				 <tr><td colspan="3"> 
+				 <table width="100%" border="1"><tr><td align="center">
+				      <table width="100%">
+					  	<tr>
+							<td width="15%"><strong>Fecha Inicio </strong></td>
+							<td width="30%" nowrap>: <%=f_busqueda.dibujaCampo("f_inicio")%> <%calendario.DibujaImagen "fecha_oculta_f_inicio","1","buscador" %></td>
+							<td width="20%" align="right"><strong>Fecha Término </strong></td>
+							<td width="35%" nowrap>: <%=f_busqueda.dibujaCampo("f_termino")%> <%calendario.DibujaImagen "fecha_oculta_f_termino","2","buscador" %></td> 
+						</tr>
+					  </table>
+				 </td></tr></table>
+				     </td>
+				 </tr>
+				 <tr> 
+				  <td colspan="3"><input type="hidden" name="detalle" value=""></td>
+                </tr>
+				 <tr> 
+				  <td colspan="3"><table width="100%">
+				                      <tr>
+									  	<td width="50%" align="center"><%'botonera.dibujaboton "crear_dcurso"%></td>
+										<td width="50%" align="right"><%botonera.dibujaboton "buscar"%></td>
+									  </tr>
+				                  </table>
+			       </td>
+                </tr>
+              </table>
+            </form></td>
+          </tr>
+        </table></td>
+        <td width="7" background="../imagenes/der.gif"></td>
+      </tr>
+      <tr>
+        <td width="9" height="13"><img src="../imagenes/base1.gif" width="9" height="13"></td>
+        <td height="13" background="../imagenes/base2.gif"></td>
+        <td width="7" height="13"><img src="../imagenes/base3.gif" width="7" height="13"></td>
+      </tr>
+    </table>
+	</td>
+	</tr>
+	</table>
+	</td></tr>
+	
+	
+	<tr>
+    <td valign="top" bgcolor="#EAEAEA" align="left">&nbsp;</td></tr>
+	<tr>
+    <td valign="top" bgcolor="#EAEAEA" align="left">
+	<table width="90%"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#D8D8DE">
+      <tr>
+        <td width="9" height="8"><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+        <td height="8" background="../imagenes/top_r1_c2.gif"></td>
+        <td width="7" height="8"><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+      </tr>
+      <tr>
+        <td width="9" background="../imagenes/izq.gif">&nbsp;</td>
+        <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><%pagina.DibujarLenguetas Array("Listado Postulantes"), 1 %></td>
+          </tr>
+          <tr>
+            <td height="2" background="../imagenes/top_r3_c2.gif"></td>
+          </tr>
+          <tr>
+            <td><form name="edicion">
+                <table width="95%"  border="0" align="center" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td>                        <div align="center"><%pagina.DibujarTituloPagina%> <br>
+                    </div></td>
+                    </tr>
+                  
+                  <tr>
+                    <td>&nbsp;</td>
+                  </tr>
+				  <%if dcur_ncorr <> "" and not esVacio(dcur_ncorr) then %>
+				  <tr>
+                    <td><%response.Write("PROGRAMA: <strong>"&dcur_tdesc&"</strong>")
+						%></td>
+                  </tr>
+				  <tr>
+                    <td><%response.Write("SEDE: <strong>"&sede_tdesc&"</strong>")
+						%></td>
+                  </tr>
+				  <tr>
+                    <td><%response.Write("CÓDIGO SENCE: <strong>"&dcur_nsence&"</strong>")
+						%></td>
+                  </tr>
+				  <tr>
+				  	<td><%=periodo_programa%>
+					</td>
+				  </tr>
+				  <tr>
+				  	<td>&nbsp;</td>
+				  </tr>
+				  <tr>
+					  <td><div align="right"><strong>P&aacute;ginas :</strong>                          
+						  <%listado_postulaciones.accesopagina%></div>
+					   </td>
+				  </tr>
+				  <tr>
+					  <td>&nbsp;</td>
+				  </tr>
+				  <tr>
+					  <td colspan="2"><div align="center">
+									  <%listado_postulaciones.dibujatabla()%>
+					  </div></td>
+				  </tr>
+				  <tr>
+					  <td>&nbsp;</td>
+				  </tr>
+				  <tr>
+				  	<td align="right"><% url_excel = "seguimiento_otec_excel.asp?b[0][dcur_ncorr]="&dcur_ncorr&"&b[0][sede_ccod]="&sede_ccod&"&b[0][epot_ccod]="&epot_ccod&"&b[0][f_inicio]="&f_inicio&"&b[0][f_termino]="&f_termino
+					                     botonera.agregaBotonParam "excel","url",url_excel
+										 botonera.dibujaBoton "excel"%></td>
+				  </tr>
+				  <%end if%>
+				  <tr>
+                    <td>&nbsp;</td>
+                  </tr>
+                </table>
+              <br>
+            </form></td></tr>
+        </table></td>
+        <td width="7" background="../imagenes/der.gif">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="9" height="13"><img src="../imagenes/base1.gif" width="9" height="13"></td>
+        <td height="13" background="../imagenes/base2.gif"></td>
+        <td width="7" height="13"><img src="../imagenes/base3.gif" width="7" height="13"></td>
+      </tr>
+    </table>
+	</td>
+  </tr>  
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>

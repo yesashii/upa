@@ -1,0 +1,5 @@
+16357642,CHICO ARTHUR PAZ DE LOS MILAGROS,,16357642-2,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+16903980,CHACON ECHEVERRIA MICHAEL JONATHAN,,16903980-1,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17079897,CORNEJO REYES LEONARDO GABRIEL,,17079897-K,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18006507,VASQUEZ RODRIGUEZ PAOLA ANDREA,,18006507-5,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+60805000,TESORERIA GENERAL DE LA REPUBLICA   TESORERIA GENERAL DE LA REPUBLICA,,60805000-0,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

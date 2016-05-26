@@ -1,0 +1,174 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+<%
+on error resume next
+set conectar = new cconexion
+conectar.inicializar "upacifico"
+
+set negocio = new CNegocio
+negocio.Inicializa conectar
+
+'for each k in request.form
+'	response.write(k&"="&request.Form(k)&"<br>")
+'next
+
+'response.End()
+
+dgso_ncorr = request.Form("dgso_ncorr")
+fpot_ccod  = request.Form("fpot_ccod")
+nord_compra  = request.Form("nord_compra")
+pers_nrut = request.Form("m[0][pers_nrut]")
+pers_xdv = request.Form("m[0][pers_xdv]")
+pers_tnombre = request.Form("m[0][pers_tnombre]")
+pers_tape_paterno = request.Form("m[0][pers_tape_paterno]")
+pers_tape_materno = request.Form("m[0][pers_tape_materno]")
+pers_fnacimiento = request.Form("m[0][pers_fnacimiento]")
+pers_tprofesion = request.Form("m[0][pers_tprofesion]")
+pers_temail = request.Form("m[0][pers_temail]")
+pers_tfono = request.Form("m[0][pers_tfono]")
+pers_tcelular = request.Form("m[0][pers_tcelular]")
+nied_ccod = request.Form("m[0][nied_ccod]")
+dire_tcalle = request.Form("m[0][dire_tcalle]")
+dire_tnro = request.Form("m[0][dire_tnro]")
+dire_tpoblacion = request.Form("m[0][dire_tpoblacion]")
+dire_tblock = request.Form("m[0][dire_tblock]")
+ciud_ccod = request.Form("m[0][ciud_ccod]")
+utiliza_sence = request.Form("m[0][utiliza_sence]")
+dcur_ncorr = session("dcur_ncorr_postulacion")
+sede_ccod = session("sede_ccod_postulacion")
+pers_tempresa = request.Form("m[0][pers_tempresa]")
+pers_tcargo = request.Form("m[0][pers_tcargo]")
+rut_empresa = request.Form("rut_empresa")
+rut_otic = request.Form("rut_otic")
+usuario = negocio.obtenerUsuario
+
+esta_en_persona = conectar.consultaUno("select case count(*) when 0 then 'N' else 'S' end from personas where cast(pers_nrut as varchar)='"&pers_nrut&"'")
+esta_en_persona_p = conectar.consultaUno("select case count(*) when 0 then 'N' else 'S' end from personas_postulante where cast(pers_nrut as varchar)='"&pers_nrut&"'")
+
+if esta_en_persona = "N" and esta_en_persona_p = "N" then 
+	'-----------se debe agregar un nuevo registro en tabla personas
+	pers_ncorr = conectar.consultaUno("exec obtenerSecuencia 'personas'")
+
+	c_persona = " insert into personas (PERS_NCORR,PAIS_CCOD,PERS_NRUT,PERS_XDV,PERS_TAPE_PATERNO,PERS_TAPE_MATERNO,PERS_TNOMBRE,PERS_FNACIMIENTO,"&_
+			    " PERS_TPROFESION,PERS_TFONO,PERS_TCELULAR,PERS_TEMAIL,AUDI_TUSUARIO,AUDI_FMODIFICACION, pers_tempresa,pers_tcargo) "&_
+				" values ("&pers_ncorr&",1,"&pers_nrut&",'"&pers_xdv&"','"&pers_tape_paterno&"','"&pers_tape_materno&"','"&pers_tnombre&"','"&pers_fnacimiento&"',"&_
+				" '"&pers_tprofesion&"','"&pers_tfono&"','"&pers_tcelular&"','"&pers_temail&"','"&usuario&"',getDate(),'"&pers_tempresa&"','"&pers_tcargo&"')"
+
+elseif esta_en_persona = "N" and esta_en_persona_p = "S" then 	
+	'-----------se debe agregar un nuevo registro en tabla personas basado en personas postulante
+	pers_ncorr = conectar.consultaUno("select pers_ncorr from personas_postulante where cast(pers_nrut as varchar)='"&pers_nrut&"'")
+	
+	c_persona = " insert into personas (PERS_NCORR,PAIS_CCOD,PERS_NRUT,PERS_XDV,PERS_TAPE_PATERNO,PERS_TAPE_MATERNO,PERS_TNOMBRE,PERS_FNACIMIENTO,"&_
+			    " PERS_TPROFESION,PERS_TFONO,PERS_TCELULAR,PERS_TEMAIL,AUDI_TUSUARIO,AUDI_FMODIFICACION, pers_tempresa,pers_tcargo) "&_
+				" values ("&pers_ncorr&",1,"&pers_nrut&",'"&pers_xdv&"','"&pers_tape_paterno&"','"&pers_tape_materno&"','"&pers_tnombre&"','"&pers_fnacimiento&"',"&_
+				" '"&pers_tprofesion&"','"&pers_tfono&"','"&pers_tcelular&"','"&pers_temail&"','"&usuario&"',getDate(),'"&pers_tempresa&"','"&pers_tcargo&"')"
+
+elseif esta_en_persona = "S" then 
+	'----------debemos actualizar el registro existente de la persona con la nueva información
+	pers_ncorr = conectar.consultaUno("select pers_ncorr from personas where cast(pers_nrut as varchar)='"&pers_nrut&"'")
+	c_persona = " update personas set pers_tape_paterno ='"&pers_tape_paterno&"', pers_tape_materno ='"&pers_tape_materno&"',"&_
+	            " pers_tnombre ='"&pers_tnombre&"',pers_fnacimiento ='"&pers_fnacimiento&"',pers_tprofesion ='"&pers_tprofesion&"',"&_
+				" pers_tfono ='"&pers_tfono&"',pers_tcelular ='"&pers_tcelular&"',pers_temail ='"&pers_temail&"',"&_
+				" audi_tusuario ='"&usuario&"',audi_fmodificacion = getDate()," &_
+				" pers_tempresa ='"&pers_tempresa&"',pers_tcargo = '"&pers_tcargo&"'" &_
+				" where cast(pers_ncorr as varchar)='"&pers_ncorr&"'"   
+
+end if
+
+esta_en_direcciones = conectar.consultaUno("select case count(*) when 0 then 'N' else 'S' end from direcciones where cast(pers_ncorr as varchar)='"&pers_ncorr&"' and tdir_ccod=1")
+if esta_en_direcciones = "N" then 
+	'-----------se debe agregar un nuevo registro en tabla direcciones
+	c_direccion = " insert into direcciones (PERS_NCORR,TDIR_CCOD,CIUD_CCOD,DIRE_TCALLE,DIRE_TNRO,DIRE_TPOBLACION,DIRE_TBLOCK, "&_
+	              " DIRE_TFONO,DIRE_TCELULAR,AUDI_TUSUARIO,AUDI_FMODIFICACION) "&_
+				  " values ("&pers_ncorr&",1,"&ciud_ccod&",'"&dire_tcalle&"','"&dire_tnro&"','"&dire_tpoblacion&"','"&dire_tblock&"','"&pers_tfono&"','"&pers_tcelular&"','"&usuario&"',getDate())"
+	
+else
+	'----------debemos actualizar el registro existente de la persona con la nueva información
+	c_direccion = " update direcciones set ciud_ccod ="&ciud_ccod&", dire_tcalle ='"&dire_tcalle&"',"&_
+	            " dire_tnro ='"&dire_tnro&"',dire_tpoblacion ='"&dire_tpoblacion&"',dire_tblock ='"&dire_tblock&"',"&_
+				" dire_tfono ='"&pers_tfono&"',dire_tcelular ='"&pers_tcelular&"',"&_
+				" audi_tusuario ='"&usuario&"',audi_fmodificacion = getDate()" &_
+				" where cast(pers_ncorr as varchar)='"&pers_ncorr&"' and tdir_ccod = 1"   
+
+end if
+
+esta_en_postulacion = conectar.consultaUno("select case count(*) when 0 then 'N' else 'S' end from postulacion_otec where cast(pers_ncorr as varchar)='"&pers_ncorr&"' and cast(dgso_ncorr as varchar)='"&dgso_ncorr&"' and epot_ccod not in (4,5)")
+
+'response.Write(" esta en postulacion: "&esta_en_postulacion)
+tdet_ccod = conectar.consultaUno("select tdet_ccod from ordenes_compras_otec where cast(dgso_ncorr as varchar)='"&dgso_ncorr&"' and cast(nord_compra as varchar)='"&nord_compra&"'")
+
+if esta_en_postulacion = "N" then 
+	pote_ncorr = conectar.consultaUno("exec obtenerSecuencia 'postulacion_otec'")
+else
+	pote_ncorr = conectar.consultaUno("select pote_ncorr from postulacion_otec where cast(pers_ncorr as varchar)='"&pers_ncorr&"' and cast(dgso_ncorr as varchar)='"&dgso_ncorr&"'")
+end if
+
+utiliza_sence = "0"
+if fpot_ccod = "3" then
+	utiliza_sence = "1"
+else
+	utiliza_sence = "0"
+end if
+
+if fpot_ccod = "4" then
+    pers_ncorr_empresa = conectar.consultaUno("select empr_ncorr from empresas where cast(empr_nrut as varchar)='"&rut_empresa&"'")
+	pers_ncorr_otic    = conectar.consultaUno("select empr_ncorr from empresas where cast(empr_nrut as varchar)='"&rut_otic&"'")
+    c_postulacion_i = " insert into postulacion_otec "&_
+	                  " (pote_ncorr,pers_ncorr,epot_ccod,fecha_postulacion,dgso_ncorr,utiliza_sence,fpot_ccod, "&_
+					  "  audi_tusuario,audi_fmodificacion,nied_ccod,empr_ncorr_empresa,empr_ncorr_otic,norc_otic,tdet_ccod,	"&_	
+					  "	 datos_persona_correctos,datos_empresa_correctos,datos_otic_correctos) "&_
+				      " values ("&pote_ncorr&","&pers_ncorr&",2,getDate(),"&dgso_ncorr&","&utiliza_sence&","&fpot_ccod&",'"&usuario&"',getDate(),"&nied_ccod&","&pers_ncorr_empresa&","&pers_ncorr_otic&","&nord_compra&","&tdet_ccod&",1,1,1)"
+					  
+	c_postulacion_u = " update postulacion_otec set fpot_ccod ="&fpot_ccod&",epot_ccod=2, "&_
+	                  " audi_tusuario ='"&usuario&"',audi_fmodificacion = getDate(),nied_ccod="&nied_ccod&"" &_
+					  " ,empr_ncorr_empresa ="&pers_ncorr_empresa&",empr_ncorr_otic="&pers_ncorr_otic&",norc_otic="&nord_compra&_
+					  " ,tdet_ccod="&tdet_ccod&",datos_persona_correctos=1,datos_empresa_correctos=1,datos_otic_correctos=1,utiliza_sence="&utiliza_sence&" where cast(pote_ncorr as varchar)='"&pote_ncorr&"'"  
+else
+    pers_ncorr_empresa = conectar.consultaUno("select empr_ncorr from empresas where cast(empr_nrut as varchar)='"&rut_empresa&"'")
+    c_postulacion_i = " insert into postulacion_otec "&_
+	                  " (pote_ncorr,pers_ncorr,epot_ccod,fecha_postulacion,dgso_ncorr,utiliza_sence,fpot_ccod, "&_
+					  "  audi_tusuario,audi_fmodificacion,nied_ccod,empr_ncorr_empresa,norc_empresa,tdet_ccod,	"&_	
+					  "	 datos_persona_correctos,datos_empresa_correctos,datos_otic_correctos) "&_
+				      " values ("&pote_ncorr&","&pers_ncorr&",2,getDate(),"&dgso_ncorr&","&utiliza_sence&","&fpot_ccod&",'"&usuario&"',getDate(),"&nied_ccod&","&pers_ncorr_empresa&","&nord_compra&","&tdet_ccod&",1,1,NULL)"
+					  
+	c_postulacion_u = " update postulacion_otec set fpot_ccod ="&fpot_ccod&",epot_ccod=2, "&_
+	                  " audi_tusuario ='"&usuario&"',audi_fmodificacion = getDate(),nied_ccod="&nied_ccod&", utiliza_sence="&utiliza_sence&" " &_
+					  " ,empr_ncorr_empresa ="&pers_ncorr_empresa&",norc_empresa="&nord_compra&_
+					  " ,tdet_ccod="&tdet_ccod&",datos_persona_correctos=1,datos_empresa_correctos=1,datos_otic_correctos=NULL "&_
+				      " where cast(pote_ncorr as varchar)='"&pote_ncorr&"'"  
+
+end if
+
+if esta_en_postulacion = "N" then 
+	c_postulacion = c_postulacion_i
+else
+	c_postulacion = c_postulacion_u
+end if
+
+'response.Write("<br>"&c_persona)
+'response.Write("<br>"&c_direccion)
+'response.Write("<br>"&c_postulacion)
+'response.End()
+'conectar.obtenerestadoTransaccion false
+
+
+conectar.ejecutaS c_persona
+conectar.ejecutaS c_direccion
+conectar.ejecutaS c_postulacion
+
+'----Guardamos un detalle para propósitos de dirección de admisión-----------------Marcelo Sandoval 20-08-2013
+dgso_ncorr = conectar.consultaUno("select dgso_ncorr from postulacion_otec where cast(pote_ncorr as varchar)='"&pote_ncorr&"'")
+c_tiene_detalle = "select count(*) from detalle_postulacion_otec where cast(pote_ncorr as varchar)='"&pote_ncorr&"' and cast(dgso_ncorr as varchar)='"&dgso_ncorr&"'"
+tiene_detalle = conectar.consultaUno(c_tiene_detalle)
+if tiene_detalle = "0" then
+	c_insert_detalle = "insert into detalle_postulacion_otec (pote_ncorr,dgso_ncorr,dpos_nnota,eepo_ccod,dpos_tobservacion,dpos_fexamen,audi_tusuario,audi_fmodificacion)"&_
+					   "values ("&pote_ncorr&","&dgso_ncorr&",NULL,2,'APROBADO EN POSTULACION MASIVA',getDate(),'"&usuario&"',getDate())"
+    conectar.ejecutaS c_insert_detalle
+end if
+'-------------------------Cierre del grabado en detalle--------------------------------------------------------
+
+
+'response.End()
+'response.write(request.ServerVariables("HTTP_REFERER"))
+ response.Redirect(request.ServerVariables("HTTP_REFERER"))
+%>

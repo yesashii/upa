@@ -1,0 +1,249 @@
+<!--construido 02/06/2015 V1.0 -->
+
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="f_busqueda" variable="busqueda" mensajeError="No existen ofertas académicas para la búsqueda realizada.">
+      <campos nombre="sede_ccod">
+         <tipo>SELECT</tipo>
+         <destino>sedes</destino>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+         <orden>sede_tdesc ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="peri_ccod">
+         <tipo>SELECT</tipo>
+         <destino>(SELECT peri_ccod, cast(anos_ccod as varchar) + ' ' + peri_tdesc AS descripcion FROM periodos_academicos ) a</destino>
+         <union>peri_ccod</union>
+         <salida>descripcion</salida>
+         <orden>a.peri_ccod</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="carr_ccod">
+         <tipo>SELECT</tipo>
+         <destino>carreras</destino>
+         <union>carr_ccod</union>
+         <salida>carr_tdesc</salida>
+         <orden>carr_tdesc ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>-- Seleccione una carrera --</mensajeNulo>
+         <script>onChange="CargarEspecialidades(this.form, this.value)"</script>
+      </campos>
+     <campos nombre="espe_ccod">
+         <tipo>SELECT</tipo>
+         <destino>(SELECT -1 AS espe_ccod, '-- Seleccione especialidad --' AS blanco) a</destino>
+         <union>espe_ccod</union>
+         <salida>blanco</salida>
+		 <orden>a.espe_ccod</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos> 
+   <campos nombre="espe_ccod2">
+      <tipo>SELECT</tipo>
+	  <destino>especialidades</destino> 
+	  <union>espe_ccod</union>
+	  <salida>espe_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione especialidad</mensajeNulo>
+	 </campos>
+	 
+	  <campos nombre="POST_BNUEVO">
+			<alineamiento>center</alineamiento>
+			<descripcion>Codigo sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			</campos> 
+		 
+		<campos nombre="post_ncorr">
+			<alineamiento>center</alineamiento>
+			<descripcion>Codigo sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>lectura</permiso>
+			</campos> 
+	 
+	 
+   </parametro>
+   <parametro formulario="f_tabla__" colorSeleccionado="#99FFFF" colorResaltado="#DCDCB8" variable="ofertas" clave="ofer_ncorr" anchoTabla="100%" editar="TRUE" paginaEdicion="proc_cambio_oferta_academica.asp?ofer_ncorr=%ofer_ncorr%" nuevaVentana="TRUE" eliminar="TRUE">
+	  <campos nombre="POST_BNUEVO">
+			<alineamiento>center</alineamiento>
+			<descripcion>Codigo sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			</campos> 
+		 
+		<campos nombre="post_ncorr">
+			<alineamiento>center</alineamiento>
+			<descripcion>Codigo sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			</campos> 
+	  <campos nombre="ofer_ncorr">
+         <descripcion>*****</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="tipo_alumnos">
+         <descripcion>TIPO DE ALUMNOS</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="jorn_ccod">
+         <descripcion>JORNADA</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>jornadas</destino>
+         <union>jorn_ccod</union>
+         <salida>jorn_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="aran_mmatricula">
+         <descripcion>MATRICULA</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+      </campos>
+      <campos nombre="aran_mcolegiatura">
+         <descripcion>COLEGIATURA</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="f_tabla" variable="ofertas" clave="ofer_ncorr"  eliminar="TRUE">
+      <!-- obliga a enviar todo el formulario -->
+	   <campos nombre="POST_BNUEVO">
+			<alineamiento>center</alineamiento>
+			<descripcion>Codigo sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			</campos> 
+		 
+		<campos nombre="post_ncorr">
+			<alineamiento>center</alineamiento>
+			<descripcion>Codigo sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			</campos> 
+	   <!-- obliga a enviar todo el formulario -->
+      <campos nombre="tipo_alumnos">
+         <descripcion>TIPO ALUMNO</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+         <ancho>150</ancho>
+      </campos>
+      <campos nombre="jorn_tdesc">
+         <descripcion>JORNADA</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+         <ancho>150</ancho>
+      </campos>
+      <campos nombre="ofer_nvacantes">
+         <descripcion>VACANTES</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="aran_mmatricula">
+         <descripcion>MATRICULA ($)</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+      </campos>
+      <campos nombre="aran_mcolegiatura">
+         <descripcion>COLEGIATURA ($)</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+      </campos>
+       <campos nombre="aran_nano_ingreso">
+         <descripcion>ANO INGRESO</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>FECHA</formato>
+         <alineamiento>RIGHT</alineamiento>
+      </campos>
+	  <campos nombre="ofer_bpaga_examen">
+         <descripcion>Test</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="ofer_bpublica">
+         <descripcion>PUBLICA</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="ofer_bactiva">
+         <descripcion>Activa</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+
+  </parametro>
+  <parametro formulario="cambio_detalle_oferta_academica"  variable="datos"  clave="post_ncorr">
+        	
+	 <campos nombre="ofer_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <script>onkeypress="ValidaSoloNumeros()";</script>
+		 <maxCaracteres>4</maxCaracteres>
+         <caracteres>6</caracteres>
+      </campos> 
+   </parametro>
+  
+  <parametro formulario="btn_adm_ofertas">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	</botones> 
+    <botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>javascript:Agregar(document.buscador);</funcion>
+	</botones>
+   <botones nombre="eliminar"> 
+     <tipoTexto>DEFINIR</tipoTexto>
+	 <texto>Eliminar</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>javascript:Eliminar()</funcion>
+	</botones> 
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones> 		
+	<botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+		 <accion>GUARDAR</accion>
+		 <funcionValidacion>Enviar(document.busqueda);</funcionValidacion>
+		 <url>proc_cambio_oferta_academica.asp</url>
+		 <formulario>busqueda</formulario>	 
+      </botones> 
+</parametro>
+	<parametro formulario="especialidades"  variable="not" 
+	 colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" 
+	 eliminar="false" agregar="true" nuevaVentana="false" maxLista="10" nroRegistros="10" anchoTabla="98%">
+	
+	<campos nombre="secc_tdesc">
+		<tipo>SELECT</tipo>
+         <destino>(SELECT -1 AS espe_ccod, '-- Seleccione especialidad --' AS blanco)</destino>
+		<union>espe_ccod</union>
+		<salida>blanco</salida>
+		<alineamiento>center</alineamiento>
+		<permiso>LECTURAESCRITURA</permiso>
+		
+		<id>TO-N</id>	
+	</campos>
+	</parametro>
+
+</Parametros>

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="btn_adm_carreras">
+    
+	<botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>	 
+	</botones> 
+    
+	  <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_aranceles_ext.asp</url>
+         <formulario>edicion</formulario>
+      </botones> 
+    
+	<botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agrega_carrera(document.edicion)</funcion>
+	</botones> 
+    
+	  <botones nombre="SALIR">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>	
+	
+	  <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones> 
+	
+	 <botones nombre="excel_general">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel Datos Generales</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones> 	
+ 
+ </parametro>
+  
+  <parametro formulario="btn_agregar_carrera">
+    <botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agregar(document.editar)</funcion>
+	</botones> 
+    <botones nombre="GUARDAR"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agregar(document.editar)</funcion>
+	</botones> 	
+  <botones nombre="SALIR"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>salir(document.edicion)</funcion>
+	</botones> 
+ </parametro>
+
+
+ 	<parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8"
+	 paginaEdicion="agregar_carrera_ing.asp?car_ing_ncorr=%car_ing_ncorr%" 
+	 
+	 formulario="tabla" eliminar="true" clave="car_ing_ncor" nroRegistros="10" maxLista="10"
+	 mensajeError="No Existen Datos Para Los Parámetros De Búsqueda." 
+	 colorBase="#F1F1E4" editar="true" 	anchoTabla="98%" variable="em" nuevaVentana="true" nuevaVentanaAlto="500" nuevaVentanaAncho="650" >
+	<tablas nombre="carreras" accion="B"/>
+
+	<campos nombre="cod_carrera_ing">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Código</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	<campos nombre="nom_carrera_ing">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nombre</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	</parametro>
+
+	<parametro colorSeleccionado="99FFFF" variable="em" colorResaltado="#DCDCB8" paginaEdicion="" 
+		 formulario="tabla_valores" eliminar="true" clave="mall_ccod" colorBase="#F1F1E4" editar="true"
+		 mensajeError="No Existen Datos Para Los Parámetros De Búsqueda." 
+			anchoTabla="98%"  nuevaVentana="true">
+		
+		<campos nombre="carr_ccod">
+         <tipo>select</tipo>
+         <destino>carreras</destino>
+         <union>carr_ccod</union>
+         <salida>carr_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <mensajeNulo>SIN ASIGNAR</mensajeNulo>
+         <mensajeVacio>SIN ASIGNAR</mensajeVacio>
+		 <anulable>TRUE</anulable>
+         <columnas>4</columnas>
+       </campos>
+		 
+		<campos nombre="jorn_ccod">
+         <tipo>select</tipo>
+         <destino>jornadas</destino>
+         <union>jorn_ccod</union>
+         <salida>jorn_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <mensajeNulo>SIN ASIGNAR</mensajeNulo>
+         <mensajeVacio>SIN ASIGNAR</mensajeVacio>
+		 <anulable>TRUE</anulable>
+         <columnas>4</columnas>
+       </campos>
+	   
+	   <campos nombre="anos_ccod">
+         <tipo>select</tipo>
+         <destino>anos</destino>
+         <union>anos_ccod</union>
+         <salida>anos_ccod</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <mensajeNulo>SIN ASIGNAR</mensajeNulo>
+         <mensajeVacio>SIN ASIGNAR</mensajeVacio>
+		 <anulable>TRUE</anulable>
+         <columnas>4</columnas>
+		 <orden></orden>
+       </campos>
+		
+		 <campos nombre="arancel_ext">
+         <tipo>input</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>7</caracteres>
+		 <maxCaracteres>8</maxCaracteres>
+		 <id>NU-S</id>
+       </campos>	
+	</parametro>
+	
+	
+	 <parametro formulario="f_ingreso" variable="em">
+   		<listas nombre="lBusqueda">
+			<item clave="anos_ccod" valor="anos_ccod" />
+			<item clave="jorn_ccod" valor="jorn_tdesc" />
+			<item clave="carr_ccod" valor="carr_tdesc" />
+		</listas>
+		<campos nombre="anos_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="jorn_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+  </parametro>
+	
+  <parametro formulario="mantiene_aranceles_ext" variable="em">
+      <tablas nombre="ufe_aranceles_ext" accion="M"/>
+   </parametro>
+
+  <parametro formulario="eliminar_aranceles_ext" variable="em">
+      <tablas nombre="ufe_aranceles_ext" accion="B"/>
+   </parametro>
+  
+  <parametro formulario="datos_extras" variable="em">
+	    <listas nombre="lBusqueda">
+			<item clave="acar_ccod" valor="acar_tdesc" />
+			<item clave="saca_ccod" valor="saca_tdesc" />
+		</listas>
+		<campos nombre="acar_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="saca_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+	</parametro>
+	 
+	 
+	 	<parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8"
+	 paginaEdicion="agregar_aranceles_ext.asp?aran_ccor=%aran_ccor%" 
+	 formulario="tabla" eliminar="true" clave="eliminar" nroRegistros="10" maxLista="10"
+	 mensajeError="No Existen Datos Para Los Parámetros De Búsqueda." 
+	 colorBase="#F1F1E4" editar="true" 	anchoTabla="98%" variable="em" nuevaVentana="true" nuevaVentanaAlto="500" nuevaVentanaAncho="800" >
+	<tablas nombre="carreras" accion="B"/>
+	
+	<campos nombre="aran_ccor">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+	</campos>
+	
+	<campos nombre="carr_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Carrera</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	<campos nombre="jorn_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Jornada</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	<campos nombre="anos_ccod">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Año</descripcion>
+			<alineamiento>left</alineamiento>
+			<orden>anos_ccod desc</orden>
+	</campos>
+	
+	<campos nombre="arancel_ext">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Arancel</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	
+	</parametro>
+
+
+</Parametros>

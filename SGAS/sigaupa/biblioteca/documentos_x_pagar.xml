@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+<parametro formulario="botonera">
+ 	<botones nombre="buscar_cajas"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	  <soloUnClick>TRUE</soloUnClick>
+   </botones>
+   <botones nombre="salir"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	<botones nombre="eliminar">
+		 <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Eliminar</texto>
+		 <accion>NAVEGAR</accion>
+		 <url>javascript:EliminaDetalle();</url>
+	</botones>
+	<botones nombre="guardar">
+		 <tipoTexto>GUARDAR</tipoTexto>
+		 <accion>GUARDAR</accion>
+		 <url>vb_jefe_directo_proc.asp</url>
+		 <formulario>datos</formulario>
+	</botones>	
+    <botones nombre="buscar">
+		 <tipoTexto>BUSCAR</tipoTexto>
+		 <accion>BUSCAR</accion>
+		 <formulario>buscador</formulario>
+		 <soloUnClick>TRUE</soloUnClick>
+	  </botones>
+</parametro>
+
+<parametro formulario="buscador" variable="busqueda">
+	<campos nombre="solicitud">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-S</id>
+	</campos>
+	<campos nombre="pers_nrut">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-S</id>
+	</campos>
+	<campos nombre="pers_xdv">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>1</caracteres>
+		<maxCaracteres>1</maxCaracteres>
+		<id>LN-S</id>
+		<script>onBlur="this.value=this.value.toUpperCase();"</script>
+	</campos>	
+	<campos nombre="pers_tnombre">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>23</caracteres>
+		<maxCaracteres>22</maxCaracteres>
+	</campos>
+	<campos nombre="tsol_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todos</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>ocag_tipo_solicitud</destino>
+		  <union>tsol_ccod</union>
+         <salida>tsol_tdesc</salida>
+		 <orden>tsol_ccod</orden>
+		 <id>NU-S</id>
+      </campos>
+	  <campos nombre="v_paso">
+	  	<tipo>INPUT</tipo>
+	  	<permiso>OCULTO</permiso>
+	  </campos>
+	  <campos nombre="marca">
+	  	<tipo>INPUT</tipo>
+	  	<permiso>OCULTO</permiso>
+	  </campos>
+</parametro>
+
+<parametro formulario="datos_solicitud" variable="datos" clave="cod_solicitud" anchoTabla="100%" 
+mensajeError="No hay solicitudes que cumplan la condición de esta aprobadas por presupuesto" >
+		<tablas nombre="ocag_autoriza_solicitud_giro" accion="M"/>
+		<campos nombre="tsol_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Tipo</descripcion>
+		</campos>
+		<campos nombre="num_solicitud">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>N° Docto</descripcion>
+		</campos>
+		<campos nombre="fecha_solicitud">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>12</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>FE-N</id>
+			 <descripcion>Fecha Solicitud</descripcion>
+		</campos>
+		<campos nombre="monto">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>12</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <descripcion>Monto</descripcion>
+		</campos>			
+		<campos nombre="usuario">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Solicitante</descripcion>
+		</campos>
+		<campos nombre="etapa">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Etapa</descripcion>
+		</campos>
+		<campos nombre="fecha_cambio">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Fecha Cambio</descripcion>
+		</campos>				
+		<campos nombre="solicitud">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Solicitud</descripcion>
+		</campos>
+		<campos nombre="fecha_pago">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>12</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>FE-N</id>
+			 <descripcion>Fecha Pago</descripcion>
+		</campos>		
+</parametro> 
+
+</Parametros>

@@ -1,0 +1,157 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>ValidaFormBusqueda();</funcionValidacion>
+      </botones>
+      <botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>ACTUALIZAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_autorizacion_descuentos.asp</url>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="aceptar">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>guardar</accion>
+         <url>proc_agregar_beca_mineduc.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="cancelar">
+         <tipoTexto>CANCELAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>	  
+   </parametro>
+   
+   <parametro formulario="busqueda" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>LN-N</id>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+      </campos>
+      <campos nombre="post_ncorr">
+         <tipo>SELECT</tipo>
+		 <destino>(Select ) a</destino>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <union>post_ncorr</union>
+		 <salida>carrera</salida>
+		 <columnas>2</columnas>
+		 <anulable>false</anulable>
+		 <mensajeNulo>Seleccione una carrera</mensajeNulo>
+		 <mensajeVacio>No hay carreras</mensajeVacio>
+		 <estilo>anchofijo</estilo>
+		 <id>TO-S</id>
+      </campos>
+   </parametro>
+   
+   <parametro paginaEdicion="agregar_beca_mineduc.asp?post_ncorr=%post_ncorr%&amp;ofer_ncorr=%ofer_ncorr%&amp;stde_ccod=%stde_ccod%" nuevaVentanaAlto="310" 
+   formulario="descuentos" nuevaVentanaAncho="500" resumen="TRUE" mensajeError="No hay datos de becas ingresadas para este postulante." seleccionarTodo="TRUE" editar="TRUE" anchoTabla="100%" nuevaVentana="TRUE" variable="descuentos">
+      <tablas nombre="sdescuentos" accion="M"/>
+      <campos nombre="post_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="stde_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ofer_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="stde_tdesc">
+         <descripcion>Descuento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="monto_bene">
+         <descripcion>Monto Beca</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ano_adjudicacion">
+         <descripcion>Adjudicacion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="observacion">
+         <descripcion>Observacion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+
+ <parametro formulario="agregar_beca"  variable="descuentos">
+      <tablas nombre="sdescuentos" accion="M"/>
+      <campos nombre="post_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ofer_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="stde_ccod">
+         <descripcion>Tipo Descuento</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>stipos_descuentos</destino>
+         <union>stde_ccod</union>
+         <salida>stde_tdesc</salida>
+         <orden>stde_tdesc asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione descuento</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="stde_tdesc">
+         <descripcion>Descuento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+      <campos nombre="monto_bene">
+         <descripcion>Monto Beca</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+		 <maxCaracteres>7</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+      <campos nombre="ano_adjudicacion">
+         <descripcion>Adjudicacion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+		 <maxCaracteres>4</maxCaracteres>
+		 <caracteres>5</caracteres>
+		  <id>NU-N</id>
+      </campos>
+      <campos nombre="observacion">
+         <descripcion>Observacion</descripcion>
+		 <caracteres>50</caracteres>
+		 <filas>5</filas>
+         <tipo>TEXTAREA</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+
+   
+</Parametros>

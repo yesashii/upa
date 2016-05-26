@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>ValidaBusqueda();</funcionValidacion>
+      </botones>
+      <botones nombre="pagar_normal">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Pagar</texto>
+         <url>edicion_pago.asp</url>
+         <funcionValidacion>valida_pagos(this.form)</funcionValidacion>
+         <formulario>edicion</formulario>
+         <accion>GUARDAR</accion>
+         <target>ventana</target>
+      </botones>
+      <botones nombre="pagar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Pagar</texto>
+         <url>calcular_intereses.asp</url>
+         <funcionValidacion>valida_pagos(this.form)</funcionValidacion>
+         <formulario>edicion</formulario>
+         <accion>GUARDAR</accion>
+         <target>ventana</target>
+      </botones>
+	  <botones nombre="repactar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Documentar</texto>
+         <url>agregar_repactacion.asp</url>
+         <funcionValidacion>valida_pagos(this.form)</funcionValidacion>
+         <formulario>edicion</formulario>
+         <accion>GUARDAR</accion>
+         <target>ventana</target>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="agregar">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>agregar</accion>
+         <url>agregar_cargo.asp</url>
+         <alto>500</alto>
+         <ancho>800</ancho>
+         <posicionX>100</posicionX>
+         <posicionY>100</posicionY>
+          <scroll>TRUE</scroll>
+      </botones>
+	  <botones nombre="agregar_multa">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>agregar</accion>
+         <url>agregar_multa.asp</url>
+         <alto>350</alto>
+         <ancho>600</ancho>
+         <posicionX>100</posicionX>
+         <posicionY>100</posicionY>
+          <scroll>TRUE</scroll>
+      </botones>
+      <botones nombre="agregar_pactacion">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Agregar Curso</texto>
+         <accion>AGREGAR</accion>
+         <url>agregar_persona_pactacion.asp</url>
+         <alto>500</alto>
+         <ancho>850</ancho>
+         <posicionX>100</posicionX>
+         <posicionY>100</posicionY>
+         <scroll>TRUE</scroll>
+      </botones>
+   </parametro>
+   <parametro formulario="busqueda" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>LN-N</id>
+      </campos>
+   </parametro>
+</Parametros>

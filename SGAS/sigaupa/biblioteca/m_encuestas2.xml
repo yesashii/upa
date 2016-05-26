@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>	
+	<parametro formulario="botonera">
+		<botones nombre="buscar"> 
+      		<tipoTexto>BUSCAR</tipoTexto>
+	  		<accion>JAVASCRIPT</accion>
+			<funcion>buscar(document.buscador);</funcion>
+	   		<soloUnClick>TRUE</soloUnClick>
+		</botones>	
+		<botones nombre="eliminar"> 
+      		<tipoTexto>ELIMINAR</tipoTexto>
+	  		<accion>eliminar</accion>
+	  		<formulario>f_encuestas</formulario>
+			<url>eliminar_encuestas2.asp</url>
+		</botones>
+		<botones nombre="agregar"> 
+      		<tipoTexto>AGREGAR</tipoTexto>
+	  		<accion>AGREGAR</accion>
+	  		<url>edita_encuestas2.asp</url>
+			 <posicionX>150</posicionX>
+    	     <posicionY>150</posicionY>
+       		 <ancho>600</ancho>
+         	 <alto>380</alto>
+		</botones>
+		<botones nombre="grabar"> 
+      		<tipoTexto>GUARDAR</tipoTexto>
+	  		<accion>JAVASCRIPT</accion>
+			<formulario>edicion</formulario>
+			<funcion>validar();</funcion>
+			<soloUnClick>TRUE</soloUnClick>			
+		</botones>
+	 <botones nombre="cerrar_actualizar"> 
+       <tipoTexto>CANCELAR</tipoTexto>
+       <accion>JAVASCRIPT</accion>
+	   <funcion>Salir();</funcion>	   
+	</botones>
+	<botones nombre="cerrar"> 
+      		<tipoTexto>CERRAR</tipoTexto>
+	  		<accion>JAVASCRIPT</accion>
+			<funcion>cerrar();</funcion>
+	   		<soloUnClick>TRUE</soloUnClick>
+		</botones>
+		<botones nombre="limpiar"> 
+      		<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Limpiar</texto>		
+	  		<accion>JAVASCRIPT</accion>
+	  		<funcion>limpiar();</funcion>	   		
+		</botones>
+		<botones nombre="SALIR">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>	
+	</parametro>
+			
+	<parametro colorResaltado="#DCDCB8"
+	colorSeleccionado="99FFFF" paginaEdicion="" formulario="f_tabla" nroRegistros="10" agregar="false"  nuevaVentanaAncho="" 
+			eliminar="true" maxLista="10"
+	clave ="encu_ncorr" mensajeError="No existen encuestas creadas" colorBase="#F1F1E4" seleccionarTodo="TRUE" 
+			 anchoTabla="100%" editar="false" nuevaVentana="true"  variable="mm">
+	    <campos nombre="codigo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>left</alineamiento>
+			<descripcion>Código</descripcion>
+		</campos>
+		<campos nombre="nombre">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>left</alineamiento>
+			<descripcion>Nombre</descripcion>
+		</campos>
+		<campos nombre="f_creacion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>left</alineamiento>
+			<descripcion>Fec. Creación</descripcion>
+		</campos>
+		<campos nombre="f_activacion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>left</alineamiento>
+			<descripcion>Fec. Activación</descripcion>
+		</campos>
+		<campos nombre="f_expiracion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>left</alineamiento>
+			<descripcion>Fec. Expiración</descripcion>
+		</campos>
+		<campos nombre="personalizado">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>left</alineamiento>
+			<descripcion>Personalizar</descripcion>
+		</campos>
+	</parametro>	
+	
+	
+	<parametro formulario="f_filtros"  variable="m" clave ="encu_ncorr" 
+	eliminar="false" editar="false" agregar="false" nuevaVentana="false" anchoTabla="100%"  paginaEdicion="">
+	<campos nombre="encu_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<alineamiento>left</alineamiento>
+			<caracteres>15</caracteres>
+			<maxCaracteres>10</maxCaracteres>
+			<script>onBlur="this.value=this.value.toUpperCase();"</script>			
+			<id>TO-N</id>
+	</campos>
+	<campos nombre="dia_creacion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<alineamiento>left</alineamiento>
+			<caracteres>2</caracteres>
+			<maxCaracteres>2</maxCaracteres>
+			<script>readOnly</script>			
+	</campos>
+	<campos nombre="mes_creacion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<alineamiento>left</alineamiento>
+			<caracteres>2</caracteres>
+			<maxCaracteres>2</maxCaracteres>
+			<script>readOnly</script>			
+	</campos>
+	<campos nombre="ano_creacion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<alineamiento>left</alineamiento>
+			<caracteres>4</caracteres>
+			<maxCaracteres>4</maxCaracteres>
+			<script>readOnly</script>			
+	</campos>
+	<campos nombre="dia_activacion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<alineamiento>left</alineamiento>
+			<caracteres>2</caracteres>
+			<maxCaracteres>2</maxCaracteres>
+			<script>readOnly</script>			
+	</campos>
+	<campos nombre="mes_activacion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<alineamiento>left</alineamiento>
+			<caracteres>2</caracteres>
+			<maxCaracteres>2</maxCaracteres>
+			<script>readOnly</script>			
+	</campos>
+	<campos nombre="ano_activacion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<alineamiento>left</alineamiento>
+			<caracteres>4</caracteres>
+			<maxCaracteres>4</maxCaracteres>
+			<script>readOnly</script>			
+	</campos>
+	<campos nombre="dia_expiracion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<alineamiento>left</alineamiento>
+			<caracteres>2</caracteres>
+			<maxCaracteres>2</maxCaracteres>
+			<script>readOnly</script>			
+	</campos>
+	<campos nombre="mes_expiracion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<alineamiento>left</alineamiento>
+			<caracteres>2</caracteres>
+			<maxCaracteres>2</maxCaracteres>
+			<script>readOnly</script>			
+	</campos>
+	<campos nombre="ano_expiracion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<alineamiento>left</alineamiento>
+			<caracteres>4</caracteres>
+			<maxCaracteres>4</maxCaracteres>
+			<script>readOnly</script>			
+	</campos>
+	</parametro>	
+
+	<parametro formulario="f_mantiene_sucursales" 	variable="m">
+		<tablas nombre="sucursales" accion="M"/>
+</parametro>
+	<parametro formulario="f_elimina_sucursales" 	variable="m">
+		<tablas nombre="sucursales" accion="B"/>
+</parametro>
+<parametro formulario="f_combo"  variable="m" 
+	clave ="empr_ncorr" mensajeError="No existen empresas creadas"
+	colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="true" editar="true" agregar="true" nuevaVentana="true" 
+			 anchoTabla="100%" maxLista="10" nroRegistros="10" paginaEdicion="edita_empresas.asp?empr_ncorr=%empr_ncorr%"  nuevaVentanaAncho="700" nuevaVentanaAlto="300">
+		 <campos nombre="empr_ncorr">
+         <tipo>SELECT</tipo>
+         <union>empr_ncorr</union>
+         <salida>empr_tdesc</salida>
+		 <destino>empresas</destino>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+		 <mensajeNulo>Selecione Una Empresa</mensajeNulo>
+		 <script>onChange="buscar_sucursales(document.f_empresas);"</script>
+		 <orden>empr_tdesc</orden>
+      </campos>
+						
+	</parametro>
+	
+<parametro formulario="f_combo2"  variable="m" 
+	clave ="empr_ncorr" mensajeError="No existen empresas creadas"
+	colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="true" editar="true" agregar="true" nuevaVentana="true" 
+			 anchoTabla="100%" maxLista="10" nroRegistros="10" paginaEdicion="edita_empresas.asp?empr_ncorr=%empr_ncorr%"  nuevaVentanaAncho="700" nuevaVentanaAlto="300">
+		 <campos nombre="empr_ncorr">
+         <tipo>SELECT</tipo>
+         <union>empr_ncorr</union>
+         <salida>empr_tdesc</salida>
+		 <destino>empresas</destino>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+		 <mensajeNulo>Selecione Una Empresa</mensajeNulo>
+		 <filtro>empr_ncorr=%empr_ncorr%</filtro>
+		 <orden>empr_tdesc</orden>
+		 <script>onChange="buscar_sucursales(document.f_empresas);"</script>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_nueva" clave="encu_ncorr"  variable="nueva">
+	 <campos nombre="encu_ncorr">
+	  	<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="encu_ccod">
+	  	<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<maxCaracteres>10</maxCaracteres>
+		<caracteres>15</caracteres>
+		<id>TO-N</id>
+	 </campos>
+	 <campos nombre="tien_ncorr">
+         <tipo>SELECT</tipo>
+         <union>tien_ncorr</union>
+         <salida>tien_tdesc</salida>
+		 <destino>tipos_encuestas</destino>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+		 <mensajeNulo>Selecione Un tipo</mensajeNulo>
+		 <orden>tien_tdesc</orden>
+      </campos>	 
+	 <campos nombre="encu_tnombre">
+	  	<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<maxCaracteres>60</maxCaracteres>
+		<caracteres>50</caracteres>
+		<id>TO-N</id>
+	 </campos>	
+	  <campos nombre="encu_ttitulo">
+	  	<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<maxCaracteres>210</maxCaracteres>
+		<caracteres>200</caracteres>
+		<id>TO-N</id>
+	 </campos> 		 
+	 <campos nombre="encu_tinstruccion">
+		<tipo>TEXTAREA</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<maxCaracteres>1200</maxCaracteres>
+		<caracteres>1200</caracteres>
+		<id>TO-N</id>		
+	 </campos>	
+	 <campos nombre="dia_activacion">
+     	<tipo>INPUT</tipo>
+	    <permiso>LECTURAESCRITURA</permiso>
+    	<caracteres>2</caracteres>
+    	<maxCaracteres>2</maxCaracteres>
+    	<id>NU-N</id>
+	</campos>
+		<campos nombre="mes_activacion">
+     		<tipo>INPUT</tipo>
+		    <permiso>LECTURAESCRITURA</permiso>
+     		<caracteres>2</caracteres>
+     		<maxCaracteres>2</maxCaracteres>
+     		<id>NU-N</id>
+		</campos>
+		<campos nombre="ano_activacion">
+     		<tipo>INPUT</tipo>
+		    <permiso>LECTURAESCRITURA</permiso>
+     		<caracteres>4</caracteres>
+     		<maxCaracteres>4</maxCaracteres>
+     		<id>NU-N</id>
+		</campos>
+		<campos nombre="dia_expiracion">
+     		<tipo>INPUT</tipo>
+	    	<permiso>LECTURAESCRITURA</permiso>
+    		<caracteres>2</caracteres>
+    		<maxCaracteres>2</maxCaracteres>
+    		<id>NU-N</id>
+		</campos>
+		<campos nombre="mes_expiracion">
+     		<tipo>INPUT</tipo>
+		    <permiso>LECTURAESCRITURA</permiso>
+     		<caracteres>2</caracteres>
+     		<maxCaracteres>2</maxCaracteres>
+     		<id>NU-N</id>
+		</campos>
+		<campos nombre="ano_expiracion">
+     		<tipo>INPUT</tipo>
+		    <permiso>LECTURAESCRITURA</permiso>
+     		<caracteres>4</caracteres>
+     		<maxCaracteres>4</maxCaracteres>
+     		<id>NU-N</id>
+		</campos>
+	</parametro>
+  <parametro  formulario="eliminar_encuestas"  clave="encu_ncorr" agregar="true" editar="true" anchoTabla="98%" nuevaVentana="true" variable="mm">
+      <tablas nombre="encuestas" accion="B"/>
+      </parametro>			
+</Parametros>

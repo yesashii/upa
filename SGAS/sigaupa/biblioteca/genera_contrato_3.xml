@@ -1,0 +1,143 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>navegar</accion>
+         <url>genera_contrato_2.asp</url>
+      </botones>
+      <botones nombre="siguiente">
+         <tipoTexto>SIGUIENTE</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>genera_contrato_4.asp</url>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="generar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Generar</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_generar_contrato.asp</url>
+         <mensajeConfirmacion>¿Está seguro de generar contrato para este postulante?</mensajeConfirmacion>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+   </parametro>
+   <parametro formulario="encabezado" columnas="2" anchoTabla="100%" separacionColumnas="20">
+      <campos nombre="rut">
+         <descripcion>RUT Postulante</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre_completo">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="carrera">
+         <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="sede_tdesc">
+         <descripcion>Sede</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="fecha_actual">
+         <descripcion>Fecha actual</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="tabla_valores_0" anchoTabla="98%" mensajeError="Ingrese el RUT del postulante.">
+      <campos nombre="aran_mmatricula">
+         <descripcion>Matrícula</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="aran_mcolegiatura">
+         <descripcion>Arancel</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="subtotal">
+         <descripcion>Subtotal</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="total_descuentos_confirmados">
+         <descripcion>Total descuentos&lt;br&gt;autorizados</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="total_pagar">
+         <descripcion>Total a pagar</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="tabla_valores" anchoTabla="98%" variable="postulante">
+      <campos nombre="post_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="spag_mmatricula">
+         <descripcion>Total Matrícula</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="spag_mcolegiatura">
+         <descripcion>Total Arancel</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="total">
+         <descripcion>Total Contrato</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="contratos" anchoTabla="100%" mensajeError="No se han generado contratos para este postulante.">
+      <campos nombre="cont_ncorr">
+         <descripcion>Nº Interno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="econ_ccod">
+         <descripcion>Estado</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>estados_contrato</destino>
+         <union>econ_ccod</union>
+         <salida>econ_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="cont_fcontrato">
+         <descripcion>Fecha Contrato</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+   </parametro>
+</Parametros>

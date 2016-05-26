@@ -1,0 +1,42 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+<%
+'for each k in request.form
+'	response.Write(k&" = "&request.Form(k)&"<br>")
+'next
+'response.End()
+set conectar = new CConexion
+conectar.Inicializar "upacifico"
+
+set formulario = new cformulario
+formulario.carga_parametros "m_diplomados_curso.xml", "form_busca_modulos"
+formulario.inicializar conectar
+
+set negocio = new CNegocio
+negocio.Inicializa conectar
+
+formulario.procesaForm
+for i=0 to formulario.cuentaPost - 1
+	mote_ccod=formulario.obtenerValorPost(i,"mote_ccod")
+	dcur_ncorr=formulario.obtenerValorPost(i,"dcur_ncorr")
+	horas_programa=formulario.obtenerValorPost(i,"maot_nhoras_programa")
+	presupuesto=formulario.obtenerValorPost(i,"maot_npresupuesto_relator")
+	dcur_norden=formulario.obtenerValorPost(i,"dcur_norden")
+	maot_ncorr=conectar.consultauno("execute obtenersecuencia 'mallas_otec'")
+	if dcur_norden = "" or esVacio(dcur_norden) then
+		dcur_norden = "1"
+	end if
+	usuario = negocio.obtenerUsuario
+	if not EsVacio(dcur_ncorr) and not EsVacio(mote_ccod) and not EsVacio(dcur_norden) then 
+		SQL = " insert into mallas_otec (MAOT_NCORR,DCUR_NCORR,MOTE_CCOD,MAOT_NORDEN,maot_nhoras_programa,maot_npresupuesto_relator,AUDI_TUSUARIO,AUDI_FMODIFICACION)"&_
+              " values ("&maot_ncorr&","&dcur_ncorr&",'"&mote_ccod&"',"&dcur_norden&","&horas_programa&","&presupuesto&",'"&usuario&"',getDate())"
+	    
+		conectar.EstadoTransaccion conectar.EjecutaS(SQL)
+		'response.Write(SQL)
+	end if
+		
+next
+
+'response.End()
+response.Redirect(request.ServerVariables("HTTP_REFERER"))
+%>

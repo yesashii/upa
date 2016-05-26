@@ -1,0 +1,1076 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+
+<%
+set errores = new CErrores
+set pagina = new CPagina
+ 
+encu_ncorr = 12
+pers_ncorr = request.querystring("pers_ncorr")
+secc_ccod = request.querystring("secc_ccod")
+pers_ncorr_profesor = pers_ncorr
+'--------------------------------------------------------------------------
+set conectar = new cconexion
+conectar.inicializar "upacifico"
+
+set negocio = new CNegocio
+negocio.Inicializa conectar
+
+set botonera = new CFormulario
+botonera.Carga_Parametros "m_ver.xml", "botonera"
+
+
+nombre_encuesta = conectar.consultaUno("Select encu_tnombre from encuestas where cast(encu_ncorr as varchar)='"&encu_ncorr&"'")
+instruccion = conectar.consultaUno("Select encu_tinstruccion from encuestas where cast(encu_ncorr as varchar)='"&encu_ncorr&"'")
+pagina.Titulo = nombre_encuesta & " (OTEC)"
+
+
+
+set escala= new cformulario
+escala.carga_parametros "tabla_vacia.xml","tabla"
+escala.inicializar conectar
+Query_escala = "select  resp_ncorr,resp_tabrev,protic.initcap(resp_tdesc) as resp_tdesc,resp_nnota from respuestas where cast(encu_ncorr as varchar)='"&encu_ncorr&"' order by resp_norden"
+escala.consultar Query_escala
+cantid = escala.nroFilas
+'response.Write(cantid)
+set criterios= new cformulario
+criterios.carga_parametros "tabla_vacia.xml","tabla"
+criterios.inicializar conectar
+Query_criterios = "select  crit_ncorr,crit_tdesc from criterios where cast(encu_ncorr as varchar)='"&encu_ncorr&"' order by crit_norden"
+criterios.consultar Query_criterios
+cantid_criterios = criterios.nroFilas
+
+'------------------buscamos que datos vamos mostrar en el encabezado de la encuesta
+carrera=conectar.consultaUno("select protic.initCap(carr_tdesc) from secciones a, carreras b where a.carr_ccod=b.carr_ccod and cast(a.secc_ccod as varchar)='"&secc_ccod&"'")
+asignatura=conectar.consultaUno("select ltrim(rtrim(b.asig_ccod))+' ' + protic.initCap(b.asig_tdesc) from secciones a, asignaturas b where a.asig_ccod=b.asig_ccod and cast(a.secc_ccod as varchar)='"&secc_ccod&"'") 
+seccion=conectar.consultaUno("select secc_tdesc from secciones a where cast(a.secc_ccod as varchar)='"&secc_ccod&"'")
+carr_ccod=conectar.consultaUno("select carr_ccod from secciones a where cast(a.secc_ccod as varchar)='"&secc_ccod&"'")
+profesor = conectar.consultaUno("select protic.initCap(pers_tnombre + ' ' + pers_tape_paterno + ' ' +pers_tape_materno) from personas where cast(pers_ncorr as varchar)='"&pers_ncorr_profesor&"'")
+
+'response.Write("select count(distinct pers_ncorr_encuestado,secc_ccod) from resultados_encuestas where cast(pers_ncorr_destino as varchar)='"&pers_ncorr&"'")
+
+if secc_ccod <> "" then
+	cantidad_encuestas = conectar.consultaUno("select count(distinct pers_ncorr_encuestado) from encuestas_otec where cast(pers_ncorr_destino as varchar)='"&pers_ncorr&"' and cast(secc_ccod as varchar)='"&secc_ccod&"'")
+else
+	cantidad_encuestas = conectar.consultaUno("select count(*) from (select distinct pers_ncorr_encuestado,secc_ccod from encuestas_otec where cast(pers_ncorr_destino as varchar)='"&pers_ncorr&"')a")
+end if 
+'response.Write(cantidad_encuestas)
+
+pers_nrut = conectar.consultaUno("Select pers_nrut from personas where cast(pers_ncorr as varchar)='"&pers_ncorr&"'")
+pers_xdv = conectar.consultaUno("Select pers_xdv from personas where cast(pers_ncorr as varchar)='"&pers_ncorr&"'")
+
+if secc_ccod <> "" then 
+	filtro_seccion = " and cast(c.secc_ccod as varchar)='"&secc_ccod&"'"
+end if 
+
+set notas= new cformulario
+notas.carga_parametros "tabla_vacia.xml","tabla"
+notas.inicializar conectar
+Query_notas = " select d.matr_ncorr,d.secc_ccod,ltrim(rtrim(isnull(d.sitf_ccod,'SP'))) as sitf_ccod  "& vbCrLf &_ 
+			  " from bloques_profesores a, bloques_horarios b, secciones c,cargas_Academicas d  "& vbCrLf &_
+			  " where a.bloq_ccod=b.bloq_ccod   "& vbCrLf &_
+			  " and b.secc_ccod = c.secc_ccod  "& vbCrLf &_
+			  " and c.secc_ccod = d.secc_ccod  "&filtro_seccion& vbCrLf &_
+			  " and cast(a.pers_ncorr as varchar)='"&pers_ncorr&"'  "& vbCrLf &_
+			  " and a.tpro_ccod = 1  "& vbCrLf &_
+			  " and exists (select 1 from resultados_encuestas aa where aa.secc_ccod=c.secc_ccod and aa.pers_ncorr_destino = a.pers_ncorr)"
+
+
+notas.consultar Query_notas
+'response.Write("<pre>"&Query_notas&"</pre>")
+
+cantidad_secciones = conectar.ConsultaUno("select count(distinct secc_ccod) from ("&Query_notas&")a")
+'response.Write(cantidad_secciones)
+contador_total = 0
+contador_reprobados = 0
+contador_aprobados = 0
+contador_pendientes = 0
+while notas.siguiente 
+	contador_total = contador_total + 1
+	if notas.obtenerValor("sitf_ccod")="R" then
+		contador_reprobados= contador_reprobados + 1
+	elseif notas.obtenerValor("sitf_ccod")="A" then
+		contador_aprobados= contador_aprobados + 1
+	end if
+	if notas.obtenerValor("sitf_ccod")="SP" then
+		contador_pendientes= contador_pendientes + 1
+	end if		
+wend
+notas.primero
+
+sede = conectar.consultaUno("Select sede_ccod from secciones where cast(secc_ccod as varchar)='"&secc_ccod&"'")
+carr= conectar.consultaUno("Select carr_ccod from secciones where cast(secc_ccod as varchar)='"&secc_ccod&"'")
+jorn = conectar.consultaUno("Select jorn_ccod from secciones where cast(secc_ccod as varchar)='"&secc_ccod&"'")
+%>
+
+<html>
+<head>
+<title><%=pagina.Titulo%></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../estilos/estilos.css" rel="stylesheet" type="text/css">
+<link href="../estilos/tabla.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="../biblioteca/tabla.js"></script>
+<script language="JavaScript" src="../biblioteca/funciones.js"></script>
+<script language="JavaScript" src="../biblioteca/validadores.js"></script>
+<script language="JavaScript">
+function volver()
+{
+   location.href ="analisis_encuestas_otec.asp?busqueda[0][sede_ccod]="+<%=sede%>+"&busqueda[0][carr_ccod]="+<%=carr%>+"&busqueda[0][jorn_ccod]="+<%=jorn%>+"&busqueda[0][todas]=S";
+}
+
+function direccionar(valor)
+{var cadena;
+ var secc_ccod='<%=secc_ccod%>';
+ var pers_ncorr_profesor='<%=pers_ncorr_profesor%>';
+ location.href="contestar_encuesta2.asp?encu_ncorr="+valor+"&secc_ccod="+secc_ccod+"&pers_ncorr_docente="+pers_ncorr_profesor;
+}
+
+</script>
+
+
+</head>
+
+</head>
+<body bgcolor="#CC6600" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../imagenes/botones/buscar_f2.gif','../images/bot_deshabilitar_f2.gif','../images/agregar2_f2_p.gif','im&amp;#225;genes/marco1_r3_c2_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c4_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c6_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c8_f2.gif');MM_preloadImages('../imagenes/botones/cargar_f2.gif','../imagenes/botones/continuar_f2.gif')">
+<table width="750" border="0" align="center" cellpadding="0" cellspacing="0">
+ <tr>
+    <td height="62" valign="top"><img src="../imagenes/vineta2_r1_c1.gif" width="750" height="62" border="0"></td>
+  </tr>
+  <%pagina.DibujarEncabezado()%>  
+  <tr>
+    <td valign="top" bgcolor="#EAEAEA">
+	<br>
+	<%if encu_ncorr <> "" then%>
+	<form name="edicion">
+		<% 'response.Write("Select Count(*) from resultados_encuestas where cast(pers_ncorr_encuestado as varchar)='"&pers_ncorr&"' and cast(secc_ccod as varchar)='"&secc_ccod&"' and cast(pers_ncorr_destino as varchar)='"&pers_ncorr_profesor&"'")
+		  if secc_ccod <> "" then
+		  	contestada = conectar.consultaUno("Select Count(*) from encuestas_otec where cast(secc_ccod as varchar)='"&secc_ccod&"' and cast(pers_ncorr_destino as varchar)='"&pers_ncorr_profesor&"'")
+		  else
+		  	contestada = conectar.consultaUno("Select Count(*) from encuestas_otec where cast(pers_ncorr_destino as varchar)='"&pers_ncorr_profesor&"'")
+		  end if 
+		%>
+	  <table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+             <tr>
+                <td><img src="../imagenes/spacer.gif" width="9" height="1" border="0" alt=""></td>
+                <td><img src="../imagenes/spacer.gif" width="559" height="1" border="0" alt=""></td>
+                <td><img src="../imagenes/spacer.gif" width="7" height="1" border="0" alt=""></td>
+              </tr>
+              <tr>
+                <td><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+                <td><img src="../imagenes/top_r1_c2.gif" alt="" name="top_r1_c2" width="670" height="8" border="0"></td>
+                <td><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+              </tr>
+              </table>
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" aling="center">
+                <tr>
+                  <td width="9" align="left" background="../imagenes/izq.gif">&nbsp;</td>
+                  <td bgcolor="#D8D8DE">			        <div align="center">
+                      <%pagina.DibujarTituloPagina%>
+                      <BR>
+                      <table width="100%"  border="0" align="center">
+                        <tr> 
+                          <td colspan="3">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="3">
+							<table width="100%" border="0">
+								 <%if secc_ccod <> "" then%>
+								  <tr> 
+									<td width="18%" align="left"><strong>Escuela</strong> </td>
+									<td width="1%"><strong>:</strong></td>
+									<td width="38%" align="left"><font color="#CC0000"><%=carrera%></font></td>
+									<td width="14%" align="right"><strong>Secci&oacute;n</strong></td>
+									<td width="2%"><strong>:</strong></td>
+									<td colspan="3" align="left"><font color="#CC0000"><%=seccion%></font></td>
+								  </tr>
+  								  <tr> 
+									<td width="18%" align="left"><strong>Asignatura</strong></td>
+									<td width="1%"><strong>:</strong></td>
+									<td width="38%" align="left"><font color="#CC0000"><%=asignatura%></font></td>
+									<td width="14%" align="right"><strong>Cant. Alumnos</strong></td>
+									<td width="2%"><strong>:</strong></td>
+									<td colspan="3" align="left"><font color="#CC0000"><%=cantidad_encuestas%></font></td>
+								  </tr>
+								  <%end if%>
+								   <tr> 
+									<td width="18%" align="left"><strong>Profesor</strong> </td>
+									<td width="1%"><strong>:</strong></td>
+									<td colspan="6" align="left"><strong><font color="#CC0000"><%=profesor%></font></strong></td>
+								  </tr>
+						    </table>
+							</td>
+						</tr>
+						<tr>  
+						  <td colspan="3" height="20"></td>
+						</tr> 
+						<%if cantid > "0" then
+						  while escala.siguiente
+								abrev = escala.obtenervalor("resp_tabrev")
+								texto= escala.obtenervalor("resp_tdesc")
+								puntos= escala.obtenervalor("resp_nnota")						
+						%> 
+						<tr>  
+						   <td width="3%"><div align="left"><strong><%=abrev%></strong></div></td>
+  						   <td width="3%"><strong><center>:</center></strong></td>
+						   <td width="94%"><div align="left"><strong><%=texto%></strong></div></td>
+						</tr>
+						<%
+						wend
+						end if
+						%>
+						
+                      </table>
+                   <table width="100%" border="0">
+						  <tr> 
+							<td width="5%"> 
+							</td>
+							<td width="6%">&nbsp; </td>
+							<td width="75%">&nbsp;</td>
+							<td width="14%">&nbsp;</td>
+						  </tr>
+					  </table>
+                       <table width="100%"  border="0" align="center">
+                       <%if cantid_criterios >"0" then
+					        contador=1
+							acumulado_total = 0
+						  	while criterios.siguiente
+									ncorr = criterios.obtenervalor("crit_ncorr")
+									'response.Write("ncorr= "&ncorr&" ")
+									titulo= criterios.obtenervalor("crit_tdesc")						
+							%>  
+							<tr> 
+                          		<td colspan="3"><font color="#CC0000"><strong><%=titulo%></strong></font></td>
+						  		
+						  		<%if cantid >"0" then
+						  			escala.Primero
+						  			while escala.siguiente
+										abrev = escala.obtenervalor("resp_tabrev")%>
+										<td width="20"><strong><center><font color="#CC0000">
+						  				<%response.Write(abrev)		
+										%></font></center></strong>
+										</td>
+										<td width="20"><strong><center><font color="#CC0000">
+						  				<%response.Write("P")		
+										%></font></center></strong>
+										</td>
+									<%wend%>
+							    <%end if%>
+							<td width="2">&nbsp;</td>	
+							</tr>
+							<%
+							set preguntas= new cformulario
+							preguntas.carga_parametros "tabla_vacia.xml","tabla"
+							preguntas.inicializar conectar
+							Query_preguntas = "select  preg_ncorr,preg_ccod,protic.initCap(preg_tdesc) as preg_tdesc,preg_norden from preguntas where cast(crit_ncorr as varchar)='"&ncorr&"' order by preg_norden"
+							preguntas.consultar Query_preguntas
+							cantid_preguntas = preguntas.nroFilas
+							'response.Write("ncorr= "&ncorr&" cantidad_preguntas "&cantid_preguntas)
+								if cantid_preguntas >"0" then
+						  			while preguntas.siguiente
+									    'response.Write("sql= "&Query_preguntas)
+										orden = preguntas.obtenervalor("preg_norden")
+										pregunta= preguntas.obtenervalor("preg_tdesc")						
+										ccod=preguntas.obtenervalor("preg_ccod")						
+										preg_ncorr=preguntas.obtenervalor("preg_ncorr")						
+										%>  
+										<tr> 
+                          				<td width="18" align="right"><strong><%=contador%></strong></td>
+										<td width="17"><%=".-"%></td>
+										<td width="591"><%=pregunta%></td>
+						  
+						  				<%if cantid >"0" then
+						  					escala.Primero
+											acumulado = 0
+											
+						  					while escala.siguiente%>
+											 <td width="20"><center>
+											   <%if contestada <> 0 then
+														if secc_ccod <> "" then 
+															respuesta = conectar.consultaUno("Select count(distinct pers_ncorr_encuestado) from encuestas_otec where cast(secc_ccod as varchar)='"&secc_ccod&"' and cast(pers_ncorr_destino as varchar)='"&pers_ncorr_profesor&"' and cast(preg_"&contador&" as varchar)='"&escala.obtenervalor("resp_ncorr")&"'")  
+														else
+															respuesta = conectar.consultaUno("Select count(distinct pers_ncorr_encuestado) from encuestas_otec where cast(pers_ncorr_destino as varchar)='"&pers_ncorr_profesor&"' and cast(preg_"&contador&" as varchar)='"&escala.obtenervalor("resp_ncorr")&"'")  
+														end if%>
+														
+														<%if respuesta > "0" then 
+														  	response.Write("<strong>"&respuesta&"</strong>")
+															puntaje = escala.obtenervalor("resp_nnota")
+															acumulado = (cint(puntaje) * cint(respuesta))
+														  else
+														  	response.Write(respuesta)
+														  end if%>
+														
+												  <%end if
+												   %>
+											   </center></td>
+											   <td width="20"><strong><center><font color="#CC0000">
+													<% 'acumulado = formatNumber(cdbl((cint(respuesta) * 100) / cint(cantidad_encuestas)),1)
+													   if acumulado > 0 then 
+													   		response.Write(acumulado)
+													   else
+													   		response.Write(0)
+													   end if		
+													   acumulado = 0
+													%></font></center></strong>
+												</td>
+											<%wend%>
+									    <%end if%>
+										<td width="2">&nbsp;</td>	
+										</tr>
+									<%contador=contador+1 
+									  acumulado_total = acumulado_total + acumulado
+									wend
+								end if
+								Query_preguntas=""%>
+								
+
+							<%wend 
+							end if
+							%>
+							<tr>
+							    <td colspan="13">&nbsp;</td>
+							</tr>
+							<tr>
+							    <td colspan="13"><hr></td>
+							</tr>
+							<tr>
+							    <td colspan="13">&nbsp;</td>
+							</tr>
+							<tr>
+							    <td colspan="13" align="left"><%pagina.dibujarSubTitulo "Dimensión Eficacia global del Docente"%></td>
+							</tr>
+				            <tr> 
+                          		<td colspan="3"><font color="#CC0000"><strong><%=titulo%></strong></font></td>
+						  		
+						  		<%
+								   total1=0
+								   total2=0
+								   total3=0
+								   total4=0
+								   total5=0
+								   total_dimension_1=0
+								   if cantid >"0" then
+						  			escala.Primero
+						  			while escala.siguiente
+										abrev = escala.obtenervalor("resp_tabrev")%>
+										<td width="20"><strong><center><font color="#CC0000">
+						  				<%response.Write(abrev)		
+										%></font></center></strong>
+										</td>
+										<td width="20"><strong><center><font color="#CC0000">
+						  				<%response.Write("P")		
+										%></font></center></strong>
+										</td>
+									<%wend%>
+							<%end if%>
+							<td width="2">&nbsp;</td>	
+							</tr>
+							<%if cantid_criterios >"0" then
+					        contador=1
+							acumulado_total = 0
+							criterios.primero
+						  	while criterios.siguiente
+									ncorr = criterios.obtenervalor("crit_ncorr")
+									'response.Write("ncorr= "&ncorr&" ")
+									titulo= criterios.obtenervalor("crit_tdesc")	
+									
+							set preguntas= new cformulario
+							preguntas.carga_parametros "tabla_vacia.xml","tabla"
+							preguntas.inicializar conectar
+							Query_preguntas = "select  preg_ncorr,ltrim(rtrim(preg_ccod)) as preg_ccod,protic.initCap(preg_tdesc) as preg_tdesc,preg_norden from preguntas where cast(crit_ncorr as varchar)='"&ncorr&"' order by preg_norden"
+							preguntas.consultar Query_preguntas
+							cantid_preguntas = preguntas.nroFilas
+							'response.Write("ncorr= "&ncorr&" cantidad_preguntas "&cantid_preguntas)
+								if cantid_preguntas >"0" then
+						  			while preguntas.siguiente
+									    'response.Write("sql= "&Query_preguntas)
+										orden = preguntas.obtenervalor("preg_norden")
+										pregunta= preguntas.obtenervalor("preg_tdesc")						
+										ccod=preguntas.obtenervalor("preg_ccod")						
+										preg_ncorr=preguntas.obtenervalor("preg_ncorr")						
+										if (orden = "1" or orden = "2" or orden = "3" or orden = "4" or orden = "11" or orden = "16"  or  orden = "17") then%>  
+										<tr> 
+                          				<td width="18" align="right"><strong><%=orden%></strong></td>
+										<td width="17"><%=".-"%></td>
+										<td width="591"><%=pregunta%></td>
+						  
+						  				<%if cantid >"0" then
+						  					escala.Primero
+											acumulado = 0
+											
+						  					while escala.siguiente%>
+											 <td width="20"><center>
+											   <%if contestada <> 0 then
+												    if secc_ccod <> "" then 
+												        respuesta = conectar.consultaUno("Select count(distinct pers_ncorr_encuestado) from encuestas_otec where cast(secc_ccod as varchar)='"&secc_ccod&"' and cast(pers_ncorr_destino as varchar)='"&pers_ncorr_profesor&"' and cast(preg_"&orden&" as varchar)='"&escala.obtenervalor("resp_ncorr")&"'")  
+													else
+														respuesta = conectar.consultaUno("Select count(distinct pers_ncorr_encuestado) from encuestas_otec where cast(pers_ncorr_destino as varchar)='"&pers_ncorr_profesor&"' and cast(preg_"&orden&"resp_ncorr as varchar)='"&escala.obtenervalor("resp_ncorr")&"'")  
+													end if%>
+													
+													<%if respuesta > "0" then 
+														  	response.Write("<strong>"&respuesta&"</strong>")
+															puntaje = escala.obtenervalor("resp_nnota")
+															acumulado = (cint(puntaje) * cint(respuesta))
+														  else
+														  	response.Write(respuesta)
+														  end if%>
+														
+												  <%end if
+												  %>
+											   </center></td>
+											   <td width="20"><strong><center><font color="#CC0000">
+													<% 'acumulado = formatNumber(cdbl((cint(respuesta) * 100) / cint(cantidad_encuestas)),1)
+													   if acumulado > 0 then 
+													   		response.Write(acumulado)
+													   else
+													   		response.Write(0)
+													   end if	
+													   total_dimension_1= total_dimension_1 + acumulado	
+													   acumulado = 0
+													%></font></center></strong>
+												</td>
+											<%wend%>
+									    <%end if%>
+										<td width="2">&nbsp;</td>	
+										</tr>
+									<%contador=contador+1 
+									  acumulado_total = acumulado_total + acumulado
+									  end if
+									wend
+								
+								Query_preguntas=""
+								end if
+								%>
+
+							<%wend 
+							end if
+							%>
+							<tr> 
+							   <td colspan="3" align="right"><strong>Total dimensión 1 :</strong></td>
+							   <td align="left" colspan="10"><strong><%  if cdbl(cantidad_encuestas) <= 0 then 
+							                                                total_dimension_1 = 0
+                                                                         else
+																		    'total_dimension_1 =  total_dimension_1 / cantidad_encuestas
+																			total_dimension_1 =  formatnumber(cdbl(total_dimension_1 / cantidad_encuestas),2,-1,0,0)
+																		 end if	 
+							                                             response.Write(total_dimension_1)%></strong></td>
+							</tr>
+							<tr>
+							    <td colspan="13">&nbsp;</td>
+							</tr>
+							<tr>
+							    <td colspan="13" align="left"><%pagina.dibujarSubTitulo "Dimensión Aspectos Profesionales"%></td>
+							</tr>
+				            <tr> 
+                          		<td colspan="3"><font color="#CC0000"><strong><%=titulo%></strong></font></td>
+						  		
+						  		<%
+								   total1=0
+								   total2=0
+								   total3=0
+								   total4=0
+								   total5=0
+								   total_dimension_2 = 0
+								   if cantid >"0" then
+						  			escala.Primero
+						  			while escala.siguiente
+										abrev = escala.obtenervalor("resp_tabrev")%>
+										<td width="20"><strong><center><font color="#CC0000">
+						  				<%response.Write(abrev)		
+										%></font></center></strong>
+										</td>
+										<td width="20"><strong><center><font color="#CC0000">
+						  				<%response.Write("P")		
+										%></font></center></strong>
+										</td>
+									<%wend%>
+							<%end if%>
+							<td width="2">&nbsp;</td>	
+							</tr>
+							<%if cantid_criterios >"0" then
+					        contador=1
+							acumulado_total = 0
+							criterios.primero
+						  	while criterios.siguiente
+									ncorr = criterios.obtenervalor("crit_ncorr")
+									'response.Write("ncorr= "&ncorr&" ")
+									titulo= criterios.obtenervalor("crit_tdesc")	
+									
+							set preguntas= new cformulario
+							preguntas.carga_parametros "tabla_vacia.xml","tabla"
+							preguntas.inicializar conectar
+							Query_preguntas = "select  preg_ncorr,ltrim(rtrim(preg_ccod)) as preg_ccod,protic.initCap(preg_tdesc) as preg_tdesc,preg_norden from preguntas where cast(crit_ncorr as varchar)='"&ncorr&"' order by preg_norden"
+							preguntas.consultar Query_preguntas
+							cantid_preguntas = preguntas.nroFilas
+							'response.Write("ncorr= "&ncorr&" cantidad_preguntas "&cantid_preguntas)
+								if cantid_preguntas >"0" then
+						  			while preguntas.siguiente
+									    'response.Write("sql= "&Query_preguntas)
+										orden = preguntas.obtenervalor("preg_norden")
+										pregunta= preguntas.obtenervalor("preg_tdesc")						
+										ccod=preguntas.obtenervalor("preg_ccod")						
+										preg_ncorr=preguntas.obtenervalor("preg_ncorr")						
+										if (orden = "8" or orden = "13") then%>  
+										<tr> 
+                          				<td width="18" align="right"><strong><%=orden%></strong></td>
+										<td width="17"><%=".-"%></td>
+										<td width="591"><%=pregunta%></td>
+						  
+						  				<%if cantid >"0" then
+						  					escala.Primero
+											acumulado = 0
+											
+						  					while escala.siguiente%>
+											 <td width="20"><center>
+											   <%if contestada <> 0 then
+												    if secc_ccod <> "" then 
+												        respuesta = conectar.consultaUno("Select count(distinct pers_ncorr_encuestado) from encuestas_otec where cast(secc_ccod as varchar)='"&secc_ccod&"' and cast(pers_ncorr_destino as varchar)='"&pers_ncorr_profesor&"' and cast(preg_"&orden&" as varchar)='"&escala.obtenervalor("resp_ncorr")&"'")  
+													else
+														respuesta = conectar.consultaUno("Select count(distinct pers_ncorr_encuestado) from encuestas_otec where cast(pers_ncorr_destino as varchar)='"&pers_ncorr_profesor&"' and cast(preg_"&orden&"resp_ncorr as varchar)='"&escala.obtenervalor("resp_ncorr")&"'")  
+													end if%>
+													
+													<%if respuesta > "0" then 
+														  	response.Write("<strong>"&respuesta&"</strong>")
+															puntaje = escala.obtenervalor("resp_nnota")
+															acumulado = (cint(puntaje) * cint(respuesta))
+														  else
+														  	response.Write(respuesta)
+														  end if%>
+														
+												  <%end if
+												   
+												  %>
+											   </center></td>
+											   <td width="20"><strong><center><font color="#CC0000">
+													<% 'acumulado = formatNumber(cdbl((cint(respuesta) * 100) / cint(cantidad_encuestas)),1)
+													   if acumulado > 0 then 
+													   		response.Write(acumulado)
+													   else
+													   		response.Write(0)
+													   end if		
+													   total_dimension_2 = total_dimension_2 + acumulado
+													    acumulado = 0
+													%></font></center></strong>
+												</td>
+											<%wend%>
+									    <%end if%>
+										<td width="2">&nbsp;</td>	
+										</tr>
+									<%contador=contador+1 
+									  acumulado_total = acumulado_total + acumulado
+									  end if
+									wend
+								
+								Query_preguntas=""
+								end if
+								%>
+
+							<%wend 
+							end if
+							%>
+							<tr> 
+							   <td colspan="3" align="right"><strong>Total dimensión 2 :</strong></td>
+							   <td align="left" colspan="10"><strong><%if cdbl(cantidad_encuestas) <= 0 then 
+							                                                total_dimension_2 = 0
+                                                                         else
+																		    'total_dimension_2 =  total_dimension_2 / cantidad_encuestas
+																			total_dimension_2 =  formatnumber(cdbl(total_dimension_2 / cantidad_encuestas),2,-1,0,0)
+																		 end if	 
+							                                             response.Write(total_dimension_2)%></strong></td>
+							</tr>
+							<tr>
+							    <td colspan="13">&nbsp;</td>
+							</tr>
+							<tr>
+							    <td colspan="13" align="left"><%pagina.dibujarSubTitulo "Dimensión Metodología"%></td>
+							</tr>
+				            <tr> 
+                          		<td colspan="3"><font color="#CC0000"><strong><%=titulo%></strong></font></td>
+						  		
+						  		<%
+								   total1=0
+								   total2=0
+								   total3=0
+								   total4=0
+								   total5=0
+								   total_dimension_3 = 0
+								   if cantid >"0" then
+						  			escala.Primero
+						  			while escala.siguiente
+										abrev = escala.obtenervalor("resp_tabrev")%>
+										<td width="20"><strong><center><font color="#CC0000">
+						  				<%response.Write(abrev)		
+										%></font></center></strong>
+										</td>
+										<td width="20"><strong><center><font color="#CC0000">
+						  				<%response.Write("P")		
+										%></font></center></strong>
+										</td>
+									<%wend%>
+							<%end if%>
+							<td width="2">&nbsp;</td>	
+							</tr>
+							<%if cantid_criterios >"0" then
+					        contador=1
+							acumulado_total = 0
+							criterios.primero
+						  	while criterios.siguiente
+									ncorr = criterios.obtenervalor("crit_ncorr")
+									'response.Write("ncorr= "&ncorr&" ")
+									titulo= criterios.obtenervalor("crit_tdesc")	
+									
+							set preguntas= new cformulario
+							preguntas.carga_parametros "tabla_vacia.xml","tabla"
+							preguntas.inicializar conectar
+							Query_preguntas = "select  preg_ncorr,ltrim(rtrim(preg_ccod)) as preg_ccod,protic.initCap(preg_tdesc) as preg_tdesc,preg_norden from preguntas where cast(crit_ncorr as varchar)='"&ncorr&"' order by preg_norden"
+							preguntas.consultar Query_preguntas
+							cantid_preguntas = preguntas.nroFilas
+							'response.Write("ncorr= "&ncorr&" cantidad_preguntas "&cantid_preguntas)
+								if cantid_preguntas >"0" then
+						  			while preguntas.siguiente
+									    'response.Write("sql= "&Query_preguntas)
+										orden = preguntas.obtenervalor("preg_norden")
+										pregunta= preguntas.obtenervalor("preg_tdesc")						
+										ccod=preguntas.obtenervalor("preg_ccod")						
+										preg_ncorr=preguntas.obtenervalor("preg_ncorr")						
+										if (orden = "5" or orden = "6" or orden = "15") then%>  
+										<tr> 
+                          				<td width="18" align="right"><strong><%=orden%></strong></td>
+										<td width="17"><%=".-"%></td>
+										<td width="591"><%=pregunta%></td>
+						  
+						  				<%if cantid >"0" then
+						  					escala.Primero
+											acumulado = 0
+											
+						  					while escala.siguiente%>
+											 <td width="20"><center>
+											   <%if contestada <> 0 then
+												    if secc_ccod <> "" then 
+												        respuesta = conectar.consultaUno("Select count(distinct pers_ncorr_encuestado) from encuestas_otec where cast(secc_ccod as varchar)='"&secc_ccod&"' and cast(pers_ncorr_destino as varchar)='"&pers_ncorr_profesor&"' and cast(preg_"&orden&" as varchar)='"&escala.obtenervalor("resp_ncorr")&"'")  
+													else
+														respuesta = conectar.consultaUno("Select count(distinct pers_ncorr_encuestado) from encuestas_otec where cast(pers_ncorr_destino as varchar)='"&pers_ncorr_profesor&"' and cast(preg_"&orden&"resp_ncorr as varchar)='"&escala.obtenervalor("resp_ncorr")&"'")  
+													end if%>
+													
+													<%if respuesta > "0" then 
+														  	response.Write("<strong>"&respuesta&"</strong>")
+															puntaje = escala.obtenervalor("resp_nnota")
+															acumulado = (cint(puntaje) * cint(respuesta))
+														  else
+														  	response.Write(respuesta)
+														  end if%>
+														
+												  <%end if
+												   											   
+												  %>
+											   </center></td>
+											   <td width="20"><strong><center><font color="#CC0000">
+													<% 'acumulado = formatNumber(cdbl((cint(respuesta) * 100) / cint(cantidad_encuestas)),1)
+													   if acumulado > 0 then 
+													   		response.Write(acumulado)
+													   else
+													   		response.Write(0)
+													   end if	
+													   total_dimension_3 = total_dimension_3 + acumulado	
+													    acumulado = 0
+													%></font></center></strong>
+												</td>
+											<%wend%>
+									    <%end if%>
+										<td width="2">&nbsp;</td>	
+										</tr>
+									<%contador=contador+1 
+									  acumulado_total = acumulado_total + acumulado
+									  end if
+									wend
+								
+								Query_preguntas=""
+								end if
+								%>
+
+							<%wend 
+							end if
+							%>
+							<tr> 
+							   <td colspan="3" align="right"><strong>Total Dimensión 3 :</strong></td>
+							   <td align="left" colspan="10"><strong><%if cdbl(cantidad_encuestas) <= 0 then 
+							                                                total_dimension_3 = 0
+                                                                         else
+																		    'total_dimension_3 =  total_dimension_3 / cantidad_encuestas
+																			total_dimension_3 =  formatnumber(cdbl(total_dimension_3 / cantidad_encuestas),2,-1,0,0)
+																		 end if	 
+							                                             response.Write(total_dimension_3)%></strong></td>
+							</tr>
+							<tr>
+							    <td colspan="13">&nbsp;</td>
+							</tr>
+							<tr>
+							    <td colspan="13" align="left"><%pagina.dibujarSubTitulo "Dimensión Evaluación"%></td>
+							</tr>
+				            <tr> 
+                          		<td colspan="3"><font color="#CC0000"><strong><%=titulo%></strong></font></td>
+						  		
+						  		<%
+								   total1=0
+								   total2=0
+								   total3=0
+								   total4=0
+								   total5=0
+								   total_dimension_4 = 0
+								   if cantid >"0" then
+						  			escala.Primero
+						  			while escala.siguiente
+										abrev = escala.obtenervalor("resp_tabrev")%>
+										<td width="20"><strong><center><font color="#CC0000">
+						  				<%response.Write(abrev)		
+										%></font></center></strong>
+										</td>
+										<td width="20"><strong><center><font color="#CC0000">
+						  				<%response.Write("P")		
+										%></font></center></strong>
+										</td>
+									<%wend%>
+							<%end if%>
+							<td width="2">&nbsp;</td>	
+							</tr>
+							<%if cantid_criterios >"0" then
+					        contador=1
+							acumulado_total = 0
+							criterios.primero
+						  	while criterios.siguiente
+									ncorr = criterios.obtenervalor("crit_ncorr")
+									'response.Write("ncorr= "&ncorr&" ")
+									titulo= criterios.obtenervalor("crit_tdesc")	
+									
+							set preguntas= new cformulario
+							preguntas.carga_parametros "tabla_vacia.xml","tabla"
+							preguntas.inicializar conectar
+							Query_preguntas = "select  preg_ncorr,ltrim(rtrim(preg_ccod)) as preg_ccod,protic.initCap(preg_tdesc) as preg_tdesc,preg_norden from preguntas where cast(crit_ncorr as varchar)='"&ncorr&"' order by preg_norden"
+							preguntas.consultar Query_preguntas
+							cantid_preguntas = preguntas.nroFilas
+							'response.Write("ncorr= "&ncorr&" cantidad_preguntas "&cantid_preguntas)
+								if cantid_preguntas >"0" then
+						  			while preguntas.siguiente
+									    'response.Write("sql= "&Query_preguntas)
+										orden = preguntas.obtenervalor("preg_norden")
+										pregunta= preguntas.obtenervalor("preg_tdesc")						
+										ccod=preguntas.obtenervalor("preg_ccod")						
+										preg_ncorr=preguntas.obtenervalor("preg_ncorr")						
+										if (orden = "12" or orden = "19") then%>  
+										<tr> 
+                          				<td width="18" align="right"><strong><%=orden%></strong></td>
+										<td width="17"><%=".-"%></td>
+										<td width="591"><%=pregunta%></td>
+						  
+						  				<%if cantid >"0" then
+						  					escala.Primero
+											acumulado = 0
+											
+						  					while escala.siguiente%>
+											 <td width="20"><center>
+											   <%if contestada <> 0 then
+												    if secc_ccod <> "" then 
+												        respuesta = conectar.consultaUno("Select count(distinct pers_ncorr_encuestado) from encuestas_otec where cast(secc_ccod as varchar)='"&secc_ccod&"' and cast(pers_ncorr_destino as varchar)='"&pers_ncorr_profesor&"' and cast(preg_"&orden&" as varchar)='"&escala.obtenervalor("resp_ncorr")&"'")  
+													else
+														respuesta = conectar.consultaUno("Select count(distinct pers_ncorr_encuestado) from encuestas_otec where cast(pers_ncorr_destino as varchar)='"&pers_ncorr_profesor&"' and cast(preg_"&orden&"resp_ncorr as varchar)='"&escala.obtenervalor("resp_ncorr")&"'")  
+													end if%>
+													
+													<%if respuesta > "0" then 
+														  	response.Write("<strong>"&respuesta&"</strong>")
+															puntaje = escala.obtenervalor("resp_nnota")
+															acumulado = (cint(puntaje) * cint(respuesta))
+														  else
+														  	response.Write(respuesta)
+														  end if%>
+														
+												  <%end if
+												   %>
+											   </center></td>
+											   <td width="20"><strong><center><font color="#CC0000">
+													<% 'acumulado = formatNumber(cdbl((cint(respuesta) * 100) / cint(cantidad_encuestas)),1)
+													   if acumulado > 0 then 
+													   		response.Write(acumulado)
+													   else
+													   		response.Write(0)
+													   end if		
+													   total_dimension_4 = total_dimension_4 + acumulado
+													   acumulado = 0
+													%></font></center></strong>
+												</td>
+											<%wend%>
+									    <%end if%>
+										<td width="2">&nbsp;</td>	
+										</tr>
+									<%contador=contador+1 
+									  acumulado_total = acumulado_total + acumulado
+									  
+									  end if
+									wend
+								
+								Query_preguntas=""
+								end if
+								%>
+
+							<%wend 
+							end if
+							%>
+							<tr> 
+							   <td colspan="3" align="right"><strong>Total Dimensión 4 :</strong></td>
+							   <td align="left" colspan="10"><strong><%if cdbl(cantidad_encuestas) <= 0 then 
+							                                                total_dimension_4 = 0
+                                                                         else
+																		    'total_dimension_4 =  total_dimension_4 / cantidad_encuestas
+																			total_dimension_4 =  formatnumber(cdbl(total_dimension_4 / cantidad_encuestas),2,-1,0,0)
+																		 end if	 
+							                                             response.Write(total_dimension_4)%></strong></td>
+							</tr>
+							<tr>
+							    <td colspan="13">&nbsp;</td>
+							</tr>
+							<tr>
+							    <td colspan="13" align="left"><%pagina.dibujarSubTitulo "Dimensión Aspectos Personales"%></td>
+							</tr>
+				            <tr> 
+                          		<td colspan="3"><font color="#CC0000"><strong><%=titulo%></strong></font></td>
+						  		
+						  		<%
+								   total1=0
+								   total2=0
+								   total3=0
+								   total4=0
+								   total5=0
+								   total_dimension_5=0
+								   if cantid >"0" then
+						  			escala.Primero
+						  			while escala.siguiente
+										abrev = escala.obtenervalor("resp_tabrev")%>
+										<td width="20"><strong><center><font color="#CC0000">
+						  				<%response.Write(abrev)		
+										%></font></center></strong>
+										</td>
+										<td width="20"><strong><center><font color="#CC0000">
+						  				<%response.Write("P")		
+										%></font></center></strong>
+										</td>
+									<%wend%>
+							<%end if%>
+							<td width="2">&nbsp;</td>	
+							</tr>
+							<%if cantid_criterios >"0" then
+					        contador=1
+							acumulado_total = 0
+							criterios.primero
+						  	while criterios.siguiente
+									ncorr = criterios.obtenervalor("crit_ncorr")
+									'response.Write("ncorr= "&ncorr&" ")
+									titulo= criterios.obtenervalor("crit_tdesc")	
+									
+							set preguntas= new cformulario
+							preguntas.carga_parametros "tabla_vacia.xml","tabla"
+							preguntas.inicializar conectar
+							Query_preguntas = "select  preg_ncorr,ltrim(rtrim(preg_ccod)) as preg_ccod,protic.initCap(preg_tdesc) as preg_tdesc,preg_norden from preguntas where cast(crit_ncorr as varchar)='"&ncorr&"' order by preg_norden"
+							preguntas.consultar Query_preguntas
+							cantid_preguntas = preguntas.nroFilas
+							'response.Write("ncorr= "&ncorr&" cantidad_preguntas "&cantid_preguntas)
+								if cantid_preguntas >"0" then
+						  			while preguntas.siguiente
+									    'response.Write("sql= "&Query_preguntas)
+										orden = preguntas.obtenervalor("preg_norden")
+										pregunta= preguntas.obtenervalor("preg_tdesc")						
+										ccod=preguntas.obtenervalor("preg_ccod")						
+										preg_ncorr=preguntas.obtenervalor("preg_ncorr")						
+										if (orden = "7" or orden = "9" or orden = "10" or orden = "14" or orden = "18") then%>  
+										<tr> 
+                          				<td width="18" align="right"><strong><%=orden%></strong></td>
+										<td width="17"><%=".-"%></td>
+										<td width="591"><%=pregunta%></td>
+						  
+						  				<%if cantid >"0" then
+						  					escala.Primero
+											acumulado = 0
+											
+						  					while escala.siguiente%>
+											 <td width="20"><center>
+											   <%if contestada <> 0 then
+												    if secc_ccod <> "" then 
+												        respuesta = conectar.consultaUno("Select count(distinct pers_ncorr_encuestado) from encuestas_otec where cast(secc_ccod as varchar)='"&secc_ccod&"' and cast(pers_ncorr_destino as varchar)='"&pers_ncorr_profesor&"' and cast(preg_"&orden&" as varchar)='"&escala.obtenervalor("resp_ncorr")&"'")  
+													else
+														respuesta = conectar.consultaUno("Select count(distinct pers_ncorr_encuestado) from encuestas_otec where cast(pers_ncorr_destino as varchar)='"&pers_ncorr_profesor&"' and cast(preg_"&orden&"resp_ncorr as varchar)='"&escala.obtenervalor("resp_ncorr")&"'")  
+													end if%>
+													
+													<%if respuesta > "0" then 
+														  	response.Write("<strong>"&respuesta&"</strong>")
+															puntaje = escala.obtenervalor("resp_nnota")
+															acumulado = (cint(puntaje) * cint(respuesta))
+														  else
+														  	response.Write(respuesta)
+														  end if%>
+														
+												  <%end if
+												  %>
+											   </center></td>
+											   <td width="20"><strong><center><font color="#CC0000">
+													<% 'acumulado = formatNumber(cdbl((cint(respuesta) * 100) / cint(cantidad_encuestas)),1)
+													   if acumulado > 0 then 
+													   		response.Write(acumulado)
+													   else
+													   		response.Write(0)
+													   end if		
+													   total_dimension_5 = total_dimension_5 + acumulado
+													    acumulado = 0
+													%></font></center></strong>
+												</td>
+											<%wend%>
+									    <%end if%>
+										<td width="2">&nbsp;</td>	
+										</tr>
+									<%contador=contador+1 
+									  acumulado_total = acumulado_total + acumulado
+									  end if
+									wend
+								
+								Query_preguntas=""
+								end if
+								%>
+
+							<%wend 
+							end if
+							%>
+							<tr> 
+							   <td colspan="3" align="right"><strong>Total Dimensión 5 : </strong></td>
+							   <td align="left" colspan="10"><strong><%if cdbl(cantidad_encuestas) <= 0 then 
+							                                                total_dimension_5 = 0
+                                                                         else
+																		    'total_dimension_5 =  total_dimension_5 / cantidad_encuestas
+																			total_dimension_5 =  formatnumber(cdbl(total_dimension_5 / cantidad_encuestas),2,-1,0,0)
+																		 end if	 
+							                                             response.Write(total_dimension_5)%></strong></td>
+							</tr>
+							<tr>
+							   <td colspan="13" align="center">&nbsp;
+							   </td>
+							</tr>
+							<tr>
+							   <td colspan="13" align="center"><strong>PONDERACIÓN</strong>
+							   </td>
+							</tr>   
+							<tr>
+							   <td colspan="13" align="center">
+							   		<table width="70%" border="1">
+										<tr>
+										    <td width="25%" align="left"><strong>DIMENSIÓN</strong></td>
+											<td width="25%" align="left"><strong>ITEMES</strong></td>
+											<td width="10%" align="left"><strong>%</strong></td>
+											<td width="20%" align="left"><strong>Puntaje</strong></td>
+											<td width="20%" align="left"><strong>Total</strong></td>
+										</tr>
+										<tr>
+										    <td width="25%" align="left">Eficacia global del docente</td>
+											<td width="25%" align="left">1,2,3,4,11,16,17</td>
+											<td width="10%" align="left"><strong>25</strong></td>
+											<td width="20%" align="left"><%=total_dimension_1%></td>
+											<%total_d_1 = formatnumber(cdbl(total_dimension_1 * 0.25 ),2,-1,0,0) %>
+											<td width="20%" align="left"><%=total_d_1%></td>
+										</tr>
+										<tr>
+										    <td width="25%" align="left">Aspectos Profesionales</td>
+											<td width="25%" align="left">8,13</td>
+											<td width="10%" align="left"><strong>20</strong></td>
+											<td width="20%" align="left"><%=total_dimension_2%></td>
+											<%total_d_2 = formatnumber(cdbl(total_dimension_2 * 0.20 ),2,-1,0,0) %>
+											<td width="20%" align="left"><%=total_d_2%></td>
+										</tr>
+										<tr>
+										    <td width="25%" align="left">Metodología</td>
+											<td width="25%" align="left">5,6,15</td>
+											<td width="10%" align="left"><strong>20</strong></td>
+											<td width="20%" align="left"><%=total_dimension_3%></td>
+											<%total_d_3 = formatnumber(cdbl(total_dimension_3 * 0.20 ),2,-1,0,0) %>
+											<td width="20%" align="left"><%=total_d_3%></td>
+										</tr>
+										<tr>
+										    <td width="25%" align="left">Evaluación</td>
+											<td width="25%" align="left">12,19</td>
+											<td width="10%" align="left"><strong>20</strong></td>
+											<td width="20%" align="left"><%=total_dimension_4%></td>
+											<%total_d_4 = formatnumber(cdbl(total_dimension_4 * 0.20 ),2,-1,0,0) %>
+											<td width="20%" align="left"><%=total_d_4%></td>
+										</tr>
+										<tr>
+										    <td width="25%" align="left">Aspectos personales</td>
+											<td width="25%" align="left">7,9,10,14,18</td>
+											<td width="10%" align="left"><strong>15</strong></td>
+											<td width="20%" align="left"><%=total_dimension_5%></td>
+											<%total_d_5 = formatnumber(cdbl(total_dimension_5 * 0.15 ),2,-1,0,0) %>
+											<td width="20%" align="left"><%=total_d_5%></td>
+										</tr>
+										<tr>
+										    <td width="50%" align="right" colspan="3"><strong>Total :</strong></td>
+											<%total_docente = cdbl(total_d_1) + cdbl(total_d_2) + cdbl(total_d_3) + cdbl(total_d_4) + cdbl(total_d_5)
+											  if cdbl(cantidad_encuestas) <= 0 then 
+											    total_docente_promedio = 0
+											  else	
+											  	total_docente_promedio = cdbl(total_docente)' / cdbl(cantidad_encuestas)
+											  end if%>
+											<td width="50%" align="left" colspan="3"><font color="#CC0000"><strong><%=total_docente_promedio%></strong></font></td>
+     									</tr>
+										<tr>
+										    <td width="50%" align="right" colspan="3"><strong>Calificación :</strong></td>
+											<% tipo=""
+											  total_docente_promedio=cdbl(total_docente_promedio)
+											   if total_docente_promedio >= cdbl(0.0) and total_docente_promedio <= cdbl(6.80) then
+											   		tipo = "DEFICIENTE"
+											   elseif total_docente_promedio >= cdbl(6.81) and total_docente_promedio <= cdbl(13.60) then
+											   		tipo = "SUFICIENTE"
+											   elseif total_docente_promedio >= cdbl(13.61) and total_docente_promedio <= cdbl(16.55) then
+											   		tipo = "BUENO"
+											   elseif total_docente_promedio >= cdbl(16.56) then
+											   		tipo = "EXCELENTE"
+											   end if					
+											   	 %>
+											<td width="50%" align="left" colspan="3"><font color="#CC0000"><strong><%=tipo%></strong></font></td>
+     									</tr>
+									</table>
+							   </td>
+							</tr>
+							<tr>
+							   <td colspan="13" align="center">&nbsp;
+							   </td>
+							</tr>
+					  </table> 
+
+                  </div>
+				</td>
+                  <td width="7" align="right" background="../imagenes/der.gif">&nbsp;</td>
+                </tr>
+            </table>
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="9" rowspan="2"><img src="../imagenes/abajo_r1_c1.gif" width="9" height="28"></td>
+                  <td width="101" nowrap bgcolor="#D8D8DE"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tr> 
+                      <td width="50%"><%  botonera.agregaBotonParam "Volver","url","analisis_encuestas_otec.asp"
+					                      botonera.dibujaBoton "Volver" %></td>
+					  <td width="50%"><%  botonera.agregaBotonParam "excel_otec","url","observaciones_otec_excel.asp?secc_ccod="&secc_ccod&"&pers_ncorr="&pers_ncorr_profesor
+					                      botonera.dibujaBoton "excel_otec" %></td>					  
+                    </tr>
+                  </table></td>
+                  <td width="309" rowspan="2" background="../imagenes/abajo_r1_c4.gif"><img src="../imagenes/abajo_r1_c3.gif" width="12" height="28"></td>
+                  <td width="267" rowspan="2" align="right" background="../imagenes/abajo_r1_c4.gif"><img src="../imagenes/abajo_r1_c5.gif" width="7" height="28"></td>
+                </tr>
+                <tr>
+                  <td valign="bottom" bgcolor="#D8D8DE"><img src="../imagenes/abajo_r2_c2.gif" width="100%" height="8"></td>
+                </tr>
+            </table>
+			<BR>
+		  </td>
+        </tr>
+      </table>
+	  </form>
+	  <%end if%>	
+   </td>
+  </tr>  
+</table>
+</body>
+</html>

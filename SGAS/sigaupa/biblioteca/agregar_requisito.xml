@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="btn_agrega_requisito">
+   
+    <botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agrega_req(document.editar)</funcion>
+	</botones> 
+    <botones nombre="salir"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agrega_req(document.editar)</funcion>
+	</botones> 
+
+ </parametro>
+
+	<parametro formulario="agregar"  colorResaltado="#DCDCB8" colorSeleccionado="99FFFF"
+	 mensajeError="No hay requisitos por agregar o esta asignatura pertenece al Primer Nivel." 
+		anchoTabla="98%"  colorBase="#F1F1E4" variable="em" clave="asig_ccod"
+		eliminar="true" editar="false" paginaEdicion="editar_malla.asp?mall_ccod=%mall_ccod%">
+		<tablas nombre="malla_curricular" accion="M" />
+		<tablas nombre="planes_estudio" accion="M" />	
+		<tablas nombre="carreras" accion="M" />
+		<campos nombre="asig_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Código</descripcion>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="asig_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Asignatura</descripcion>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="Asig_nhoras">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Horas</descripcion>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="nive_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nivel</descripcion>
+			<caracteres>2</caracteres>
+			<maxcaracteres>2</maxcaracteres>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="nive_ccod_2">
+			<tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="treq_ccod">
+		    <tipo>SELECT</tipo>
+			<destino>tipos_requisito</destino>
+			<union>treq_ccod</union>
+			<salida>treq_tdesc</salida>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Tipo Requisito</descripcion>
+		</campos>
+	</parametro>	
+ <parametro formulario="btn_agregar_requisito">
+    <botones nombre="guardar"> 
+	  <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>cerrar()</funcion>
+	</botones> 		 
+</parametro>
+</Parametros>

@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="btn_adm_carreras">
+    
+	<botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>	 
+	</botones> 
+    
+	  <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_ofer_academica_min.asp</url>
+         <formulario>edicion</formulario>
+      </botones> 
+    
+	<botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agrega_carrera(document.edicion)</funcion>
+	</botones> 
+    
+	  <botones nombre="SALIR">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>	
+	
+	  <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones> 
+	
+	 <botones nombre="excel_general">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel Datos Generales</texto>
+         <accion>GUARDAR</accion>
+         <formulario>buscador</formulario>
+     </botones> 	
+ 
+ </parametro>
+  
+  <parametro formulario="btn_agregar_carrera">
+    <botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agregar(document.editar)</funcion>
+	</botones> 
+    <botones nombre="GUARDAR"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agregar(document.editar)</funcion>
+	</botones> 	
+  <botones nombre="SALIR"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>salir(document.edicion)</funcion>
+	</botones> 
+ </parametro>
+
+<parametro formulario="busqueda">
+
+  <campos nombre="sede_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todas las Sedes</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>sedes </destino>
+		 <filtro>sede_ccod in (1,2,4,7,8)</filtro>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+	 </campos>
+	   <campos nombre="carr_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todas las Carreras</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+        <destino>carreras</destino>
+		 <union>carr_ccod</union>
+         <salida>carr_tdesc</salida>
+		 <orden>carr_tdesc asc</orden>
+	 </campos>
+	  <campos nombre="anos_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Periodo Academico</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>anos</destino>
+		 <filtro>anos_ccod > 2004 </filtro>
+         <union>anos_ccod</union>
+         <salida>anos_tdesc</salida>
+		 <orden>anos_tdesc asc</orden>
+		 <id>NU-N</id>
+      </campos>
+</parametro>
+
+
+	<parametro colorSeleccionado="99FFFF" variable="em" colorResaltado="#DCDCB8" paginaEdicion="" 
+		 formulario="tabla_valores" eliminar="true" clave="mall_ccod" colorBase="#F1F1E4" editar="true"
+		 mensajeError="No Existen Datos Para Los Parámetros De Búsqueda." 
+			anchoTabla="98%"  nuevaVentana="true">
+		
+		<campos nombre="carr_ccod">
+         <tipo>select</tipo>
+         <destino>(select nom_carrera_min,carr_ccod from ufe_carreras_mineduc a, ufe_carreras_homologadas b
+where a.car_min_ncorr=b.car_min_ncorr)a</destino>
+         <union>carr_ccod</union>
+         <salida>nom_carrera_min</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <mensajeNulo>SIN ASIGNAR</mensajeNulo>
+         <mensajeVacio>SIN ASIGNAR</mensajeVacio>
+		  <orden>nom_carrera_min asc</orden>
+		 <anulable>TRUE</anulable>
+         <columnas>4</columnas>
+		  <id>NU-N</id>
+       </campos>
+		 
+		 <campos nombre="sede_ccod">
+         <tipo>select</tipo>
+         <destino>sedes</destino>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <mensajeNulo>SIN ASIGNAR</mensajeNulo>
+         <mensajeVacio>SIN ASIGNAR</mensajeVacio>
+		 <anulable>TRUE</anulable>
+         <columnas>4</columnas>
+		  <id>NU-N</id>
+       </campos>
+	   
+	   <campos nombre="anos_ccod">
+         <tipo>select</tipo>
+         <destino>anos</destino>
+         <union>anos_ccod</union>
+         <salida>anos_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <mensajeNulo>SIN ASIGNAR</mensajeNulo>
+         <mensajeVacio>SIN ASIGNAR</mensajeVacio>
+		 <anulable>TRUE</anulable>
+		 <filtro>anos_ccod > 2004 </filtro>
+         <columnas>4</columnas>
+		  <id>NU-N</id>
+       </campos>
+		 
+		<campos nombre="jorn_ccod">
+         <tipo>select</tipo>
+         <destino>jornadas</destino>
+         <union>jorn_ccod</union>
+         <salida>jorn_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <mensajeNulo>SIN ASIGNAR</mensajeNulo>
+         <mensajeVacio>SIN ASIGNAR</mensajeVacio>
+		 <anulable>TRUE</anulable>
+         <columnas>4</columnas>
+		  <id>NU-N</id>
+       </campos>
+	   
+	   
+		
+		 <campos nombre="ofam_nduracion">
+         <tipo>input</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>3</caracteres>
+		 <alineamiento>center</alineamiento>
+		 <maxCaracteres>2</maxCaracteres>
+		 <id>NU-N</id>
+       </campos>	
+	</parametro>
+	
+	
+	 <parametro formulario="f_ingreso" variable="em">
+   		<listas nombre="lBusqueda">
+			<item clave="anos_ccod" valor="anos_ccod" />
+			<item clave="jorn_ccod" valor="jorn_tdesc" />
+			<item clave="carr_ccod" valor="carr_tdesc" />
+		</listas>
+		<campos nombre="anos_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="jorn_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+  </parametro>
+	
+  <parametro formulario="mantiene_ofer_academica_min" variable="em">
+      <tablas nombre="ufe_oferta_academica_min" accion="M"/>
+   </parametro>
+
+  <parametro formulario="eliminar_ofer_academica_min" variable="em">
+      <tablas nombre="ufe_oferta_academica_min" accion="B"/>
+   </parametro>
+  
+  <parametro formulario="datos_extras" variable="em">
+	    <listas nombre="lBusqueda">
+			<item clave="acar_ccod" valor="acar_tdesc" />
+			<item clave="saca_ccod" valor="saca_tdesc" />
+		</listas>
+		<campos nombre="acar_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="saca_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+	</parametro>
+	 
+	 
+	 	<parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8"
+	 paginaEdicion="agregar_ofer_academica_min.asp?ofam_ncorr=%ofam_ncorr%" 
+	 formulario="tabla" eliminar="true" clave="eliminar" nroRegistros="10" maxLista="10"
+	 mensajeError="No Existen Datos Para Los Parámetros De Búsqueda." 
+	 colorBase="#F1F1E4" editar="true" 	anchoTabla="98%" variable="em" nuevaVentana="true" nuevaVentanaAlto="500" nuevaVentanaAncho="800" >
+	<tablas nombre="carreras" accion="B"/>
+	
+	<campos nombre="ofam_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+	</campos>
+	
+	<campos nombre="nom_carrera_min">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Carrera</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	
+	<campos nombre="sede_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Sede</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	
+	<campos nombre="jorn_tdesc">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Jornada</descripcion>
+			<alineamiento>left</alineamiento>
+			
+	</campos>
+	
+		
+	<campos nombre="ofam_nduracion">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Duracion (Sem)</descripcion>
+			<alineamiento>center</alineamiento>
+	</campos>
+	<campos nombre="anos_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Año</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	
+	</parametro>
+
+
+</Parametros>

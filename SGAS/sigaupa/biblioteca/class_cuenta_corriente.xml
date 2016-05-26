@@ -1,0 +1,849 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro paginaEdicion="detalle_abonos.asp?tcom_ccod=%tcom_ccod%&amp;inst_ccod=%inst_ccod%&amp;comp_ndocto=%comp_ndocto%&amp;dcom_ncompromiso=%dcom_ncompromiso%" formulario="detalle_compromisos" nroRegistros="10" nuevaVentanaAncho="700" maxLista="10" mensajeError="No existen compromisos para el alumno." editar="TRUE" anchoTabla="100%" nuevaVentana="TRUE" variable="cc_detalle_compromisos">
+      <campos nombre="comp_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="ncompromiso">
+         <descripcion>Nº Compromiso/ (contrato)</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="tcom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="tcom_tdesc">
+         <descripcion>Ítem</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ncuota">
+         <descripcion>Nº Cuota</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="comp_fdocto">
+         <descripcion>Fecha&lt;br&gt;Emisión</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="dcom_fcompromiso">
+         <descripcion>Fecha&lt;br&gt;Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="ting_ccod">
+         <descripcion>Docto.&lt;br&gt;Pactado</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <descripcion>Nº Docto.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="edin_tdesc">
+         <descripcion>Estado Doc.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="dcom_mcompromiso">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="abonos">
+         <descripcion>Abono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="documentado">
+         <descripcion>Abonos Doc.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="saldo">
+         <descripcion>Saldo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+   </parametro>
+   
+   <parametro paginaEdicion="detalle_abonos.asp?tcom_ccod=%tcom_ccod%&amp;inst_ccod=%inst_ccod%&amp;comp_ndocto=%comp_ndocto%&amp;dcom_ncompromiso=%dcom_ncompromiso%" formulario="detalle_compromisos_no_edicion" nroRegistros="10" nuevaVentanaAncho="700" maxLista="10" mensajeError="No existen compromisos para el alumno." editar="FALSE" anchoTabla="100%" nuevaVentana="TRUE" variable="cc_detalle_compromisos">
+      <campos nombre="comp_ndocto">
+         <descripcion>Nº Compromiso</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="tcom_ccod">
+         <descripcion>Ítem</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_compromisos</destino>
+         <union>tcom_ccod</union>
+         <salida>tcom_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ncuota">
+         <descripcion>Nº Cuota</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="comp_fdocto">
+         <descripcion>Fecha&lt;br&gt;Emisión</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="dcom_fcompromiso">
+         <descripcion>Fecha&lt;br&gt;Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="ting_ccod">
+         <descripcion>Docto.&lt;br&gt;Pactado</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <descripcion>Nº Docto.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="edin_tdesc">
+         <descripcion>Estado Doc.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="dcom_mcompromiso">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="abonos">
+         <descripcion>Abono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="documentado">
+         <descripcion>Abonos Doc.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="saldo">
+         <descripcion>Saldo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="compromisos_por_pagar" variable="cc_compromisos_pendientes" mensajeError="No existen compromisos por pagar para este alumno." anchoTabla="100%" eliminar="TRUE" clave="dcom_ncompromiso" seleccionarTodo="TRUE">
+      <campos nombre="tcom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="inst_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="comp_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c_comp_ndocto">
+         <descripcion>Nº Compromiso</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	   <campos nombre="tcom_tdesc">
+         <descripcion>Ítem</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ncuota">
+         <descripcion>Nº Cuota</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="comp_fdocto">
+         <descripcion>Fecha&lt;br&gt;Emisión</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="dcom_fcompromiso">
+         <descripcion>Fecha&lt;br&gt;Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="ting_ccod">
+         <descripcion>Docto.&lt;br&gt;Pactado</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <descripcion>Nº Docto.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="edin_tdesc">
+         <descripcion>Estado Doc.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="dcom_mcompromiso">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="abonos">
+         <descripcion>Abono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="documentado">
+         <descripcion>Abonos Doc.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="saldo">
+         <descripcion>A Pagar</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+   </parametro>
+
+  <parametro formulario="compromisos_por_regularizar" variable="cc_compromisos_pendientes" mensajeError="No existen compromisos para regularizar para este rut." anchoTabla="100%" eliminar="TRUE" clave="dcom_ncompromiso" seleccionarTodo="TRUE">
+      <campos nombre="tcom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="inst_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="comp_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c_comp_ndocto">
+         <descripcion>Nº Compromiso</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	   <campos nombre="tcom_tdesc">
+         <descripcion>Ítem</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ncuota">
+         <descripcion>Nº Cuota</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="comp_fdocto">
+         <descripcion>Fecha&lt;br&gt;Emisión</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="dcom_fcompromiso">
+         <descripcion>Fecha&lt;br&gt;Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="ting_ccod">
+         <descripcion>Docto.&lt;br&gt;Pactado</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <descripcion>Nº Docto.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="edin_tdesc">
+         <descripcion>Estado Doc.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="dcom_mcompromiso">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="abonos">
+         <descripcion>Abono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="documentado">
+         <descripcion>Abonos Doc.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="saldo">
+         <descripcion>A Pagar</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+   </parametro>
+
+   
+   <parametro formulario="creditos" variable="creditos" mensajeError="No hay créditos para este alumno." anchoTabla="100%" nroRegistros="10" maxLista="10">
+      <campos nombre="paga_ncorr">
+         <descripcion>Nº Pagaré</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="epag_ccod">
+         <descripcion>Estado</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>estados_pagares</destino>
+         <union>epag_ccod</union>
+         <salida>epag_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="tben_ccod">
+         <descripcion>Tipo</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_beneficios</destino>
+         <union>tben_ccod</union>
+         <salida>tben_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="bene_fbeneficio">
+         <descripcion>Fecha</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="bene_mmonto">
+         <descripcion>Crédito en $ (Periodo)</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+		 <formato>MONEDA</formato>
+      </campos>
+      <campos nombre="bene_mmonto_acum_colegiatura">
+         <descripcion>Crédito en $ (Acumulado)</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+		 <formato>MONEDA</formato>
+      </campos>
+      <campos nombre="monto_credito">
+         <descripcion>Crédito total en $</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="bene_nporcentaje">
+         <descripcion>% Crédito</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="becas_descuentos" variable="becas_descuentos" mensajeError="No hay becas y descuentos para este alumno." anchoTabla="100%" nroRegistros="10" maxLista="10">
+      <campos nombre="contrato">
+         <descripcion>Nº Contrato</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="tben_ccod">
+         <descripcion>Tipo</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_beneficios</destino>
+         <union>tben_ccod</union>
+         <salida>tben_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="stde_tdesc">
+         <descripcion>Beneficio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="bene_fbeneficio">
+         <descripcion>Fecha</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="bene_mmonto">
+         <descripcion>Monto Beneficio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+      </campos>
+      <campos nombre="bene_nporcentaje_matricula">
+         <descripcion>% (Matrícula)</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="bene_nporcentaje_colegiatura">
+         <descripcion>% (Colegiatura)</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="resumen_compromisos" anchoTabla="100%" mensajeError="Ingrese el RUT del alumno.">
+      <campos nombre="total_compromisos">
+         <descripcion>Total Compromisos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="abonos">
+         <descripcion>Total Abonos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="documentado">
+         <descripcion>Total Documentado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="saldo">
+         <descripcion>Saldo total</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="resumen_caja_pendientes" anchoTabla="100%" mensajeError="Ingrese el RUT del alumno.">
+      <campos nombre="total_compromisos">
+         <descripcion>Total Compromisos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="abonos">
+         <descripcion>Total Abonos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="documentado">
+         <descripcion>Total Documentado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="saldo">
+         <descripcion>Saldo total</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   
+   
+      <parametro formulario="resumen_caja_otros_pendientes" anchoTabla="100%" mensajeError="Ingrese el RUT del alumno.">
+      <campos nombre="total_compromisos">
+         <descripcion>Total Compromisos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="abonos">
+         <descripcion>Total Abonos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="documentado">
+         <descripcion>Total Documentado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="saldo">
+         <descripcion>Saldo total</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   
+   
+   <parametro formulario="morosos" anchoTabla="100%">
+      <campos nombre="rut">
+         <descripcion>RUT</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre">
+         <descripcion>Alumno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="morosidad">
+         <descripcion>Morosidad</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="compromisos_en_cobranza" variable="cc_compromisos_pendientes" mensajeError="No existen compromisos en notaria por pagar para este alumno." anchoTabla="100%" eliminar="TRUE" clave="dcom_ncompromiso" seleccionarTodo="TRUE">
+      <campos nombre="tcom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="inst_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="comp_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c_comp_ndocto">
+         <descripcion>Nº Compromiso</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="c_tcom_ccod">
+         <descripcion>Ítem</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_compromisos</destino>
+         <union>tcom_ccod</union>
+         <salida>tcom_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ncuota">
+         <descripcion>Nº Cuota</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="comp_fdocto">
+         <descripcion>Fecha&lt;br&gt;Emisión</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="dcom_fcompromiso">
+         <descripcion>Fecha&lt;br&gt;Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="ting_ccod">
+         <descripcion>Docto.&lt;br&gt;Pactado</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <descripcion>Nº Docto.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="edin_tdesc">
+         <descripcion>Estado Doc.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="dcom_mcompromiso">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="abonos">
+         <descripcion>Abono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="documentado">
+         <descripcion>Abonos Doc.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="saldo">
+         <descripcion>A Pagar</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+   </parametro>
+
+<parametro formulario="compromisos_morosos" variable="cc_compromisos_pendientes" 
+mensajeError="No existen compromisos por pagar para este alumno." resumen="TRUE" 
+anchoTabla="100%" >
+      <!--
+	  <campos nombre="c_comp_ndocto">
+         <descripcion>Nº Compromiso</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+		-->
+      <campos nombre="tcom_tdesc">
+         <descripcion>Ítem</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ncuota">
+         <descripcion>Nº Cuota</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+<!--
+      <campos nombre="comp_fdocto">
+         <descripcion>Fecha&lt;br&gt;Emisión</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+-->
+      <campos nombre="dcom_fcompromiso">
+         <descripcion>Fecha&lt;br&gt;Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="ting_ccod">
+         <descripcion>Docto.&lt;br&gt;Pactado</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <descripcion>Nº Docto.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="edin_tdesc">
+         <descripcion>Estado Doc.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="dcom_mcompromiso">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+		 <resumen>SUMA_JC</resumen>
+      </campos>
+      <campos nombre="abonos">
+         <descripcion>Abono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+		 <resumen>SUMA_JC</resumen>
+      </campos>
+      <campos nombre="saldo">
+         <descripcion>Saldo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+		 <resumen>SUMA_JC</resumen>
+      </campos>
+<!--
+      <campos nombre="factor_interes">
+         <descripcion>Factor</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+-->
+      <campos nombre="dias_mora">
+         <descripcion>Dias</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="interes">
+         <descripcion>Interes</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+		 <resumen>SUMA_JC</resumen>
+      </campos>
+      <campos nombre="a_pagar">
+         <descripcion>A Pagar</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+		 <resumen>SUMA_JC</resumen>
+      </campos>
+   </parametro>
+
+</Parametros>

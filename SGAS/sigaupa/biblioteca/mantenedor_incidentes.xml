@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="btn_busca_incidentes">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 
+    <botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>abrir()</funcion>
+	</botones> 
+    <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	<botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <formulario>edicion</formulario>
+         <url>eliminar_asignatura.asp</url>
+    </botones>
+	<botones nombre="enviar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Enviar</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.formu)</funcion>
+	</botones> 
+	<botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones>
+ </parametro>
+ <parametro formulario="form_busca_incidentes"
+ clave="asig_ccod" variable="m" 
+ mensajeError="No hay insidentes registrados para las búsquedas solicitadas" 
+ colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" 
+ editar="true" eliminar="false" agregar="true" nuevaVentana="true"
+  paginaEdicion="mantenedor_incidentes_editar.asp?inci_ccod=%inci_ccod%" maxLista="10" nroRegistros="10" anchoTabla="98%">
+   <campos nombre="inci_ccod">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Código</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+ <campos nombre="fecha_incidente">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Fecha</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+ <campos nombre="incidente">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Incidente</descripcion> 
+	  <alineamiento>center</alineamiento> 
+  </campos>
+ <campos nombre="status">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Status</descripcion> 
+	  <alineamiento>center</alineamiento> 
+  </campos>
+ <campos nombre="fecha_solucion">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Solucionado</descripcion> 
+	  <alineamiento>center</alineamiento> 
+  </campos>
+ <campos nombre="personal_tecnico">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Por</descripcion> 
+	  <alineamiento>center</alineamiento> 
+  </campos>
+ </parametro>
+    <parametro formulario="botonera_editar">
+     <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+	 <botones nombre="cancelar"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>CERRAR</accion>
+	 </botones>
+	 <botones nombre="buscar"> 
+        <tipoTexto>BUSCAR</tipoTexto>
+	    <accion>BUSCAR</accion>
+	    <formulario>buscador</formulario>
+		<soloUnClick>TRUE</soloUnClick>
+	 </botones>
+	 <botones nombre="nueva"> 
+        <tipoTexto>AGREGAR</tipoTexto>
+	    <accion>AGREGAR</accion>
+	    <posicionX>100</posicionX>
+	    <posicionY>50</posicionY>
+	    <ancho>570</ancho>
+	    <alto>450</alto>	   
+	 </botones>
+	 <botones nombre="guardar_nueva"> 
+        <tipoTexto>GUARDAR</tipoTexto>
+	    <accion>GUARDAR</accion>
+	    <url>Proc_Planes_Agregar.asp</url>
+	    <formulario>edicion</formulario>
+	</botones>
+	<botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>ELIMINAR</accion>
+	  <formulario>edicion</formulario>
+	  <url>colegios_eliminar.asp</url>
+	</botones> 
+	<botones nombre="excel">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+    </botones>
+	<botones nombre="excel2">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel Alumnos</texto>
+    </botones>
+  </parametro>
+  <parametro formulario="f_nuevo" variable="incidentes">
+    <tablas nombre="incidentes" accion="M"/>
+	 <campos nombre="inci_ccod">
+	 	<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="folio">
+	 	<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="fecha_incidente">
+	 	<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>12</caracteres>
+	    <maxCaracteres>10</maxCaracteres>
+	    <id>FE-N</id>		
+	 </campos>
+	 <campos nombre="hora_incidente">
+	 	<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+	    <maxCaracteres>5</maxCaracteres>
+	    <id>TO-N</id>		
+	 </campos>
+	 <campos nombre="incidente">
+	 	<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>60</caracteres>
+	    <maxCaracteres>120</maxCaracteres>
+	    <id>TO-N</id>		
+	 </campos>
+  	<campos nombre="serv_ccod">
+	 	<tipo>Select</tipo>
+		<destino>servidores</destino>
+	    <union>serv_ccod</union> 
+      	<salida>serv_tdesc</salida> 
+      	<permiso>LECTURAESCRITURA</permiso> 
+	  	<orden>serv_ccod</orden>
+		<anulable>TRUE</anulable>
+	  	<mensajeNulo>No Afectado</mensajeNulo>
+	  	<mensajeVacio>No Afectado</mensajeVacio>
+	  	<id>TO-S</id>
+	 </campos>
+  	<campos nombre="ered_ccod">
+	 	<tipo>Select</tipo>
+		<destino>ELEMENTOS_DE_RED</destino>
+	    <union>ered_ccod</union> 
+      	<salida>ered_tdesc</salida> 
+      	<permiso>LECTURAESCRITURA</permiso> 
+	  	<orden>ered_ccod</orden>
+		<anulable>TRUE</anulable>
+	  	<mensajeNulo>No Afectado</mensajeNulo>
+	  	<mensajeVacio>No Afectado</mensajeVacio>
+	  	<id>TO-S</id>
+	 </campos>
+ 	 <campos nombre="cele_ccod">
+	 	<tipo>Select</tipo>
+		<destino>COMPONENTES_ELECTRICOS</destino>
+	    <union>cele_ccod</union> 
+      	<salida>cele_tdesc</salida> 
+      	<permiso>LECTURAESCRITURA</permiso> 
+	  	<orden>cele_ccod</orden>
+		<anulable>TRUE</anulable>
+	  	<mensajeNulo>No Afectado</mensajeNulo>
+	  	<mensajeVacio>No Afectado</mensajeVacio>
+	  	<id>TO-S</id>
+	 </campos>
+	 <campos nombre="solucion_planteada">
+	 	<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>60</caracteres>
+	    <maxCaracteres>120</maxCaracteres>
+	    <id>TO-N</id>		
+	 </campos>
+	 <campos nombre="status_solucion">
+	 	<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>60</caracteres>
+	    <maxCaracteres>120</maxCaracteres>
+	    <id>TO-N</id>		
+	 </campos>
+	 <campos nombre="personal_tecnico">
+	 	<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>60</caracteres>
+	    <maxCaracteres>120</maxCaracteres>
+	    <id>TO-N</id>		
+	 </campos>	 
+	 <campos nombre="fecha_solucion">
+	 	<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>12</caracteres>
+	    <maxCaracteres>10</maxCaracteres>
+	    <id>FE-N</id>		
+	 </campos>
+	 <campos nombre="hora_solucion">
+	 	<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+	    <maxCaracteres>5</maxCaracteres>
+	    <id>TO-N</id>		
+	 </campos>
+	 <campos nombre="einc_ccod">
+	 	<tipo>Select</tipo>
+		<destino>ESTADOS_INCIDENTES</destino>
+	    <union>einc_ccod</union> 
+      	<salida>einc_tdesc</salida> 
+      	<permiso>LECTURAESCRITURA</permiso> 
+	  	<orden>einc_ccod</orden>
+		<anulable>FALSE</anulable>
+	  	<id>TO-N</id>
+	 </campos>
+	 <campos nombre="primera_vez">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>S</valorVerdadero>
+		 <valorFalso>N</valorFalso>
+      </campos>
+	  <campos nombre="incidente_mayor">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>S</valorVerdadero>
+		 <valorFalso>N</valorFalso>
+      </campos>
+	  <campos nombre="observaciones">
+		<tipo>TEXTAREA</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+		<filas>3</filas>
+		<caracteres>60</caracteres>
+		<id>TO-S</id>
+	</campos>	
+</parametro>
+
+</Parametros>

@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<parametros>
+	<parametro formulario="botonera">
+		
+		<botones nombre="buscar">
+			<tipoTexto>BUSCAR</tipoTexto>
+			<accion>BUSCAR</accion>
+			<formulario>buscador</formulario>
+			<funcionValidacion>ValidaFormBusqueda();</funcionValidacion>
+		</botones>
+
+		<botones nombre="lanzadera"> 
+			<tipoTexto>SALIR</tipoTexto>
+			<accion>NAVEGAR</accion>
+			<url>../lanzadera/lanzadera.asp</url>
+		</botones>
+
+    	<botones nombre="guardar"> 
+      		<tipoTexto>GUARDAR</tipoTexto>
+	  		<accion>JAVASCRIPT</accion>
+	  		<funcion>guardar(document.edicion)</funcion>
+		</botones> 
+		
+		<botones nombre="salir">
+			<tipoTexto>SALIR</tipoTexto>
+			<accion>navegar</accion>
+			<url>javascript:salir_aplicacion();</url>
+		</botones>
+		
+		<botones nombre="excel">
+        	<tipoTexto>DEFINIR</tipoTexto>
+         	<texto>Excel</texto>
+         	<accion>GUARDAR</accion>
+         	<formulario>edicion</formulario>
+     	</botones>
+	</parametro>  
+	
+	<parametro formulario="busqueda" variable="busqueda">
+		<campos nombre="pers_nrut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>10</caracteres>
+			<maxCaracteres>8</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+		
+		<campos nombre="pers_xdv">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>1</caracteres>
+			<maxCaracteres>1</maxCaracteres>
+			<script>onBlur="this.value=this.value.toUpperCase();"</script>
+			<id>LN-N</id>
+		</campos>
+	</parametro>
+	
+	<parametro formulario="f_datos_alumno" variable="da" clave="pers_ncorr_alumno"
+	editar="true" agregar="true" eliminar="true" paginaEdicion=" "
+	maxLista="10" nroRegistros="10">
+	
+		<campos nombre="pers_ncorr_alumno">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="pers_nrut">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="q_pers_nrut">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso> 
+		</campos>
+		<campos nombre="pers_xdv">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso> 
+		</campos>
+		<campos nombre="q_pers_xdv">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso> 
+		</campos>
+		
+		<campos nombre="pers_tnombre">
+			<tipo>INPUT</tipo>
+			<caracteres>60</caracteres>
+			<maxCaracteres>45</maxCaracteres>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-N</id>
+		</campos>
+		
+		<campos nombre="pers_tape_paterno">
+			<tipo>INPUT</tipo>
+			<caracteres>60</caracteres>
+			<maxCaracteres>45</maxCaracteres>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-N</id>
+		</campos>
+		
+		<campos nombre="pers_tape_materno">
+			<tipo>INPUT</tipo>
+			<caracteres>60</caracteres>
+			<maxCaracteres>45</maxCaracteres>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-S</id>
+		</campos>
+		
+		<campos nombre="pers_tdireccion">
+			<tipo>INPUT</tipo>
+			<caracteres>60</caracteres>
+			<maxCaracteres>140</maxCaracteres>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-N</id>
+		</campos>
+
+		<campos nombre="ciud_ccod">
+	         <tipo>SELECT</tipo>
+    	     <destino>ciudades</destino>
+        	 <union>ciud_ccod</union>
+         	<salida>ciud_tdesc</salida>
+         	<orden>ciud_tdesc asc</orden>
+         	<permiso>LECTURAESCRITURA</permiso>
+         	<anulable>TRUE</anulable>
+         	<mensajeNulo>Seleccione comuna</mensajeNulo>
+         	<id>TO-N</id>
+		</campos>
+		 
+		<campos nombre="pers_temail">
+			<tipo>INPUT</tipo>
+			<caracteres>50</caracteres>
+			<maxCaracteres>45</maxCaracteres>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-S</id>
+		</campos>
+		
+		<campos nombre="pers_tfono">
+			<tipo>INPUT</tipo>
+			<caracteres>12</caracteres>
+			<maxCaracteres>10</maxCaracteres>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-S</id>
+		</campos>
+		
+		<campos nombre="pers_tcelular">
+			<tipo>INPUT</tipo>
+			<caracteres>13</caracteres>
+			<maxCaracteres>10</maxCaracteres>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-S</id>
+		</campos>
+		<campos nombre="pers_ttwitter">
+			<tipo>INPUT</tipo>
+			<caracteres>50</caracteres>
+			<maxCaracteres>45</maxCaracteres>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-S</id>
+		</campos>
+		<campos nombre="pers_tfacebook">
+			<tipo>INPUT</tipo>
+			<caracteres>50</caracteres>
+			<maxCaracteres>45</maxCaracteres>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-S</id>
+		</campos>		
+		
+			<campos nombre="caev_ccod">
+				<tipo>SELECT</tipo>
+				<destino>CURSOS_ALUMNOS_EVENTOS</destino>
+				<union>caev_ccod</union>
+				<salida>caev_tdesc</salida>
+				<permiso>LECTURAESCRITURA</permiso>
+				<anulable>TRUE</anulable>
+				<mensajeNulo>Seleccione curso actual</mensajeNulo>
+				<mensajeVacio></mensajeVacio>
+				<id>TO-N</id>
+     		</campos>
+
+			<campos nombre="pest_ccod">
+				<tipo>RADIO</tipo>
+				<columnas>2</columnas>
+				<destino>PREFERENCIA_ESTUDIO</destino>
+				<union>pest_ccod</union>
+				<salida>pest_tdesc</salida>
+				<orden>pest_ccod asc</orden>
+				<permiso>LECTURAESCRITURA</permiso>
+				<anulable>TRUE</anulable>
+				<mensajeNulo>Elija una opción</mensajeNulo>
+				<id>TO-N</id>
+      		</campos>
+	  	 	<campos nombre="regi_ccod_colegio">
+				 <tipo>SELECT</tipo>
+				 <destino>regiones</destino>
+				 <union>regi_ccod</union>
+				 <salida>regi_tdesc</salida>
+				 <orden>regi_ccod ASC</orden>
+				 <permiso>LECTURAESCRITURA</permiso>
+				 <script>onChange="_FiltrarCombobox(this.form.elements['da[0][ciud_ccod_colegio]'], this.value, d_ciudades, 'regi_ccod', 'ciud_ccod', 'ciud_tdesc', '', 'Seleccionar ciudad'); LimpiarComboColegios();"</script>
+				 <anulable>TRUE</anulable>
+				 <mensajeNulo>Seleccionar región</mensajeNulo>
+				 <id>TO-S</id>
+		  	</campos>
+		  	<campos nombre="ciud_ccod_colegio">
+				 <tipo>SELECT</tipo>
+				 <destino>ciudades</destino>
+				 <union>ciud_ccod</union>
+				 <salida>ciud_tdesc</salida>
+				 <filtro>1=2</filtro>
+				 <orden>ciud_tdesc ASC</orden>
+				 <permiso>LECTURAESCRITURA</permiso>
+				 <script>onChange="RecargarColegios();"</script>
+				 <anulable>TRUE</anulable>
+				 <mensajeNulo>Seleccionar ciudad</mensajeNulo>
+				 <id>TO-S</id>
+		  </campos>
+		  <campos nombre="cole_ccod">
+				 <tipo>SELECT</tipo>
+				 <destino>colegios</destino>
+				 <union>cole_ccod</union>
+				 <salida>cole_tdesc</salida>
+				 <orden>cole_tdesc ASC</orden>
+				 <filtro>1=2</filtro>
+				 <permiso>LECTURAESCRITURA</permiso>
+				 <anulable>TRUE</anulable>
+				 <mensajeNulo>Seleccionar</mensajeNulo>
+				 <mensajeVacio>Seleccionar colegio</mensajeVacio>
+		  </campos>
+		<!--  
+		  <campos nombre="colegio">
+				 <tipo>SELECT</tipo>
+				 <destino>colegios</destino>
+				 <union>cole_ccod</union>
+				 <salida>cole_tdesc</salida>
+				 <orden>cole_tdesc ASC</orden>
+				 <filtro>1=2</filtro>
+				 <permiso>LECTURAESCRITURA</permiso>
+				 <anulable>TRUE</anulable>
+				 <mensajeNulo>Seleccionar</mensajeNulo>
+				 <mensajeVacio>Seleccionar colegio</mensajeVacio>
+		  </campos>
+		 --> 
+		<campos nombre="pers_totro_colegio">
+			<tipo>INPUT</tipo>
+			<caracteres>60</caracteres>
+			<maxCaracteres>60</maxCaracteres>
+			<permiso>LECTURAESCRITURA</permiso>
+			<deshabilitado>True</deshabilitado>
+			<id>TO-N</id>	
+		</campos>
+		<campos nombre="carre_ccod_1">
+			<tipo>SELECT</tipo>
+			<destino>carreras_eventos</destino>
+			<union>carre_ccod</union>
+			<salida>carre_tdesc</salida>
+			<orden>carre_tdesc ASC</orden>
+			<permiso>LECTURAESCRITURA</permiso>
+			<anulable>TRUE</anulable>
+			<mensajeNulo>Seleccionar</mensajeNulo>
+			<mensajeVacio>Seleccionar Carrera</mensajeVacio>
+		</campos>
+		<campos nombre="carre_ccod_2">
+			<tipo>SELECT</tipo>
+			<destino>carreras_eventos</destino>
+			<union>carre_ccod</union>
+			<salida>carre_tdesc</salida>
+			<orden>carre_tdesc ASC</orden>
+			<permiso>LECTURAESCRITURA</permiso>
+			<anulable>TRUE</anulable>
+			<mensajeNulo>Seleccionar</mensajeNulo>
+			<mensajeVacio>Seleccionar Carrera</mensajeVacio>
+		</campos>
+		<campos nombre="carre_ccod_3">
+			<tipo>SELECT</tipo>
+			<destino>carreras_eventos</destino>
+			<union>carre_ccod</union>
+			<salida>carre_tdesc</salida>
+			<orden>carre_tdesc ASC</orden>
+			<permiso>LECTURAESCRITURA</permiso>
+			<anulable>TRUE</anulable>
+			<mensajeNulo>Seleccionar</mensajeNulo>
+			<mensajeVacio>Seleccionar Carrera</mensajeVacio>
+		</campos>
+<!--
+		<campos nombre="carrera_1">
+			<tipo>INPUT</tipo>
+			<caracteres>60</caracteres>
+			<maxCaracteres>60</maxCaracteres>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-S</id>
+		</campos>
+
+		<campos nombre="carrera_2">
+			<tipo>INPUT</tipo>
+			<caracteres>60</caracteres>
+			<maxCaracteres>60</maxCaracteres>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-S</id>
+		</campos>
+
+		<campos nombre="carrera_3">
+			<tipo>INPUT</tipo>
+			<caracteres>60</caracteres>
+			<maxCaracteres>60</maxCaracteres>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-S</id>
+		</campos>
+-->
+		<campos nombre="PERS_NBECAS_CREDITOS">
+			<tipo>INPUT</tipo>
+			<caracteres>2</caracteres>
+			<maxCaracteres>2</maxCaracteres>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>NU-S</id>
+			<script>OnBlur=verifica_orden(this);</script>
+		</campos>
+				
+		<campos nombre="PERS_NCONVENIOS_INTER">
+			<tipo>INPUT</tipo>
+			<caracteres>2</caracteres>
+			<maxCaracteres>2</maxCaracteres>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>NU-S</id>
+			<script>OnBlur=verifica_orden(this);</script>
+		</campos>
+		<campos nombre="PERS_NDEPORTE_RECREACION">
+			<tipo>INPUT</tipo>
+			<caracteres>2</caracteres>
+			<maxCaracteres>2</maxCaracteres>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>NU-S</id>
+			<script>OnBlur=verifica_orden(this);</script>
+		</campos>
+		<campos nombre="PERS_NSEGURO_ESCOLAR">
+			<tipo>INPUT</tipo>
+			<caracteres>2</caracteres>
+			<maxCaracteres>2</maxCaracteres>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>NU-S</id>
+			<script>OnBlur=verifica_orden(this);</script>
+		</campos>				
+		<campos nombre="PERS_NTALLER_TEATRO">
+			<tipo>INPUT</tipo>
+			<caracteres>2</caracteres>
+			<maxCaracteres>2</maxCaracteres>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>NU-S</id>
+			<script>OnBlur=verifica_orden(this);</script>
+		</campos>
+		<campos nombre="PERS_NOTRO_BENEFICIO">
+			<tipo>INPUT</tipo>
+			<caracteres>2</caracteres>
+			<maxCaracteres>2</maxCaracteres>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>NU-S</id>
+			<script>OnBlur=verifica_orden(this);</script>
+		</campos>		
+		
+		<campos nombre="PERS_TOTRO_BENEFICIO_DESC">
+			<tipo>INPUT</tipo>
+			<caracteres>40</caracteres>
+			<maxCaracteres>60</maxCaracteres>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-S</id>
+		</campos>
+						
+	</parametro>
+	
+	<parametro formulario="actualizar_evento" variable="da" >
+        <tablas nombre="PERSONAS_EVENTOS_UPA" accion="M"/>
+		<tablas nombre="EVENTOS_ALUMNOS " accion="M"/>
+ 	</parametro>	
+
+	<parametro formulario="eliminar_alumno" variable="detalle_alumnos" >
+		<tablas nombre="EVENTOS_ALUMNOS " accion="B"/>
+ 	</parametro>	
+
+</parametros>

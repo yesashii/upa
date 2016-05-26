@@ -1,0 +1,8 @@
+243750,DE SEDAS COLLADO CARLOS LUIS,,243750-3,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+14158035,MORALES NICOLAS SERGIO,,14158035-3,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+16071059,RODRIGUEZ PINO ROCIO MERCEDES,,16071059-4,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+16341328,INOSTROZA MUÑOZ DANIELA PAZ,,16341328-0,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17666483,SAN MARTIN GUZMAN EDUARDO PATRICIO,,17666483-5,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+70417500,  CORP. CAPACITACION Y EMPLEO SOFOFA,,70417500-0,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+77824870,  EPYSA BUSES LTDA.,,77824870-0,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+82174900,SERVICIO DE COOPERACION TECNICA    ,,82174900-K,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

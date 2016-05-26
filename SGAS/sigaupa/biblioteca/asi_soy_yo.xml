@@ -1,0 +1,191 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+		 <soloUnClick>TRUE</soloUnClick>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>portada_evalua.asp</url>
+      </botones>
+       <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>NAVEGAR</accion>
+         <url>notas_alumno_excel.asp</url>
+      </botones>
+	  <botones nombre="HORARIO"> 
+      	 <tipoTexto>DEFINIR</tipoTexto>
+	     <texto>Horario</texto>
+	     <accion>JAVASCRIPT</accion>
+	     <funcion>horario()</funcion>	  
+	  </botones>
+	  <botones nombre="evaluacion"> 
+      	 <tipoTexto>DEFINIR</tipoTexto>
+	     <texto>Comenzar Evaluaciones</texto>
+	     <accion>NAVEGAR</accion>
+	    <url>asi_soy_yo.asp</url>	  
+	  </botones>
+	  <botones nombre="guardar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Guardar Respuestas.</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>asi_soy_yo_proc.asp</url>
+		 <funcionValidacion>validar();</funcionValidacion>
+	</botones>
+	<botones nombre="guardar2">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Guardar Respuestas.</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>test_proca.asp</url>
+	</botones>
+   </parametro>
+   <parametro formulario="busqueda" >
+	  <campos nombre="pers_nrut">
+ 		 <tipo>INPUT</tipo> 
+  		 <permiso>OCULTO</permiso> 
+  		 <caracteres>10</caracteres> 
+  		 <maxCaracteres>8</maxCaracteres> 
+  		 <id>NU-N</id> 
+  	  </campos>
+	  <campos nombre="pers_xdv">
+  		 <tipo>INPUT</tipo> 
+  		 <permiso>OCULTO</permiso> 
+         <caracteres>1</caracteres> 
+         <maxCaracteres>1</maxCaracteres> 
+         <script>onBlur="this.value=this.value.toUpperCase();"</script> 
+         <id>LN-N</id> 
+      </campos>
+   </parametro>
+
+   <parametro formulario="encabezado" anchoTabla="100%" columnas="2" variable="encu">
+      <campos nombre="rut">
+         <descripcion>RUT</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombres">
+         <descripcion>Nombres</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="ap_paterno">
+         <descripcion>Ap. Paterno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="ap_materno">
+         <descripcion>Ap. Materno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="ciud_ccod">
+         <tipo>SELECT</tipo>
+		 <destino>Ciudades</destino>
+         <permiso>LECTURAESCRITURA</permiso>
+         <union>ciud_ccod</union>
+         <salida>ciud_tdesc</salida>
+         <orden>ciud_tdesc desc</orden>
+         <anulable>TRUE</anulable>
+		 <mensajeNulo>Comuna</mensajeNulo>
+		 <id>TO-S</id>
+      </campos>	
+	  <campos nombre="edad">
+         <descripcion>Edad</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>3</caracteres>
+		 <maxCaracteres>2</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="pers_tfono">
+         <descripcion>telefono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>10</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	   <campos nombre="pers_tcelular">
+         <descripcion>telefono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  
+	   <campos nombre="pers_temail">
+         <descripcion>email</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>50</caracteres>
+		 <maxCaracteres>50</maxCaracteres>
+		 <id>TO-S</id>
+      </campos>
+	 
+   </parametro>
+  
+  <parametro formulario="encuesta" anchoTabla="100%" columnas="2" variable="encu">
+      <campos nombre="reps_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="preg_13_egb_leng">
+         <descripcion>email</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		  <caracteres>3</caracteres>
+		 <maxCaracteres>3</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="preg_13_egb_mat">
+         <descripcion>email</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		  <caracteres>3</caracteres>
+		 <maxCaracteres>3</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="preg_13_em_leng">
+         <descripcion>email</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		  <caracteres>3</caracteres>
+		 <maxCaracteres>3</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="preg_13_em_mat">
+         <descripcion>email</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		  <caracteres>3</caracteres>
+		 <maxCaracteres>3</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="preg_14_si">
+         <descripcion>email</descripcion>
+         <tipo>textarea</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		  <caracteres>60</caracteres>
+		 <maxCaracteres>59</maxCaracteres>
+		 <id>TO-N</id>
+      </campos>
+	  
+      
+   </parametro>   
+      
+   <parametro formulario="guardar_respuestas" variable="encu">
+      <tablas nombre="encuesta_asi_soy_yo" accion="M"/>
+   </parametro> 
+  
+</Parametros>

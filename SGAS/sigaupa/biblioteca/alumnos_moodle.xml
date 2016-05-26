@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+         <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>salir()</funcion>
+      </botones>
+      <botones nombre="buscar">
+		  <tipoTexto>BUSCAR</tipoTexto>
+		  <accion>BUSCAR</accion>
+		  <formulario>buscador</formulario>
+ 	  </botones>
+	  <botones nombre="reporte">
+        <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Generar Archivo</texto>
+         <accion>NAVEGAR</accion>
+         <formulario>buscador</formulario>
+     </botones>
+   </parametro>
+ 
+   	<parametro formulario="busqueda" variable="busqueda">
+	     <campos nombre="codigo_id">
+           <tipo>INPUT</tipo>
+           <permiso>LECTURAESCRITURA</permiso>
+           <caracteres>50</caracteres>
+           <maxCaracteres>25</maxCaracteres>
+           <id>TO-N</id>
+        </campos>	
+		<campos nombre="peri_ccod">
+		   <tipo>SELECT</tipo>
+		   <permiso>LECTURAESCRITURA</permiso>
+		   <union>peri_ccod</union>
+		   <salida>peri_tdesc</salida>
+		   <anulable>TRUE</anulable>
+		   <mensajeNulo>Seleccione Periodo</mensajeNulo>
+		   <id>TO-N</id>
+	   </campos>
+   	</parametro>
+ 
+ 	 <parametro formulario="alumnos" mensajeError="No se han encontrado alumnos para los criterios de búsqueda consultados" 
+		 editar="false" anchoTabla="100%" nuevaVentana="false" variable="a"  nroRegistros="50" maxLista="50" >  
+		<campos nombre="rut">
+			<descripcion>Rut</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="dv">
+			<descripcion>DV</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="nombres">
+			<descripcion>Nombres</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="apellidos">
+			<descripcion>Apellidos</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="carrera">
+			<descripcion>Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="tipo">
+			<descripcion>Tipo</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	  </parametro>
+</Parametros>

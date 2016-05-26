@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="datos_alumno">
+      <campos nombre="nombre_alumno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="convalidaciones" variable="convalidaciones" anchoTabla="100%" 
+   clave="asignado" nroRegistros="100" maxLista="100" >
+      <tablas nombre="convalidaciones" accion="M"/>
+      <campos nombre="matr_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="acon_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="sitf_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="asig_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="a_grabar">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+      <campos nombre="nive_ccod">
+	     <descripcion>Nivel</descripcion>
+		 <tipo>INPUT</tipo>
+	     <permiso>LECTURA</permiso>
+      </campos>	        
+	  <campos nombre="asig_tdesc">
+         <descripcion>Asignatura</descripcion>
+		 <tipo>INPUT</tipo>
+	     <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="sitf_ccod2">
+	     <descripcion>Estado</descripcion>
+		 <tipo>INPUT</tipo>
+	     <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="conv_nnota">
+	     <descripcion>Nota</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>4</maxCaracteres>
+         <id>NT-S</id>
+      </campos>
+	  <campos nombre="conv_tdocente">
+	     <descripcion>Profesor</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>100</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="resoluciones" variable="resoluciones">
+      <tablas nombre="resoluciones" accion="M"/>
+      <campos nombre="reso_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="reso_nresolucion">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tres_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="reso_fresolucion">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="reso_ejecutante">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="eres_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="actas_convalidacion" variable="actas_convalidacion">
+      <tablas nombre="actas_convalidacion" accion="M"/>
+      <campos nombre="acon_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="peri_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="acon_nacta">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="acon_facta">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="reso_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="acon_tinstitucion">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="acon_tcarrera">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="resoluciones_personas" variable="resoluciones_personas">
+      <tablas nombre="resoluciones_personas" accion="M"/>
+      <campos nombre="reso_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="botonera">
+   <botones nombre="aceptar"> 
+      <tipoTexto>ACEPTAR</tipoTexto>
+	  <accion>javascript</accion>
+	  <funcion>Aceptar(edicion);</funcion>	
+	  <soloUnClick>TRUE</soloUnClick>
+	</botones>
+    <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>javascript</accion>
+	  <funcion>Salir();</funcion>	
+	  <soloUnClick>TRUE</soloUnClick>
+	</botones>
+  </parametro>
+</Parametros>

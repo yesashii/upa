@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+	  <parametro formulario="botonera">
+		<botones nombre="salir"> 
+		  <tipoTexto>SALIR</tipoTexto>
+		  <accion>NAVEGAR</accion>
+		  <url>../lanzadera/lanzadera.asp</url>
+		</botones>
+		
+		<botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+		<botones nombre="guarda_habilitacion">
+			 <tipoTexto>GUARDAR</tipoTexto>
+			 <accion>Guardar</accion>
+			 <formulario>buscador</formulario>
+			 <url>habilita_proc.asp</url>
+		</botones>
+		<botones nombre="guarda_informe">
+			 <tipoTexto>GUARDAR</tipoTexto>
+			 <accion>Guardar</accion>
+			 <formulario>buscador</formulario>
+			 <url>guarda_encuesta_proc.asp</url>
+		</botones>
+		<botones nombre="excel_estado">
+			 <tipoTexto>DEFINIR</tipoTexto>
+		  	 <texto>Excel</texto>
+			 <accion>Guardar</accion>
+			 <formulario>buscador</formulario>
+			 <url>estado_encuesta_excel.asp</url>
+		</botones>
+		<botones nombre="pdf">
+			<tipoTexto>DEFINIR</tipoTexto>
+		  	<texto>PDF</texto>
+			<accion>JAVASCRIPT</accion>
+	  		<funcion>pdf();</funcion>
+		</botones>
+		<botones nombre="salir_habili"> 
+		  <tipoTexto>DEFINIR</tipoTexto>
+		  <texto>Salir</texto>
+		  <accion>Navegar</accion>
+		</botones> 
+		<botones nombre="volver"> 
+		  <tipoTexto>DEFINIR</tipoTexto>
+		  <texto>Volver</texto>
+		  <accion>Navegar</accion>
+		</botones> 
+	 </parametro>
+	 
+	 <parametro formulario="f_busqueda_dcur" variable="b">
+	   <campos nombre="dcur_tdesc">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <id>TO-N</id>
+		 <caracteres>81</caracteres>
+		 <maxCaracteres>80</maxCaracteres>
+	   </campos>
+	 </parametro>
+ 
+	<parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion="opcion_administracion.asp?dcur_ncorr=%dcur_ncorr%"  formulario="f_dcur_tdesc" nroRegistros="15" maxLista="10" mensajeError="No se encontranron cursos ." colorBase="#F1F1E4" editar="true" anchoTabla="100%"	 nuevaVentana="false" variable="b"  clave="dcur_ncorr" > 
+		 
+		<campos nombre="dcur_tdesc">
+		<descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos> 
+	   <campos nombre="dcur_ncorr">
+		 <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+         </campos>
+	</parametro>
+	
+	 <parametro formulario="f_programas" colorSeleccionado="#99FFFF" colorResaltado="#DCDCB8" variable="mot"
+   clave="mote_ccod" anchoTabla="100%" editar="false" mensajeError=""
+   nroRegistros="15" maxLista="10" paginaEdicion="" nuevaVentana="false" eliminar="false">
+	  <campos nombre="mote_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+	  <campos nombre="dcur_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="mote_tdesc">
+         <descripcion>Modulos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <ancho>90%</ancho>
+      </campos>
+      <campos nombre="b_activa">
+	  <descripcion>Activar</descripcion>
+          <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+      
+  </parametro>
+  <parametro formulario="f_lista" colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion="habilita.asp?dcur_ncorr=%dcur_ncorr%"   nroRegistros="15" maxLista="10" mensajeError="No hay alumnos" colorBase="#F1F1E4" anchoTabla="100%" variable="b"  > 
+		 
+		<campos nombre="nombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos> 
+	   <campos nombre="r_programa">
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+       </campos>
+	   <campos nombre="relatores_pendientes">
+		 <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+       </campos>
+	</parametro>
+	  <parametro formulario="f_conculusiones" colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""   nroRegistros="15" maxLista="10" mensajeError="No hay alumnos" colorBase="#F1F1E4" anchoTabla="80%" variable="b"  > 
+		 
+		<campos nombre="preliminares">
+        <tipo>TEXTAREA</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <filas>5</filas>
+         <caracteres>90</caracteres>
+		  <id>TO-S</id>
+      </campos> 
+	   <campos nombre="finales">
+		 <tipo>TEXTAREA</tipo>
+		 <caracteres>90</caracteres>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <filas>5</filas>
+		  <id>TO-S</id>
+       </campos>
+	   <campos nombre="acciones">
+		  <tipo>TEXTAREA</tipo>
+		  <caracteres>90</caracteres>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <filas>5</filas>
+		  <id>TO-S</id>
+       </campos>
+	</parametro>
+	<Parametros formulario="segunda_part">
+		<campos nombre="pregunta">
+		 <tipo>IPNPUT</tipo>
+		 <permiso>LECTURA</permiso>
+       </campos>
+	   <campos nombre="s">
+		 <tipo>IPNPUT</tipo>
+		  <permiso>LECTURA</permiso>
+       </campos>
+	   <campos nombre="av">
+		 <tipo>IPNPUT</tipo>
+		  <permiso>LECTURA</permiso>
+       </campos>
+	   <campos nombre="n">
+		 <tipo>IPNPUT</tipo>
+		  <permiso>LECTURA</permiso>
+       </campos>
+	   <campos nombre="na">
+		 <tipo>IPNPUT</tipo>
+		  <permiso>LECTURA</permiso>
+       </campos>
+	</Parametros>
+</Parametros>

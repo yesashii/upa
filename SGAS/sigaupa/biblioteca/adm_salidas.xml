@@ -1,0 +1,186 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="agregar">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>AGREGAR</accion>
+         <url>adm_salidas_agregar.asp</url>
+         <alto>400</alto>
+         <ancho>750</ancho>
+         <posicionX>50</posicionX>
+         <posicionY>50</posicionY>
+         <scroll>TRUE</scroll>
+      </botones>
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_salidas.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="siguiente">
+         <tipoTexto>guardar</tipoTexto>
+         <accion>GUARDAR</accion>
+         <url>proc_adm_salidas_agregar.asp</url>
+         <soloUnClick>TRUE</soloUnClick>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="aceptar">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <url>proc_adm_titulados_agregar_2.asp?seguir=N</url>
+         <soloUnClick>TRUE</soloUnClick>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="guardar_nuevo">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Guardar/Nuevo</texto>
+         <accion>GUARDAR</accion>
+         <url>proc_adm_titulados_agregar_2.asp?seguir=S</url>
+         <soloUnClick>TRUE</soloUnClick>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="cerrar">
+         <tipoTexto>CANCELAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+   </parametro>
+   <parametro formulario="busqueda" variable="b">
+      <listas nombre="busqueda">
+         <item clave="carr_ccod" valor="carr_tdesc"/>
+         <item clave="espe_ccod" valor="espe_tdesc"/>
+         <item clave="plan_ccod" valor="plan_tdesc"/>
+      </listas>
+      <campos nombre="peri_ccod">
+         <tipo>SELECT</tipo>
+         <destino>periodos_academicos</destino>
+         <permiso>LECTURAESCRITURA</permiso>
+         <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+         <orden>peri_ccod desc</orden>
+      </campos>
+   </parametro>
+   <parametro formulario="encabezado" anchoTabla="100%" columnas="2" separacion="20">
+      <campos nombre="peri_ccod">
+         <descripcion>Periodo de Egreso</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>periodos_academicos</destino>
+         <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="carr_tdesc">
+         <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="espe_tdesc">
+         <descripcion>Especialidad</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="plan_tdesc">
+         <descripcion>Plan</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   <parametro paginaEdicion="adm_salidas_agregar.asp?sapl_ncorr=%sapl_ncorr%&amp;sede_ccod=%sede_ccod%&amp;peri_ccod=%peri_ccod%&amp;plan_ccod=%plan_ccod%" nuevaVentanaAlto="450" formulario="salidas" nuevaVentanaAncho="700" enumerarLista="TRUE" eliminar="TRUE" clave="sapl_ncorr" mensajeError="No se han definido salidas para el plan especificado." editar="TRUE" anchoTabla="100%" nuevaVentana="TRUE" variable="salidas">
+      <tablas nombre="salidas_plan" accion="B"/>
+      <campos nombre="tspl_tdesc">
+         <descripcion>Tipo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="sapl_tdesc">
+         <descripcion>Salida</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="asignaturas">
+         <descripcion>Nº Asignaturas&lt;br&gt;Req.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="adicionales">
+         <descripcion>Nº Req.&lt;br&gt;Adicionales</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="sapl_npond_asignaturas">
+         <descripcion>Pond. Asign.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="pond_adicionales">
+         <descripcion>Pond. Req. Adic.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="x">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="configurar">
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+		 <descripcion>Ir a..</descripcion>
+         <tipo>BOTON</tipo>
+         <accion>NAVEGAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Configuración..</texto>
+         <url>adm_salidas_asignaturas.asp?sapl_ncorr=%sapl_ncorr%</url>
+      </campos>
+   </parametro>
+   <parametro formulario="salida" anchoTabla="100%" variable="salida" camposObligatorios="TRUE">
+      <tablas nombre="salidas_plan" accion="M"/>
+      <campos nombre="tspl_ccod">
+         <descripcion>Tipo</descripcion>
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>tipos_salidas_plan</destino>
+         <union>tspl_ccod</union>
+         <salida>tspl_tdesc</salida>
+         <mensajeNulo>Seleccione tipo</mensajeNulo>
+         <anulable>TRUE</anulable>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="sapl_tdesc">
+         <descripcion>Salida</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="sapl_npond_asignaturas">
+         <descripcion>% Ponderación Asignaturas</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+         <id>EP-S</id>
+      </campos>
+      <campos nombre="plan_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="peri_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="sapl_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <tipoDato>SECUENCIA</tipoDato>
+         <secuencia>sapl_ncorr_seq</secuencia>
+      </campos>
+   </parametro>
+</Parametros>
+

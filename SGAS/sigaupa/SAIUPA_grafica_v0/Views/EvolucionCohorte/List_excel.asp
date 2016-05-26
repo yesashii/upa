@@ -1,0 +1,622 @@
+      <%
+	    Response.AddHeader "Content-Disposition", "attachment;filename=evolucion_cohortes_nuevos.xls"
+        Response.ContentType = "application/vnd.ms-excel"
+	  %>
+      <script type="text/javascript">
+          //two variables Controller and Action have to be initialized in the View HTML code
+          var Controller ='EvolucionCohorte';
+          var Action = 'List_excel';
+      </script>
+      <%
+	  anio_consulta = request.QueryString("anio_consulta")
+	  maximo_anio = anio_consulta
+	  v_anio_actual	= Year(now())
+	  %>
+      <html>
+      <head>
+      <title>Indicador de evoluci&oacute;n de cohortes matriculados</title>
+      <meta http-equiv="Content-Type" content="text/html;">
+      </head>
+      <body >
+      <table width="100%">
+       	<tr>
+        	          <th align="center" bgcolor="#99CC00">Cohorte</th>
+                      <th align="center" bgcolor="#99CC00">Sede</th>
+                      <th align="center" bgcolor="#99CC00">Matricula Cohorte</th>
+                      <%if maximo_anio + 1 <=  v_anio_actual  then%>
+                      <th bgcolor="#99CC00"><%=maximo_anio + 1%></th>
+                      <%end if%>
+                      <%if maximo_anio + 2 <=  v_anio_actual then%>
+                      <th bgcolor="#99CC00"><%=maximo_anio + 2%></th>
+                      <%end if%>
+                      <%if maximo_anio + 3 <=  v_anio_actual then%>
+                      <th bgcolor="#99CC00"><%=maximo_anio + 3%></th>
+                      <%end if%>
+                      <%if maximo_anio + 4 <=  v_anio_actual then%>
+                      <th bgcolor="#99CC00"><%=maximo_anio + 4%></th>
+                      <%end if%>
+                      <%if maximo_anio + 5 <=  v_anio_actual then%>
+                      <th bgcolor="#99CC00"><%=maximo_anio + 5%></th>
+                      <%end if%>
+                      <%if maximo_anio + 6 <=  v_anio_actual then%>
+                      <th bgcolor="#99CC00"><%=maximo_anio + 6%></th>
+                      <%end if%>
+                      <%if maximo_anio + 7 <=  v_anio_actual then%>
+                      <th bgcolor="#99CC00"><%=maximo_anio + 7%></th>
+                      <%end if%>
+                      <%if maximo_anio + 8 <=  v_anio_actual then%>
+                      <th bgcolor="#99CC00"><%=maximo_anio + 8%></th>
+                      <%end if%>
+                      <%if maximo_anio + 9 <=  v_anio_actual then%>
+                      <th bgcolor="#99CC00"><%=maximo_anio + 9%></th>
+                      <%end if%>
+                      <%if maximo_anio + 10 <=  v_anio_actual then%>
+                      <th bgcolor="#99CC00"><%=maximo_anio + 10%></th>
+                      <%end if%>
+                      <%if maximo_anio + 11 <=  v_anio_actual then%>
+                      <th bgcolor="#99CC00"><%=maximo_anio + 11%></th>
+                      <%end if%>
+                      <%if maximo_anio + 12 <=  v_anio_actual then%>
+                      <th bgcolor="#99CC00"><%=maximo_anio + 12%></th>
+                      <%end if%>
+                      <%if maximo_anio + 13 <=  v_anio_actual then%>
+                      <th bgcolor="#99CC00"><%=maximo_anio + 13%></th>
+                      <%end if%>
+         </tr>
+            
+                    <%
+                    Dim obj
+                    For each obj in Model.Items
+					if maximo_anio = Html.Encode(obj.a_anos) then  
+                    %>
+        <tr>
+                      <td align="center"><%=Html.Encode(obj.a_anos) %></td>
+                      <td align="left"><%=Html.Encode(obj.cabecera) %></td>
+                      <td align="center"><%=Html.Encode(obj.a_anos_0) %></td>
+                      <%if maximo_anio + 1 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj.a_anos_1) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 2 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj.a_anos_2) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 3 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj.a_anos_3) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 4 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj.a_anos_4) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 5 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj.a_anos_5) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 6 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj.a_anos_6) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 7 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj.a_anos_7) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 8 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj.a_anos_8) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 9 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj.a_anos_9) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 10 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj.a_anos_10) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 11 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj.a_anos_11) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 12 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj.a_anos_12) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 13 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj.a_anos_13) %></td>
+                      <%end if%>
+        </tr>
+                      <%
+					end if 
+                    Next
+					Dim obj_tot_sede
+                    For each obj_tot_sede in ModelTotalSede.Items
+					if maximo_anio = Html.Encode(obj_tot_sede.a_anos) then 
+                    %>
+        <tr>
+                      <td align="center"><strong><%=Html.Encode(obj_tot_sede.a_anos) %></strong></td>
+                      <td align="right"><strong><%=Html.Encode(obj_tot_sede.cabecera) %></strong></td>
+                      <td align="center"><strong><%=Html.Encode(obj_tot_sede.a_anos_0) %></strong></td>
+                      <%if maximo_anio + 1 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_sede.a_anos_1) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 2 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_sede.a_anos_2) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 3 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_sede.a_anos_3) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 4 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_sede.a_anos_4) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 5 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_sede.a_anos_5) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 6 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_sede.a_anos_6) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 7 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_sede.a_anos_7) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 8 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_sede.a_anos_8) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 9 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_sede.a_anos_9) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 10 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_sede.a_anos_10) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 11 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_sede.a_anos_11) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 12 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_sede.a_anos_12) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 13 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_sede.a_anos_13) %></td>
+                      <%end if%>
+        </tr>
+                      <% 
+					end if
+                    Next
+                    %>
+       <tr>
+                      <th align="center" bgcolor="#CC9900">Cohorte</th>
+                      <th align="left" bgcolor="#CC9900">Facultad</th>
+                      <th align="center" bgcolor="#CC9900">Matricula cohorte</th>
+                      <%if maximo_anio + 1 <=  v_anio_actual then%>
+                      <th bgcolor="#CC9900"><%=maximo_anio + 1%></th>
+                      <%end if%>
+                      <%if maximo_anio + 2 <=  v_anio_actual then%>
+                      <th bgcolor="#CC9900"><%=maximo_anio + 2%></th>
+                      <%end if%>
+                      <%if maximo_anio + 3 <=  v_anio_actual then%>
+                      <th bgcolor="#CC9900"><%=maximo_anio + 3%></th>
+                      <%end if%>
+                      <%if maximo_anio + 4 <=  v_anio_actual then%>
+                      <th bgcolor="#CC9900"><%=maximo_anio + 4%></th>
+                      <%end if%>
+                      <%if maximo_anio + 5 <=  v_anio_actual then%>
+                      <th bgcolor="#CC9900"><%=maximo_anio + 5%></th>
+                      <%end if%>
+                      <%if maximo_anio + 6 <=  v_anio_actual then%>
+                      <th bgcolor="#CC9900"><%=maximo_anio + 6%></th>
+                      <%end if%>
+                      <%if maximo_anio + 7 <=  v_anio_actual then%>
+                      <th bgcolor="#CC9900"><%=maximo_anio + 7%></th>
+                      <%end if%>
+                      <%if maximo_anio + 8 <=  v_anio_actual then%>
+                      <th bgcolor="#CC9900"><%=maximo_anio + 8%></th>
+                      <%end if%>
+                      <%if maximo_anio + 9 <=  v_anio_actual then%>
+                      <th bgcolor="#CC9900"><%=maximo_anio + 9%></th>
+                      <%end if%>
+                      <%if maximo_anio + 10 <=  v_anio_actual then%>
+                      <th bgcolor="#CC9900"><%=maximo_anio + 10%></th>
+                      <%end if%>
+                      <%if maximo_anio + 11 <=  v_anio_actual then%>
+                      <th bgcolor="#CC9900"><%=maximo_anio + 11%></th>
+                      <%end if%>
+                      <%if maximo_anio + 12 <=  v_anio_actual then%>
+                      <th bgcolor="#CC9900"><%=maximo_anio + 12%></th>
+                      <%end if%>
+                      <%if maximo_anio + 13 <=  v_anio_actual then%>
+                      <th bgcolor="#CC9900"><%=maximo_anio + 13%></th>
+                      <%end if%>
+        </tr>
+            
+                    <%
+                    Dim obj2
+                    For each obj2 in ModelFacultad.Items
+					if maximo_anio = Html.Encode(obj2.a_anos) then 
+                    %>
+        <tr>
+                      <td align="center"><%=Html.Encode(obj2.a_anos) %></td>
+                      <td align="left"><%=Html.Encode(obj2.cabecera) %></td>
+                      <td align="center"><%=Html.Encode(obj2.a_anos_0) %></td>
+                      <%if maximo_anio + 1 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj2.a_anos_1) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 2 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj2.a_anos_2) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 3 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj2.a_anos_3) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 4 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj2.a_anos_4) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 5 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj2.a_anos_5) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 6 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj2.a_anos_6) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 7 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj2.a_anos_7) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 8 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj2.a_anos_8) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 9 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj2.a_anos_9) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 10 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj2.a_anos_10) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 11 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj2.a_anos_11) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 12 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj2.a_anos_12) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 13 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj2.a_anos_13) %></td>
+                      <%end if%>
+         </tr>
+                      <% 
+					end if
+                    Next
+					Dim obj_tot_facu
+                    For each obj_tot_facu in ModelTotalFacultad.Items
+					if maximo_anio = Html.Encode(obj_tot_facu.a_anos) then 
+                    %>
+        <tr>
+                      <td align="center"><strong><%=Html.Encode(obj_tot_facu.a_anos) %></strong></td>
+                      <td align="right"><strong><%=Html.Encode(obj_tot_facu.cabecera) %></strong></td>
+                      <td align="center"><strong><%=Html.Encode(obj_tot_facu.a_anos_0) %></strong></td>
+                      <%if maximo_anio + 1 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_facu.a_anos_1) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 2 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_facu.a_anos_2) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 3 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_facu.a_anos_3) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 4 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_facu.a_anos_4) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 5 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_facu.a_anos_5) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 6 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_facu.a_anos_6) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 7 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_facu.a_anos_7) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 8 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_facu.a_anos_8) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 9 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_facu.a_anos_9) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 10 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_facu.a_anos_10) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 11 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_facu.a_anos_11) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 12 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_facu.a_anos_12) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 13 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_facu.a_anos_13) %></td>
+                      <%end if%>
+         </tr>
+                      <%
+					end if 
+                    Next
+                      %>
+         <tr>  
+                      <th align="center" bgcolor="#3399CC">Cohorte</th>
+                      <th align="left" bgcolor="#3399CC">Jornada</th>
+                      <th align="center" bgcolor="#3399CC">Matricula cohorte</th>
+                      <%if maximo_anio + 1 <=  v_anio_actual then%>
+                      <th bgcolor="#3399CC"><%=maximo_anio + 1%></th>
+                      <%end if%>
+                      <%if maximo_anio + 2 <=  v_anio_actual then%>
+                      <th bgcolor="#3399CC"><%=maximo_anio + 2%></th>
+                      <%end if%>
+                      <%if maximo_anio + 3 <=  v_anio_actual then%>
+                      <th bgcolor="#3399CC"><%=maximo_anio + 3%></th>
+                      <%end if%>
+                      <%if maximo_anio + 4 <=  v_anio_actual then%>
+                      <th bgcolor="#3399CC"><%=maximo_anio + 4%></th>
+                      <%end if%>
+                      <%if maximo_anio + 5 <=  v_anio_actual then%>
+                      <th bgcolor="#3399CC"><%=maximo_anio + 5%></th>
+                      <%end if%>
+                      <%if maximo_anio + 6 <=  v_anio_actual then%>
+                      <th bgcolor="#3399CC"><%=maximo_anio + 6%></th>
+                      <%end if%>
+                      <%if maximo_anio + 7 <=  v_anio_actual then%>
+                      <th bgcolor="#3399CC"><%=maximo_anio + 7%></th>
+                      <%end if%>
+                      <%if maximo_anio + 8 <=  v_anio_actual then%>
+                      <th bgcolor="#3399CC"><%=maximo_anio + 8%></th>
+                      <%end if%>
+                      <%if maximo_anio + 9 <=  v_anio_actual then%>
+                      <th bgcolor="#3399CC"><%=maximo_anio + 9%></th>
+                      <%end if%>
+                      <%if maximo_anio + 10 <=  v_anio_actual then%>
+                      <th bgcolor="#3399CC"><%=maximo_anio + 10%></th>
+                      <%end if%>
+                      <%if maximo_anio + 11 <=  v_anio_actual then%>
+                      <th bgcolor="#3399CC"><%=maximo_anio + 11%></th>
+                      <%end if%>
+                      <%if maximo_anio + 12 <=  v_anio_actual then%>
+                      <th bgcolor="#3399CC"><%=maximo_anio + 12%></th>
+                      <%end if%>
+                      <%if maximo_anio + 13 <=  v_anio_actual then%>
+                      <th bgcolor="#3399CC"><%=maximo_anio + 13%></th>
+                      <%end if%>
+          </tr>
+            
+                    <%
+                    Dim obj3
+                    For each obj3 in ModelJornada.Items
+					if maximo_anio = Html.Encode(obj3.a_anos) then 
+                    %>
+         <tr>
+                      <td align="center"><%=Html.Encode(obj3.a_anos) %></td>
+                      <td align="left"><%=Html.Encode(obj3.cabecera) %></td>
+                      <td align="center"><%=Html.Encode(obj3.a_anos_0) %></td>
+                      <%if maximo_anio + 1 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj3.a_anos_1) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 2 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj3.a_anos_2) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 3 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj3.a_anos_3) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 4 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj3.a_anos_4) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 5 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj3.a_anos_5) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 6 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj3.a_anos_6) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 7 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj3.a_anos_7) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 8 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj3.a_anos_8) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 9 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj3.a_anos_9) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 10 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj3.a_anos_10) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 11 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj3.a_anos_11) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 12 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj3.a_anos_12) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 13 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj3.a_anos_13) %></td>
+                      <%end if%>
+         </tr>
+                      <%
+					end if 
+                    Next
+					Dim obj_tot_jorn
+                    For each obj_tot_jorn in ModelTotalJornada.Items
+					if maximo_anio = Html.Encode(obj_tot_jorn.a_anos) then 
+                    %>
+         <tr>
+                      <td align="center"><strong><%=Html.Encode(obj_tot_jorn.a_anos) %></strong></td>
+                      <td align="right"><strong><%=Html.Encode(obj_tot_jorn.cabecera) %></strong></td>
+                      <td align="center"><strong><%=Html.Encode(obj_tot_jorn.a_anos_0) %></strong></td>
+                      <%if maximo_anio + 1 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_jorn.a_anos_1) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 2 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_jorn.a_anos_2) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 3 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_jorn.a_anos_3) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 4 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_jorn.a_anos_4) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 5 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_jorn.a_anos_5) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 6 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_jorn.a_anos_6) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 7 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_jorn.a_anos_7) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 8 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_jorn.a_anos_8) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 9 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_jorn.a_anos_9) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 10 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_jorn.a_anos_10) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 11 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_jorn.a_anos_11) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 12 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_jorn.a_anos_12) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 13 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_jorn.a_anos_13) %></td>
+                      <%end if%>
+         </tr>
+                      <% 
+					end if
+                    Next
+                     %>
+         <tr>
+                      <th align="center" bgcolor="#CC6600">Cohorte</th>
+                      <th align="left" bgcolor="#CC6600">Carrera</th>
+                      <th align="center" bgcolor="#CC6600">Matricula cohorte</th>
+                      <%if maximo_anio + 1 <=  v_anio_actual then%>
+                      <th bgcolor="#CC6600"><%=maximo_anio + 1%></th>
+                      <%end if%>
+                      <%if maximo_anio + 2 <=  v_anio_actual then%>
+                      <th bgcolor="#CC6600"><%=maximo_anio + 2%></th>
+                      <%end if%>
+                      <%if maximo_anio + 3 <=  v_anio_actual then%>
+                      <th bgcolor="#CC6600"><%=maximo_anio + 3%></th>
+                      <%end if%>
+                      <%if maximo_anio + 4 <=  v_anio_actual then%>
+                      <th bgcolor="#CC6600"><%=maximo_anio + 4%></th>
+                      <%end if%>
+                      <%if maximo_anio + 5 <=  v_anio_actual then%>
+                      <th bgcolor="#CC6600"><%=maximo_anio + 5%></th>
+                      <%end if%>
+                      <%if maximo_anio + 6 <=  v_anio_actual then%>
+                      <th bgcolor="#CC6600"><%=maximo_anio + 6%></th>
+                      <%end if%>
+                      <%if maximo_anio + 7 <=  v_anio_actual then%>
+                      <th bgcolor="#CC6600"><%=maximo_anio + 7%></th>
+                      <%end if%>
+                      <%if maximo_anio + 8 <=  v_anio_actual then%>
+                      <th bgcolor="#CC6600"><%=maximo_anio + 8%></th>
+                      <%end if%>
+                      <%if maximo_anio + 9 <=  v_anio_actual then%>
+                      <th bgcolor="#CC6600"><%=maximo_anio + 9%></th>
+                      <%end if%>
+                      <%if maximo_anio + 10 <=  v_anio_actual then%>
+                      <th bgcolor="#CC6600"><%=maximo_anio + 10%></th>
+                      <%end if%>
+                      <%if maximo_anio + 11 <=  v_anio_actual then%>
+                      <th bgcolor="#CC6600"><%=maximo_anio + 11%></th>
+                      <%end if%>
+                      <%if maximo_anio + 12 <=  v_anio_actual then%>
+                      <th bgcolor="#CC6600"><%=maximo_anio + 12%></th>
+                      <%end if%>
+                      <%if maximo_anio + 13 <=  v_anio_actual then%>
+                      <th bgcolor="#CC6600"><%=maximo_anio + 13%></th>
+                      <%end if%>
+           </tr>
+            
+                    <%
+                    Dim obj4
+                    For each obj4 in ModelCarrera.Items
+					if maximo_anio = Html.Encode(obj4.a_anos) then 
+                    %>
+           <tr>
+                      <td align="center"><%=Html.Encode(obj4.a_anos) %></td>
+                      <td align="left"><%=Html.Encode(obj4.cabecera) %></td>
+                      <td align="center"><%=Html.Encode(obj4.a_anos_0) %></td>
+                      <%if maximo_anio + 1 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj4.a_anos_1) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 2 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj4.a_anos_2) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 3 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj4.a_anos_3) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 4 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj4.a_anos_4) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 5 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj4.a_anos_5) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 6 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj4.a_anos_6) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 7 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj4.a_anos_7) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 8 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj4.a_anos_8) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 9 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj4.a_anos_9) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 10 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj4.a_anos_10) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 11 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj4.a_anos_11) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 12 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj4.a_anos_12) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 13 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj4.a_anos_13) %></td>
+                      <%end if%>
+           </tr>
+                    <% 
+					end if
+                    Next
+					Dim obj_tot_carr
+                    For each obj_tot_carr in ModelTotalCarrera.Items
+					if maximo_anio = Html.Encode(obj_tot_carr.a_anos) then 
+                    %>
+           <tr>
+                      <td align="center"><strong><%=Html.Encode(obj_tot_carr.a_anos) %></strong></td>
+                      <td align="right"><strong><%=Html.Encode(obj_tot_carr.cabecera) %></strong></td>
+                      <td align="center"><strong><%=Html.Encode(obj_tot_carr.a_anos_0) %></strong></td>
+                      <%if maximo_anio + 1 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_carr.a_anos_1) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 2 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_carr.a_anos_2) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 3 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_carr.a_anos_3) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 4 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_carr.a_anos_4) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 5 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_carr.a_anos_5) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 6 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_carr.a_anos_6) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 7 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_carr.a_anos_7) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 8 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_carr.a_anos_8) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 9 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_carr.a_anos_9) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 10 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_carr.a_anos_10) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 11 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_carr.a_anos_11) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 12 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_carr.a_anos_12) %></td>
+                      <%end if%>
+                      <%if maximo_anio + 13 <=  v_anio_actual then%>
+                      <td align="center"><%=Html.Encode(obj_tot_carr.a_anos_13) %></td>
+                      <%end if%>
+           </tr>
+                    <% 
+					end if
+                    Next
+                    %>
+     </table>
+</body>
+</html>
+
+    

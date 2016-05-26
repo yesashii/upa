@@ -1,0 +1,79 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="agregar">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>AGREGAR</accion>
+         <url>agregar_item_gasto.asp</url>
+         <ancho>500</ancho>
+         <alto>300</alto>
+         <posicionX>100</posicionX>
+         <posicionY>100</posicionY>
+      </botones>
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_itemes_gasto.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="botonera_agregar">
+      <botones nombre="aceptar">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_agregar_item_gasto.asp</url>
+      </botones>
+      <botones nombre="cancelar">
+         <tipoTexto>CANCELAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+   </parametro>
+   <parametro formulario="itemes_gasto" variable="itemes_gasto" anchoTabla="100%" nroRegistros="10" maxLista="10" eliminar="TRUE" clave="igas_ccod" editar="TRUE" paginaEdicion="agregar_item_gasto.asp?igas_ccod=%igas_ccod%" nuevaVentana="TRUE" nuevaVentanaAlto="300" nuevaVentanaAncho="500" mensajeError="No se encontraron itemes de gasto.">
+      <tablas nombre="itemes_gasto" accion="B"/>
+      <campos nombre="c_igas_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="igas_tdesc">
+         <descripcion>Descripción</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="igas_tcodigo">
+         <descripcion>Código</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="agregar_item_gasto" anchoTabla="100%" camposObligatorios="TRUE" variable="item_gasto">
+      <tablas nombre="itemes_gasto" accion="M"/>
+      <campos nombre="igas_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <tipoDato>SECUENCIA</tipoDato>
+         <secuencia>itemes_gasto</secuencia>
+      </campos>
+      <campos nombre="igas_tdesc">
+         <descripcion>Descripción</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="igas_tcodigo">
+         <descripcion>Código</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+</Parametros>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+	<parametro formulario="btn_portada" >
+	   <botones nombre="datos_personales"> 
+		  <tipoTexto>definir</tipoTexto>
+		  <texto>DATOS PERSONALES</texto>
+		  <accion>NAVEGAR</accion>
+	      <url>datos_alumno.asp</url>
+		</botones> 
+		<botones nombre="cuenta_corriente"> 
+		  <tipoTexto>definir</tipoTexto>
+		  <texto>CUENTA CORRIENTE</texto>
+		  <accion>NAVEGAR</accion>
+	      <url>cuenta_corriente_alumno.asp</url>
+		</botones> 
+		<botones nombre="carga_academica"> 
+		  <tipoTexto>definir</tipoTexto>
+		  <texto>CARGA ACADÉMICA</texto>
+		  <accion>NAVEGAR</accion>
+	      <url>carga_alumno.asp</url>
+		</botones> 
+		<botones nombre="calificaciones"> 
+		  <tipoTexto>definir</tipoTexto>
+		  <texto>CALIFICACIONES</texto>
+		  <accion>NAVEGAR</accion>
+	      <url>notas_alumno.asp</url>
+		</botones> 
+		<botones nombre="salir"> 
+		  <tipoTexto>definir</tipoTexto>
+		  <texto>CERRAR SESSIÓN</texto>
+		  <accion>NAVEGAR</accion>
+	      <url>menu_alumno.asp</url>
+		</botones> 
+	</parametro>	
+   
+   <parametro formulario="f_datos" variable="datos">
+   	<campos nombre="login">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+		 <caracteres>12</caracteres>
+		 <alineamiento>LEFT</alineamiento>
+      </campos>
+     <campos nombre="clave">
+         <tipo>CLAVE</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <id>TO-N</id>
+		 <alineamiento>LEFT</alineamiento>
+      </campos>
+   </parametro>
+</Parametros>

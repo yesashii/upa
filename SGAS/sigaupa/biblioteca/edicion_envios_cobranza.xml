@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="btn_edicion_envios_cobranza">
+      <botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>envios_cobranza.asp</url>
+      </botones>
+      <botones nombre="agregar">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>agregar()</funcion>
+      </botones>
+      <botones nombre="agregar_letras">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>AGREGAR</accion>
+         <posicionX>100</posicionX>
+         <posicionY>50</posicionY>
+         <ancho>750</ancho>
+         <alto>600</alto>
+         <scroll>TRUE</scroll>
+      </botones>
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Generar Excel</texto>
+         <accion>NAVEGAR</accion>
+         <target>_blank</target>
+      </botones>
+      <botones nombre="pdf">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Generar PDF</texto>
+         <accion>AGREGAR</accion>
+         <target>_blank</target>
+      </botones>
+   </parametro>
+   <parametro formulario="f_listado" clave="envi_ncorr" variable="detalle_envios" colorSeleccionado="#CCCCCC" colorResaltado="#999999" nroRegistros="12" maxLista="10" eliminar="TRUE" seleccionarTodo="TRUE" anchoTabla="100%" mensajeError="No se encontraron registros">
+      <tablas nombre="detalle_envios" accion="B"/>
+      <campos nombre="ting_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ingr_ncorr">
+         <descripcion>ingr</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c_ding_ndocto">
+         <descripcion>Nº Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="ting_tdesc">
+         <descripcion>Tipo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="ding_tcuenta_corriente">
+         <descripcion>Nº Cuenta Corriente</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="edin_ccod">
+         <descripcion>C Estado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="edin_tdesc">
+         <descripcion>Estado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="rut_alumno">
+         <descripcion>Rut Alumno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="rut_apoderado">
+         <descripcion>Rut Apoderado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="nombre_apoderado">
+         <descripcion>Apoderado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="fecha_envio">
+         <descripcion>F. Emision</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ding_fdocto">
+         <descripcion>F. Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="ding_mdocto">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <formato>MONEDA</formato>
+         &gt;
+		
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="multa_protesto">
+         <descripcion>Multa Protesto</descripcion>
+         <tipo>INPUT</tipo>
+         <formato>MONEDA</formato>
+         &gt;
+		
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+   </parametro>
+   <parametro formulario="excel" clave="envi_ncorr" variable="excel" mensajeError="No se encontraron registros.">
+      <tablas nombre="detalle_envios" accion="B"/>
+      <campos nombre="c_ding_ndocto">
+         <descripcion>Letra</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="ding_tcuenta_corriente">
+         <descripcion>Nº Cuenta Corriente</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="edin_tdesc">
+         <descripcion>Estado Letra</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="rut_alumno">
+         <descripcion>Rut Alumno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="rut_apoderado">
+         <descripcion>Rut Apoderado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="nombre_apoderado">
+         <descripcion>Apoderado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="fecha_envio">
+         <descripcion>F. Emision</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="ding_mdocto">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+      </campos>
+   </parametro>
+</Parametros>

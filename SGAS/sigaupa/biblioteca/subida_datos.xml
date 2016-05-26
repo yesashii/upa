@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../dae/creditos.asp</url>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  
+	
+     <botones nombre="guardar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Grabar</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>agregar_alumno_proc.asp</url>
+		 
+	</botones>
+   
+   </parametro>
+   <parametro formulario="subida" variable="sub">
+          <campos nombre="pestana" >
+          <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-S</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+      	 <id>TO-N</id>
+      </campos>
+	   <campos nombre="tdet_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione una Beca</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>tipos_detalle </destino>
+		 <filtro>tdet_ccod in (924,1263,1264,1265,1271,1272,1273,1278,1287,1288,1395,1396,1444,1445,1503,1504)</filtro>
+         <union>tdet_ccod</union>
+         <salida>tdet_tdesc</salida>
+		 <orden>tdet_tdesc asc</orden>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="anos_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Periodo Academico</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>anos</destino>
+		 <filtro>anos_ccod in (2005,2006,2007,2008)</filtro>
+         <union>anos_ccod</union>
+         <salida>anos_tdesc</salida>
+		 <orden>anos_tdesc asc</orden>
+		 <id>NU-N</id>
+      </campos>
+  
+   </parametro>
+  
+</Parametros>

@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+		<botones nombre="buscar">
+		<tipoTexto>BUSCAR</tipoTexto>
+		<accion>BUSCAR</accion>
+		<formulario>buscador</formulario>
+		</botones>
+		<botones nombre="buscar2">
+		 <tipoTexto>BUSCAR</tipoTexto>
+		 <accion>BUSCAR</accion>
+		 <formulario>buscador</formulario>
+		 <funcionValidacion>Validar();</funcionValidacion>
+		 <soloUnClick>TRUE</soloUnClick>
+		</botones>
+      	<botones nombre="salir">
+			<tipoTexto>SALIR</tipoTexto>
+			<accion>NAVEGAR</accion>
+			<url>../lanzadera/lanzadera.asp</url>
+      	</botones>
+	 	<botones nombre="subir"> 
+			<tipoTexto>GUARDAR</tipoTexto>
+			<accion>GUARDAR</accion>
+			<url>cargar_archivo_pago_proc.asp</url>
+			<formulario>datos</formulario>
+		</botones>
+	 	<botones nombre="guardar"> 
+			<tipoTexto>GUARDAR</tipoTexto>
+			<accion>GUARDAR</accion>
+			<url>guardar_archivo_pago_proc.asp</url>
+			<formulario>datos</formulario>
+		</botones>
+	 	<botones nombre="pagar"> 
+			<tipoTexto>GUARDAR</tipoTexto>
+			<accion>GUARDAR</accion>
+			<url>pagar_archivo_pago_proc.asp</url>
+			<formulario>datos</formulario>
+		</botones>							  
+      	<botones nombre="imprimir">
+			<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Imprimir</texto>
+			<accion>JAVASCRIPT</accion>
+			<funcion>imprimir_comprobante()</funcion>
+      	</botones>
+      	<botones nombre="cerrar" >
+			<tipoTexto>CERRAR</tipoTexto>
+			<accion>CERRAR</accion>
+      	</botones>
+   </parametro>
+
+
+   <parametro formulario="busqueda" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+	  <campos nombre="audi_fmodificacion">
+		  <tipo>INPUT</tipo> 
+          <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>10</caracteres>
+          <maxCaracteres>8</maxCaracteres>
+		  <id>FE-S</id>		   
+	  </campos>
+      <campos nombre="pele_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>	  
+   </parametro>
+
+<parametro formulario="pago_electronico_letras" variable="letras" >
+	<tablas nombre="pago_electronico_letras" accion="M"/>
+</parametro>   
+
+<parametro formulario="tabla_letras_pagada" variable="pagadas" >
+      <campos nombre="rut_alumno">
+		 <descripcion>Rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre">
+		 <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="pele_nidentificacion">
+		 <descripcion>Letra</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>	  
+	  <campos nombre="pele_mvalor_cuota">
+		 <descripcion>Valor Cuota</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="pele_mmonto_recaudado">
+		 <descripcion>Monto Recaudado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="fvencimiento">
+		 <descripcion>F. Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="frecaudacion">
+		 <descripcion>F. Recaudacion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>	
+      <campos nombre="edin_ccod">
+		 <descripcion>Estado</descripcion>
+		 <tipo>SELECT</tipo>
+		 <destino>estados_detalle_ingresos</destino>
+		 <union>edin_ccod</union>
+		 <salida>edin_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+      </campos>
+      <campos nombre="imprimir">
+		 <descripcion>Comprobante</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>		  		    	
+</parametro>  
+
+<parametro formulario="tabla_pago_electronico_letras" clave="pele_ccod" variable="letras" 
+anchoTabla="100%" mensajeError="No se encontraron letras ingresadas para pagar" colorSeleccionado="#CCCCCC" colorResaltado="#999999">
+      <campos nombre="num_letra">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pele_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>	  
+	  <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="monto_letra">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tcom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="comp_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="dcom_ncompromiso">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="rut_alumno">
+		 <descripcion>Rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre">
+		 <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="pele_nidentificacion">
+		 <descripcion>Letra</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>	  
+	  <campos nombre="pele_mvalor_cuota">
+		 <descripcion>Valor Cuota</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="pele_mmonto_recaudado">
+		 <descripcion>Monto Recaudado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="fvencimiento">
+		 <descripcion>F. Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="frecaudacion">
+		 <descripcion>F. Recaudacion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>	
+      <campos nombre="edin_ccod">
+		 <descripcion>Estado</descripcion>
+		 <tipo>SELECT</tipo>
+		 <destino>estados_detalle_ingresos</destino>
+		 <union>edin_ccod</union>
+		 <salida>edin_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+      </campos>
+      <campos nombre="imprimir">
+		 <descripcion>Comprobante</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>		  		    	  	  	  
+</parametro>
+
+<parametro formulario="archivos_cargados" clave="pele_ccod" variable="pagadas" 
+anchoTabla="100%" mensajeError="No se encontraron letras cargadas para hoy" colorSeleccionado="#CCCCCC" colorResaltado="#999999">
+      <campos nombre="fecha">
+		 <descripcion>F. Ingreso</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="cantidad">
+		 <descripcion>Cantidad</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="total">
+		 <descripcion>Total</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>	  	
+      <campos nombre="desde">
+		 <descripcion>Desde</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="hasta">
+		 <descripcion>Hasta</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>			  		  		    	  	  	  
+      <campos nombre="estado">
+		 <descripcion>Estado</descripcion>
+		 <tipo>SELECT</tipo>
+		 <destino>estados_pago_electronico_letras</destino>
+		 <union>epel_ccod</union>
+		 <salida>epel_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+      </campos>
+      <campos nombre="revisar">
+		 <descripcion>revisar</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>center</alineamiento>
+      </campos>		  
+</parametro>
+
+<parametro formulario="comprobantes_de_carga" clave="pele_ccod" variable="pagadas" 
+anchoTabla="100%" mensajeError="No se encontraron letras cargadas para hoy" colorSeleccionado="#CCCCCC" colorResaltado="#999999">
+      <campos nombre="comprobante">
+		 <descripcion>N° Comp.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="fecha">
+		 <descripcion>F. Ingreso</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="cantidad">
+		 <descripcion>Cantidad</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="total">
+		 <descripcion>Total</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>	  	
+      <campos nombre="desde">
+		 <descripcion>Desde</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="hasta">
+		 <descripcion>Hasta</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>			  		  		    	  	  	  
+      <campos nombre="estado">
+		 <descripcion>Estado</descripcion>
+		 <tipo>SELECT</tipo>
+		 <destino>estados_pago_electronico_letras</destino>
+		 <union>epel_ccod</union>
+		 <salida>epel_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+      </campos>
+      <campos nombre="revisar">
+		 <descripcion>revisar</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>center</alineamiento>
+      </campos>		  
+</parametro>
+
+</Parametros>

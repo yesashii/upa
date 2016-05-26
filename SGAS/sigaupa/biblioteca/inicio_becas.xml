@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="busqueda" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>LN-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="siguiente">
+         <tipoTexto>SIGUIENTE</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>datos_alumno.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="botonera_datos_alumno">
+      <botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>inicio_becas.asp</url>
+      </botones>
+      <botones nombre="siguiente">
+         <tipoTexto>SIGUIENTE</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_datos_alumno.asp</url>
+     </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="alumno" anchoTabla="100%" variable="persona" mensajeError="No existe postulacion para este alumno.">
+      <campos nombre="rut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>R.U.T.</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="nombre_completo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nombre</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="ano_ingreso">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Año Ingreso</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="tipo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Tipo Alumno</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="datos_personales" variable="dp">
+      <tablas nombre="personas_postulante" accion="M" />
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="codigo_alumno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="pers_tape_paterno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_tape_materno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_tnombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_fnacimiento">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <tipoDato>FECHA</tipoDato>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="eciv_ccod">
+         <tipo>SELECT</tipo>
+         <destino>estados_civiles</destino>
+         <union>eciv_ccod</union>
+         <salida>eciv_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onChange="mostrar_estado(this.value);"</script>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="regi_ccod_academico">
+         <tipo>SELECT</tipo>
+         <destino>regiones</destino>
+         <union>regi_ccod</union>
+         <salida>regi_tdesc</salida>
+         <orden>regi_ccod asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <script>onChange="_FiltrarCombobox(this.form.elements['dp[0][ciud_ccod_academico]'], this.value, d_ciudades, 'regi_ccod', 'ciud_ccod', 'ciud_tdesc', '');"</script>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="ciud_ccod_academico">
+         <tipo>SELECT</tipo>
+         <destino>ciudades</destino>
+         <union>ciud_ccod</union>
+         <salida>ciud_tdesc</salida>
+         <orden>ciud_tdesc asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="dire_tcalle_academico">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>40</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="dire_tnro_academico">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="dire_tblock_academico">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tpoblacion_academico">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>35</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tfono_academico">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>12</maxCaracteres>
+         <id>TE-S</id>
+      </campos>
+	  <campos nombre="carr_ccod1">
+         <tipo>SELECT</tipo>
+         <destino>carreras</destino>
+         <union>carr_ccod</union>
+         <salida>carr_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onChange="mostrar_ano_carrera(this.value);"</script>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="ano_paa">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>4</caracteres>
+         <maxCaracteres>4</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="direcciones" variable="dp">
+      <tablas nombre="direcciones_publica" accion="M"/>
+   </parametro>
+   <parametro formulario="becas" variable="dp">
+      <tablas nombre="postulacion_becas" accion="M"/>
+   </parametro>
+</Parametros>

@@ -1,0 +1,97 @@
+<styles>
+	<tabnavigator_rollover_color>21477e</tabnavigator_rollover_color> <!-- FONCÉ -->
+	<tabnavigator_pressed_color>232323</tabnavigator_pressed_color>
+	<tabnavigator_text_color>CACCCB</tabnavigator_text_color>
+	<tabnavigator_text_pressed_color>CACCCB</tabnavigator_text_pressed_color>
+	
+	<gradient_color_top>4591bc </gradient_color_top> <!-- CLAIR -->
+	<gradient_color_bottom>21477e</gradient_color_bottom>
+	<gradient_movie_icon_top>4591bc </gradient_movie_icon_top>  
+	<gradient_movie_icon_bottom>21477e</gradient_movie_icon_bottom>
+	<gradient_other_icon_top>8e8e8e</gradient_other_icon_top>
+	<gradient_other_icon_bottom>555555</gradient_other_icon_bottom>
+	<icon_symbol_color>000000</icon_symbol_color>
+	
+	<search_input_text_color>ffffff</search_input_text_color>
+	<search_input_bg_gradient_top_color>4591bc </search_input_bg_gradient_top_color>
+	<search_input_bg_gradient_bottom_color>21477e</search_input_bg_gradient_bottom_color>
+	<search_input_outline_color>3a3a3a</search_input_outline_color>
+	<search_icon_gradient_top_color>acacac</search_icon_gradient_top_color>
+	<search_icon_gradient_bottom_color>494949</search_icon_gradient_bottom_color>
+	<search_icon_symbol_color>ffffff</search_icon_symbol_color>
+	
+	<scroller_color>888888</scroller_color>
+	
+	<btn_text_color>c8cac9</btn_text_color>
+	<btn_pressed_text_color>c8cac9</btn_pressed_text_color>
+	<btn_rollover_color>21477e</btn_rollover_color>
+	<btn_pressed_color>c8cac9</btn_pressed_color>
+	
+	<index_color>ffffff</index_color>
+	<index2_color>c8cac9</index2_color>
+	
+	<buffer_color>4591bc </buffer_color>
+	<timecode_color>c8cac9</timecode_color>
+	<progressbar_color>000000</progressbar_color>
+	
+	<overlay_symbol_color>e9521f</overlay_symbol_color>
+	<overlay_btn_color>000000</overlay_btn_color>
+	<overlay_btn_alpha>75</overlay_btn_alpha>
+	
+	<form_highlight_color>4591bc </form_highlight_color>
+	<form_highlight_alpha>100</form_highlight_alpha>
+	<form_text_color>a7a7a7</form_text_color>
+	
+	<mainmenu_header_color>ffffff</mainmenu_header_color> 
+	<mainmenu_subheader_color>ffffff</mainmenu_subheader_color> <!-- TRES CLAIR -->
+	<mainmenu_color>ffffff</mainmenu_color>
+	<mainmenu_rollover_color>ffffff</mainmenu_rollover_color>
+	<mainmenu_rollover_alpha>20</mainmenu_rollover_alpha>
+	
+	<submenu_header_color>ffffff</submenu_header_color>
+	<submenu_subheader_color>e5e5e5</submenu_subheader_color>
+	<submenu_color>e4e4e4</submenu_color>
+	<submenu_rollover_color>ffffff</submenu_rollover_color>
+	<submenu_rollover_alpha>20</submenu_rollover_alpha>
+
+	<submenu_back_bar_color>2c2c2c</submenu_back_bar_color>
+	<submenu_back_bar_rollover_color>373737</submenu_back_bar_rollover_color>
+	
+	<keystroke_outline_alpha>40</keystroke_outline_alpha>
+	
+	<teaser_header_color>ffffff</teaser_header_color>
+	<teaser_subheader_color>e4e4e4</teaser_subheader_color>
+	<teaser_subheader2_color>ffffff</teaser_subheader2_color>
+	<teaser_text_color>e4e4e4</teaser_text_color>
+	
+	<seperator_line_color>ffffff</seperator_line_color>
+	<seperator_line_alpha>15</seperator_line_alpha>
+	
+	<mct_header_color>ffffff</mct_header_color>
+	<mct_question_color>ffffff</mct_question_color>
+	<mct_help_color>ffffff</mct_help_color>
+	<mct_status_bar_text_color>ffffff</mct_status_bar_text_color>
+	<mct_answer_color>ffffff</mct_answer_color>
+	<mct_answer_rollover_alpha>60</mct_answer_rollover_alpha>
+	<mct_image_bg_color>000000</mct_image_bg_color>
+	<mct_solution_solid_color>000000</mct_solution_solid_color>
+	<mct_solution_solid_alpha>40</mct_solution_solid_alpha>
+	<mct_solution_window_color>232323</mct_solution_window_color>
+	<mct_solution_alert_text_color>ffffff</mct_solution_alert_text_color>
+	<mct_solution_message_text_color>ffffff</mct_solution_message_text_color>
+	<mct_result_text_color>ffffff</mct_result_text_color>
+	<mct_result_bg_color>232323</mct_result_bg_color>
+	<mct_result_image_alpha>50</mct_result_image_alpha>
+	
+	<directory_progress_bar_total_color>3a3a3a</directory_progress_bar_total_color>
+	<directory_progress_bar_seen_color>ffffff</directory_progress_bar_seen_color>
+	
+	<quicknavi_gradient_color_top>4591bc </quicknavi_gradient_color_top>
+	<quicknavi_gradient_color_bottom>21477e</quicknavi_gradient_color_bottom>
+	<quicknavi_index_color>ffffff</quicknavi_index_color>
+	<quicknavi_color>ffffff</quicknavi_color>
+	<quicknavi_rollover_color>ffffff</quicknavi_rollover_color>
+	<quicknavi_rollover_alpha>20</quicknavi_rollover_alpha>
+	
+</styles>
+

@@ -1,0 +1,411 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>ValidaBusqueda();</funcionValidacion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cerrar"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>CERRAR</accion>
+	 </botones>
+	  <botones nombre="guardar">
+         <tipoTexto>guardar</tipoTexto>
+         <accion>guardar</accion>
+         <formulario>edicion</formulario>
+         <url>proc_edita_comentario_postulante.asp</url>
+      </botones>
+	  <botones nombre="guardar_nuevo">
+         <tipoTexto>guardar</tipoTexto>
+         <accion>guardar</accion>
+         <formulario>edicion</formulario>
+         <url>proc_crea_comentario_postulante.asp</url>
+      </botones>
+	  <botones nombre="nuevo_comentario"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Nuevo comentario</texto>
+		<accion>NAVEGAR</accion>
+		<url>javascript:nuevo_comentario();</url>		
+    </botones>	
+	<botones nombre="prueba"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>prueba</texto>
+		<accion>NAVEGAR</accion>	
+    </botones>	
+	<botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <formulario>edicion</formulario>
+         <url>eliminar_comentario_postulante.asp</url>
+    </botones>
+	<botones nombre="cancelar">
+         <tipoTexto>CANCELAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+   </parametro>
+   
+   
+   
+   <parametro formulario="buscador" variable="buscador">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>LN-N</id>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+      </campos>
+   </parametro>
+   
+   
+      <parametro formulario="lista_comentarios" anchoTabla="100%" columnas="1" 
+	  separacion="30" variable="comen" nroRegistros="5" maxLista="10"
+	  clave="comp_ncorr" paginaEdicion="edita_comentarios_postulante.asp?comp_ncorr=%comp_ncorr%"
+	   editar="true"  eliminar="true" nuevaVentana="true" mensajeError="No se encontraron comentarios...">
+	   
+      <tablas nombre="COMENTARIOS_POSTULANTE_OTEC" accion="M" />
+	  
+	  <campos nombre="COMP_FCOMENTARIO">
+         <descripcion>Fecha Comentario</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="COMP_TCOMENTARIO">
+         <descripcion>Detalle Comentario</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="TICO_tdesc">
+         <descripcion>Tipo Comentario</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   
+   
+      <parametro formulario="edita_datos_comentario"  variable="comen"  clave="comp_ncorr" >
+        <tablas nombre="COMENTARIOS_POSTULANTE_OTEC" accion="M" />
+	 <campos nombre="comp_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>	
+	 <campos nombre="COMP_FCOMENTARIO">
+         <descripcion>Fecha Comentario</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <tipoDato>FECHA</tipoDato>
+		 <id>FE-N</id>
+      </campos>
+      <campos nombre="COMP_TCOMENTARIO">
+         <descripcion>Detalle Comentario</descripcion>
+         <tipo>TEXTAREA</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		<filas>10</filas>
+		<caracteres>80</caracteres>
+		 <id>TO-N</id>
+      </campos>   
+	  <campos nombre="TICO_CCOD">
+         <descripcion>Tipo Comentario</descripcion>
+         <tipo>SELECT</tipo>
+		 <destino>tipos_comentarios</destino>
+		 <union>tico_ccod</union>
+         <salida>tico_tdesc</salida>
+		 <permiso>LECTURAEscritura</permiso>
+		 <anulable>TRUE</anulable>
+         <mensajeNulo>Elija Tipo </mensajeNulo>
+		 <id>TO-N</id>
+      </campos> 
+   </parametro>
+
+   <parametro formulario="datos_postulante" >	  
+	  <campos nombre="nombre">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="rut">
+         <descripcion>Rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="pers_nrut">
+         <descripcion>Rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  
+   </parametro>
+   
+   <parametro formulario="f_cursos_postulante" anchoTabla="100%" columnas="1" 
+	  separacion="30" variable="f_curso" nroRegistros="5" maxLista="10" clave="dgso_ncorr" 
+	  mensajeError="No se encontraron comentarios...">
+	  
+	  <campos nombre="dgso_ncorr">
+         <descripcion>asd</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="dcur_tdesc">
+         <descripcion>Curso</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="epot_tdesc">
+         <descripcion>Estado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>	 
+      <campos nombre="sede_tdesc">
+         <descripcion>Sede</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="fecha_inicio">
+         <descripcion>Fecha Inicio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="fecha_termino">
+         <descripcion>Fecha Temino</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>	  
+	  <campos nombre="fpot_tdesc">
+         <descripcion>Forma Pago Otec</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="datos_empresa" anchoTabla="100%" columnas="1" 
+	  variable="f_empresa" mensajeError="No se encontraron datos de la empresa...">	  
+	  
+	  <campos nombre="n_docto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="num_oc">
+         <descripcion>OC</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>  
+	  <campos nombre="dcur_tdesc">
+         <descripcion>Nombre Curso / Diplomado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="monto_matricula">
+         <descripcion>Monto Matricula</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <formato>MONEDA</formato>
+		 <resumen>SUMA</resumen>
+         <nowrap>TRUE</nowrap>
+      </campos>
+	  <campos nombre="monto_arancel">
+         <descripcion>Monto Arancel</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <formato>MONEDA</formato>
+		 <resumen>SUMA</resumen>
+         <nowrap>TRUE</nowrap>
+      </campos>	 
+      <campos nombre="monto_total">
+         <descripcion>Monto Total</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <formato>MONEDA</formato>
+		 <resumen>SUMA</resumen>
+         <nowrap>TRUE</nowrap>
+      </campos>
+	  <campos nombre="financia_empresa">
+         <descripcion>Empresa Financia</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <formato>MONEDA</formato>
+		 <resumen>SUMA</resumen>
+         <nowrap>TRUE</nowrap>
+      </campos>
+	  <campos nombre="financia_otic">
+         <descripcion>Otic Financia</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <formato>MONEDA</formato>
+		 <resumen>SUMA</resumen>
+         <nowrap>TRUE</nowrap>
+      </campos>	 
+	  <campos nombre="financia_persona">
+         <descripcion>Persona Financia</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <formato>MONEDA</formato>
+		 <resumen>SUMA</resumen>
+         <nowrap>TRUE</nowrap>
+      </campos>	 
+	  
+   </parametro>
+   
+   <parametro formulario="empresa" >	  
+	  <campos nombre="nombre">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="rut">
+         <descripcion>Rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="nombre_otic">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="rut_otic">
+         <descripcion>Rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="nombre_persona">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="rut_persona">
+         <descripcion>Rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  
+   </parametro>
+   
+   
+   <parametro formulario="persona_narutal" >		  
+	  <campos nombre="nombre_persona">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="rut_persona">
+         <descripcion>Rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>	  
+   </parametro>
+   
+   
+   <parametro formulario="abonos" anchoTabla="100%" resumen="FALSE" mensajeError="No se registran abonos para este compromiso.">
+      <campos nombre="abon_fabono">
+         <descripcion>Fecha Abono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="abon_mabono">
+         <descripcion>Abono</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+         <resumen>SUMA</resumen>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="eing_ccod">
+         <descripcion>Estado Ingreso</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>estados_ingresos</destino>
+         <union>eing_ccod</union>
+         <salida>eing_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ting_ccod">
+         <descripcion>Docto. Emitido</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <destino>ting_tdesc</destino>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ingr_nfolio_referencia">
+         <descripcion>Folio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ingr_mefectivo">
+         <descripcion>Efectivo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="ingr_mdocto">
+         <descripcion>Documentos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="ting_ccod_documento">
+         <descripcion>Docto.</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <destino>ting_tdesc</destino>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <descripcion>Nº Docto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_fdocto">
+         <descripcion>Fecha Docto.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="edin_ccod">
+         <descripcion>Estado</descripcion>
+         <tipo>SELECT</tipo>
+         <permiso>LECTURA</permiso>
+         <destino>estados_detalle_ingresos</destino>
+         <union>edin_ccod</union>
+         <salida>edin_tdesc</salida>
+      </campos>
+	  <campos nombre="banc_ccod">
+         <descripcion>Banco</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   
+</Parametros>

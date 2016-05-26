@@ -1,0 +1,102 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<%
+'for each k in request.form
+'	response.Write(k&" = "&request.form(k)&"<br>")
+'next
+Response.AddHeader "Content-Disposition", "attachment;filename=predictivo_escuelas.xls"
+Response.ContentType = "application/vnd.ms-excel"
+
+set conexion = new CConexion
+conexion.Inicializar "upacifico"
+
+'------------------------------------------------------------------------------------
+'response.End()
+fecha=conexion.consultaUno("select getDate() ")
+registros = request.Form("registros")
+'response.End()
+%>
+<html>
+<head>
+<title>Predictivo de candidatos a egreso por escuela</title>
+<meta http-equiv="Content-Type" content="text/html;">
+</head>
+<body >
+<table width="100%" border="0">
+ <tr> 
+    <td colspan="4"><div align="center"><font size="+2" face="Arial, Helvetica, sans-serif">Predictivo de candidatos a egreso por escuela</font></div></td>
+ </tr>
+ <tr> 
+    <td colspan="4">&nbsp;</td>
+ </tr>
+ <tr> 
+    <td colspan="4">Fecha Actual: <%=fecha%></div></td>
+ </tr>
+</table>
+
+<p>&nbsp;</p><table width="100%" border="1">
+<tr>
+	<td colspan="2" align="center">
+		<table width="90%" border="1">
+		  <tr> 
+				<td bgcolor="#FFFFCC"><div align="center"><strong>N°</strong></div></td>
+				<td bgcolor="#FFFFCC"><div align="center"><strong>Sede</strong></div></td>
+				<td bgcolor="#FFFFCC"><div align="center"><strong>Carrera</strong></div></td>
+				<td bgcolor="#FFFFCC"><div align="center"><strong>Jornada</strong></div></td>
+				<td bgcolor="#FFFFCC"><div align="center"><strong>Especialidad</strong></div></td>
+				<td bgcolor="#FFFFCC"><div align="center"><strong>Plan</strong></div></td>
+				<td bgcolor="#FFFFCC"><div align="center"><strong>RUT</strong></div></td>
+				<td bgcolor="#FFFFCC"><div align="center"><strong>Nombre</strong></div></td>
+				<td bgcolor="#FFFFCC"><div align="center"><strong>Año de ingreso</strong></div></td>
+				<td bgcolor="#FFFFCC"><div align="center"><strong>Último estado</strong></div></td>
+				<td bgcolor="#FFFFCC"><div align="center"><strong>Último período</strong></div></td>
+				<td bgcolor="#FFFFCC"><div align="center"><strong>Egresado</strong></div></td>
+				<td bgcolor="#FFFFCC"><div align="center"><strong>Titulado</strong></div></td>
+				<td bgcolor="#FFFFCC"><div align="center"><strong>ES CAE</strong></div></td>
+				<td bgcolor="#FFFFCC"><div align="center"><strong>Asignaturas Malla</strong></div></td>
+				<td bgcolor="#FFFFCC"><div align="center"><strong>Aprobadas o en curso</strong></div></td>
+				<td bgcolor="#FFFFCC"><div align="center"><strong>Restantes</strong></div></td>
+				<td bgcolor="#FFFFCC"><div align="center"><strong>Teléfono</strong></div></td>
+				<td bgcolor="#FFFFCC"><div align="center"><strong>Celular</strong></div></td>
+				<td bgcolor="#FFFFCC"><div align="center"><strong>E-mail</strong></div></td>
+				<td bgcolor="#FFFFCC"><div align="center"><strong>Informar CAE</strong></div></td>
+				<td bgcolor="#FFFFCC"><div align="center"><strong>Fecha CAE</strong></div></td>
+				<td bgcolor="#FFFFCC"><div align="center"><strong>Observaci&oacute;n</strong></div></td>
+			</tr>
+			<% fila = 1
+			 while fila <= cint(registros) %>
+			<tr> 
+				<td><div align="center"><%=fila%></div></td>
+				<td><div align="left"><%=request.Form("campo_"&fila&"_sede")%></div></td>
+				<td><div align="left"><%=request.Form("campo_"&fila&"_carrera")%></div></td>
+				<td><div align="left"><%=request.Form("campo_"&fila&"_jornada")%></div></td>
+				<td><div align="left"><%=request.Form("campo_"&fila&"_especialidad")%></div></td>
+				<td><div align="left"><%=request.Form("campo_"&fila&"_plan")%></div></td>
+				<td><div align="left"><%=request.Form("campo_"&fila&"_rut")%></div></td>
+				<td><div align="left"><%=request.Form("campo_"&fila&"_nombre_completo")%></div></td>
+				<td><div align="left"><%=request.Form("campo_"&fila&"_ano")%></div></td>	
+				<td><div align="left"><%=request.Form("campo_"&fila&"_estado")%></div></td>
+				<td><div align="left"><%=request.Form("campo_"&fila&"_periodo")%></div></td>
+				<td><div align="left"><%=request.Form("campo_"&fila&"_egresado")%></div></td>
+				<td><div align="left"><%=request.Form("campo_"&fila&"_titulado")%></div></td>
+				<td><div align="left"><%=request.Form("campo_"&fila&"_es_cae")%></div></td>
+				<td><div align="center"><%=request.Form("campo_"&fila&"_malla")%></div></td>
+				<td><div align="center"><%=request.Form("campo_"&fila&"_completos")%></div></td>
+				<td bgcolor="#FFFFCC" ><div align="center"><%=request.Form("campo_"&fila&"_restantes")%></div></td>
+				<td><div align="left"><%=request.Form("campo_"&fila&"_telefono")%></div></td>
+				<td><div align="left"><%=request.Form("campo_"&fila&"_celular")%></div></td>
+				<td><div align="left"><%=request.Form("campo_"&fila&"_email")%></div></td>
+				<td><div align="left"><%=request.Form("campo_"&fila&"_informar_cae")%></div></td>
+				<td><div align="left"><%=request.Form("campo_"&fila&"_fecha_cae")%></div></td>
+				<td><div align="left"><%=request.Form("campo_"&fila&"_observaciones_cae")%></div></td>
+			</tr>
+			<%fila= fila + 1  
+			wend %>
+		</table>
+	</td>
+</tr>
+</table>
+<p>&nbsp; 
+</p> 
+<div align="center"></div>
+</body>
+</html>

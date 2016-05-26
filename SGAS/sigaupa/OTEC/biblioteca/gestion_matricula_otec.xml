@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+         <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>salir()</funcion>
+      </botones>
+      <botones nombre="buscar">
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+  	  </botones>
+	  <botones nombre="excel">
+        <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>navegar</accion>
+         <formulario>buscador</formulario>
+     </botones>
+	 <botones nombre="excel2">
+        <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>navegar</accion>
+         <formulario>buscador</formulario>
+     </botones>
+	 <botones nombre="Atras">
+        <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Atras</texto>
+         <accion>Navegar</accion>
+         <url>gestion_matricula_otec.asp</url>
+      </botones>
+   </parametro>
+ 
+ 
+   <parametro formulario="busqueda" variable="busqueda">
+   	  <campos nombre="ano_ccod">
+         <tipo>SELECT </tipo>
+		 <destino>anos</destino>
+		 <union>anos_ccod</union>
+		 <salida>anos_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		<filtro>anos_ccod > 2007 </filtro>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+		 <anulable>True</anulable>
+		 <mensajeNulo>Elija un Año</mensajeNulo>
+		 <mensajeVacio>''</mensajeVacio>
+         <id>NU-S</id>
+      </campos>
+	  
+
+   </parametro>
+ 
+ <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="lista_contratos" 
+		  mensajeError="No se encontraron alumnos con contrato en la fecha indicada." colorBase="#F1F1E4" editar="false" anchoTabla="100%"	 nuevaVentana="false" variable="a">
+		 <campos nombre="dgso_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>INPUT</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>N° Contrato</descripcion>
+		</campos>  
+		 <campos nombre="sede_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>N° Contrato</descripcion>
+		</campos> 
+		 <campos nombre="pendiente">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>N° Contrato</descripcion>
+		</campos>
+		 <campos nombre="aprobado">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>N° Contrato</descripcion>
+		</campos>
+		 <campos nombre="Matriculado">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>N° Contrato</descripcion>
+		</campos>
+		
+	</parametro>  
+	
+	 <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="detalle_gestion_matricula" 
+		  mensajeError="No se encontraron alumnos con contrato en la fecha indicada." colorBase="#F1F1E4" editar="false" anchoTabla="100%"	 nuevaVentana="false" variable="a">
+		 <campos nombre="nombre">
+			<tipo>INPUT</tipo>
+			<permiso>INPUT</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>N° Contrato</descripcion>
+		</campos>  
+		 <campos nombre="rut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>N° Contrato</descripcion>
+		</campos> 
+		 <campos nombre="fecha_post">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>N° Contrato</descripcion>
+		</campos>
+		 <campos nombre="fecha_matr">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>N° Contrato</descripcion>
+		</campos>
+		 <campos nombre="estado">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>N° Contrato</descripcion>
+		</campos>
+		 <campos nombre="empresa">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Empresa</descripcion>
+		</campos>
+		 <campos nombre="otic">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Otic</descripcion>
+		</campos>
+		
+		 <campos nombre="rut_empresa">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Empresa</descripcion>
+		</campos>
+		 <campos nombre="rut_otic">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Otic</descripcion>
+		</campos>
+		
+		<campos nombre="v_tipo_p">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Otic</descripcion>
+		</campos>
+		<campos nombre="v_tipo_e">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Otic</descripcion>
+		</campos>
+		<campos nombre="v_tipo_o">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Otic</descripcion>
+		</campos>
+	</parametro>  
+</Parametros>

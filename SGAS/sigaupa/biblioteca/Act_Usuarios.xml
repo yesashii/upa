@@ -1,0 +1,165 @@
+<Parametros>
+   <parametro formulario="f1" variable="personas" clave="pers_ncorr">
+	 <tablas nombre="act_datos_personales" accion="M"/>
+	 <campos nombre="pers_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>	
+		<id>NU-N</id>
+	 </campos>
+     <campos nombre="pers_nrut">
+		<descripcion>Rut</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>	
+		<id>NU-N</id>
+	 </campos>
+     <campos nombre="pers_tnombre">
+	    <descripcion>Nombre Completo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>	
+	 </campos>
+	 <campos nombre="pers_tape_paterno">
+	    <descripcion>Apellido Paterno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="pers_tape_materno">
+	    <descripcion>Apellido Materno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="pers_tnombre2">
+	    <descripcion>Nombre Completo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+	 </campos>	 
+	 <campos nombre="pers_tape_paterno2">
+	    <descripcion>Apellido Paterno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="pers_tape_materno2">
+	    <descripcion>Apellido Materno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	</campos>
+	 <campos nombre="carrera">
+	    <descripcion>Carrera</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="sede">
+	    <descripcion>Sede/Campus</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="dire_tcalle">
+	    <descripcion>Direccion Particular</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>60</caracteres>
+		<maxCaracteres>40</maxCaracteres>
+	 </campos>
+	 <campos nombre="dire_tnro">
+	    <descripcion>Numero</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+	 </campos>
+    <campos nombre="dire_tblock">
+	    <descripcion>Departamento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+	 </campos>	 	 
+	 <campos nombre="dire_tpoblacion">
+	    <descripcion>Condominio</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+	</campos>
+	<campos nombre="pers_tfono">
+	    <descripcion>Telefono Fijo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<script>onkeypress="solonumeros()" onblur="verificar_numero()"</script>
+		<maxCaracteres>7</maxCaracteres>
+	 </campos>
+	 <campos nombre="pers_tcelular">
+	    <descripcion>Persona Celular</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>		
+		<script>onkeypress="solonumeros()"</script>		
+	 </campos>
+	 <campos nombre="pers_temail">
+	    <descripcion>Correo Electronico</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>40</caracteres>
+		<id>EM-N</id>
+	 </campos>
+	 <campos nombre="ciud_ccod">
+         <descripcion>Ciudad</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>ciudades</destino>
+         <union>ciud_ccod</union>
+         <salida>ciud_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <orden>ciud_tdesc asc</orden>
+		 <script>onChange="EnmarcararTelefono()"</script>
+      </campos>
+	  <campos nombre="cod_area">
+	    <descripcion>Codigo Area</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>2</caracteres>
+		<maxCaracteres>2</maxCaracteres>
+	 </campos>	 
+	 <campos nombre="pre_celu">
+	    <descripcion>Pre Celular</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>2</caracteres>
+		<maxCaracteres>1</maxCaracteres>
+		<script>onkeypress="SoloNumerosNueveOchoSieteSeis()"</script>
+	 </campos>	 	
+	 <campos nombre="audi_tusuario">
+	    <descripcion>Usuario que Registro</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="audi_fmodificacion">
+	    <descripcion>Correo Electronico</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+   </parametro>   
+   
+  <parametro formulario="botonera">
+	<botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <formulario>f1</formulario>
+	  <funcion>validar_ingreso();</funcion>
+	</botones> 	
+	<botones nombre="continuar"> 
+      <tipoTexto>CONTINUAR</tipoTexto>
+	  <accion>CONTINUAR</accion>
+	  <formulario>f1</formulario>
+	</botones>
+   </parametro>
+
+<parametro formulario="busqueda_usuarios" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+</parametro>
+</Parametros>

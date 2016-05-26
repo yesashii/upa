@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+	<parametro formulario="tabla_documentos" variable="act" eliminar="true" editar="false" clave="reso_ncorr" nroRegistros="10" maxLista="10"  anchoTabla="98%" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" mensajeError="No existen documentos asociados.">
+		<campos nombre="reso_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nro.&lt;br&gt; Solicitud</descripcion>
+			<alineamiento>RIGHT</alineamiento>
+			<ancho>75</ancho>
+		</campos>
+		<campos nombre="tdet_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Certificado</descripcion>
+		</campos>
+		<campos nombre="tdet_mvalor_unitario">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Valor</descripcion>
+			<formato>MONEDA</formato>
+			<alineamiento>RIGHT</alineamiento>
+			<ancho>100</ancho>
+		</campos>
+		<campos nombre="f_solicitud">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Fecha Solicitud</descripcion>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="esol_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Estado Solicitud</descripcion>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+	</parametro>
+	<parametro formulario="activar_documentos" variable="act">
+	<tablas nombre="resoluciones" accion="M"/>
+	<tablas nombre="compromisos" accion="I"/>
+	<tablas nombre="detalle_compromisos" accion="I"/>
+	<tablas nombre="detalles" accion="I"/>
+		<campos nombre="reso_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="comp_ndocto">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="tcom_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="inst_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="tdet_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+	</parametro>
+  <parametro formulario="btn_activar_solicitudes">
+   <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 
+   <botones nombre="activar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>activar(document.editar)</funcion>
+	</botones> 
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+   </parametro>
+
+</Parametros>

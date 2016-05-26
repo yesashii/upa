@@ -1,0 +1,182 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+
+<%
+Response.AddHeader "Content-Disposition", "attachment;filename=reportes_diarios.xls"
+Response.ContentType = "application/vnd.ms-excel"
+ 
+inicio = request.QueryString("inicio")
+termino = request.QueryString("termino")
+tipo = request.QueryString("tipo")
+
+set conexion = new CConexion
+conexion.Inicializar "upacifico"
+
+set negocio = new CNegocio
+negocio.Inicializa conexion
+
+fecha_01=conexion.consultaUno("select convert(datetime,getDate(),103)")
+periodo = negocio.obtenerPeriodoAcademico("POSTULACION")
+periodo_tdesc = conexion.consultaUno("select peri_tdesc from periodos_academicos where cast(peri_ccod as varchar)='"&periodo&"'")
+anos_ccod = conexion.consultaUno("select anos_ccod from periodos_academicos where cast(peri_ccod as varchar)='"&periodo&"'")
+
+'------------------------------------------------------------------------------------
+
+set f_matriculados = new cformulario
+f_matriculados.carga_parametros "consulta.xml","consulta"
+f_matriculados.inicializar conexion
+
+if tipo = "3" then 
+tituloPag = "Alumnos con Contratos realizados en fecha consultada"
+consulta = " select d.sede_tdesc as sede,c.cont_ncorr as n_contrato,e.econ_tdesc as estado,protic.trunc(c.cont_fcontrato) as fecha,c.cont_fcontrato as fecha2, " & vbCrLf &_
+		   " cast(f.pers_nrut as varchar) + '-' + f.pers_xdv as rut,f.pers_tnombre + ' ' + f.pers_tape_paterno + ' ' + pers_tape_materno as nombre, " & vbCrLf &_
+		   " h.carr_tdesc as carrera, i.jorn_tdesc as jornada,protic.ano_ingreso_carrera(a.pers_ncorr,h.carr_ccod) as promocion,f.pers_tfono as fono, f.pers_tcelular as celular, lower(f.pers_temail) as email, " & vbCrLf &_
+		   " protic.obtener_direccion_letra(a.pers_ncorr,1,'CNPB') as direccion,protic.obtener_direccion_letra(a.pers_ncorr,1,'C-C') as comuna  "& vbcrlf & _
+		   " from alumnos a, ofertas_Academicas b, contratos c,sedes d,estados_contrato e,personas f, " & vbCrLf &_
+		   " especialidades g, carreras h, jornadas i " & vbCrLf &_
+		   " where a.ofer_ncorr=b.ofer_ncorr " & vbCrLf &_
+		   " and a.matr_ncorr=c.matr_ncorr " & vbCrLf &_
+		   " and b.sede_ccod=d.sede_ccod " & vbCrLf &_
+		   " and c.econ_ccod=e.econ_ccod " & vbCrLf &_
+		   " and a.pers_ncorr=f.pers_ncorr " & vbCrLf &_
+		   " and b.espe_ccod=g.espe_ccod and cast(b.peri_ccod as varchar)='"&periodo&"'" & vbCrLf &_
+		   " and g.carr_ccod=h.carr_ccod " & vbCrLf &_
+		   " and not exists (select 1 from alumnos tt, ofertas_academicas t2, especialidades t3  " & vbCrLf &_
+		   "                 where tt.ofer_ncorr=t2.ofer_ncorr and t2.espe_ccod=t3.espe_ccod  " & vbCrLf &_
+		   "  				 and t3.carr_ccod=h.carr_ccod and tt.pers_ncorr=a.pers_ncorr and tt.emat_ccod=1 and t2.peri_ccod < '"&periodo&"') " & vbCrLf &_		   
+		   " and b.jorn_ccod=i.jorn_ccod and b.post_bnuevo = 'S' and protic.ano_ingreso_carrera(a.pers_ncorr,h.carr_ccod) = '"&anos_ccod&"' " & vbCrLf &_
+		   " and c.audi_tusuario not in ('contrato -CREAR_MATRICULA_SEG_SEMESTRE') "
+		   if esVacio(termino) then
+		    consulta = consulta & " and datepart(day, c.cont_fcontrato)=datepart(day, convert(datetime,'"&inicio&"',103))  " & vbCrLf &_
+						    	  " and datepart(month, c.cont_fcontrato)=datepart(month, convert(datetime,'"&inicio&"',103))  " & vbCrLf &_
+						    	  " and datepart(year, c.cont_fcontrato)=datepart(year, convert(datetime,'"&inicio&"',103)) "		  
+		   else
+		   consulta = consulta & " and convert(datetime,protic.trunc(c.cont_fcontrato),103) >= convert(datetime,'"&inicio&"',103)  " & vbCrLf &_
+ 								 " and convert(datetime,protic.trunc(c.cont_fcontrato),103) <= convert(datetime,'"&termino&"',103)"
+		   end if
+		   
+elseif tipo = "2" then
+tituloPag = "Postulantes con test o entrevista realizada en fecha consultada"
+consulta = " select cast(h.pers_nrut as varchar)+'-'+h.pers_xdv as rut,protic.initcap(h.pers_tnombre + ' ' + h.pers_tape_paterno + ' ' + h.pers_tape_materno) as nombre,sede_tdesc as sede, carr_tdesc as carrera, jorn_tdesc as jornada, " & vbCrLf &_
+		   " protic.trunc(dpos_fexamen) as fecha,dpos_fexamen as fecha2,eepo_tdesc as estado,h.pers_tfono as fono, h.pers_tcelular as celular, lower(h.pers_temail) as email, " & vbCrLf &_
+		   " protic.obtener_direccion_letra(a.pers_ncorr,1,'CNPB') as direccion,protic.obtener_direccion_letra(a.pers_ncorr,1,'C-C') as comuna  "& vbcrlf & _
+		   " from postulantes a, detalle_postulantes b, ofertas_academicas c, sedes d, especialidades e, carreras f, " & vbCrLf &_
+		   " jornadas g, personas_postulante h,estado_examen_postulantes i " & vbCrLf &_
+		   " where a.post_ncorr=b.post_ncorr and b.ofer_ncorr=c.ofer_ncorr and c.sede_ccod=d.sede_ccod  " & vbCrLf &_
+		   " and c.espe_ccod=e.espe_ccod and e.carr_ccod=f.carr_ccod  " & vbCrLf &_
+		   " and c.jorn_ccod=g.jorn_ccod and a.pers_ncorr=h.pers_ncorr  " & vbCrLf &_
+		   " and not exists (select 1 from alumnos tt, ofertas_academicas t2, especialidades t3  " & vbCrLf &_
+		   "                 where tt.ofer_ncorr=t2.ofer_ncorr and t2.espe_ccod=t3.espe_ccod  " & vbCrLf &_
+		   "  				 and t3.carr_ccod=f.carr_ccod and tt.pers_ncorr=a.pers_ncorr and tt.emat_ccod=1 and t2.peri_ccod < '"&periodo&"') " & vbCrLf &_
+		   " and cast(a.peri_ccod as varchar)='"&periodo&"' and a.post_bnuevo = 'S' and isnull(b.eepo_ccod,1)=i.eepo_ccod"
+		    if esVacio(termino) then
+		    consulta = consulta & " and datepart(day, dpos_fexamen)=datepart(day, convert(datetime,'"&inicio&"',103))  " & vbCrLf &_
+						    	  " and datepart(month, dpos_fexamen)=datepart(month, convert(datetime,'"&inicio&"',103))  " & vbCrLf &_
+						    	  " and datepart(year, dpos_fexamen)=datepart(year, convert(datetime,'"&inicio&"',103)) "		  
+		   else
+		   consulta = consulta & " and convert(datetime,protic.trunc(dpos_fexamen),103) >= convert(datetime,'"&inicio&"',103)  " & vbCrLf &_
+ 								 " and convert(datetime,protic.trunc(dpos_fexamen),103) <= convert(datetime,'"&termino&"',103)"
+		   end if
+else
+tituloPag = "Postulaciones realizadas en fecha consultada"
+consulta = " select cast(h.pers_nrut as varchar)+'-'+h.pers_xdv as rut,protic.initcap(h.pers_tnombre + ' ' + h.pers_tape_paterno + ' ' + h.pers_tape_materno) as nombre,sede_tdesc as sede, carr_tdesc as carrera, jorn_tdesc as jornada, " & vbCrLf &_
+		   " protic.trunc(fecha_asignacion_carrera) as fecha,fecha_asignacion_carrera as fecha2,h.pers_tfono as fono, h.pers_tcelular as celular, lower(h.pers_temail) as email, " & vbCrLf &_
+		   " protic.obtener_direccion_letra(a.pers_ncorr,1,'CNPB') as direccion,protic.obtener_direccion_letra(a.pers_ncorr,1,'C-C') as comuna  "& vbcrlf & _
+		   " from postulantes a, detalle_postulantes b, ofertas_academicas c, sedes d, especialidades e, carreras f, " & vbCrLf &_
+		   " jornadas g, personas_postulante h " & vbCrLf &_
+		   " where a.post_ncorr=b.post_ncorr and b.ofer_ncorr=c.ofer_ncorr and c.sede_ccod=d.sede_ccod  " & vbCrLf &_
+		   " and c.espe_ccod=e.espe_ccod and e.carr_ccod=f.carr_ccod  " & vbCrLf &_
+		   " and c.jorn_ccod=g.jorn_ccod and a.pers_ncorr=h.pers_ncorr  " & vbCrLf &_
+		   " and not exists (select 1 from alumnos tt, ofertas_academicas t2, especialidades t3  " & vbCrLf &_
+		   "                 where tt.ofer_ncorr=t2.ofer_ncorr and t2.espe_ccod=t3.espe_ccod  " & vbCrLf &_
+		   "  				 and t3.carr_ccod=f.carr_ccod and tt.pers_ncorr=a.pers_ncorr and tt.emat_ccod=1 and t2.peri_ccod < '"&periodo&"') " & vbCrLf &_
+		   " and cast(a.peri_ccod as varchar)='"&periodo&"' and a.post_bnuevo = 'S' "
+		   if esVacio(termino) then
+		    consulta = consulta & " and datepart(day, fecha_asignacion_carrera)=datepart(day, convert(datetime,'"&inicio&"',103))  " & vbCrLf &_
+						    	  " and datepart(month, fecha_asignacion_carrera)=datepart(month, convert(datetime,'"&inicio&"',103))  " & vbCrLf &_
+						    	  " and datepart(year, fecha_asignacion_carrera)=datepart(year, convert(datetime,'"&inicio&"',103)) "		  
+		   else
+		   consulta = consulta & " and convert(datetime,protic.trunc(fecha_asignacion_carrera),103) >= convert(datetime,'"&inicio&"',103)  " & vbCrLf &_
+ 								 " and convert(datetime,protic.trunc(fecha_asignacion_carrera),103) <= convert(datetime,'"&termino&"',103)"
+		   end if
+		   
+end if
+'response.Write("<pre>"&consulta&" order by fecha2 asc</pre>")
+'response.End()
+f_matriculados.Consultar consulta & " order by fecha2 asc "
+
+%>
+<html>
+<head>
+<title><%=tituloPag%></title>
+<meta http-equiv="Content-Type" content="text/html;">
+</head>
+<body >
+<table width="100%" border="0">
+ <tr> 
+    <td colspan="4"><div align="center"><font size="+2" face="Arial, Helvetica, sans-serif"><%=tituloPag%></font></div>
+	  <div align="right"></div></td>
+    
+  </tr>
+  <tr> 
+    <td colspan="4">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td width="11%" height="22"><strong>Reporte día </strong></td>
+    <td width="89%" colspan="3"><strong>:</strong> <%=inicio %> </td>
+  </tr>
+  <tr>
+    <td><strong>Fecha actual</strong></td>
+    <td colspan="3"> <strong>:</strong> <%=fecha_01%></td>
+ </tr>
+   <tr>
+    <td><strong>Período</strong></td>
+    <td colspan="3"> <strong>:</strong> <%=periodo_tdesc%></td>
+ </tr>
+</table>
+
+<p>&nbsp;</p><table width="100%" border="1">
+  <tr> 
+    <td bgcolor="#FFFFCC" ><div align="center"><strong>N°</strong></div></td>
+    <td bgcolor="#FFFFCC"><div align="center"><strong>Sede</strong></div></td>
+	<td bgcolor="#FFFFCC"><div align="center"><strong>Carrera</strong></div></td>
+    <td bgcolor="#FFFFCC"><div align="center"><strong>Jornada</strong></div></td>
+    <td bgcolor="#FFFFCC"><div align="center"><strong>Rut</strong></div></td>
+	<td bgcolor="#FFFFCC"><div align="center"><strong>Nombre</strong></div></td>
+	<td bgcolor="#FFFFCC"><div align="center"><strong>Fecha proceso</strong></div></td>
+	<%if tipo="2" then%>
+	<td bgcolor="#FFFFCC"><div align="center"><strong>Estado</strong></div></td>
+	<%end if%>
+	<td bgcolor="#FFFFCC"><div align="center"><strong>Fono</strong></div></td>
+	<td bgcolor="#FFFFCC"><div align="center"><strong>Celular</strong></div></td>
+	<td bgcolor="#FFFFCC"><div align="center"><strong>Email</strong></div></td>
+	<td bgcolor="#FFFFCC"><div align="center"><strong>Dirección</strong></div></td>
+	<td bgcolor="#FFFFCC"><div align="center"><strong>Comuna</strong></div></td>
+  </tr>
+  <% fila = 1 
+     while f_matriculados.Siguiente %>
+  <tr> 
+    <td><div align="left"><%=fila%></div></td>
+	<td><div align="left"><%=f_matriculados.ObtenerValor("sede")%></div></td>
+	<td><div align="left"><%=f_matriculados.ObtenerValor("carrera")%></div></td>
+    <td><div align="left"><%=f_matriculados.ObtenerValor("jornada")%></div></td>
+    <td><div align="left"><%=f_matriculados.ObtenerValor("rut")%></div></td>
+	<td><div align="left"><%=f_matriculados.ObtenerValor("nombre")%></div></td>
+	<td><div align="left"><%=f_matriculados.ObtenerValor("fecha")%></div></td>
+	<%if tipo="2" then%>
+	<td><div align="left"><%=f_matriculados.ObtenerValor("estado")%></div></td>
+	<%end if%>
+	<td><div align="left"><%=f_matriculados.ObtenerValor("fono")%></div></td>
+	<td><div align="left"><%=f_matriculados.ObtenerValor("celular")%></div></td>
+	<td><div align="left"><%=f_matriculados.ObtenerValor("email")%></div></td>
+	<td><div align="left"><%=f_matriculados.ObtenerValor("direccion")%></div></td>
+	<td><div align="left"><%=f_matriculados.ObtenerValor("comuna")%></div></td>
+  </tr>
+  <% fila = fila + 1  
+  wend %>
+</table>
+<p>&nbsp; 
+</p> 
+<div align="center"></div>
+</body>
+</html>

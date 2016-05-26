@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="datos_alumno" anchoTabla="100%" columnas="2">
+      <campos nombre="rut">
+         <descripcion>R.U.T.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre_completo">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="carrera">
+         <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="sede_tdesc">
+         <descripcion>Sede</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="ano_ingreso">
+         <descripcion>Promoción</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="estado_matricula">
+         <descripcion>Estado Matricula</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	   <campos nombre="estado_alumno">
+         <descripcion>Estado Alumno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="moroso">
+         <descripcion>Es Moroso</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <!--
+	  <campos nombre="ingreso_u">
+         <descripcion>Ingreso Universidad</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  -->
+   </parametro>
+   <parametro colorSeleccionado="99FFFF" formulario="carreras_alumno" colorResaltado="#DCDCB8" nroRegistros="200" agregar="false" eliminar="false" maxLista="50" clave="asig_ccod" mensajeError="Alumno no posee carreras para periodo actual" colorBase="#F1F1E4" anchoTabla="98%" editar="false" nuevaVentana="false" variable="ca">
+      <campos nombre="carrera">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Carrera</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="sede_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Sede</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="ano_ingreso">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Promoción</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="estado_matricula">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Estado Matrícula</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="estado_alumno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Estado Alumno</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="peri_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Periodo Académico</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <!--
+	  <campos nombre="ingreso_u">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Ingreso Universidad</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  -->
+	</parametro>
+</Parametros>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="botonera">
+     <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+	 <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Generar Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>buscador</formulario>
+     </botones>
+</parametro>
+ 
+ <parametro formulario="f_busqueda" variable="busqueda">
+   <campos nombre="carr_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>carreras</destino> 
+	  <union>carr_ccod</union>
+	  <salida>CARR_TDESC</salida>
+      <orden>CARR_TDESC asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Todas</mensajeNulo>
+	  <mensajeVacio>Todas</mensajeVacio>
+	  <id>TO-S</id>
+   </campos>
+   <campos nombre="peri_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>(select peri_ccod,peri_tdesc from periodos_academicos where anos_ccod=2005) a</destino> 
+	  <union>peri_ccod</union>
+	  <salida>peri_tdesc</salida>
+      <orden>peri_ccod asc</orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Todos los contratos</mensajeNulo>
+	  <mensajeVacio>Todos los contratos</mensajeVacio>
+	  <id>TO-S</id>
+   </campos>
+   <campos nombre="aran_nano_ingreso">
+      <tipo>SELECT</tipo>
+	  <union>aran_nano_ingreso</union>
+	  <salida>aran_nano_ingreso</salida>
+      <orden>aran_nano_ingreso desc</orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Todos</mensajeNulo>
+	  <mensajeVacio>Todos</mensajeVacio>
+	  <id>TO-S</id>
+   </campos>
+   <campos nombre="emat_tdesc">
+      <tipo>SELECT</tipo>
+	  <union>emat_tdesc</union>
+	  <salida>emat_tdesc</salida>
+      <orden>emat_tdesc asc</orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Todos</mensajeNulo>
+	  <mensajeVacio>Todos</mensajeVacio>
+	  <id>TO-S</id>
+   </campos>
+   <campos nombre="post_nano_paa">
+      <tipo>SELECT</tipo>
+	  <union>post_nano_paa</union>
+	  <salida>post_nano_paa</salida>
+      <orden>post_nano_paa asc</orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Todos</mensajeNulo>
+	  <mensajeVacio>Todos</mensajeVacio>
+	  <id>TO-S</id>
+   </campos>
+  </parametro>
+</Parametros>

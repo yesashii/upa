@@ -1,0 +1,285 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<%
+
+ 'Session.Contents.RemoveAll() 
+  
+ set conexion = new CConexion
+ conexion.Inicializar "upacifico"
+ 
+ mensaje_devuelto = request.QueryString("eea")
+ rut_usuario = session("rut_tyg")
+' response.Write(rut_usuario)
+ if rut_usuario <> "" then
+ 	nombre = conexion.consultaUno("Select protic.initCap(pers_tnombre + ' ' + pers_tape_paterno) from personas where cast(pers_nrut as varchar)='"&rut_usuario&"'")
+	url_cierre = "cierre_tyg.asp"
+ else
+    nombre = ""
+ 	url_cierre = "controla_login_tyg.asp"
+ end if
+ 
+set f_ceremonia = new CFormulario
+f_ceremonia.Carga_Parametros "tabla_vacia.xml", "tabla"
+f_ceremonia.Inicializar conexion
+		   
+consulta = " select protic.initcap(mes_tdesc)+'  '+cast(datepart(day,fecha_ceremonia) as varchar)+' de '+  cast(datepart(year,fecha_ceremonia) as varchar) as fechita, "& vbCrLf &_ 
+		   " protic.initCap(sede_tdesc) as sede,lugar as lugar, hora_inicio as horario, fecha_ceremonia "& vbCrLf &_ 
+		   " from ceremonias_titulacion a, sedes b, meses c "& vbCrLf &_ 
+		   " where fecha_ceremonia > getDate() "& vbCrLf &_ 
+		   " and a.sede_ccod=b.sede_ccod and datepart(month,fecha_ceremonia)=mes_ccod "& vbCrLf &_ 
+		   " and isnull(hora_inicio,'')<>'' and isnull(lugar,'') <> '' "& vbCrLf &_ 
+		   " order by fecha_ceremonia asc "
+			
+'response.Write("<pre>"&consulta&"</pre>")
+'response.End()
+f_ceremonia.Consultar consulta
+
+ 
+%> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+  <meta name="description" content="Your description goes here" />
+  <meta name="keywords" content="your,keywords,goes,here" />
+  <link rel="stylesheet" type="text/css" href="andreas00.css" media="screen,projection" />
+  <title>Reglamento de Egreso y Titulaci&oacute;n</title>
+  <style type="text/css">
+<!--
+.Estilo1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background-image: url(../Copia%20de%20%20web_tit_grad/img/fondoUPA.jpg);
+}
+#apDiv1 {
+	position:static;
+	left:312px;
+	top:152px;
+	width:415px;
+	height:360px;
+	z-index:1;
+	overflow: scroll;
+	border: 3px double #DFDFDF;
+	padding: 8px;
+	text-align: justify;
+}
+-->
+  </style>
+  <script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+</head>
+
+<body>
+  <div id="wrap">
+    <div id="header">
+      <script type="text/javascript">
+AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0','width','760','height','100','src','swf/top_2','quality','high','pluginspage','http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash','movie','swf/top_2' ); //end AC code
+</script><noscript><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" width="760" height="100">
+<param name="movie" value="swf/top_2.swf" />
+        <param name="quality" value="high" />
+        <embed src="swf/top_2.swf" quality="high" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="760" height="100"></embed>
+      </object>
+    </noscript></div>
+ <hr color="#CCCCCC"> 
+    <div id="avmenu">
+      <ul>
+        <li>
+          <script type="text/javascript">
+AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0','width','154','height','400','src','menu_2','quality','high','pluginspage','http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash','movie','menu_2' ); //end AC code
+          </script>
+          <noscript>
+          <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" width="154" height="400">
+            <param name="movie" value="menu_2.swf" />
+            <param name="quality" value="high" />
+            <embed src="menu_2.swf" quality="high" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="154" height="400"></embed>
+          </object>
+          </noscript>
+        </li>
+        <li></li>
+      </ul>
+    </div>
+    <div id="extras">
+    <form id="form1" method="post" action="controla_login_tyg.asp" target="_top">
+        <table width="148">
+          <%if nombre = "" then%>
+		  <tr>
+          <td colspan="2"><strong>Si requiere Certificados:<br/>
+            </strong>
+				<%if nombre = "" then %>
+                	<strong>Ingrese sus Datos</strong> <strong>Aqu&iacute;</strong>
+				<%end if%>
+			</td>
+          </tr>
+		  <tr valign="middle">
+            <td width="33%">Usuario</td>
+            <td width="67%">
+				<label>
+		            <input type="text" name="usuario" id="usuario" />(12345678-9)
+                </label>
+			</td>
+          </tr>
+          <tr>
+            <td width="33%">Clave</td>
+            <td width="67%">
+				<label>
+              		<input type="password" name="clave" id="clave" />
+            	</label>
+			</td>
+          </tr>
+		  <%else%>
+		  <tr>
+            <td colspan="2" align="left"><strong><font color="#0066FF">Usted se ha autentificado como:<br></font><font color="#565a5e"><%=nombre%></font></strong></td>
+          </tr>
+		  <%end if%>
+          <tr valign="top">
+            <td colspan="2" align="center">
+			<%if mensaje_devuelto="0" then%>
+				<font color="#CC0000"><strong>Requiere datos de acceso y estar titulado o egresado</strong></font>			
+			<%end if%>
+			<label>
+              <div align="center">
+			   <%if nombre = "" then%>
+                <table width="98%" cellpadding="0" cellspacing="0">
+					<tr valign="top">
+						<td width="50%" align="center">
+							<input type="submit" name="ingreso" id="ingreso" value="Ingresar" />
+						</td>
+						
+                  <td width="50%" align="center"> <a href="javascript:clave();">¿Recuperar 
+                    Clave?</a> </td>
+					</tr>
+				</table>
+				<p><br />
+              		<font size="-3" color="#CC0000">Para solicitar certificación de Postítulos, Diplomados, Cursos, Seminarios, etc. dirigirlas a este correo:</font><a href="mailto:titulosygrados@upacifico.cl?subject=Solicitud de certificados y consultas&body=Sres. Títulos y Grados:%0D%0A %0D%0A"><img width="142" height="11" src="img/direccionTG.png" title="Consultas y solicitudes de certificados de otros programas" border="0"></a>
+			    </p>
+			   <%else%>
+			    <input type="submit" name="salir" id="salir" value="Cerrar Sesión" /> 
+				<p><br />
+              		<font size="-3" color="#CC0000">Para solicitar certificación de Postítulos, Diplomados, Cursos, Seminarios, etc. dirigirlas a este correo:</font><a href="mailto:titulosygrados@upacifico.cl?subject=Solicitud de certificados y consultas&body=Sres. Títulos y Grados:%0D%0A %0D%0A"><img width="142" height="11" src="img/direccionTG.png" title="Consultas y solicitudes de certificados de otros programas" border="0"></a>
+			    </p>
+			   <%end if%>	
+              </div>
+            </label></td>
+          </tr>
+		  <!--<tr>
+		  	<td colspan="2" align="center"><img width="142" height="11" src="img/direccionTG.png"></td>
+		  </tr>-->
+        </table>
+    </form>
+      <p>
+	  <marquee id=marco scrollamount=1 scrolldelay=3 direction=up width="148" height=70 name="marco">
+		  <%while f_ceremonia.siguiente
+		      fechita = f_ceremonia.obtenerValor("fechita")
+			  sede = f_ceremonia.obtenerValor("sede")
+			  lugar = f_ceremonia.obtenerValor("lugar")
+			  horario = f_ceremonia.obtenerValor("horario")%>
+			<b>
+				<font color="#b90000"><%=fechita%><BR></font>
+				<font color="#565a5e">Ceremonia de Titulación, <%=sede%>.<br><%=lugar%>&nbsp;<%=horario%><BR></font>
+			</b>
+			<hr color="#fbfed9">  
+		  <%wend%>	
+		</marquee>
+	  </p>
+    </div>
+
+    <div class="Estilo1" id="content">
+      <h3>Reglamento de Egreso y Titulaci&oacute;n</h3>
+      <a href="descarga/Reglamento de Egreso y Titulacion.pdf" target="_blank">Bajar Reglamento en PDF      </a><br />
+      <br />
+      <div id="apDiv1">
+        <p><strong>TITULO I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp; Disposiciones Generales</strong>.</p>
+        <p>Art&iacute;culo 1&deg;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; El  &nbsp;&nbsp;Presente &nbsp;&nbsp;Reglamento,&nbsp;  regula<br />
+          las &nbsp;actividades curriculares y tr&aacute;mites&nbsp;&nbsp;&nbsp;  administrativos conducentes a la obtenci&oacute;n de un T&iacute;tulo Profesional,  Grado Acad&eacute;mico, &nbsp;T&eacute;cnico &nbsp;de &nbsp;Nivel  &nbsp;Superior &nbsp;y/o Programas Especiales.</p>
+        <p>Art&iacute;culo 2&deg;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Todas  las carreras y/o&nbsp;&nbsp; Programas de la Universidad del  Pac&iacute;fico cuyos&nbsp;  Planes&nbsp;&nbsp; de&nbsp; Estudio conduzcan a la obtenci&oacute;n de un T&iacute;tulo  Profesional, T&eacute;cnico de&nbsp; Nivel Superior&nbsp; y/o&nbsp;&nbsp;  Grado&nbsp;&nbsp; Acad&eacute;mico deber&aacute;n regirse  por lo se&ntilde;alado en el presente Reglamento.</p>
+        <p>Art&iacute;culo 3&deg;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Para  optar a los T&iacute;tulos Profesionales, T&iacute;tulos de T&eacute;cnico de Nivel Superior y/o&nbsp;  Grado Acad&eacute;mico,&nbsp;&nbsp; que&nbsp;&nbsp; otorga&nbsp;  la Universidad  del Pac&iacute;fico, se requerir&aacute; :</p>
+        <p>a.-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ser  egresado de una carrera y/o programa impartido por la Universidad,</p>
+        <p>b.-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Haber  aprobado un Trabajo de T&iacute;tulo y/o Grado,</p>
+        <p>c.-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Haber  aprobado el Examen&nbsp; de T&iacute;tulo y/o Grado,</p>
+        <p>d.-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Que las carreras cuyos Planes&nbsp; de&nbsp;  Estudios no contemplan lo &nbsp;se&ntilde;alado  &nbsp;en &nbsp;&nbsp;los &nbsp;&nbsp;puntos&nbsp;&nbsp;  b &nbsp;y &nbsp;c,&nbsp;&nbsp; &nbsp;optaran &nbsp;al &nbsp;T&iacute;tulo  y/o Grado Acad&eacute;mico respectivo, &nbsp;con &nbsp;&nbsp;el &nbsp;s&oacute;lo &nbsp;hecho &nbsp;de&nbsp; &nbsp;haber &nbsp;&nbsp;completado  la&nbsp;&nbsp; malla&nbsp; &nbsp;curricular  &nbsp;correspondiente.</p>
+        <p>e.-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Haber dado cumplimiento con lo  establecido en el T&iacute;tulo IV, Art&iacute;culos 19&nbsp;  y 20, del Reglamento de Admisi&oacute;n y Matr&iacute;cula.&nbsp;</p>
+        <p><strong>TITULO II &nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Del Egreso.</strong> </p>
+        <p>Art&iacute;culo 4&deg;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ser&aacute;  &nbsp;&nbsp;considerado &nbsp;&nbsp;&nbsp;&nbsp;egresado(a), qui&eacute;n &nbsp;&nbsp;&nbsp;&nbsp;haya &nbsp;&nbsp;&nbsp;&nbsp;aprobado &nbsp;&nbsp;&nbsp;la totalidad de actividades curriculares &nbsp;que &nbsp;contemple  &nbsp;su &nbsp;Plan&nbsp;  de&nbsp; Estudios,&nbsp;&nbsp; con excepci&oacute;n  &nbsp;&nbsp;de&nbsp;  &nbsp;&nbsp;la&nbsp; &nbsp;&nbsp;pr&aacute;ctica&nbsp; &nbsp;&nbsp;profesional  &nbsp;&nbsp;y  &nbsp;su actividad final de titulaci&oacute;n.</p>
+        <p>No obstante, las carreras en cuyos planes  de estudios, la pr&aacute;ctica profesional se encuentre definida como una actividad  acad&eacute;mica, ser&aacute; considerada como requisito para obtener la calidad de alumno(a)  egresado(a) de la Universidad.</p>
+        <p>Art&iacute;culo 5&deg;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp; Una vez que el alumno(a)  culmine su &uacute;ltima &nbsp;actividad &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;curricular contemplada en&nbsp; el&nbsp;  plan&nbsp; de&nbsp; estudios respectivo, la Direcci&oacute;n&nbsp; de Escuela correspondiente<strong>,&nbsp; </strong>o  la&nbsp; Unidad&nbsp; responsable del programa, elevar&aacute; una  Solicitud de Egreso, definida para estos efectos,&nbsp; al &nbsp;Departamento  de T&iacute;tulos y Grados.</p>
+        <p>Art&iacute;culo 6&deg;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Las  Solicitudes de&nbsp; Egreso de la cohorte, en  una instancia &uacute;nica, deber&aacute;n&nbsp; ser enviada  al &nbsp;Departamento de T&iacute;tulos&nbsp;&nbsp; y&nbsp;&nbsp;  Grados en&nbsp; un&nbsp; plazo&nbsp;  m&aacute;ximo de&nbsp; 10&nbsp;&nbsp; d&iacute;as &nbsp;&nbsp;h&aacute;biles&nbsp;  una&nbsp; &nbsp;&nbsp;vez &nbsp;&nbsp;&nbsp;finalizada&nbsp;&nbsp;  la&nbsp;&nbsp;&nbsp; &uacute;ltima&nbsp;&nbsp;&nbsp;&nbsp; actividad&nbsp;&nbsp;&nbsp;&nbsp; formativa, adjuntando un Informe de Notas  Finales en que conste la totalidad de asignaturas cursadas y &nbsp;aprobadas &nbsp;por &nbsp;el &nbsp;alumno.</p>
+        <p>Art&iacute;culo 7&deg; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; En caso de &nbsp;existir&nbsp;&nbsp;  observaciones<strong> </strong>&nbsp;&nbsp;a&nbsp;&nbsp;  la&nbsp;&nbsp; solicitud &nbsp;&nbsp;presentada, en &nbsp;su &nbsp;forma &nbsp;y/o  &nbsp;&nbsp;contenido,<br />
+          el&nbsp;&nbsp;  Departamento &nbsp;&nbsp;de &nbsp;&nbsp;T&iacute;tulos &nbsp;&nbsp;y Grados &nbsp;devolver&aacute;&nbsp;  &nbsp;&nbsp;a &nbsp;&nbsp;<br />
+          la &nbsp;&nbsp;&nbsp;Direcci&oacute;n &nbsp;&nbsp;de &nbsp;&nbsp;Escuela  &nbsp;respectiva, indicando &nbsp;&nbsp;sus observaciones &nbsp;en &nbsp;un &nbsp;&nbsp;&nbsp;&nbsp;plazo &nbsp;&nbsp;no &nbsp;&nbsp;&nbsp;superior  &nbsp;a los 5 d&iacute;as h&aacute;biles siguientes.</p>
+        <p>En&nbsp;&nbsp; esta&nbsp;&nbsp;  eventualidad,&nbsp;&nbsp;&nbsp;&nbsp; la&nbsp;&nbsp;   Direcci&oacute;n&nbsp;&nbsp;  de&nbsp;&nbsp;&nbsp; Escuela&nbsp;&nbsp; deber&aacute;&nbsp;&nbsp;&nbsp;  remitir &nbsp;la solicitud corregida &nbsp;al &nbsp;&nbsp;Departamento&nbsp;&nbsp;&nbsp; de&nbsp;&nbsp;  T&iacute;tulos&nbsp; y&nbsp;&nbsp; Grados,&nbsp;&nbsp;  dentro&nbsp; del &nbsp;pr&oacute;ximo per&iacute;odo acad&eacute;mico<strong>.</strong><br />
+        </p>
+        <p>Art&iacute;culo 8&deg;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp; La Solicitud de Egreso,  deber&aacute;&nbsp; contener la siguiente  informaci&oacute;n: </p>
+        <p> RUT del  Alumno(a)<br />
+          Apellidos<br />
+          Nombres<br />
+          Carrera<br />
+          Menci&oacute;n(es)<br />
+          Minors (Carrera que lo ofrece)<br />
+          N&deg; de Resoluci&oacute;n  del Plan de Estudios<br />
+          Fecha de  Solicitud<strong></strong></p>
+        <p>Art&iacute;culo 9&deg;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; El &nbsp;&nbsp;&nbsp;Departamento&nbsp; &nbsp;&nbsp;de &nbsp;&nbsp;&nbsp;&nbsp;T&iacute;tulos&nbsp;&nbsp;  y Grados, &nbsp;otorgar&aacute;&nbsp;  a&nbsp; la&nbsp; luz&nbsp;&nbsp; de&nbsp;  los&nbsp;&nbsp; antecedentes&nbsp; y&nbsp;  planes &nbsp;&nbsp;de estudios &nbsp;&nbsp;que &nbsp;&nbsp;correspondan,&nbsp;&nbsp;&nbsp;&nbsp; la condici&oacute;n <br />
+          de &nbsp;&nbsp;egreso  &nbsp;&nbsp;&nbsp;al&nbsp;  &nbsp;alumno(a), y completar&aacute; la Solicitud de Egreso, con  lo siguiente &nbsp;&nbsp;&nbsp;</p>
+        <p>N&deg; de Expediente &nbsp;<br />
+          Fecha de Recepci&oacute;n<br />
+          Observaciones,</p>
+        <p>y abrir&aacute;&nbsp; &nbsp;al&nbsp;&nbsp;  mismo&nbsp;&nbsp;&nbsp; tiempo,&nbsp;&nbsp; un&nbsp;&nbsp;&nbsp;  Expediente&nbsp;&nbsp; de Titulaci&oacute;n.</p>
+        <p>Art&iacute;culo 10&deg; &nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Una&nbsp;&nbsp;&nbsp;&nbsp; vez&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  otorgada&nbsp;&nbsp;&nbsp;&nbsp; la&nbsp;&nbsp;&nbsp; calidad&nbsp;&nbsp;&nbsp;  de&nbsp;&nbsp; egresado (a), &nbsp;el alumno(a) tendr&aacute; un plazo m&aacute;ximo equivalente  al 50% de tiempo de duraci&oacute;n de su respectiva carrera, con un tope m&aacute;ximo de 2 &nbsp;a&ntilde;os, &nbsp;para  cumplir con los requisitos acad&eacute;micos y tr&aacute;mites &nbsp;administrativos de titulaci&oacute;n, este plazo ser&aacute;  efectivo desde la fecha de egreso.</p>
+        <p>Art&iacute;culo 11&deg;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp; A  quienes&nbsp; presenten&nbsp; morosidad, &nbsp;&nbsp;&nbsp;se proceder&aacute; &nbsp;al registro &nbsp;de &nbsp;su  condici&oacute;n como egresado de la carrera, no obstante lo anterior, no se har&aacute;  entrega de certificaci&oacute;n alguna acreditando tal condici&oacute;n, de acuerdo a lo  se&ntilde;alado en el Art&iacute;culo 18&deg; del Reglamento de Admisi&oacute;n y Matr&iacute;cula,  inform&aacute;ndose a la Direcci&oacute;n  de Escuela respectiva tal situaci&oacute;n<strong>.</strong><br />
+          &nbsp;<br clear="all" />
+          <strong>TITULO III&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Titulaci&oacute;n.</strong> </p>
+        <p><strong>a)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Del Proceso de Titulaci&oacute;n :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong></p>
+        <p>Art&iacute;culo&nbsp;&nbsp; 12&deg;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; El &nbsp;Examen &nbsp;&nbsp;&nbsp;&nbsp;de&nbsp;&nbsp; &nbsp;T&iacute;tulo&nbsp; &nbsp;y/o Grado es un acto, en el cual el o los  alumnos en condici&oacute;n de egreso y que han cumplido con los requisitos  administrativos correspondientes, defienden su Trabajo de T&iacute;tulo y/o Tesis de  Grado.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+        <p>Art&iacute;culo&nbsp;&nbsp;&nbsp;  13&deg;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Para los alumnos &nbsp;que &nbsp;&nbsp;deban  &nbsp;rendir Examen de T&iacute;tulo y/o Grado Acad&eacute;mico, la Direcci&oacute;n de Escuela  respectiva, deber&aacute; solicitar al Departamento de T&iacute;tulos y Grados los  expedientes de titulaci&oacute;n que correspondan, en un plazo m&iacute;nimo de 10 d&iacute;as h&aacute;biles  antes del examen.</p>
+        <p>Art&iacute;culo&nbsp;  &nbsp;&nbsp;14&deg;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp; Una&nbsp; &nbsp;vez &nbsp;&nbsp;que&nbsp;&nbsp; &nbsp;las &nbsp;&nbsp;&nbsp;&nbsp;Escuelas <br />
+          soliciten &nbsp;&nbsp;&nbsp;el &nbsp;&nbsp;&nbsp;&nbsp;Expediente&nbsp;&nbsp;  de Titulaci&oacute;n, sea que rindan<strong> </strong>examen de t&iacute;tulo o no, el Departamento  de &nbsp;&nbsp;&nbsp;T&iacute;tulos &nbsp;&nbsp;&nbsp;y<br />
+          Grados  &nbsp;&nbsp;requerir&aacute; &nbsp;a &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vice-Rector&iacute;a &nbsp;&nbsp;&nbsp;de &nbsp;&nbsp;Administraci&oacute;n&nbsp; y  Finanzas, &nbsp;Biblioteca &nbsp;&nbsp;y&nbsp; otros&nbsp;  Departamentos los&nbsp; informes&nbsp;  &nbsp;&nbsp;relacionados &nbsp;&nbsp;con &nbsp;&nbsp;&nbsp;morosidades  &nbsp;&nbsp;y/o <br />
+          aranceles cancelados por el alumno, cuyas  instancias tendr&aacute;n un plazo m&aacute;ximo de 4 d&iacute;as h&aacute;biles, para responder tal petici&oacute;n  al Departamento de T&iacute;tulos y Grados.</p>
+        <p>Art&iacute;culo&nbsp;&nbsp;&nbsp; 15&deg;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp; En caso de&nbsp;&nbsp; existir&nbsp;&nbsp;&nbsp;&nbsp;  morosidades&nbsp;&nbsp;&nbsp; y/o&nbsp; antecedentes&nbsp;  &nbsp;&nbsp;personales faltantes en el expediente de t&iacute;tulo  del alumno, el Departamento de T&iacute;tulos y Grados informar&aacute; a la Direcci&oacute;n de Escuela respectiva,  en un plazo m&aacute;ximo de 3 d&iacute;as h&aacute;biles, entendi&eacute;ndose que el env&iacute;o de  antecedentes de titulaci&oacute;n se encuentran retenidos, gener&aacute;ndose  autom&aacute;ticamente, un nuevo plazo de 10 d&iacute;as h&aacute;biles antes del Examen de T&iacute;tulo,  del momento en que el alumno haya regularizado su situaci&oacute;n pendiente. </p>
+        <p>Una vez ocurrido esto &uacute;ltimo, &nbsp;la Direcci&oacute;n de Escuela deber&aacute; avisar por escrito al  Departamento de T&iacute;tulos y Grados tal situaci&oacute;n.</p>
+        <p>Art&iacute;culo&nbsp;&nbsp; 16&deg;&nbsp;&nbsp;  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Qui&eacute;n cuente con&nbsp; la condici&oacute;n de egresado y que&nbsp; deba&nbsp;&nbsp;&nbsp;  cumplir con la actividad de titulaci&oacute;n, sea esta Tesis, Trabajo de  T&iacute;tulo, Examen de T&iacute;tulo y/o Grado, &nbsp;deber&aacute; encontrarse matriculado.</p>
+        <p>Art&iacute;culo&nbsp;&nbsp;&nbsp; 17&deg;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Para &nbsp;&nbsp;&nbsp;los &nbsp;&nbsp;&nbsp;alumnos &nbsp;&nbsp;&nbsp;egresado(s)&nbsp; que &nbsp;se encuentren  &nbsp;adscritos a &nbsp;&nbsp;Planes de Estudios en los cuales no se  contempla rendir examen de t&iacute;tulo, el Departamento de T&iacute;tulos y Grados enviar&aacute;  a la Direcci&oacute;n  de Escuela respectiva, el expediente de titulaci&oacute;n una vez otorgado el egreso,  previo cumplimiento a lo se&ntilde;alado en el Art&iacute;culo 14&deg; del presente Reglamento.</p>
+        <p>Art&iacute;culo&nbsp; 18&deg;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp; El Examen de T&iacute;tulo y/o &nbsp;&nbsp;Grado&nbsp; &nbsp;es evaluado  &nbsp;&nbsp;con la &nbsp;&nbsp;escala de calificaciones de 1,0 a 7,0 siendo 4,0&nbsp; el m&iacute;nimo de aprobaci&oacute;n, la que es expresada  hasta con un decimal.</p>
+        <p>Art&iacute;culo&nbsp;&nbsp; 19&deg; &nbsp; : La&nbsp;   Direcci&oacute;n de Escuela&nbsp;  correspondiente,&nbsp;&nbsp;&nbsp; deber&aacute;&nbsp;&nbsp;&nbsp; remitir&nbsp;&nbsp;  los expedientes de t&iacute;tulo al  Departamento de T&iacute;tulos y Grados en un plazo m&aacute;ximo a los 15 d&iacute;as h&aacute;biles  siguientes, una vez rendido el examen de titulo que correspondiere o el cierre  del proceso de titulo del alumno(a), 
+          incorporando el Acta y Ficha de Titulaci&oacute;n  en el que conste las calificaciones obtenidas.<br />
+          &nbsp;<br clear="all" />
+        </p>
+        <p><strong>b.-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; De  la Titulaci&oacute;n  :</strong></p>
+        <p>Art&iacute;culo&nbsp;&nbsp; 20&deg;&nbsp;&nbsp; : Son &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;considerados&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;como titulados(a),&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;quienes&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;hayan aprobado la totalidad de actividades  curriculares contempladas en el Plan de Estudios correspondiente, y han dado cumplimiento  &iacute;ntegramente a los requisitos acad&eacute;micos y administrativos exigidos por la Universidad.</p>
+        <p>Art&iacute;culo&nbsp; 21&deg;&nbsp;&nbsp;&nbsp; :  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; El alumno que&nbsp;&nbsp; repruebe&nbsp;  el&nbsp;&nbsp; Examen&nbsp; de T&iacute;tulo&nbsp;  y/o Grado podr&aacute; optar a una segunda  oportunidad, en un plazo no superior a los 45 d&iacute;as corridos a contar de la  fecha de reprobaci&oacute;n, en cuyo caso, la calificaci&oacute;n final obtenida no podr&aacute; ser  superior a 4,0 (cuatro, cero).</p>
+        <p>En caso de reprobar nuevamente,&nbsp; deber&aacute; elaborar un nuevo trabajo de  titulaci&oacute;n debiendo realizarlo en el per&iacute;odo acad&eacute;mico siguiente, cumpliendo  con los requisitos de matr&iacute;cula y&nbsp; las  exigencias acad&eacute;micas que determine la Direcci&oacute;n de Escuela respectiva.<br />
+          Esto generar&aacute; una nueva  y &uacute;ltima oportunidad para quienes lo reprobaron en una segunda oportunidad.</p>
+        <p>Art&iacute;culo&nbsp;  22&deg;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp; Qui&eacute;n&nbsp;&nbsp; cuente&nbsp; con&nbsp;&nbsp;  la&nbsp;&nbsp;&nbsp; condici&oacute;n&nbsp;&nbsp;&nbsp; de&nbsp;&nbsp;&nbsp;  egresado&nbsp;&nbsp; y &nbsp;&nbsp;no&nbsp;&nbsp;&nbsp; haya&nbsp; <br />
+          cumplido&nbsp;&nbsp; &nbsp;con&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;su&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;actividad&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;de&nbsp; &nbsp;titulaci&oacute;n  en los plazos establecidos por el Reglamento del Alumno, y que no se encuentre  matriculado, deber&aacute; solicitar su reincorporaci&oacute;n a la carrera y someterse a las  exigencias acad&eacute;micas que determine la Direcci&oacute;n de &nbsp;Escuela respectiva.<br />
+          &nbsp;<br clear="all" />
+        </p>
+        <p><strong>TITULO IV&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; De la Ceremonia de Titulaci&oacute;n.</strong></p>
+        <p>Art&iacute;culo&nbsp;&nbsp; 23&deg;&nbsp;&nbsp;&nbsp;&nbsp;  : &nbsp; El &nbsp;&nbsp;Departamento &nbsp;&nbsp;de &nbsp;&nbsp;T&iacute;tulos  y Grados&nbsp; env&iacute;a&nbsp;&nbsp; al&nbsp;  Departamento &nbsp;de Comunicaci&oacute;n y  Marketing, &nbsp;la n&oacute;mina de participantes  del &uacute;ltimo proceso de titulaci&oacute;n, para la ceremonia del primer o segundo  semestre&nbsp; de quienes se encuentren con su  proceso de titulaci&oacute;n debidamente concluido y registrado en el Departamento de  T&iacute;tulos y Grados.</p>
+        <p>Art&iacute;culo&nbsp;&nbsp; 24&deg;&nbsp;&nbsp;&nbsp;&nbsp;  : La&nbsp;&nbsp;&nbsp;   Ceremonia &nbsp;de &nbsp;&nbsp;&nbsp;T&iacute;tulo,  &nbsp;&nbsp;corresponde&nbsp; a &nbsp;&nbsp;&nbsp;un&nbsp;&nbsp; &nbsp;acto  solemne, &nbsp;&nbsp;&nbsp;que&nbsp; se organiza para la entrega, de los diplomas  de t&iacute;tulo y/o grado acad&eacute;mico a quienes hayan cumplido con la totalidad de  exigencias acad&eacute;micas y administrativas establecidas por la Universidad&nbsp; a trav&eacute;s de sus Facultades y Direcciones de  Escuelas.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+        <p>Art&iacute;culo&nbsp;&nbsp; 25&deg;&nbsp;&nbsp;&nbsp;&nbsp;  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; En el Calendario  Acad&eacute;mico de la   Universidad, se establecen&nbsp;  &nbsp;dos fechas para otorgar los  diplomas de t&iacute;tulo y/o grado&nbsp; acad&eacute;mico,  las cuales se efect&uacute;an semestralmente, siendo organizado por el Departamento de  Comunicaci&oacute;n<strong> </strong>y Marketing.</p>
+        <p>Art&iacute;culo&nbsp;&nbsp;&nbsp; 26&deg;&nbsp; :<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>Quienes&nbsp;&nbsp; no hayan alcanzado a cerrar su proceso de  titulaci&oacute;n y/o no haya sido recepcionado en el  Departamento de T&iacute;tulos y Grados su expediente de titulaci&oacute;n, en las fechas  indicadas en el Art&iacute;culo 24&deg; del presente Reglamento, deber&aacute;n ser considerados  necesariamente en la ceremonia siguiente.</p>
+        <p>Art&iacute;culo &nbsp;&nbsp;27&deg; &nbsp; <strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>Los&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;Diplomas&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;de&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;T&iacute;tulo&nbsp; &nbsp;y/o&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Grado&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Acad&eacute;mico&nbsp; &nbsp;consignar&aacute; el T&iacute;tulo <br />
+          y/o Grado  Acad&eacute;mico, la forma de aprobaci&oacute;n y fecha en que es conferido, siendo otorgados  por el Rector, en una &uacute;nica oportunidad.<br />
+          &nbsp;<br clear="all" />
+        </p>
+        <p>Art&iacute;culo&nbsp;&nbsp;  28&deg;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Los certificados y diplomas de &nbsp;t&iacute;tulo &nbsp;y/o &nbsp;&nbsp;&nbsp;&nbsp;grado &nbsp;&nbsp;&nbsp;acad&eacute;mico otorgados por la Universidad consignan  una nota-concepto cuyas equivalencias son :</p>
+        <p>a.-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4,0&nbsp;&nbsp; a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4,9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Aprobado por Unanimidad<br />
+          b.-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5,0&nbsp;&nbsp; a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5,9  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Aprobado con Distinci&oacute;n<br />
+          c.-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6,0  &nbsp; a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7,0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Aprobado con Distinci&oacute;n M&aacute;xima</p>
+        <p>Art&iacute;culo &nbsp;&nbsp;&nbsp;29&deg;&nbsp;&nbsp; :<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>Quienes&nbsp;&nbsp;&nbsp; manifiesten,&nbsp;&nbsp;&nbsp; por&nbsp;&nbsp;&nbsp;  escrito,&nbsp;&nbsp;&nbsp; su deseo de no &nbsp;participar en alguna de las ceremonias de  t&iacute;tulo que se encuentren definidas, podr&aacute;n solicitar la entrega de su diploma  de t&iacute;tulo y/o grado acad&eacute;mico directamente en el Departamento de T&iacute;tulos y  Grados, qui&eacute;n dispondr&aacute; de un plazo m&aacute;ximo de 10 d&iacute;as h&aacute;biles para la entrega  de tal documentaci&oacute;n, excluyendo al interesado de las pr&oacute;ximas ceremonias de  t&iacute;tulo.</p>
+        <p>Art&iacute;culo&nbsp; 30&deg;&nbsp;&nbsp;&nbsp;&nbsp;  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Los aspectos o materias  no contempladas en el presente reglamento, ser&aacute;n resueltas por Secretaria  General y el Departamento de T&iacute;tulos y Grados, e informadas mediante &nbsp;resoluci&oacute;n que corresponda.</p>
+        <p>Art&iacute;culo 31&deg;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; El&nbsp;&nbsp; presente&nbsp;&nbsp;&nbsp;  Reglamento&nbsp; de&nbsp;&nbsp;&nbsp;&nbsp; Egreso&nbsp;&nbsp;  y Titulaci&oacute;n, comenzar&aacute; &nbsp;a &nbsp;&nbsp;regir&nbsp; &nbsp;a &nbsp;&nbsp;partir  del segundo semestre del a&ntilde;o 2008.</p>
+      </div>
+      <p>&nbsp;</p>
+    </div>
+
+    <div id="footer">
+      <p>Universidad del Pacífico - Derechos Reservados / Sitio desarrollado para Explorer 8, o superior; Firefox o Safari</p>
+    </div>
+  </div>
+  
+<script type="text/javascript">
+	function clave() {
+	  direccion = "http://admision.upacifico.cl/web_titulos/www/olvido_clave.php";
+	  window.open(direccion ,"ventana1","width=370,height=225,scrollbars=no, left=313, top=200");
+	}
+</script> 
+</body>
+</html>

@@ -1,0 +1,2 @@
+ RUT , ID, NombreCliente , TipoMoneda, ValorCuota , ValorMora, MontoRecaudado , FechaVcto , FechaRecaudacion 
+163675323,390969,ULLOA GIPOULOU RAUL,Pesos,354300,0,354300,25/01/2013,25/01/2013

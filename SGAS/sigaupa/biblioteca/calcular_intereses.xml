@@ -1,0 +1,217 @@
+<Parametros>
+   <parametro formulario="botonera">
+      	<botones nombre="cerrar">
+         	<tipoTexto>CERRAR</tipoTexto>
+         	<accion>CERRAR</accion>
+      	</botones>
+	   <botones nombre="buscar"> 
+		  <tipoTexto>BUSCAR</tipoTexto>
+		  <accion>BUSCAR</accion>
+		  <formulario>buscador</formulario>
+		   <funcionValidacion>Validar();</funcionValidacion>
+		</botones>
+		<botones nombre="guardar"> 
+		  <tipoTexto>DEFINIR</tipoTexto>
+		  <texto>Guardar</texto>
+		  <accion>GUARDAR</accion>
+		  <url>proc_guardar_intereses.asp</url>
+		  <formulario>edicion</formulario>
+		</botones>
+		<botones nombre="activar"> 
+		  <tipoTexto>DEFINIR</tipoTexto>
+		  <texto>Activar</texto>
+		  <accion>GUARDAR</accion>
+		  <url>proc_activar_intereses.asp</url>
+		  <formulario>edicion</formulario>
+		</botones>
+		<botones nombre="siguiente"> 
+		  <tipoTexto>DEFINIR</tipoTexto>
+		  <texto>Siguiente</texto>
+		  <accion>GUARDAR</accion>
+		  <formulario>edicion</formulario>
+		  <url>edicion_pago.asp</url>
+		  <deshabilitado>true</deshabilitado>
+		</botones>
+		<botones nombre="siguiente2"> 
+		  <tipoTexto>DEFINIR</tipoTexto>
+		  <texto>Siguiente</texto>
+		  <accion>GUARDAR</accion>
+		  <formulario>edicion</formulario>
+		  <url>generar_intereses.asp</url>
+		  <deshabilitado>false</deshabilitado>
+		</botones>   
+   <botones nombre="salir"> 
+      <tipoTexto>CANCELAR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+   </parametro>
+
+
+   <parametro formulario="busqueda" variable="busqueda">
+   <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+   </parametro>
+
+   <parametro formulario="datos_alumno" anchoTabla="100%" variable="detalle" >
+      <campos nombre="rut_alumno">
+         <descripcion>rut_aval</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre_alumno">
+         <descripcion>Nombre</descripcion>
+          <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="detalle_pagos" variable="cc_compromisos_pendientes" >
+      <campos nombre="comp_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+       </campos>
+      <campos nombre="tcom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+       </campos>
+      <campos nombre="inst_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+       </campos>
+      <campos nombre="dcom_ncompromiso">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+       </campos>
+	  <campos nombre="interes">
+         <descripcion>Interes</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="factor_interes">
+         <descripcion>Factor</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+
+   <parametro formulario="detalle_intereses" variable="cc_compromisos_pendientes" clave="sint_ccod" eliminar="false" 
+	colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" maxLista="10" nroRegistros="150" 
+	anchoTabla="98%" mensajeError=" no existen nuevos intereses para activar">
+	<tablas nombre="simulacion_interes" accion="M"/>
+      <campos nombre="sint_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+       </campos>
+      <campos nombre="comp_ndocto_referencia">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+       </campos> 
+      <campos nombre="comp_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+       </campos>
+      <campos nombre="tcom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+       </campos>
+      <campos nombre="inst_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+       </campos>
+      <campos nombre="dcom_ncompromiso">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+       </campos>
+	  <campos nombre="deuda">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="dias_mora">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+       </campos>
+	  <campos nombre="tipo_compromiso">
+         <descripcion>Item</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="cuota">
+         <descripcion>Cuotas</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="fecha_vencimiento">
+         <descripcion>Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="tipo_ingreso">
+         <descripcion>Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="numero_docto">
+         <descripcion>N° Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="monto_documento">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <formato>Moneda</formato>
+      </campos>
+	  <campos nombre="c_saldo">
+         <descripcion>Saldo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <formato>Moneda</formato>
+      </campos>
+	  <campos nombre="interes">
+         <descripcion>Interes</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <formato>MONEDA</formato>
+	     <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+      </campos>
+	  <campos nombre="sint_nfactor">
+         <descripcion>Factor</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+	     <caracteres>6</caracteres>
+         <maxCaracteres>6</maxCaracteres>
+      </campos> 
+     <campos nombre="segun">
+         <descripcion>Calcular segun</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>(select distinct 'Factor' as segun, '1' as codigo_s union select distinct 'Monto' as segun, '2' as codigo_s ) a</destino>
+         <union>codigo_s</union>
+         <salida>segun</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="c_dias_mora">
+		 <descripcion>Dias mora</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		<alineamiento>center</alineamiento>
+       </campos>
+
+   </parametro>
+
+</Parametros>

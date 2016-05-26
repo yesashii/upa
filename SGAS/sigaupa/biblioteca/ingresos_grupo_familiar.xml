@@ -1,0 +1,253 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>grupo_familiar.asp</url>
+      </botones>
+	   <botones nombre="agregar">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_agrega_ingreso.asp</url>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	   <botones nombre="siguiente">
+         <tipoTexto>siguiente</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+		 <url>propiedades_grupo_familiar.asp</url>
+      </botones>
+	  <botones nombre="agregar_familiar">
+         <tipoTexto>agregar</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>agregar_familiar(1)</funcion>
+      </botones>
+	  <botones nombre="agregar_familiar_menor">
+         <tipoTexto>agregar</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>agregar_familiar(2)</funcion>
+      </botones>
+	  <botones nombre="agregar_familiar_padre">
+         <tipoTexto>agregar</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>agregar_familiar(3)</funcion>
+      </botones>
+	  <botones nombre="agregar_familiar_madre">
+         <tipoTexto>agregar</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>agregar_familiar(4)</funcion>
+      </botones>
+	  <botones nombre="cerrar">
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  <botones nombre="eliminar_familiar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_familiar.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+	   <botones nombre="copiar_direccion">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>copiar direccion orígen alumno</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>CopiarDireccionParticular();</funcion>
+      </botones>
+   </parametro>
+   
+   <parametro formulario="ingreso_familiar"  variable="padre">
+ 	  <tablas nombre="antecedentes_personas" accion="M"/>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ing_liquido">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+	  <campos nombre="ret_judicial">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+	  <campos nombre="aportes">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+	  <campos nombre="act_varias">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+	  <campos nombre="arr_bienes">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+	  <campos nombre="arr_vehiculos">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+	  <campos nombre="intereses">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+	  <campos nombre="dividendos">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+   </parametro>
+
+  
+<parametro formulario="direccion_postulante" variable="test">
+ 	 <campos nombre="regi_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	 
+	 <campos nombre="ciud_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+         <id>TO-S</id>
+      </campos>	
+	<campos nombre="dire_tcalle">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tnro">
+         <tipo>INPUT</tipo>
+		 <permiso>OCULTO</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="dire_tblock">
+         <tipo>INPUT</tipo>
+		 <permiso>OCULTO</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tpoblacion">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tfono">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>15</maxCaracteres>
+         <id>TE-S</id>
+      </campos>
+</parametro>
+   
+   <parametro formulario="direcciones">
+      <tablas nombre="direcciones_publica" accion="M"/>
+   </parametro>
+   
+    <parametro formulario="eliminar_familiares" variable="padre">
+      <tablas nombre="grupo_familiar" accion="B"/>
+      <tablas nombre="personas_postulante" accion="B"/>
+      <tablas nombre="direcciones_publica" accion="B"/>
+    </parametro>
+   
+   <parametro formulario="grilla_familiares" variable="padre" editar="true"  eliminar="false" 
+   paginaEdicion="agregar_ingreso.asp?pers_ncorr=%pers_ncorr%" nuevaVentana="TRUE" clave="pers_ncorr"
+   anchoTabla="100%" maxLista="25" nroRegistros="25" mensajeError="No se han ingresado familiares para el alumno" 
+   nuevaVentanaAncho="500" nuevaVentanaAlto="480">
+      	  <campos nombre="Nom_familiar">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Nombre</descripcion>
+			 <id>TO-N</id>
+		  </campos>
+		  <campos nombre="Parentesco">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Parentesco</descripcion>
+			 <id>NU-S</id>
+		  </campos>
+		  <campos nombre="ing_liquido">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Ingr. Liquido</descripcion>
+		  </campos>
+		  <campos nombre="ret_judicial">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Ret.judicial</descripcion>
+		  </campos>
+		  <campos nombre="aportes">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Aporte de parientes u otros</descripcion>
+		  </campos>
+		  <campos nombre="act_varias">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Actividades Varias</descripcion>
+		  </campos>
+		  <campos nombre="arr_bienes">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Arriendo bienes raices</descripcion>
+		  </campos>
+		  <campos nombre="arr_vehiculos">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Arriendo Vehículos</descripcion>
+		  </campos>
+		  <campos nombre="intereses">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Intereses por depósitos</descripcion>
+		  </campos>
+		  <campos nombre="dividendos">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Dividendos por acciones</descripcion>
+		  </campos>
+		  <campos nombre="SUB_TOTAL">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>SUB-TOTAL</descripcion>
+		  </campos>
+   </parametro>
+ </Parametros>

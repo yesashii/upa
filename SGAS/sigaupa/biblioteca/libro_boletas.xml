@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+
+<parametro formulario="botonera">
+      <botones nombre="lanzadera">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="excel_boletas">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>BUSCAR</accion>
+         <url>libro_boletas_excel.asp</url>
+         <formulario>buscador</formulario>
+      </botones>
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>Validar();</funcionValidacion>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+   </parametro>
+
+   <parametro formulario="f_boletas" clave="envi_ncorr" variable="boletas" nroRegistros="50" maxLista="10" 
+   anchoTabla="100%" mensajeError="No se encontraron letras...">
+       <campos nombre="tipo_boleta">
+         <descripcion>Tipo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+	  <campos nombre="bole_nboleta">
+         <descripcion>Boleta</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <ancho>50</ancho>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="total_boleta">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="estado">
+         <descripcion>Estado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="fecha_boleta">
+         <descripcion>F. Emision</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="rut_beneficiario">
+         <descripcion>Rut beneficiario</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="nombre_beneficiario">
+         <descripcion>Nombre Beneficiario</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+  	  <campos nombre="comprobante">
+         <descripcion>Nº Comprobante</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+	  <campos nombre="caja">
+         <descripcion>Nº Caja</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+	  <campos nombre="inst_trazon_social">
+         <descripcion>Empresa</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>	  
+ </parametro>
+
+ <parametro formulario="busqueda_boletas" variable="busqueda">
+      <campos nombre="sede_ccod">
+         <tipo>SELECT</tipo>
+         <destino>sedes</destino>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>true</anulable>
+         <mensajeNulo>Todas las Sedes</mensajeNulo>
+      </campos>
+      <campos nombre="inicio">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+      <campos nombre="termino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+      <campos nombre="bole_nboleta">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="ebol_ccod">
+         <tipo>SELECT</tipo>
+         <destino>estados_boletas</destino>
+         <union>ebol_ccod</union>
+         <salida>ebol_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>true</anulable>
+         <mensajeNulo>Todos los Estados</mensajeNulo>
+      </campos>
+	  <campos nombre="tbol_ccod">
+         <tipo>SELECT</tipo>
+         <destino>tipos_boletas</destino>
+         <union>tbol_ccod</union>
+         <salida>tbol_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>true</anulable>
+         <mensajeNulo>Todos los tipos</mensajeNulo>
+      </campos>
+   </parametro>
+   
+</Parametros>
+
+

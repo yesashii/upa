@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="btn_adm_cuentas">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>	 
+	</botones> 
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_cuenta.asp</url>
+         <formulario>edicion</formulario>
+      </botones> 
+    <botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agrega_cuenta(document.edicion)</funcion>
+	</botones> 
+      <botones nombre="SALIR">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>	 	
+ </parametro>
+  <parametro formulario="btn_agregar_cuenta">
+    <botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agregar(document.editar)</funcion>
+	</botones> 
+    <botones nombre="GUARDAR"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agregar(document.editar)</funcion>
+	</botones> 	
+  <botones nombre="SALIR"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>salir(document.edicion)</funcion>
+	</botones> 
+ </parametro>
+
+ 	<parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8"
+	 paginaEdicion="agregar_cuenta_cargos.asp?tdet_ccod=%tdet_ccod%" 
+	 formulario="tabla" eliminar="true" clave="ting_ccod" nroRegistros="10" maxLista="10"
+	 mensajeError="No Existen Datos Para Los Parámetros De Búsqueda." 
+	 colorBase="#F1F1E4" editar="true" 	anchoTabla="98%" variable="em" nuevaVentana="true">
+		
+		<campos nombre="tdet_tdesc">
+				<tipo>IMPUT</tipo>
+				<permiso>LECTURA</permiso>
+				<descripcion>Tipo Cargo</descripcion>
+				<alineamiento>left</alineamiento>
+		</campos>
+		<campos nombre="tdet_cuenta_softland">
+				<tipo>INPUT</tipo>
+				<permiso>LECTURA</permiso>
+				<descripcion>Nro.Cuenta-C.Costo</descripcion>
+				<alineamiento>left</alineamiento>
+		</campos>
+		<campos nombre="tdet_detalle_softland">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Detalle Gasto</descripcion>
+			<alineamiento>left</alineamiento>
+		</campos>
+		<campos nombre="tcom_ccod">
+			<tipo>SELECT</tipo>
+			<union>tcom_ccod</union>
+			<salida>tcom_tdesc</salida>
+			<destino>tipos_compromisos</destino>
+			<permiso>LECTURA</permiso>
+			<descripcion>Tipo compromiso</descripcion>
+			<alineamiento>left</alineamiento>
+		</campos>
+	</parametro>
+	
+	 <parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8"
+	 paginaEdicion=""  formulario="tabla_valores" eliminar="true" clave="tdet_ccod" 
+	 mensajeError="No Existen Datos Para Los Parámetros De Búsqueda." 
+	 colorBase="#F1F1E4" editar="true" 	anchoTabla="98%" variable="em" nuevaVentana="true">
+		
+		<campos nombre="tdet_ccod">
+				<tipo>INPUT</tipo>
+				<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="tdet_tdesc">
+				<tipo>INPUT</tipo>
+				<permiso>LECTURA</permiso>
+				<alineamiento>left</alineamiento>
+				<caracteres>50</caracteres>
+				<id>TO-N</id>
+		</campos>
+		<campos nombre="tdet_cuenta_softland">
+				<tipo>INPUT</tipo>
+				<permiso>LECTURAESCRITURA</permiso>
+				<alineamiento>left</alineamiento>
+				<caracteres>22</caracteres>
+				<maxCaracteres>18</maxCaracteres>
+				<id>TO-N</id>
+		</campos>
+		<campos nombre="tdet_detalle_softland">
+			 	<tipo>INPUT</tipo>
+				<permiso>LECTURAESCRITURA</permiso>
+				<alineamiento>left</alineamiento>
+				<caracteres>10</caracteres>
+				<maxCaracteres>8</maxCaracteres>
+				<id>TO-S</id>
+		</campos>
+	</parametro>
+	
+  <parametro formulario="mantiene_cuentas" variable="em">
+      <tablas nombre="tipos_detalle" accion="M"/>
+   </parametro>
+   
+  <parametro formulario="eliminar_cuentas" variable="em">
+      <tablas nombre="tipos_detalle" accion="B"/>
+   </parametro>
+   
+</Parametros>

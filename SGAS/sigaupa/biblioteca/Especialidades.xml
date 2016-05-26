@@ -1,0 +1,178 @@
+<Parametros>
+  <parametro formulario="botonera">
+     <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+	 <botones nombre="cancelar"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>CERRAR</accion>
+	 </botones>
+	 <botones nombre="buscar"> 
+        <tipoTexto>BUSCAR</tipoTexto>
+	    <accion>BUSCAR</accion>
+	    <formulario>buscador</formulario>
+		<soloUnClick>TRUE</soloUnClick>
+	 </botones>
+	 <botones nombre="nueva"> 
+        <tipoTexto>AGREGAR</tipoTexto>
+	    <accion>AGREGAR</accion>
+	    <posicionX>100</posicionX>
+	    <posicionY>50</posicionY>
+	    <ancho>750</ancho>
+	    <alto>400</alto>	   
+	 </botones>
+	 <botones nombre="guardar_nueva"> 
+        <tipoTexto>GUARDAR</tipoTexto>
+	    <accion>GUARDAR</accion>
+	    <url>Proc_Especialidades_Agregar.asp</url>
+	    <formulario>edicion</formulario>
+	</botones>
+	<botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>ELIMINAR</accion>
+	  <formulario>edicion</formulario>
+	  <url>especialidades_eliminar.asp</url>
+	</botones> 
+  </parametro>
+ 
+ <parametro formulario="f_busqueda" variable="busqueda">
+   <campos nombre="carr_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>carreras</destino> 
+	  <union>carr_ccod</union>
+	  <salida>CARR_TDESC</salida>
+      <orden>CARR_TDESC asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione una Carrera</mensajeNulo>
+	  <mensajeVacio>Seleccione una Carrera</mensajeVacio>
+	  <!--<script>onchange="cargar();"</script>-->
+	  <id>TO-N</id>
+   </campos>
+  </parametro>
+  <parametro formulario="f_busqueda_tyg" variable="busqueda">
+   <campos nombre="carr_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>carreras</destino> 
+	  <union>carr_ccod</union>
+	  <salida>CARR_TDESC</salida>
+      <orden>CARR_TDESC asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione una Carrera</mensajeNulo>
+	  <mensajeVacio>Seleccione una Carrera</mensajeVacio>
+	  <script>onchange="cargar();"</script>
+	  <id>TO-N</id>
+   </campos>
+  </parametro>
+  
+   <parametro paginaEdicion="Especialidades_Agregar.asp?carr_ccod=%carr_ccod%&amp;espe_ccod=%espe_ccod%" nuevaVentanaAlto="400" formulario="f_especialidades"
+      nroRegistros="10" 
+	  nuevaVentanaAncho="770"
+      eliminar="TRUE" clave="espe_ccod" maxLista="10"
+	  mensajeError="No se encontraron Especialidades" seleccionarTodo="TRUE"  anchoTabla="100%" editar="TRUE"  nuevaVentana="TRUE" variable="especialidades" >
+      <tablas nombre="especialidades" accion="B"/>
+	  <campos nombre="carr_ccod">
+	    <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	  </campos>
+      <campos nombre="espe_tdesc">
+	    <descripcion>Especialidad</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="eesp_tdesc">
+	    <descripcion>Estado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <!--<campos nombre="espe_nduracion">
+	    <descripcion>Duracion</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>-->
+	 <campos nombre="espe_ttitulo">
+	    <descripcion>Titulo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="ttit_ccod">
+	  	<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+	 </campos>
+	 <campos nombre="ttit_tdesc">
+	    <descripcion>Tipo de Titulo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>	 
+   </parametro>
+   
+   <parametro formulario="f_nueva" variable="especialidades">
+    <tablas nombre="especialidades" accion="M"/>
+	 <campos nombre="carr_ccod">
+	 	<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="espe_tdesc">
+	 	<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>60</caracteres>
+	    <maxCaracteres>100</maxCaracteres>
+	    <id>TO-N</id>		
+	 </campos>
+	 <campos nombre="espe_nduracion">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+		<caracteres>3</caracteres>
+	    <maxCaracteres>2</maxCaracteres>
+	    <id>NU-N</id>		
+	 </campos>
+	 <campos nombre="ttit_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>tipos_titulos</destino> 
+	  <union>ttit_ccod</union>
+	  <salida>ttit_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Tipo de Titulo</mensajeNulo>	 
+	  <id>TO-N</id>
+   </campos>
+   <campos nombre="espe_ttitulo">
+	 	<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>60</caracteres>
+	    <maxCaracteres>100</maxCaracteres>
+	    <id>TO-N</id>		
+	 </campos>
+	 <campos nombre="espe_fini_vigencia">
+	 	<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>12</caracteres>
+	    <maxCaracteres>10</maxCaracteres>
+	    <id>FE-S</id>		
+	 </campos>
+   <campos nombre="espe_bexamen_adm">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+   </campos>
+   <campos nombre="eesp_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>estados_de_especialidad</destino> 
+	  <union>eesp_ccod</union>
+	  <salida>eesp_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Tipo de Titulo</mensajeNulo>	 
+	  <id>TO-N</id>
+   </campos>			 
+ </parametro>
+   
+ </Parametros>

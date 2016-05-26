@@ -1,0 +1,6 @@
+14004153,PONCE ZAVALA NIXA ANDREA,,14004153-K,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+14109393,ACEVEDO AGUIRRE GONZALO ALBERTO,,14109393-2,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18391603,SERRAT WAINER ANDRES ALEJANDRO,,18391603-3,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18636097,ALBARRAN JIMENEZ MARIA IGNACIA,,18636097-4,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18642321,GORDON MENEGHINI MARIA SOFIA,,18642321-6,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18787868,TRONCOSO SEPULVEDA MATIAS ALONSO,,18787868-3,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

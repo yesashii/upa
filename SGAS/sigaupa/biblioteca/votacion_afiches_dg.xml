@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>menu_alumno.asp</url>
+      </botones>
+   
+   <botones nombre="guardar">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>ENVIAR VOTACION</texto>
+         <accion>GUARDAR</accion>
+         <url>proc_guardar_votacion_dg.asp</url>
+         <formulario>edicion</formulario>
+   </botones>
+   </parametro>
+</Parametros>

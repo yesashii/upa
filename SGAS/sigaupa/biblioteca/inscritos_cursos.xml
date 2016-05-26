@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="botonera">
+	   	<botones nombre="salir"> 
+		  	<tipoTexto>SALIR</tipoTexto>
+		  	<accion>NAVEGAR</accion>
+		  	<url>../lanzadera/lanzadera.asp</url>
+		</botones>  
+	   	<botones nombre="buscar"> 
+		  	<tipoTexto>BUSCAR</tipoTexto>
+		  	<accion>BUSCAR</accion>
+		  	<formulario>buscador</formulario>
+		  	<soloUnClick>TRUE</soloUnClick>	  
+		</botones>
+		<botones nombre="excel">
+			 <tipoTexto>DEFINIR</tipoTexto>
+			 <texto>Excel</texto>
+			 <accion>BUSCAR</accion>
+			 <url>inscritos_cursos_excel.asp</url>
+			 <formulario>buscador</formulario>
+        </botones>
+	  
+   </parametro>   
+  
+  <parametro formulario="busqueda_cursos" variable="busqueda">
+   <campos nombre="tdet_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>tipos_detalle</destino> 
+	  <union>tdet_ccod</union>
+	  <salida>tdet_tdesc</salida>
+	  <filtro>tcom_ccod in (7) and tdet_bvigente in ('S','N')</filtro>
+	  <orden>tdet_tdesc asc</orden>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Todos</mensajeNulo>
+	 </campos>
+  </parametro>
+  
+   
+  <parametro formulario="f_cursos" variable="cursos" anchoTabla="100%"
+  eliminar="FALSE" nroRegistros="10" maxLista="10"  
+   mensajeError="No se encontraron personas inscritas en los cursos selecionados...">
+  <campos nombre="c_ding_ndocto">
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>	  
+   </campos>
+   <campos nombre="rut">
+      <descripcion>Nº Rut</descripcion>
+	  <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="comprobante">
+      <descripcion>Nº Comprobante</descripcion>
+	  <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="fecha_inscrito">
+   <descripcion>Fecha Inscripcion</descripcion>
+     <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="tdet_tdesc">
+   <descripcion>Curso</descripcion>
+      <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="nombre_persona">
+   		<descripcion>Persona</descripcion>
+      	<tipo>INPUT</tipo>
+	  	<permiso>OCULTO</permiso>
+   </campos>
+  	<campos nombre="rut">
+   		<descripcion>Rut</descripcion>
+      	<tipo>INPUT</tipo>
+	  	<permiso>OCULTO</permiso>	  
+   </campos>
+   <campos nombre="telefono">
+   		<descripcion>Telefono</descripcion>
+     	<tipo>INPUT</tipo>
+	  	<permiso>LECTURA</permiso>
+  	</campos>
+  	<campos nombre="direccion">
+  		<descripcion>Direccion</descripcion>
+      	<tipo>INPUT</tipo>
+	  	<permiso>LECTURA</permiso>
+	</campos>
+  </parametro>
+    
+  <parametro formulario="f_listado_alumnos" variable="cursos" anchoTabla="100%"
+   mensajeError="No se encontraron personas inscritas en los cursos selecionados...">
+  <campos nombre="c_ding_ndocto">
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>	  
+   </campos>
+   <campos nombre="comprobante">
+      <descripcion>Nº Comprobante</descripcion>
+	  <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="fecha_inscrito">
+   <descripcion>Fecha Inscripcion</descripcion>
+     <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="tdet_tdesc">
+   <descripcion>Curso</descripcion>
+      <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="nombre_persona">
+   		<descripcion>Persona</descripcion>
+      	<tipo>INPUT</tipo>
+	  	<permiso>OCULTO</permiso>
+   </campos>
+  	<campos nombre="rut">
+   		<descripcion>Rut</descripcion>
+      	<tipo>INPUT</tipo>
+	  	<permiso>OCULTO</permiso>	  
+   </campos>
+   <campos nombre="telefono">
+   		<descripcion>Telefono</descripcion>
+     	<tipo>INPUT</tipo>
+	  	<permiso>LECTURA</permiso>
+  	</campos>
+  	<campos nombre="direccion">
+  		<descripcion>Direccion</descripcion>
+      	<tipo>INPUT</tipo>
+	  	<permiso>LECTURA</permiso>
+	</campos>
+  </parametro>
+
+
+
+ </Parametros>

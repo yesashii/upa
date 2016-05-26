@@ -1,0 +1,390 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="imprimir_docto">
+         <tipoTexto>IMPRIMIR</tipoTexto>
+         <accion>agregar</accion>
+         <url>../reportesnet/imprimir_repactacion.aspx</url>
+      </botones>
+      <botones nombre="imprimir_cheques">
+         <tipoTexto>IMPRIMIR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>repactacion</formulario>
+         <url>../registro_curricular/imprimir_cheque_1.asp</url>
+         <funcionValidacion>ValidaImprimirCheque();</funcionValidacion>
+      </botones>
+      <botones nombre="imprimir_letras">
+         <tipoTexto>IMPRIMIR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>repactacion</formulario>
+         <url>../reportesnet/imprimir_letra.aspx</url>
+         <funcionValidacion>ValidaImprimirLetras();</funcionValidacion>
+         <target>wLetras</target>
+      </botones>
+      <botones nombre="imprimir_comp_ingreso">
+         <tipoTexto>IMPRIMIR</tipoTexto>
+         <accion>AGREGAR</accion>
+         <url>../reportesnet/comp_cajas.aspx</url>
+      </botones>
+	  <botones nombre="imprimir_pagare">
+         <tipoTexto>IMPRIMIR</tipoTexto>
+         <accion>AGREGAR</accion>
+         <url>../reportesnet/imprimir_pagare.aspx</url>
+      </botones>
+	  <botones nombre="imprimir_multidebito">
+         <tipoTexto>IMPRIMIR</tipoTexto>
+         <accion>AGREGAR</accion>
+         <url>../reportesnet/imprimir_pagare.aspx</url>
+      </botones>
+	  <botones nombre="imprimir_pagare_upa">
+         <tipoTexto>IMPRIMIR</tipoTexto>
+         <accion>AGREGAR</accion>
+         <url>../reportesnet/imprimir_pagare.aspx</url>
+      </botones>	
+		<botones nombre="imprimir_pagare_cae">
+         <tipoTexto>IMPRIMIR</tipoTexto>
+         <accion>AGREGAR</accion>
+         <url>../reportesnet/imprimir_pagare.aspx</url>
+      </botones>		  
+	  <botones nombre="imprimir_pagare_beca">
+         <tipoTexto>IMPRIMIR</tipoTexto>
+         <accion>AGREGAR</accion>
+         <url>../reportesnet/imprimir_pagare.aspx</url>
+      </botones>	
+      <botones nombre="salir">
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+   </parametro>
+   <parametro formulario="tabla_repactacion" anchoTabla="98%" mensajeError="No existe la repactación.">
+      <campos nombre="repa_ncorr">
+         <descripcion>Nº Repactación</descripcion>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="repa_frepactacion">
+         <descripcion>Fecha Repactación</descripcion>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="repa_mrepactacion">
+         <descripcion>Monto Repactación</descripcion>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="repa_ncuotas">
+         <descripcion>Nº Cuotas</descripcion>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="cheques" variable="envios" anchoTabla="100%" mensajeError="No hay cheques en esta repactación.">
+      <campos nombre="ting_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ingr_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="imprimir_d">
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <valorVerdadero>1</valorVerdadero>
+         <valorFalso>0</valorFalso>
+         <permiso>LECTURAESCRITURA</permiso>
+         <onClick>imprimir_d_click(this);</onClick>
+      </campos>
+      <campos nombre="c_ting_ccod">
+         <descripcion>Tipo Docto.</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="c_ding_ndocto">
+         <descripcion>Nº Docto.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_tcuenta_corriente">
+         <descripcion>Cuenta Corriente</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="banc_ccod">
+         <descripcion>Banco</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>bancos</destino>
+         <union>banc_ccod</union>
+         <salida>banc_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="plaz_ccod">
+         <descripcion>Plaza</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>plazas</destino>
+         <union>plaz_ccod</union>
+         <salida>plaz_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="repa_frepactacion">
+         <descripcion>F. Emisión</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_fdocto">
+         <descripcion>F. Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_mdetalle">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="letras" variable="envios" anchoTabla="100%" mensajeError="No hay letras en esta repactación." eliminar="TRUE" seleccionarTodo="TRUE" clave="ding_ndocto">
+      <campos nombre="post_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ting_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ingr_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c_ting_ccod">
+         <descripcion>Tipo Docto.</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="c_ding_ndocto">
+         <descripcion>Nº Docto.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="repa_frepactacion">
+         <descripcion>F. Emisión</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_fdocto">
+         <descripcion>F. Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_mdetalle">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="datos_repactacion" anchoTabla="98%" columnas="2" separacionColumnas="60">
+      <campos nombre="repa_ncorr">
+         <descripcion>Nº Repactación</descripcion>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+      </campos>
+      <campos nombre="repa_frepactacion">
+         <descripcion>Fecha Repactación</descripcion>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="repa_mrepactacion">
+         <descripcion>Monto Repactación</descripcion>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+      </campos>
+      <campos nombre="repa_ncuotas">
+         <descripcion>Nº Cuotas</descripcion>
+         <permiso>INPUT</permiso>
+         <formato>LECTURA</formato>
+      </campos>
+   </parametro>
+   <parametro formulario="comp_ingreso" anchoTabla="98%" mensajeError="No existe comprobante de ingreso para esta repactación.">
+      <campos nombre="ting_tdesc">
+         <descripcion>Tipo</descripcion>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="ingr_nfolio_referencia">
+         <descripcion>Folio</descripcion>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ingr_fpago">
+         <descripcion>Fecha</descripcion>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ingr_mtotal">
+         <descripcion>Monto</descripcion>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="f_detalle_pagare" variable="pagare" anchoTabla="90%">
+   <campos nombre="PAGA_NCORR">
+        <descripcion>N° Pagare</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>Center</alineamiento>
+   </campos>
+   <campos nombre="num_cuotas">
+        <descripcion>N° Cuotas</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>Center</alineamiento>
+   </campos>
+   <campos nombre="monto_actual">
+  		 <descripcion>Monto Pagare</descripcion>
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>Center</alineamiento>
+   </campos>
+   <campos nombre="fecha">
+		<descripcion>Fecha</descripcion>
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>Center</alineamiento>
+   </campos>
+   </parametro>
+   
+   <parametro formulario="f_detalle_multidebito" variable="pagare" anchoTabla="90%">
+   <campos nombre="PMUL_NCORR">
+        <descripcion>N° Pagare</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>Center</alineamiento>
+   </campos>
+   <campos nombre="num_cuotas">
+        <descripcion>N° Cuotas</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>Center</alineamiento>
+   </campos>
+   <campos nombre="monto_actual">
+  		 <descripcion>Monto Pagare</descripcion>
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>Center</alineamiento>
+   </campos>
+   <campos nombre="fecha">
+		<descripcion>Fecha</descripcion>
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>Center</alineamiento>
+   </campos>
+   </parametro>
+
+   <parametro formulario="f_detalle_pagare_upa" variable="pagare" anchoTabla="90%">
+   <campos nombre="pupa_ncorr">
+        <descripcion>N° Pagare</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>Center</alineamiento>
+   </campos>
+   <campos nombre="num_cuotas">
+        <descripcion>N° Cuotas</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>Center</alineamiento>
+   </campos>
+   <campos nombre="monto_actual">
+  		 <descripcion>Monto Pagare</descripcion>
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>Center</alineamiento>
+   </campos>
+   <campos nombre="fecha">
+		<descripcion>Fecha</descripcion>
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>Center</alineamiento>
+   </campos>
+   </parametro>
+    <parametro formulario="f_detalle_pagare_cae" variable="pagare" anchoTabla="90%">
+   <campos nombre="pupa_ncorr">
+        <descripcion>N° Pagare</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>Center</alineamiento>
+   </campos>
+   <campos nombre="num_cuotas">
+        <descripcion>N° Cuotas</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>Center</alineamiento>
+   </campos>
+   <campos nombre="monto_actual">
+  		 <descripcion>Monto Pagare</descripcion>
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>Center</alineamiento>
+   </campos>
+   <campos nombre="fecha">
+		<descripcion>Fecha</descripcion>
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>Center</alineamiento>
+   </campos>
+   </parametro>
+    <parametro formulario="f_detalle_pagare_beca" variable="pagare" anchoTabla="90%">
+   <campos nombre="pupa_ncorr">
+        <descripcion>N° Pagare</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>Center</alineamiento>
+   </campos>
+   <campos nombre="num_cuotas">
+        <descripcion>N° Cuotas</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>Center</alineamiento>
+   </campos>
+   <campos nombre="monto_actual">
+  		 <descripcion>Monto Pagare</descripcion>
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>Center</alineamiento>
+   </campos>
+   <campos nombre="fecha">
+		<descripcion>Fecha</descripcion>
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>Center</alineamiento>
+   </campos>
+   </parametro>
+   
+</Parametros>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+	<parametro formulario="tabla_desbloqueos" variable="b" clave="bloq_ncorr" mensajeError="No existen bloqueos asociados." colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" eliminar="true" agregar="true" nuevaVentana="false"  maxLista="10" nroRegistros="10" anchoTabla="98%">
+		<campos nombre="sede_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Sede</descripcion>
+		</campos>
+		<campos nombre="bloq_nresolucion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Nro. Resolución</descripcion>
+			<caracteres>6</caracteres>
+			<maxCaracteres>6</maxCaracteres>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="bloq_fresolucion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<tipoDato>FECHA</tipoDato>
+			<descripcion>Fecha Resolución</descripcion>
+			<caracteres>11</caracteres>
+			<maxCaracteres>10</maxCaracteres>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="bloq_fbloqueo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Fecha Bloqueo</descripcion>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="fbloqueo">
+			<tipo>hidden</tipo>
+			<permiso>oculto</permiso>
+		</campos>
+		<campos nombre="tblo_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURA</permiso>
+			<destino>tipos_bloqueos</destino>
+			<union>tblo_ccod</union>
+			<salida>tblo_tdesc</salida>
+			<anulable>true</anulable>
+			<mensajeNulo>Seleccione tipo bloqueo</mensajeNulo>
+			<descripcion>Tipo Bloqueo</descripcion>
+		</campos>
+		<campos nombre="bloq_tobservacion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Observación</descripcion>
+			<alineamiento>CENTER</alineamiento>
+			<ancho>300</ancho>
+		</campos>
+	</parametro>
+	<parametro formulario="desbloqueo">
+		<tablas nombre="bloqueos" accion="M"/>
+		<campos nombre="bloq_ncorr">
+			<tipo>input</tipo><permiso>LECTURAESCRITURA</permiso>
+		</campos>
+	</parametro>
+	<parametro formulario="btn_f_desbloqueos">
+   <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 
+   <botones nombre="guardar"> 
+      <tipoTexto>Guardar</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>guardar(document.editar)</funcion>
+	</botones> 
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+   </parametro>
+   
+    <parametro formulario="resumen_compromisos" anchoTabla="100%" mensajeError="No se encontro mosoridad asociada al alumno">
+      
+	  <campos nombre="tcom_ccod">
+         <descripcion>Ítem</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_compromisos</destino>
+         <union>tcom_ccod</union>
+         <salida>tcom_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ncuota">
+         <descripcion>Nº Cuota</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="comp_fdocto">
+         <descripcion>Fecha&lt;br&gt;Emisión</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="dcom_fcompromiso">
+         <descripcion>Fecha&lt;br&gt;Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+	  
+	  <campos nombre="total_compromisos">
+         <descripcion>Total Compromisos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="abonos">
+         <descripcion>Total Abonos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="documentado">
+         <descripcion>Total Documentado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="saldo">
+         <descripcion>Saldo total</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+
+   
+</Parametros>

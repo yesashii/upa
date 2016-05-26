@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="formu_matriculas" anchoTabla="100%" 
+   colorResaltado="#CCCCCC"  mensajeError="No existe matrículas de nuevos en el período consultado"
+   colorSeleccionado="#CCCCCC" eliminar="FALSE" seleccionarTodo="FALSE"
+    editar="FALSE" 	paginaEdicion="" nuevaVentana="FALSE" variable="matriculas">
+     <campos nombre="sede">
+	    <descripcion>Sede</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="carrera">
+	    <descripcion>Carrera</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="jornada">
+	    <descripcion>Jornada</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="vacantes">
+	    <descripcion>Vacantes</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="matriculados">
+	    <descripcion>Matriculados Nuevos</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+   </parametro> 
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+   	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>	 
+	</botones>	
+	<botones nombre="autorizar"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+		<texto>REGISTRAR ASISTENCIA</texto>
+	    <accion>NAVEGAR</accion>
+	    <url>autorizar_ingreso.asp</url>
+	    <formulario>autorizar</formulario>
+	</botones>
+	 <botones nombre="imprimir_alumno"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Imprimir Ficha</texto>
+		<accion>AGREGAR</accion>
+		<target>_blank</target>
+	 </botones>
+	  <botones nombre="imprimir">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Generar Reporte pdf</texto>
+         <accion>GUARDAR</accion>
+         <url>tablon_matriculas_pdf.asp</url>
+         <formulario>edicion_postulacion</formulario>
+         <target>_BLANK</target>
+      </botones>	
+   </parametro>
+   <parametro formulario="busqueda" variable="busqueda">
+	  <campos nombre="peri_ccod">
+		  <tipo>SELECT</tipo>
+		  <destino>(select peri_ccod,peri_tdesc from periodos_academicos where anos_ccod > 2005 and plec_ccod=1 and peri_ccod not in (223,224,225,227,228,229))a</destino> 
+		  <union>peri_ccod</union>
+		  <salida>peri_tdesc</salida>
+		  <orden>peri_ccod desc</orden>	  
+		  <permiso>LECTURAESCRITURA</permiso>
+		  <anulable>true</anulable>
+		  <mensajeNulo>Período consulta</mensajeNulo>
+		  <mensajeVacio>Período consulta</mensajeVacio>
+		  <id>TO-N</id>
+      </campos>
+   </parametro>
+</Parametros>

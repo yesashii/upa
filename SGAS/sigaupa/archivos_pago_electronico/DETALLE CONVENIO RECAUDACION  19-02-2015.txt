@@ -1,0 +1,2 @@
+RUT ,ID,NombreCliente,TipoMoneda,ValorCuota,ValorMora,MontoRecaudado,FechaVcto,FechaRecaudacion
+187787165,425418,ZAMORANO HERNÁNDEZ SOLANGE SCARLETT,Pesos,34.000,0,34.000,05/02/2015,19/02/2015

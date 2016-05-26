@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="consulta" /> 
+  <parametro formulario="impresora" variable="ip">
+  		<campos nombre="impr_truta">
+  		<tipo>select</tipo> 
+  		<permiso>LECTURAESCRITURA</permiso> 
+  		<destino>IMPRESORAS</destino> 
+  		<union>impr_truta</union> 
+  		<salida>impr_truta</salida> 
+  		<alineamiento>CENTER</alineamiento> 
+  		<id>TO-N</id> 
+  		</campos>
+  </parametro>
+  <parametro formulario="busqueda" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>IN-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>LN-N</id>
+         <script>onBlur="this.value = this.value.toUpperCase();"</script>
+      </campos>
+   </parametro>
+   <parametro formulario="resoluciones-actas_convalidacion" variable="reso_acon">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>IN-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>LN-N</id>
+      </campos>
+      <campos nombre="reso_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="reso_nresolucion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="acon_tinstitucion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>50</caracteres>
+		 <maxcaracteres>100</maxcaracteres>
+		 <id>TO-S</id>
+      </campos>
+	  <campos nombre="acon_tcarrera">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>50</caracteres>
+		 <maxcaracteres>100</maxcaracteres>
+		 <id>TO-S</id>
+      </campos>
+      <campos nombre="tres_ccod">
+         <tipo>select</tipo>
+         <destino>tipos_resolucion</destino>
+         <union>tres_ccod</union>
+         <salida>tres_tdesc</salida>
+         <filtro>tres_bconvalidacion='S'</filtro>
+         <orden>tres_tdesc ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>------- Seleccione Tipo de Resolución -------</mensajeNulo>
+		 <script>onChange="corregir(this.name,this.value)"</script>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="reso_fresolucion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <id>FE-N</id>
+      </campos>
+      <campos nombre="acon_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="acon_nacta">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <deshabilitado>TRUE</deshabilitado>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="acon_facta">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <id>FE-N</id>
+      </campos>
+   </parametro>
+   <parametro colorSeleccionado="#99FFFF" colorResaltado="#DCDCB8" paginaEdicion="acta_convalidacion_editar.asp?matr_ncorr=%matr_ncorr%&amp;amp;asig_ccod=%asig_ccod%&amp;amp;acon_ncorr=%acon_ncorr%" formulario="convalidaciones" eliminar="TRUE" clave="asig_ccod" mensajeError="Presione 'Agregar' para agregar convalidaciones a esta acta." anchoTabla="100%" editar="TRUE" nuevaVentana="TRUE" variable="convalidaciones">
+      <tablas nombre="convalidaciones" accion="B"/>
+      <campos nombre="matr_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="acon_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="asig_ccod">
+         <descripcion>COD. ASIGNATURA</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="asig_tdesc">
+         <descripcion>ASIGNATURA</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="sitf_ccod">
+         <descripcion>SITUACIÓN FINAL</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="html_conv_nnota">
+         <descripcion>NOTA</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="conv_tdocente">
+         <descripcion>Prof/Asignatura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="datos_alumno">
+      <campos nombre="nombre_alumno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="botonera">
+   <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>javascript</accion>
+	  <funcion>Buscar(buscador);</funcion>	
+	  <soloUnClick>TRUE</soloUnClick>
+	</botones>
+	<botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>javascript</accion>
+	  <funcion>Agregar(edicion);</funcion>	
+	  <soloUnClick>TRUE</soloUnClick>
+	</botones>
+	<botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>javascript</accion>
+	  <funcion>Eliminar(edicion);</funcion>	
+	  <soloUnClick>TRUE</soloUnClick>
+	</botones>
+	<botones nombre="imprimir"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Imprimir</texto>
+	  <accion>javascript</accion>
+	  <funcion>imprimir(edicion);</funcion>	
+	  <soloUnClick>TRUE</soloUnClick>
+	</botones>
+	<botones nombre="lanzadera"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>	  
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>javascript</accion>
+	  <funcion>Salir();</funcion>	
+	  <soloUnClick>TRUE</soloUnClick>
+	</botones>	
+	<botones nombre="nueva_resolucion"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Nueva Resolucion</texto>
+	  <accion>javascript</accion>
+	  <funcion>NuevaResolucion();</funcion>	
+	  <soloUnClick>TRUE</soloUnClick>
+	</botones>
+	<botones nombre="cerrar_resolucion"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Cerrar Resolución</texto>
+	  <accion>javascript</accion>
+	  <funcion>CerrarResolucion()</funcion>	
+	  <soloUnClick>TRUE</soloUnClick>
+	</botones>
+	<botones nombre="abrir_resolucion"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Abrir Resolución</texto>
+	  <accion>javascript</accion>
+	  <funcion>AbrirResolucion()</funcion>	
+	  <soloUnClick>TRUE</soloUnClick>
+	</botones>
+	<botones nombre="certificado_1">
+  		<tipoTexto>DEFINIR</tipoTexto> 
+  		<texto>Certificado Convalidación</texto> 
+  		<accion>JAVASCRIPT</accion> 
+  		<funcion>certificado_1()</funcion> 
+  	</botones>	
+  </parametro>
+</Parametros>

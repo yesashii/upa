@@ -1,0 +1,2415 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+	<parametro formulario="toma_carga" 
+			clave="mcaj_ncorr" variable="toma_carga" 
+			mensajeError="No hay secciones para las asignaturas requeridas"
+			colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="false" editar="false" agregar="true" nuevaVentana="true" 
+			 anchoTabla="100%">
+		<tablas nombre="cargas_academicas" accion="I" />
+		<campos nombre="matr_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="asig_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="asig_ccod_paso">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>left</alineamiento>
+			<descripcion>Código</descripcion>
+		</campos>
+		<campos nombre="asignatura">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>left</alineamiento>
+			<descripcion>Asignatura</descripcion>
+		</campos>
+		<campos nombre="nive_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<descripcion>Nivel</descripcion>
+		</campos>
+		<campos nombre="asig_nhoras">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<descripcion>Horas</descripcion>
+		</campos>
+		<campos nombre="secc_ccod">
+			<tipo>SELECT</tipo>
+			<destino>(SELECT a.*, 'SEC '+
+               cast(a.secc_tdesc as varchar)+ ' -> '+ cast(protic.horario(a.secc_ccod)as varchar) AS horario
+          FROM secciones a, sub_secciones b
+         WHERE a.secc_ccod = b.secc_ccod
+           AND cast(b.tsse_ccod as varchar)= '1') a</destino>
+			<union>secc_ccod</union>
+			<salida>horario</salida>
+			<orden>cast(secc_tdesc as varchar)</orden>
+			<permiso>LECTURAESCRITURA</permiso>
+			<alineamiento>center</alineamiento>
+			<descripcion>Sección</descripcion>
+			<anulable>true</anulable>
+		<!--	<varCondicionNulo>reprobado</varCondicionNulo>
+			<valCondicionNulo>0</valCondicionNulo> -->
+			<mensajeNulo>Sin sección asignada</mensajeNulo>
+			<mensajeVacio>No hay secciones disponibles</mensajeVacio>
+			<estilo>anchofijo</estilo>
+		</campos>
+		<campos nombre="sit_asignatura">
+		</campos>
+	</parametro>
+	<parametro formulario="toma_carga_modificar" 
+			clave="mcaj_ncorr" variable="toma_carga" 
+			mensajeError="No hay secciones para las asignaturas requeridas"
+			colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="false" editar="false" agregar="true" nuevaVentana="true" 
+			 anchoTabla="100%">
+		<tablas nombre="cargas_academicas" accion="I" />
+		<campos nombre="matr_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="asig_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="asig_ccod_paso">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>left</alineamiento>
+			<descripcion>Código</descripcion>
+		</campos>
+		<campos nombre="asignatura">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>left</alineamiento>
+			<descripcion>Asignatura</descripcion>
+		</campos>
+		<campos nombre="nive_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<descripcion>Nivel</descripcion>
+		</campos>
+		<campos nombre="asig_nhoras">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<descripcion>Horas</descripcion>
+		</campos>
+		<campos nombre="secc_ccod">
+			<tipo>SELECT</tipo>
+			<destino>(SELECT a.*, 'SEC '+
+               cast(a.secc_tdesc as varchar)+ ' -> '+ cast(protic.horario(a.secc_ccod)as varchar) AS horario
+          FROM secciones a, sub_secciones b
+         WHERE a.secc_ccod = b.secc_ccod
+           AND cast(b.tsse_ccod as varchar)= '1') a</destino>
+			<union>secc_ccod</union>
+			<salida>horario</salida>
+			<orden>cast(secc_tdesc as varchar)</orden>
+			<permiso>LECTURAESCRITURA</permiso>
+			<alineamiento>center</alineamiento>
+			<descripcion>Sección</descripcion>
+			<anulable>true</anulable>
+		<!--	<varCondicionNulo>reprobado</varCondicionNulo>
+			<valCondicionNulo>0</valCondicionNulo> -->
+			<mensajeNulo>Sin sección asignada</mensajeNulo>
+			<mensajeVacio>No hay secciones disponibles</mensajeVacio>
+			<estilo>anchofijo</estilo>
+			<id>TO-N</id>
+		</campos>
+		<campos nombre="sit_asignatura">
+		</campos>
+	</parametro>
+	<parametro formulario="cheques" anchoTabla="100%" editar="FALSE" resumen="TRUE"
+		mensajeError="No se han ingresado cheques para este movimiento de caja"
+	>
+		<campos nombre="fila">
+			<tipo>INPUT</tipo>
+			<descripcion>&amp;nbsp;</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="rut">
+			<tipo>INPUT</tipo>
+			<descripcion>Alumno(rut)</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="ting_ccod">
+			<tipo>select</tipo>
+			<destino>tipos_ingresos</destino>
+			<union>ting_ccod</union>
+			<salida>ting_tdesc</salida>
+			<descripcion>Tipo</descripcion>
+			<permiso>LECTURA</permiso>
+			<alineamiento>center</alineamiento>
+		</campos>
+		<campos nombre="ingr_nfolio_referencia">
+			<tipo>INPUT</tipo>
+			<descripcion>Nº recibo ingreso</descripcion>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="chd_ip">
+			<tipo>INPUT</tipo>
+			<descripcion>Cheque al día</descripcion>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+			<resumen>SUMA</resumen>
+		</campos>
+		<campos nombre="chf_ip">
+			<tipo>INPUT</tipo>
+			<descripcion>Cheque a fecha</descripcion>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+			<resumen>SUMA</resumen>
+		</campos>
+		<campos nombre="chd_ca">
+			<tipo>INPUT</tipo>
+			<descripcion>Cheque al día Capacitación</descripcion>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+			<resumen>SUMA</resumen>
+		</campos>
+		<campos nombre="chf_ca">
+			<tipo>INPUT</tipo>
+			<descripcion>Cheque a fecha Capacitación</descripcion>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+			<resumen>SUMA</resumen>
+		</campos>
+		<campos nombre="ding_fdocto">
+			<tipo>INPUT</tipo>
+			<descripcion>Fecha vencimiento cheque</descripcion>
+			<tipoDato>FECHA</tipoDato>
+			<permiso>LECTURA</permiso>
+			<alineamiento>center</alineamiento>
+		</campos>
+	   <campos nombre="banc_ccod">
+         <tipo>SELECT</tipo>
+         <destino>bancos</destino>
+         <union>banc_ccod</union>
+         <salida>banc_tdesc</salida>
+         <descripcion>Banco</descripcion>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="ding_tcuenta_corriente">
+         <tipo>INPUT</tipo>
+         <descripcion>Cuenta corriente</descripcion>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="ding_ndocto">
+         <tipo>INPUT</tipo>
+         <descripcion>Nº Cheque</descripcion>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+      </campos>		
+	</parametro>
+	<parametro formulario="comp_rendicion_de_cajas" 
+			clave="mcaj_ncorr" variable="cajas" tabla="movimientos_cajas" 
+			mensajeError="No hay cajas abiertas"
+			colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="false" editar="false" agregar="true" nuevaVentana="true" 
+			maxLista="10" nroRegistros="10" anchoTabla="100%"
+	>
+		<tablas nombre="movimientos_cajas" accion="M"/>
+		<campos nombre="mcaj_ncorr">
+			<tipo>HIDDEN</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="eren_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="mcaj_ftermino">
+			<tipo>HIDDEN</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<tipoDato>FECHAHORA</tipoDato>
+		</campos>
+		<campos nombre="mcaj_ncorr_paso">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="eren_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<tipoDato>FECHAHORA</tipoDato>
+		</campos>
+		<campos nombre="mcaj_ftermino">
+			<tipo>INPUT</tipo>
+			<tipoDato>FECHAHORA</tipoDato>
+			<permiso>LECTURA</permiso>
+			<tipoDato>FECHAHORA</tipoDato>
+		</campos>
+		<campos nombre="mcaj_finicio">
+			<tipo>INPUT</tipo>
+			<tipoDato>FECHAHORA</tipoDato>
+			<permiso>LECTURA</permiso>
+			<tipoDato>FECHAHORA</tipoDato>
+		</campos>
+		<campos nombre="fecha_emision">
+			<tipo>INPUT</tipo>
+			<tipoDato>FECHAHORA</tipoDato>
+			<permiso>LECTURA</permiso>
+			<tipoDato>FECHAHORA</tipoDato>
+		</campos>
+		<campos nombre="t_disponible_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<soloLectura>TRUE</soloLectura>
+		</campos>
+		<campos nombre="t_disponible_ca">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<soloLectura>TRUE</soloLectura>
+		</campos>
+		<campos nombre="t_rend1_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<soloLectura>TRUE</soloLectura>
+		</campos>
+		<campos nombre="t_rend1_ca">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<soloLectura>TRUE</soloLectura>
+		</campos>
+		<campos nombre="t_rend1_ip1">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<soloLectura>TRUE</soloLectura>
+		</campos>
+		<campos nombre="t_rend1_ca1">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<soloLectura>TRUE</soloLectura>
+		</campos>
+		<campos nombre="t_rend2_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<soloLectura>TRUE</soloLectura>
+		</campos>
+		<campos nombre="t_rend2_ca">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<soloLectura>TRUE</soloLectura>
+		</campos>
+		<campos nombre="t_rend1">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<soloLectura>TRUE</soloLectura>
+		</campos>
+		<campos nombre="mcaj_mrend_efectivo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_boletas_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_boletas_ca">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_cupones_can_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_cupones_can_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_sd_saes_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_reco_beca_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_reco_seguro_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_sinsoluto_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_abono_bech_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_notas_cargo_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_d_al_empresa_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_transbank_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_vvista_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_arp_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_ncredito_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_remesas_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_cheques_dia_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_cheques_dia_ca">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_dep_banco_ca">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_tarj_credito_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_tarj_credito_ca">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_notas_credito_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_cheques_fecha_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_cheques_fecha_ca">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_facturas_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_facturas_ca">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_facturas_ae_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_df_intercia_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_f_intercia_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_nfintercia_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>ENTERO</formato>
+			<caracteres>8</caracteres>
+			<maxCaracteres>7</maxCaracteres>
+		</campos>
+		<campos nombre="mcaj_mrend_notas_debito_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_mrend_cupones_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+		<campos nombre="mcaj_nboletas_ip_desde">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>ENTERO</formato>
+			<caracteres>9</caracteres>
+			<maxCaracteres>7</maxCaracteres>
+		</campos>
+		<campos nombre="mcaj_nboletas_ca_desde">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>ENTERO</formato>
+			<caracteres>9</caracteres>
+			<maxCaracteres>7</maxCaracteres>
+		</campos>
+		<campos nombre="mcaj_nboletas_ip_hasta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>ENTERO</formato>
+			<caracteres>9</caracteres>
+			<maxCaracteres>7</maxCaracteres>
+		</campos>
+		<campos nombre="mcaj_nboletas_ca_hasta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>ENTERO</formato>
+			<caracteres>9</caracteres>
+			<maxCaracteres>7</maxCaracteres>
+		</campos>
+		<campos nombre="mcaj_nfacturas_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>ENTERO</formato>
+			<caracteres>9</caracteres>
+			<maxCaracteres>7</maxCaracteres>
+		</campos>
+		<campos nombre="mcaj_nfacturas_ca">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>ENTERO</formato>
+			<caracteres>9</caracteres>
+			<maxCaracteres>7</maxCaracteres>
+		</campos>
+		<campos nombre="mcaj_nnotas_debito_ip_desde">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>ENTERO</formato>
+			<caracteres>9</caracteres>
+			<maxCaracteres>7</maxCaracteres>
+		</campos>
+		<campos nombre="mcaj_nfacturas_ae_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>ENTERO</formato>
+			<caracteres>9</caracteres>
+			<maxCaracteres>7</maxCaracteres>
+		</campos>
+		<campos nombre="mcaj_nnotas_debito_ip_hasta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>ENTERO</formato>
+			<caracteres>9</caracteres>
+			<maxCaracteres>7</maxCaracteres>
+		</campos>
+		<campos nombre="mcaj_nnotas_credito_ip_desde">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>ENTERO</formato>
+			<caracteres>9</caracteres>
+			<maxCaracteres>7</maxCaracteres>
+		</campos>
+		<campos nombre="mcaj_nnotas_credito_ip_hasta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>ENTERO</formato>
+			<caracteres>9</caracteres>
+			<maxCaracteres>7</maxCaracteres>
+		</campos>
+		<campos nombre="mcaj_nnotas_cargo_ip_desde">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>ENTERO</formato>
+			<caracteres>9</caracteres>
+			<maxCaracteres>7</maxCaracteres>
+		</campos>
+		<campos nombre="mcaj_nnotas_cargo_ip_hasta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>ENTERO</formato>
+			<caracteres>9</caracteres>
+			<maxCaracteres>7</maxCaracteres>
+		</campos>
+		<campos nombre="mcaj_mrend_cedentes_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>MONEDA</formato>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<onBlur>totaliza(this);</onBlur>
+		</campos>
+	</parametro>	
+	<parametro formulario="cajas" anchoTabla="100%" editar="true" 
+		paginaEdicion="comp_rendicion_cajas.asp?mcaj_ncorr=%mcaj_ncorr%"
+		colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+		mensajeError="Todas las rendiciones han sido traspasadas al RAD"
+	>
+		<campos nombre="mcaj_ncorr" >
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Folio de rendición de caja</descripcion>
+			<formato>ENTERO</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="eren_ccod" >
+			<tipo>SELECT</tipo>
+			<destino>estados_rendicion</destino>
+			<union>eren_ccod</union>
+			<salida>eren_tdesc</salida>
+			<permiso>LECTURA</permiso>
+			<descripcion>Estado de rendición</descripcion>
+			<alineamiento>center</alineamiento>
+		</campos>
+		<campos nombre="mcaj_finicio" >
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<tipoDato>FECHAHORA</tipoDato>
+			<descripcion>Fecha de inicio</descripcion>
+		</campos>
+		<campos nombre="mcaj_ftermino" >
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<tipoDato>FECHAHORA</tipoDato>
+			<descripcion>Fecha de término</descripcion>
+		</campos>
+	</parametro>
+	<parametro formulario="cuadre">
+		<campos nombre="efectivo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="total">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="boletas_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="cupones_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="facturas_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="nc_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="vvista_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="arecp_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="mtransbank_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="fact_intercia_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="fact_intercia_cft">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="vvista_cft">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="arecp_cft">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="mtransbank_cft">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="nd_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="ch_dia_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="ch_dia_ca">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="dep_banco_ca">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="ch_fecha_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="ch_fecha_ca">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="cedentes_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="efectivo_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="ncargo_sede_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="pago_normal_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="remesa_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="ncargo_osede_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="tcredito_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="tcredito_ca">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="cingreso_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="d_al_empresa_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="total_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="total_ca">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="boletas_cft">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="cupones_cft">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="facturas_cft">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="nc_cft">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="nd_cft">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="ch_dia_cft">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="ch_fecha_cft">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="cedentes_cft">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="efectivo_cft">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="ncargo_sede_cft">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="pago_normal_cft">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="remesa_cft">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="ncargo_osede_cft">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="tcredito_cft">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="cingreso_cft">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="d_al_empresa_cft">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="total_cft">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+	</parametro>
+	<parametro formulario="cuadre_de_cajas" 
+			clave="mcaj_ncorr" variable="cajas" tabla="movimientos_cajas" 
+			mensajeError="No hay cajas abiertas"
+			colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="false" editar="false" agregar="true" nuevaVentana="true" 
+			maxLista="10" nroRegistros="10" anchoTabla="100%"
+	>
+		<campos nombre="nombre">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="fecha_actual">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<tipoDato>FECHAHORA</tipoDato>
+		</campos>
+		<campos nombre="mcaj_mrend_efectivo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="mcaj_mrend_boletas">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="mcaj_mrend_cedentes">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="mcaj_mrend_notas_cargo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="mcaj_mrend_remesas">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="mcaj_mrend_cheques_dia">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="mcaj_mrend_tarj_credito">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="mcaj_mrend_notas_credito">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="mcaj_mrend_cheques_fecha">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="mcaj_mrend_facturas">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="mcaj_mrend_notas_debito">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="mcaj_mrend_cupones">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="mcaj_mrend_comp_ingresos">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>MONEDA</formato>
+		</campos>
+		<campos nombre="mcaj_nboletas_desde">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>ENTERO</formato>
+		</campos>
+		<campos nombre="mcaj_nboletas_hasta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>ENTERO</formato>
+		</campos>
+		<campos nombre="mcaj_nboletas_folio_ant">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>ENTERO</formato>
+		</campos>
+		<campos nombre="mcaj_nfacturas_desde">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>ENTERO</formato>
+		</campos>
+		<campos nombre="mcaj_nfacturas_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>ENTERO</formato>
+			<caracteres>9</caracteres>
+			<maxCaracteres>7</maxCaracteres>
+		</campos>
+		<campos nombre="mcaj_nfacturas_ae_ip">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<formato>ENTERO</formato>
+			<caracteres>9</caracteres>
+			<maxCaracteres>7</maxCaracteres>
+		</campos>
+		<campos nombre="mcaj_nfacturas_hasta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>ENTERO</formato>
+		</campos>
+		<campos nombre="mcaj_nfacturas_folio_ant">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>ENTERO</formato>
+		</campos>
+		<campos nombre="mcaj_nnotas_debito_desde">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>ENTERO</formato>
+		</campos>
+		<campos nombre="mcaj_nnotas_debito_hasta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>ENTERO</formato>
+		</campos>
+		<campos nombre="mcaj_nnotas_debito_folio_ant">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>ENTERO</formato>
+		</campos>
+		<campos nombre="mcaj_nnotas_credito_desde">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>ENTERO</formato>
+		</campos>
+		<campos nombre="mcaj_nnotas_credito_hasta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>ENTERO</formato>
+		</campos>
+		<campos nombre="mcaj_nnotas_credito_folio_ant">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>ENTERO</formato>
+		</campos>
+		<campos nombre="mcaj_ncupones_desde">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>ENTERO</formato>
+		</campos>
+		<campos nombre="mcaj_ncupones_hasta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>ENTERO</formato>
+		</campos>
+		<campos nombre="mcaj_ncupones_folio_ant">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>ENTERO</formato>
+		</campos>
+		<campos nombre="mcaj_nnotas_cargo_desde">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>ENTERO</formato>
+		</campos>
+		<campos nombre="mcaj_nnotas_cargo_hasta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>ENTERO</formato>
+		</campos>
+		<campos nombre="mcaj_nnotas_cargo_folio_ant">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>ENTERO</formato>
+		</campos>
+		<campos nombre="mcaj_ncomp_ingresos_desde">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>ENTERO</formato>
+		</campos>
+		<campos nombre="mcaj_ncomp_ingresos_hasta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>ENTERO</formato>
+		</campos>
+		<campos nombre="mcaj_ncomp_ingresos_folio_ant">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+			<formato>ENTERO</formato>
+		</campos>
+		<campos nombre="t_disponible">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="t_rend1">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="t_rend2">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<formato>MONEDA</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+		
+	</parametro>	
+	<parametro formulario="rendicion_de_cajas" 
+			clave="mcaj_ncorr" variable="cajas" tabla="movimientos_cajas" 
+			mensajeError="No hay cajas abiertas"
+			colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="false" editar="false" agregar="true" nuevaVentana="true" 
+			maxLista="10" nroRegistros="10" anchoTabla="100%"
+	>
+		<tablas nombre="movimientos_cajas" accion="M"/>
+		<campos nombre="mcaj_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="mcaj_ncorr_paso">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="mcaj_finicio">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<tipoDato>FECHAHORA</tipoDato>
+		</campos>
+		<campos nombre="fecha_actual">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<tipoDato>FECHAHORA</tipoDato>
+		</campos>
+		<campos nombre="eren_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="mcaj_ftermino">
+			<tipo>INPUT</tipo>
+			<tipoDato>FECHAHORA</tipoDato>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="mcaj_mrend_efectivo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onBlur="totaliza(this.form)"</script>
+		</campos>
+		<campos nombre="mcaj_mrend_boletas">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onBlur="totaliza(this.form)"</script>
+		</campos>
+		<campos nombre="mcaj_mrend_cedentes">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onBlur="totaliza(this.form)"</script>
+		</campos>
+		<campos nombre="mcaj_mrend_notas_cargo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onBlur="totaliza(this.form)"</script>
+		</campos>
+		<campos nombre="mcaj_mrend_remesas">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onBlur="totaliza(this.form)"</script>
+		</campos>
+		<campos nombre="mcaj_mrend_cheques_dia">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onBlur="totaliza(this.form)"</script>
+		</campos>
+		<campos nombre="mcaj_mrend_tarj_credito">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onBlur="totaliza(this.form)"</script>
+		</campos>
+		<campos nombre="mcaj_mrend_notas_credito">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onBlur="totaliza(this.form)"</script>
+		</campos>
+		<campos nombre="mcaj_mrend_cheques_fecha">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onBlur="totaliza(this.form)"</script>
+		</campos>
+		<campos nombre="mcaj_mrend_facturas">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onBlur="totaliza(this.form)"</script>
+		</campos>
+		<campos nombre="mcaj_mrend_notas_debito">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onBlur="totaliza(this.form)"</script>
+		</campos>
+		<campos nombre="mcaj_mrend_cupones">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onBlur="totaliza(this.form)"</script>
+		</campos>
+		<campos nombre="mcaj_mrend_comp_ingresos">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onBlur="totaliza(this.form)"</script>
+		</campos>
+		<campos nombre="mcaj_nboletas_desde">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="mcaj_nboletas_hasta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="mcaj_nboletas_folio_ant">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="mcaj_nfacturas_desde">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="mcaj_nfacturas_hasta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="mcaj_nfacturas_folio_ant">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="mcaj_nnotas_debito_desde">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="mcaj_nnotas_debito_hasta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="mcaj_nnotas_debito_folio_ant">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="mcaj_nnotas_credito_desde">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="mcaj_nnotas_credito_hasta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="mcaj_nnotas_credito_folio_ant">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="mcaj_ncupones_desde">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="mcaj_ncupones_hasta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="mcaj_ncupones_folio_ant">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="mcaj_nnotas_cargo_desde">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="mcaj_nnotas_cargo_hasta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="mcaj_nnotas_cargo_folio_ant">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="mcaj_ncomp_ingresos_desde">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="mcaj_ncomp_ingresos_hasta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="mcaj_ncomp_ingresos_folio_ant">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		
+	</parametro>	
+	<parametro formulario="apertura_de_cajas" 
+			clave="mcaj_ncorr" variable="cajas" tabla="movimientos_cajas" 
+			mensajeError="No hay cajas abiertas"
+			colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="false" editar="false" agregar="true" nuevaVentana="true" 
+			maxLista="10" nroRegistros="10" anchoTabla="100%"
+	>
+		<tablas nombre="movimientos_cajas" accion="M"/>
+		<campos nombre="mcaj_ncorr">
+			<tipo>INPUT</tipo>
+			<tipoDato>SECUENCIA</tipoDato>
+			<secuencia>mcaj_ncorr_seq</secuencia>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="caje_ccod">
+			<tipo>input</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="eren_ccod">
+			<tipo>input</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="sede_ccod">
+			<tipo>input</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="tcaj_ccod">
+			<tipo>input</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="mcaj_finicio">
+			<tipo>input</tipo>
+			<permiso>OCULTO</permiso>
+			<tipoDato>FECHAHORA</tipoDato>
+		</campos>
+		<campos nombre="eren_ccod_p">
+			<tipo>SELECT</tipo>
+			<destino>estados_rendicion</destino>
+			<union>eren_ccod</union>
+			<salida>eren_tdesc</salida>
+			<descripcion>Estado rendición</descripcion>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="tcaj_ccod_p">
+			<tipo>SELECT</tipo>
+			<destino>tipos_caja</destino>
+			<union>tcaj_ccod</union>
+			<salida>tcaj_tdesc</salida>
+			<descripcion>Tipo de caja</descripcion>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="mcaj_finicio_p">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Inicio</descripcion>
+			<tipoDato>FECHAHORA</tipoDato>
+			<alineamiento>center</alineamiento>
+		</campos>
+		<campos nombre="mcaj_mrendicion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Monto apertura</descripcion>
+			<alineamiento>CENTER</alineamiento>
+			<caracteres>15</caracteres>
+			<maxCaracteres>9</maxCaracteres>
+			<formato>MONEDA</formato>
+		</campos>		
+	</parametro>
+	<parametro formulario="cierre_de_cajas" 
+			clave="mcaj_ncorr" variable="cajas" tabla="movimientos_cajas" 
+			mensajeError="No hay cajas abiertas"
+			colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="false" editar="true" agregar="true" nuevaVentana="true" 
+			maxLista="10" nroRegistros="10" anchoTabla="100%"
+			paginaEdicion="detalle_caja.asp?mcaj_ncorr=%mcaj_ncorr%" nuevaVentanaAlto="500" nuevaVentanaAncho="700">
+		<tablas nombre="movimientos_cajas" accion="M"/>
+		<campos nombre="mcaj_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="rownum">
+			<tipo>INPUT</tipo>
+			<descripcion>&amp;nbsp;</descripcion>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="nombre">
+			<tipo>INPUT</tipo>
+			<descripcion>Cajero</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="ecua_ccod">
+			<tipo>SELECT</tipo>
+			<destino>estados_cuadre</destino>
+			<union>ecua_ccod</union>
+			<salida>ecua_tdesc</salida>
+			<anulable>TRUE</anulable>
+			<mensajeNulo>Pendiente</mensajeNulo>
+			<mensajeVacio> hola</mensajeVacio>
+			<script>OnChange='verificar_tesorero(this);'</script>
+			<descripcion>Estado cuadre</descripcion>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="eren_ccod">
+			<tipo>SELECT</tipo>
+			<destino>estados_rendicion</destino>
+			<union>eren_ccod</union>
+			<salida>eren_tdesc</salida>
+			<script>OnChange='verificar_pendiente(this);'</script>
+			<filtro>eren_ccod not in (4,5,6)</filtro>
+			<descripcion>Estado rendición</descripcion>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="tcaj_tdesc">
+			<tipo>INPUT</tipo>
+			<descripcion>Tipo de caja</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="mcaj_finicio">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Inicio</descripcion>
+			<tipoDato>FECHA</tipoDato>
+			<alineamiento>center</alineamiento>
+		</campos>
+		<campos nombre="mcaj_ftermino">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Término</descripcion>
+			<tipoDato>FECHA</tipoDato>
+			<alineamiento>center</alineamiento>
+		</campos>
+		<campos nombre="mcaj_ncorr_paso">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Folio caja</descripcion>
+			<formato>ENTERO</formato>
+			<alineamiento>right</alineamiento>
+		</campos>
+	</parametro>
+	<parametro formulario="1" clave="a" variable="t" tabla="personas" mensajeError="No hay registros"
+		 colorResaltado="blue" colorBase="#F1F1E4" colorSeleccionado="red" editar="true" 
+		 eliminar="true" agregar="true" nuevaVentana="true" paginaEdicion="editar.asp?a=%a%"
+		 maxLista="10" nroRegistros="10">
+		<tablas nombre="personas" accion="M" />
+		<tablas nombre="profesores" accion="I" />
+		<campos nombre="a">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>campo x</descripcion>
+			<maxCaracteres>3</maxCaracteres>
+			<caracteres>5</caracteres>
+			<ancho>60</ancho>
+			<etiqueta>false</etiqueta>
+			<alineamiento>center</alineamiento>
+		</campos>
+		<campos nombre="b">
+			<tipo>INPUT</tipo>
+			<destino>regiones</destino>
+			<union>regi_ccod</union>
+			<salida>regi_tdes</salida>
+			<filtro>regi_ccod > 0</filtro>
+			<permiso>LECTURA</permiso>
+			<deshabilitado>FALSE</deshabilitado>
+			<columnas>3</columnas>
+			<orden>FILAS</orden>
+			<descripcion>campo dkf</descripcion>
+			<etiqueta>false</etiqueta>
+			<alineamiento>center</alineamiento>
+			<ancho>100</ancho>
+		</campos>
+		<campos nombre="c">
+			<tipo>INPUT</tipo>
+			<tipoDato>FECHA</tipoDato>
+			<permiso>LECTURA</permiso>
+			<descripcion>campo 855</descripcion>
+			<etiqueta>FALSE</etiqueta>
+			<filas>3</filas>
+			<maxCaracteres>33</maxCaracteres>
+			<caracteres>30</caracteres>
+			<alineamiento>center</alineamiento>
+			<id>TO-S</id>
+		</campos>
+		<campos nombre="x">
+			<tipo>BOLEANO</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Estado</descripcion>
+			<etiqueta>false</etiqueta>
+			<objeto>CHECKBOX</objeto>
+			<deshabilitado>FALSE</deshabilitado>
+			<afirmacion>Habilitado</afirmacion>
+			<negacion>No habilitado</negacion>
+			<ancho>100</ancho>
+			<alineamiento>center</alineamiento>
+		</campos>
+		<botones nombre="anterior">
+		</botones>
+		<botones nombre="siguiente">
+		</botones>
+	</parametro>
+	<parametro formulario="2" variable="bsec">
+		<listas nombre="lBusqueda">
+			<item clave="carr_ccod" valor="carr_tdesc" />
+			<item clave="espe_ccod" valor="espe_tdesc" />
+			<item clave="plan_ccod" valor="plan_tdesc" />
+		</listas>
+		<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="espe_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="plan_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<orden>asc</orden>
+		</campos>
+		<campos nombre="peri_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="nive_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<destino>niveles</destino>
+			<union>nive_ccod</union>
+			<salida>nive_tdesc</salida>
+			<mensajeNulo>TODOS</mensajeNulo>
+			<mensajeVacio>TODOS</mensajeVacio>
+			<anulable>true</anulable>
+		</campos>
+	</parametro>
+	<parametro
+		 colorResaltado="#DCDCB8" colorSeleccionado="99FFFF" 
+		 paginaEdicion="edicion_secc_asig.asp?sede_ccod=%sede_ccod%&amp;asig_ccod=%asig_ccod%&amp;carr_ccod=%carr_ccod%&amp;periodo=%periodo%&amp;nive_ccod=%nive_ccod%&amp;plan_ccod=%plan_ccod%&amp;espe_ccod=%espe_ccod%" 
+		 formulario="3"  agregar="false" 
+		 eliminar="false"
+		 maxLista="10" clave="asig_ccod" mensajeError="No hay secciones que coincidan con el criterio de búsqueda" 
+		 colorBase="#F1F1E4" anchoTabla="100%" editar="true" nuevaVentana="true" variable="sec" >
+		<campos nombre="asig_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Código</descripcion>
+		</campos>
+		<campos nombre="sede_ccod">
+			<tipo>TEXT</tipo>
+			<permiso>INVISIBLE</permiso>
+		</campos>
+		<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>INVISIBLE</permiso>
+		</campos>
+		<campos nombre="periodo">
+			<tipo>INPUT</tipo>
+			<permiso>INVISIBLE</permiso>
+		</campos>
+		<campos nombre="nive_ccod">
+			<tipo>INPUT</tipo>
+		    <permiso>INVISIBLE</permiso>
+		</campos>
+		<campos nombre="plan_ccod">
+			<tipo>INPUT</tipo>
+		    <permiso>INVISIBLE</permiso>
+		</campos>
+		<campos nombre="espe_ccod">
+			<tipo>INPUT</tipo>
+		    <permiso>INVISIBLE</permiso>
+		</campos>
+		<campos nombre="asig_tdesc">
+			<tipo>TEXT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Asignatura</descripcion>
+		</campos>
+		<campos nombre="nro_secciones">
+			<tipo>TEXT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Secciones</descripcion>
+			<alineamiento>right</alineamiento>			
+		</campos>
+		<campos nombre="cupo">
+			<tipo>TEXT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Cupos</descripcion>
+			<alineamiento>right</alineamiento>			
+		</campos>
+		<campos nombre="minimo"> 
+			<tipo>TEXT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nº mínimo de alumnos</descripcion>
+			<alineamiento>right</alineamiento>			
+		</campos>
+	</parametro>
+	<parametro formulario="4.1" variable="esec">
+		 <tablas nombre="secciones" accion="M" />
+		 <tablas nombre="sub_secciones" accion="M" />
+		 <campos nombre="secc_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<tipoDato>SECUENCIA</tipoDato>
+			<secuencia>secc_ccod_seq</secuencia>
+		</campos>
+		 <campos nombre="ssec_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<tipoDato>SECUENCIA</tipoDato>
+			<secuencia>ssec_ncorr_seq</secuencia>
+		</campos>
+	</parametro>
+	<parametro formulario="4.2" variable="esec">
+		 <tablas nombre="sub_secciones" accion="B" />
+		 <tablas nombre="secciones" accion="B" />
+		 <campos nombre="secc_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<tipoDato>SECUENCIA</tipoDato>
+			<secuencia>secc_ccod_seq</secuencia>
+		</campos>
+	</parametro>
+	<parametro formulario="5.1" variable="esec">
+		 <tablas nombre="sub_secciones" accion="M" />
+		 <campos nombre="ssec_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<tipoDato>SECUENCIA</tipoDato>
+			<secuencia>ssec_ncorr_seq</secuencia>
+		</campos>
+	</parametro>
+	<parametro formulario="5.2" variable="esec">
+		 <tablas nombre="sub_secciones" accion="B" />
+	</parametro>
+	<parametro formulario="4" variable="esec"
+	 colorSeleccionado="99FFFF" colorResaltado="#DCDCB8"  colorBase="#F1F1E4"
+	  nroRegistros="10" agregar="true"  eliminar="true" maxLista="10" 
+	  clave="secc_ccod_paso" mensajeError="No hay secciones creadas para esta asignatura" 
+	  editar="true" nuevaVentana="false" paginaEdicion="javascript:subsecciones(%secc_ccod%)" anchoTabla="100%" >
+		 <campos nombre="secc_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		 <campos nombre="ssec_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="secc_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Secc</descripcion>
+			<alineamiento>center</alineamiento>
+			<caracteres>2</caracteres>
+			<maxCaracteres>2</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+		<campos nombre="secc_ccod_paso">
+			<tipo>INPUT</tipo>
+			<permiso>INVISIBLE</permiso>
+			<id>TO-S</id>
+		</campos>
+		<campos nombre="carr_ccod">
+			<tipo>SELECT</tipo>
+			<destino>carreras</destino>
+			<union>carr_ccod</union>
+			<salida>carr_tdesc</salida>
+			<permiso>INVISIBLE</permiso>
+			<descripcion>Programa de estudios</descripcion>
+			<id>TO-S</id>
+		</campos>
+		<campos nombre="asig_ccod">
+			<tipo>INPUT</tipo>
+			<descripcion>Asignatura</descripcion>
+			<permiso>OCULTO</permiso>
+			<alineamiento>center</alineamiento>
+			<caracteres>6</caracteres>
+			<maxCaracteres>3</maxCaracteres>
+		</campos>
+		<campos nombre="secc_ncupo">
+			<tipo>INPUT</tipo>
+			<descripcion>Cupo</descripcion>
+			<permiso>LECTURAESCRITURA</permiso>
+			<alineamiento>right</alineamiento>
+			<caracteres>4</caracteres>
+			<maxCaracteres>3</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+		<campos nombre="secc_nquorum">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Mínimo &lt;br&gt; de alumnos</descripcion>
+			<alineamiento>center</alineamiento>
+			<caracteres>4</caracteres>
+			<maxCaracteres>3</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+		<campos nombre="secc_finicio_sec">
+			<tipo>INPUT</tipo>
+			<tipoDato>FECHA</tipoDato>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Fecha de inicio</descripcion>
+			<alineamiento>center</alineamiento>
+			<caracteres>12</caracteres>
+			<maxCaracteres>10</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+		<campos nombre="secc_ftermino_sec">
+			<tipo>INPUT</tipo>
+			<tipoDato>FECHA</tipoDato>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Fecha de término</descripcion>
+			<alineamiento>center</alineamiento>
+			<caracteres>12</caracteres>
+			<maxCaracteres>10</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+		<campos nombre="moda_ccod">
+			<tipo>SELECT</tipo>
+			<destino>Modalidades</destino>
+			<union>moda_ccod</union> 
+			<salida>moda_tdesc</salida>
+			<columnas>3</columnas>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Modalidad</descripcion>
+			<alineamiento>center</alineamiento>
+			<script>onChange="corregir(this.name,this.value)"</script>
+			<id>TO-S</id>
+		</campos>
+		<campos nombre="secc_nhoras_pagar">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Horas a Pagar</descripcion>
+			<alineamiento>center</alineamiento>
+			<caracteres>3</caracteres>
+			<maxCaracteres>4</maxCaracteres>
+			<id>TO-S</id>
+		</campos>
+		<campos nombre="secc_nhoras_ayudante">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Horas Ayudantía</descripcion>
+			<alineamiento>center</alineamiento>
+			<caracteres>3</caracteres>
+			<maxCaracteres>4</maxCaracteres>
+			<id>NU-S</id>
+		</campos>
+		<campos nombre="jorn_ccod">
+			<tipo>RADIO</tipo>
+			<destino>jornadas</destino>
+			<union>jorn_ccod</union> 
+			<salida>jorn_tdesc_corta</salida>
+			<columnas>2</columnas>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Jornada</descripcion>
+			<alineamiento>center</alineamiento>
+			<id>NU-N</id>
+		</campos>
+		<campos nombre="subsecciones">
+			<tipo>input</tipo>
+			<permiso>lectura</permiso>
+			<descripcion>Subsecciones</descripcion>
+			<alineamiento>center</alineamiento>
+		</campos>
+	</parametro>
+	<parametro formulario="5" variable="esec"
+	 colorSeleccionado="99FFFF" colorResaltado="#DCDCB8"  colorBase="#F1F1E4"
+	  nroRegistros="10" agregar="true"  eliminar="true" maxLista="10" 
+	  clave="secc_ccod_paso" mensajeError="No hay subsecciones prácticas creadas para esta sección" 
+	  editar="true" nuevaVentana="false" paginaEdicion="javascript:subsecciones(%secc_ccod%)" anchoTabla="100%" >
+		 <campos nombre="ssec_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<tipoDato>SECUENCIA</tipoDato>
+			<secuencia>ssec_ncorr_seq</secuencia>
+		</campos>
+		<campos nombre="sede_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="peri_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="asig_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="correlativo">
+			<tipo>INPUT</tipo>
+			<descripcion>&amp;nbsp;</descripcion>
+			<permiso>LECTURA</permiso>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="ssec_ncupo">
+			<tipo>INPUT</tipo>
+			<descripcion>Cupo</descripcion>
+			<permiso>LECTURAESCRITURA</permiso>
+			<alineamiento>center</alineamiento>
+			<caracteres>4</caracteres>
+			<maxCaracteres>3</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+		<campos nombre="ssec_nquorum">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Mínimo &lt;br&gt; de alumnos</descripcion>
+			<alineamiento>center</alineamiento>
+			<caracteres>4</caracteres>
+			<maxCaracteres>3</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+		<campos nombre="ssec_finicio_sec">
+			<tipo>INPUT</tipo>
+			<tipoDato>FECHA</tipoDato>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Fecha de inicio</descripcion>
+			<alineamiento>center</alineamiento>
+			<caracteres>12</caracteres>
+			<maxCaracteres>10</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+		<campos nombre="ssec_ftermino_sec">
+			<tipo>INPUT</tipo>
+			<tipoDato>FECHA</tipoDato>
+			<permiso>LECTURAESCRITURA</permiso>
+			<descripcion>Fecha de término</descripcion>
+			<alineamiento>center</alineamiento>
+			<caracteres>12</caracteres>
+			<maxCaracteres>10</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+	</parametro>
+	<parametro formulario="4t">
+		<campos nombre="carr_ccod">
+			<tipo>SELECT</tipo>
+			<destino>carreras</destino>
+			<union>carr_ccod</union>
+			<salida>carr_tdesc</salida>
+			<permiso>LECTURA</permiso>
+			<descripcion>Programa de estudios</descripcion>
+		</campos>
+		<campos nombre="asig_ccod">
+			<tipo>INPUT</tipo>
+			<descripcion>Asignatura</descripcion>
+			<permiso>LECTURA</permiso>
+			<alineamiento>center</alineamiento>
+			<caracteres>6</caracteres>
+			<maxCaracteres>3</maxCaracteres>
+		</campos>
+		<campos nombre="asig_tdesc">
+			<tipo>INPUT</tipo>
+			<descripcion>Asignatura</descripcion>
+			<permiso>LECTURA</permiso>
+			<alineamiento>center</alineamiento>
+			<caracteres>6</caracteres>
+			<maxCaracteres>3</maxCaracteres>
+		</campos>
+	</parametro>
+	<parametro formulario="4tt">
+		<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Codigo de Carrera</descripcion>
+		</campos>	
+		<campos nombre="carr_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Programa de estudios</descripcion>
+		</campos>
+		<campos nombre="asig_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Asignatura</descripcion>
+		</campos>		
+		<campos nombre="asig_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Asignatura</descripcion>
+		</campos>
+	</parametro>
+	<parametro formulario="tabla"/>
+ <parametro formulario="btn_adm_secciones">
+   <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	</botones> 
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+   </parametro>
+ <parametro formulario="btn_edicion_secc_asig">
+   <botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>proc_btn_clickeado(document.buscador,3);_HabilitarBoton(this,false);</funcion>
+  	  <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+   <botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>proc_btn_clickeado(document.buscador,2);</funcion>
+	</botones> 
+   <botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>proc_btn_clickeado(document.buscador,1);_HabilitarBoton(this,false);</funcion>
+  	  <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>cerrarVentana()</funcion>
+	</botones>
+   </parametro>
+  <parametro formulario="btn_subsecciones">
+   <botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>proc_btn_clickeado(document.buscador,3);_HabilitarBoton(this,false);</funcion>
+	</botones> 
+   <botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>proc_btn_clickeado(document.buscador,2)</funcion>
+	</botones> 
+   <botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>proc_btn_clickeado(document.buscador,1);_HabilitarBoton(this,false);</funcion>
+	</botones> 
+	<botones nombre="anterior"> 
+	 <tipoTexto>ANTERIOR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>anterior(document.buscador)</funcion>
+	</botones>
+   </parametro>
+  <parametro formulario="btn_edicion_secc_asig_inter">
+   <botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>proc_btn_clickeado(document.buscador,3)</funcion>
+	</botones> 
+   <botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>proc_btn_clickeado(document.buscador,2)</funcion>
+	</botones> 
+   <botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>proc_btn_clickeado(document.buscador,1)</funcion>
+	</botones> 
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+   </parametro>
+   <parametro formulario="btn_toma_carga"> 
+   <!-- BOTONES PARA TOMAR CARGA SEMESTRAL E INTERSEMENSTRAL-->
+    <botones nombre="buscar">
+	 <tipoTexto>BUSCAR</tipoTexto>
+	 <accion>JAVASCRIPT</accion>
+	 <funcion>enviar(document.buscador)</funcion>
+	</botones> 
+	<botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>document.edicion.submit()</funcion>
+	</botones> 	
+	<botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>abrir()</funcion>
+	</botones> 	
+	<botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>eliminar(document.edicion)</funcion>
+	</botones> 	
+	<botones nombre="horario"> 
+	   <accion>JAVASCRIPT</accion>
+       <funcion>horario()</funcion>
+       <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Horario</texto>
+	</botones> 
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones> 		 
+   </parametro>
+   <parametro formulario="btn_apertura_cajas">
+   <botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>guardar(document.edicion)</funcion>
+	</botones> 
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+   </parametro>
+   <parametro formulario="btn_rendicion_cajas">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	</botones> 
+  <botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>guardar(document.editar)</funcion>
+	</botones> 
+	<botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <texto>AGREGAR</texto>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+   </parametro>
+   <parametro formulario="btn_apertura_cajas">
+   <botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>document.edicion.submit()</funcion>
+	</botones> 
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+   </parametro>
+  <parametro formulario="btn_cierre_cajas">
+   <botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>guardar(document.editar)</funcion>
+	</botones> 
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+   </parametro>
+  <parametro formulario="btn_inf_cuadre">
+   <botones nombre="salir"> 
+     <tipoTexto>DEFINIR</tipoTexto>
+	 <texto>Cerrar</texto>
+	 <accion>JAVASCRIPT</accion>
+	 <funcion>self.close()</funcion>
+	</botones> 
+   <botones nombre="ver_doctos"> 
+     <tipoTexto>DEFINIR</tipoTexto>
+	 <texto>Otros Doctos</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>ver_doctos(1)</funcion>
+	</botones> 
+   <botones nombre="ver_cheques"> 
+     <tipoTexto>DEFINIR</tipoTexto>
+	 <texto>Ver Cheques</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>ver_doctos(2)</funcion>
+	</botones> 
+      <botones nombre="ver_ingresos"> 
+     <tipoTexto>DEFINIR</tipoTexto>
+	 <texto>Ver Ingresos</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>ver_doctos(3)</funcion>
+	</botones> 
+   <botones nombre="imprimir"> 
+     <tipoTexto>DEFINIR</tipoTexto>
+	 <texto>Imprimir</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>print()</funcion>
+	</botones> 
+</parametro>
+  <parametro formulario="btn_inf_cheques">
+   <botones nombre="salir"> 
+     <tipoTexto>DEFINIR</tipoTexto>
+	 <texto>Cerrar</texto>
+	 <accion>JAVASCRIPT</accion>
+	 <funcion>self.close()</funcion>
+	</botones> 
+   <botones nombre="volver"> 
+     <tipoTexto>DEFINIR</tipoTexto>
+	 <texto>Volver</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>volver(1)</funcion>
+	</botones> 
+   <botones nombre="imprimir"> 
+     <tipoTexto>DEFINIR</tipoTexto>
+	 <texto>Imprimir</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>print()</funcion>
+	</botones> 
+</parametro>
+ <parametro formulario="portada">
+	<botones nombre="aceptar"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+</parametro>
+ <parametro formulario="lista_instituciones" variable="busqueda">
+   <campos nombre="inst_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>instituciones</destino> 
+	  <union>inst_ccod</union>
+	  <salida>inst_trazon_social</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Institucion</mensajeNulo>
+  </campos>
+ </parametro>
+ <parametro formulario="detalle_mov_cajas" 
+	 colorSeleccionado="99FFFF" colorResaltado="#DCDCB8"  colorBase="#F1F1E4"
+	  nroRegistros="10" agregar="true"  maxLista="10" 
+	  clave="inst_ccod" mensajeError="No hay documentos para la institución seleccionada" 
+	  editar="false">
+		 <campos nombre="mcaj_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		 <campos nombre="tdoc_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		 <campos nombre="inst_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="tdoc_tdesc">
+			<tipo>INPUT</tipo>
+			<descripcion>Documento</descripcion>
+			<caracteres>100</caracteres>
+			  <maxCaracteres>100</maxCaracteres>
+			  <permiso>LECTURA</permiso>
+		</campos> 
+ 
+ 		<campos nombre="mcaj_mtotal">
+			<tipo>INPUT</tipo>
+			<descripcion>Total</descripcion>
+			<permiso>LECTURAESCRITURA</permiso>
+			<alineamiento>right</alineamiento>
+			<caracteres>15</caracteres>
+			<maxCaracteres>15</maxCaracteres>
+			<formato>MONEDA</formato>
+			<id>TO-N</id>
+		</campos>
+ 		<campos nombre="mcaj_mneto">
+			<tipo>INPUT</tipo>
+			<descripcion>Neto</descripcion>
+			<permiso>LECTURAESCRITURA</permiso>
+			<alineamiento>right</alineamiento>
+			<caracteres>15</caracteres>
+			<maxCaracteres>15</maxCaracteres>
+			<formato>MONEDA</formato>
+			<id>TO-N</id>
+		</campos>
+ 		<campos nombre="mcaj_mexento">
+			<tipo>INPUT</tipo>
+			<descripcion>Exento</descripcion>
+			<permiso>LECTURAESCRITURA</permiso>
+			<alineamiento>right</alineamiento>
+			<caracteres>15</caracteres>
+			<formato>MONEDA</formato>
+			<maxCaracteres>15</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+ 		<campos nombre="mcaj_miva">
+			<tipo>INPUT</tipo>
+			<descripcion>Iva</descripcion>
+			<permiso>LECTURAESCRITURA</permiso>
+			<alineamiento>right</alineamiento>
+			<caracteres>15</caracteres>
+			<maxCaracteres>15</maxCaracteres>
+			<formato>MONEDA</formato>
+			<id>TO-N</id>
+		</campos>
+<!--		<campos nombre="mcaj_mtotal">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onBlur="totaliza(this.form)"</script>
+		</campos> -->
+ </parametro>
+  <parametro formulario="btn_adm_mallas_curriculares">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	</botones> 
+   <botones nombre="imprimir"> 
+     <tipoTexto>DEFINIR</tipoTexto>
+	 <texto>Imprimir</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>javascript:print()</funcion>
+	</botones> 
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones> 		 
+</parametro>
+
+<parametro formulario="f_sel" variable="fsel">
+	<campos nombre="sede_ccod">
+		<tipo>SELECT</tipo>
+         <destino>sedes</destino>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+         <descripcion>Sede</descripcion>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <mensajeNulo>Sedes</mensajeNulo>
+		<mensajeVacio>Sedes</mensajeVacio>
+	</campos>
+	<campos nombre="peri_ccod">
+	<tipo>SELECT</tipo>
+         <destino>(select distinct a.* from periodos_academicos a,actividades_periodos b where a.peri_ccod = b.peri_ccod and cast(b.ACPE_BVIGENTE as varchar) = 'S') c</destino>
+         <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+         <descripcion>Periodos</descripcion>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <mensajeNulo>Periodos</mensajeNulo>
+		<mensajeVacio>Periodos</mensajeVacio>		
+	</campos>
+	<campos nombre="tape_ccod">
+		<tipo>SELECT</tipo>
+         <destino>(select distinct a.* from tipos_actividades_periodos a, actividades_periodos b where a.tape_ccod = b.tape_ccod and cast(b.acpe_bvigente as varchar) = 'S' ) c</destino>
+         <union>tape_ccod</union>
+         <salida>tape_tdesc</salida>
+         <descripcion>Actividades</descripcion>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <mensajeNulo>Actividad</mensajeNulo>
+		<mensajeVacio>Actividades</mensajeVacio>
+		<script>onChange="CargarPeriodos(this.form, this.value)"</script>
+	</campos>
+</parametro>
+<parametro formulario="tabla" />
+</Parametros>

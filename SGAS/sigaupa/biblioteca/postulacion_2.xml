@@ -1,0 +1,327 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>postulacion_1.asp</url>
+      </botones>
+      <botones nombre="siguiente">
+         <tipoTexto>SIGUIENTE</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_postulacion_2.asp</url>
+         <funcionValidacion>Validar();</funcionValidacion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>log_out.asp</url>
+      </botones>
+      <botones nombre="copiar_direccion">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Ver Datos Anteriores</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>CopiarDireccionParticular();</funcion>
+      </botones>
+   </parametro>
+   <parametro formulario="datos_personales" variable="dp">
+      <tablas nombre="personas_postulante" accion="M"/>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="programa_estudio">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="codigo_alumno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="pers_tape_paterno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_tape_materno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_tnombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_fnacimiento">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <tipoDato>FECHA</tipoDato>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="ciud_ccod_nacimiento">
+         <tipo>SELECT</tipo>
+         <destino>ciudades</destino>
+         <union>ciud_ccod</union>
+         <salida>ciud_tdesc</salida>
+         <orden>ciud_tdesc ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="sexo_ccod">
+         <tipo>RADIO</tipo>
+         <destino>sexos</destino>
+         <union>sexo_ccod</union>
+         <salida>sexo_tdesc</salida>
+         <columnas>2</columnas>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="eciv_ccod">
+         <tipo>SELECT</tipo>
+         <destino>estados_civiles</destino>
+         <union>eciv_ccod</union>
+         <salida>eciv_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione estado civil</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="regi_ccod_particular">
+         <tipo>SELECT</tipo>
+         <destino>regiones</destino>
+         <union>regi_ccod</union>
+         <salida>regi_tdesc</salida>
+         <orden>regi_ccod asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <script>onChange="_FiltrarCombobox(this.form.elements['dp[0][ciud_ccod_particular]'], this.value, d_ciudades, 'regi_ccod', 'ciud_ccod', 'ciud_tdesc', '');"</script>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="ciud_ccod_particular">
+         <tipo>SELECT</tipo>
+         <destino>ciudades</destino>
+         <union>ciud_ccod</union>
+         <salida>ciud_tdesc</salida>
+         <orden>ciud_tdesc asc</orden>
+         <filtro>1=2</filtro>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="dire_tblock_particular">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tblock_academico">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tcalle_particular">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>40</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="dire_tnro_particular">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="dire_tpoblacion_particular">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>35</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="pers_tfono">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>12</maxCaracteres>
+         <id>TE-N</id>
+      </campos>
+	   <campos nombre="pers_tcelular">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>12</maxCaracteres>
+         <id>TE-S</id>
+      </campos>
+      <campos nombre="regi_ccod_academico">
+         <tipo>SELECT</tipo>
+         <destino>regiones</destino>
+         <union>regi_ccod</union>
+         <salida>regi_tdesc</salida>
+         <orden>regi_ccod asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <script>onChange="_FiltrarCombobox(this.form.elements['dp[0][ciud_ccod_academico]'], this.value, d_ciudades, 'regi_ccod', 'ciud_ccod', 'ciud_tdesc', '');"</script>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="ciud_ccod_academico">
+         <tipo>SELECT</tipo>
+         <destino>ciudades</destino>
+         <union>ciud_ccod</union>
+         <salida>ciud_tdesc</salida>
+         <orden>ciud_tdesc asc</orden>
+         <filtro>1=2</filtro>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="dire_tcalle_academico">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>40</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="dire_tnro_academico">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="dire_tpoblacion_academico">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>35</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tfono_academico">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>12</maxCaracteres>
+         <id>TE-S</id>
+      </campos>
+      <campos nombre="pers_temail">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>40</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+         <id>EM-S</id>
+      </campos>
+      <campos nombre="pais_ccod">
+         <tipo>SELECT</tipo>
+         <destino>paises</destino>
+         <union>pais_ccod</union>
+         <salida>pais_tdesc</salida>
+         <orden>pais_ccod</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <script>onChange="MostrarCamposAlumnosExtranjeros();"</script>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_nrut_extranjero">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv_extranjero">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>LN-N</id>
+      </campos>
+      <campos nombre="tvis_ccod">
+         <tipo>SELECT</tipo>
+         <destino>tipos_visa</destino>
+         <union>tvis_ccod</union>
+         <salida>tvis_tdesc</salida>
+         <orden>tvis_ccod</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_tpasaporte">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_femision_pas">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <tipoDato>FECHA</tipoDato>
+         <id>FE-N</id>
+      </campos>
+      <campos nombre="pers_fvencimiento_pas">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <tipoDato>FECHA</tipoDato>
+         <id>FE-N</id>
+      </campos>
+      <campos nombre="pers_bdoble_nacionalidad">
+         <tipo>BOLEANO</tipo>
+         <objeto>RADIO</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+         <afirmacion>Sí</afirmacion>
+         <negacion>No</negacion>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+<parametro formulario="carrera_postulante" 
+			clave="ofer_ncorr" variable="m" 
+			mensajeError="No Existen Postulaciones"
+			colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="false" editar="false" agregar="true" nuevaVentana="true" 
+			maxLista="10" nroRegistros="10" anchoTabla="100%"
+	>
+	<campos nombre="carr_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Carrera(s)</descripcion>
+		</campos>
+</parametro>   
+   <parametro formulario="direcciones" variable="dp">
+      <tablas nombre="direcciones_publica" accion="M"/>
+   </parametro>
+</Parametros>

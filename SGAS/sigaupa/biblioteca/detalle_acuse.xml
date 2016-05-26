@@ -1,0 +1,122 @@
+<Parametros>
+   <parametro formulario="botonera">
+      	<botones nombre="cerrar">
+         	<tipoTexto>CERRAR</tipoTexto>
+         	<accion>CERRAR</accion>
+      	</botones>
+		<botones nombre="imprimir"> 
+		  <tipoTexto>DEFINIR</tipoTexto>
+		  <texto>Imprimir</texto>
+		  <accion>GUARDAR</accion>
+		  <url>proc_guardar_documentos_entregados.asp</url>
+		  <formulario>edicion</formulario>
+		</botones> 
+   </parametro>
+
+
+   <parametro formulario="datos_alumno" anchoTabla="100%" variable="detalle" >
+      <campos nombre="rut_alumno">
+         <descripcion>rut_aval</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre_alumno">
+         <descripcion>Nombre</descripcion>
+          <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="detalle_pagos" variable="acuse" clave="comp_ndocto" anchoTabla="100%" eliminar="True" >
+      <campos nombre="tipo_comprobante">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+       </campos>
+      <campos nombre="ingr_nfolio_referencia">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+       </campos>
+      <campos nombre="tcom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+       </campos>
+      <campos nombre="inst_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+       </campos>
+      <campos nombre="dcom_ncompromiso">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+       </campos>
+      <campos nombre="ting_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+       </campos>
+      <campos nombre="ding_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+       </campos>
+      <campos nombre="tipo_ingreso">
+         <descripcion>Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+       </campos>
+      <campos nombre="numero_docto">
+         <descripcion>Nº Docto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="monto_documento">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+       </campos>
+      <campos nombre="monto_abono">
+         <descripcion>Abonado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+       </campos>
+      <campos nombre="fecha_vencimiento">
+         <descripcion>Fecha</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="tipo_compromiso">
+         <descripcion>Compromiso</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+
+ <parametro formulario="detalle_pagos_acuse" anchoTabla="100%" >
+       <campos nombre="tipo_ingreso">
+         <descripcion>Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+       </campos>
+      <campos nombre="numero_docto">
+         <descripcion>Nº Docto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="monto_documento">
+         <descripcion>Monto Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		<formato>MONEDA</formato>
+		<alineamiento>CENTER</alineamiento>
+       </campos>
+      <campos nombre="fecha_vencimiento">
+         <descripcion>Fecha</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="tipo_compromiso">
+         <descripcion>Compromiso</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+</Parametros>

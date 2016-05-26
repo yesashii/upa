@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+<parametro formulario="botonera">
+ 	<botones nombre="buscar_cajas"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	  <soloUnClick>TRUE</soloUnClick>
+   </botones>
+   <botones nombre="salir"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../COMPRAS/AUTORIZACION_GIROS.ASP</url>
+	</botones>
+	<botones nombre="eliminar">
+		 <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Eliminar</texto>
+		 <accion>NAVEGAR</accion>
+		 <url>javascript:EliminaDetalle();</url>
+	</botones>
+	<botones nombre="guardar">
+		 <tipoTexto>GUARDAR</tipoTexto>
+		 <accion>GUARDAR</accion>
+		 <url>reembolso_gastos_proc.asp?prueba=12</url>
+		 <formulario>datos</formulario>
+		 <funcionValidacion>Enviar();</funcionValidacion>
+	</botones>	
+	<botones nombre="guardarenviar">
+		 <tipoTexto>DEFINIR</tipoTexto>
+		<texto>Enviar a VB</texto>
+		 <accion>GUARDAR</accion>
+		 <url>reembolso_gastos_proc.asp?prueba=0</url>
+		 <formulario>datos</formulario>
+		 <funcionValidacion>GuardarEnviar();</funcionValidacion>
+	</botones>
+	  <botones nombre="buscar">
+		 <tipoTexto>BUSCAR</tipoTexto>
+		 <accion>BUSCAR</accion>
+		 <formulario>buscador</formulario>
+		 <soloUnClick>TRUE</soloUnClick>
+	  </botones>
+	<botones nombre="imprimir"> 
+		<tipoTexto>DEFINIR</tipoTexto>
+		<texto>Imprimir</texto>
+		<accion>Navegar</accion>
+		<url>javascript:ImprimirReembolsoGastos();</url>
+	</botones>	 	  
+</parametro>
+
+<parametro formulario="busqueda" variable="busqueda">
+	<campos nombre="mes_ccod">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+	</campos>
+	<campos nombre="mes_tdesc">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+	</campos>
+	<campos nombre="anos_ccod">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+	</campos>
+</parametro>
+
+<parametro formulario="datos_proveedor" variable="datos" clave="rgas_ncorr">
+ 		<tablas nombre="ocag_reembolso_gastos" accion="M"/>
+	<campos nombre="rgas_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	</campos>		
+	<campos nombre="vibo_ccod">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	</campos>	
+	<campos nombre="pers_nrut">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<script>onBlur="genera_digito(this.value);"</script>
+		<id>NU-N</id>
+	</campos>
+	<campos nombre="pers_xdv">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>2</caracteres>
+		<maxCaracteres>2</maxCaracteres>
+		<id>TO-N</id>
+	</campos>
+	<campos nombre="pers_tnombre">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>40</caracteres>
+		 <maxCaracteres>35</maxCaracteres>
+		 <id>TO-N</id>
+	</campos>
+	<campos nombre="v_nombre">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <id>TO-N</id>
+	</campos>		
+	<campos nombre="rgas_fpago">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>15</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+	</campos>
+	<campos nombre="rgas_mgiro">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>NU-N</id>
+	</campos>		
+	<campos nombre="mes_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>MESES</destino>
+		 <union>mes_ccod</union>
+		 <salida>mes_tdesc</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>mes_ccod</orden>
+	</campos>
+	<campos nombre="anos_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>anos</destino>
+		 <union>anos_ccod</union>
+		 <salida>anos_ccod</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>anos_ccod</orden>
+	</campos>
+	<campos nombre="tmon_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_moneda</destino>
+		 <union>tmon_ccod</union>
+		 <salida>tmon_tdesc</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>tmon_ccod</orden>
+	</campos>	
+	<campos nombre="ordc_bboleta_honorario">
+		 <tipo>BOLEANO</tipo>
+		 <objeto>RADIO</objeto>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <afirmacion>SI</afirmacion>
+		 <negacion>NO</negacion>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+		 <alineamiento>CENTER</alineamiento>
+		 <script>onClick='CambiaValor(this)'</script>
+		 <id>TO-N</id>
+	</campos>
+</parametro> 
+
+<parametro formulario="detalle_reembolso" variable="detalle" clave="drga_ncorr">
+      	<tablas nombre="ocag_detalle_reembolso_gasto" accion="M"/>
+		<campos nombre="numero">
+         <tipo>select</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>		 
+      </campos>
+	<campos nombre="drga_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+		 <caracteres>10</caracteres>
+	</campos>
+	<campos nombre="tdoc_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_documento</destino>
+		 <union>tdoc_ccod</union>
+		 <salida>tdoc_tdesc</salida>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>35</caracteres>
+		 <anulable>false</anulable>
+		 <orden>tdoc_tdesc</orden>
+		 <script>onChange='CambiaValor(this,0);'</script>
+	</campos>	
+	<campos nombre="drga_fdocto">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>10</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+	</campos>
+	<campos nombre="drga_ndocto">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>10</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>NU-S</id>
+	</campos>
+	<campos nombre="tgas_ccod">
+		 <tipo>SELECT</tipo>
+		 <union>tgas_ccod</union>
+		 <salida>tgas_tdesc</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>25</caracteres>
+		 <anulable>false</anulable>
+		 <orden>tgas_tdesc</orden>
+	</campos>
+	<campos nombre="drga_tdescripcion">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>100</maxCaracteres>
+	</campos>	
+	<campos nombre="ccos_ncorr">
+		  <tipo>SELECT</tipo>
+		  <destino>(select b.pers_nrut,a.ccos_ncorr,a.ccos_tcodigo as ccos_tcompuesto,ccos_tdesc  
+from ocag_centro_costo a, ocag_permisos_centro_costo b 
+where a.ccos_tcodigo=b.ccos_tcodigo ) as tabla</destino>
+		  <union>ccos_ncorr</union>
+		  <salida>ccos_tcompuesto</salida>
+		  <permiso>LECTURAESCRITURA</permiso>
+		  <caracteres>10</caracteres>
+		  <anulable>false</anulable>
+		  <id>TO-N</id>		  
+	</campos>
+	<campos nombre="drga_mexento">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>10</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <script>onBlur="ConviertePesos_Factura(this);SumaTotalGiro(this);"</script>		
+		 <id>NU-S</id>
+	</campos>
+	<campos nombre="drga_mafecto">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>10</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <script>onBlur="ConviertePesos_Factura(this);SumaTotalGiro(this);"</script>		
+		 <id>NU-S</id>
+	</campos>
+	<campos nombre="drga_miva">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>10</caracteres>
+		 <script>Readonly</script>
+		 <maxCaracteres>10</maxCaracteres>
+	</campos>	
+	<campos nombre="drga_mhonorarios">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>10</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <script>onBlur="ConviertePesos_Boleta(this);SumaTotalGiro(this);"</script>		
+		 <id>NU-S</id>
+	</campos>
+	<campos nombre="drga_mretencion">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>10</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>NU-S</id>
+	</campos>	
+	<campos nombre="drga_mdocto">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>10</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <script>OnBlur="CalculaTotal();"</script>
+		 <id>NU-S</id>
+	</campos>
+</parametro>
+
+
+<parametro formulario="codigo_presupuesto" variable="datos">
+	<campos nombre="cod_pre">
+		 <tipo>SELECT</tipo>
+		 <destino>presupuesto_upa.protic.codigos_presupuesto</destino>
+		 <union>cod_pre</union>
+		 <salida>cod_pre</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+	</campos>
+</parametro> 
+</Parametros>

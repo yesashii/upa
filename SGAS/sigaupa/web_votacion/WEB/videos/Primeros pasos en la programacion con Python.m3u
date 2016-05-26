@@ -1,0 +1,69 @@
+#EXTM3U
+#EXTINF:141,01.01 Qué es Python
+ES_743_01_01_XR25R.mp4
+#EXTINF:223,01.02 Descarga e instalación de Python
+ES_743_01_02_XR25R.mp4
+#EXTINF:188,01.03 IDLE, módulos y línea de comandos.
+ES_743_01_03_XR25R.mp4
+#EXTINF:285,01.04 Variables en Python
+ES_743_01_04_XR25R.mp4
+#EXTINF:261,02.01 Operadores matemáticos y comentarios
+ES_743_02_01_XR25R.mp4
+#EXTINF:297,02.02 Condicional if en Python
+ES_743_02_02_XR25R.mp4
+#EXTINF:201,02.03 If anidados
+ES_743_02_03_XR25R.mp4
+#EXTINF:157,02.04 Operadores relacionales en Python
+ES_743_02_04_XR25R.mp4
+#EXTINF:355,02.05 Operadores lógicos en Python
+ES_743_02_05_XR25R.mp4
+#EXTINF:225,02.06 Sentencia while en Python
+ES_743_02_06_XR25R.mp4
+#EXTINF:161,03.01 Las funciones de Python
+ES_743_03_01_XR25R.mp4
+#EXTINF:172,03.02 Funciones que reciben variables
+ES_743_03_02_XR25R.mp4
+#EXTINF:261,03.03 Funciones que regresan valores
+ES_743_03_03_XR25R.mp4
+#EXTINF:156,03.04 Funciones con parámetros por defecto
+ES_743_03_04_XR25R.mp4
+#EXTINF:215,04.01 Tuplas en Python
+ES_743_04_01_XR25R.mp4
+#EXTINF:110,04.02 Tuplas con for
+ES_743_04_02_XR25R.mp4
+#EXTINF:209,04.03 Porciones de las tuplas
+ES_743_04_03_XR25R.mp4
+#EXTINF:201,04.04 Manejo de cadenas en Python
+ES_743_04_04_XR25R.mp4
+#EXTINF:324,04.05 Listas en Python
+ES_743_04_05_XR25R.mp4
+#EXTINF:107,04.06 Índices negativos en tuplas y diccionarios
+ES_743_04_06_XR25R.mp4
+#EXTINF:162,04.07 Diccionario en Python
+ES_743_04_07_XR25R.mp4
+#EXTINF:130,05.01 Funciones proporcionadas por Python
+ES_743_05_01_XR25R.mp4
+#EXTINF:97,05.02 Función Type en Python
+ES_743_05_02_XR25R.mp4
+#EXTINF:135,05.03 str en Python
+ES_743_05_03_XR25R.mp4
+#EXTINF:71,05.04 La función dir en Python
+ES_743_05_04_XR25R.mp4
+#EXTINF:138,06.01 Qué es la programación orientada a objetos
+ES_743_06_01_XR25R.mp4
+#EXTINF:106,06.02 Clases en Python
+ES_743_06_02_XR25R.mp4
+#EXTINF:125,06.03 Atributos en Python
+ES_743_06_03_XR25R.mp4
+#EXTINF:289,06.04 Métodos en Python
+ES_743_06_04_XR25R.mp4
+#EXTINF:122,06.05 Constructor en Python
+ES_743_06_05_XR25R.mp4
+#EXTINF:185,06.06 Herencia en Python
+ES_743_06_06_XR25R.mp4
+#EXTINF:154,07.01 Crear archivos en Python
+ES_743_07_01_XR25R.mp4
+#EXTINF:206,07.02 Escribir archivos en Python
+ES_743_07_02_XR25R.mp4
+#EXTINF:136,07.03 Leer archivos en Python
+ES_743_07_03_XR25R.mp4

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../dae/creditos.asp</url>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+     <botones nombre="guardar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Cerra Aulas</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>conexion_moodle.asp</url>
+	</botones>
+   </parametro>
+   
+   <parametro formulario="subida" variable="sub">
+     <campos nombre="peri_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Periodo Academico</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>periodos_academicos</destino>
+		 <filtro>peri_ccod< 216 </filtro>
+         <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+		 <id>NU-N</id>
+      </campos>
+   </parametro>
+  
+</Parametros>

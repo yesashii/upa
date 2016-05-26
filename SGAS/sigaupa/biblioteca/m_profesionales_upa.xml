@@ -1,0 +1,632 @@
+<Parametros>
+  <parametro formulario="botonera">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 	
+    <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+    </botones>
+    <botones nombre="portada"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Portada</texto>
+		<accion>GUARDAR</accion>
+		<formulario>edicion</formulario>
+		<target>_BLANK</target>
+    </botones>	 
+    <botones nombre="excel">
+       <tipoTexto>DEFINIR</tipoTexto>
+	   <texto>Excel</texto>
+       <accion>GUARDAR</accion>	   
+	   <formulario>edicion</formulario>
+    </botones>   
+    <botones nombre="cancelar"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+	<botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+    </botones>
+    <botones nombre="siguiente">
+         <tipoTexto>SIGUIENTE</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_postulacion_4.asp</url>
+         <funcionValidacion>Validar();</funcionValidacion>
+    </botones>
+   </parametro>
+   <parametro formulario="botonera_datos_alumno">
+      <botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>inicio_becas.asp</url>
+      </botones>
+      <botones nombre="siguiente">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Guardar</texto>
+          <accion>JAVASCRIPT</accion>
+          <funcion>enviarFormulario2()</funcion>
+     </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="botonera_datos_laborales">
+      <botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>editar_datos_personales.asp</url>
+      </botones>
+      <botones nombre="siguiente">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Guardar</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>editar_datos_laborales_proc.asp</url>
+     </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="busqueda" variable="busqueda">
+  		 <listas nombre="lBusqueda">
+			<item clave="carr_ccod" valor="carr_tdesc" />
+			<item clave="jorn_ccod" valor="jorn_tdesc" />
+    	</listas>
+		<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="jorn_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>LN-S</id>
+      </campos>
+      <campos nombre="pers_tape_paterno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+      </campos>
+      <campos nombre="pers_tape_materno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+      </campos>
+      <campos nombre="pers_tnombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+      </campos>
+	  <campos nombre="ano_egreso">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>5</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+      </campos>
+	  <campos nombre="mes_ccod">
+         <descripcion>meses</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>meses</destino>
+         <union>mes_ccod</union>
+         <salida>mes_tdesc</salida>
+         <orden>mes_ccod asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Todos</mensajeNulo>
+		 <mensajeVacio>Todos</mensajeVacio>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="sexo_ccod">
+         <descripcion>sexos</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>sexos</destino>
+         <union>sexo_ccod</union>
+         <salida>sexo_tdesc</salida>
+         <orden>sexo_tdesc asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Todos</mensajeNulo>
+		 <mensajeVacio>Todos</mensajeVacio>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_temail">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>50</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+      </campos>
+	  <campos nombre="sin_carrera">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="sin_jornada">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+	  <campos nombre="fecha_modificacion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <tipoDato>FECHA</tipoDato>
+         <id>FE-S</id>
+      </campos>
+</parametro>
+
+<parametro colorResaltado="#999999" 
+      colorSeleccionado="#CCCCCC" 
+	  paginaEdicion="editar_datos_personales.asp?pers_ncorr=%pers_ncorr%&amp;carr_ccod=%carr_ccod%&amp;letra=%letra%&amp;jorn_ccod=%jorn_ccod%" formulario="f_alumnos" nroRegistros="15"
+	  eliminar="FALSE" maxLista="10" clave="rut" 
+	  mensajeError="No se encontraron alumnos egresados ni títulados..." seleccionarTodo="FALSE" editar="TRUE"  anchoTabla="100%"  nuevaVentana="FALSE"  variable="secciones">	
+	 <campos nombre="rut">
+	    <descripcion>RUT</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>	    
+	 <campos nombre="alumno">
+	    <descripcion>Nombre Alumno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>	 
+	 <campos nombre="estado">
+	    <descripcion>Estado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="realizado">
+	    <descripcion>Realizado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="email">
+	    <descripcion>Email</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	</campos>
+	<campos nombre="fecha_nacimiento">
+	    <descripcion>Fecha Nacimiento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	</campos>	
+	<campos nombre="modificado">
+	    <descripcion>Modificado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	</campos>	 
+ </parametro> 
+ <parametro formulario="datos_personales" variable="dp">
+	  <tablas nombre="alumni_personas" accion="M" />
+	  <tablas nombre="alumni_datos_adicionales_egresados" accion="M" />
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="pers_fdefuncion">
+         <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <id>fe-n</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pers_tape_paterno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_tape_materno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_tnombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_fnacimiento">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <tipoDato>FECHA</tipoDato>
+         <id>FE-S</id>
+      </campos>
+	  <campos nombre="eciv_ccod">
+         <tipo>SELECT</tipo>
+         <destino>estados_civiles</destino>
+         <union>eciv_ccod</union>
+         <salida>eciv_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>TRUE</anulable>
+         <mensajeNulo>Sin Determinar</mensajeNulo>
+		 <mensajeVacio>Sin Determinar</mensajeVacio>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="sexo_ccod">
+         <tipo>SELECT</tipo>
+         <destino>sexos</destino>
+         <union>sexo_ccod</union>
+         <salida>sexo_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="ciud_ccod">
+         <tipo>SELECT</tipo>
+         <destino>ciudades</destino>
+         <union>ciud_ccod</union>
+         <salida>ciud_tdesc</salida>
+         <orden>ciud_tdesc asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="dire_tcalle">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>40</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="dire_tnro">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="dire_tblock">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tpoblacion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>35</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_temail">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>45</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+         <id>EM-S</id>
+      </campos>
+	  <campos nombre="pers_tfax">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>15</caracteres>
+         <maxCaracteres>15</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_tfono">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="pers_tcelular">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="pais_ccod">
+         <tipo>SELECT</tipo>
+         <destino>paises</destino>
+         <union>pais_ccod</union>
+         <salida>pais_tdesc</salida>
+		 <orden>pais_tdesc asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onChange="cambiar_ciudad(this.value);"</script>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="regi_particular">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>45</caracteres>
+         <maxCaracteres>80</maxCaracteres>
+         <id>TO-S</id>
+		 <deshabilitado>TRUE</deshabilitado>
+      </campos>
+	  <campos nombre="ciud_particular">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-S</id>
+		 <deshabilitado>TRUE</deshabilitado>
+      </campos>
+	  <campos nombre="cod_postal">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="num_hijos">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>5</caracteres>
+         <maxCaracteres>2</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+	  <campos nombre="tsoc_ccod">
+         <tipo>SELECT</tipo>
+         <destino>tipos_socios</destino>
+         <union>tsoc_ccod</union>
+         <salida>tsoc_tdesc</salida>
+		 <orden>tsoc_tdesc asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>TRUE</anulable>
+         <mensajeNulo>Sin Determinar</mensajeNulo>
+		 <mensajeVacio>Sin Determinar</mensajeVacio>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="fecha_incorporacion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <tipoDato>FECHA</tipoDato>
+         <id>FE-S</id>
+      </campos>
+	  <campos nombre="fecha_vencimiento">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <tipoDato>FECHA</tipoDato>
+         <id>FE-S</id>
+      </campos>
+	  <campos nombre="observaciones">
+        <tipo>TEXTAREA</tipo>
+        <permiso>LECTURAESCRITURA</permiso>
+		<filas>4</filas>
+		<caracteres>80</caracteres>
+   	    <id>TO-S</id>
+      </campos>
+   </parametro>
+   <parametro formulario="direcciones" variable="dp">
+      <tablas nombre="alumni_direcciones" accion="M"/>
+   </parametro>
+   <parametro formulario="datos_laborales" variable="dp">
+      <tablas nombre="alumni_direccion_laboral_profesionales" accion="M" />
+	  <tablas nombre="alumni_datos_adicionales_egresados" accion="M" />
+	  <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pais_ccod">
+         <tipo>SELECT</tipo>
+         <destino>paises</destino>
+         <union>pais_ccod</union>
+         <salida>pais_tdesc</salida>
+		 <orden>pais_tdesc asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onChange="cambiar_ciudad(this.value);"</script>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="ciud_ccod">
+         <tipo>SELECT</tipo>
+         <destino>ciudades</destino>
+         <union>ciud_ccod</union>
+         <salida>ciud_tdesc</salida>
+         <orden>ciud_tdesc asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="dlpr_tcalle">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>40</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="dlpr_tnro">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="dlpr_tblock">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dlpr_tpoblacion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>35</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="dire_tfax">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>15</caracteres>
+         <maxCaracteres>15</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="dlpr_tfono">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="dlpr_regi_particular">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-S</id>
+		 <deshabilitado>TRUE</deshabilitado>
+      </campos>
+	  <campos nombre="dlpr_ciud_particular">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-S</id>
+		 <deshabilitado>TRUE</deshabilitado>
+      </campos>
+	  <campos nombre="dlpr_cpostal">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="dlpr_nombre_empresa">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>45</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="dlpr_rubro_empresa">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>45</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="dlpr_cargo_empresa">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>45</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="dlpr_depto_empresa">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>45</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="dlpr_email_empresa">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>45</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+         <id>EM-S</id>
+      </campos>
+	  <campos nombre="dlpr_web_empresa">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>45</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="dlpr_tobservacion">
+        <tipo>TEXTAREA</tipo>
+        <permiso>LECTURAESCRITURA</permiso>
+		<filas>4</filas>
+		<caracteres>80</caracteres>
+   	    <id>TO-S</id>
+      </campos>
+   </parametro>
+   <parametro formulario="listado_empresas" clave="dlpr_ncorr"  variable="empresas" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" nroRegistros="5" maxLista="10" editar="FALSE" paginaEdicion="" nuevaVentana="FALSE" 
+	seleccionarTodo="FALSE"  eliminar="true" anchoTabla="98%" mensajeError="No se encontraron datos laborales del alumno"> 
+    <campos nombre="dlpr_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+		<alineamiento>RIGHT</alineamiento>
+	 </campos>
+	 <campos nombre="ver">
+	    <descripcion>Ver</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>	 
+	  <campos nombre="pais_tdesc">
+	    <descripcion>País</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>	 		 
+	 <campos nombre="ciudad">
+	    <descripcion>Ciudad</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>	 		 
+	 <campos nombre="empresa">
+	    <descripcion>Empresa</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="cargo">
+	    <descripcion>Cargo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+</parametro>
+</Parametros>

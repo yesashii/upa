@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+<parametro formulario="btn_examen_adm">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <url>examen_adm.asp</url>
+         <formulario>buscador</formulario>
+      </botones>
+      <botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>actualizar_examen.asp</url>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="examen" variable="ale">
+      <campos nombre="carrera">
+         <tipo>select</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>(select distinct 
+cast(b.carr_tdesc as varchar)+ ' ' + cast(a.espe_tdesc as varchar) as  carrera, a.espe_ccod as espe_ccod, d.sede_ccod as sede_ccod
+from 
+especialidades a, carreras b, ofertas_academicas c, sedes d
+where 
+a.carr_ccod=b.carr_ccod 
+and a.espe_ccod=c.espe_ccod
+and c.sede_ccod=d.sede_ccod
+and cast(espe_bexamen_adm as varchar)='S') a</destino>
+         <union>espe_ccod</union>
+         <salida>carrera</salida>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Elija Programa de Estudio</mensajeNulo>
+      </campos>
+      <campos nombre="programa">
+         <tipo>select</tipo>
+         <permiso>LECTURA</permiso>
+         <destino>(select distinct 
+cast(b.carr_tdesc as varchar)+ ' ' + cast(a.espe_tdesc as varchar) as  programa, a.espe_ccod as espe_ccod, d.sede_ccod as sede_ccod
+from 
+especialidades a, carreras b, ofertas_academicas c, sedes d
+where 
+a.carr_ccod=b.carr_ccod 
+and a.espe_ccod=c.espe_ccod
+and c.sede_ccod=d.sede_ccod
+and cast(espe_bexamen_adm as varchar)='S') a</destino>
+         <union>espe_ccod</union>
+         <salida>programa</salida>
+      </campos>
+      <campos nombre="jorn_ccod">
+         <tipo>RADIO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>jornadas</destino>
+         <union>jorn_ccod</union>
+         <salida>jorn_tdesc</salida>
+         <columnas>2</columnas>
+         <descripcion>Estado</descripcion>
+      </campos>
+      <campos nombre="jornada">
+         <tipo>radio</tipo>
+         <permiso>LECTURA</permiso>
+         <destino>(select jorn_ccod,jorn_tdesc  from jornadas) a</destino>
+         <union>jorn_ccod</union>
+         <salida>jorn_tdesc</salida>
+         <columnas>2</columnas>
+      </campos>
+   </parametro>
+   <parametro formulario="alum_exa" clave="post_ncorr" variable="ale" mensajeError="No postulantes que coincidan con el criterio de búsqueda" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" agregar="false" nuevaVentana="false" maxLista="10" nroRegistros="10" anchoTabla="98%">
+      <tablas accion="M" nombre="postulantes"/>
+      <campos nombre="post_ncorr">
+         <tipo>hidden</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+      <campos nombre="rut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Rut</descripcion>
+      </campos>
+      <campos nombre="alumno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nombre Postulante</descripcion>
+      </campos>
+      <campos nombre="post_bestado_examen">
+         <tipo>BOLEANO</tipo>
+         <objeto>RADIO</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+         <afirmacion>Aprobado</afirmacion>
+         <negacion>Reprobado</negacion>
+         <columnas>2</columnas>
+         <descripcion>Situación</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+</Parametros>   
+
+

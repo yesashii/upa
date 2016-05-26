@@ -1,0 +1,218 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+		 <funcionValidacion>ValidaBusqueda();</funcionValidacion>
+      </botones>
+      <botones nombre="salir_alu">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>javascript:close();</url>
+      </botones>
+	  <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cancelar">
+         <tipoTexto>Cerrar</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>cerrarVentana()</funcion>
+      </botones>
+	  <botones nombre="guardar">
+         <tipoTexto>guardar</tipoTexto>
+         <accion>guardar</accion>
+         <formulario>edicion</formulario>
+         <url>proc_edita_comentario_postulante.asp</url>
+      </botones>
+	  <botones nombre="guardar_nuevo">
+         <tipoTexto>guardar</tipoTexto>
+         <accion>guardar</accion>
+         <formulario>edicion</formulario>
+         <url>proc_crea_comentario_postulante.asp</url>
+      </botones>
+	  <botones nombre="nuevo_comentario"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Nuevo comentario</texto>
+		<accion>NAVEGAR</accion>
+		<url>javascript:nuevo_comentario();</url>		
+      </botones>
+   </parametro>
+   
+   <parametro formulario="busqueda" variable="b">
+	  <campos nombre="fact_nfactura">
+         <tipo>INPUT</tipo>
+		 <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+      </campos>
+	  <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+		 <script>onBlur="this.value=this.value.toUpperCase();"</script>
+      </campos>
+	  <campos nombre="n_oc">
+         <tipo>INPUT</tipo>
+		 <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <permiso>LECTURAESCRITURA</permiso>
+      </campos>	  
+	  <campos nombre="pers_nrut2">
+         <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+      </campos>
+	  <campos nombre="pers_xdv2">
+         <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+		 <script>onBlur="this.value=this.value.toUpperCase();"</script>
+      </campos>	  
+	</parametro>
+   
+   <parametro formulario="f_cursos_postulante" anchoTabla="100%" columnas="1" 
+	  separacion="30" variable="f" nroRegistros="10" maxLista="10" mensajeError="No se encontraron resultado...">
+	  <campos nombre="fact_ncorr">
+         <descripcion>factura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="fact_nfactura">
+         <descripcion>N° Factura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="fecha_factura">
+         <descripcion>Fecha Factura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>center</alineamiento>
+      </campos>
+      <campos nombre="fact_mtotal">
+         <descripcion>Monto Factura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="PERS_TNOMBRE">
+         <descripcion>Empresa</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="rut_empresa">
+         <descripcion>Rut Empresa</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="empr_ncorr">
+         <descripcion>codigo Empresa</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="curso">
+         <descripcion>Curso</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="revisar">
+		 <descripcion>Alumnos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>center</alineamiento>
+      </campos>	  
+   </parametro>
+   
+    <parametro formulario="f_cursos_otic" anchoTabla="100%" columnas="1" 
+	  separacion="30" variable="f" nroRegistros="10" maxLista="10" mensajeError="No se encontraron resultado...">
+	  <campos nombre="OC">
+         <descripcion>Orden de Compra</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="PERS_TNOMBRE">
+         <descripcion>Empresa</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="rut_empresa">
+         <descripcion>Rut Empresa</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="PERS_TNOMBRE_otic">
+         <descripcion>Otic</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="rut_otic">
+         <descripcion>Rut Otic</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="curso">
+         <descripcion>Curso</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="revisar">
+		 <descripcion>Alumnos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>center</alineamiento>
+      </campos>	  
+   </parametro>
+   
+   
+   <parametro formulario="alumnos" anchoTabla="100%" columnas="1" 
+	  separacion="30" variable="al" mensajeError="No se encontraron resultado...">
+	  <campos nombre="rut">
+         <descripcion>Rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="nombre">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="epot_tdesc">
+         <descripcion>Estado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>center</alineamiento>
+      </campos>	 
+	  <campos nombre="email">
+         <descripcion>Email</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>center</alineamiento>
+      </campos>	  
+	  
+   </parametro>
+	
+					
+</Parametros>

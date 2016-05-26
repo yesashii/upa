@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="formulario_asignaturas" anchoTabla="100%" 
+   colorResaltado="#CCCCCC"  mensajeError="El alumno no presenta asignaturas de formación profesional electiva"
+   colorSeleccionado="#CCCCCC" eliminar="FALSE" seleccionarTodo="FALSE" clave="secc_ccod"
+    editar="FALSE" 	paginaEdicion="" nuevaVentana="FALSE" variable="mm">
+     <campos nombre="matr_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="secc_ccod">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="asig_ccod">
+	    <descripcion>Cod.Asignatura</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="asignatura">
+	    <descripcion>Asignatura a cursar</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="seccion">
+	    <descripcion>Sección</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="mall_ccod">
+         <tipo>SELECT</tipo>
+		 <descripcion>Equivalente a</descripcion>
+         <union>mall_ccod</union>
+         <salida>asignatura</salida>
+		 <orden>asignatura</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>TRUE</anulable>
+		 <mensajeNulo>--Seleccione asignatura de malla--</mensajeNulo>
+      </campos>
+	</parametro>
+	<parametro formulario="botonera">
+   	 <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	   <funcionValidacion>Validar();</funcionValidacion>
+	</botones>
+   	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>	 
+	</botones>
+	<botones nombre="guardar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Guardar Equivalencias.</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>regula_fprofesional_proc.asp</url>
+	</botones>	
+	</parametro>
+	<parametro formulario="busqueda_usuarios_nuevo" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+		 <script>onBlur="genera_digito(this.value);"</script>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+</parametro>
+</Parametros>

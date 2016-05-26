@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<content>
+	<area area="left" header="video2brain en la web" subheader="Para estar siempre al día">
+		<element type="link_teaser" link="http://blog.video2brain.com/es/" previewimage="media/v2b_blog.png" header="El blog de video2brain España" text="Noticas, novedades y trucos sobre el mundo de los vídeo-tutoriales con enlaces directos, especialmente pensados para nuestro público de España." />
+		<element type="link_teaser" link="http://twitter.com/v2bes" previewimage="media/v2b_twitter_ES.png" header="Twitter de video2brain España" text="Información al momento de nuevos lanzamientos; con trucos diarios, enlaces directos a vídeos gratis y atención al cliente." />
+		<element type="link_teaser" link="http://blog.video2brain.com/mx/" previewimage="media/v2b_blog.png" header="El blog de video2brain Latinoamérica" text="Noticas, novedades y trucos sobre el mundo de los vídeo-tutoriales con enlaces directos, especialmente pensados para nuestro público de Lationamérica." />
+		<element type="link_teaser" link="http://twitter.com/v2bmx" previewimage="media/v2b_twitter_MX.png" header="Twitter de video2brain Latinoamerica" text="Información al momento de nuevos lanzamientos; con trucos diarios, enlaces directos a vídeos gratis y atención al cliente." />
+	<element type="link_teaser" link="http://www.youtube.com/user/mivideo2brain" previewimage="media/v2b_youtube.png" header="Nuestro canal de vídeos en YouTube" text="Para enlazar en tu blog, o solo para disfrutar de nuestros vídeos gratis." />
+		<element type="link_teaser" link="http://www.video2brain.com/es/newsletter.htm" previewimage="media/v2b_newsletter.png" header="La newsletter de video2brain" text="Siempre informad@ de lanzamientos, novedades, trucos y descuentos muy interesantes." />
+		
+		</area>
+	<area area="right" header="Redes Sociales" subheader="">
+		<element type="link_teaser" link="https://www.facebook.com/mivideo2brain" previewimage="media/v2b_fb.png" header="video2brain en Facebook" text="¿No eres aún fan de video2brain en Facebook? Indica que te gusta nuestra web en Facebook y forma parte de la gran comunidad que hemos creado en esta red social." />
+        <element type="link_teaser" link="https://twitter.com/v2bmx" previewimage="media/v2b_twitter.png" header="video2brain en Twitter" text="¿Te gusta el microblogging? ¡A nosotros sí! Quieres estar enterado de novedades de los cursos, formadores o del equipo de video2brain, entonces ¡síguenos en Twitter!" />
+		<element type="link_teaser" link="https://plus.google.com/107705415153154756592/posts" previewimage="media/v2b_gplus.png" header="video2brain en Google+" text="¡Únete a Google+! Tutoriales, promociones, novedades, etc., mantente actualizado sobre video2brain en español." />
+		</area>
+
+</content>
+

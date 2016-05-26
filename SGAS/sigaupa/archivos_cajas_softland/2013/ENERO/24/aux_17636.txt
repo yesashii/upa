@@ -1,0 +1,5 @@
+70200800,  CORPORACION DE CAPACITACION DE LA CONSTRUCCION,,70200800-K,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+70417500,  CORP. CAPACITACION Y EMPLEO SOFOFA,,70417500-0,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+76806560,  SEMINARIUM CERTIFICACION LTDA.,,76806560-8,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+78179710,  INSTITUTO IRIDEC,,78179710-3,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+96974830,  INVERSIONES DESCO S.A.,,96974830-4,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

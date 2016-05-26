@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro colorResaltado="#CCCCCC" colorSeleccionado="#CCCCCC" 	paginaEdicion="ingresar_asistencia.asp?secc_ccod=%secc_ccod%"      formulario="listado_diario" nroRegistros="10" eliminar="FALSE" maxLista="10"  mensajeError="No existe registro de clases para este día" seleccionarTodo="FALSE" anchoTabla="100%" editar="TRUE" nuevaVentana="FALSE" variable="docente" >
+     <campos nombre="secc_ccod">
+	   <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+	 </campos>
+     <campos nombre="asignatura">
+	    <descripcion>Asignatura</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="seccion">
+	    <descripcion>Sección</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="carrera">
+	    <descripcion>Carrera</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="total_bloques">
+	    <descripcion>Total Bloques</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="horario">
+	    <descripcion>Horario</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+   </parametro>   
+   
+   <parametro formulario="f1_edicion" variable="usuarios" clave="pers_ncorr">
+   <tablas nombre="sis_usuarios" accion="M"/>
+   <tablas nombre="sis_sedes_usuarios" accion="M"/>   
+  <!-- <campos nombre="pers_ncorr">   
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>
+   </campos>-->
+    <campos nombre="c_pers_ncorr">
+      <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="susu_tlogin">
+      <tipo>INPUT</tipo>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <caracteres>40</caracteres>
+	  <maxCaracteres>30</maxCaracteres>
+	  <id>TO-N</id>
+   </campos>
+    <campos nombre="susu_tclave">
+      <tipo>INPUT</tipo>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <caracteres>40</caracteres>
+	  <maxCaracteres>30</maxCaracteres>
+	  <id>TO-N</id>
+   </campos>
+    <campos nombre="susu_fmodificacion">
+      <tipo>INPUT</tipo>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <soloLectura>true</soloLectura>
+   </campos>
+  </parametro>
+  
+  <parametro formulario="fconsulta" variable="personas">
+    <tablas nombre="personas" accion="M"/>
+	 <campos nombre="pers_ncorr">
+	   <descripcion>Correlativo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="pers_nrut">
+	   <descripcion>Rut</descripcion>
+		<tipo>INPUT</tipo>
+		<caracteres>10</caracteres>
+       <maxCaracteres>8</maxCaracteres>
+	   <permiso>LECTURAESCRITURA</permiso>
+	   <id>NU-N</id>
+	 </campos>
+	 <campos nombre="pers_xdv">
+	   <descripcion>Digito</descripcion>
+		<tipo>INPUT</tipo>
+		<caracteres>1</caracteres>
+        <maxCaracteres>1</maxCaracteres>
+		<permiso>LECTURAESCRITURA</permiso>
+		<id>TO-N</id>
+	 </campos>
+	 <campos nombre="pers_tnombre">
+	   <descripcion>Rut</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+ </parametro>
+  
+  <parametro formulario="botonera">
+   <botones nombre="cancelar"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+	 <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	   <funcionValidacion>Validar();</funcionValidacion>
+	</botones>
+	<botones nombre="buscar_seccion"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 
+   	<botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>AGREGAR</accion>
+	  <posicionX>100</posicionX>
+	  <posicionY>50</posicionY>
+	  <ancho>495</ancho>
+	  <alto>550</alto>
+	</botones>
+	<botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>ingresar_asistencia_proc.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>
+	<botones nombre="guardar2"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>Proc_Mant_Usuarios_Edicion.asp</url>
+	  <formulario>edicion</formulario>
+	</botones> 
+	<botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>ELIMINAR</accion>
+	  <url>Mant_Usuarios_Eliminar.asp</url>
+	  <formulario>edicion</formulario>
+	</botones> 
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>	 
+	</botones>	
+	<botones nombre="volver"> 
+      <tipoTexto>Definir</tipoTexto>
+	  <texto>Volver</texto>
+	  <accion>NAVEGAR</accion>
+	  <url>seleccionar_curso_asistencia.asp</url>	 
+	</botones>
+	<botones nombre="volver_faltante"> 
+      <tipoTexto>Definir</tipoTexto>
+	  <texto>Volver</texto>
+	  <accion>NAVEGAR</accion>
+	  <url>registro_asistencias_pasadas.asp</url>	 
+	</botones>
+	<botones nombre="guardar_faltante"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>ingresar_asistencia_faltante_proc.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>
+	<botones nombre="excel">
+      <tipoTexto>DEFINIR</tipoTexto>
+      <texto>Reporte Asistencia</texto>
+      <accion>GUARDAR</accion>
+      <formulario>edicion</formulario>
+    </botones> 
+   </parametro>
+
+
+<parametro formulario="busqueda" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+		 <script>onBlur="genera_digito(this.value);"</script>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+</parametro>
+
+<parametro formulario="busqueda_seccion" variable="busqueda">
+  		 <listas nombre="lBusqueda">
+			<item clave="sede_ccod" valor="sede_tdesc" />
+			<item clave="carr_ccod" valor="carr_tdesc" />
+			<item clave="jorn_ccod" valor="jorn_tdesc" />
+			<item clave="secc_ccod" valor="asignatura" />
+		</listas>
+		<campos nombre="sede_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="jorn_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="secc_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+  </parametro>
+  <parametro colorResaltado="#CCCCCC" colorSeleccionado="#CCCCCC" 	paginaEdicion="ingresar_asistencia_faltante.asp?secc_ccod=%secc_ccod%&amp;fecha=%fecha_clase%"      formulario="listado_diario_tardio" nroRegistros="10" eliminar="FALSE" maxLista="10"  mensajeError="No existe registro de clases sin controlar asistencia" seleccionarTodo="FALSE" anchoTabla="100%" editar="TRUE" nuevaVentana="FALSE" variable="docente" >
+     <campos nombre="secc_ccod">
+	   <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+	 </campos>
+     <campos nombre="asignatura">
+	    <descripcion>Asignatura</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="seccion">
+	    <descripcion>Sección</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="Sala">
+	    <descripcion>Sala</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="dia">
+	    <descripcion>Día</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="modulo">
+	    <descripcion>Modulo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="fecha_clase">
+	    <descripcion>Fecha de Clase</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="grabado">
+	    <descripcion>Grabado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+   </parametro>
+
+</Parametros>

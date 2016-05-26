@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="btn_adm_cuentas">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>	 
+	</botones> 
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_cuenta.asp</url>
+         <formulario>edicion</formulario>
+      </botones> 
+    <botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agrega_cuenta(document.edicion)</funcion>
+	</botones> 
+	<botones nombre="agrega_fpagos"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	   <accion>JAVASCRIPT</accion>
+	  <texto>Agrega Forma Pago</texto>
+	  <funcion>agrega_fpago(document.edicion)</funcion>
+	</botones> 
+      <botones nombre="SALIR">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>	 	
+ </parametro>
+  <parametro formulario="btn_agregar_cuenta">
+    <botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agregar(document.editar)</funcion>
+	</botones> 
+    <botones nombre="GUARDAR"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agregar(document.editar)</funcion>
+	</botones> 	
+  <botones nombre="SALIR"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>salir(document.edicion)</funcion>
+	</botones> 
+ </parametro>
+
+ 	<parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8"
+	 paginaEdicion="agregar_cuenta.asp?csof_ncorr=%csof_ncorr%" 
+	 formulario="tabla" eliminar="true" clave="csof_ncorr" nroRegistros="10" maxLista="10"
+	 mensajeError="No Existen Datos Para Los Parámetros De Búsqueda." 
+	 colorBase="#F1F1E4" editar="true" 	anchoTabla="98%" variable="em" nuevaVentana="true">
+	<tablas nombre="cuentas" accion="B"/>
+		<campos nombre="cuenta">
+				<tipo>INPUT</tipo>
+				<permiso>LECTURA</permiso>
+				<descripcion>Nro.Cuenta-C.Costo</descripcion>
+				<alineamiento>left</alineamiento>
+		</campos>
+		<campos nombre="nombre_cuenta">
+				<tipo>IMPUT</tipo>
+				<permiso>LECTURA</permiso>
+				<descripcion>Nombre cuenta Softland</descripcion>
+				<alineamiento>left</alineamiento>
+		</campos>
+		<campos nombre="centro_costo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nº C.C.</descripcion>
+			<alineamiento>left</alineamiento>
+		</campos>
+		<campos nombre="usa_controla_doc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Ctrl.Doc.</descripcion>
+			<alineamiento>left</alineamiento>
+		</campos>
+		<campos nombre="usa_centro_costo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>C.C.</descripcion>
+			<alineamiento>left</alineamiento>			
+		</campos>		
+		<campos nombre="usa_auxiliar">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Aux</descripcion>
+			<alineamiento>left</alineamiento>			
+		</campos>
+		<campos nombre="usa_detalle_gasto">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>D.gasto</descripcion>
+			<alineamiento>left</alineamiento>			
+		</campos>
+		<campos nombre="usa_conciliacion">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>
+			<descripcion>conci.</descripcion>
+			<alineamiento>left</alineamiento>			
+		</campos>
+		<campos nombre="usa_pto_caja">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>pto.caja.</descripcion>
+			<alineamiento>left</alineamiento>
+		</campos>
+	</parametro>
+	
+	 <parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8"
+	 paginaEdicion=""  formulario="tabla_valores" eliminar="true" clave="csof_ncorr" 
+	 mensajeError="No Exisnten Datos Para Los Parámetros De Búsqueda." 
+	 colorBase="#F1F1E4" editar="true" 	anchoTabla="98%" variable="em" nuevaVentana="true">
+		
+		<campos nombre="nombre_cuenta_soft">
+				<tipo>INPUT</tipo>
+				<permiso>LECTURAESCRITURA</permiso>
+				<alineamiento>left</alineamiento>
+				<caracteres>50</caracteres>
+				<id>TO-N</id>
+		</campos>
+		<campos nombre="cuenta">
+				<tipo>INPUT</tipo>
+				<permiso>LECTURAESCRITURA</permiso>
+				<alineamiento>left</alineamiento>
+				<caracteres>30</caracteres>
+				<id>TO-N</id>
+		</campos>
+		<campos nombre="usa_controla_doc">
+			 <descripcion>Usa</descripcion>
+			 <tipo>BOLEANO</tipo>
+			 <objeto>CHECKBOX</objeto>
+			 <valorVerdadero>S</valorVerdadero>
+			 <valorFalso>N</valorFalso>
+			 <permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="usa_centro_costo">
+			 <descripcion>Usa</descripcion>
+			 <tipo>BOLEANO</tipo>
+			 <objeto>CHECKBOX</objeto>
+			 <valorVerdadero>S</valorVerdadero>
+			 <valorFalso>N</valorFalso>
+			 <permiso>LECTURAESCRITURA</permiso>
+		</campos>		
+		<campos nombre="usa_auxiliar">
+			 <descripcion>Usa</descripcion>
+			 <tipo>BOLEANO</tipo>
+			 <objeto>CHECKBOX</objeto>
+			 <valorVerdadero>S</valorVerdadero>
+			 <valorFalso>N</valorFalso>
+			 <permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="usa_detalle_gasto">
+			 <descripcion>Usa</descripcion>
+			 <tipo>BOLEANO</tipo>
+			 <objeto>CHECKBOX</objeto>
+			 <valorVerdadero>S</valorVerdadero>
+			 <valorFalso>N</valorFalso>
+			 <permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="usa_conciliacion">
+			 <descripcion>Usa</descripcion>
+			 <tipo>BOLEANO</tipo>
+			 <objeto>CHECKBOX</objeto>
+			 <valorVerdadero>S</valorVerdadero>
+			 <valorFalso>N</valorFalso>
+			 <permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="usa_pto_caja">
+			 <descripcion>Usa</descripcion>
+			 <tipo>BOLEANO</tipo>
+			 <objeto>CHECKBOX</objeto>
+			 <valorVerdadero>S</valorVerdadero>
+			 <valorFalso>N</valorFalso>
+			 <permiso>LECTURAESCRITURA</permiso>
+		</campos>
+	 
+	</parametro>
+	
+  <parametro formulario="mantiene_cuentas" variable="em" clave="csof_ncorr">
+      <tablas nombre="cuentas_softland" accion="M"/>
+   </parametro>
+   
+  <parametro formulario="eliminar_cuentas" variable="em">
+      <tablas nombre="cuentas_softland" accion="B"/>
+   </parametro>
+   
+</Parametros>

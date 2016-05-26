@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+
+<parametro formulario="botonera">
+      <botones nombre="lanzadera">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="excel_letras">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>BUSCAR</accion>
+         <url>arqueo_letras_excel.asp</url>
+         <formulario>buscador</formulario>
+      </botones>
+	  <botones nombre="excel_cheques">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>BUSCAR</accion>
+         <url>arqueo_cheques_excel.asp</url>
+         <formulario>buscador</formulario>
+      </botones>
+	  <botones nombre="excel_pagares">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>BUSCAR</accion>
+         <url>arqueo_pagares_excel.asp</url>
+         <formulario>buscador</formulario>
+      </botones>
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>Validar();</funcionValidacion>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+   </parametro>
+
+   <parametro formulario="f_letras" clave="envi_ncorr" variable="letras" nroRegistros="50" maxLista="10" 
+   anchoTabla="100%" mensajeError="No se encontraron letras...">
+      <campos nombre="ding_ndocto">
+         <descripcion>Letra</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <ancho>50</ancho>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="edin_tdesc">
+         <descripcion>Estado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="ingr_fpago">
+         <descripcion>F. Emision</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_fdocto">
+         <descripcion>F. Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_mdocto">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="rut_alumno">
+         <descripcion>Rut Alumno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="rut_apoderado">
+         <descripcion>Rut Apoderado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="institucion">
+         <descripcion>Institucion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+	  	  <campos nombre="comprobante">
+         <descripcion>Nº Comprobante</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+	  <campos nombre="caja">
+         <descripcion>Nº Caja</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="sede_actual">
+         <tipo>SELECT</tipo>
+         <destino>sedes</destino>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+
+ </parametro>
+ <parametro formulario="busqueda_letras" variable="busqueda">
+      <campos nombre="sede_ccod">
+         <tipo>SELECT</tipo>
+         <destino>sedes</destino>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+		 <filtro>sede_ccod not in (3,5,6)</filtro>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>true</anulable>
+         <mensajeNulo>Todas las Sedes</mensajeNulo>
+      </campos>
+      <campos nombre="sede_caja">
+         <tipo>SELECT</tipo>
+         <destino>sedes</destino>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+		 <filtro>sede_ccod not in (3,5,6)</filtro>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>true</anulable>
+         <mensajeNulo>Seleccione Sede</mensajeNulo>
+      </campos>
+      <campos nombre="inicio">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+      <campos nombre="termino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+      <campos nombre="vencimiento">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+      <campos nombre="edin_ccod">
+         <tipo>SELECT</tipo>
+         <destino>estados_detalle_ingresos</destino>
+		 <filtro>edin_ccod in (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,49,50,54)</filtro>
+         <union>edin_ccod</union>
+         <salida>edin_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>true</anulable>
+         <mensajeNulo>Todos los Estados</mensajeNulo>
+      </campos>
+   </parametro>
+
+<parametro formulario="busqueda_cheques" variable="busqueda">
+      <campos nombre="sede_ccod">
+         <tipo>SELECT</tipo>
+         <destino>sedes</destino>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+		 <filtro>sede_ccod not in (3,5,6)</filtro>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>true</anulable>
+         <mensajeNulo>Todas las Sedes</mensajeNulo>
+      </campos>
+      <campos nombre="sede_caja">
+         <tipo>SELECT</tipo>
+         <destino>sedes</destino>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+		 <filtro>sede_ccod not in (3,5,6)</filtro>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>true</anulable>
+         <mensajeNulo>Seleccione Sede</mensajeNulo>
+      </campos>
+      <campos nombre="inicio">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+      <campos nombre="termino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+      <campos nombre="vencimiento">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+      <campos nombre="edin_ccod">
+         <tipo>SELECT</tipo>
+         <destino>estados_detalle_ingresos</destino>
+		 <filtro>edin_ccod in ('1','6','7','8','9','10','11','12','13','14','15','16','19','20')</filtro>
+         <union>edin_ccod</union>
+         <salida>edin_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>true</anulable>
+         <mensajeNulo>Todos los Estados</mensajeNulo>
+      </campos>
+
+   </parametro>
+
+
+    <parametro formulario="f_cheques" clave="envi_ncorr" variable="cheques" nroRegistros="50" maxLista="10" 
+   		anchoTabla="100%" mensajeError="No se encontraron letras...">
+     <campos nombre="banc_ccod">
+         <descripcion>Banco</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="ding_ndocto">
+         <descripcion>Cheque</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <ancho>50</ancho>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="edin_tdesc">
+         <descripcion>Estado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="ingr_fpago">
+         <descripcion>F. Emision</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_fdocto">
+         <descripcion>F. Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_mdocto">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="rut_alumno">
+         <descripcion>Rut Alumno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="rut_apoderado">
+         <descripcion>Rut Apoderado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="institucion">
+         <descripcion>Institucion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+	  <campos nombre="comprobante">
+         <descripcion>Nº Comprobante</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+	  <campos nombre="caja">
+         <descripcion>Nº Caja</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="sede_actual">
+         <tipo>SELECT</tipo>
+         <destino>sedes</destino>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+ </parametro>
+ 
+ <parametro formulario="busqueda_pagares" variable="busqueda">
+<campos nombre="sede_ccod">
+         <tipo>SELECT</tipo>
+         <destino>sedes</destino>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+		 <filtro>sede_ccod not in (3,5,6)</filtro>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>true</anulable>
+         <mensajeNulo>Todas las Sedes</mensajeNulo>
+      </campos>
+      <campos nombre="sede_caja">
+         <tipo>SELECT</tipo>
+         <destino>sedes</destino>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+		 <filtro>sede_ccod not in (3,5,6)</filtro>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>true</anulable>
+         <mensajeNulo>Seleccione Sede</mensajeNulo>
+      </campos>
+      <campos nombre="inicio">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+      <campos nombre="termino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+      <campos nombre="vencimiento">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-S</id>
+      </campos>
+      <campos nombre="edin_ccod">
+         <tipo>SELECT</tipo>
+         <destino>estados_detalle_ingresos</destino>
+		 <filtro>edin_ccod in ('1','6','8','9','10','11','13','14')</filtro>
+         <union>edin_ccod</union>
+         <salida>edin_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>true</anulable>
+         <mensajeNulo>Todos los Estados</mensajeNulo>
+      </campos>
+	  	   <campos nombre="ting_ccod">
+         <tipo>SELECT</tipo>
+         <destino>TIPOS_INGRESOS</destino>
+		 <filtro>ting_ccod in ('26','52','66')</filtro>
+         <union>ting_ccod</union>
+         <salida>TING_TDESC</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="f_pagares" clave="envi_ncorr" variable="cheques" nroRegistros="50" maxLista="10" 
+   		anchoTabla="100%" mensajeError="No se encontraron letras...">
+     <campos nombre="banc_ccod">
+         <descripcion>Banco</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="ding_ndocto">
+         <descripcion>Nº Pagare</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <ancho>50</ancho>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="edin_tdesc">
+         <descripcion>Estado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="ingr_fpago">
+         <descripcion>F. Emision</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_fdocto">
+         <descripcion>F. Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_mdocto">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="rut_alumno">
+         <descripcion>Rut Alumno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="rut_apoderado">
+         <descripcion>Rut Apoderado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="institucion">
+         <descripcion>Institucion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+	  <campos nombre="comprobante">
+         <descripcion>Nº Comprobante</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+	  <campos nombre="caja">
+         <descripcion>Nº Caja</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="sede_actual">
+         <tipo>SELECT</tipo>
+         <destino>sedes</destino>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+ </parametro>
+
+</Parametros>
+
+

@@ -1,0 +1,526 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="agregar_descuento">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>AGREGAR</accion>
+         <url>agregar_descuento.asp</url>
+         <ancho>700</ancho>
+         <alto>360</alto>
+         <posicionX>200</posicionX>
+         <posicionY>100</posicionY>
+         <soloUnClick>FALSE</soloUnClick>
+         <scroll>TRUE</scroll>
+      </botones>
+      <botones nombre="eliminar_descuento">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_descuentos.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>navegar</accion>
+         <url>genera_contrato_1.asp</url>
+      </botones>
+      <botones nombre="siguiente">
+         <tipoTexto>SIGUIENTE</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>detalle_pagos</formulario>
+         <url>proc_genera_contrato_2.asp</url>
+		 <funcionValidacion>ValidarCuotasPago();</funcionValidacion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="calcular">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Calcular</texto>
+         <accion>GUARDAR</accion>
+         <formulario>forma_pago</formulario>
+         <url>proc_calcular_contrato.asp</url>
+         <funcionValidacion>ValidarFormaPago();</funcionValidacion>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+	  <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>ValidaFormBusqueda();</funcionValidacion>
+      </botones>
+	  
+   </parametro>
+   
+   <parametro formulario="datos_encabezado" columnas="2" anchoTabla="100%" separacionColumnas="20">
+      <campos nombre="rut">
+         <descripcion>RUT Postulante</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre_completo">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="carrera">
+         <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="sede_tdesc">
+         <descripcion>Sede</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="fecha_actual">
+         <descripcion>Fecha actual</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="tabla_valores" anchoTabla="98%" resumen="TRUE" variable="valores">
+      <campos nombre="c_matricula">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c_arancel">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c_total">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ttipo">
+         <descripcion>&amp;nbsp;</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="matricula">
+         <descripcion>Matrícula</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+         <resumen>SUMA_JC</resumen>
+      </campos>
+      <campos nombre="arancel">
+         <descripcion>Arancel</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+         <resumen>SUMA_JC</resumen>
+      </campos>
+      <campos nombre="total">
+         <descripcion>Total</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+         <resumen>SUMA_JC</resumen>
+      </campos>
+   </parametro>
+   
+   <parametro paginaEdicion="edicion_descuento.asp?post_ncorr=%post_ncorr%&amp;ofer_ncorr=%ofer_ncorr%&amp;stde_ccod=%stde_ccod%" 
+   nuevaVentanaAlto="360" formulario="descuentos" nuevaVentanaAncho="500" 
+    eliminar="TRUE" resumen="TRUE" clave="stde_ccod" mensajeError="No hay descuentos para este postulante." seleccionarTodo="TRUE" editar="TRUE" anchoTabla="100%" nuevaVentana="TRUE" variable="descuentos">
+      <tablas nombre="sdescuentos" accion="B"/>
+      <campos nombre="post_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ofer_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="stde_tdesc">
+         <descripcion>Descuento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="esde_ccod">
+         <descripcion>Estado</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>sestados_descuentos</destino>
+         <union>esde_ccod</union>
+         <salida>esde_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="sdes_nporc_matricula">
+         <descripcion>% Desc. Matrícula</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <formato>DECIMAL</formato>
+		 <decimales>3</decimales>
+         <resumen>SUMA_JC</resumen>
+      </campos>
+      <campos nombre="sdes_nporc_colegiatura">
+         <descripcion>% Desc. Arancel</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <formato>DECIMAL</formato>
+         <decimales>3</decimales>
+         <resumen>SUMA_JC</resumen>
+      </campos>
+      <campos nombre="sdes_mmatricula">
+         <descripcion>Desc. Matrícula</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+         <resumen>SUMA</resumen>
+      </campos>
+      <campos nombre="sdes_mcolegiatura">
+         <descripcion>Desc. Arancel</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+         <resumen>SUMA_JC</resumen>
+      </campos>
+      <campos nombre="subtotal">
+         <descripcion>Subtotal</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+         <resumen>SUMA_JC</resumen>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="sdes_tobservaciones">
+         <descripcion>Observaciones</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="forma_pago" anchoTabla="100%">
+      <tablas nombre="sdetalles_forma_pago" accion="M"/>
+      <campos nombre="post_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ofer_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tcom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ting_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="sdfp_tplaza_sbif">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+
+  	  <campos nombre="receptaculo">
+          <tipo>textarea</tipo>
+          <permiso>LECTURAESCRITURA</permiso>
+          <script>style="width:0px;height:1px;" onKeyPress='alert("dfhjdhfj");' onblur='verifica_lectura(this);'</script>
+      </campos>
+      <campos nombre="butiliza">
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <onClick>butiliza_click(this);</onClick>
+      </campos>
+      <campos nombre="c_ting_ccod">
+         <descripcion>&amp;nbsp;</descripcion>
+         <tipo>SELECT</tipo>
+         <permiso>LECTURA</permiso>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="stpa_ncuotas">
+         <descripcion>Nº Cuotas</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>(select distinct tcom_ccod, ting_ccod, stpa_ncuotas, stpa_ncuotas as ncuotas from SCUOTAS_PACTACION) a</destino>
+         <union>stpa_ncuotas</union>
+         <salida>ncuotas</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="sdfp_mmonto">
+         <descripcion>Monto ($)</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <id>TO-N</id>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+         <onBlur>sdfp_mmonto_blur(this);</onBlur>
+      </campos>
+      <campos nombre="sdfp_finicio_pago">
+         <descripcion>F. Inicio Pago</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-N</id>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="sdfp_nfrecuencia">
+         <descripcion>Frec.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>5</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+         <id>EP-N</id>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="sdfp_ndocto_inicial">
+         <descripcion>Nº Docto. Inicial</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>EP-S</id>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="sdfp_tctacte">
+         <descripcion>Cuenta Corriente / Nº Tarjeta</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>15</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+         <id>TO-S</id>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="banc_ccod">
+         <descripcion>Banco</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>bancos</destino>
+         <union>banc_ccod</union>
+         <salida>banc_tdesc</salida>
+         <orden>banc_tdesc asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione banco</mensajeNulo>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="plaz_ccod">
+         <descripcion>Plaza</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>plazas</destino>
+         <union>plaz_ccod</union>
+         <salida>plaz_tdesc</salida>
+         <orden>plaz_ccod asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione plaza</mensajeNulo>
+         <id>TO-S</id>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="spagos" variable="spagos">
+      <tablas nombre="spagos" accion="M"/>
+      <campos nombre="post_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ofer_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="detalle_pagos" variable="detalle_pagos" anchoTabla="100%" mensajeError="Presione 'Calcular' para generar la simulación." resumen="TRUE">
+      <tablas nombre="sdetalles_pagos" accion="M"/>
+      <campos nombre="post_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ofer_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="sdpa_ncuota">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="sdpa_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c_ting_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="c_sdpa_mmonto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c_sdpa_ncuota">
+         <descripcion>Nº Cuota</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="c_sdpa_ccod">
+         <descripcion>Tipo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ting_ccod">
+         <descripcion>Tipo&lt;br&gt;Docto.</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+      <campos nombre="sdpa_ndocumento">
+         <descripcion>Nº&lt;br&gt;Docto.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>8</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <alineamiento>CENTER</alineamiento>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="sdpa_tctacte">
+         <descripcion>Cuenta Corriente</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>15</caracteres>
+         <maxCaracteres>30</maxCaracteres>
+         <id>TO-N</id>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="banc_ccod">
+         <descripcion>Banco</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>bancos</destino>
+         <union>banc_ccod</union>
+         <salida>banc_tdesc</salida>
+         <orden>banc_tdesc asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="plaz_ccod">
+         <descripcion>Plaza</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>plazas</destino>
+         <union>plaz_ccod</union>
+         <salida>plaz_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="sdpa_femision">
+         <descripcion>Fecha&lt;br&gt;Emisión</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="sdpa_fvencimiento">
+         <descripcion>Fecha&lt;br&gt;Venc.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="sdpa_mmonto">
+         <descripcion>Monto Docto.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+         <resumen>SUMA_JC</resumen>
+         <nowrap>TRUE</nowrap>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="suma_fpago" columnas="3" separacionColumnas="10">
+      <campos nombre="total_actual">
+         <descripcion>Total Actual</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <soloLectura>TRUE</soloLectura>
+         <formato>MONEDA</formato>
+         <caracteres>15</caracteres>
+      </campos>
+      <campos nombre="total_pagar">
+         <descripcion>Total a Pagar</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <soloLectura>TRUE</soloLectura>
+         <formato>MONEDA</formato>
+         <caracteres>15</caracteres>
+      </campos>
+      <campos nombre="diferencia">
+         <descripcion>Diferencia</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <soloLectura>TRUE</soloLectura>
+         <formato>MONEDA</formato>
+         <caracteres>15</caracteres>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="max_cuotas" variable="max_cuotas">
+      <campos nombre="max_cuotas_doc_matricula">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="max_cuotas_efec_matricula">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="max_cuotas_doc_colegiatura">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="max_cuotas_efec_colegiatura">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="max_cuotas_matricula">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="max_cuotas_colegiatura">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="elimina_sdetalles_forma_pago">
+      <tablas nombre="sdetalles_forma_pago" accion="B"/>
+      <campos nombre="post_ncorr"/>
+      <campos nombre="ofer_ncorr"/>
+      <campos nombre="tcom_ccod"/>
+      <campos nombre="ting_ccod"/>
+   </parametro>
+   
+   <parametro formulario="fecha_inicio_pago" variable="fecha_inicio">
+      <campos nombre="fecha_inicio_pago">
+         <descripcion>Fecha inico de Pago</descripcion>
+         <tipo>SELECT</tipo>
+         <union>fecha</union>
+         <salida>fecha</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>FALSE</anulable>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+</Parametros>

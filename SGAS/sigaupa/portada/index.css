@@ -1,0 +1,12 @@
+.resaltar{
+	background:#FF0000;
+    animation: animacionColor 1s infinite;
+}
+@keyframes animacionColor{
+    0% {background: #FF0000;
+		color:#FFFFFF !important;}
+    50% {background: #FFFFFF;
+	color: #FF0000 !important;}
+	100% {background: #FF0000;
+	color:#FFFFFF !important;}
+}

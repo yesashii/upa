@@ -1,0 +1,364 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_rendicion_cajas.asp</url>
+         <mensajeConfirmacion>¿Confirma que desea cerrar esta caja con la información proporcionada?</mensajeConfirmacion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	  <botones nombre="imprimir"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Imprimir</texto>
+		<accion>JAVASCRIPT</accion>
+		<formulario>edicion</formulario>		
+		<funcion>imprimir();</funcion>
+   	 </botones>
+	  	<botones nombre="imprimir_docto"> 
+			<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Imprimir Doctos Pagados</texto>
+			<accion>JAVASCRIPT</accion>
+			<funcion>imprimir_docto();</funcion>
+		</botones>
+		<botones nombre="imprimir_letras"> 
+			<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Imprimir Letras pagadas</texto>
+			<accion>JAVASCRIPT</accion>
+			<funcion>imprimir_letras();</funcion>
+		</botones>
+		<botones nombre="imprimir_cheques"> 
+			<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Imprimir Cheques pagados</texto>
+			<accion>JAVASCRIPT</accion>
+			<funcion>imprimir_cheques();</funcion>
+		</botones>
+		<botones nombre="imprimir_pagares"> 
+			<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Imprimir Pagares pagados</texto>
+			<accion>JAVASCRIPT</accion>
+			<funcion>imprimir_pagares();</funcion>
+		</botones>
+		<botones nombre="imprimir_tarjetas"> 
+			<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Imprimir Tarjetas pagadas</texto>
+			<accion>JAVASCRIPT</accion>
+			<funcion>imprimir_tarjetas();</funcion>
+		</botones>  		    	 	   	
+   </parametro>
+   <parametro formulario="movimiento_caja" anchoTabla="100%" columnas="2" variable="movimientos_cajas">
+      <tablas nombre="movimientos_cajas" accion="M"/>
+      <campos nombre="mcaj_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c_mcaj_ncorr">
+         <descripcion>Folio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="rut">
+         <descripcion>RUT Cajero</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre_completo">
+         <descripcion>Cajero</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="mcaj_finicio">
+         <descripcion>Fecha de Apertura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="mcaj_mrendicion">
+         <descripcion>Monto de Apertura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+      </campos>
+      <campos nombre="fecha_emision">
+         <descripcion>Fecha de Emisión</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+   </parametro>
+   <parametro formulario="documentos_caja" anchoTabla="100%" variable="detalle_mov_cajas" >
+      <tablas nombre="detalle_mov_cajas" accion="M"/>
+      <campos nombre="mcaj_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="inst_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tdoc_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tdoc_tdesc">
+         <descripcion>&amp;nbsp;</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <ancho>80%</ancho>
+      </campos>
+      <campos nombre="mcaj_mtotal">
+         <descripcion>Total</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>13</caracteres>
+         <ancho>20%</ancho>
+         <onBlur>mcaj_mtotal_blur(this);</onBlur>
+      </campos>
+   </parametro>
+   <parametro formulario="suma" variable="suma">
+      <campos nombre="total">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <formato>MONEDA</formato>
+         <soloLectura>TRUE</soloLectura>
+         <caracteres>20</caracteres>
+      </campos>
+   </parametro>
+   
+  <parametro formulario="documentos_caja_impresion" anchoTabla="100%"  resumen="TRUE">
+      <campos nombre="tdoc_tdesc">
+         <descripcion>Elementos Rendidos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <ancho>80%</ancho>
+      </campos>
+	  <campos nombre="mcaj_mtotal">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Total</descripcion>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+         <ancho>20%</ancho>
+         <resumen>SUMA_JC</resumen>
+      </campos>
+   </parametro>
+
+  <parametro formulario="cheques_pagados" anchoTabla="100%"  resumen="TRUE" mensajeError="No se encontraron documentos pagados...">
+      <campos nombre="ingr_nfolio_referencia">
+         <descripcion>Comprobante</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="rut_alumno">
+         <descripcion>Rut Alumno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="rut_apoderado">
+         <descripcion>Rut Apoderado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="Deudor">
+         <descripcion>Apoderado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="numero_docto">
+         <descripcion>N° Docto Pagado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	 	<campos nombre="banco">
+         	<descripcion>N° Banco</descripcion>
+         	<tipo>INPUT</tipo>
+         	<permiso>LECTURA</permiso>
+      	</campos>
+	  	  <campos nombre="fecha_vencimiento">
+         <descripcion>Fecha Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	 <campos nombre="monto_docto">
+         <descripcion>Monto Docto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <ancho>20%</ancho>
+         <resumen>SUMA_JC</resumen>		 
+      </campos>
+	  	  <campos nombre="monto_abonado">
+         <descripcion>Abonado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <ancho>20%</ancho>
+         <resumen>SUMA_JC</resumen>		 
+      </campos>
+	  	 <campos nombre="saldo_docto">
+         <descripcion>Saldo Docto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <ancho>20%</ancho>
+         <resumen>SUMA_JC</resumen>		 
+      </campos>
+	  <campos nombre="pagado_con">
+         <descripcion>Forma Pago</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>	  
+   </parametro>
+
+
+  <parametro formulario="documentos_pagados" anchoTabla="100%"  resumen="TRUE" mensajeError="No se encontraron documentos pagados...">
+      <campos nombre="ingr_nfolio_referencia">
+         <descripcion>Comprobante</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="rut_alumno">
+         <descripcion>Rut Alumno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="rut_apoderado">
+         <descripcion>Rut Apoderado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="Deudor">
+         <descripcion>Apoderado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="numero_docto">
+         <descripcion>N° Docto Pagado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="banco">
+         	<descripcion>N° Banco</descripcion>
+         	<tipo>INPUT</tipo>
+         	<permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="fecha_vencimiento">
+         <descripcion>Fecha Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	 <campos nombre="monto_docto">
+         <descripcion>Monto Docto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <ancho>20%</ancho>
+         <resumen>SUMA_JC</resumen>		 
+      </campos>
+	  	  <campos nombre="monto_abonado">
+         <descripcion>Abonado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <ancho>20%</ancho>
+         <resumen>SUMA_JC</resumen>		 
+      </campos>
+	  	 <campos nombre="saldo_docto">
+         <descripcion>Saldo Docto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <ancho>20%</ancho>
+         <resumen>SUMA_JC</resumen>		 
+      </campos>
+	  <campos nombre="docto_pagado">
+         <descripcion>Tipo Docto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="pagado_con">
+         <descripcion>Forma Pago</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>	  
+   </parametro>
+
+  <parametro formulario="docto_pagado" anchoTabla="100%"  resumen="TRUE" mensajeError="No se encontraron documentos pagados...">
+      <campos nombre="ingr_nfolio_referencia">
+         <descripcion>Comprobante</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="rut_alumno">
+         <descripcion>Rut Alumno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="rut_apoderado">
+         <descripcion>Rut Apoderado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="Deudor">
+         <descripcion>Apoderado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="numero_docto">
+         <descripcion>N° Docto Pagado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	 <campos nombre="ultimo_estado">
+         <descripcion>Estado Anterior</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="estado_letra">
+         <descripcion>Estado Actual</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+  	  <campos nombre="fecha_vencimiento">
+         <descripcion>Fecha Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	 <campos nombre="monto_docto">
+         <descripcion>Monto Docto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <ancho>20%</ancho>
+         <resumen>SUMA_JC</resumen>		 
+      </campos>
+	  	  <campos nombre="monto_abonado">
+         <descripcion>Abonado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <ancho>20%</ancho>
+         <resumen>SUMA_JC</resumen>		 
+      </campos>
+	  	 <campos nombre="saldo_docto">
+         <descripcion>Saldo Docto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <ancho>20%</ancho>
+         <resumen>SUMA_JC</resumen>		 
+      </campos>
+	  <campos nombre="pagado_con">
+         <descripcion>Forma Pago</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>	  
+   </parametro>
+   
+</Parametros>

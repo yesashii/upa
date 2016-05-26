@@ -1,0 +1,280 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+
+<%
+ set pagina = new CPagina
+ pagina.Titulo = "Detalle de Letras del envío"
+'-----------------------------------------------------------------------
+ set conexion = new CConexion
+ conexion.Inicializar "upacifico"
+
+ set negocio = new CNegocio
+ negocio.Inicializa conexion
+'-----------------------------------------------------------------------
+'para que me puedea entregar ultima postulacion del alumno 
+Periodo = negocio.ObtenerPeriodoAcademico("POSTULACION")
+Sede = negocio.ObtenerSede()
+'-----------------------------------------------------------------------
+set botonera = new CFormulario
+botonera.Carga_Parametros "Envios_banco.xml", "botonera"
+'-----------------------------------------------------------------------
+folio_envio = Request.QueryString("folio_envio")
+set f_envio = new CFormulario
+
+f_envio.Carga_Parametros "Envios_Banco.xml", "f_envios"
+f_envio.Inicializar conexion
+consulta = "SELECT a.envi_ncorr, a.envi_fenvio, a.inen_ccod, e.ccte_tdesc, "& vbCrLf &_ 
+				  "b.inen_tdesc, a.plaz_ccod, c.plaz_tdesc, count(d.ding_ndocto) as documentos "& vbCrLf &_
+			"FROM envios a, "& vbCrLf &_ 
+				 "instituciones_envio b, "& vbCrLf &_
+				 "plazas c, "& vbCrLf &_
+				 "detalle_envios d, "& vbCrLf &_
+				 "cuentas_corrientes e "& vbCrLf &_
+			"WHERE a.inen_ccod = b.inen_ccod "& vbCrLf &_
+			  "AND a.plaz_ccod = c.plaz_ccod "& vbCrLf &_
+			  "AND a.ccte_ccod = e.ccte_ccod "& vbCrLf &_
+			  "AND a.envi_ncorr *= d.envi_ncorr  "& vbCrLf &_
+			  "AND a.envi_ncorr =" & folio_envio & " "& vbCrLf &_
+			"GROUP BY a.envi_ncorr, a.envi_fenvio, a.inen_ccod, "& vbCrLf &_
+				  "b.inen_tdesc, a.plaz_ccod, c.plaz_tdesc, e.ccte_tdesc"
+
+ f_envio.Consultar consulta
+ f_envio.siguiente
+ documentos = f_envio.ObtenerValor("documentos")
+ 'response.Write("doc :<pre>"&consulta&"</pre>")
+ banco = f_envio.ObtenerValor("inen_ccod")
+'-------------------------------------------------------------------------
+set f_detalle_envio = new CFormulario
+f_detalle_envio.Carga_Parametros "Envios_Banco.xml", "f_detalle_agrupado"
+f_detalle_envio.Inicializar conexion
+
+consulta = "SELECT  0 as carta, a.envi_ncorr, a.envi_ncorr as c_envi_ncorr, c.pers_ncorr, "& vbCrLf &_
+					" f.pers_nrut as r_alumno, f.pers_xdv,  "& vbCrLf &_
+					" cast(f.pers_nrut as varchar) + '-' + f.pers_xdv as rut_alumno,  "& vbCrLf &_
+					" cast(f.pers_nrut as varchar) + '-' + f.pers_xdv as c_rut_alumno,  "& vbCrLf &_
+					" isnull(cast(g.pers_nrut as varchar),' ') as code_nrut , isnull(g.pers_xdv,' ') as code_xdv,  "& vbCrLf &_
+					" isnull(cast(g.pers_nrut as varchar),' ') as  r_apoderado,  "& vbCrLf &_
+					" isnull(cast(g.pers_nrut as varchar),' ') + '-' + isnull(g.pers_xdv,' ') as rut_apoderado,  "& vbCrLf &_
+					" isnull(cast(g.pers_nrut as varchar),' ') + '-' + isnull(g.pers_xdv,' ') as c_rut_apoderado,  "& vbCrLf &_
+					" protic.obtener_nombre_completo(g.pers_ncorr, '') as nombre_apoderado,  "& vbCrLf &_
+					"count(a.envi_ncorr) as documentos  "& vbCrLf &_
+			"FROM  detalle_envios a,  detalle_ingresos b,  ingresos c,  "& vbCrLf &_
+				  " personas f,   personas g  "& vbCrLf &_
+			"WHERE b.DING_NCORRELATIVO = 1  "& vbCrLf &_
+			  "and a.ting_ccod = b.ting_ccod "& vbCrLf &_
+			  "and a.ding_ndocto = b.ding_ndocto "& vbCrLf &_
+			  "and a.ingr_ncorr = b.ingr_ncorr "& vbCrLf &_
+			  "and b.ingr_ncorr = c.ingr_ncorr "& vbCrLf &_
+			  "and c.pers_ncorr = f.pers_ncorr "& vbCrLf &_
+			  "and b.PERS_NCORR_CODEUDOR *= g.pers_ncorr "& vbCrLf &_ 
+			  "AND a.envi_ncorr='" & folio_envio & "' " & vbCrLf &_
+			"GROUP BY a.envi_ncorr, c.pers_ncorr, f.pers_xdv, g.pers_xdv,g.pers_ncorr,   "& vbCrLf &_
+				  "g.pers_tape_paterno, g.pers_tnombre, f.pers_nrut ,g.pers_nrut "& vbCrLf &_
+				  "order by nombre_apoderado asc"
+
+
+'response.Write("<PRE>" & consulta & "</PRE>")
+'response.Flush()
+
+f_detalle_envio.Consultar consulta
+
+
+v_filas_encontradas=f_detalle_envio.nrofilas
+'response.Write("Filas:"&v_filas_encontradas)
+'---------------------------------------------------------------------------------------------------------
+v_inen_ccod = conexion.ConsultaUno("select inen_ccod from envios where envi_ncorr = '" & folio_envio & "'")
+'response.Write("Filas:"&v_filas_encontradas)
+
+%>
+
+<html>
+<head>
+<title><%=pagina.Titulo%></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../estilos/estilos.css" rel="stylesheet" type="text/css">
+<link href="../estilos/tabla.css" rel="stylesheet" type="text/css">
+
+<script language="JavaScript" src="../biblioteca/tabla.js"></script>
+<script language="JavaScript" src="../biblioteca/funciones.js"></script>
+<script language="JavaScript" src="../biblioteca/validadores.js"></script>
+
+
+</head>
+<body bgcolor="#D8D8DE" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../imagenes/botones/buscar_f2.gif','../images/bot_deshabilitar_f2.gif','../images/agregar2_f2_p.gif','im&amp;#225;genes/marco1_r3_c2_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c4_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c6_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c8_f2.gif');MM_preloadImages('../imagenes/botones/cargar_f2.gif','../imagenes/botones/continuar_f2.gif')" onBlur="revisaVentana();">
+<table width="750" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><img src="../imagenes/vineta2_r1_c1.gif" width="750" height="62" border="0"></td>
+  </tr>
+  <%pagina.DibujarEncabezado()%>  
+  <tr>
+    <td valign="top" bgcolor="#EAEAEA">
+	<BR>
+	<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <!-- fwtable fwsrc="marco contenidos.png" fwbase="top.gif" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" -->
+            <tr>
+              <td><img src="../imagenes/spacer.gif" width="9" height="1" border="0" alt=""></td>
+              <td><img src="../imagenes/spacer.gif" width="559" height="1" border="0" alt=""></td>
+              <td><img src="../imagenes/spacer.gif" width="7" height="1" border="0" alt=""></td>
+            </tr>
+            <tr>
+              <td><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+              <td><img src="../imagenes/top_r1_c2.gif" alt="" name="top_r1_c2" width="670" height="8" border="0"></td>
+              <td><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+            </tr>
+            <tr>
+              <td><img name="top_r2_c1" src="../imagenes/top_r2_c1.gif" width="9" height="17" border="0" alt=""></td>
+              <td><%pagina.dibujarLenguetas array (array("Detalle Letras","Envios_Banco_Agregar1.asp?folio_envio="&folio_envio),array("Letras por Apoderado","Envios_Banco_Agregar2.asp")),2 %>
+              </td>
+              <td><img name="top_r2_c3" src="../imagenes/top_r2_c3.gif" width="7" height="17" border="0" alt=""></td>
+            </tr>
+            <tr>
+              <td><img name="top_r3_c1" src="../imagenes/top_r3_c1.gif" width="9" height="2" border="0" alt=""></td>
+              <td><img name="top_r3_c2" src="../imagenes/top_r3_c2.gif" width="670" height="2" border="0" alt=""></td>
+              <td><img name="top_r3_c3" src="../imagenes/top_r3_c3.gif" width="7" height="2" border="0" alt=""></td>
+            </tr>
+          </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="9" align="left" background="../imagenes/izq.gif">&nbsp;</td>
+                <td bgcolor="#D8D8DE"> 
+                    <form name="edicion">
+                    <div align="center"><BR>
+                      <%pagina.DibujarTituloPagina%>
+                      <BR><BR>
+                    </div>
+                    <table width="100%" border="0">
+                      <tr> 
+                        <td>N&ordm; Folio</td>
+                        <td>:</td>
+                        <td><font size="2"> 
+                          <% f_envio.DibujaCampo("envi_ncorr") %>
+                          </font></td>
+                        <td>Fecha</td>
+                        <td>:</td>
+                        <td><font size="2"> 
+                          <% f_envio.DibujaCampo("envi_fenvio") %>
+                          </font></td>
+                      </tr>
+                      <tr>
+                        <td>Banco</td>
+                        <td>:</td>
+                        <td><font size="2"> 
+                          <% f_envio.DibujaCampo("inen_tdesc") %>
+                          </font></td>
+                        <td>Plaza</td>
+                        <td>:</td>
+                        <td><font size="2"> 
+                          <% f_envio.DibujaCampo("plaz_tdesc") %>
+                          </font></td>
+                      </tr>
+                      <tr> 
+                        <td width="9%">Cta. Cte.</td>
+                        <td width="3%">:</td>
+                        <td width="37%"><font size="2"> 
+                          <% f_envio.DibujaCampo("ccte_tdesc") %>
+                          </font></td>
+                        <td width="10%">&nbsp;</td>
+                        <td width="2%">&nbsp;</td>
+                        <td width="39%">&nbsp;</td>
+                      </tr>
+                    </table>
+					<div align="center"><BR>
+                      <table width="100%" border="0">
+                        <tr> 
+                          <td width="116">&nbsp;</td>
+                          <td width="511"><div align="right">P&aacute;ginas: &nbsp; 
+                              <%f_detalle_envio.AccesoPagina%>
+                            </div></td>
+                          <td width="24"> <div align="right"> </div></td>
+                        </tr>
+                      </table>
+                      <BR>
+                      <BR>
+                      <%  f_detalle_envio.DibujaTabla ()  %>
+                    </div>
+                  </form>
+                    <br>
+                </td>
+                <td width="7" align="right" background="../imagenes/der.gif">&nbsp;</td>
+              </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="9" rowspan="2"><img src="../imagenes/abajo_r1_c1.gif" width="9" height="28"></td>
+                <td width="125" bgcolor="#D8D8DE"><table width="100%" height="19"  border="0" align="left" cellpadding="0" cellspacing="0">
+                    <tr> 
+                      <th width="13%" nowrap> <%  botonera.agregabotonparam "anterior", "url", "Envios_Banco_Agregar1.asp?folio_envio=" & folio_envio 
+					                      botonera.DibujaBoton "anterior" 
+									  %> </th>
+                      <th width="13%" nowrap> <% 
+					                   if documentos = "0" then
+									     botonera.agregabotonparam "carta_seleccion", "deshabilitado" ,"TRUE"
+									   end if									    
+										
+										botonera.agregabotonparam "carta_seleccion", "url", "../REPORTESNET/documento_banco.aspx?folio_envio=" & folio_envio & "&periodo=" & Periodo & "&informe=1&banco=" & banco & "&todos=NO"
+
+										
+ 									    botonera.DibujaBoton "carta_seleccion" %> </th>
+                      <th width="13%" nowrap> <div align="left"> 
+                          <% 
+					                   if documentos = "0" then
+									     botonera.agregabotonparam "carta_todos", "deshabilitado" ,"TRUE"
+									   end if
+									    
+										botonera.agregabotonparam "carta_todos", "url", "../REPORTESNET/documento_banco.aspx?folio_envio=" & folio_envio & "&periodo=" & Periodo & "&informe=1&banco=" & banco & "&todos=SI"
+ 									    botonera.DibujaBoton "carta_todos" %>
+                        </div></th>
+                      <th width="13%" nowrap> <% 
+							if documentos = "0" then
+							   botonera.agregabotonparam "imprimir", "deshabilitado" ,"TRUE"
+							end if
+							botonera.agregabotonparam "imprimir", "url", "../REPORTESNET/documento_banco.aspx?folio_envio=" & folio_envio & "&periodo=" & Periodo & "&informe=3"
+							botonera.DibujaBoton ("imprimir")
+						%> </th>
+                      <th width="13%" nowrap> <%
+					  	if v_filas_encontradas=0 then
+							botonera.agregabotonparam "excel", "deshabilitado" ,"TRUE"
+						end if
+					  		 botonera.agregabotonparam "excel", "url", "Reporte_Banco_Excel.asp?folio_envio="&folio_envio 
+							botonera.DibujaBoton ("excel")
+						%> </th>
+                      <th width="24%" nowrap>
+					  		<% 
+							'if v_inen_ccod = "1" or v_inen_ccod = "2" or v_inen_ccod = "3" then 'archivos de texto
+					  		'	SELECT CASE v_inen_ccod
+							'		CASE "1":
+							'			botonera.agregabotonparam "archivo_texto", "url", "carta_guia_bci.asp"
+							'		CASE "2":
+							'			botonera.agregabotonparam "archivo_texto", "url", "carta_guia_chile.asp"
+							'		CASE "3":
+							'			botonera.agregabotonparam "archivo_texto", "url", "carta_guia_santander.asp"
+							'		END SELECT	
+							'	botonera.AgregaBotonUrlParam "archivo_texto", "envi_ncorr", folio_envio
+							'	botonera.AgregaBotonUrlParam "archivo_texto", "todos", "SI"
+							'	botonera.DibujaBoton ("archivo_texto") 
+							'end if
+						 	botonera.agregabotonparam "imprimir_cartas_apo", "url", "reporte_carta_apoderado.asp?folio_envio="&folio_envio 
+ 		                 	botonera.dibujaboton "imprimir_cartas_apo"
+							%>
+						</th>
+                    </tr>
+                  </table>
+                </td>
+                <td width="483" rowspan="2" background="../imagenes/abajo_r1_c4.gif"><img src="../imagenes/abajo_r1_c3.gif" width="12" height="28"></td>
+                <td width="69" rowspan="2" align="right" background="../imagenes/abajo_r1_c4.gif"><img src="../imagenes/abajo_r1_c5.gif" width="7" height="28"></td>
+              </tr>
+              <tr>
+                <td valign="bottom" bgcolor="#D8D8DE"><img src="../imagenes/abajo_r2_c2.gif" width="100%" height="8"></td>
+              </tr>
+            </table>
+        </td>
+      </tr>
+    </table>
+	<br>
+    </td>
+  </tr>  
+</table>
+</body>
+</html>

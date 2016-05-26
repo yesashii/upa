@@ -1,0 +1,621 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>datos_alumno.asp</url>
+      </botones>
+	   <botones nombre="agregar">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_agrega_grupo_familiar.asp</url>
+         <funcionValidacion>Validar();</funcionValidacion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	   <botones nombre="siguiente">
+         <tipoTexto>siguiente</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+		 <url>proc_agregar_datos_generales.asp</url>
+      </botones>
+	  <botones nombre="agregar_familiar">
+         <tipoTexto>agregar</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>agregar_familiar(1)</funcion>
+      </botones>
+	  <botones nombre="agregar_familiar_menor">
+         <tipoTexto>agregar</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>agregar_familiar(2)</funcion>
+      </botones>
+	  <botones nombre="agregar_familiar_padre">
+         <tipoTexto>agregar</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>agregar_familiar(3)</funcion>
+      </botones>
+	  <botones nombre="agregar_familiar_madre">
+         <tipoTexto>agregar</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>agregar_familiar(4)</funcion>
+      </botones>
+	  <botones nombre="cerrar">
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  <botones nombre="eliminar_familiar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_familiar.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+	   <botones nombre="copiar_direccion">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>copiar direccion orígen alumno</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>CopiarDireccionParticular();</funcion>
+      </botones>
+   </parametro>
+   
+   <parametro formulario="grupo_familiar"  variable="padre">
+      <tablas nombre="grupo_familiar" accion="M"/>
+      <tablas nombre="personas_postulante" accion="M"/>
+      <tablas nombre="direcciones_publica" accion="M"/>
+	  <tablas nombre="antecedentes_personas" accion="M"/>
+      <campos nombre="post_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+         <script>onChange="pers_nrut_change(this);"</script>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="revisar_digito(this);"</script>
+         <id>LN-N</id>
+      </campos>
+      <campos nombre="pers_fnacimiento">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <tipoDato>FECHA</tipoDato>
+         <id>FE-N</id>
+      </campos>
+	  <campos nombre="pers_tape_paterno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_tape_materno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_tnombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="regi_ccod">
+         <tipo>SELECT</tipo>
+         <destino>regiones</destino>
+         <union>regi_ccod</union>
+         <salida>regi_tdesc</salida>
+         <orden>regi_ccod ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <script>onChange="_FiltrarCombobox(this.form.elements['padre[0][ciud_ccod]'], this.value, d_ciudades, 'regi_ccod', 'ciud_ccod', 'ciud_tdesc', '');"</script>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="ciud_ccod">
+         <tipo>SELECT</tipo>
+         <destino>ciudades</destino>
+         <union>ciud_ccod</union>
+         <salida>ciud_tdesc</salida>
+         <orden>ciud_tdesc ASC</orden>
+         <filtro>1=2</filtro>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tcalle">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tnro">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="dire_tblock">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tpoblacion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tfono">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>15</maxCaracteres>
+         <id>TE-S</id>
+      </campos>
+     <campos nombre="pare_ccod">
+         <tipo>SELECT</tipo>
+         <destino>parentescos</destino>
+         <union>pare_ccod</union>
+         <salida>pare_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="eciv_ccod">
+         <tipo>SELECT</tipo>
+         <destino>(select eciv_ccod,cast(eciv_ccod as varchar)+':'+eciv_tdesc as eciv_tdesc from estados_civiles)a</destino>
+         <union>eciv_ccod</union>
+         <salida>eciv_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="nied_ccod">
+         <tipo>SELECT</tipo>
+         <destino>(select nied_ccod, cast(nied_ccod as varchar)+ ': ' + nied_tdesc as nied_tdesc from nivel_educacional)a</destino>
+         <union>nied_ccod</union>
+         <salida>nied_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+		 <orden>nied_ccod</orden>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="prev_ccod">
+         <tipo>SELECT</tipo>
+         <destino>(select prev_ccod, cast(prev_ccod as varchar)+ ': ' + prev_tdesc as prev_tdesc from prevision)a</destino>
+         <union>prev_ccod</union>
+         <salida>prev_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+		 <orden>prev_ccod</orden>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="prsa_ccod">
+         <tipo>SELECT</tipo>
+         <destino>(select prsa_ccod, cast(prsa_ccod as varchar)+': '+ prsa_tdesc as prsa_tdesc from prevision_salud)a</destino>
+         <union>prsa_ccod</union>
+         <salida>prsa_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+		 <orden>prsa_ccod</orden>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="grup_nindependiente">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>0</valorFalso>
+      </campos>
+   </parametro>
+
+  
+<parametro formulario="direccion_postulante" variable="test">
+ 	 <campos nombre="regi_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	 
+	 <campos nombre="ciud_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+         <id>TO-S</id>
+      </campos>	
+	<campos nombre="dire_tcalle">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tnro">
+         <tipo>INPUT</tipo>
+		 <permiso>OCULTO</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="dire_tblock">
+         <tipo>INPUT</tipo>
+		 <permiso>OCULTO</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tpoblacion">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tfono">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>15</maxCaracteres>
+         <id>TE-S</id>
+      </campos>
+</parametro>
+   
+   <parametro formulario="direcciones">
+      <tablas nombre="direcciones_publica" accion="M"/>
+   </parametro>
+   
+    <parametro formulario="eliminar_familiares" variable="padre">
+      <tablas nombre="grupo_familiar" accion="B"/>
+      <tablas nombre="personas_postulante" accion="B"/>
+      <tablas nombre="direcciones_publica" accion="B"/>
+      
+   </parametro>
+   
+   <parametro formulario="grilla_familiares" variable="padre" editar="true"  eliminar="false" 
+   paginaEdicion="agregar_grupo_familiar.asp?grupo=1&amp;pare_ccod=%pare_ccod%&amp;pers_ncorr=%pers_ncorr%&amp;grup_nindependiente=0" nuevaVentana="true" clave="pers_ncorr"
+   anchoTabla="98%" maxLista="10" nroRegistros="20" mensajeError="No existen Familiares, mayores de edad, ingresados" 
+   nuevaVentanaAncho="750" nuevaVentanaAlto="450">
+      	  <campos nombre="post_ncorr">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+		  </campos>
+		  <campos nombre="pers_ncorr">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+		  </campos>
+         <campos nombre="nombre_familiar">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Nombre</descripcion>
+			 <id>TO-N</id>
+		  </campos>
+		  <campos nombre="rut_familiar">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Rut</descripcion>
+			 <id>NU-S</id>
+		  </campos>
+		  <campos nombre="ano_nacimiento">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Año Nacim.</descripcion>
+		  </campos>
+		  <campos nombre="estado_civil">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Cód.Est civil</descripcion>
+		  </campos>
+		  <campos nombre="cod_parentesco">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Cód.Parent.</descripcion>
+		  </campos>
+		  <campos nombre="codigo_nivel">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Cód.Nivel Educ.</descripcion>
+		  </campos>
+		  <campos nombre="cod_prevision">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Cód.Prev.</descripcion>
+		  </campos>
+		  <campos nombre="cod_prev_salud">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Cód.Prev.Salud</descripcion>
+		  </campos>
+		  <campos nombre="cod_actividad">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Cód. Act.</descripcion>
+		  </campos>
+		  <campos nombre="profesion">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Profesión u oficio</descripcion>
+		  </campos>
+		</parametro>
+		
+	<parametro formulario="grilla_menores" variable="padre" editar="true"  eliminar="false" 
+   paginaEdicion="agregar_grupo_familiar.asp?grupo=2&amp;pare_ccod=%pare_ccod%&amp;pers_ncorr=%pers_ncorr%&amp;grup_nindependiente=0" nuevaVentana="true" clave="pers_ncorr"
+   anchoTabla="98%" maxLista="10" nroRegistros="20" mensajeError="No existen Familiares, menores de edad, ingresados" 
+   nuevaVentanaAncho="750" nuevaVentanaAlto="450">
+      	  <campos nombre="post_ncorr">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+		  </campos>
+		  <campos nombre="pers_ncorr">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+		  </campos>
+         <campos nombre="nombre_familiar">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Nombre</descripcion>
+			 <id>TO-N</id>
+		  </campos>
+		  <campos nombre="rut_familiar">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Rut</descripcion>
+			 <id>NU-S</id>
+		  </campos>
+		  <campos nombre="ano_nacimiento">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>año nacimiento</descripcion>
+		  </campos>
+		  <!--<campos nombre="estado_civil">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Cód. estado civil</descripcion>
+		  </campos>-->
+		  <campos nombre="cod_parentesco">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Cód. parentesco</descripcion>
+		  </campos>
+		  <!--<campos nombre="codigo_nivel">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Cód. nivel Educ.</descripcion>
+		  </campos>
+		  <campos nombre="cod_prevision">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Cód. Previsión.</descripcion>
+		  </campos>
+		  <campos nombre="cod_prev_salud">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Cód. Previsión Salud</descripcion>
+		  </campos>-->
+		  <campos nombre="cod_actividad">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Cód. actividad</descripcion>
+		  </campos>
+		  <!--<campos nombre="profesion">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Profesión u oficio</descripcion>
+		  </campos>-->
+	  </parametro>
+	 <parametro formulario="grilla_padre" variable="padre" editar="true"  eliminar="false" 
+   paginaEdicion="agregar_grupo_familiar.asp?grupo=3&amp;pare_ccod=%pare_ccod%&amp;pers_ncorr=%pers_ncorr%&amp;grup_nindependiente=1" nuevaVentana="true" clave="pers_ncorr"
+   anchoTabla="98%" maxLista="10" nroRegistros="20" mensajeError="No existe información de Padre independiente del grupo familiar" 
+   nuevaVentanaAncho="750" nuevaVentanaAlto="450">
+      	 <campos nombre="post_ncorr">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+		  </campos>
+		  <campos nombre="pers_ncorr">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+		  </campos>
+         <campos nombre="nombre_familiar">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Nombre</descripcion>
+			 <id>TO-N</id>
+		  </campos>
+		  <campos nombre="rut_familiar">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Rut</descripcion>
+			 <id>NU-S</id>
+		  </campos>
+		  <campos nombre="ano_nacimiento">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>año nacimiento</descripcion>
+		  </campos>
+		  <campos nombre="estado_civil">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Cód. estado civil</descripcion>
+		  </campos>
+		  <campos nombre="cod_parentesco">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Cód. parentesco</descripcion>
+		  </campos>
+		 <campos nombre="codigo_nivel">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Cód. nivel Educ.</descripcion>
+		  </campos><!--
+		  <campos nombre="cod_prevision">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Cód. Previsión.</descripcion>
+		  </campos>
+		  <campos nombre="cod_prev_salud">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Cód. Previsión Salud</descripcion>
+		  </campos>-->
+		  <campos nombre="cod_actividad">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Cód. actividad</descripcion>
+		  </campos>
+		  <!--<campos nombre="profesion">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Profesión u oficio</descripcion>
+		  </campos>-->
+	  </parametro> 
+	<parametro formulario="grilla_madre" variable="padre" editar="true"  eliminar="false" 
+   paginaEdicion="agregar_grupo_familiar.asp?grupo=4&amp;pare_ccod=%pare_ccod%&amp;pers_ncorr=%pers_ncorr%&amp;grup_nindependiente=1" nuevaVentana="true" clave="pers_ncorr"
+   anchoTabla="98%" maxLista="10" nroRegistros="20" mensajeError="No existe información de Madre independiente del grupo familiar" 
+   nuevaVentanaAncho="750" nuevaVentanaAlto="450">
+      	 <campos nombre="post_ncorr">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+		  </campos>
+		  <campos nombre="pers_ncorr">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+		  </campos>
+         <campos nombre="nombre_familiar">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Nombre</descripcion>
+			 <id>TO-N</id>
+		  </campos>
+		  <campos nombre="rut_familiar">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Rut</descripcion>
+			 <id>NU-S</id>
+		  </campos>
+		  <campos nombre="ano_nacimiento">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>año nacimiento</descripcion>
+		  </campos>
+		  <campos nombre="estado_civil">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Cód. estado civil</descripcion>
+		  </campos>
+		  <campos nombre="cod_parentesco">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Cód. parentesco</descripcion>
+		  </campos>
+		 <campos nombre="codigo_nivel">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Cód. nivel Educ.</descripcion>
+		  </campos><!--
+		  <campos nombre="cod_prevision">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Cód. Previsión.</descripcion>
+		  </campos>
+		  <campos nombre="cod_prev_salud">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Cód. Previsión Salud</descripcion>
+		  </campos>-->
+		  <campos nombre="cod_actividad">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Cód. actividad</descripcion>
+		  </campos>
+		  <!--<campos nombre="profesion">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Profesión u oficio</descripcion>
+		  </campos>-->
+	  </parametro>
+
+ <parametro formulario="datos_generales"  variable="datos" clave="pobe_ncorr">
+      <tablas nombre="postulacion_becas" accion="M"/>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pobe_num_grupo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>2</caracteres>
+         <maxCaracteres>2</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pobe_temail_alumno">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>EM-S</id>
+      </campos>
+      <campos nombre="repa_ccod">
+         <tipo>SELECT</tipo>
+         <destino>(select repa_ccod,cast(repa_ccod as varchar)+': '+repa_tdesc as repa_tdesc from relacion_padres)a</destino>
+         <union>repa_ccod</union>
+         <salida>repa_tdesc</salida>
+         <orden>repa_ccod ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="povi_ccod">
+         <tipo>SELECT</tipo>
+         <destino>(select povi_ccod, cast(povi_ccod as varchar)+': '+ povi_tdesc as povi_tdesc from postulante_vive_con)a</destino>
+         <union>povi_ccod</union>
+         <salida>povi_tdesc</salida>
+         <orden>povi_tdesc ASC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccionar</mensajeNulo>
+         <mensajeVacio>Seleccionar</mensajeVacio>
+         <id>TO-N</id>
+      </campos>
+  </parametro>
+	  
+</Parametros>

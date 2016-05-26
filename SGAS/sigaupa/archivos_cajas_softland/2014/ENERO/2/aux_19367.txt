@@ -1,0 +1,6 @@
+70200800,  CORPORACION DE CAPACITACION DE LA CONSTRUCCION,,70200800-K,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+70533700,  ASIMET CAPACITACION,,70533700-4,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+73315900,  CENTRO INTERMED DE CAPAC. DE ASEXMA,,73315900-6,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+79743410,  INVERSIONES Y ASESORIAS FABIOLA S.A.,,79743410-8,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+79848720,SOC INMOBILIARIA EDUCACIONAL LTDA.   SEDUC SPA Y COMPAÑIA CPA CUATRO,,79848720-5,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+96659800,  CINEMARK CHILE S.A.,,96659800-K,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+		 <funcionValidacion>Validar();</funcionValidacion>
+		 <soloUnClick>TRUE</soloUnClick>		 
+     </botones>
+     <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+     </botones>
+     <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+    </botones>
+	<botones nombre="siguiente">
+        <accion>navegar</accion>
+        <tipoTexto>DEFINIR</tipoTexto>
+        <texto>Ver Siguiente</texto>
+    </botones>
+	  <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>BUSCAR</accion>
+         <url>tipos_gastos_compras_excel.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+	  <botones nombre="excel_area">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>BUSCAR</accion>
+         <url>perfiles_areas_excel.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+	  <botones nombre="excel_area_tipo_gasto">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel x Gasto</texto>
+         <accion>BUSCAR</accion>
+         <url>perfiles_areas_x_tipos_excel.asp</url>
+         <formulario>edicion</formulario>
+      </botones>	  	  
+	<botones nombre="guardar_gasto">
+        <accion>GUARDAR</accion>
+        <tipoTexto>DEFINIR</tipoTexto>
+       	<texto>Guardar</texto>
+		<formulario>edicion</formulario>
+        <url>agrega_tipos_gastos_compras_proc.asp</url>
+    </botones>
+	<botones nombre="guardar_persmiso_rol_per">
+        <accion>GUARDAR</accion>
+        <tipoTexto>DEFINIR</tipoTexto>
+       	<texto>Guardar</texto>
+		<formulario>edicion</formulario>
+        <url>agregar_roles_usuarios_compras_proc.asp</url>
+    </botones>
+	<botones nombre="agregar_cc">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 	<texto>Agregar Centro Costo</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>ingresa_cc()</funcion>
+    </botones>
+	<botones nombre="eliminar">
+         <accion>ELIMINAR</accion>
+         <tipoTexto>ELIMINAR</tipoTexto>
+		<formulario>edicion</formulario>
+        <url>eliminar_roles_usuarios_compras.ASP</url>
+    </botones>
+	<botones nombre="borrar">
+         <accion>ELIMINAR</accion>
+         <tipoTexto>ELIMINAR</tipoTexto>
+		<formulario>edicion</formulario>
+        <url>eliminar_perfiles_areas_proc.asp</url>
+    </botones>
+	<botones nombre="anular">
+        <accion>ELIMINAR</accion>
+        <tipoTexto>ELIMINAR</tipoTexto>
+		<formulario>edicion</formulario>
+        <url>eliminar_tipos_gasto_proc.asp</url>
+    </botones>
+	<botones nombre="anular_doc">
+        <accion>ELIMINAR</accion>
+        <tipoTexto>ELIMINAR</tipoTexto>
+		<formulario>edicion</formulario>
+        <url>eliminar_tipos_documentos_proc.asp</url>
+    </botones>			
+    <botones nombre="eliminar_pare"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>ELIMINAR</accion>
+	  <url>quitar_tipos_gastos_proc.asp</url>
+	  <formulario>edicion</formulario>
+	</botones> 
+    <botones nombre="cancelar_pare"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+    </botones>
+	<botones nombre="salir_pare"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>CerrarActualizar();</funcion>
+	</botones>
+	<botones nombre="guardar_pare"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>agregar_tipos_gasto_proc.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>	
+   </parametro>
+   
+<parametro formulario="tipos_gastos_i" variable="b" clave="tgas_ccod">
+	<tablas nombre="ocag_tipo_gasto" accion="M"/>  
+		<campos nombre="tgas_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<caracteres>90</caracteres>
+			<id>TO-N</id>     
+		</campos>
+		<campos nombre="tgas_cod_cuenta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<caracteres>90</caracteres>
+			<id>TO-N</id>     
+		</campos>
+		<campos nombre="tgas_nombre_cuenta">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<caracteres>90</caracteres>
+			<id>TO-N</id>     
+		</campos>
+	</parametro>
+	
+
+   
+     <parametro formulario="agregar_permisos" variable="b" > 
+	   <campos nombre="rusu_ccod">
+	   <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>ocag_roles_usuarios</destino>
+         <union>rusu_ccod</union>
+         <salida>rusu_tdesc</salida>
+		 <orden>rusu_tdesc asc</orden>
+		 <id>TO-N</id>      </campos>
+   </parametro>
+     <parametro formulario="agregar_rol" variable="b" > 
+	   <campos nombre="rusu_tdesc">
+	   		<tipo>SELECT</tipo>
+         	<permiso>LECTURAESCRITURA</permiso>
+		 	<anulable>true</anulable>
+	    	<mensajeNulo>Seleccione</mensajeNulo>
+			<mensajeVacio>''</mensajeVacio>
+		 	<destino>ocag_roles_usuarios</destino>
+         	<union>rusu_ccod</union>
+         	<salida>rusu_tdesc</salida>
+		 	<orden>rusu_tdesc asc</orden>
+		 	<id>TO-N</id>     
+		</campos>
+   </parametro>
+   
+   
+   
+   
+      <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9"  formulario="perfiles_areas" nroRegistros="20"
+		 maxLista="20" mensajeError="No hay perfiles de Area." seleccionarTodo="false" colorBase="#F1F1E4"  eliminar="true" anchoTabla="100%"	variable="b"  clave="pare_ccod" >  
+	  <campos nombre="v_pare_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>	 
+	  <campos nombre="c_pare_ccod">
+		 <descripcion>Perfil Area</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>	 
+	  <campos nombre="pare_tdesc">
+		  <descripcion>Descripcion</descripcion>
+          <tipo>INPUT</tipo>
+          <permiso>lectura</permiso>
+		  <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="editar">
+		  <descripcion>Tipo de Gasto</descripcion>
+          <tipo>INPUT</tipo>
+          <permiso>lectura</permiso>
+		  <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="enlace">
+		  <descripcion>Tipo de Gasto</descripcion>
+          <tipo>INPUT</tipo>
+          <permiso>lectura</permiso>
+		  <alineamiento>CENTER</alineamiento>
+      </campos>		  	  
+   </parametro>
+   
+     <parametro formulario="perfiles_areas_i" variable="b" >
+	  <tablas nombre="ocag_perfiles_areas" accion="M"/> 
+		  <campos nombre="pare_tdesc">
+			 <descripcion>Descripcion</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>lecturaescritura</permiso>
+			 <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			 <caracteres>70</caracteres>
+			 <alineamiento>CENTER</alineamiento>
+		  </campos>
+    </parametro>
+	
+   <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="perfiles_personas" nroRegistros="20"
+		 maxLista="20" mensajeError="No hay perfiles de Area." seleccionarTodo="true" colorBase="#F1F1E4" editar="false" eliminar="true" anchoTabla="100%"	 nuevaVentana="true" variable="b"  clave="pers_nrut" >  
+	   <campos nombre="pare_ccod">
+         <tipo>input</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+	  <campos nombre="pare_ccod_c">
+		  <descripcion>Codigo</descripcion>
+          <tipo>input</tipo>
+          <permiso>lectura</permiso>
+      </campos>
+	   <campos nombre="pare_tdesc">
+		<descripcion>Descripcion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>lectura</permiso>
+		  <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="agregar_perfil_area_usuario" variable="b">
+    <campos nombre="pare_ccod">
+	        <tipo>SELECT</tipo>
+            <permiso>LECTURAESCRITURA</permiso>
+		    <anulable>true</anulable>
+	        <mensajeNulo>Seleccione</mensajeNulo>
+		    <mensajeVacio>''</mensajeVacio>
+		    <destino>ocag_perfiles_areas</destino>
+            <union>pare_ccod</union>
+            <salida>pare_tdesc</salida>
+		    <orden>pare_tdesc asc</orden>
+		    <id>TO-N</id>      
+		  </campos>
+   </parametro>
+  
+  <parametro formulario="gastos_asociados" variable="b" clave="tgas_ccod" eliminar="true" anchoTabla="100%"
+  	mensajeError="No existen tipos de gastos ascociados a este perfil" nroRegistros="20" maxLista="20">
+	<tablas nombre="ocag_tipo_gasto_perfil" accion="M"/>  
+		<campos nombre="pare_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="tgas_tdesc">
+			<tipo>INPUT</tipo>
+			<descripcion>Tipo Gasto</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="tgas_cod_cuenta">
+			<tipo>INPUT</tipo>
+			<descripcion>Cuenta Gasto</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+	</parametro>
+
+
+<parametro formulario="tipos_gastos" variable="datos" clave="tgas_ccod" eliminar="true" nroRegistros="20" maxLista="20"
+mensajeError="No existen tipos de gastos disponibles para este perfil" anchoTabla="100%" >
+	   <tablas nombre="ocag_tipo_gasto_perfil" accion="I"/>  
+		<campos nombre="pare_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="v_tgas_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="tgas_tdesc">
+			<tipo>INPUT</tipo>
+			<descripcion>Tipo Gasto</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="tgas_cod_cuenta">
+			<tipo>INPUT</tipo>
+			<descripcion>Cuenta Gasto</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="tgas_nombre_cuenta">
+			<tipo>INPUT</tipo>
+			<descripcion>Nombre Cuenta</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="editar">
+		  <descripcion>Editar</descripcion>
+          <tipo>INPUT</tipo>
+          <permiso>lectura</permiso>
+		  <alineamiento>CENTER</alineamiento>
+      </campos>
+	</parametro>  
+
+    
+   <parametro formulario="eliminar_perfil_area_usuario" variable="b">
+   <campos nombre="pare_ccod">
+         <tipo>input</tipo>
+         <permiso>lecturaescritura</permiso>
+      </campos>
+	   <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+		   <permiso>lecturaescritura</permiso>
+      </campos>
+    </parametro>
+
+	<parametro formulario="tipos_documentos" variable="datos" clave="tdoc_ccod" eliminar="true" nroRegistros="20" maxLista="20" editar="true" nuevaVentana="true"
+	mensajeError="No existen tipos de documentos disponibles" anchoTabla="100%" paginaEdicion="agregar_tipos_documentos.asp?tdoc_ccod=%tdoc_ccod%" >
+	     <campos nombre="v_tdoc_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="tipo_doc">
+			<tipo>INPUT</tipo>
+			<descripcion>Cod tipo</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="tdoc_tdesc">
+			<tipo>INPUT</tipo>
+			<descripcion>Tipo Documento</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="tdoc_tdesc_softland">
+			<tipo>INPUT</tipo>
+			<descripcion>Abreviacion</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+	</parametro>  
+
+
+     <parametro formulario="i_tipos_documentos" variable="b" >
+	  <tablas nombre="ocag_tipo_documento" accion="M"/> 
+		  <campos nombre="tdoc_tdesc">
+			 <descripcion>Descripcion</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>lecturaescritura</permiso>
+			 <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			 <caracteres>70</caracteres>
+			 <alineamiento>CENTER</alineamiento>
+		  </campos>
+		<campos nombre="tdoc_tdesc_softland">
+			<tipo>INPUT</tipo>
+			<descripcion>Abreviacion</descripcion>
+			<permiso>lecturaescritura</permiso>
+			 <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			 <caracteres>2</caracteres>
+			 <alineamiento>CENTER</alineamiento>			 
+		</campos>
+		  
+    </parametro>
+   
+</Parametros>

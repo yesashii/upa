@@ -1,0 +1,14 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="siguiente">
+         <tipoTexto>SIGUIENTE</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>enviar(document.formulario1)</funcion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>inicio.asp</url>
+      </botones>
+   </parametro>
+</Parametros>

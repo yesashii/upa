@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+	  <parametro formulario="botones_carga">
+	  <botones nombre="buscar"> 
+      		<tipoTexto>BUSCAR</tipoTexto>
+	  		<accion>JAVASCRIPT</accion>
+	  		<funcion>enviar(document.buscador)</funcion>
+	  </botones> 
+	  <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+      </botones>
+	  <botones nombre="salir"> 
+      	<tipoTexto>SALIR</tipoTexto>
+			<url>../lanzadera/lanzadera.asp</url>
+	  		<accion>NAVEGAR</accion>	  
+	  </botones>
+	 </parametro>
+	
+<parametro formulario="listado_matriculados" anchoTabla="100%" resumen ="TRUE">
+	    <campos nombre="rut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>RUT</descripcion>
+		</campos>
+		<campos nombre="nombre">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nombre</descripcion>
+			<caracteres>10</caracteres>
+		</campos>
+		<campos nombre="pers_fnacimiento">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>F.Nacimiento</descripcion>
+			<caracteres>10</caracteres>
+		</campos>
+		<campos nombre="ano_ingreso">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Ingreso</descripcion>
+		</campos>
+</parametro>
+<parametro formulario="matriculados_carga" anchoTabla="100%" resumen ="TRUE" maxLista="10" nroRegistros="10" 
+ mensajeError="No se encontraron datos, referentes a la informacion ingresada ">
+	    <campos nombre="rut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>RUT</descripcion>
+		</campos>
+		<campos nombre="nombre">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nombre</descripcion>
+			<caracteres>10</caracteres>
+		</campos>
+		<campos nombre="suma_total">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nro. Asignaturas</descripcion>
+			<alineamiento>center</alineamiento>
+		</campos>
+		<campos nombre="estado">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Observaciones</descripcion>
+			<alineamiento>center</alineamiento>
+		</campos>
+		<campos nombre="ano_ingreso">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Ingreso</descripcion>
+			<alineamiento>center</alineamiento>
+		</campos>
+</parametro>
+
+<parametro formulario="busqueda" variable="busqueda">
+  		 <listas nombre="lBusqueda">
+			<item clave="carr_ccod" valor="carr_tdesc" />
+			<item clave="espe_ccod" valor="espe_tdesc" />
+			<item clave="jorn_ccod" valor="jorn_tdesc" />
+		</listas>
+		<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="espe_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="espe_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+</parametro>
+</Parametros>

@@ -1,0 +1,108 @@
+<Schema name="MATRICULA" defaultRole="msandoval">
+	<Cube name="Matriculas" cache="true" enabled="true">
+		<Table name="ft_matricula">
+		</Table>
+		<Dimension type="StandardDimension" foreignKey="ID_ALUMNO" name="Sexo" caption="Sexo">
+			<Hierarchy name="Genero" hasAll="true" allMemberName="Todos_sexos" allMemberCaption="Todos Sexos" allLevelName="TODOS" primaryKey="ID_ALUMNO" primaryKeyTable="dt_alumno" caption="Genero">
+				<Table name="dt_alumno">
+				</Table>
+				<Level name="Sexo" table="dt_alumno" column="SEXO" nameColumn="SEXO" ordinalColumn="SEXO" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="IfBlankName" caption="Sexo" captionColumn="SEXO">
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension type="TimeDimension" foreignKey="ID_TIEMPO" name="fecha_proceso" caption="Fecha Proceso">
+			<Hierarchy name="Proceso" hasAll="true" allMemberName="Toda_fecha" allMemberCaption="Toda Fecha" allLevelName="TODOS" primaryKey="ID_TIEMPO" primaryKeyTable="dt_tiempo" caption="Fecha Proceso">
+				<Table name="dt_tiempo">
+				</Table>
+				<Level name="Agno_proceso" table="dt_tiempo" column="AGNO" nameColumn="Agno" ordinalColumn="AGNO" type="Numeric" uniqueMembers="true" levelType="TimeYears" hideMemberIf="Never" caption="Agno Proceso" captionColumn="AGNO">
+				</Level>
+				<Level name="Mes_proceso" table="dt_tiempo" column="MES_NUMERO" nameColumn="MES_NUMERO" ordinalColumn="MES_NUMERO" parentColumn="AGNO" type="Numeric" uniqueMembers="true" levelType="TimeMonths" hideMemberIf="IfParentsName" caption="Mes Proceso" captionColumn="MES_NUMERO">
+				</Level>
+				<Level name="dia_proceso" table="dt_tiempo" column="DIA" nameColumn="DIA" ordinalColumn="DIA" parentColumn="MES_NUMERO" type="Numeric" uniqueMembers="true" levelType="TimeDays" hideMemberIf="IfParentsName" caption="Dia Proceso" captionColumn="DIA">
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension type="StandardDimension" foreignKey="ID_TIEMPO" name="Periodo_Academico" caption="Periodo Acad&#233;mico">
+			<Hierarchy name="Periodo" hasAll="true" allMemberName="todos_periodos" allMemberCaption="Todos los Periodos" allLevelName="TODOS" primaryKey="ID_TIEMPO" primaryKeyTable="dt_tiempo" caption="Periodo">
+				<Table name="dt_tiempo">
+				</Table>
+				<Level name="Agno_matricula" table="dt_tiempo" column="ANO_MATRICULA" nameColumn="ANO_MATRICULA" ordinalColumn="ANO_MATRICULA" type="Numeric" uniqueMembers="true" levelType="Regular" hideMemberIf="IfBlankName" caption="A&#241;o Matricula" captionColumn="AGNO">
+				</Level>
+				<Level name="periodo_matricula" table="dt_tiempo" column="PERIODO_ACADEMICO" nameColumn="PERIODO_ACADEMICO" ordinalColumn="PERIODO_ACADEMICO" parentColumn="ANO_MATRICULA" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="IfParentsName" caption="Periodo Matricula" captionColumn="PERIODO_ACADEMICO">
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension type="StandardDimension" foreignKey="ID_ALUMNO" name="domicilio_alumno" caption="Domicilio Alumno">
+			<Hierarchy name="Domicilio" hasAll="true" allMemberName="TODOS" allMemberCaption="TODOS" allLevelName="TODOS" primaryKey="ID_ALUMNO" primaryKeyTable="dt_alumno" caption="Origen">
+				<Table name="dt_alumno">
+				</Table>
+				<Level name="pais" table="dt_alumno" column="PAIS" nameColumn="PAIS" ordinalColumn="PAIS" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="IfBlankName" caption="Pais Origen" captionColumn="PAIS">
+				</Level>
+				<Level name="region" table="dt_alumno" column="REGION" nameColumn="REGION" ordinalColumn="REGION" parentColumn="PAIS" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="IfParentsName" caption="Region Origen" captionColumn="REGION">
+				</Level>
+				<Level name="comuna" table="dt_alumno" column="COMUNA" nameColumn="COMUNA" ordinalColumn="COMUNA" parentColumn="REGION" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="IfParentsName" caption="Comuna Origen" captionColumn="COMUNA">
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension type="StandardDimension" foreignKey="ID_ALUMNO" name="Extranjero" caption="Extranjero">
+			<Hierarchy name="Extranjeros" hasAll="true" allMemberName="TODOS" allMemberCaption="TODOS" allLevelName="TODOS" primaryKey="ID_ALUMNO" primaryKeyTable="dt_alumno" caption="Extranjeros">
+				<Table name="Table">
+				</Table>
+				<Level name="Extranjero" table="dt_alumno" column="EXTRANJERO" nameColumn="EXTRANJERO" ordinalColumn="EXTRANJERO" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never" caption="Extranjero" captionColumn="EXTRANJERO">
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension type="StandardDimension" foreignKey="ID_ALUMNO" name="tipo_colegio_procedencia" caption="Tipo Colegio Procedencia">
+			<Hierarchy name="tipo_colegio" hasAll="true" allMemberName="TODOS" allMemberCaption="TODOS" allLevelName="TODOS" primaryKey="ID_ALUMNO" primaryKeyTable="dt_alumno" caption="Tipo Colegio">
+				<Table name="Table">
+				</Table>
+				<Level name="Tipo_colegio" table="dt_alumno" column="TIPO_COLEGIO" nameColumn="TIPO_COLEGIO" ordinalColumn="TIPO_COLEGIO" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never" caption="Tipo Colegio" captionColumn="TIPO_COLEGIO">
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension type="StandardDimension" foreignKey="ID_ESCUELA" name="Escuela" caption="Escuela">
+			<Hierarchy name="escuela" hasAll="true" allMemberName="TODAS" allMemberCaption="TODAS" allLevelName="TODAS" primaryKey="ID_ESCUELA" primaryKeyTable="dt_escuela" caption="ESCUELA">
+				<Table name="dt_escuela">
+				</Table>
+				<Level name="Facultad" table="dt_escuela" column="FACULTAD" nameColumn="FACULTAD" ordinalColumn="FACULTAD" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="IfBlankName" caption="Facultad" captionColumn="FACULTAD">
+				</Level>
+				<Level name="Sede" table="dt_escuela" column="SEDE" nameColumn="SEDE" ordinalColumn="SEDE" parentColumn="FACULTAD" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="IfParentsName" caption="Sede" captionColumn="SEDE">
+				</Level>
+				<Level name="Carrera" table="dt_escuela" column="CARRERA" nameColumn="CARRERA" ordinalColumn="CARRERA" parentColumn="SEDE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="IfParentsName" caption="Carrera" captionColumn="CARRERA">
+				</Level>
+				<Level name="Jornada" table="dt_escuela" column="JORNADA" nameColumn="JORNADA" ordinalColumn="JORNADA" parentColumn="CARRERA" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="IfParentsName" caption="Jornada" captionColumn="JORNADA">
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension type="StandardDimension" foreignKey="ID_TIPO_ALUMNO" name="Tipo_alumno" caption="Tipo de Alumno">
+			<Hierarchy name="Tipo_alumno" hasAll="true" allMemberName="TODOS" allMemberCaption="TODOS" allLevelName="TODOS" primaryKey="ID_TIPO_ALUMNO" primaryKeyTable="dt_tipo_alumno" caption="Tipo de Alumno">
+				<Table name="dt_tipo_alumno">
+				</Table>
+				<Level name="tipo_alumno" table="dt_tipo_alumno" column="TIPO_ALUMNO" nameColumn="TIPO_ALUMNO" ordinalColumn="TIPO_ALUMNO" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="IfParentsName" caption="Tipo de Alumno" captionColumn="TIPO_ALUMNO">
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension type="StandardDimension" foreignKey="ID_RANGO_EDAD" name="rango_edad" caption="Rango edad alumno">
+			<Hierarchy name="rango_edad" hasAll="true" allMemberName="TODOS" allMemberCaption="TODOS" allLevelName="TODOS" primaryKey="ID_RANGO_EDAD" primaryKeyTable="dt_rango_edad" caption="Rango edad Alumno">
+				<Table name="dt_rango_edad">
+				</Table>
+				<Level name="rango_edad" table="dt_rango_edad" column="RANGO_EDAD" nameColumn="RANGO_EDAD" ordinalColumn="RANGO_EDAD" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="IfParentsName" caption="Rango edad alumno" captionColumn="RANGO_EDAD">
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Measure name="total_matriculas" column="MATRICULADO" datatype="Numeric" aggregator="sum" formatter="#,###" caption="Total Matriculas" visible="true">
+		</Measure>
+		<Measure name="total_asignaturas" column="CANT_TOTAL_ASIGNATURAS" datatype="Numeric" aggregator="sum" formatter="#,###" caption="Total Asignaturas tomadas" visible="true">
+		</Measure>
+		<Measure name="total_aprobadas" column="CANT_APROBADAS" datatype="Numeric" aggregator="sum" formatter="#,###" caption="Total Aprobadas" visible="true">
+		</Measure>
+		<Measure name="total_reprobadas" column="CANT_REPROBADAS" datatype="Numeric" aggregator="sum" formatter="#,###" caption="Total Reprobadas" visible="true">
+		</Measure>
+	</Cube>
+	<Role name="usuario">
+		<SchemaGrant access="all">
+			<CubeGrant cube="Matriculas" access="all">
+			</CubeGrant>
+		</SchemaGrant>
+	</Role>
+</Schema>

@@ -1,0 +1,209 @@
+﻿<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="lanzadera">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="excel_detalle">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Detalle ejecutado anterior</texto>
+         <accion>BUSCAR</accion>
+         <url>reporte_detalle_presupuesto_excel.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+	  <botones nombre="excel_solicitud">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Presupuesto vs Solicitado</texto>
+         <accion>BUSCAR</accion>
+         <url>reporte_solicitud_excel.asp</url>
+         <formulario>presupuesto</formulario>
+      </botones>	  
+	  <botones nombre="excel_solicitud_mensual">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel Solicitud</texto>
+         <accion>BUSCAR</accion>
+         <url>reporte_solicitud_excel.asp</url>
+         <formulario>presupuesto</formulario>
+      </botones>		  	  
+	  <botones nombre="anterior">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Replicar año anterior</texto>
+         <accion>BUSCAR</accion>
+         <funcionValidacion>CargarAnterior();</funcionValidacion>
+         <formulario>busca_codigo</formulario>
+      </botones>
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>Validar();</funcionValidacion>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+	  <botones nombre="guardar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Agregar</texto>
+         <accion>BUSCAR</accion>
+         <funcionValidacion>GuardarDetalle();</funcionValidacion>
+         <formulario>presupuesto</formulario>
+      </botones>
+	  <botones nombre="guardar_posterior">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Agregar</texto>
+         <accion>BUSCAR</accion>
+         <funcionValidacion>GuardarDetalle();</funcionValidacion>
+         <formulario>busca_codigo</formulario>
+      </botones>	  
+	  <botones nombre="grabar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Grabar Registros</texto>
+         <accion>JAVASCRIPT</accion>
+		 <funcion>GrabarRegistro();</funcion> 
+      </botones>
+	  <botones nombre="enviar"> 
+		  <tipoTexto>DEFINIR</tipoTexto>
+		  <texto>Enviar</texto>
+		  <accion>JAVASCRIPT</accion>
+		  <funcion>enviar(document.formu)</funcion>
+	  </botones>
+	   <botones nombre="cerrar">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>CerrarActualizar();</funcion>
+      </botones>
+      <botones nombre="cerrar2">
+         <tipoTexto>CANCELAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+   </parametro>
+   
+	<parametro formulario="busqueda_presupuesto" variable="busqueda">
+		<campos nombre="area_ccod">
+			 <tipo>SELECT</tipo>
+			 <destino>presupuesto_upa.protic.area_presupuestal</destino>
+			 <union>area_ccod</union>
+			 <salida>area_tdesc</salida>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <anulable>false</anulable>
+			 <orden>orden</orden>
+		</campos>
+		<campos nombre="codcaja">
+			 <tipo>SELECT</tipo>
+			 <union>cod_pre</union>
+			 <salida>valor</salida>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <anulable>false</anulable>
+			 <mensajeNulo>Seleccione un Concepto Presupuestario</mensajeNulo>
+			 <mensajeVacio>Selecione detalle presupuesto</mensajeVacio>
+			 <script>onClick="cambiaComboConcepto(this.form, this.value)"</script> 
+			 <orden>cpre_orden asc</orden>
+		</campos>
+		<campos nombre="detalle">
+			 <tipo>SELECT</tipo>
+			 <destino>presupuesto_upa.protic.codigos_presupuesto</destino>
+			 <union>cpre_ncorr</union>
+			 <salida>detalle_pre</salida>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <script>onChange="CargarDetalles(this.form)"</script>			 
+			 <mensajeNulo>Selecione detalle presupuesto</mensajeNulo>
+			 <mensajeVacio>Selecione detalle presupuesto</mensajeVacio>
+			 <anulable>true</anulable>
+		</campos>
+		<campos nombre="nuevo_detalle">
+			 <descripcion>nuevo_detalle</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <alineamiento>LEFT</alineamiento>
+			 <deshabilitado>true</deshabilitado>
+			 <caracteres>50</caracteres>
+	    </campos>	
+		<campos nombre="tpre_ccod">
+			 <tipo>SELECT</tipo>
+			 <destino>presupuesto_upa.protic.tipo_presupuesto</destino>
+			 <union>tpre_ccod</union>
+			 <salida>tpre_tdesc</salida>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <anulable>false</anulable>
+			 <script>onChange="CargarPrioridad(this.value)"</script> 
+			 <orden>tpre_tdesc desc</orden>
+		</campos>				
+	</parametro>
+   
+   <parametro formulario="f_presupuesto" clave="envi_ncorr" variable="pre" 
+   nroRegistros="15" maxLista="10" anchoTabla="100%" mensajeError="No se encontro presupuesto asociado a los parametros de busqueda...">
+      <campos nombre="cpbano">
+         <descripcion>Año</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="cpbnum">
+         <descripcion>N° pres.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="cajcod">
+         <descripcion>Cod. Caja</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="codAux">
+         <descripcion>Cod. Auxiliar</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>	  
+      <campos nombre="cpbfec">
+         <descripcion>Fecha Ingreso</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="mes_venc">
+         <descripcion>Vence</descripcion>
+		 <tipo>SELECT</tipo>
+		 <destino>softland.sw_mesce</destino>
+		 <union>indice</union>
+		 <salida>nombremes</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>true</anulable>
+		 <mensajeNulo>mes</mensajeNulo>		 
+      </campos>
+      <campos nombre="movhaber">
+         <descripcion>Haber</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+		 <alineamiento>RIGHT</alineamiento>		 
+      </campos>
+      <campos nombre="movglosa">
+         <descripcion>Glosa</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+      </campos>	  
+   </parametro>
+
+	 <parametro formulario="solicitud" anchoTabla="100%">
+		<campos nombre="solicitado">
+		 <descripcion>solicitado</descripcion>
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>12</caracteres>
+		 <id>TO-N</id>
+		 <alineamiento>RIGHT</alineamiento>
+		 <formato>MONEDA</formato>
+		 <nowrap>TRUE</nowrap>
+		 <onBlur>ValidaNumero(this);</onBlur>
+	  </campos>
+	  <campos nombre="presupuestado">
+		 <descripcion>presupuestado</descripcion>
+		 <tipo>INPUT</tipo>
+		 <permiso>OCULTO</permiso>
+		 <caracteres>12</caracteres>
+		 <id>TO-N</id>
+		 <alineamiento>RIGHT</alineamiento>
+	  </campos>
+	</parametro>
+	
+</Parametros>

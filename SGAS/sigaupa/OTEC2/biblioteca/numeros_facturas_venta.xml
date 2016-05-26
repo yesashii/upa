@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+   <botones nombre="buscar">
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	</botones>
+   <botones nombre="salir"> 
+      <tipoTexto>CANCELAR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	<botones nombre="cancelar">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>CERRAR</accion>
+    </botones>
+	<botones nombre="eliminar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Finalizado</texto>
+	  <accion>GUARDAR</accion>
+	  <formulario>edicion</formulario>
+	  <url>proc_terminar_rangos_facturas.asp</url>
+	  <funcionValidacion>Elimina_Rangos(document.edicion);</funcionValidacion>
+	</botones>
+	<botones nombre="guardar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Guardar</texto>
+	  <accion>GUARDAR</accion>
+	  <formulario>edicion</formulario>
+	  <url>proc_guardar_rangos_facturas.asp</url>
+	  <funcionValidacion>Guardar_Rangos(document.edicion);</funcionValidacion>
+	</botones>
+    <botones nombre="nuevo_rango">
+         <tipoTexto>DEFINIR</tipoTexto>
+	     <texto>Nuevo</texto>
+         <accion>AGREGAR</accion>
+		 <posicionX>200</posicionX>
+         <posicionY>200</posicionY>
+         <ancho>600</ancho>
+         <alto>300</alto>
+         <url>nuevo_rango_facturas.asp</url>
+     </botones>
+	<botones nombre="guardar_nuevo"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Guardar</texto>
+	  <accion>GUARDAR</accion>
+	  <formulario>edicion</formulario>
+	  <url>proc_nuevo_rango_facturas.asp</url>
+	  <funcionValidacion>Guardar_Nuevo_Rango(document.edicion);</funcionValidacion>
+	</botones> 
+  </parametro>
+   
+  <parametro formulario="busqueda" variable="busqueda">
+   	  <campos nombre="sede_ccod">
+         <tipo>SELECT</tipo>
+		 <destino>sedes</destino>
+		 <union>sede_ccod</union>
+		 <salida>sede_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+		<filtro> sede_ccod not in (3,5,6)</filtro>
+		 <anulable>True</anulable>
+		 <mensajeNulo>Todas las Sedes</mensajeNulo>
+		 <mensajeVacio>Elija Sede</mensajeVacio>
+         <id>NU-S</id>
+      </campos>
+	    <campos nombre="inst_ccod">
+         <tipo>SELECT</tipo>
+		 <destino>instituciones</destino>
+		 <union>inst_ccod</union>
+		 <salida>inst_trazon_social</salida>
+		 <filtro>inst_ccod not in (2)</filtro>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+		 <anulable>True</anulable>
+		 <mensajeNulo>Todas las Empresas</mensajeNulo>
+		 <mensajeVacio>Elija Empresa</mensajeVacio>
+         <id>NU-S</id>
+      </campos>
+   	  <campos nombre="tfac_ccod">
+         <tipo>SELECT</tipo>
+		 <destino>tipos_facturas</destino>
+		 <union>tfac_ccod</union>
+		 <salida>tfac_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+		 <anulable>True</anulable>
+		 <mensajeNulo>Todos los tipos</mensajeNulo>
+		 <mensajeVacio>Elija Tipo Factura</mensajeVacio>
+         <id>NU-S</id>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="f_facturas" clave="rfac_ncorr"  variable="rango"  colorSeleccionado="#CCCCCC" colorResaltado="#999999" 
+   		nroRegistros="15" maxLista="10" eliminar="TRUE"  seleccionarTodo="FALSE"  anchoTabla="100%" editar="False"  nuevaVentana="True" 
+		paginaEdicion="edita_rangos_facturas.asp?rfac_ncorr=%c_rfac_ncorr%"
+		 mensajeError="No se encontraron facturas para los criterios de busqueda" >
+
+		 <tablas nombre="rango_facturas_sedes" accion="M" />
+		 
+		<campos nombre="c_rfac_ncorr">
+			<tipo>Input</tipo>
+			<permiso>Oculto</permiso>
+		</campos>
+		<campos nombre="c_erfa_ccod">
+			<tipo>Input</tipo>
+			<permiso>Oculto</permiso>
+		</campos>
+		<campos nombre="c_inst_ccod">
+			<tipo>Input</tipo>
+			<permiso>Oculto</permiso>
+		</campos>		
+		<campos nombre="tfac_ccod">
+			<tipo>Input</tipo>
+			<permiso>Oculto</permiso>
+		</campos>
+		<campos nombre="c_sede_ccod">
+			<tipo>Input</tipo>
+			<permiso>Oculto</permiso>
+		</campos>		
+	   <campos nombre="sede_ccod">
+         <tipo>SELECT</tipo>
+		 <descripcion>Sede</descripcion>
+		 <destino>sedes</destino>
+		 <union>sede_ccod</union>
+		 <salida>sede_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <id>NU-S</id>
+      </campos>
+	  <campos nombre="inst_ccod">
+         <tipo>SELECT</tipo>
+		 <descripcion>Institucion</descripcion>
+		 <destino>instituciones</destino>
+		 <union>inst_ccod</union>
+		 <salida>inst_trazon_social</salida>
+		 <filtro>inst_ccod not in (2)</filtro>
+         <permiso>LECTURA</permiso>
+         <id>NU-S</id>
+      </campos>
+ 	 <campos nombre="c_tfac_ccod">
+	    <descripcion>Tipo Factura</descripcion>
+		<tipo>select</tipo>
+		<union>tfac_ccod</union>
+		<salida>tfac_tdesc</salida>
+		<destino>tipos_facturas</destino>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+		<id>TO-N</id>
+	 </campos>
+	 <campos nombre="rfac_ninicio">
+	    <descripcion>N° Inicio</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+		<caracteres>10</caracteres>
+        <maxCaracteres>8</maxCaracteres>
+		<id>NU-N</id>
+	 </campos>
+	 <campos nombre="rfac_nfin">
+	    <descripcion>N° Fin</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+		<caracteres>10</caracteres>
+        <maxCaracteres>8</maxCaracteres>
+		<id>NU-N</id>
+	 </campos>
+	 <campos nombre="cantidad">
+	    <descripcion>N° Ocupadas</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="erfa_tdesc">
+	    <descripcion>Estado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+  </parametro>   
+
+   <parametro formulario="detalle_facturas" clave="rfac_ncorr"  variable="rango" >
+		 <tablas nombre="rangos_facturas_sedes" accion="M" />
+  </parametro> 
+
+
+   <parametro formulario="nuevo_rango"  variable="nuevo" >
+   <tablas nombre="rangos_facturas_sedes" accion="M" />
+   	  <campos nombre="sede_ccod">
+         <tipo>SELECT</tipo>
+		 <destino>sedes</destino>
+		 <union>sede_ccod</union>
+		 <salida>sede_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+	     <campos nombre="inst_ccod">
+         <tipo>SELECT</tipo>
+		 <destino>instituciones</destino>
+		 <union>inst_ccod</union>
+		 <salida>inst_trazon_social</salida>
+		 <filtro>inst_ccod not in (2)</filtro>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+		 <anulable>True</anulable>
+		 <mensajeNulo>Todas las Empresas</mensajeNulo>
+		 <mensajeVacio>Elija Empresa</mensajeVacio>
+         <id>NU-S</id>
+      </campos>
+	  <campos nombre="tfac_ccod">
+         <tipo>SELECT</tipo>
+		 <destino>tipos_facturas</destino>
+		 <union>tfac_ccod</union>
+		 <salida>tfac_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+	  <campos nombre="rfac_ninicio">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+		<caracteres>10</caracteres>
+        <maxCaracteres>8</maxCaracteres>
+		<id>NU-N</id>
+	 </campos>
+	 <campos nombre="rfac_nfin">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+		<caracteres>10</caracteres>
+        <maxCaracteres>8</maxCaracteres>
+		<id>NU-N</id>
+	 </campos>
+   </parametro>
+</Parametros>

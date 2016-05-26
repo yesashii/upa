@@ -1,0 +1,192 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+
+<%
+set pagina = new CPagina
+pagina.Titulo = "Listado de Alumnos"
+'-------------------------------------------------------------------------------
+set conexion = new CConexion
+conexion.Inicializar "upacifico"
+
+set negocio = new CNegocio
+negocio.Inicializa conexion
+'------------------------------------------------------------------------------
+secc_ccod = request.querystring("secc_ccod")
+
+Periodo = negocio.ObtenerPeriodoAcademico("CLASES18")
+Sede = negocio.ObtenerSede()
+sede_tdesc = conexion.consultaUno("select sede_tdesc from sedes where cast(sede_ccod as varchar) ='" & Sede & "'")
+'-------------------------------------------------------------------------------
+set botonera = new CFormulario
+botonera.Carga_Parametros "rep_inscritos.xml", "botonera"
+'-------------------------------------------------------------------------------
+asignatura = conexion.consultaUno ("select asig_ccod from secciones where cast(secc_ccod as varchar)='" & secc_ccod & "'" )
+
+set f_consulta = new CFormulario
+f_consulta.Carga_Parametros "rep_inscritos.xml", "tabla"
+f_consulta.inicializar conexion
+
+	 sql =  "select c.asig_ccod, a.secc_tdesc, b.peri_tdesc, c.asig_tdesc, d.sede_tdesc, e.jorn_tdesc "& vbCrLf &_
+			"from secciones a , periodos_academicos b, asignaturas c, sedes d, jornadas e "& vbCrLf &_
+			"where a.peri_ccod = b.peri_ccod  "& vbCrLf &_
+			"  and a.asig_ccod = c.asig_ccod  "& vbCrLf &_
+			"  and a.sede_ccod = d.sede_ccod "& vbCrLf &_
+			"  and a.jorn_ccod = e.jorn_ccod "& vbCrLf &_
+			"  and cast(a.secc_ccod as varchar) = '" & secc_ccod & "'"& vbCrLf
+
+f_consulta.consultar sql
+f_consulta.siguiente
+'------------------------------------------------------------------------------------
+
+set f_alumnos = new CFormulario
+f_alumnos.Carga_Parametros "rep_inscritos.xml", "f_alumnos"
+f_alumnos.inicializar conexion
+
+	  sql = "select protic.format_rut(c.pers_nrut) as rut,a.secc_ccod, b.matr_ncorr, b.alum_nmatricula, c.PERS_TAPE_PATERNO, c.PERS_TAPE_MATERNO, c.PERS_TNOMBRE, f.carr_ccod,  f.CARR_TDESC, e.ESPE_TDESC  "& vbCrLf &_
+			"from cargas_academicas a, alumnos b, personas c, ofertas_academicas d, especialidades e, carreras f "& vbCrLf &_
+			"where a.matr_ncorr = b.matr_ncorr "& vbCrLf &_
+			"  and b.emat_ccod = 1 "& vbCrLf &_
+			"  and b.pers_ncorr = c.pers_ncorr "& vbCrLf &_
+			"  and b.ofer_ncorr = d.ofer_ncorr "& vbCrLf &_
+			"  and d.espe_ccod = e.espe_ccod "& vbCrLf &_
+			"  and e.carr_ccod = f.carr_ccod "& vbCrLf &_
+			"  and cast(a.secc_ccod as varchar)= '" & secc_ccod & "'  "& vbCrLf &_ 
+			"ORDER BY c.PERS_TAPE_PATERNO, c.PERS_TAPE_MATERNO, c.PERS_TNOMBRE "
+
+f_alumnos.consultar sql
+
+%>
+
+
+<html>
+<head>
+<title><%=pagina.Titulo%></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../estilos/estilos.css" rel="stylesheet" type="text/css">
+<link href="../estilos/tabla.css" rel="stylesheet" type="text/css">
+
+<script language="JavaScript" src="../biblioteca/tabla.js"></script>
+<script language="JavaScript" src="../biblioteca/funciones.js"></script>
+<script language="JavaScript" src="../biblioteca/validadores.js"></script>
+
+<script language="JavaScript">
+</script>
+
+</head>
+<body bgcolor="#CC6600" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../imagenes/botones/buscar_f2.gif','../images/bot_deshabilitar_f2.gif','../images/agregar2_f2_p.gif','im&amp;#225;genes/marco1_r3_c2_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c4_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c6_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c8_f2.gif');MM_preloadImages('../imagenes/botones/cargar_f2.gif','../imagenes/botones/continuar_f2.gif')" onBlur="revisaVentana();">
+<table width="700" height="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td valign="top" bgcolor="#EAEAEA">
+	<br>
+      <br>
+	<table width="78%"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#D8D8DE">
+        <tr>
+        <td width="9" height="8"><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+        <td width="656" height="8" background="../imagenes/top_r1_c2.gif"></td>
+        <td width="10" height="8"><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+      </tr>
+      <tr>
+        <td width="9" background="../imagenes/izq.gif">&nbsp;</td>
+        <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><%pagina.DibujarLenguetas Array("Resultados de la búsqueda"), 1 %></td>
+          </tr>
+          <tr>
+            <td height="2" background="../imagenes/top_r3_c2.gif"></td>
+          </tr>
+          <tr>
+            <td><div align="center"><br>
+              <%pagina.DibujarTituloPagina%><br><BR><BR>
+                    <table width="100%" border="0">
+                      <tr> 
+                        <td width="20%"><strong>Asignatura</strong></td>
+                        <td width="3%"><div align="center"><strong>:</strong></div></td>
+                        <td width="41%"><%="(" & f_consulta.obtenerValor("asig_ccod") & ") "  & f_consulta.obtenerValor("asig_tdesc")%></td>
+                        <td width="9%"><strong>Sede</strong></td>
+                        <td width="3%"><div align="center"><strong>:</strong></div></td>
+                        <td width="24%"><%=f_consulta.obtenerValor("sede_tdesc")%></td>
+                      </tr>
+                      <tr> 
+                        <td><strong>Periodo Acad&eacute;mico</strong></td>
+                        <td><div align="center"><strong>:</strong></div></td>
+                        <td><%=f_consulta.obtenerValor("peri_tdesc")%></td>
+                        <td><strong>Jornada</strong></td>
+                        <td><div align="center"><strong>:</strong></div></td>
+                        <td><%=f_consulta.obtenerValor("jorn_tdesc")%></td>
+                      </tr>
+                      <tr> 
+                        <td><strong>Secci&oacute;n</strong></td>
+                        <td><div align="center"><strong>:</strong></div></td>
+                        <td><%=f_consulta.obtenerValor("secc_tdesc")%></td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                    </table>
+                       <BR>
+                    <table width="100%" border="0">
+                      <tr> 
+                        <td width="116">&nbsp;</td>
+                        <td width="511"><div align="right">P&aacute;ginas: &nbsp; 
+                            <%f_alumnos.AccesoPagina%>
+                          </div></td>
+                        <td width="24"> <div align="right"> </div></td>
+                      </tr>
+                    </table>
+                  </div>
+              <form name="edicion">
+                <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td><%pagina.DibujarSubtitulo "Listado de alumnos de la asignatura"%>
+                      <br>
+					  <% f_alumnos.dibujaTabla()%>
+					  </td>
+                  </tr>
+                </table>
+                          <br>
+            </form></td></tr>
+        </table></td>
+        <td width="10" background="../imagenes/der.gif">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="9" height="28"><img src="../imagenes/abajo_r1_c1.gif" width="9" height="28"></td>
+        <td height="28"><table width="100%" height="28"  border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="18%" height="20"><div align="center">
+                    <table width="90%"  border="0" cellspacing="0" cellpadding="0">
+                      <tr> 
+					        <td width="50%"><div align="center">
+                            <% 'botonera.AgregaBotonParam "excel", "url", "alumnos_asignatura_excel.asp?secc_ccod=" & secc_ccod
+							   botonera.dibujaBoton "cancelar"
+							%>
+                          </div></td>
+                           <td width="50%"><div align="center">
+                            <% 'botonera.AgregaBotonParam "excel", "url", "alumnos_asignatura_excel.asp?secc_ccod=" & secc_ccod
+							  if f_alumnos.nroFilas > 0 then
+							   botonera.AgregaBotonParam "excel2", "deshabilitado", "FALSE"
+							  else
+							    botonera.AgregaBotonParam "excel2", "deshabilitado", "TRUE"
+							  end if							  
+							  botonera.AgregaBotonParam "excel2", "url", "listado_alumnos_excel.asp?secc_ccod=" & secc_ccod
+							  botonera.dibujaBoton "excel2"
+							%>
+                          </div></td>
+                      </tr>
+                    </table>
+            </div></td>
+            <td width="82%" rowspan="2" background="../imagenes/abajo_r1_c4.gif"><img src="../imagenes/abajo_r1_c3.gif" width="12" height="28"></td>
+            </tr>
+          <tr>
+            <td height="8" background="../imagenes/abajo_r2_c2.gif"></td>
+          </tr>
+        </table></td>
+        <td width="10" height="28"><img src="../imagenes/abajo_r1_c5.gif" width="7" height="28"></td>
+      </tr>
+    </table>
+	<br>
+	<br>
+	</td>
+  </tr>  
+</table>
+</body>
+</html>

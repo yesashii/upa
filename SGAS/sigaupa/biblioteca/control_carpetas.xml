@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="formu_carpetas" anchoTabla="100%" 
+   colorResaltado="#CCCCCC"  mensajeError="No existe carpeta creada para este alumno"
+   colorSeleccionado="#CCCCCC" eliminar="FALSE" seleccionarTodo="FALSE"
+    nuevaVentanaAlto="350" nuevaVentanaAncho="550"
+    editar="TRUE" 	paginaEdicion="control_carpetas_agregar.asp?pers_ncorr=%pers_ncorr%&amp;carr_ccod=%carr_ccod%" 
+	nuevaVentana="TRUE" variable="m">
+     <campos nombre="pers_ncorr">
+	    <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="carr_ccod">
+	    <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="carrera">
+	    <descripcion>Carrera</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="enviada_por">
+	    <descripcion>Enviada Por</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="fecha_envio">
+	    <descripcion>Fecha Envío a Escuela</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="recepcionada_por">
+	    <descripcion>Recepcionada Por</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="fecha_recepcion">
+	    <descripcion>Fecha Devolución a Títulos y Grados</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+   </parametro> 
+ <parametro formulario="botonera">
+   	 <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	   <funcionValidacion>Validar();</funcionValidacion>
+	</botones>
+   	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>	 
+	</botones>	
+	<botones nombre="nueva"> 
+        <tipoTexto>AGREGAR</tipoTexto>
+	    <accion>AGREGAR</accion>
+	    <posicionX>100</posicionX>
+	    <posicionY>50</posicionY>
+	    <ancho>550</ancho>
+	    <alto>400</alto>	   
+	 </botones>
+	 <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel Carpetas</texto>
+         <accion>NAVEGAR</accion>
+		 <url>observaciones_excel.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+   </parametro>
+<parametro formulario="busqueda_usuarios" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+</parametro>
+<parametro formulario="edicion_carpeta" clave="pers_ncorr" variable="m" mensajeError=""
+		 colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="" 
+		 eliminar="" agregar="" nuevaVentana="false" paginaEdicion="">
+		<campos nombre="pers_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+    	</campos>
+		<campos nombre="carr_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<destino>carreras</destino>
+			<union>carr_ccod</union>
+			<salida>carr_tdesc</salida>
+			<caracteres>10</caracteres>
+			<maxCaracteres>40</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+		<campos nombre="fecha_envio">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>12</caracteres>
+			<maxCaracteres>10</maxCaracteres>
+			<id>FE-N</id>
+		</campos>
+        <campos nombre="enviada_por2">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>40</caracteres>
+			<maxCaracteres>40</maxCaracteres>
+			<deshabilitado>TRUE</deshabilitado>
+			<id>TO-S</id>
+		</campos>
+		<campos nombre="enviada_por">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<caracteres>10</caracteres>
+			<maxCaracteres>10</maxCaracteres>
+			<id>TO-S</id>
+		</campos>
+        <campos nombre="recepcionada_por2">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>40</caracteres>
+			<maxCaracteres>40</maxCaracteres>
+			<deshabilitado>TRUE</deshabilitado>
+			<id>TO-S</id>
+		</campos>
+		<campos nombre="recepcionada_por">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<caracteres>10</caracteres>
+			<maxCaracteres>10</maxCaracteres>
+			<id>TO-S</id>
+		</campos>
+		<campos nombre="fecha_recepcion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>12</caracteres>
+			<maxCaracteres>10</maxCaracteres>
+			<id>FE-N</id>
+		</campos>
+		<campos nombre="observacion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>50</caracteres>
+			<maxCaracteres>100</maxCaracteres>
+			<id>TO-S</id>
+		</campos>
+	</parametro>
+	<parametro formulario="btn_edita_carpeta">
+    	<botones nombre="guardar"> 
+      		<tipoTexto>GUARDAR</tipoTexto>
+	  		<accion>JAVASCRIPT</accion>
+	  		<funcion>guardar(document.edicion)</funcion>
+		</botones> 
+    
+		<botones nombre="volver"> 
+      		<tipoTexto>DEFINIR</tipoTexto>
+	  		<texto>Volver</texto>
+	  		<accion>JAVASCRIPT</accion>
+	  		<funcion>CerrarActualizar()</funcion>
+		</botones> 
+ 	</parametro>
+ 	
+	<parametro formulario="mantiene_carpeta" variable="m" >
+		<tablas nombre="carpetas_titulo" accion="M" />
+ 	</parametro>	
+</Parametros>

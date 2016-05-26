@@ -1,0 +1,234 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <formulario>../lanzadera/lanzadera.asp?resolucion=1152</formulario>
+      </botones>
+	  <botones nombre="salir2">
+         <tipoTexto>DEFINIR</tipoTexto> 
+         <texto>Salir</texto> 
+         <accion>JAVASCRIPT</accion> 
+         <funcion>salir()</funcion> 
+      </botones>
+      <botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_actualizacion_secciones_editar.asp</url>
+         <funcionValidacion>ValidarFormulario();</funcionValidacion>
+      </botones>
+      <botones nombre="cancelar">
+         <tipoTexto>CANCELAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+   </parametro>
+   <parametro formulario="busqueda" variable="b" camposObligatorios="TRUE">
+      <campos nombre="carr_ccod">
+         <descripcion>Carrera</descripcion>
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <destino>carreras</destino>
+         <union>carr_ccod</union>
+         <salida>carr_tdesc</salida>
+         <orden>carr_tdesc asc</orden>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione carrera</mensajeNulo>
+         <mensajeVacio>No tiene permisos</mensajeVacio>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="asig_ccod">
+         <descripcion>Código Asignatura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>15</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="asig_tdesc">
+         <descripcion>Nombre Asignatura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>40</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+   </parametro>
+   <parametro formulario="secciones" anchoTabla="100%" mensajeError="No se encontraron secciones." nroRegistros="20" maxLista="10" variable="secciones" editar="TRUE" paginaEdicion="actualizacion_secciones_editar.asp?secc_ccod=%secc_ccod%" nuevaVentana="TRUE">
+      <campos nombre="asig_ccod">
+         <descripcion>Cód. Asignatura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="asig_tdesc">
+         <descripcion>Asignatura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="secc_tdesc">
+         <descripcion>Sección</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="jorn_ccod">
+         <descripcion>Jornada</descripcion>
+         <tipo>SELECT</tipo>
+         <permiso>LECTURA</permiso>
+         <union>jorn_ccod</union>
+         <salida>jorn_tdesc</salida>
+         <destino>jornadas</destino>
+      </campos>
+      <campos nombre="secc_con_examen">
+         <descripcion>Con Examen</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="secc_nota_presentacion">
+         <descripcion>Nota Mín. Present.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="secc_porcentaje_presentacion">
+         <descripcion>% Nota Present.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="secc_eval_mini">
+         <descripcion>Nº Eval.&lt;br&gt;(Mín.)</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="secc_porce_asiste">
+         <descripcion>% Asistencia</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="secc_min_examen">
+         <descripcion>Nota Mín. Examen</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="secc_eximision">
+         <descripcion>Eximición</descripcion>
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <afirmacion>SI</afirmacion>
+         <negacion>NO</negacion>
+      </campos>
+      <campos nombre="secc_nota_ex">
+         <descripcion>Nota Eximición</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="editar_seccion" anchoTabla="100%" camposObligatorios="TRUE" variable="secciones">
+      <tablas nombre="secciones" accion="M"/>
+      <campos nombre="secc_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="asignatura">
+         <descripcion>Asignatura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="carr_tdesc">
+         <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="secc_tdesc">
+         <descripcion>Sección</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="secc_con_examen">
+         <descripcion>Evalua Examen</descripcion>
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <objeto>RADIO</objeto>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <afirmacion>Sí</afirmacion>
+         <negacion>No</negacion>
+		 <id>TO-N</id>
+		 <script>onClick="deshabilitar(this.value);"</script>
+      </campos>
+      <campos nombre="secc_nota_presentacion">
+         <descripcion>Nota Mínima Presentación</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>3</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>NT-N</id>
+      </campos>
+      <campos nombre="secc_porcentaje_presentacion">
+         <descripcion>% Presentación</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>3</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="secc_eval_mini">
+         <descripcion>Nº Mínimo de Evaluaciones</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>3</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="secc_porce_asiste">
+         <descripcion>% Asistencia</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>3</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="secc_min_examen">
+         <descripcion>Nota Mínima Examen</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>3</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>NT-N</id>
+      </campos>
+      <campos nombre="secc_eximision">
+         <descripcion>Con Eximición</descripcion>
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <objeto>RADIO</objeto>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <afirmacion>Sí</afirmacion>
+         <negacion>No</negacion>
+		 <script>onClick="deshabilitar_01(this.value);"</script>
+      </campos>
+      <campos nombre="secc_nota_ex">
+         <descripcion>Nota Eximición</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>3</caracteres>
+         <maxCaracteres>3</maxCaracteres>
+         <id>NT-N</id>
+      </campos>
+   </parametro>
+</Parametros>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="botonera">
+   <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+   <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	   <funcionValidacion>Validar();</funcionValidacion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones>
+   <botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+    </botones>
+     <botones nombre="siguiente">
+         <tipoTexto>SIGUIENTE</tipoTexto>
+         <accion>NAVEGAR</accion>
+      </botones>
+	   <botones nombre="horario"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Horario</texto>
+		<accion>javascript</accion>
+		<funcion>abrir()</funcion>
+		<formulario>edicion</formulario>
+		<target>_BLANK</target>		
+   </botones>
+   </parametro>
+
+  <parametro formulario="busqueda_alumno" variable="busqueda">
+	 <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-N</id>
+      </campos>
+  </parametro>
+
+<parametro formulario="f_direcciones" clave="dire_ccod"  variable="direcciones"
+         colorSeleccionado="#CCCCCC" colorResaltado="#999999" nroRegistros="10" maxLista="10" 
+	     eliminar="FALSE" seleccionarTodo="FALSE" anchoTabla="100%" editar="FALSE" 
+		 mensajeError="No se encontraron direcciones">
+    <campos nombre="tdir_tdesc">
+	    <descripcion>Tipo Direccion</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	</campos>
+   <campos nombre="dire_tcalle">
+	    <descripcion>Calle</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	</campos>
+	<campos nombre="dire_tnro">
+	    <descripcion>Numero</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	</campos>
+	<campos nombre="dire_tpoblacion">
+	    <descripcion>Poblacion</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	</campos>
+	<campos nombre="dire_tblock">
+	    <descripcion>Block</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	</campos>
+	<campos nombre="dire_tdepto">
+	    <descripcion>Departamento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	</campos>	
+	<campos nombre="ciud_tdesc">
+	    <descripcion>Ciudad</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	</campos>
+	<campos nombre="ciud_tcomuna">
+	    <descripcion>Comuna</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	</campos>
+	<campos nombre="dire_tfono">
+	    <descripcion>Telefono</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	</campos>
+	<campos nombre="dire_tcelular">
+	    <descripcion>Celular</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	</campos>
+</parametro>
+
+<parametro formulario="f_notas" clave="asig_ccod"  variable="notas"
+         colorSeleccionado="#CCCCCC" colorResaltado="#999999" nroRegistros="10" maxLista="10" 
+	     eliminar="FALSE" seleccionarTodo="FALSE" anchoTabla="100%" editar="FALSE" 
+		 mensajeError="No se encontraron calificaciones">
+    <campos nombre="asig_ccod">
+	    <descripcion>Cod Asignatura</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	</campos>
+	<campos nombre="asig_tdesc">
+	    <descripcion>Asignatura</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	</campos>
+</parametro>
+
+ </Parametros>

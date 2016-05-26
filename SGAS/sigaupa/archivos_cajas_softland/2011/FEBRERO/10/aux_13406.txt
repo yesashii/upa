@@ -1,0 +1,8 @@
+16030404,MADRID BUSTOS VICTOR MANUEL,,16030404-9,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+16179812,SOLIS GONZALEZ MIRTHA INELIA,,16179812-6,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+16802478,ARAYA QUEIRUGA PALOMA VICTORIA,,16802478-9,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17027588,LOYOLA RODRIGUEZ VALENTINA,,17027588-8,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17268043,ECHEGARAY SAAVEDRA CONSTANZA KAMILA,,17268043-7,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17418475,SOTO BURGOS BELEN SOLEDAD,,17418475-5,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17446888,JORQUERA ALARCON FRANCISCO NICOLAS,,17446888-5,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17716353,LUCERO ROJAS JONATAN ESCON,,17716353-8,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

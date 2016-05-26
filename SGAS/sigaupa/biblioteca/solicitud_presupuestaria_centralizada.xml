@@ -1,0 +1,100 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="lanzadera">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="excel_detalle">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Detalle ejecutado anterior</texto>
+         <accion>BUSCAR</accion>
+         <url>reporte_detalle_presupuesto_excel.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+	  <botones nombre="excel_solicitud">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Presupuesto vs Solicitado</texto>
+         <accion>BUSCAR</accion>
+         <url>reporte_solicitud_excel.asp</url>
+         <formulario>presupuesto</formulario>
+      </botones>	  
+	  <botones nombre="excel_solicitud_mensual">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel Solicitud</texto>
+         <accion>BUSCAR</accion>
+         <url>reporte_solicitud_excel.asp</url>
+         <formulario>presupuesto</formulario>
+      </botones>		  	  
+	  <botones nombre="anterior">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Replicar año anterior</texto>
+         <accion>BUSCAR</accion>
+         <funcionValidacion>CargarAnterior();</funcionValidacion>
+         <formulario>busca_codigo</formulario>
+      </botones>
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>Validar();</funcionValidacion>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+	  <botones nombre="guardar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Agregar</texto>
+         <accion>BUSCAR</accion>
+         <funcionValidacion>GuardarDetalle();</funcionValidacion>
+         <formulario>presupuesto</formulario>
+      </botones>
+	  <botones nombre="agrega_concepto">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Agregar</texto>
+         <accion>BUSCAR</accion>
+         <funcionValidacion>GrabarSolicitud();</funcionValidacion>
+         <formulario>solicitud</formulario>
+      </botones>
+	  <botones nombre="excel_solicitud_central">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>NAVEGAR</accion>
+         <url>solicitud_excel_central.asp</url>
+         <formulario>solicitud</formulario>
+      </botones>		  	  	  	  
+   </parametro>
+   
+	<parametro formulario="busqueda_presupuesto" variable="busqueda">
+		<campos nombre="area_ccod">
+			 <tipo>SELECT</tipo>
+			 <destino>presupuesto_upa.protic.area_presupuestal</destino>
+			 <union>area_ccod</union>
+			 <salida>area_tdesc</salida>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <anulable>false</anulable>
+			 <orden>orden</orden>
+		</campos>
+		<campos nombre="codcaja">
+			 <tipo>SELECT</tipo>
+			 <union>cod_pre</union>
+			 <salida>valor</salida>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <anulable>true</anulable>
+			 <mensajeNulo>Todos los codigos</mensajeNulo>
+			 <script>onChange="CargarCodigo(this.form, this.value)"</script> 
+		</campos>
+	</parametro>
+	
+	 <parametro formulario="concepto" variable="busqueda">
+		<campos nombre="ccen_ccod">
+			 <tipo>SELECT</tipo>
+			 <destino>presupuesto_upa.protic.concepto_centralizado</destino>
+			 <union>ccen_ccod</union>
+			 <salida>ccen_tdesc</salida>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <mensajeNulo>Selecione concepto presupuesto</mensajeNulo>
+			 <mensajeVacio>Selecione concepto presupuesto</mensajeVacio>
+			 <anulable>true</anulable>
+		</campos>
+	</parametro>
+	
+</Parametros>

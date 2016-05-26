@@ -1,0 +1,1528 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Parametros>
+<parametro formulario="botonera">
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>Cerrar()</funcion>
+      </botones>
+</parametro>
+
+
+<parametro formulario="pago_proveedor" variable="datos" clave="sogi_ncorr">
+	<campos nombre="pers_nrut">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<script>onBlur="genera_digito(this.value);"</script>
+		<id>NU-N</id>
+	</campos>
+	<campos nombre="pers_xdv">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>2</caracteres>
+		<maxCaracteres>2</maxCaracteres>
+		<script>READONLY</script>
+		<id>TO-N</id>
+	</campos>
+	<campos nombre="pers_tnombre">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <id>TO-N</id>
+	</campos>
+	<campos nombre="sogi_fecha_solicitud">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>15</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+	</campos>		
+	<campos nombre="tgas_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_gasto</destino>
+		 <union>tgas_ccod</union>
+		 <salida>tgas_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>tgas_tdesc</orden>
+	</campos>
+	<campos nombre="tmon_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_moneda</destino>
+		 <union>tmon_ccod</union>
+		 <salida>tmon_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>tmon_ccod</orden>
+	</campos>
+	<campos nombre="sogi_mgiro">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>NU-N</id>
+	</campos>
+	<campos nombre="cpag_ccod">
+		<tipo>SELECT</tipo>
+		<destino>ocag_condiciones_de_pago</destino>
+		<union>cpag_ccod</union>
+		<salida>cpag_tdesc</salida>
+		<orden>cpag_tdesc</orden>
+		<permiso>LECTURA</permiso>
+		<anulable>true</anulable>
+		<mensajeNulo>Seleccione Condicion de Pago</mensajeNulo>
+		<id>TO-N</id>
+	</campos>
+	<campos nombre="sogi_fecha_docto">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+	</campos>
+	<campos nombre="sogi_tobservaciones">
+		 <tipo>TEXTAREA</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>80</caracteres>
+		 <filas>4</filas>
+	</campos>
+	<campos nombre="sogi_bboleta_honorario">
+		 <tipo>BOLEANO</tipo>
+		 <objeto>RADIO</objeto>
+		 <permiso>LECTURA</permiso>
+		 <afirmacion>SI</afirmacion>
+		 <negacion>NO</negacion>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+		 <alineamiento>CENTER</alineamiento>
+		 <script>onClick='CambiaValor(this)'</script>
+		 <id>TO-N</id>
+	</campos>	
+</parametro> 
+
+<parametro formulario="detalle_pago_proveedor" variable="datos_giro" clave="dsgi_ncorr">
+	<campos nombre="sogi_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+	</campos>
+	<campos nombre="dsgi_ndocto">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>12</maxCaracteres>
+		 <id>NU-N</id>
+	</campos>
+	<campos nombre="drga_fdocto">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>10</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>NU-N</id>
+	</campos>
+	<campos nombre="dsgi_mdocto">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>12</maxCaracteres>
+		 <script>Readonly</script>
+		 <id>NU-N</id>
+	</campos>
+	<campos nombre="tdoc_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_documento</destino>
+		 <union>tdoc_ccod</union>
+		 <salida>tdoc_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>tdoc_tdesc</orden>
+	</campos>	
+	<campos nombre="dsgi_mexento">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>12</maxCaracteres>
+		 <script>onBlur="ConviertePesos(this);SumaTotalGiro(this);"</script>		 
+		 <id>NU-S</id>
+	</campos>
+	<campos nombre="dsgi_mafecto">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>12</maxCaracteres>
+		 <script>onBlur="ConviertePesos(this);SumaTotalGiro(this);"</script>
+		 <id>NU-S</id>
+	</campos>
+	<campos nombre="dsgi_miva">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>8</caracteres>
+		 <script>Readonly</script>
+		 <maxCaracteres>8</maxCaracteres>
+	</campos>	
+	<campos nombre="dsgi_mhonorarios">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>12</maxCaracteres>
+		 <script>onBlur="ConviertePesos(this);SumaTotalGiro(this);"</script>
+		 <id>NU-S</id>
+	</campos>
+	<campos nombre="dsgi_mretencion">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>8</caracteres>
+		 <script>Readonly</script>
+		 <maxCaracteres>8</maxCaracteres>
+	</campos>						
+</parametro>
+
+
+<parametro formulario="detalle_producto_proveedor" variable="detalle">
+	<campos nombre="tgas_ccod">
+		  <tipo>SELECT</tipo>
+		  <destino>(Select tgas_ccod, ltrim(rtrim(tgas_tdesc)) as tgas_tdesc,pare_ccod from ocag_tipo_gasto) as tabla</destino> 
+		  <union>tgas_ccod</union>
+		  <salida>tgas_tdesc</salida>
+		  <deshabilitado>true</deshabilitado>
+		  <permiso>LECTURAESCRITURA</permiso>
+		  <id>TO-N</id>		  
+	</campos>
+	<campos nombre="dorc_tdesc">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<script>READONLY</script>
+		<deshabilitado>true</deshabilitado>
+		<caracteres>10</caracteres>
+		<id>TO-N</id>
+	</campos>
+	<campos nombre="ccos_ncorr">
+		  <tipo>SELECT</tipo>
+		  <destino>(select b.pers_nrut,a.ccos_ncorr,a.ccos_tcodigo as ccos_tcompuesto,ccos_tdesc  
+from ocag_centro_costo a, ocag_permisos_centro_costo b 
+where a.ccos_tcodigo=b.ccos_tcodigo ) as tabla</destino>
+		  <union>ccos_ncorr</union>
+		  <salida>ccos_tcompuesto</salida>
+		  <permiso>LECTURAESCRITURA</permiso>
+		  <deshabilitado>true</deshabilitado>
+		  <anulable>false</anulable>
+		  <id>TO-N</id>		  
+	</campos>
+	<campos nombre="dorc_ncantidad">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<deshabilitado>true</deshabilitado>
+		<caracteres>4</caracteres>
+		<maxCaracteres>4</maxCaracteres>
+		<script>onBlur="CalculaTotal(this);"</script>
+		<id>NU-N</id>
+	</campos>
+	<campos nombre="dorc_bafecta">
+		<tipo>BOLEANO</tipo>
+		<objeto>CHECKBOX</objeto>
+		<permiso>LECTURAESCRITURA</permiso>
+		<deshabilitado>TRUE</deshabilitado>
+		<caracteres>10</caracteres>
+		<maxCaracteres>10</maxCaracteres>
+		<onClick>ChequeaValor(this);</onClick>
+		<id>NU-S</id>
+	</campos>
+	<campos nombre="dorc_nprecio_unidad">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<deshabilitado>true</deshabilitado>
+		<caracteres>10</caracteres>
+		<maxCaracteres>10</maxCaracteres>
+		<script>onBlur="CalculaTotal(this);"</script>
+		<id>NU-N</id>
+	</campos>	
+	<campos nombre="dorc_ndescuento">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<deshabilitado>true</deshabilitado>
+		<caracteres>10</caracteres>
+		<maxCaracteres>10</maxCaracteres>
+		<script>onBlur="CalculaTotal(this);"</script>
+		<id>NU-N</id>
+	</campos>	
+	<campos nombre="dorc_nprecio_neto">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>10</maxCaracteres>
+		<script>onBlur="ValidaSaldo(this);"</script>
+		<id>NU-N</id>
+	</campos>
+	<campos nombre="saldo">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>10</maxCaracteres>
+	</campos>
+	<campos nombre="v_saldo">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	</campos>										
+</parametro> 
+
+
+
+<parametro formulario="reembolso_gastos" variable="datos" clave="rgas_ncorr">
+	<campos nombre="pers_nrut">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<script>onBlur="genera_digito(this.value);"</script>
+		<id>NU-N</id>
+	</campos>
+	<campos nombre="pers_xdv">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>2</caracteres>
+		<maxCaracteres>2</maxCaracteres>
+		<id>TO-N</id>
+	</campos>
+	<campos nombre="pers_tnombre">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>40</caracteres>
+		 <maxCaracteres>35</maxCaracteres>
+		 <id>TO-N</id>
+	</campos>
+	<campos nombre="v_nombre">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <id>TO-N</id>
+	</campos>		
+	<campos nombre="rgas_fpago">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>15</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+	</campos>
+	<campos nombre="rgas_mgiro">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>NU-N</id>
+	</campos>		
+	<campos nombre="mes_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>MESES</destino>
+		 <union>mes_ccod</union>
+		 <salida>mes_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>mes_ccod</orden>
+	</campos>
+	<campos nombre="anos_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>anos</destino>
+		 <union>anos_ccod</union>
+		 <salida>anos_ccod</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>anos_ccod</orden>
+	</campos>
+	<campos nombre="tmon_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_moneda</destino>
+		 <union>tmon_ccod</union>
+		 <salida>tmon_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>tmon_ccod</orden>
+	</campos>	
+</parametro>
+
+<parametro formulario="detalle_reembolso_gastos" variable="detalle" clave="drga_ncorr">
+	<campos nombre="drga_ndocto">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>10</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>NU-S</id>
+	</campos>
+	<campos nombre="drga_mdocto">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>10</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <script>OnBlur="CalculaTotal();"</script>
+		 <id>NU-S</id>
+	</campos>
+	<campos nombre="tdoc_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_documento</destino>
+		 <union>tdoc_ccod</union>
+		 <salida>tdoc_tdesc</salida>
+		<permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>tdoc_tdesc</orden>
+	</campos>	
+	<campos nombre="tgas_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_gasto</destino>
+		 <union>tgas_ccod</union>
+		 <salida>tgas_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>tgas_tdesc</orden>
+	</campos>
+	<campos nombre="drga_fdocto">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>10</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+	</campos>
+
+	<campos nombre="ccos_ncorr">
+		  <tipo>SELECT</tipo>
+		  <destino>(select b.pers_nrut,a.ccos_ncorr,a.ccos_tcodigo as ccos_tcompuesto,ccos_tdesc  
+from ocag_centro_costo a, ocag_permisos_centro_costo b 
+where a.ccos_tcodigo=b.ccos_tcodigo ) as tabla</destino>
+		  <union>ccos_ncorr</union>
+		  <salida>ccos_tcompuesto</salida>
+		  <permiso>LECTURAESCRITURA</permiso>
+		  <deshabilitado>true</deshabilitado>
+		  <anulable>false</anulable>
+		  <id>TO-N</id>		  
+	</campos>
+
+	<campos nombre="drga_mretencion">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>10</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>NU-S</id>
+	</campos>	
+	<campos nombre="drga_tdescripcion">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>40</caracteres>
+		 <maxCaracteres>100</maxCaracteres>
+	</campos>		 	
+</parametro>
+
+<parametro formulario="fondo_rendir" variable="datos" clave="fren_ncorr">
+	<campos nombre="pers_nrut">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-N</id>
+		<script>onBlur='genera_digito(this.value);CopiaNombre(this.form)'</script>
+	</campos>
+	<campos nombre="pers_xdv">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>2</caracteres>
+		<maxCaracteres>1</maxCaracteres>
+		<id>TO-N</id>
+		<script>onBlur='CopiaNombre(this.form)'</script>
+	</campos>
+	<campos nombre="pers_tnombre">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>25</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>TO-N</id>
+		 <script>onBlur='CopiaNombre(this.form)'</script>
+	</campos>
+	<campos nombre="fren_factividad">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>15</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+	</campos>
+	<campos nombre="fren_fpago">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>15</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+	</campos>	
+	<campos nombre="fren_mmonto">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>NU-N</id>
+	</campos>		
+	<campos nombre="mes_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>MESES</destino>
+		 <union>mes_ccod</union>
+		 <salida>mes_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>mes_ccod</orden>
+	</campos>
+	<campos nombre="anos_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>anos</destino>
+		 <union>anos_ccod</union>
+		 <salida>anos_ccod</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>anos_ccod</orden>
+	</campos>
+	<campos nombre="fren_tdescripcion_actividad">
+		 <tipo>TEXTAREA</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>130</caracteres>
+		 <filas>8</filas>
+	</campos>
+	<campos nombre="tmon_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_moneda</destino>
+		 <union>tmon_ccod</union>
+		 <salida>tmon_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>tmon_ccod</orden>
+	</campos>			
+	<campos nombre="ccos_ncorr">
+		  <tipo>SELECT</tipo>
+		  <destino>(select b.pers_nrut,a.ccos_ncorr,a.ccos_tcodigo as ccos_tcompuesto,ccos_tdesc  
+from ocag_centro_costo a, ocag_permisos_centro_costo b 
+where a.ccos_tcodigo=b.ccos_tcodigo ) as tabla</destino>
+		  <union>ccos_ncorr</union>
+		  <salida>ccos_tcompuesto</salida>
+		  <permiso>LECTURA</permiso>
+		  <deshabilitado>true</deshabilitado>
+		  <anulable>false</anulable>
+		  <id>TO-N</id>		  
+	</campos>			
+</parametro> 
+
+<parametro formulario="detalle_fondo_rendir" variable="detalle" clave="drga_ncorr">
+	<campos nombre="drga_ndocto">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>NU-N</id>
+	</campos>
+	<campos nombre="drga_mdocto">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>NU-N</id>
+	</campos>
+	<campos nombre="tdoc_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_documento</destino>
+		 <union>tdoc_ccod</union>
+		 <salida>tdoc_tdesc</salida>
+		 <permiso>LECTURAE</permiso>
+		 <anulable>false</anulable>
+		 <orden>tdoc_tdesc</orden>
+	</campos>	
+	<campos nombre="tgas_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_gasto</destino>
+		 <union>tgas_ccod</union>
+		 <salida>tgas_tdesc</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>tgas_tdesc</orden>
+	</campos>
+	<campos nombre="drga_fdocto">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+	</campos>
+	<campos nombre="drga_tdescripcion">
+		 <tipo>TEXTAREA</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>130</caracteres>
+		 <filas>8</filas>
+	</campos>		 	
+
+</parametro>
+
+
+<parametro formulario="solicitud_viatico" variable="datos" clave="sovi_ncorr">
+	<campos nombre="cod_pre">
+		 <tipo>SELECT</tipo>
+		 <destino>presupuesto_upa.protic.presupuesto_upa_2010</destino>
+		 <union>cod_pre</union>
+		 <salida>valor</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+	</campos>		
+	<campos nombre="sovi_tdetalle_presu">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>50</caracteres>
+		 <maxCaracteres>50</maxCaracteres>
+		 <id>TO-N</id>
+	</campos>
+	<campos nombre="pers_tnombre">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>25</caracteres>
+		<maxCaracteres>40</maxCaracteres>
+		<id>TO-N</id>
+    </campos>
+	<campos nombre="pers_nrut">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<script>onBlur="genera_digito(this.value);"</script>
+		<id>NU-N</id>
+    </campos>
+	<campos nombre="pers_xdv">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>2</caracteres>
+		<maxCaracteres>2</maxCaracteres>
+		<id>TO-N</id>
+	</campos>
+	<campos nombre="orvi_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_origen_viatico</destino>
+		 <union>orvi_ccod</union>
+		 <salida>orvi_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>orvi_tdesc</orden>
+		 <id>TO-N</id>
+	</campos>
+	<campos nombre="devi_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_destino_viatico</destino>
+		 <union>devi_ccod</union>
+		 <salida>devi_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>devi_tdesc</orden>
+		 <script>onChange='llenaDatos();'</script>
+		 <id>TO-N</id>
+	</campos>		
+	<campos nombre="sovi_fpago">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>15</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+	</campos>		
+	<campos nombre="sovi_fsalida">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>15</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <script>onChange='llenaDatos()'</script>
+		 <id>FE-N</id>
+	</campos>
+	<campos nombre="sovi_fllegada">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>15</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <script>onChange='llenaDatos()'</script>
+		 <id>FE-N</id>
+	</campos>
+	<campos nombre="sovi_hsalida">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>10</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <script>onBlur='Eshora(this)'</script>
+	</campos>
+	<campos nombre="sovi_hllegada">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>10</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <script>onBlur='Eshora(this)'</script>
+	</campos>	
+	<campos nombre="sovi_mmonto_dia">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>NU-N</id>
+		 <script>READONLY</script>
+	</campos>
+	<campos nombre="sovi_mmonto_origen">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>NU-N</id>
+		 <script>READONLY</script>
+	</campos>
+	<campos nombre="sovi_mmonto_pesos">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>NU-N</id>
+		 <script>READONLY</script>
+	</campos>		
+	<campos nombre="mes_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>MESES</destino>
+		 <union>mes_ccod</union>
+		 <salida>mes_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>mes_ccod</orden>
+	</campos>
+	<campos nombre="anos_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>anos</destino>
+		 <union>anos_ccod</union>
+		 <salida>anos_ccod</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <filtro>anos_ccod >= year(getdate())</filtro>
+	</campos>
+	<campos nombre="sovi_tmotivo">
+		 <tipo>TEXTAREA</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>100</caracteres>
+		 <filas>8</filas>
+	</campos>
+	<campos nombre="tmon_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_moneda</destino>
+		 <union>tmon_ccod</union>
+		 <salida>tmon_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>tmon_ccod</orden>
+	</campos>
+	<campos nombre="ccos_ncorr">
+		  <tipo>SELECT</tipo>
+		  <destino>(select b.pers_nrut,a.ccos_ncorr,a.ccos_tcodigo as ccos_tcompuesto,ccos_tdesc  
+from ocag_centro_costo a, ocag_permisos_centro_costo b 
+where a.ccos_tcodigo=b.ccos_tcodigo ) as tabla</destino>
+		  <union>ccos_ncorr</union>
+		  <salida>ccos_tcompuesto</salida>
+		  <permiso>LECTURA</permiso>
+		  <deshabilitado>true</deshabilitado>
+		  <anulable>false</anulable>
+		  <id>TO-N</id>		  
+	</campos>			
+</parametro> 
+
+<parametro formulario="devolucion_alumno" variable="datos" clave="dalu_ncorr">
+	<campos nombre="cod_pre">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_codigos_presupuesto</destino>
+		 <union>cod_pre</union>
+		 <salida>valor</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+	</campos>		
+	<campos nombre="pers_tnombre">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>25</caracteres>
+		<maxCaracteres>40</maxCaracteres>
+		<id>TO-N</id>
+    </campos>
+	<campos nombre="v_nombre">
+		 <tipo>INPUT</tipo>
+		 <permiso>OCULTO</permiso>
+		 <id>TO-N</id>
+	</campos>			
+	<campos nombre="pers_nrut">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<script>onBlur="genera_digito(this.value);"</script>
+		<id>NU-N</id>
+    </campos>
+	<campos nombre="pers_xdv">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>2</caracteres>
+		<maxCaracteres>1</maxCaracteres>
+		<id>TO-N</id>
+	</campos>
+	<campos nombre="pers_tnombre_alu">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>60</caracteres>
+		<maxCaracteres>60</maxCaracteres>
+		<id>TO-N</id>
+    </campos>	
+	<campos nombre="pers_nrut_alu">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<script>onChange="llenaDatos();"</script>		
+		<id>NU-N</id>
+    </campos>	
+	<campos nombre="pers_xdv_alu">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>2</caracteres>
+		<maxCaracteres>2</maxCaracteres>
+		<id>TO-N</id>
+	</campos>	
+	<campos nombre="dalu_fpago">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>15</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+	</campos>		
+	<campos nombre="dalu_mmonto_pesos">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>NU-N</id>
+	</campos>
+	<campos nombre="carrera_alu">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>60</caracteres>
+		<maxCaracteres>60</maxCaracteres>
+		<id>TO-N</id>
+    </campos>				
+	<campos nombre="mes_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>MESES</destino>
+		 <union>mes_ccod</union>
+		 <salida>mes_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>mes_ccod</orden>
+	</campos>
+	<campos nombre="anos_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>anos</destino>
+		 <union>anos_ccod</union>
+		 <salida>anos_ccod</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <filtro>anos_ccod >= year(getdate())</filtro>		 
+	</campos>
+	<campos nombre="tdev_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_devolucion</destino>
+		 <union>tdev_ccod</union>
+		 <salida>tdev_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>tdev_tdesc</orden>
+	</campos>	
+	<campos nombre="dalu_tmotivo">
+		 <tipo>TEXTAREA</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>100</caracteres>
+		 <filas>8</filas>
+	</campos>
+	<campos nombre="tmon_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_moneda</destino>
+		 <union>tmon_ccod</union>
+		 <salida>tmon_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>tmon_ccod</orden>
+	</campos>				
+	<campos nombre="ccos_ccod">
+		  <tipo>SELECT</tipo>
+		  <destino>(select CCOS_CCOD, CCOS_TCOMPUESTO, CCOS_TCODIGO
+, CCOS_TDESC from centros_costo) as tabla</destino>
+		  <union>ccos_ccod</union>
+		  <salida>ccos_tcompuesto</salida>
+		  <permiso>LECTURA</permiso>
+		  <deshabilitado>true</deshabilitado>
+		  <anulable>false</anulable>
+		  <id>TO-N</id>		  
+	</campos>	
+</parametro> 
+
+<parametro formulario="fondo_fijo" variable="datos" clave="ffij_ncorr">
+	<campos nombre="cod_pre">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_codigos_presupuesto</destino>
+		 <union>cod_pre</union>
+		 <salida>valor</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+	</campos>		
+	<campos nombre="pers_tnombre">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>25</caracteres>
+		<maxCaracteres>40</maxCaracteres>
+		<id>TO-N</id>
+		<script>onBlur='CopiaNombre(this.form)'</script>
+    </campos>
+	<campos nombre="v_nombre">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <id>TO-N</id>
+	</campos>				
+	<campos nombre="pers_nrut">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-N</id>
+		<script>onBlur="genera_digito(this.value);"</script>	
+    </campos>
+	<campos nombre="pers_xdv">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>2</caracteres>
+		<maxCaracteres>1</maxCaracteres>
+		<id>TO-N</id>
+		<script>onBlur='CopiaNombre(this.form)'</script>
+	</campos>
+	<campos nombre="pers_tnombre_alu">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>25</caracteres>
+		<maxCaracteres>40</maxCaracteres>
+		<id>TO-N</id>
+    </campos>	
+	<campos nombre="pers_nrut_alu">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-N</id>
+    </campos>	
+	<campos nombre="pers_xdv_alu">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>2</caracteres>
+		<maxCaracteres>2</maxCaracteres>
+		<id>TO-N</id>
+	</campos>	
+	<campos nombre="ffij_fpago">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>15</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+	</campos>		
+	<campos nombre="ffij_mmonto_pesos">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>NU-N</id>
+	</campos>
+	<campos nombre="ffij_tdetalle_presu">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>50</caracteres>
+		<maxCaracteres>100</maxCaracteres>
+		<id>TO-N</id>
+    </campos>				
+	<campos nombre="tmon_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_moneda</destino>
+		 <union>tmon_ccod</union>
+		 <salida>tmon_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>tmon_ccod</orden>
+	</campos>
+	<campos nombre="mes_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>MESES</destino>
+		 <union>mes_ccod</union>
+		 <salida>mes_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>mes_ccod</orden>
+	</campos>		
+</parametro> 
+
+<parametro formulario="orden_compra" variable="datos" clave="sogi_ncorr">
+	<campos nombre="pers_nrut">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<script>onBlur="genera_digito(this.value);"</script>
+		<id>NU-N</id>
+	</campos>
+	<campos nombre="pers_xdv">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>2</caracteres>
+		<maxCaracteres>2</maxCaracteres>
+		<script>READONLY</script>
+		<id>TO-N</id>
+	</campos>
+	<campos nombre="pers_tnombre">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <id>TO-N</id>
+	</campos>
+	<campos nombre="sede_ccod">
+		  <tipo>SELECT</tipo>
+		  <destino>sedes</destino> 
+		  <union>sede_ccod</union>
+		  <salida>sede_tdesc</salida>
+		  <filtro>sede_ccod not in (3,5)</filtro>
+		  <permiso>LECTURAESCRITURA</permiso>
+		  <anulable>true</anulable>
+		  <mensajeNulo>Seleccione Sede</mensajeNulo>
+		  <id>TO-N</id>		  
+	</campos>
+	<campos nombre="sogi_fecha_solicitud">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>15</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+	</campos>		
+	<campos nombre="tgas_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_gasto</destino>
+		 <union>tgas_ccod</union>
+		 <salida>tgas_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>tgas_tdesc</orden>
+	</campos>
+	<campos nombre="tmon_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_moneda</destino>
+		 <union>tmon_ccod</union>
+		 <salida>tmon_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>tmon_ccod</orden>
+	</campos>
+	<campos nombre="sogi_mgiro">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>NU-N</id>
+	</campos>
+	<campos nombre="cpag_ccod">
+		<tipo>SELECT</tipo>
+		<destino>ocag_formas_de_pago</destino>
+		<union>cpag_ccod</union>
+		<salida>cpag_tdesc</salida>
+		<orden>cpag_tdesc</orden>
+		<permiso>LECTURA</permiso>
+		<anulable>true</anulable>
+		<mensajeNulo>Seleccione Condicion de Pago</mensajeNulo>
+		<id>TO-N</id>
+	</campos>
+	<campos nombre="sogi_fecha_docto">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+	</campos>
+	<campos nombre="sogi_tobservaciones">
+		 <tipo>TEXTAREA</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>80</caracteres>
+		 <filas>4</filas>
+	</campos>
+	<campos nombre="sogi_bboleta_honorario">
+		 <tipo>BOLEANO</tipo>
+		 <objeto>RADIO</objeto>
+		 <permiso>LECTURA</permiso>
+		 <afirmacion>SI</afirmacion>
+		 <negacion>NO</negacion>
+		 <valorVerdadero>1</valorVerdadero>
+		 <valorFalso>2</valorFalso>
+		 <alineamiento>CENTER</alineamiento>
+		 <script>onClick='CambiaValor(this)'</script>
+		 <id>TO-N</id>
+	</campos>	
+</parametro> 
+
+<parametro formulario="detalle_orden_compra" variable="detalle">
+	<campos nombre="tgas_ccod">
+		  <tipo>SELECT</tipo>
+		  <destino>(Select tgas_ccod, ltrim(rtrim(tgas_tdesc)) as tgas_tdesc,pare_ccod from ocag_tipo_gasto) as tabla</destino> 
+		  <union>tgas_ccod</union>
+		  <salida>tgas_tdesc</salida>
+		  <deshabilitado>true</deshabilitado>
+		  <caracteres>40</caracteres>
+		  <permiso>LECTURA</permiso>
+		  <id>TO-N</id>	
+	</campos>
+	<campos nombre="dorc_tdesc">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<script>READONLY</script>
+		<deshabilitado>true</deshabilitado>
+		<caracteres>10</caracteres>
+		<id>TO-N</id>
+	</campos>
+	<campos nombre="ccos_ncorr">
+		  <tipo>SELECT</tipo>
+		  <destino>(select b.pers_nrut,a.ccos_ncorr,a.ccos_tcodigo as ccos_tcompuesto,ccos_tdesc  
+from ocag_centro_costo a, ocag_permisos_centro_costo b 
+where a.ccos_tcodigo=b.ccos_tcodigo ) as tabla</destino>
+		  <union>ccos_ncorr</union>
+		  <salida>ccos_tcompuesto</salida>
+		  <permiso>LECTURA</permiso>
+		  <deshabilitado>true</deshabilitado>
+		  <caracteres>10</caracteres>
+		  <anulable>false</anulable>
+		  <id>TO-N</id>		  
+	</campos>
+	<campos nombre="dorc_ncantidad">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<deshabilitado>true</deshabilitado>
+		<caracteres>4</caracteres>
+		<maxCaracteres>4</maxCaracteres>
+		<script>onBlur="CalculaTotal(this);"</script>
+		<id>NU-N</id>
+	</campos>
+	<campos nombre="dorc_bafecta">
+		<tipo>BOLEANO</tipo>
+		<objeto>CHECKBOX</objeto>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>10</maxCaracteres>
+		<id>NU-S</id>
+	</campos>
+	<campos nombre="dorc_nprecio_unidad">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<deshabilitado>true</deshabilitado>
+		<caracteres>10</caracteres>
+		<maxCaracteres>10</maxCaracteres>
+		<script>onBlur="CalculaTotal(this);"</script>
+		<id>NU-N</id>
+	</campos>	
+	<campos nombre="dorc_ndescuento">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<deshabilitado>true</deshabilitado>
+		<caracteres>10</caracteres>
+		<maxCaracteres>10</maxCaracteres>
+		<script>onBlur="CalculaTotal(this);"</script>
+		<id>NU-N</id>
+	</campos>	
+	<campos nombre="dorc_nprecio_neto">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>10</maxCaracteres>
+		<script>onBlur="ValidaSaldo(this);"</script>
+		<id>NU-N</id>
+	</campos>
+</parametro> 
+
+
+<parametro formulario="datos_solicitud" variable="datos" clave="ffij_ncorr">
+	<campos nombre="ffij_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+	</campos>
+	<campos nombre="pers_nrut">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-N</id>
+		<script>onBlur='genera_digito(this.value);CopiaNombre(this.form)'</script>
+	</campos>
+	<campos nombre="pers_xdv">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>2</caracteres>
+		<maxCaracteres>1</maxCaracteres>
+		<id>TO-N</id>
+		<script>onBlur='CopiaNombre(this.form)'</script>
+	</campos>
+	<campos nombre="pers_tnombre">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>25</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>TO-N</id>
+		 <script>onBlur='CopiaNombre(this.form)'</script>
+	</campos>
+	<campos nombre="v_nombre">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <id>TO-N</id>
+	</campos>			
+	<campos nombre="ffij_factividad">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>15</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+	</campos>
+	<campos nombre="ffij_fpago">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>15</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+	</campos>	
+	<campos nombre="ffij_mmonto_pesos">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>NU-N</id>
+	</campos>		
+	<campos nombre="mes_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>MESES</destino>
+		 <union>mes_ccod</union>
+		 <salida>mes_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>mes_ccod</orden>
+	</campos>
+	<campos nombre="anos_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>anos</destino>
+		 <union>anos_ccod</union>
+		 <salida>anos_ccod</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>anos_ccod</orden>
+	</campos>
+</parametro> 
+
+<parametro formulario="detalle_rendicion" variable="detalle" clave="rffi_ncorr">
+ 		<tablas nombre="ocag_rendicion_fondo_fijo" accion="M"/>
+		<campos nombre="rffi_fdocto">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>10</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>FE-N</id>
+		</campos>
+		<campos nombre="tdoc_ccod">
+			 <tipo>SELECT</tipo>
+			 <destino>ocag_tipo_documento</destino>
+			 <union>tdoc_ccod</union>
+			 <salida>tdoc_tdesc</salida>
+			 <permiso>LECTURA</permiso>
+			 <anulable>false</anulable>
+			 <filtro>tdoc_ccod not in (1)</filtro>
+			 <script>OnChange=Habilita(this);</script>
+			 <orden>tdoc_tdesc</orden>
+		</campos>		
+		<campos nombre="rffi_ndocto">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>10</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>NU-N</id>
+		</campos>
+	<campos nombre="pers_nrut">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-N</id>
+		<script>OnBlur=ValidaRut(this);genera_digito(this.value);CopiaNombre(this.form)</script>
+	</campos>	
+	<campos nombre="pers_xdv">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>2</caracteres>
+		<maxCaracteres>1</maxCaracteres>
+		<id>TO-N</id>
+		<script>onBlur=CopiaNombre(this.form);</script>
+	</campos>
+
+		<campos nombre="tgas_ccod">
+			 <tipo>SELECT</tipo>
+			 <destino>ocag_tipo_gasto</destino>
+			 <union>tgas_ccod</union>
+			 <salida>tgas_tdesc</salida>
+			 <permiso>LECTURA</permiso>
+			 <anulable>false</anulable>
+			 <orden>tgas_tdesc</orden>
+		</campos>		
+		<campos nombre="rffi_tdesc">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>30</caracteres>
+			 <maxCaracteres>100</maxCaracteres>
+			 <id>TO-S</id>
+		</campos>
+		<campos nombre="rffi_mretencion">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>10</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>NU-N</id>
+		</campos>
+		<campos nombre="rffi_mmonto">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>10</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <script>OnBlur=CalculaTotal(this);</script>
+			 <id>NU-N</id>
+		</campos>																
+</parametro>
+
+
+<parametro formulario="datos_solicitud_rendir" variable="datos" clave="fren_ncorr">
+	<tablas nombre="ocag_rendicion_fondos_a_rendir" accion="M"/>
+	<campos nombre="fren_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+	</campos>
+	<campos nombre="pers_nrut">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-N</id>
+		<script>onBlur='genera_digito(this.value);CopiaNombre(this.form)'</script>
+	</campos>
+	<campos nombre="pers_xdv">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>2</caracteres>
+		<maxCaracteres>1</maxCaracteres>
+		<id>TO-N</id>
+		<script>onBlur='CopiaNombre(this.form)'</script>
+	</campos>
+	<campos nombre="pers_tnombre">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>25</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>TO-N</id>
+		 <script>onBlur='CopiaNombre(this.form)'</script>
+	</campos>
+	<campos nombre="fren_factividad">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>15</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+	</campos>
+	<campos nombre="fren_fpago">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>15</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+	</campos>	
+	<campos nombre="fren_mmonto">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>NU-N</id>
+	</campos>		
+	<campos nombre="mes_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>MESES</destino>
+		 <union>mes_ccod</union>
+		 <salida>mes_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>mes_ccod</orden>
+	</campos>
+	<campos nombre="anos_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>anos</destino>
+		 <union>anos_ccod</union>
+		 <salida>anos_ccod</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>anos_ccod</orden>
+	</campos>
+	<campos nombre="ccos_ncorr">
+		  <tipo>SELECT</tipo>
+		  <destino>(select b.pers_nrut,a.ccos_ncorr,a.ccos_tcodigo as ccos_tcompuesto,ccos_tdesc  
+from ocag_centro_costo a, ocag_permisos_centro_costo b 
+where a.ccos_tcodigo=b.ccos_tcodigo ) as tabla</destino>
+		  <union>ccos_ncorr</union>
+		  <salida>ccos_tcompuesto</salida>
+		  <permiso>LECTURA</permiso>
+		  <deshabilitado>true</deshabilitado>
+		  <anulable>false</anulable>
+		  <id>TO-N</id>		  
+	</campos>
+</parametro> 
+
+<parametro formulario="detalle_rendicion_rendir" variable="detalle" clave="rfre_ncorr">
+ 		<campos nombre="tipo_doc">
+         	<tipo>HIDDEN</tipo>
+         	<permiso>OCULTO</permiso>
+      	</campos>		
+		<campos nombre="drfr_fdocto">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>10</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>FE-N</id>
+		</campos>
+		<campos nombre="tdoc_ccod">
+			 <tipo>SELECT</tipo>
+			 <destino>ocag_tipo_documento</destino>
+			 <union>tdoc_ccod</union>
+			 <salida>tdoc_tdesc</salida>
+			 <permiso>LECTURA</permiso>
+			 <anulable>false</anulable>
+			 <script>OnChange=Habilita(this);</script>
+			 <orden>tdoc_tdesc</orden>
+		</campos>		
+		<campos nombre="drfr_ndocto">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>10</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>NU-N</id>
+		</campos>
+		<campos nombre="pers_nrut">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>10</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <deshabilitado>true</deshabilitado>
+			 <id>TO-N</id>
+			 <script>OnBlur=Valida_Rut(this);</script>
+		</campos>
+		<campos nombre="tgas_ccod">
+			  <tipo>SELECT</tipo>
+			  <destino>ocag_tipo_gasto</destino>
+			  <union>tgas_ccod</union>
+			  <salida>tgas_tdesc</salida>
+			  <deshabilitado>false</deshabilitado>
+			  <permiso>LECTURA</permiso>
+			  <id>TO-N</id>		  
+		</campos>		
+		<campos nombre="drfr_tdesc">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>30</caracteres>
+			 <maxCaracteres>100</maxCaracteres>
+			 <id>TO-S</id>
+		</campos>
+		<campos nombre="drfr_mretencion">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>10</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <script>READONLY</script>
+			 <id>NU-N</id>
+		</campos>
+		<campos nombre="drfr_mdocto">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>10</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <script>OnBlur=CalculaTotal(this);</script>
+			 <id>NU-N</id>
+		</campos>	
+		<campos nombre="drfr_mtotal">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>10</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>NU-N</id>
+		</campos>															
+</parametro>
+
+<parametro formulario="devolucion_rendicion" variable="devolucion" clave="dren_ncorr">
+ 		<tablas nombre="ocag_devolucion_rendicion_fondos" accion="M"/>
+		<campos nombre="dren_ncomprobante">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>10</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <deshabilitado>false</deshabilitado> 
+			 <id>NU-N</id>
+		</campos>
+		<campos nombre="dren_fcomprobante">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>12</caracteres>
+			 <maxCaracteres>12</maxCaracteres>
+			 <deshabilitado>false</deshabilitado> 
+			 <id>FE-N</id>
+		</campos>
+		<campos nombre="pers_nrut">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>12</caracteres>
+			 <maxCaracteres>12</maxCaracteres>
+			 <deshabilitado>false</deshabilitado> 
+			 <id>TO-N</id>
+			 <script>OnBlur=Valida_Rut(this);</script>
+		</campos>
+		<campos nombre="dren_tglosa">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>50</caracteres>
+			 <maxCaracteres>100</maxCaracteres>
+			 <deshabilitado>false</deshabilitado> 
+			 <id>TO-N</id>
+		</campos>
+		<campos nombre="dren_mmonto">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <caracteres>10</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <script>READONLY</script>
+			 <deshabilitado>false</deshabilitado> 
+			 <id>NU-N</id>
+		</campos>
+</parametro>
+
+<parametro formulario="detalle_presupuesto" variable="presupuesto">
+	<campos nombre="cod_pre">
+		 <tipo>SELECT</tipo>
+		 <destino>presupuesto_upa.protic.presupuesto_upa_2010</destino>
+		 <union>cod_pre</union>
+		 <salida>valor</salida>
+		 <permiso>LECTURA</permiso>
+	</campos>
+	<campos nombre="anos_ccod">
+		  <tipo>SELECT</tipo>
+		  <destino>anos</destino> 
+		  <union>anos_ccod</union>
+		  <salida>anos_ccod</salida>
+		  <filtro>anos_ccod between year(getdate())-1 and year(getdate())+1</filtro>
+		  <permiso>LECTURA</permiso>  
+	</campos>
+	<campos nombre="mes_ccod">
+		  <tipo>SELECT</tipo>
+		  <destino>meses</destino> 
+		  <union>mes_ccod</union>
+		  <salida>mes_tdesc</salida>
+		  <permiso>LECTURA</permiso>  
+	</campos>
+	<campos nombre="psol_mpresupuesto">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	</campos>
+</parametro> 
+
+	
+</Parametros>

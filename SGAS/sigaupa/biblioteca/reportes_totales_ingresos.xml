@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="busqueda" variable="busqueda">
+   <campos nombre="fecha_inicio">
+     <tipo>INPUT</tipo>
+     <permiso>LECTURAESCRITURA</permiso>
+     <caracteres>12</caracteres>
+     <maxCaracteres>10</maxCaracteres>
+	 <id>FE-N</id>
+    </campos>
+	<campos nombre="fecha_termino">
+     <tipo>INPUT</tipo>
+     <permiso>LECTURAESCRITURA</permiso>
+     <caracteres>12</caracteres>
+     <maxCaracteres>10</maxCaracteres>
+	 <id>FE-N</id>
+    </campos>
+   <campos nombre="sede">
+      <tipo>SELECT</tipo>
+	  <destino>sedes</destino> 
+	  <union>sede_ccod</union>
+	  <salida>sede_tdesc</salida>
+	  <orden>a.sede_ccod</orden>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Sede</mensajeNulo>
+	 </campos>
+	
+	  <campos nombre="morosidad">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="ano_c">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>4</caracteres>
+         <maxCaracteres>4</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+  </parametro>
+  
+  
+ <parametro formulario="btn_flujo">
+  <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	   <funcionValidacion>Validar();</funcionValidacion>
+	</botones> 
+  <botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>AGREGAR</accion>
+	  <posicionX>200</posicionX>
+	  <posicionY>200</posicionY>
+	  <ancho>418</ancho>
+	  <alto>148</alto>
+	  <url>Envios_Notaria_Nuevo_Pagare.asp?folio_envio=NUEVO</url>
+	 </botones>
+	 
+	<botones nombre="enviar_folio">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Enviar</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+		 <mensajeConfirmacion>¿Esta seguro que desea enviar el Folio?</mensajeConfirmacion>
+        
+   </botones>
+   
+    <botones nombre="imprimir_pdf_flujo"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Generar Reporte</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar_pdf();</funcion>
+	  </botones> 
+   
+   
+  <botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>ELIMINAR</accion>
+	  <formulario>edicion</formulario>
+	  
+	</botones>
+  <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones> 
+	<botones nombre="guardar_nuevo_envio"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>Proc_Envios_Notaria_Pagare.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>
+	 <botones nombre="cancelar"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+	 <botones nombre="guardar_nuevo_envio"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>Proc_Envios_Notaria_Nuevo.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>
+ </parametro>
+ 
+<parametro
+         colorSeleccionado="#CCCCCC" colorResaltado="#999999" 
+	     paginaEdicion="edicion_envios_pagare.asp?folio_envio=%enpa_ncorr%&amp;empresa_envio=%empresa_envio%&amp;tipo_empresa=%tipo_empresa%&amp;fecha=%fecha%" formulario="f_listado"  nroRegistros="15" 
+		 eliminar="TRUE"  clave="enpa_ncorr" maxLista="10" 
+		 mensajeError="No se encontraron envios" 
+         seleccionarTodo="TRUE"  anchoTabla="100%" editar="TRUE"  nuevaVentana="FALSE" variable="envios"  >
+	 <tablas nombre="envios_pagares" accion="B"/>
+	  <campos nombre="num_folio">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="tipo_empresa">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+       <campos nombre="folio">
+	    <descripcion>Folio</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<ancho>50</ancho>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+     
+     <campos nombre="estado_envio">
+	    <descripcion>Estado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="empresa_envio">
+	    <descripcion>Empresa</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="fecha">
+	    <descripcion>Fecha</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="cant_doc">
+	    <descripcion>Nº Documentos</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="retenidos">
+	    <descripcion>Retenidos</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="saldo">
+	    <descripcion>Saldo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+  </parametro> 
+  
+  <parametro formulario="agrega_envio" variable="envio"> 
+   <tablas nombre="envios" accion="M"/>
+   <campos nombre="envi_ncorr">
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>
+   </campos>
+   <campos nombre="c_envi_ncorr">
+      <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="envi_fenvio">
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>
+	  <caracteres>12</caracteres>
+	  <maxCaracteres>10</maxCaracteres>
+   </campos>
+   <campos nombre="eenv_ccod">
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>
+	  <caracteres>12</caracteres>
+	  <maxCaracteres>10</maxCaracteres>
+   </campos>
+   <campos nombre="tenv_ccod">
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>
+	  <caracteres>12</caracteres>
+	  <maxCaracteres>10</maxCaracteres>
+   </campos>
+   <campos nombre="plaz_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>plazas</destino> 
+	  <union>plaz_ccod</union>
+	  <salida>plaz_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Plaza</mensajeNulo>
+	  <id>TO-N</id>
+  </campos>
+  <campos nombre="inen_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>instituciones_envio</destino> 
+	  <union>inen_ccod</union>
+	  <salida>inen_tdesc</salida>
+	  <filtro>tine_ccod=3 OR tine_ccod=4</filtro>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Empresa</mensajeNulo>
+	  <id>TO-N</id>
+	</campos>
+
+  
+  
+  </parametro> 
+  
+   <parametro formulario="f_enviar" clave="enpa_ncorr"  variable="envios" >
+    <tablas nombre="envios_pagares" accion="M"/>
+	
+</parametro>
+
+ <parametro formulario="f_nuevo" variable="envio">
+   <tablas nombre="envios_pagares" accion="M"/>
+   <campos nombre="enpa_ncorr">
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>
+   </campos>
+   <campos nombre="enpa_fenvio">
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>
+	  <caracteres>12</caracteres>
+	  <maxCaracteres>10</maxCaracteres>
+   </campos>
+   <campos nombre="eenv_ccod">
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>
+	  <caracteres>12</caracteres>
+	  <maxCaracteres>10</maxCaracteres>
+   </campos>
+  
+  <campos nombre="inen_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>instituciones_envio</destino> 
+	  <union>inen_ccod</union>
+	  <salida>inen_tdesc</salida>
+	  <filtro>tine_ccod=2</filtro>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Notaria</mensajeNulo>
+	  <id>TO-N</id>
+	</campos>
+  </parametro>
+
+</Parametros>
+

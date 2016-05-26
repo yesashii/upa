@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="formu_encuestas" anchoTabla="100%" clave = "rede_ncorr"
+   colorResaltado="#CCCCCC"  mensajeError="El docente buscado no tiene alumnos nuevos que hayan realizado evaluación de desarrollo"
+   colorSeleccionado="#CCCCCC" eliminar="FALSE" seleccionarTodo="FALSE"
+    editar="FALSE" 	paginaEdicion="puntaje_profesor.asp?secc_ccod=%secc_ccod%&amp;pers_ncorr=%pers_ncorr%" nuevaVentana="FALSE" variable="carga">
+     <tablas nombre="respuestas_encuesta_desarrollo" accion="M"/>
+	 <campos nombre="pers_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="rede_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="carr_ccod">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="carrera">
+	    <descripcion>Carrera</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="argumentacion">
+	    <descripcion>Argumentación</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	  <campos nombre="pede_ccod">
+         <tipo>SELECT</tipo>
+		 <descripcion>Puntaje</descripcion>
+         <destino>puntaje_evaluacion_desarrollo</destino>
+         <union>pede_ccod</union>
+         <salida>pede_ccod</salida>
+         <orden>pede_ccod DESC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <id>TO-N</id>
+      </campos>
+   </parametro> 
+  <parametro formulario="botonera">
+   	 <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	   <funcionValidacion>Validar();</funcionValidacion>
+	</botones>
+   	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>	 
+	</botones>	
+	<botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>completar_evaluacion_desarrollo_proc.asp</url>
+      </botones>
+   </parametro>
+<parametro formulario="busqueda_usuarios" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+</parametro>
+</Parametros>

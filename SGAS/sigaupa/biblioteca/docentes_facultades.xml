@@ -1,0 +1,78 @@
+<Parametros>
+  <parametro formulario="botonera">
+     <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+	  <botones nombre="buscar"> 
+        <tipoTexto>BUSCAR</tipoTexto>
+	    <accion>BUSCAR</accion>
+	    <formulario>buscador</formulario>
+		<soloUnClick>TRUE</soloUnClick>
+	 </botones>
+	 <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones>
+  </parametro>
+ 
+ <parametro formulario="f_busqueda" variable="busqueda">
+   <campos nombre="facu_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>facultades</destino> 
+	  <union>facu_ccod</union>
+	  <salida>facu_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <orden>facu_tdesc</orden>
+	  <mensajeNulo>Seleccione Facultad</mensajeNulo>
+	  <id>TO-N</id>
+   </campos> 
+  </parametro>
+  
+   <parametro  paginaEdicion="" formulario="f_docentes"  nroRegistros="25" eliminar="FALSE" clave="plan_ccod" maxLista="25"
+	  mensajeError="No se encontraron docentes para la Facultad" seleccionarTodo="TRUE"  anchoTabla="100%" editar="FALSE"  nuevaVentana="FALSE" 
+	  variable="planes" >
+     <campos nombre="carrera">
+	    <descripcion>Carrera</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+	 </campos>
+	 <campos nombre="Doctor">
+	    <descripcion>Doctor</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>		
+	 </campos>
+	 <campos nombre="Magister">
+	    <descripcion>Magister</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>		
+	 </campos>
+	 <campos nombre="Licenciado">
+	    <descripcion>Licenciado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>	
+	 <campos nombre="Sin_grado">
+	    <descripcion>Sin Grados</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	  <campos nombre="Totales">
+	    <descripcion>Totales</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>	 
+   </parametro>
+   
+   
+   
+ </Parametros>

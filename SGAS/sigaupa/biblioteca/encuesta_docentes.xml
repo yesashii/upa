@@ -1,0 +1,39 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="cancelar">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Salir</texto>
+         <accion>CERRAR</accion>
+      </botones>
+      <botones nombre="guardar_encuesta">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <funcionValidacion>Validar();</funcionValidacion>
+         <url>encuesta_docentes_proc.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+	  <botones nombre="SALIR">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>	
+   </parametro>
+   <parametro formulario="guardar_encuesta" variable="e">
+      <tablas nombre="encuestas_docentes" accion="M"/>
+   </parametro>
+   
+   <parametro formulario="f_busqueda" variable="e">
+   <campos nombre="carr_ccod">
+      <tipo>SELECT</tipo>
+	  <union>carr_ccod</union>
+	  <salida>CARR_TDESC</salida>
+      <orden>CARR_TDESC asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione una Carrera</mensajeNulo>
+	  <mensajeVacio>Seleccione una Carrera</mensajeVacio>
+	  <script>onchange=cargar(this.value);</script>
+	  <id>TO-N</id>
+   </campos>
+  </parametro>
+</Parametros>

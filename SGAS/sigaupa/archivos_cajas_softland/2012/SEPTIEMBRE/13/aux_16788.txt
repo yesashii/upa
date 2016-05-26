@@ -1,0 +1,4 @@
+70200800,  CORPORACION DE CAPACITACION DE LA CONSTRUCCION,,70200800-K,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+70417500,  CORP. CAPACITACION Y EMPLEO SOFOFA,,70417500-0,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+77431280,  UNIVERSAL MCCANN SERVICIOS DE MEDIOS LTDA.,,77431280-3,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+99289000,METLIFE CHILE SEGUROS DE VIDA S.A. METLIFE CHILE SEGUROS DE VIDA S.A.,,99289000-2,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

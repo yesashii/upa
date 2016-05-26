@@ -1,0 +1,6 @@
+17119560,JEREZ CACERES VARINEA PAZ,,17119560-8,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17682577,ARAOS GARATE JUAN PABLO,,17682577-4,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17682632,HERNANDEZ FARIAS CAROLINA ANDREA,,17682632-0,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17851295,ATTONI LUENGO GAMAL ERICK,,17851295-1,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18161933,SEPULVEDA JERIA YESENIA DEL PILAR,,18161933-3,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18447183,QUIROZ VELASQUEZ JOCELYN FERNANDA,,18447183-3,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

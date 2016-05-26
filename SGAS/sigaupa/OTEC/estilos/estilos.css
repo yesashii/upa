@@ -1,0 +1,78 @@
+body{
+	background-color:#EAEAEA;
+	scrollbar-3dlight-color:;
+    scrollbar-arrow-color:;
+    scrollbar-base-color:#e1eae0;
+    scrollbar-darkshadow-color:;
+    scrollbar-face-color:;
+    scrollbar-highlight-color:#FFFFFF;
+    scrollbar-shadow-color:
+}
+td {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px}
+input {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px}
+select {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; background-color: #FFFFFF}
+textarea {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px}
+
+a {
+	color: #000000;
+	text-decoration: none;
+	font-weight:bold;	
+}
+
+a:hover {
+	color: #63ABCC;
+}
+
+
+.modulos:link { font-family: Verdana, Arial, Helvetica, sans-serif;
+            	font-style: normal;
+				text-decoration: none;
+				font-size: 9px;
+			    color: #FFFFFF;
+				font-weight:normal;
+}
+.modulos:visited {
+				font-size: 9px;				
+  				text-decoration: none;
+				color: #FFFFFF;
+				font-weight:normal;
+}
+
+.modulos:active {
+				font-size: 9px;			
+  				color: #FFFFFF;
+				font-weight:normal;
+}
+
+.modulos:hover {
+				text-decoration: none;
+				color: #3333FF;
+				font-weight:normal;
+}
+
+.funciones:link { font-family: Verdana, Arial, Helvetica, sans-serif;
+            	font-style: normal;
+				text-decoration: none;
+				font-size: 9px;
+			    color: #353535;
+				font-weight:normal;
+}
+
+.funciones:visited {
+				font-size: 9px;				
+  				text-decoration: none;
+				color: #353535;
+				font-weight:normal;
+}
+
+.funciones:active {
+				font-size: 9px;			
+  				color: #353535;
+				font-weight:normal;
+}
+
+.funciones:hover {
+				text-decoration: none;
+				color: #3333FF;
+				font-weight:normal;
+}

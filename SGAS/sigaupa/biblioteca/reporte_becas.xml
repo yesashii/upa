@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="botonera">
+	   	<botones nombre="salir"> 
+		  	<tipoTexto>SALIR</tipoTexto>
+		  	<accion>NAVEGAR</accion>
+		  	<url>../lanzadera/lanzadera.asp</url>
+		</botones>  
+	   	<botones nombre="buscar"> 
+		  	<tipoTexto>BUSCAR</tipoTexto>
+		  	<accion>BUSCAR</accion>
+		  	<formulario>buscador</formulario>
+		  	<soloUnClick>TRUE</soloUnClick>	  
+		</botones>
+		<botones nombre="excel">
+			 <tipoTexto>DEFINIR</tipoTexto>
+			 <texto>Excel</texto>
+			 <accion>BUSCAR</accion>
+			 <url>reporte_becas_excel.asp</url>
+			 <formulario>buscador</formulario>
+        </botones>
+	  
+   </parametro>   
+  
+  <parametro formulario="busqueda_becas" variable="busqueda">
+   <campos nombre="tdet_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>tipos_detalle</destino> 
+	  <union>tdet_ccod</union>
+	  <salida>tdet_tdesc</salida>
+	  <filtro>tben_ccod in (2,3) and tdet_bvigente not in ('A') </filtro>
+	  <orden>tdet_tdesc</orden>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Todos los Beneficios</mensajeNulo>
+	  
+	 </campos>
+	<campos nombre="carr_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>Carreras</destino> 
+	  <union>carr_ccod</union>
+	  <salida>carr_tdesc</salida>
+	  <orden>carr_tdesc</orden>
+	  <!--<filtro>tben_ccod in (2,3) and tdet_bvigente='S'</filtro>-->
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Todas las Carreras</mensajeNulo>
+	 </campos>
+  </parametro>
+  
+   
+  <parametro formulario="f_becas" variable="becas" anchoTabla="100%"
+  eliminar="FALSE" nroRegistros="10" maxLista="10"  
+   mensajeError="No se encontraron alumnos para los criterios selecionados...">
+   <campos nombre="d_matricula">
+      <descripcion>Monto Matricula</descripcion>
+	  <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+	  <formato>MONEDA</formato>
+   </campos>
+   <campos nombre="d_colegiatura">
+      <descripcion>Monto Arancel</descripcion>
+	  <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+	  <formato>MONEDA</formato>
+   </campos>
+   <campos nombre="carrera">
+      <descripcion>Carrera</descripcion>
+	  <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="fecha_asignacion">
+   <descripcion>Fecha Asignacion</descripcion>
+     <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="beneficio">
+   <descripcion>Beneficio</descripcion>
+      <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="nombre_alumno">
+   		<descripcion>Alumno</descripcion>
+      	<tipo>INPUT</tipo>
+	  	<permiso>LECTURA</permiso>
+   </campos>
+  	<campos nombre="rut_alumno">
+   		<descripcion>Rut</descripcion>
+      	<tipo>INPUT</tipo>
+	  	<permiso>LECTURA</permiso>	  
+   </campos>
+  	<campos nombre="direccion_alumno">
+  		<descripcion>Direccion</descripcion>
+      	<tipo>INPUT</tipo>
+	  	<permiso>Oculto</permiso>
+	</campos>
+  </parametro>
+    
+  <parametro formulario="f_listado_alumnos" variable="cursos" anchoTabla="100%"
+   mensajeError="No se encontraron alumnos para los criterios selecionados...">
+  <campos nombre="c_ding_ndocto">
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>	  
+   </campos>
+   <campos nombre="comprobante">
+      <descripcion>Nº Comprobante</descripcion>
+	  <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="fecha_inscrito">
+   <descripcion>Fecha Inscripcion</descripcion>
+     <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="tdet_tdesc">
+   <descripcion>Curso</descripcion>
+      <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="nombre_persona">
+   		<descripcion>Persona</descripcion>
+      	<tipo>INPUT</tipo>
+	  	<permiso>OCULTO</permiso>
+   </campos>
+  	<campos nombre="rut">
+   		<descripcion>Rut</descripcion>
+      	<tipo>INPUT</tipo>
+	  	<permiso>OCULTO</permiso>	  
+   </campos>
+   <campos nombre="telefono">
+   		<descripcion>Telefono</descripcion>
+     	<tipo>INPUT</tipo>
+	  	<permiso>LECTURA</permiso>
+  	</campos>
+  	<campos nombre="ano_carrera">
+  		<descripcion>Ano carrera</descripcion>
+      	<tipo>INPUT</tipo>
+	  	<permiso>LECTURA</permiso>
+	</campos>
+  </parametro>
+
+
+
+ </Parametros>

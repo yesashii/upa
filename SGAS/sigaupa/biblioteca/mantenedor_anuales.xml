@@ -1,0 +1,4434 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+	<parametro formulario="botonera">
+		<botones nombre="lanzadera"> 
+			<tipoTexto>SALIR</tipoTexto>
+			<accion>NAVEGAR</accion>
+			<url>../lanzadera/lanzadera.asp</url>
+		</botones>
+		<botones nombre="buscar">
+			<tipoTexto>BUSCAR</tipoTexto>
+			<accion>BUSCAR</accion>
+			<formulario>buscador</formulario>
+		</botones>
+		<botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>selector.asp</url>
+      </botones>
+		<botones nombre="imprimir">
+			<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Imprimir</texto>
+			<accion>JAVASCRIPT</accion>
+			<funcion>imprimir()</funcion>
+		</botones>
+		<botones nombre="ingresar">
+			<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Ingresar</texto>
+			<accion>GUARDAR</accion>
+			<formulario>edicion</formulario>
+			<url>direccionador.asp</url>
+		</botones>
+		<botones nombre="guardar"> 
+		  <tipoTexto>GUARDAR</tipoTexto>
+		  <accion>GUARDAR</accion>
+		  <formulario>edicion</formulario>
+		  </botones>
+	</parametro>
+
+<parametro formulario="buscador" variable="bu">
+		
+		<campos nombre="anos_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Año</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>anos</destino>
+		 <filtro>anos_ccod > 2008</filtro>
+         <union>anos_ccod</union>
+         <salida>anos_ccod</salida>
+		 <orden>anos_ccod asc</orden>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="sede_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione una Sede</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>sedes</destino>
+		 <filtro>sede_ccod in (1,2,4,8)</filtro>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+		 <orden>sede_tdesc asc</orden>
+		 <id>NU-N</id>
+      </campos>
+
+</parametro>
+
+<parametro formulario="f_mantenedor_1_1_a" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_1_1_a" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_1_1_a" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+		
+	  <campos nombre="estimativo_indi_1_1_a_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_1_1_a_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_1_1_a_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_1_1_a_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_1_1_a_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_1_1_b" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_1_1_b" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_1_1_b" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+		
+	  <campos nombre="estimativo_indi_1_1_b_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_1_1_b_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_1_1_b_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_1_1_b_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_1_1_b_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	
+	<parametro formulario="f_mantenedor_1_3_a" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_1_3_a" >
+		<descripcion>Dato Base</descripcion>
+		<tipo>SELECT</tipo>
+        <permiso>LECTURAESCRITURA</permiso>
+		<mensajeVacio>''</mensajeVacio>
+		<destino>(select cod_res,tdet_res from (select '1'as cod_res , 'Si'as tdet_res union select '2'as cod_res , 'No'as tdet_res)a)b</destino>
+		<union>cod_res</union>
+		<salida>tdet_res</salida>
+		<id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_1_3_a" >
+	    <descripcion>Dato Real</descripcion>
+		<tipo>SELECT</tipo>
+        <permiso>LECTURAESCRITURA</permiso>
+		<mensajeVacio>''</mensajeVacio>
+		<destino>(select cod_res,tdet_res from (select '1'as cod_res , 'Si'as tdet_res union select '2'as cod_res , 'No'as tdet_res)a)b</destino>
+		<union>cod_res</union>
+		<salida>tdet_res</salida>
+		<id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_1_3_a_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+		<tipo>SELECT</tipo>
+        <permiso>LECTURAESCRITURA</permiso>
+		<mensajeVacio>''</mensajeVacio>
+		<destino>(select cod_res,tdet_res from (select '1'as cod_res , 'Si'as tdet_res union select '2'as cod_res , 'No'as tdet_res)a)b</destino>
+		<union>cod_res</union>
+		<salida>tdet_res</salida>
+		<id>NU-N</id>
+      </campos>	
+	  <campos nombre="estimativo_indi_1_3_a_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+		<tipo>SELECT</tipo>
+        <permiso>LECTURAESCRITURA</permiso>
+		<mensajeVacio>''</mensajeVacio>
+		<destino>(select cod_res,tdet_res from (select '1'as cod_res , 'Si'as tdet_res union select '2'as cod_res , 'No'as tdet_res)a)b</destino>
+		<union>cod_res</union>
+		<salida>tdet_res</salida>
+		<id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_1_3_a_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+		<tipo>SELECT</tipo>
+        <permiso>LECTURAESCRITURA</permiso>
+		<mensajeVacio>''</mensajeVacio>
+		<destino>(select cod_res,tdet_res from (select '1'as cod_res , 'Si'as tdet_res union select '2'as cod_res , 'No'as tdet_res)a)b</destino>
+		<union>cod_res</union>
+		<salida>tdet_res</salida>
+		<id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_1_3_a_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+		<tipo>SELECT</tipo>
+        <permiso>LECTURAESCRITURA</permiso>
+		<mensajeVacio>''</mensajeVacio>
+		<destino>(select cod_res,tdet_res from (select '1'as cod_res , 'Si'as tdet_res union select '2'as cod_res , 'No'as tdet_res)a)b</destino>
+		<union>cod_res</union>
+		<salida>tdet_res</salida>
+		<id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_1_3_a_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+		<tipo>SELECT</tipo>
+        <permiso>LECTURAESCRITURA</permiso>
+		<mensajeVacio>''</mensajeVacio>
+		<destino>(select cod_res,tdet_res from (select '1'as cod_res , 'Si'as tdet_res union select '2'as cod_res , 'No'as tdet_res)a)b</destino>
+		<union>cod_res</union>
+		<salida>tdet_res</salida>
+		<id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="insert_indi_1_3_a" variable="ma">
+	
+	   <campos nombre="real_indi_1_3_a">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="base_indi_1_3_a">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="estimativo_indi_1_3_a_2009" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="estimativo_indi_1_3_a_2010" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	 <campos nombre="estimativo_indi_1_3_a_2011" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="estimativo_indi_1_3_a_2012" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	     <campos nombre="estimativo_indi_1_3_a_2013" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	</parametro>
+<parametro formulario="f_mantenedor_1_3_b" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_1_3_b" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_1_3_b" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+		
+	  <campos nombre="estimativo_indi_1_3_b_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_1_3_b_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_1_3_b_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_1_3_b_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_1_3_b_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="insert_indi_1_3_b" variable="ma">
+	
+	   <campos nombre="real_indi_1_3_b">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="base_indi_1_3_b">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="estimativo_indi_1_3_b_2009" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="estimativo_indi_1_3_b_2010" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	 <campos nombre="estimativo_indi_1_3_b_2011" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="estimativo_indi_1_3_b_2012" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	     <campos nombre="estimativo_indi_1_3_b_2013" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	</parametro>
+	
+		
+	<parametro formulario="f_mantenedor_1_4_a" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_1_4_a" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_1_4_a" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+		
+      <campos nombre="estimativo_indi_1_4_a_2009" >
+	     <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		 <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>	 
+	  <campos nombre="estimativo_indi_1_4_a_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_1_4_a_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_1_4_a_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_1_4_a_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_1_6_a" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_1_6_a" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_1_6_a" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		 <alineamiento>CENTER</alineamiento>
+		 <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+		
+	  <campos nombre="estimativo_indi_1_6_a_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_1_6_a_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_1_6_a_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_1_6_a_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_1_6_a_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_1_6_b" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_1_6_b" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_1_6_b" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		 <alineamiento>CENTER</alineamiento>
+		 <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+		
+	  <campos nombre="estimativo_indi_1_6_b_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_1_6_b_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_1_6_b_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_1_6_b_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_1_6_b_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_1_8_a" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_1_8_a" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_1_8_a" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+		
+	  <campos nombre="estimativo_indi_1_8_a_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_1_8_a_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_1_8_a_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_1_8_a_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_1_8_a_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+
+<parametro formulario="f_mantenedor_1_8_c" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_1_8_c" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_1_8_c" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+		
+	  <campos nombre="estimativo_indi_1_8_c_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_1_8_c_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_1_8_c_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_1_8_c_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_1_8_c_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_1_8_d" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_1_8_d" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_1_8_d" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+		
+	  <campos nombre="estimativo_indi_1_8_d_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_1_8_d_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_1_8_d_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_1_8_d_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_1_8_d_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+
+<parametro formulario="f_mantenedor_1_8_e" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_1_8_e" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_1_8_e" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+		
+	  <campos nombre="estimativo_indi_1_8_e_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_1_8_e_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_1_8_e_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_1_8_e_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_1_8_e_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_1_8_f" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_1_8_f" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_1_8_f" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+		
+	  <campos nombre="estimativo_indi_1_8_f_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_1_8_f_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_1_8_f_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_1_8_f_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_1_8_f_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_2_1_c" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_2_1_c" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_2_1_c" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+		
+	  <campos nombre="estimativo_indi_2_1_c_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_2_1_c_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_1_c_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_1_c_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_2_1_c_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+		<parametro formulario="f_mantenedor_2_1_d" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_2_1_d" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_2_1_d" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+		
+	  <campos nombre="estimativo_indi_2_1_d_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_2_1_d_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_1_d_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_1_d_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_2_1_d_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	<parametro formulario="f_mantenedor_2_1_e" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_2_1_e" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_2_1_e" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+		
+	  <campos nombre="estimativo_indi_2_1_e_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_2_1_e_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_1_e_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_1_e_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_2_1_e_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_2_1_f" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_2_1_f" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_2_1_f" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+		
+	  <campos nombre="estimativo_indi_2_1_f_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_2_1_f_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_1_f_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_1_f_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_2_1_f_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+		<parametro formulario="f_mantenedor_2_1_g" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_2_1_g" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_2_1_g" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+		
+	  <campos nombre="estimativo_indi_2_1_g_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_2_1_g_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_1_g_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_1_g_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_2_1_g_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="insert_indi_1_3_a" variable="ma">
+	
+	   <campos nombre="real_indi_1_3_a">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="base_indi_1_3_a">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="estimativo_indi_1_3_a_2010" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	 <campos nombre="estimativo_indi_1_3_a_2011" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	   <campos nombre="estimativo_indi_1_3_a_2012" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	     <campos nombre="estimativo_indi_1_3_a_2013" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	</parametro>
+<parametro formulario="f_mantenedor_2_3_c" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_2_3_c" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_2_3_c" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+		
+	  <campos nombre="estimativo_indi_2_3_c_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_2_3_c_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_3_c_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_3_c_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_2_3_c_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_2_3_d" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_2_3_d" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_2_3_d" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+		
+	  <campos nombre="estimativo_indi_2_3_d_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_2_3_d_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_3_d_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_3_d_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_2_3_d_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_2_3_e" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_2_3_e" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_2_3_e" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+		
+      <campos nombre="estimativo_indi_2_3_e_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_2_3_e_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_3_e_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_3_e_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_2_3_e_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_2_4_a" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_2_4_a" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_2_4_a" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+		
+	  <campos nombre="estimativo_indi_2_4_a_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_2_4_a_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_4_a_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_4_a_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_2_4_a_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_2_4_b" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_2_4_b" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_2_4_b" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+		
+	  <campos nombre="estimativo_indi_2_4_b_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_2_4_b_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_4_b_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_4_b_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_2_4_b_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_2_4_c" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_2_4_c" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_2_4_c" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+		
+	  <campos nombre="estimativo_indi_2_4_c_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_2_4_c_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_4_c_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_4_c_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_2_4_c_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_2_4_d" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_2_4_d" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_2_4_d" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+		
+	  <campos nombre="estimativo_indi_2_4_d_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_2_4_d_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_4_d_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_4_d_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_2_4_d_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_2_4_e" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_2_4_e" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_2_4_e" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+		
+	  <campos nombre="estimativo_indi_2_4_e_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_2_4_e_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_4_e_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_4_e_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_2_4_e_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_2_4_f" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_2_4_f" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_2_4_f" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+		
+	  <campos nombre="estimativo_indi_2_4_f_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_2_4_f_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_4_f_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_2_4_f_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_2_4_f_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_3_1_b" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_3_1_b" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>20</caracteres>
+         <maxCaracteres>19</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>TO-N</id>
+      </campos>
+	   <campos nombre="real_indi_3_1_b" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>19</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>TO-N</id>
+      </campos>
+	
+	   <campos nombre="estimativo_indi_3_1_b_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>20</caracteres>
+         <maxCaracteres>19</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>TO-N</id>
+      </campos>	
+	  <campos nombre="estimativo_indi_3_1_b_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>19</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>TO-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_3_1_b_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>20</caracteres>
+         <maxCaracteres>19</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>TO-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_3_1_b_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>20</caracteres>
+         <maxCaracteres>19</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>TO-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_3_1_b_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>19</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>TO-N</id>
+      </campos>
+	</parametro>
+	
+		<parametro formulario="f_mantenedor_3_2_a" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_3_2_a" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_3_2_a" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	<campos nombre="estimativo_indi_3_2_a_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>	
+	  <campos nombre="estimativo_indi_3_2_a_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_3_2_a_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_3_2_a_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_3_2_a_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_3_2_b" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_3_2_b" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_3_2_b" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	<campos nombre="estimativo_indi_3_2_b_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>	
+	  <campos nombre="estimativo_indi_3_2_b_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_3_2_b_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_3_2_b_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_3_2_b_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_3_2_c" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_3_2_c" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_3_2_c" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	<campos nombre="estimativo_indi_3_2_c_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>	
+	  <campos nombre="estimativo_indi_3_2_c_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_3_2_c_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_3_2_c_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_3_2_c_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_3_2_d" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_3_2_d" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_3_2_d" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	<campos nombre="estimativo_indi_3_2_d_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>	
+	  <campos nombre="estimativo_indi_3_2_d_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_3_2_d_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_3_2_d_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_3_2_d_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_3_2_e" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_3_2_e" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_3_2_e" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+		<campos nombre="estimativo_indi_3_2_e_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_3_2_e_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_3_2_e_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_3_2_e_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_3_2_e_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_3_3_a" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_3_3_a" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_3_3_a" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+		<campos nombre="estimativo_indi_3_3_a_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_3_3_a_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_3_3_a_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_3_3_a_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_3_3_a_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_3_3_b" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_3_3_b" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_3_3_b" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+		<campos nombre="estimativo_indi_3_3_b_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_3_3_b_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_3_3_b_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_3_3_b_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_3_3_b_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_3_3_c" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_3_3_c" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_3_3_c" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	<campos nombre="estimativo_indi_3_3_c_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>	
+	  <campos nombre="estimativo_indi_3_3_c_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_3_3_c_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_3_3_c_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_3_3_c_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_3_3_d" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_3_3_d" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_3_3_d" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+		<campos nombre="estimativo_indi_3_3_d_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_3_3_d_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_3_3_d_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_3_3_d_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_3_3_d_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+		<parametro formulario="f_mantenedor_3_4_c" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_3_4_c" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_3_4_c" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+		<campos nombre="estimativo_indi_3_4_c_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_3_4_c_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_3_4_c_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_3_4_c_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_3_4_c_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_4_1_a" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_4_1_a" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_4_1_a" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+		<campos nombre="estimativo_indi_4_1_a_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_4_1_a_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_1_a_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_1_a_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_4_1_a_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_4_1_b" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_4_1_b" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_4_1_b" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	 <campos nombre="estimativo_indi_4_1_b_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>	
+	  <campos nombre="estimativo_indi_4_1_b_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_1_b_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_1_b_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_4_1_b_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	
+	<parametro formulario="f_mantenedor_4_2_a" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_4_2_a" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_4_2_a" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	<campos nombre="estimativo_indi_4_2_a_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>	
+	  <campos nombre="estimativo_indi_4_2_a_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_2_a_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_2_a_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_4_2_a_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_4_2_b" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_4_2_b" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_4_2_b" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	 <campos nombre="estimativo_indi_4_2_b_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>	
+	  <campos nombre="estimativo_indi_4_2_b_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_2_b_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_2_b_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_4_2_b_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_4_2_c" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_4_2_c" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_4_2_c" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+		<campos nombre="estimativo_indi_4_2_c_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_4_2_c_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_2_c_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_2_c_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_4_2_c_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_4_2_d" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_4_2_d" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_4_2_d" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	<campos nombre="estimativo_indi_4_2_d_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>	
+	  <campos nombre="estimativo_indi_4_2_d_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_2_d_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_2_d_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_4_2_d_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_4_2_e" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_4_2_e" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_4_2_e" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	<campos nombre="estimativo_indi_4_2_e_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>	
+	  <campos nombre="estimativo_indi_4_2_e_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_2_e_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_2_e_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_4_2_e_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	
+	<parametro formulario="f_mantenedor_4_2_f" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_4_2_f" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_4_2_f" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	 <campos nombre="estimativo_indi_4_2_f_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>	
+	  <campos nombre="estimativo_indi_4_2_f_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_2_f_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_2_f_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_4_2_f_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_4_2_g" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_4_2_g" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_4_2_g" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+		<campos nombre="estimativo_indi_4_2_g_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_4_2_g_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_2_g_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_2_g_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_4_2_g_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_4_2_h" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_4_2_h" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_4_2_h" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+		 <campos nombre="estimativo_indi_4_2_h_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_4_2_h_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_2_h_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_2_h_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_4_2_h_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_4_2_i" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_4_2_i" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_4_2_i" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+		<campos nombre="estimativo_indi_4_2_i_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_4_2_i_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_2_i_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_2_i_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_4_2_i_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_4_3_a" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_4_3_a" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_4_3_a" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	<campos nombre="estimativo_indi_4_3_a_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>	
+	  <campos nombre="estimativo_indi_4_3_a_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_3_a_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_3_a_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_4_3_a_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_4_3_b" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_4_3_b" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_4_3_b" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+		<campos nombre="estimativo_indi_4_3_b_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_4_3_b_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_3_b_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_3_b_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_4_3_b_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_4_3_c" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_4_3_c" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_4_3_c" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+		<campos nombre="estimativo_indi_4_3_c_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_4_3_c_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_3_c_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_3_c_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_4_3_c_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_4_4_a" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_4_4_a" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_4_4_a" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	<campos nombre="estimativo_indi_4_4_a_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>	
+	  <campos nombre="estimativo_indi_4_4_a_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_4_a_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_4_a_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_4_4_a_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_4_4_b" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_4_4_b" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_4_4_b" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	<campos nombre="estimativo_indi_4_4_b_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>	
+	  <campos nombre="estimativo_indi_4_4_b_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_4_b_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_4_b_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_4_4_b_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_4_4_c" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_4_4_c" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_4_4_c" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+		 <campos nombre="estimativo_indi_4_4_c_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_4_4_c_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_4_c_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_4_c_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_4_4_c_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	
+	<parametro formulario="f_mantenedor_4_4_d" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_4_4_d" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_4_4_d" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+		
+	  <campos nombre="estimativo_indi_4_4_d_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_4_4_d_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_4_d_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_4_d_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_4_4_d_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_4_4_e" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_4_4_e" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_4_4_e" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	<campos nombre="estimativo_indi_4_4_e_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>	
+	  <campos nombre="estimativo_indi_4_4_e_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_4_e_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_4_e_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_4_4_e_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	
+	<parametro formulario="f_mantenedor_4_5_a" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_4_5_a" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_4_5_a" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+		<campos nombre="estimativo_indi_4_5_a_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_4_5_a_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_5_a_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_5_a_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_4_5_a_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	
+	<parametro formulario="f_mantenedor_4_5_b" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_4_5_b" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_4_5_b" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_5_b_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_4_5_b_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_5_b_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		   <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_5_b_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_4_5_b_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+	<parametro formulario="f_mantenedor_4_5_c" variable="ma" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999"    anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+	 <campos nombre="base_indi_4_5_c" >
+			 <descripcion>Dato Base</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>6</caracteres>
+			 <maxCaracteres>5</maxCaracteres>
+			 <alineamiento>CENTER</alineamiento>
+			 <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+			 <id>NU-N</id>
+      </campos>
+	   <campos nombre="real_indi_4_5_c" >
+	    <descripcion>Dato Real</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+		<campos nombre="estimativo_indi_4_5_c_2009" >
+	   <descripcion>Dato Estimativo 2009</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="estimativo_indi_4_5_c_2010" >
+	   <descripcion>Dato Estimativo 2010</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_5_c_2011" >
+	   <descripcion>Dato Estimativo 2011</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="estimativo_indi_4_5_c_2012" >
+	   <descripcion>Dato Estimativo 2012</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	     <campos nombre="estimativo_indi_4_5_c_2013" >
+		 <descripcion>Dato Estimativo 2013</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>6</caracteres>
+         <maxCaracteres>5</maxCaracteres>
+		  <alineamiento>CENTER</alineamiento>
+		  <script>onKeyUp="verifica_porcentaje(this.value,this.name);"</script>
+		 <id>NU-N</id>
+      </campos>
+	</parametro>
+	
+</Parametros>

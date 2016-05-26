@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro 
+   colorResaltado="#CCCCCC"
+   colorSeleccionado="#CCCCCC" 	paginaEdicion="" formulario="candidatos" nroRegistros="10" eliminar="false" 
+   maxLista="10"  mensajeError="No se han encontrado candidatos para los datos consultados" seleccionarTodo="FALSE" anchoTabla="100%"
+    editar="FALSE" nuevaVentana="FALSE" variable="docente" >
+     <campos nombre="especialidad">
+	    <descripcion>Especialidad</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="plan_estudio">
+	    <descripcion>Plan</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="nombre_completo">
+	    <descripcion>Nombre</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="total_ramos_malla">
+	    <descripcion>Ramos Malla</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="total_ramos_aprobados_o_en_curso">
+	    <descripcion>Aprobados o en curso</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="sede">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="carrera">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="jornada">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="rut">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="nombres">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="ap_paterno">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="ap_materno">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="sede">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="restantes">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+   </parametro>   
+   
+  <parametro formulario="botonera">
+   <botones nombre="cancelar"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+	<botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones>
+	<botones nombre="filtrar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <texto>Filtrar Busqueda</texto>
+	  <formulario>filtrador</formulario>
+	</botones>
+   	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>	 
+	</botones>
+	<botones nombre="excel">
+  	  <tipoTexto>DEFINIR</tipoTexto> 
+      <texto>Reporte Excel</texto> 
+      <accion>GUARDAR</accion> 
+      <formulario>edicion</formulario> 
+    </botones>
+	<botones nombre="excel_general">
+  	  <tipoTexto>DEFINIR</tipoTexto> 
+      <texto>Ver todas las Carreras</texto> 
+      <accion>GUARDAR</accion> 
+      <formulario>edicion</formulario> 
+    </botones>	
+	<botones nombre="excel_sin_devolver">
+  	  <tipoTexto>DEFINIR</tipoTexto> 
+      <texto>Préstamos sin Devolución</texto> 
+      <accion>GUARDAR</accion> 
+      <formulario>edicion</formulario> 
+    </botones>
+	<botones nombre="excel_general_correctos">
+  	  <tipoTexto>DEFINIR</tipoTexto> 
+      <texto>Préstamos Correctos</texto> 
+      <accion>GUARDAR</accion> 
+      <formulario>edicion</formulario> 
+    </botones>
+   </parametro>
+
+<parametro formulario="buscador" variable="a">
+<listas nombre="filtros">
+	<item clave="sede_ccod" valor="sede_tdesc" />
+	<item clave="carr_ccod" valor="carr_tdesc" />
+	<item clave="jorn_ccod" valor="jorn_tdesc" />
+</listas>
+<campos nombre="sede_ccod">
+	<tipo>INPUT</tipo>
+	<permiso>LECTURA</permiso>
+</campos>
+<campos nombre="carr_ccod">
+	<tipo>INPUT</tipo>
+	<permiso>LECTURA</permiso>
+</campos>
+<campos nombre="jorn_ccod">
+	<tipo>INPUT</tipo>
+	<permiso>LECTURA</permiso>
+</campos>
+</parametro>
+</Parametros>

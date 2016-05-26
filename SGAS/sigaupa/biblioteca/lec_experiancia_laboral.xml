@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro colorResaltado="#DCDCB8" colorSeleccionado="99FFFF" formulario="eliminar_experiencia" agregar="true" editar="true" anchoTabla="98%" nuevaVentana="true" variable="m">
+      <tablas nombre="curriculum_docente" accion="B"/>
+      <campos nombre="cudo_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   <parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" 
+   
+    formulario="experiancia_laboral" 
+	 maxLista="10"
+	mensajeError="No hay experiencias laborales para este docente" anchoTabla="98%"  variable="m" >
+      <tablas nombre="curriculum_docente" accion="M"/>
+      <campos nombre="cudo_tinstitucion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Empresa (s)</descripcion>
+      </campos>
+	  <campos nombre="pais_ccod">
+         <tipo>SELECT</tipo>
+         <permiso>LECTURA</permiso>
+		 <union>pais_ccod</union>
+		 <salida>pais_tdesc</salida>
+		 <destino>paises</destino>
+		 <mensajeVacio>No hay datos</mensajeVacio>
+         <descripcion>Pais</descripcion>
+      </campos>
+      <campos nombre="cudo_tactividad">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Cargo (s)</descripcion>
+      </campos>
+      <campos nombre="cudo_anos_experiencia">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Años De Experiencia</descripcion>
+          <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="cudo_trubro_institucion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Rubro o Actividad De La Empresa</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="cudo_finicio">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Fecha inicio</descripcion>
+      </campos>
+	  <campos nombre="cudo_ftermino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Fecha termino</descripcion>
+      </campos>
+   </parametro>
+   <parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" paginaEdicion="agregar_experiencia_laboral.asp?cudo_ncorr=%cudo_ncorr%&amp;pers_ncorr=%pers_ncorr%" formulario="agregar_experiancia_laboral" nroRegistros="10" agregar="true" eliminar="true" maxLista="10" clave="cudo_ncorr" mensajeError="No hay experiencias laborales para este docente" colorBase="#F1F1E4" anchoTabla="98%" editar="true" nuevaVentana="false" variable="m">
+      <tablas nombre="curriculum_docente" accion="M"/>
+      <campos nombre="cudo_tinstitucion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="tiex_ccod">
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <union>tiex_ccod</union>
+		 <salida>tiex_tdesc</salida>
+		 <destino>TIPO_EXPERIENCIA_LABORAL</destino>
+		 <filtro>tiex_ccod in (1,4)</filtro>
+		 <mensajeVacio>No hay datos</mensajeVacio>
+         <descripcion>Tipo Experiencia</descripcion>
+		 <id>TO-N</id>
+      </campos>
+	  <campos nombre="pais_ccod">
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <union>pais_ccod</union>
+		 <salida>pais_tdesc</salida>
+		 <destino>paises</destino>
+		 <mensajeVacio>No hay datos</mensajeVacio>
+		 <orden>pais_tdesc</orden>
+		 <id>TO-S</id>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="cudo_tactividad">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="CUDO_ANOS_EXPERIENCIA">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>2</caracteres>
+         <maxCaracteres>2</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="CUDO_TRUBRO_INSTITUCION">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+          <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="cudo_finicio">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-N</id>
+      </campos>
+	  <campos nombre="cudo_ftermino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-N</id>
+      </campos>
+	  <campos nombre="cudo_tdescripcion_experiencia">
+         <tipo>TEXTAREA</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>50</caracteres>
+         <filas>10</filas>
+         <id>TO-S</id>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="botonera">
+      <botones nombre="agregar">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>AGREGAR</accion>
+         <url>agregar_experiencia_laboral.asp</url>
+         <posicionX>100</posicionX>
+         <posicionY>100</posicionY>
+         <ancho>600</ancho>
+         <alto>500</alto>
+      </botones>
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>eliminar_experiencia_laboral.asp</url>
+         <formulario>editar</formulario>
+      </botones>
+      <botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+		  <accion>navegar</accion>
+      </botones>
+      <botones nombre="siguiente">
+         <tipoTexto>SIGUIENTE</tipoTexto>
+		  <accion>navegar</accion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cerrar">
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+      <botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_agregar_experiencia_laboral.asp</url>
+        
+      </botones>
+   </parametro>
+</Parametros>

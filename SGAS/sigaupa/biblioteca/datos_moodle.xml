@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      
+	<botones nombre="buscar">
+         <accion>guardar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Buscar</texto>
+	    <formulario>buscador</formulario>
+		<url>http://admision.upacifico.cl/datos_moodle/www/muestra.php</url>
+      </botones>
+   </parametro>
+   
+   <parametro formulario="busqueda" variable="b" columnas="3" >
+        <campos nombre="id_curso" >
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+         <caracteres>35</caracteres>
+         <maxCaracteres>34</maxCaracteres>
+      </campos>
+   </parametro>
+   
+</Parametros>

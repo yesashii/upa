@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+	<parametro formulario="botonera">
+		<botones nombre="buscar_eventos"> 
+		  <tipoTexto>BUSCAR</tipoTexto>
+		  <accion>BUSCAR</accion>
+		  <formulario>buscador</formulario>
+		  <soloUnClick>TRUE</soloUnClick>
+	   </botones>
+	   <botones nombre="salir"> 
+			<tipoTexto>SALIR</tipoTexto>
+			<accion>NAVEGAR</accion>
+			<url>../lanzadera/lanzadera.asp</url>
+		</botones>
+		<botones nombre="excel">
+			 <tipoTexto>DEFINIR</tipoTexto>
+			 <texto>Excel</texto>
+			 <accion>BUSCAR</accion>
+			 <url>reporte_eventos_excel.asp</url>
+			 <formulario>buscador</formulario>
+		</botones>
+	</parametro>
+
+	<parametro formulario="datos_eventos" clave="pers_ncorr_alumno" variable="cajas"  
+			mensajeError="No hay cajas disponibles para la busqueda realizada" colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="false" agregar="true"  maxLista="10" nroRegistros="30" anchoTabla="100%">
+		<campos nombre="even_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="pers_tnombre">
+			<tipo>INPUT</tipo>
+			<descripcion>Nombres</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="pers_tape_paterno">
+			<tipo>INPUT</tipo>
+			<descripcion>Paterno</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="pers_tape_materno">
+			<tipo>INPUT</tipo>
+			<descripcion>Materno</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="ciudad_alumno">
+			<tipo>INPUT</tipo>
+			<descripcion>Ciudad Alumno</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="comuna_alumno">
+			<tipo>INPUT</tipo>
+			<descripcion>Comuna Alumno</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>							
+		<campos nombre="curso_alumno">
+			<tipo>INPUT</tipo>
+			<descripcion>Curso</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="tipo_evento">
+			<tipo>INPUT</tipo>
+			<descripcion>Tipo Evento</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>				
+	</parametro>
+	
+	<parametro formulario="busqueda_eventos" variable="busqueda">
+   	<campos nombre="teve_ccod">
+		  <tipo>SELECT</tipo>
+		  <destino>tipo_evento</destino> 
+		  <union>teve_ccod</union>
+		  <salida>teve_tdesc</salida>
+		  <permiso>LECTURAESCRITURA</permiso>
+		  <anulable>true</anulable>
+		  <mensajeNulo>Tipo Evento</mensajeNulo>
+	</campos>
+  	<campos nombre="caev_ccod">
+		  <tipo>SELECT</tipo>
+		  <destino>cursos_alumnos_eventos</destino> 
+		  <union>caev_ccod</union>
+		  <salida>caev_tdesc</salida>
+		  <permiso>LECTURAESCRITURA</permiso>
+		  <anulable>true</anulable>
+		  <mensajeNulo>Curso Alumnos</mensajeNulo>
+	</campos>
+	<campos nombre="even_fevento">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+    </campos>
+	<campos nombre="fecha_termino">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+    </campos>
+  	<campos nombre="ciud_ccod">
+		  <tipo>SELECT</tipo>
+		  <destino>ciudades</destino> 
+		  <union>ciud_ccod</union>
+		  <salida>ciud_tdesc</salida>
+		  <orden>ciud_tdesc desc</orden>
+		  <permiso>LECTURAESCRITURA</permiso>
+		  <anulable>true</anulable>
+		  <mensajeNulo>Comuna Evento</mensajeNulo>
+	</campos>
+	<campos nombre="pcol_ccod">
+		  <tipo>SELECT</tipo>
+		  <destino>perfil_colegio</destino> 
+		  <union>pcol_ccod</union>
+		  <salida>pcol_tdesc</salida>
+		  <permiso>LECTURAESCRITURA</permiso>
+		  <anulable>true</anulable>
+		  <mensajeNulo>Perfil Colegio</mensajeNulo>
+	</campos>
+	<campos nombre="carrera">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>30</caracteres>
+		 <maxCaracteres>30</maxCaracteres>
+		 <id>TO-S</id>
+    </campos>
+	<campos nombre="carre_ccod">
+		  <tipo>SELECT</tipo>
+		  <destino>carreras_eventos</destino> 
+		  <union>carre_ccod</union>
+		  <salida>carre_tdesc</salida>
+		  <orden>carre_tdesc desc</orden>
+		  <permiso>LECTURAESCRITURA</permiso>
+		  <anulable>true</anulable>
+		  <mensajeNulo>Seleccione carrera</mensajeNulo>
+	</campos>
+  </parametro> 
+	
+</Parametros>

@@ -1,0 +1,21 @@
+SELECT a.alum_fmatricula AS fecha_matricula, protic.obtener_rut(p.pers_ncorr) AS rut, protic.obtener_nombre_completo(p.pers_ncorr, 'n') AS nombre,
+	ea.emat_tdesc AS estado, pa.peri_tdesc AS periodo, oe.oema_tobservacion AS observacion, c.carr_tdesc AS carrera
+	FROM personas p 
+	INNER JOIN ALUMNOS a
+		ON a.pers_ncorr = p.pers_ncorr
+	INNER JOIN postulantes po
+		ON po.post_ncorr = a.post_ncorr
+	INNER JOIN periodos_academicos pa
+		ON pa.peri_ccod = po.peri_ccod
+	INNER JOIN observaciones_estado_matricula oe
+		ON oe.matr_ncorr=a.matr_ncorr
+	INNER JOIN planes_estudio pe
+		ON pe.plan_ccod = a.plan_ccod
+	INNER JOIN especialidades e
+		ON e.espe_ccod = pe.espe_ccod
+	INNER JOIN carreras	c
+		ON c.carr_ccod = e.carr_ccod
+	INNER JOIN estados_matriculas ea
+		ON ea.emat_ccod = a.emat_ccod
+	WHERE a.alum_fmatricula > convert(datetime, '01/11/2014', 103)
+	ORDER BY rut

@@ -1,0 +1,5 @@
+16370972,VIAL CERDA DOMINGO,,16370972-4,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+16979231,AREVALO NORIEGA RODRIGO ENRIQUE,,16979231-3,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17115553,PERALTA ARAVENA VALENTINA LORENA,,17115553-3,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17979866,GONZALEZ SARRIA SALOMON ISAIAS,,17979866-2,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20712501,PONCE ZAMORANO CAROLINA PAZ,,20712501-6,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

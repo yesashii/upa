@@ -1,0 +1,32 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="cancelar">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Salir</texto>
+         <accion>CERRAR</accion>
+      </botones>
+      <botones nombre="guardar_encuesta">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <funcionValidacion>Validar();</funcionValidacion>
+         <url>encuesta_empleadores_poc.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+   </parametro>
+   <parametro formulario="guardar_encuesta" variable="e">
+      <tablas nombre="encuestas_empleadores" accion="M"/>
+   </parametro>
+   <parametro formulario="f_busqueda" variable="e">
+   <campos nombre="carr_ccod">
+      <tipo>SELECT</tipo>
+	  <union>carr_ccod</union>
+	  <salida>CARR_TDESC</salida>
+      <orden>CARR_TDESC asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione una Carrera</mensajeNulo>
+	  <mensajeVacio>Seleccione una Carrera</mensajeVacio>
+	  <id>TO-N</id>
+   </campos>
+  </parametro>
+</Parametros>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+	<parametro formulario="botonera">
+		<botones nombre="buscar_eventos"> 
+		  <tipoTexto>BUSCAR</tipoTexto>
+		  <accion>BUSCAR</accion>
+		  <formulario>buscador</formulario>
+		  <soloUnClick>TRUE</soloUnClick>
+	   </botones>
+	   <botones nombre="salir"> 
+			<tipoTexto>SALIR</tipoTexto>
+			<accion>NAVEGAR</accion>
+			<url>../lanzadera/lanzadera.asp</url>
+		</botones>
+		<botones nombre="excel">
+			 <tipoTexto>DEFINIR</tipoTexto>
+			 <texto>Excel</texto>
+			 <accion>BUSCAR</accion>
+			 <url>reporte_compromisos_pagados_excel.asp</url>
+			 <formulario>buscador</formulario>
+		</botones>
+	</parametro>
+
+	<parametro formulario="busqueda_compromisos" variable="busqueda">
+   	<campos nombre="tdet_ccod">
+		  <tipo>SELECT</tipo>
+		  <destino>tipos_detalle</destino> 
+		  <union>tdet_ccod</union>
+		  <salida>tdet_tdesc</salida>
+		  <permiso>LECTURAESCRITURA</permiso>
+		  <filtro>(tcom_ccod in (6,4,25,26,27,34,36)OR TDET_CCOD=2828) and tdet_bcargo='S' and tdet_bvigente in ('S') </filtro>
+		  <anulable>true</anulable>
+		  <orden>tdet_tdesc asc</orden>
+		  <mensajeNulo>Seleccione Tipo Compromiso</mensajeNulo>
+		  <id>TO-N</id>
+	</campos>
+	<campos nombre="ingr_fpago">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+    </campos>
+	<campos nombre="fecha_termino">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+    </campos>
+	<campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+  </parametro> 
+
+	<parametro formulario="datos_compromisos" clave="pers_ncorr" variable="comp"  
+			mensajeError="No ha registros disponibles para los parametros de busqueda" colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="false" agregar="true"  maxLista="10" nroRegistros="30" anchoTabla="100%">
+		<campos nombre="pers_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="item">
+			<tipo>INPUT</tipo>
+			<descripcion>Tipo Compromiso</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="monto">
+			<tipo>INPUT</tipo>
+			<descripcion>Monto Pagado</descripcion>
+			<permiso>LECTURA</permiso>
+			<formato>Moneda</formato>
+		</campos>
+		<campos nombre="fecha_pago">
+			<tipo>INPUT</tipo>
+			<descripcion>Fecha Pago</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="rut_alumno">
+			<tipo>INPUT</tipo>
+			<descripcion>Rut Alumno</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="nombre_alumno">
+			<tipo>INPUT</tipo>
+			<descripcion>Nombre Alumno</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="carrera">
+			<tipo>INPUT</tipo>
+			<descripcion>Carrera</descripcion>
+			<permiso>LECTURA</permiso>
+		</campos>							
+	</parametro>
+	
+</Parametros>

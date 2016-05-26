@@ -1,0 +1,7 @@
+65000864,  FUNDACION DE CAPACITACION BOMBEROS DE CHILE,,65000864-2,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+76082106,  FEREXPO S.A,,76082106-3,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+76083911,  SERVICIOS DE COMUNICACION ACEITUNO Y PANTOJA LTDA.,,76083911-6,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+76863280,  SIGMA COMERCIO EXTERIOR LTDA.,,76863280-4,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+77840820,  PC SERVICE Y CIA. LTDA.,,77840820-1,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+77961550,  GIORGIO ROMA CHAHUD Y CIA LTDA,,77961550-2,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+78504720,  CAVALLA CONSTRUCIONES Y MONTAJE LTDA.,,78504720-6,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

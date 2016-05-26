@@ -1,0 +1,32 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+		 <soloUnClick>TRUE</soloUnClick>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cancelar">
+         <tipoTexto>CANCELAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  <botones nombre="excel">
+		  <tipoTexto>DEFINIR</tipoTexto>
+		  <texto>Imprimir</texto>
+		  <accion>Navegar</accion>
+         <formulario>buscador</formulario>
+      </botones>
+     <botones nombre="reporte">
+        <tipoTexto>DEFINIR</tipoTexto>
+	     <texto>Generar reporte</texto>
+		 <accion>GUARDAR</accion>
+         <formulario>buscador</formulario>
+         <url>flujo_documentos_excel.asp</url>
+    </botones>	  
+   </parametro>
+</Parametros>

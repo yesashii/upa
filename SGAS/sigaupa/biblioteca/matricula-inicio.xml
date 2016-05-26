@@ -1,0 +1,68 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="aceptar">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_index_matricula.asp</url>
+      </botones>
+	  <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="olvido_clave">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>¿Olvidó clave?</texto>
+         <accion>AGREGAR</accion>
+         <url>olvido_clave.asp</url>
+         <posicionX>313</posicionX>
+         <posicionY>200</posicionY>
+         <ancho>370</ancho>
+         <alto>205</alto>
+      </botones>
+      <botones nombre="registrarse">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Registrarse</texto>
+         <accion>NAVEGAR</accion>
+         <url>pre_registrarse.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="botonera_olvido_clave">
+      <botones nombre="aceptar">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>enviar(document.formulario)</funcion>
+      </botones>
+	   <botones nombre="cancelar">
+         <tipoTexto>CANCELAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+   </parametro>
+   <parametro formulario="botonera_pregunta_clave">
+      <botones nombre="aceptar">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>envia(document.form1)</funcion>
+      </botones>
+      <botones nombre="cancelar">
+         <tipoTexto>CANCELAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+      <botones nombre="cerrar">
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+   </parametro>
+   <parametro formulario="botonera_principal">
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>log_out.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="postulacion" variable="postulacion">
+      <tablas nombre="postulantes" accion="I"/>
+	  <tablas nombre="detalle_postulantes" accion="I"/>
+   </parametro>
+</Parametros>

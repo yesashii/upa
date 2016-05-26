@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro 
+   colorResaltado="#CCCCCC"
+   colorSeleccionado="#CCCCCC" 	paginaEdicion="seleccionar_proceso.asp?pers_ncorr=%pers_ncorr%&amp;secc_ccod=%secc_ccod%&amp;bloq_ccod=%bloq_ccod%&amp;libr_ncorr=%libr_ncorr%&amp;pres_ncorr=%pres_ncorr%" nuevaVentanaAlto="280" formulario="listado_diario" nroRegistros="10" nuevaVentanaAncho="418" eliminar="FALSE" 
+	clave="pers_ncorr" maxLista="10"  mensajeError="No existe información del docente para este día" seleccionarTodo="FALSE" anchoTabla="100%"
+    editar="TRUE" nuevaVentana="TRUE" 
+	variable="docente" >
+     <campos nombre="pers_ncorr">
+	   <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+	 </campos>
+	 <campos nombre="bloq_ccod">
+	   <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+	 </campos>
+	 <campos nombre="libr_ncorr">
+	   <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+	 </campos>
+	 <campos nombre="pres_ncorr">
+	   <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+	 </campos>
+	 <campos nombre="secc_ccod">
+	   <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+	 </campos>
+     <campos nombre="carrera">
+	    <descripcion>Carrera</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="asignatura">
+	    <descripcion>Asignatura</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="seccion">
+	    <descripcion>Sección</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="dia">
+	    <descripcion>Día</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="sala">
+	    <descripcion>Sala</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="modulo">
+	    <descripcion>Modulo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="horario">
+	    <descripcion>Horario</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="libro">
+	    <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+     <campos nombre="estado">
+	    <descripcion>Estado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>	 	 
+   </parametro>   
+   
+   <parametro formulario="f1_edicion" variable="usuarios" clave="pers_ncorr">
+   <tablas nombre="sis_usuarios" accion="M"/>
+   <tablas nombre="sis_sedes_usuarios" accion="M"/>   
+  <!-- <campos nombre="pers_ncorr">   
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>
+   </campos>-->
+    <campos nombre="c_pers_ncorr">
+      <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="susu_tlogin">
+      <tipo>INPUT</tipo>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <caracteres>40</caracteres>
+	  <maxCaracteres>30</maxCaracteres>
+	  <id>TO-N</id>
+   </campos>
+    <campos nombre="susu_tclave">
+      <tipo>INPUT</tipo>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <caracteres>40</caracteres>
+	  <maxCaracteres>30</maxCaracteres>
+	  <id>TO-N</id>
+   </campos>
+    <campos nombre="susu_fmodificacion">
+      <tipo>INPUT</tipo>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <soloLectura>true</soloLectura>
+   </campos>
+  </parametro>
+  
+  <parametro formulario="fconsulta" variable="personas">
+    <tablas nombre="personas" accion="M"/>
+	 <campos nombre="pers_ncorr">
+	   <descripcion>Correlativo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="pers_nrut">
+	   <descripcion>Rut</descripcion>
+		<tipo>INPUT</tipo>
+		<caracteres>10</caracteres>
+       <maxCaracteres>8</maxCaracteres>
+	   <permiso>LECTURAESCRITURA</permiso>
+	   <id>NU-N</id>
+	 </campos>
+	 <campos nombre="pers_xdv">
+	   <descripcion>Digito</descripcion>
+		<tipo>INPUT</tipo>
+		<caracteres>1</caracteres>
+        <maxCaracteres>1</maxCaracteres>
+		<permiso>LECTURAESCRITURA</permiso>
+		<id>TO-N</id>
+	 </campos>
+	 <campos nombre="pers_tnombre">
+	   <descripcion>Rut</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+ </parametro>
+  
+  <parametro formulario="botonera">
+   <botones nombre="cancelar"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+	 <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	   <funcionValidacion>Validar();</funcionValidacion>
+	</botones>
+   	<botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>AGREGAR</accion>
+	  <posicionX>100</posicionX>
+	  <posicionY>50</posicionY>
+	  <ancho>495</ancho>
+	  <alto>550</alto>
+	</botones>
+	<botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>Proc_Mant_Usuarios_Buscar.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>
+	<botones nombre="guardar2"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>Proc_Mant_Usuarios_Edicion.asp</url>
+	  <formulario>edicion</formulario>
+	</botones> 
+	<botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>ELIMINAR</accion>
+	  <url>Mant_Usuarios_Eliminar.asp</url>
+	  <formulario>edicion</formulario>
+	</botones> 
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>	 
+	</botones>	
+   </parametro>
+
+ <parametro formulario="botonera_prestamo">
+   <botones nombre="cancelar"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+	<botones nombre="prestar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <texto>Prestar Libro</texto>
+	  <url>prestar_libro.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>
+	<botones nombre="devolver"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <texto>Devolver Libro</texto>
+	  <url>devolver_libro.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>
+	<botones nombre="prestar_correcto"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <texto>Prestamo Correcto</texto>
+	  <url>prestar_libro_correcto.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>
+	</parametro>
+
+<parametro formulario="busqueda" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+		 <script>onBlur="genera_digito(this.value);"</script>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+</parametro>
+<parametro formulario="f_sedes_usuario" variable="usuarios"  colorSeleccionado="#CCCCCC" colorResaltado="#999999" 
+          nroRegistros="10" maxLista="10" clave = "pers_ncorr"
+	     eliminar="FALSE" seleccionarTodo="FALSE"  anchoTabla="100%"
+		 mensajeError="Ingrese Criterio de Busqueda">
+     <campos nombre="pers_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="sede_ccod">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="sede_tdesc">
+	    <descripcion>Sede</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="direccion_sede">
+	    <descripcion>Direccion Sede</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="tiene_sede">
+	    <descripcion>Asociar Sede</descripcion>
+		<tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+	 </campos>
+</parametro>
+
+ <parametro formulario="f_observaciones" variable="ob">
+   <campos nombre="opli_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>observaciones_prestamos_libros</destino> 
+	  <union>opli_ccod</union>
+	  <salida>opli_tdesc</salida>
+      <orden>opli_tdesc asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Sin observación</mensajeNulo>
+	  <mensajeVacio>Sin observacion</mensajeVacio>
+	  <id>TO-S</id>
+   </campos>
+  </parametro>
+
+</Parametros>

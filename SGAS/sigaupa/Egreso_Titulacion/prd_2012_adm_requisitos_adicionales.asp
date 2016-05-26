@@ -1,0 +1,227 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+
+<%
+q_sapl_ncorr = Request.QueryString("sapl_ncorr")
+
+
+'---------------------------------------------------------------------------------------------------
+set pagina = new CPagina
+pagina.Titulo = "Requisitos adicionales de la salida"
+
+set errores = new CErrores
+
+'---------------------------------------------------------------------------------------------------
+set conexion = new CConexion
+conexion.Inicializar "upacifico"
+
+set negocio = new CNegocio
+negocio.Inicializa conexion
+
+set f_botonera = new CFormulario
+f_botonera.Carga_Parametros "adm_requisitos_adicionales.xml", "botonera"
+
+
+'---------------------------------------------------------------------------------------------------
+set f_encabezado = new CFormulario
+f_encabezado.Carga_Parametros "adm_requisitos_adicionales.xml", "encabezado"
+f_encabezado.Inicializar conexion
+
+SQL = " select a.plan_ccod, b.espe_ccod, c.carr_ccod, a.peri_ccod, d.tspl_tdesc, a.sapl_tdesc, e.carr_tdesc, c.espe_tdesc, b.plan_tdesc,"& vbCrLf &_
+      "        f.peri_tdesc, a.sapl_npond_asignaturas,"& vbCrLf &_
+      " 	   sum(g.repl_nponderacion) as pond_adicionales,"& vbCrLf &_
+      " 	   isnull(a.sapl_npond_asignaturas, 0) + isnull(sum(g.repl_nponderacion), 0) as pond_total "& vbCrLf &_
+      " from salidas_plan a, planes_estudio b, especialidades c, tipos_salidas_plan d, carreras e, periodos_academicos f,"& vbCrLf &_
+      "      requisitos_plan g"& vbCrLf &_
+      " where a.plan_ccod = b.plan_ccod"& vbCrLf &_
+      "   and b.espe_ccod = c.espe_ccod"& vbCrLf &_
+      "   and a.tspl_ccod = d.tspl_ccod"& vbCrLf &_
+      "   and c.carr_ccod = e.carr_ccod "& vbCrLf &_
+      "   and a.peri_ccod = f.peri_ccod"& vbCrLf &_
+      "   and a.sapl_ncorr *= g.sapl_ncorr "& vbCrLf &_
+      "   and cast(a.sapl_ncorr as varchar)= '" & q_sapl_ncorr & "'"& vbCrLf &_
+      " group by a.plan_ccod, b.espe_ccod, c.carr_ccod, a.peri_ccod, d.tspl_tdesc, a.sapl_tdesc, e.carr_tdesc, c.espe_tdesc, b.plan_tdesc,"& vbCrLf &_
+      "        f.peri_tdesc, a.sapl_npond_asignaturas"
+
+
+'response.Write("<pre>"&SQL&"</pre>")
+f_encabezado.Consultar SQL
+f_encabezado.Siguiente
+
+v_plan_ccod = f_encabezado.ObtenerValor("plan_ccod")
+v_espe_ccod = f_encabezado.ObtenerValor("espe_ccod")
+v_carr_ccod = f_encabezado.ObtenerValor("carr_ccod")
+v_peri_ccod = f_encabezado.ObtenerValor("peri_ccod")
+
+
+'------------------------------------------------------------------------------------------------------------
+set f_requisitos = new CFormulario
+f_requisitos.Carga_Parametros "adm_requisitos_adicionales.xml", "requisitos"
+f_requisitos.Inicializar conexion
+
+SQL = " select a.repl_ncorr, b.treq_tdesc, c.teva_tdesc, cast(a.repl_nponderacion as numeric(3)) as repl_nponderacion" & vbCrLf &_
+      " from requisitos_plan a, tipos_requisitos_titulo b, tipos_evaluacion_requisitos c" & vbCrLf &_
+      " where a.treq_ccod = b.treq_ccod" & vbCrLf &_
+      "   and b.teva_ccod = c.teva_ccod" & vbCrLf &_
+      "   and cast(a.sapl_ncorr as varchar)= '" & q_sapl_ncorr & "' " & vbCrLf &_
+      " order by a.treq_ccod asc"
+
+'response.Write("<pre>"&SQL&"</pre>")
+f_requisitos.Consultar SQL
+
+
+'------------------------------------------------------------------------------------------------------------
+f_botonera.AgregaBotonUrlParam "anterior", "b[0][carr_ccod]", v_carr_ccod
+f_botonera.AgregaBotonUrlParam "anterior", "b[0][espe_ccod]", v_espe_ccod
+f_botonera.AgregaBotonUrlParam "anterior", "b[0][plan_ccod]", v_plan_ccod
+f_botonera.AgregaBotonUrlParam "anterior", "b[0][peri_ccod]", v_peri_ccod
+
+f_botonera.AgregaBotonUrlParam "agregar", "sapl_ncorr", q_sapl_ncorr
+
+
+lenguetas = Array(Array("Asignaturas Requisito", "adm_salidas_asignaturas.asp?sapl_ncorr=" & q_sapl_ncorr), Array("Requisitos Adicionales", "adm_requisitos_adicionales.asp?sapl_ncorr=" & q_sapl_ncorr))
+%>
+
+
+<html>
+<head>
+<title><%=pagina.Titulo%></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../estilos/estilos.css" rel="stylesheet" type="text/css">
+<link href="../estilos/tabla.css" rel="stylesheet" type="text/css">
+
+<script language="JavaScript" src="../biblioteca/tabla.js"></script>
+<script language="JavaScript" src="../biblioteca/funciones.js"></script>
+<script language="JavaScript" src="../biblioteca/validadores.js"></script>
+
+<script language="JavaScript">
+</script>
+
+</head>
+<body bgcolor="#D8D8DE" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../imagenes/botones/buscar_f2.gif','../images/bot_deshabilitar_f2.gif','../images/agregar2_f2_p.gif','im&amp;#225;genes/marco1_r3_c2_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c4_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c6_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c8_f2.gif');MM_preloadImages('../imagenes/botones/cargar_f2.gif','../imagenes/botones/continuar_f2.gif')" onBlur="revisaVentana();">
+<table width="750" height="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="62" valign="top"><img src="../imagenes/vineta2_r1_c1.gif" width="750" height="62" border="0"></td>
+  </tr>
+  <%pagina.DibujarEncabezado()%>  
+  <tr>
+    <td valign="top" bgcolor="#EAEAEA">
+	<br>
+	
+	<!--
+	<table width="90%"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#D8D8DE">
+      <tr>
+        <td width="9" height="8"><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+        <td height="8" background="../imagenes/top_r1_c2.gif"></td>
+        <td width="7" height="8"><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+      </tr>
+      <tr>
+        <td width="9" background="../imagenes/izq.gif"></td>
+        <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><%'pagina.DibujarLenguetas Array("Buscador"), 1 %></td>
+          </tr>
+          <tr>
+            <td height="2" background="../imagenes/top_r3_c2.gif"></td>
+          </tr>
+          <tr>
+            <td><form name="buscador">
+              <br>
+              <table width="98%"  border="0" align="center">
+                <tr>
+                  <td width="81%"><div align="center"></div></td>
+                  <td width="19%"><div align="center">BUSCAR</div></td>
+                </tr>
+              </table>
+            </form></td>
+          </tr>
+        </table></td>
+        <td width="7" background="../imagenes/der.gif"></td>
+      </tr>
+      <tr>
+        <td width="9" height="13"><img src="../imagenes/base1.gif" width="9" height="13"></td>
+        <td height="13" background="../imagenes/base2.gif"></td>
+        <td width="7" height="13"><img src="../imagenes/base3.gif" width="7" height="13"></td>
+      </tr>
+    </table>
+	-->
+	
+	
+	<table width="90%"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#D8D8DE">
+      <tr>
+        <td width="9" height="8"><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+        <td height="8" background="../imagenes/top_r1_c2.gif"></td>
+        <td width="7" height="8"><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+      </tr>
+      <tr>
+        <td width="9" background="../imagenes/izq.gif">&nbsp;</td>
+        <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><%pagina.DibujarLenguetas lenguetas, 2 %></td>
+          </tr>
+          <tr>
+            <td height="2" background="../imagenes/top_r3_c2.gif"></td>
+          </tr>
+          <tr>
+            <td><div align="center"><br>
+              <%pagina.DibujarTituloPagina%><br>
+              <br>
+              <table width="98%"  border="0">
+                <tr>
+                  <td scope="col"><div align="center"><%f_encabezado.DibujaRegistro%></div></td>
+                </tr>
+              </table>
+                </div>
+              <form name="edicion">
+                <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td><%pagina.DibujarSubtitulo "Requisitos adicionales"%>
+                      <table width="98%"  border="0" align="center">
+                        <tr>
+                          <td scope="col"><div align="right">P&aacute;ginas : <%f_requisitos.AccesoPagina%></div></td>
+                        </tr>
+                        <tr>
+                          <td scope="col"><div align="center"><%f_requisitos.DibujaTabla%></div></td>
+                        </tr>
+                        <tr>
+                          <td scope="col"><div align="center"><%f_requisitos.Pagina%></div></td>
+                        </tr>
+                      </table></td>
+                  </tr>
+                </table>
+                          <br>
+            </form></td></tr>
+        </table></td>
+        <td width="7" background="../imagenes/der.gif">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="9" height="28"><img src="../imagenes/abajo_r1_c1.gif" width="9" height="28"></td>
+        <td height="28"><table width="100%" height="28"  border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="38%" height="20"><div align="center">
+              <table width="90%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td><div align="center"><%f_botonera.DibujaBoton "anterior"%></div></td>
+                  <td><div align="center"><%f_botonera.DibujaBoton "agregar"%></div></td>
+                  <td><div align="center">
+                    <%f_botonera.DibujaBoton "eliminar"%>
+                  </div></td>
+                </tr>
+              </table>
+            </div></td>
+            <td width="62%" rowspan="2" background="../imagenes/abajo_r1_c4.gif"><img src="../imagenes/abajo_r1_c3.gif" width="12" height="28"></td>
+            </tr>
+          <tr>
+            <td height="8" background="../imagenes/abajo_r2_c2.gif"></td>
+          </tr>
+        </table></td>
+        <td width="7" height="28"><img src="../imagenes/abajo_r1_c5.gif" width="7" height="28"></td>
+      </tr>
+    </table>
+	<br>
+	<br>
+	</td>
+  </tr>  
+</table>
+</body>
+</html>

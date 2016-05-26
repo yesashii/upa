@@ -1,0 +1,51 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+		 <soloUnClick>TRUE</soloUnClick>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cancelar">
+         <tipoTexto>CANCELAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  <botones nombre="excel">
+		  <tipoTexto>DEFINIR</tipoTexto>
+		  <texto>Generar Excel</texto>
+		  <accion>GUARDAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+     <botones nombre="reporte">
+        <tipoTexto>DEFINIR</tipoTexto>
+	     <texto>Generar reporte</texto>
+		 <accion>GUARDAR</accion>
+         <formulario>buscador</formulario>
+         <url>cuota_mensual_excel.asp</url>
+    </botones>	  
+   </parametro>
+   
+      <parametro formulario="busqueda" variable="b">
+  	   <campos nombre="mes_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todas las Sedes</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>meses </destino>
+         <union>mes_ccod</union>
+         <salida>mes_tdesc</salida>
+		  <id>NU-N</id>
+      </campos>
+   </parametro>
+   
+   
+   
+   
+   
+</Parametros>

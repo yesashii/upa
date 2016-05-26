@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+     <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+     </botones>
+	<botones nombre="agregar">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Agregar Ingreso</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>ingresa_cc()</funcion>
+    </botones>
+	<botones nombre="guardar_curso">
+        <accion>GUARDAR</accion>
+        <tipoTexto>DEFINIR</tipoTexto>
+       	<texto>Guardar</texto>
+		<formulario>edicion</formulario>
+        <url>proc_insertar_tipo_ingreso.asp</url>
+		<funcionValidacion>validaselect();</funcionValidacion>
+    </botones>
+	<botones nombre="cerrar">
+         <tipoTexto>CANCELAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+	  <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+   </parametro>
+   
+   
+      <parametro formulario="buscador" variable="buscador">
+      <campos nombre="buscar">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>35</caracteres>
+         <maxCaracteres>32</maxCaracteres>
+      </campos>
+   </parametro>
+   
+<parametro formulario="diplomado_cursos" variable="datos" clave="ting_ccod" eliminar="true" nroRegistros="20" maxLista="20"
+mensajeError="No existen Tipos de Ingreso" anchoTabla="100%" editar="true" paginaEdicion="insertar_tipo_ingreso.asp?ting_ccod=%ting_ccod%" nuevaVentana="true">
+		<campos nombre="ting_ccod">
+		  <descripcion>Cursos</descripcion>
+		  <permiso>OCULTO</permiso> 
+		</campos>
+		<campos nombre="ting_tdesc">
+		  <descripcion>Tipo Ingreso</descripcion>
+		  <tipo>INPUT</tipo>
+		  <permiso>LECTURA</permiso> 
+		  <alineamiento>CENTER</alineamiento>
+		</campos>			
+		<campos nombre="ting_bregularizacion">
+			<tipo>INPUT</tipo>
+			<descripcion>Regularizacion</descripcion>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<caracteres>2</caracteres>
+		</campos>
+		<campos nombre="ting_cuenta_softland">
+			<tipo>INPUT</tipo>
+			<descripcion>Cuenta Softland</descripcion>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<caracteres>2</caracteres>
+		</campos>
+		<campos nombre="ting_tipos_softland">
+			<tipo>INPUT</tipo>
+			<descripcion>Tipo Softland</descripcion>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<caracteres>2</caracteres>
+		</campos>	
+		<campos nombre="ereg_ccod">
+			<tipo>INPUT</tipo>
+			<descripcion>Estado</descripcion>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<caracteres>2</caracteres>
+		</campos>	
+		<campos nombre="AUDI_TUSUARIO">
+		  <descripcion>Agregada Por</descripcion>
+          <tipo>INPUT</tipo>
+          <permiso>LECTURA</permiso>
+		  <alineamiento>CENTER</alineamiento>
+		  <caracteres>90</caracteres>
+		</campos>	
+	</parametro>  
+	
+	<parametro formulario="agrega_cursos" variable="datos" eliminar="true" nroRegistros="20" maxLista="20" clave="ting_ccod"
+mensajeError="No existen Tipos de Ingreso" anchoTabla="80%">
+	   <tablas nombre="tipos_ingresos" accion="M"/>  
+		<campos nombre="ting_ccod">
+		  <descripcion>Cursos</descripcion>
+		  <permiso>OCULTO</permiso> 
+		</campos>
+		<campos nombre="ting_tdesc">
+		  <tipo>INPUT</tipo>
+		  <permiso>LECTURAESCRITURA</permiso> 
+		  <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+		  <caracteres>60</caracteres>
+		  <maxCaracteres>58</maxCaracteres>
+		  <id>TO-N</id>
+		</campos>			
+		<campos nombre="ting_bregularizacion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>2</caracteres>
+		</campos>
+		<campos nombre="ting_cuenta_softland">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>30</caracteres>
+		</campos>
+		<campos nombre="ting_tipos_softland">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'onkeypress="ValidaSoloLetras()";</script>
+			<caracteres>4</caracteres>
+			<maxCaracteres>2</maxCaracteres>
+			<id>TO-N</id>
+		</campos>	
+		<campos nombre="ereg_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>2</caracteres>
+		</campos>	
+	</parametro>  
+	   
+</Parametros>

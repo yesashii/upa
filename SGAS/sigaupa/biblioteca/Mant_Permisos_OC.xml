@@ -1,0 +1,88 @@
+<Parametros>
+ <parametro formulario="botonera">
+   <botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>ELIMINAR</accion>
+	  <url>permisos_funciones_x_rol_elimina.asp</url>
+	  <formulario>edicion</formulario>
+	</botones> 
+   <botones nombre="cancelar"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+	 <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>CerrarActualizar();</funcion>
+	</botones>
+	<botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>permisos_funciones_x_rol_agregar.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>	
+	<botones nombre="lanzadera"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>	 
+	</botones> 
+ </parametro>   
+
+  
+  <parametro formulario="f2" variable="modulos">
+   <campos nombre="smod_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>sis_modulos </destino> 
+	  <union>smod_ccod</union>
+	  <salida>smod_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <filtro>smod_ccod in (180)</filtro>
+	  <anulable>false</anulable>
+	  <script>onchange="cargar();"</script>
+	  <orden>smod_tdesc</orden>
+   </campos>
+ </parametro>
+  
+ <parametro formulario="f1" colorResaltado="#999999" colorSeleccionado="#CCCCCC" eliminar="TRUE" 
+   clave="sfun_ccod" seleccionarTodo="TRUE" anchoTabla="100%" variable="funciones" nroRegistros="10" maxLista="10">
+	 <tablas nombre="ocag_permisos_funciones_rol" accion="M"/>
+ 	<campos nombre="rusu_ccod">
+	    <descripcion>rol</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="smod_tdesc">
+	    <descripcion>Modulo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	<campos nombre="sfun_tdesc">
+	    <descripcion>Nombre de la Funcion</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+    </parametro> 
+
+
+ <parametro formulario="asociadas" colorResaltado="#999999" colorSeleccionado="#CCCCCC" eliminar="TRUE" 
+   clave="sfun_ccod" seleccionarTodo="TRUE" anchoTabla="100%" variable="elimina" nroRegistros="10" maxLista="10">
+	 <tablas nombre="ocag_permisos_funciones_rol" accion="B"/>
+ 	<campos nombre="rusu_ccod">
+	    <descripcion>rol</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="codigo">
+	    <descripcion>Modulo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	<campos nombre="funcion">
+	    <descripcion>Nombre de la Funcion</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+   </parametro> 
+
+    
+</Parametros>

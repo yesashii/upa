@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+<parametro formulario="botonera">
+   <botones nombre="salir"> 
+      <tipoTexto>CANCELAR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../../lanzadera/lanzadera.asp</url>
+	</botones>
+	<botones nombre="guardar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Actualizar</texto>
+	  <accion>GUARDAR</accion>
+	  <formulario>folios</formulario>
+	  <funcionValidacion>actualiza_folio();</funcionValidacion>
+	</botones>
+</parametro>
+<parametro formulario="f_folios" clave="foel_ccod" variable="folio"  colorSeleccionado="#CCCCCC" colorResaltado="#999999" 
+   		nroRegistros="5" maxLista="5" eliminar="TRUE"  seleccionarTodo="FALSE"  anchoTabla="100%" editar="FALSE"  nuevaVentana="TRUE" 
+		paginaEdicion="ver_folios_proc.asp"
+		 mensajeError="No se encontraron items para añadir folios"  >
+		 <tablas nombre="folios_electronicos" accion="M" />
+	 <campos nombre="foel_ccod">
+	    <descripcion>Codigo Folio</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="foel_tname">
+	    <descripcion>Documento Electronico</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+		<id>TO-N</id>
+	 </campos>
+	 <campos nombre="foel_nini">
+	    <descripcion>Folio Inicio</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+      <campos nombre="foel_nfin">
+	    <descripcion>Folio Termino</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	  <campos nombre="foel_nact">
+	    <descripcion>Folio Actual</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>	
+  </parametro>   
+</Parametros>

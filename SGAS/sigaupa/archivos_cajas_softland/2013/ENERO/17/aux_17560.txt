@@ -1,0 +1,5 @@
+15405556,GONZALEZ JERIA FRANCISCO IGNACIO,,15405556-8,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+15623994,GALLARDO RIVERA JUAN EMILIO,,15623994-1,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17255879,ALIAGA BUSTOS FRANCISCA NATALIA,,17255879-8,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17397647,VALDIVIA BLANCO MARIELA ALEJANDRA,,17397647-K,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18830148,MORALES CESPEDES CATALINA FERNANDA,,18830148-7,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

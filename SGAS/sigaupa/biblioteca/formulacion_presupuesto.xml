@@ -1,0 +1,127 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="lanzadera">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	  <botones nombre="excel_area">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel x Area</texto>
+         <accion>NAVEGAR</accion>
+         <url>reporte_formulacion_excel.asp?nro_t=1</url>
+      </botones>
+	  <botones nombre="excel_concepto">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel x Concepto</texto>
+         <accion>NAVEGAR</accion>
+         <url>reporte_formulacion_excel.asp?nro_t=2</url>
+      </botones>
+	  <botones nombre="excel_leasing">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel x Leasing</texto>
+         <accion>NAVEGAR</accion>
+         <url>reporte_formulacion_excel.asp?nro_t=3</url>
+      </botones>	  
+	  <botones nombre="marca_leasing">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Marcar Leasing</texto>
+         <accion>BUSCAR</accion>
+         <funcionValidacion>MarcarLeasing();</funcionValidacion>
+         <formulario>presupuesto</formulario>
+      </botones>
+	  <botones nombre="excel_revision">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel x Revision</texto>
+         <accion>NAVEGAR</accion>
+         <url>reporte_formulacion_excel.asp?nro_t=4</url>
+      </botones>	  	  		  	  
+   </parametro>
+
+
+	<parametro formulario="busqueda_formulacion" variable="busqueda">
+		<campos nombre="concepto">
+			 <tipo>SELECT</tipo>
+			 <union>concepto_pre</union>
+			 <salida>valor</salida>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <anulable>true</anulable>
+			 <mensajeNulo>TODOS LOS CONCEPTOS</mensajeNulo>
+			 <script>onChange="CargarConcepto(this.form, this.value)"</script> 
+		</campos>
+		<campos nombre="cod_area">
+			 <tipo>SELECT</tipo>
+			 <union>cod_area</union>
+			 <salida>valor</salida>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <anulable>true</anulable>
+			 <mensajeNulo>TODAS LAS AREAS</mensajeNulo>
+			 <script>onChange="CargarArea(this.form, this.value)"</script> 
+		</campos>					
+	</parametro>
+
+   <parametro formulario="f_presupuesto" clave="area" variable="pre" 
+  	mensajeError="No se encontro presupuesto asociado a los parametros de busqueda...">
+      <campos nombre="cpbano">
+         <descripcion>Año</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="cpbnum">
+         <descripcion>N° pres.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="cajcod">
+         <descripcion>Cod. Caja</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="codAux">
+         <descripcion>Cod. Auxiliar</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>	  
+      <campos nombre="cpbfec">
+         <descripcion>Fecha Ingreso</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="mes_venc">
+         <descripcion>Vence</descripcion>
+		 <tipo>SELECT</tipo>
+		 <destino>softland.sw_mesce</destino>
+		 <union>indice</union>
+		 <salida>nombremes</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>true</anulable>
+		 <mensajeNulo>mes</mensajeNulo>		 
+      </campos>
+      <campos nombre="movhaber">
+         <descripcion>Haber</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+		 <alineamiento>RIGHT</alineamiento>		 
+      </campos>
+      <campos nombre="movglosa">
+         <descripcion>Glosa</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+      </campos>	  
+   </parametro>
+
+	<parametro formulario="formulacion_detalle" variable="detalle">
+		<campos nombre="spru_ncorr">
+			<descripcion>spru_ncorr</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+      	</campos>	  
+	</parametro>
+
+</Parametros>

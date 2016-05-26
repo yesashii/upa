@@ -1,0 +1,8 @@
+8765825,ARRIAGADA MOLINA JULIA,,8765825-2,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+9804334,PEREZ QUINTANA PAULA CAROLINA,,9804334-9,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11675086,CAMPOS MEDEL ALEJANDRINA DEL CARMEN,,11675086-4,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11863985,JARA MOLINA JORGE HECTOR,,11863985-5,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+15534270,CABEZAS HERRERA ALEXIS ALEJANDRO,,15534270-6,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+16321865,ALCOHOLADO MORAGA MARIA CONSUELO,,16321865-8,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+16941429,ANDRADE COPPA FIORELLA FERNANDA,,16941429-7,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17308759,FORES CARRASCO LUCIA BELEN,,17308759-4,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

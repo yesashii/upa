@@ -1,0 +1,95 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+		 <soloUnClick>TRUE</soloUnClick>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>portada_encuesta.asp</url>
+      </botones>
+     	  <botones nombre="ir1">
+         <tipoTexto>Siguiente</tipoTexto>
+         <texto>Comenzar</texto>
+         <accion>guardar</accion>
+		 <formulario>valida</formulario>
+         <url>proc_portada_encuesta_docente_rr_hh.asp</url>
+	</botones>
+	 <botones nombre="guardar2">
+     <tipoTexto>Siguiente</tipoTexto>
+         <texto>Guardar Respuestas.</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>encuesta_parte2_proc.asp?pag=2</url>
+		 <funcionValidacion>ValidarMarcados();</funcionValidacion>
+	</botones>
+	  <botones nombre="guardar3">
+     <tipoTexto>Siguiente</tipoTexto>
+         <texto>Guardar Respuestas.</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>encuesta_parte3_proc.asp?pag=3</url>
+		<funcionValidacion>validarmarcados();</funcionValidacion>
+		
+	</botones>
+	
+	<botones nombre="guardar4">
+     <tipoTexto>Guardar</tipoTexto>
+         <texto>Guardar Respuestas.</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>encuesta_proc.asp</url>
+		 <funcionValidacion>ValidarMarcados();</funcionValidacion>
+		</botones>
+   </parametro>
+   <parametro formulario="busqueda" variable="a" >
+	  <campos nombre="pers_nrut">
+ 		 <tipo>INPUT</tipo> 
+  		 <permiso>LECTURAESCRITURA</permiso> 
+  		 <caracteres>10</caracteres> 
+  		 <maxCaracteres>8</maxCaracteres> 
+  		 <id>NU-N</id> 
+  	  </campos>
+	  <campos nombre="pers_xdv">
+  		 <tipo>INPUT</tipo> 
+  		 <permiso>LECTURAESCRITURA</permiso> 
+         <caracteres>1</caracteres> 
+         <maxCaracteres>1</maxCaracteres> 
+         <script>onBlur="this.value=this.value.toUpperCase();"</script> 
+         <id>LN-N</id> 
+      </campos>
+   </parametro>
+
+   <parametro formulario="encabezado" anchoTabla="100%" columnas="2" variable="enca">
+          <campos nombre="nombres">
+         <descripcion>Nombres</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="carr_tdesc">
+         <descripcion>Apellidos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="asig_tdesc">
+         <descripcion>Apellidos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  	  <campos nombre="asig_ccod">
+         <descripcion>Apellidos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+		  <campos nombre="secc_tdesc">
+         <descripcion>Apellidos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      </parametro>
+		
+
+</Parametros>

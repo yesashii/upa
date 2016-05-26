@@ -1,0 +1,201 @@
+<!--Versión 1.0 creada por Sinezio da Silva fecha 03-05-2015 supervisionada por Michael Shaw
+hay dos paginas que estan viculadas a este XML proc_cambio_detalle_cheque.asp y cambio_detalle_cheques.asp-->
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>ValidaBusqueda();</funcionValidacion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cancelar">
+         <tipoTexto>Cerrar</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>cerrarVentana()</funcion>
+      </botones>
+	  <botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+		 <accion>GUARDAR</accion>
+		 <url>proc_cambio_detalle_cheque.asp</url>
+		 <formulario>edicion</formulario>	
+		 <funcionValidacion>ValidaValoresIngreso();</funcionValidacion>
+      </botones>
+	
+   </parametro>
+   
+   
+   
+   <parametro formulario="buscador" variable="buscador">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>LN-N</id>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+      </campos>
+	  <campos nombre="COMP_NDOCTO">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>NU-N</id>
+      </campos>
+   </parametro>
+   
+      
+   <parametro formulario="datos_alumno" >	  
+	  <campos nombre="nombre">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="rut">
+         <descripcion>Rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  
+   </parametro>
+   
+ <parametro
+  formulario="detalle_ingreso"   variable="datos_ingreso"  clave="ingr_ncorr"  mensajeError="No se registran abonos para este Documento.">
+			
+			<campos nombre="ingr_ncorr2">
+			<alineamiento>center</alineamiento>
+			<descripcion>No. Compromiso</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>
+			</campos>
+			
+			<campos nombre="tcom_ccod2">
+			<alineamiento>center</alineamiento>
+			<descripcion>Codigo Compromiso</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>
+			</campos>
+						
+			<campos nombre="comp_ndocto2">
+			<alineamiento>center</alineamiento>
+			<descripcion>No. Compromiso</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>
+			</campos>
+			
+			<campos nombre="dcom_ncompromiso2">
+			<alineamiento>center</alineamiento>
+			<descripcion>No. Compromiso</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>
+			</campos>
+			
+			<campos nombre="pers_ncorr">
+			<alineamiento>center</alineamiento>
+			<descripcion>No. Compromiso</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>
+			</campos>
+			<campos nombre="COMP_NDOCTO">
+			<alineamiento>center</alineamiento>
+			<descripcion>No. Compromiso</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>
+			</campos>
+			
+			<campos nombre="ncompromiso">
+			<alineamiento>center</alineamiento>
+			<descripcion>No. Compromiso</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>lectura</permiso>
+			
+			</campos> 
+			
+			<campos nombre="tcom_tdesc">
+			<alineamiento>center</alineamiento>
+			<descripcion>Item</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			</campos>
+			 
+			<campos nombre="ncuota">
+			<alineamiento>center</alineamiento>
+			<descripcion>No. de Cuotas</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			</campos>
+			 
+			<campos nombre="comp_fdocto">
+			<alineamiento>center</alineamiento>
+			<descripcion>Fecha de Emisión</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			</campos>
+			 
+			<campos nombre="dcom_fcompromiso">
+			<alineamiento>center</alineamiento>
+			<descripcion>Fecha Compromiso</descripcion>
+			<tipo>input</tipo>
+			<permiso>lectura</permiso>
+			</campos>
+			
+			<campos nombre="ting_ccod">
+			<alineamiento>center</alineamiento>
+			<tipo>SELECT</tipo>
+			<destino>TIPOS_INGRESOS</destino>
+			<union>TING_CCOD</union>
+			<salida>TING_TDESC</salida>
+			<descripcion>Dto. Pactado</descripcion>
+			<permiso>lectura</permiso>
+			</campos> 
+			
+			<campos nombre="ding_ndocto">
+			<alineamiento>center</alineamiento>
+			<descripcion>No. Documento</descripcion>
+			<tipo>input</tipo>
+			<permiso>lectura</permiso>
+			</campos>
+			
+			<campos nombre="edin_tdesc">
+			<alineamiento>center</alineamiento>
+			<descripcion>Est. Documento</descripcion>
+			<tipo>input</tipo>
+			<permiso>lectura</permiso>
+			</campos>
+			<campos nombre="dcom_mcompromiso">
+			<alineamiento>center</alineamiento>
+			<descripcion>Monto</descripcion>
+			<tipo>input</tipo>
+			<permiso>lectura</permiso>
+			</campos>
+			
+			<campos nombre="dcom_mcompromiso2">
+			<alineamiento>center</alineamiento>
+			<descripcion>Monto Ingresado</descripcion>
+			<tipo>input</tipo>
+			<permiso>oculto</permiso>
+			</campos>
+			
+			<campos nombre="monto_cambio">
+			<alineamiento>center</alineamiento>
+			<descripcion>Monto a cambiar</descripcion>
+			<tipo>input</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			 <script>onBlur="sumavalor();"</script>
+			<id>LN-N</id>
+			</campos>
+			
+			
+   </parametro>
+   
+   
+</Parametros>

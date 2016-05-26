@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+	<parametro formulario="edicion_modulos" clave="mote_ccod" variable="m" mensajeError="No hay módulos que cumplan la condición"
+		 colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="true" 
+		 eliminar="true" agregar="true" nuevaVentana="false" paginaEdicion="editar_modulos.asp?mote_ccod=%mote_ccod%" 
+		 maxLista="10" nroRegistros="10">
+		
+		<campos nombre="mote_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<caracteres>45</caracteres>
+			<maxCaracteres>65</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+
+		<campos nombre="mote_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso> 
+		</campos>
+
+		<campos nombre="codigo">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso> 
+		</campos>
+	</parametro>
+	
+	<parametro formulario="btn_edita_modulos">
+    	<botones nombre="guardar"> 
+      		<tipoTexto>GUARDAR</tipoTexto>
+	  		<accion>JAVASCRIPT</accion>
+	  		<funcion>guardar(document.edicion)</funcion>
+		</botones> 
+    
+		<botones nombre="volver"> 
+      		<tipoTexto>DEFINIR</tipoTexto>
+	  		<texto>Cerrar</texto>
+	  		<accion>JAVASCRIPT</accion>
+	  		<funcion>volver()</funcion>
+		</botones> 
+ 	</parametro>
+ 	
+	<parametro formulario="mantiene_modulos" variable="m" >
+		<tablas nombre="modulos_otec" accion="M" />
+ 	</parametro>	
+</Parametros>
+

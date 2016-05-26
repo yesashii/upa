@@ -1,0 +1,2 @@
+RUT ,ID,NombreCliente,TipoMoneda,ValorCuota,ValorMora,MontoRecaudado,FechaVcto,FechaRecaudacion
+187478790,442031,ÁLVAREZ TORRES DANIELA PAZ,Pesos,123147,0,123147,20/05/2015,20/05/2015

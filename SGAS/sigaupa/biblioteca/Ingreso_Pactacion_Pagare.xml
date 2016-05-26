@@ -1,0 +1,201 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="ingresar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Ingresar</texto>
+         <accion>GUARDAR</accion>
+         <url>Proc_Ingreso_Pactacion_Pagare.asp</url>
+         <formulario>edicion</formulario>
+         <mensajeConfirmacion>¿Está seguro que desea realizar la operación?</mensajeConfirmacion>
+         <funcionValidacion>ValidarOperacion();</funcionValidacion>
+      </botones>
+      <botones nombre="lanzadera">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>Validar();</funcionValidacion>
+      </botones>
+   </parametro>
+   <parametro formulario="busqueda" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+      <campos nombre="code_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="code_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+      <campos nombre="paga_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+   </parametro>
+   <parametro formulario="f_letras" clave="paga_ncorr" variable="letras" nroRegistros="7" maxLista="10" anchoTabla="100%" mensajeError="No se encontraron documentos." eliminar="FALSE">
+      <campos nombre="enpa_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="paga_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="bene_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pers_ncorr_codeudor">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="INST_CCOD">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="oculto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="valor_pagar_c">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="check">
+         <descripcion/>
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <script>onClick="procesar_click()"</script>
+      </campos>
+      <campos nombre="nro_pagare">
+         <descripcion>N. Pagare</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="epag_ccod">
+         <descripcion>Estado</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>estados_pagares</destino>
+         <union>epag_ccod</union>
+         <salida>epag_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>false</anulable>
+         <filtro>epag_ccod in (4,8,6)</filtro>
+         <alineamiento>CENTER</alineamiento>
+         <script>onChange="procesar_tabla()"</script>
+         <deshabilitado>TRUE</deshabilitado>
+      </campos>
+      <campos nombre="EPAG_TDESC">
+         <descripcion>Estado Actual</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="rut_post">
+         <descripcion>Rut Alumno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="rut_codeudor">
+         <descripcion>Rut Apoderado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="valor_pagar">
+         <descripcion>Monto U.F</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="paga_fpagare">
+         <descripcion>F Emision</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <nowrap>TRUE</nowrap>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="paga_finicio_pago">
+         <descripcion>F Inicio Vencimiento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+      <campos nombre="monto_pactar">
+         <descripcion>Monto U.F</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>RIGHT</alineamiento>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <deshabilitado>TRUE</deshabilitado>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="fecha_operacion">
+         <descripcion>Fecha Operación</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-N</id>
+         <tipoDato>FECHA</tipoDato>
+         <deshabilitado>TRUE</deshabilitado>
+      </campos>
+   </parametro>
+   <parametro formulario="f_pactar" clave="paga_ncorr" variable="letras">
+      <tablas nombre="compromisos" accion="M"/>
+      <tablas nombre="detalle_compromisos" accion="M"/>
+      <tablas nombre="detalles" accion="M"/>
+      <tablas nombre="abonos" accion="M"/>
+      <tablas nombre="detalle_ingresos" accion="M"/>
+   </parametro>
+   <parametro formulario="f_prorrogar" clave="paga_ncorr" variable="letras">
+      <tablas nombre="pagares" accion="M"/>
+      <tablas nombre="beneficios" accion="M"/>
+   </parametro>
+   <parametro formulario="f_pactar_ii" clave="ingr_ncorr" variable="letras">
+      <tablas nombre="ingresos" accion="M"/>
+   </parametro>
+</Parametros>

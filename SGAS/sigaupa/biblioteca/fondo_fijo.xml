@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+<parametro formulario="botonera">
+   <botones nombre="salir"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	<botones nombre="guardar">
+		 <tipoTexto>GUARDAR</tipoTexto>
+		 <accion>GUARDAR</accion>
+		 <url>fondo_fijo_proc.asp</url>
+		 <formulario>datos</formulario>
+		 <funcionValidacion>Enviar();</funcionValidacion>
+	</botones>
+	<botones nombre="imprimir"> 
+		<tipoTexto>DEFINIR</tipoTexto>
+		<texto>Imprimir</texto>
+		<accion>Navegar</accion>
+		<url>javascript:ImprimirFondoFijo();</url>
+	</botones>		
+</parametro>
+
+<parametro formulario="datos_funcionario" variable="datos" clave="ffij_ncorr">
+ 		<tablas nombre="ocag_fondo_fijo" accion="M"/>
+	<campos nombre="ffij_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	</campos>
+	<campos nombre="cod_pre">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_codigos_presupuesto</destino>
+		 <union>cod_pre</union>
+		 <salida>valor</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+	</campos>		
+	<campos nombre="pers_tnombre">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>25</caracteres>
+		<maxCaracteres>40</maxCaracteres>
+		<id>TO-N</id>
+		<script>onBlur='CopiaNombre(this.form)'</script>
+    </campos>
+	<campos nombre="v_nombre">
+		 <tipo>INPUT</tipo>
+		 <permiso>OCULTO</permiso>
+		 <id>TO-N</id>
+	</campos>				
+	<campos nombre="pers_nrut">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-N</id>
+		<script>onBlur="genera_digito(this.value);"</script>	
+    </campos>
+	<campos nombre="pers_xdv">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>2</caracteres>
+		<maxCaracteres>1</maxCaracteres>
+		<id>TO-N</id>
+		<script>onBlur='CopiaNombre(this.form)'</script>
+	</campos>
+	<campos nombre="pers_tnombre_alu">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>25</caracteres>
+		<maxCaracteres>40</maxCaracteres>
+		<id>TO-N</id>
+    </campos>	
+	<campos nombre="pers_nrut_alu">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-N</id>
+    </campos>	
+	<campos nombre="pers_xdv_alu">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>2</caracteres>
+		<maxCaracteres>2</maxCaracteres>
+		<id>TO-N</id>
+	</campos>	
+	<campos nombre="ffij_fpago">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>15</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+	</campos>		
+	<campos nombre="ffij_mmonto_pesos">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>NU-N</id>
+	</campos>
+	<campos nombre="ffij_tdetalle_presu">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>50</caracteres>
+		<maxCaracteres>100</maxCaracteres>
+		<id>TO-N</id>
+    </campos>				
+	<campos nombre="tmon_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_moneda</destino>
+		 <union>tmon_ccod</union>
+		 <salida>tmon_tdesc</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>tmon_ccod</orden>
+	</campos>
+	<campos nombre="mes_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>MESES</destino>
+		 <union>mes_ccod</union>
+		 <salida>mes_tdesc</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>mes_ccod</orden>
+	</campos>		
+</parametro> 
+
+<parametro formulario="buscador_area" variable="datos">
+	<campos nombre="area_ccod">
+			 <tipo>SELECT</tipo>
+			 <destino>presupuesto_upa.protic.area_presupuestal</destino>
+			 <union>area_ccod</union>
+			 <salida>area_tdesc</salida>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <anulable>false</anulable>
+			 <orden>area_tdesc</orden>
+	</campos>
+</parametro>
+
+<parametro formulario="codigo_presupuesto" variable="datos">
+	<campos nombre="cod_pre">
+		 <tipo>SELECT</tipo>
+		 <destino>presupuesto_upa.protic.presupuesto_upa_2010</destino>
+		 <union>cod_pre</union>
+		 <salida>valor</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+	</campos>
+</parametro> 
+
+<parametro formulario="imprimir_datos_solicitud" variable="datos" clave="ffij_ncorr">
+	<campos nombre="cod_pre">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_codigos_presupuesto</destino>
+		 <union>cod_pre</union>
+		 <salida>valor</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+	</campos>		
+	<campos nombre="pers_tnombre">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>25</caracteres>
+		<maxCaracteres>40</maxCaracteres>
+		<id>TO-N</id>
+    </campos>		
+	<campos nombre="pers_nrut">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-N</id>
+    </campos>
+	<campos nombre="pers_xdv">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>2</caracteres>
+		<maxCaracteres>1</maxCaracteres>
+		<id>TO-N</id>
+	</campos>
+	<campos nombre="pers_tnombre_alu">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>25</caracteres>
+		<maxCaracteres>40</maxCaracteres>
+		<id>TO-N</id>
+    </campos>	
+	<campos nombre="pers_nrut_alu">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-N</id>
+    </campos>	
+	<campos nombre="pers_xdv_alu">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>2</caracteres>
+		<maxCaracteres>2</maxCaracteres>
+		<id>TO-N</id>
+	</campos>	
+	<campos nombre="ffij_fpago">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>15</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+	</campos>		
+	<campos nombre="ffij_mmonto_pesos">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>NU-N</id>
+	</campos>
+	<campos nombre="ffij_tdetalle_presu">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>50</caracteres>
+		<maxCaracteres>100</maxCaracteres>
+		<id>TO-N</id>
+    </campos>				
+	<campos nombre="mes_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>MESES</destino>
+		 <union>mes_ccod</union>
+		 <salida>mes_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>mes_ccod</orden>
+	</campos>
+	<campos nombre="anos_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>anos</destino>
+		 <union>anos_ccod</union>
+		 <salida>anos_ccod</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>anos_ccod</orden>
+	</campos>
+</parametro> 
+
+<parametro formulario="imprimir_buscador_area" variable="datos">
+	<campos nombre="area_ccod">
+			 <tipo>SELECT</tipo>
+			 <destino>presupuesto_upa.protic.area_presupuestal</destino>
+			 <union>area_ccod</union>
+			 <salida>area_tdesc</salida>
+			 <permiso>LECTURA</permiso>
+			 <anulable>false</anulable>
+			 <orden>area_tdesc</orden>
+	</campos>
+</parametro>
+
+<parametro formulario="imprimir_codigo_presupuesto" variable="datos">
+	<campos nombre="cod_pre">
+		 <tipo>SELECT</tipo>
+		 <destino>presupuesto_upa.protic.presupuesto_upa_2010</destino>
+		 <union>cod_pre</union>
+		 <salida>valor</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>false</anulable>
+	</campos>
+</parametro> 
+
+
+</Parametros>

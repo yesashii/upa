@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="btn_envios_cobranza_buscar">
+  <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	    <funcionValidacion>Validar();</funcionValidacion>
+	
+	</botones> 
+	
+	
+    <botones nombre="agregar_letras"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>AGREGAR</accion>
+	  <posicionX>100</posicionX>
+	  <posicionY>50</posicionY>
+	  <ancho>750</ancho>
+	  <alto>600</alto>
+	 </botones> 
+	 
+	<botones nombre="guardar_letras"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>Proc_Envios_Cobranza_Buscar.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>
+	
+	<botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>ELIMINAR</accion>
+	  <formulario>edicion</formulario>
+	</botones>
+	
+	 <botones nombre="cancelar"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+ </parametro>
+
+
+
+ <parametro formulario="busqueda_letras" variable="busqueda">
+   <campos nombre="sede_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>sedes</destino> 
+	  <union>sede_ccod</union>
+	  <salida>sede_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Sede</mensajeNulo>
+	 </campos>
+	<campos nombre="inicio">
+     <tipo>INPUT</tipo>
+     <permiso>LECTURAESCRITURA</permiso>
+     <caracteres>12</caracteres>
+     <maxCaracteres>10</maxCaracteres>
+	 <id>FE-S</id>
+    </campos>
+	<campos nombre="termino">
+     <tipo>INPUT</tipo>
+     <permiso>LECTURAESCRITURA</permiso>
+     <caracteres>12</caracteres>
+     <maxCaracteres>10</maxCaracteres>
+	 <id>FE-S</id>
+    </campos>
+	<campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+     <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+	  <campos nombre="code_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="code_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+    <campos nombre="ding_ndocto">
+       <tipo>INPUT</tipo>
+       <permiso>LECTURAESCRITURA</permiso>
+       <caracteres>12</caracteres>
+       <maxCaracteres>10</maxCaracteres>
+	   <id>NU-S</id>
+    </campos>
+  <campos nombre="vencimiento">
+     <tipo>INPUT</tipo>
+     <permiso>LECTURAESCRITURA</permiso>
+     <caracteres>12</caracteres>
+     <maxCaracteres>10</maxCaracteres>
+	 <id>FE-S</id>
+    </campos>
+	<campos nombre="ding_tcuenta_corriente">
+     <tipo>INPUT</tipo>
+     <permiso>LECTURAESCRITURA</permiso>
+     <caracteres>12</caracteres>
+     <maxCaracteres>10</maxCaracteres>
+    </campos>
+  <campos nombre="edin_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>estados_detalle_ingresos</destino> 
+	  <union>edin_ccod</union>
+	  <salida>edin_tdesc</salida>
+	 <filtro>edin_ccod in (1,8,9,19,20,21,22,23)</filtro>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Estado</mensajeNulo>
+	 </campos>
+	 
+  <campos nombre="TING_CCOD">
+      <tipo>SELECT</tipo>
+	  <destino>tipos_ingresos</destino> 
+	  <union>TING_CCOD</union>
+	  <salida>TING_TDESC</salida>
+	 <filtro>TING_CCOD in (3,4,38,52,66) </filtro>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Tipo Documento</mensajeNulo>
+	 </campos>
+  </parametro> 
+  
+
+<parametro formulario="listado_letras" clave="envi_ncorr"  variable="letras" 
+    colorSeleccionado="#CCCCCC" colorResaltado="#999999" nroRegistros="10" maxLista="10" 
+    eliminar="TRUE" seleccionarTodo="FALSE"  anchoTabla="95%" editar="FALSE"  nuevaVentana="FALSE" 
+	mensajeError="No se encontraron letras...">
+	<tablas nombre="detalle_envios" accion="M"/>
+	<tablas nombre="detalle_ingresos" accion="M"/>
+	 <campos nombre="ting_ccod">
+	    <descripcion>tipo envio</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	<campos nombre="ding_ndocto">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="ingr_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="edin_ccod">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="c_ding_ndocto">
+	    <descripcion>Nº Documento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<ancho>50</ancho>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="ting_tdesc">
+	    <descripcion>Tipo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 	 <campos nombre="ding_tcuenta_corriente">
+	    <descripcion>Nº Cuenta Corriente</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 
+     <campos nombre="edin_tdesc">
+	    <descripcion>Estado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	<campos nombre="rut_alumno">
+	    <descripcion>Rut Alumno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="rut_apoderado">
+	    <descripcion>Rut Apoderado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+ 	 <campos nombre="fecha_envio">
+	    <descripcion>F. Emision</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="ding_fdocto">
+	    <descripcion>F. Vencimiento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="ding_mdocto">
+	    <descripcion>Monto</descripcion>
+		<tipo>INPUT</tipo>
+		<formato>MONEDA</formato>
+		<permiso>LECTURA</permiso>
+		<alineamiento>RIGHT</alineamiento>
+	 </campos>
+	 <campos nombre="envio">
+	    <descripcion>Enviar</descripcion>
+		<tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>OCULTO</permiso>
+		 <alineamiento>CENTER</alineamiento>
+	</campos>	
+   </parametro>
+   
+   
+</Parametros>
+

@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Indicadores de Desempeño institucional</title>
+<style type="text/css">
+A { text-decoration: none;
+    color:#FFFFFF;  } 
+* {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	margin:10px;
+}
+
+#basic-accordian{
+	border:5px solid #2b3c4e;
+	padding:5px;
+	width:305px;
+	background:#2b3c4e;
+	position:absolute;
+	left:2%;
+	top:2%;
+	margin-left:0px;
+	z-index:2;
+	margin-top:0px;
+}
+
+.accordion_headings{
+	padding:5px;
+	background:#2b3c4e;
+	color:#FFFFFF;
+	border:0px solid #2b3c4e;
+	cursor:pointer;
+	font-weight:bold;
+}
+
+.accordion_headings:hover{
+	background:#2b3c4e;
+}
+
+.accordion_child{
+	padding:15px;
+	background:#2b3c4e;
+	color:#FFFFFF;
+}
+
+.header_highlight{
+	background:#2b3c4e;
+	color:#FFFFFF;
+}
+
+</style>
+<script type="text/javascript" src="accordian.pack.js"></script>
+<script type="text/javascript">
+function colorear (ide)
+{
+	var elemento = document.getElementById(ide);
+	elemento.bgColor="#7c9efa";
+}
+function descolorear (ide)
+{
+	var elemento = document.getElementById(ide);
+	elemento.bgColor="#2b3c4e";
+}
+</script>
+</head>
+<body onload="new Accordian('basic-accordian',5,'header_highlight');" bgcolor="#d1d9e0">
+
+
+<div id="basic-accordian" ><!--Parent of the Accordion-->
+
+
+<!--Start of each accordion item-->
+  <div id="test-header" class="accordion_headings header_highlight">
+  		<table width="100%" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="3%"><img width="17" height="16" src="imagenes/estrella_amarilla.png" border="0"></td>
+				<td width="96%" align="left"><div align="justify">1. Posicionar un modelo educativo que articule una comunidad de aprendizaje en un proceso continuo de evaluación y aseguramiento de la calidad.</div></td>
+				<td width="3%">&nbsp;</td>
+			</tr>
+		</table>
+  </div><!--Heading of the accordion ( clicked to show n hide ) -->
+  
+  <!--Prefix of heading (the DIV above this) and content (the DIV below this) to be same... eg. foo-header & foo-content-->
+  
+  <div id="test-content"><!--DIV which show/hide on click of header-->
+  
+  	<!--This DIV is for inline styling like padding...-->
+    <div class="accordion_child">
+    	<table width="100%" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="3%">&nbsp;</td>
+				<td width="3%"><img width="22" height="16" src="imagenes/cuadrado_verde_doble.png" border="0"></td>
+				<td width="91%" align="left" onmouseover="colorear('op1.1')" onmouseout="descolorear('op1.1')" id="op1.1"><a href="indicadores_1_1.asp" target="principal"><div align="justify">1.1. Desarrollar un modelo educativo que conozca el perfil de ingreso del alumno, apoye su formación integral e incorpore la cultura organizacional de la Universidad del Pacífico.<hr color="#FFFFFF"></div></a></td>
+				<td width="3%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="3%">&nbsp;</td>
+				<td width="3%"><img width="22" height="16" src="imagenes/cuadrado_rojo_doble.png" border="0"></td>
+				<td width="91%" align="left" onmouseover="colorear('op1.2')" onmouseout="descolorear('op1.2')" id="op1.2"><a href="indicadores_1_2.asp" target="principal"><div align="justify">1.2. Desarrollar y aplicar un perfil de egreso basado en las tres dimensiones del saber: saber conocer, saber hacer y emprender, saber ser y convivir.<hr color="#FFFFFF"></div></a></td>
+				<td width="3%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="3%">&nbsp;</td>
+				<td width="3%"><img width="17" height="16" src="imagenes/cuadrado_naranja.png" border="0"></td>
+				<td width="91%" align="left"  onmouseover="colorear('op1.3')" onmouseout="descolorear('op1.3')" id="op1.3"><a href="indicadores_1_3.asp" target="principal"><div align="justify">1.3. Crear e Implementar un Centro de Apoyo Docente que fortalezca el modelo educativo de la universidad y genere modalidades innovadoras para la formación de pre y postgrado.<hr color="#FFFFFF"></div></a></td>
+				<td width="3%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="3%">&nbsp;</td>
+				<td width="3%"><img width="17" height="16" src="imagenes/cuadrado_blanco.png" border="0"></td>
+				<td width="91%" align="left"  onmouseover="colorear('op1.4')" onmouseout="descolorear('op1.4')" id="op1.4"><a href="indicadores_1_4.asp" target="principal"><div align="justify">1.4. Desarrollar líneas de investigación que contribuyan al mejoramiento del proceso enseñanza aprendizaje.<hr color="#FFFFFF"></div></a></td>
+				<td width="3%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="3%">&nbsp;</td>
+				<td width="3%"><img width="22" height="16" src="imagenes/cuadrado_gris_doble.png" border="0"></td>
+				<td width="91%" align="left"  onmouseover="colorear('op1.5')" onmouseout="descolorear('op1.5')" id="op1.5"><a href="indicadores_1_5.asp" target="principal"><div align="justify">1.5. Implementar procesos continuos de autoevaluación, que propendan en forma selectiva a la acreditación de carreras.<hr color="#FFFFFF"></div></a></td>
+				<td width="3%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="3%">&nbsp;</td>
+				<td width="3%"><img width="22" height="16" src="imagenes/cuadrado_azul_doble.png" border="0"></td>
+				<td width="91%" align="left"  onmouseover="colorear('op1.6')" onmouseout="descolorear('op1.6')" id="op1.6"><a href="indicadores_1_6.asp" target="principal"><div align="justify">1.6. Diseñar e implementar nuevos programas académicos de pre y postgrado acorde a las necesidades de la sociedad y las áreas del conocimiento a las que se adscribe la Universidad.<hr color="#FFFFFF"></div></a></td>
+				<td width="3%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="3%">&nbsp;</td>
+				<td width="3%"><img width="22" height="16" src="imagenes/cuadrado_oliva_doble.png" border="0"></td>
+				<td width="91%" align="left"  onmouseover="colorear('op1.7')" onmouseout="descolorear('op1.7')" id="op1.7"><a href="indicadores_1_7.asp" target="principal"><div align="justify">1.7. Diseñar e implementar un programa selectivo de intercambio académico nacional e internacional.<hr color="#FFFFFF"></div></a></td>
+				<td width="3%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="3%">&nbsp;</td>
+				<td width="3%"><img width="22" height="16" src="imagenes/cuadrado_verde_intenso_doble.png" border="0"></td>
+				<td width="91%" align="left"  onmouseover="colorear('op1.8')" onmouseout="descolorear('op1.8')" id="op1.8"><a href="indicadores_1_8.asp" target="principal"><div align="justify">1.8. Fortalecer el plan de comunicaciones, redes de colaboración y de vinculación con el medio que potencien la identidad de la Universidad.</div></a></td>
+				<td width="3%">&nbsp;</td>
+			</tr>
+		</table>
+    </div>
+    
+  </div>
+<!--End of each accordion item--> 
+
+
+<!--Start of each accordion item-->
+  <div id="test1-header" class="accordion_headings" >
+  		<table width="100%" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="3%"><img width="17" height="16" src="imagenes/estrella_verde.png" border="0"></td>
+				<td width="96%" align="left"><div align="justify">2. Incrementar la eficiencia del modelo de gestión universitaria.</div></td>
+				<td width="3%">&nbsp;</td>
+			</tr>
+		</table>
+  </div><!--Heading of the accordion ( clicked to show n hide ) -->
+  
+  <!--Prefix of heading (the DIV above this) and content (the DIV below this) to be same... eg. foo-header & foo-content-->
+  
+  <div id="test1-content"><!--DIV which show/hide on click of header-->
+  
+  	<!--This DIV is for inline styling like padding...-->
+    <div class="accordion_child">
+    	   <table width="100%" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="3%">&nbsp;</td>
+				<td width="3%"><img width="22" height="16" src="imagenes/cuadrado_verde_doble.png" border="0"></td>
+				<td width="91%" align="left"  onmouseover="colorear('op2.1')" onmouseout="descolorear('op2.1')" id="op2.1"><a href="indicadores_2_1.asp" target="principal"><div align="justify">2.1. Asegurar la sustentabilidad del proyecto académico.<hr color="#FFFFFF"></div></a></td>
+				<td width="3%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="3%">&nbsp;</td>
+				<td width="3%"><img width="17" height="16" src="imagenes/cuadrado_rojo.png" border="0"></td>
+				<td width="91%" align="left" onmouseover="colorear('op2.2')" onmouseout="descolorear('op2.2')" id="op2.2"><a href="indicadores_2_2.asp" target="principal"><div align="justify">2.2. Establecer mecanismos para la gestión académica, que aseguren su eficiencia y efectividad.<hr color="#FFFFFF"></div></a></td>
+				<td width="3%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="3%">&nbsp;</td>
+				<td width="3%"><img width="22" height="16" src="imagenes/cuadrado_naranja_doble.png" border="0"></td>
+				<td width="91%" align="left" onmouseover="colorear('op2.3')" onmouseout="descolorear('op2.3')" id="op2.3"><a href="indicadores_2_3.asp" target="principal"><div align="justify">2.3. Optimizar los procesos administrativos vinculados a la gestión de la Universidad.<hr color="#FFFFFF"></div></a></td>
+				<td width="3%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="3%">&nbsp;</td>
+				<td width="3%"><img width="22" height="16" src="imagenes/cuadrado_blanco_doble.png" border="0"></td>
+				<td width="91%" align="left" onmouseover="colorear('op2.4')" onmouseout="descolorear('op2.4')" id="op2.4"><a href="indicadores_2_4.asp" target="principal"><div align="justify">2.4. Desarrollar un sistema de información institucional que proporcione incormación válida, confiable y oportuna a los procesos académicos y administrativos de la Universidad.<hr color="#FFFFFF"></div></a></td>
+				<td width="3%">&nbsp;</td>
+			</tr>
+		</table>
+    </div>
+    
+  </div>
+<!--End of each accordion item--> 
+
+
+
+<!--Start of each accordion item-->
+  <div id="test2-header" class="accordion_headings" >
+  		<table width="100%" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="3%"><img width="17" height="16" src="imagenes/estrella_roja.png" border="0"></td>
+				<td width="96%" align="left"><div align="justify">3. Lograr un crecimiento sustentable y orgánico de la Universidad del Pacífico.</div></td>
+				<td width="3%">&nbsp;</td>
+			</tr>
+		</table>
+  </div><!--Heading of the accordion ( clicked to show n hide ) -->
+  
+  <!--Prefix of heading (the DIV above this) and content (the DIV below this) to be same... eg. foo-header & foo-content-->
+  
+  <div id="test2-content"><!--DIV which show/hide on click of header-->
+  
+  	<!--This DIV is for inline styling like padding...-->
+    <div class="accordion_child">
+    	<table width="100%" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="3%">&nbsp;</td>
+				<td width="3%"><img width="17" height="16" src="imagenes/cuadrado_verde.png" border="0"></td>
+				<td width="91%" align="left" onmouseover="colorear('op3.1')" onmouseout="descolorear('op3.1')" id="op3.1"><a href="indicadores_3_1.asp" target="principal"><div align="justify">3.1. Implementar un plan de crecimiento que considere los recursos y capacidades de la Universidad.<hr color="#FFFFFF"></div></a></td>
+				<td width="3%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="3%">&nbsp;</td>
+				<td width="3%"><img width="17" height="16" src="imagenes/cuadrado_rojo.png" border="0"></td>
+				<td width="91%" align="left" onmouseover="colorear('op3.2')" onmouseout="descolorear('op3.2')" id="op3.2"><a href="indicadores_3_2.asp" target="principal"><div align="justify">3.2. Identificar, seleccionar, implementar y evaluar mecanismos de transferencia técnica y de conocimientos que permitan la generación de recursos que contribuyan al desarrollo de la Universidad.<hr color="#FFFFFF"></div></a></td>
+				<td width="3%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="3%">&nbsp;</td>
+				<td width="3%"><img width="17" height="16" src="imagenes/cuadrado_naranja.png" border="0"></td>
+				<td width="91%" align="left" onmouseover="colorear('op3.3')" onmouseout="descolorear('op3.3')" id="op3.3"><a href="indicadores_3_3.asp" target="principal"><div align="justify">3.3. Fortalecer el plan de obtención de recursos que incorpore la diversificación de las fuentes de ingresos de la Universidad.<hr color="#FFFFFF"></div></a></td>
+				<td width="3%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="3%">&nbsp;</td>
+				<td width="3%"><img width="17" height="16" src="imagenes/cuadrado_blanco.png" border="0"></td>
+				<td width="91%" align="left" onmouseover="colorear('op3.4')" onmouseout="descolorear('op3.4')" id="op3.4"><a href="indicadores_3_4.asp" target="principal"><div align="justify">3.4. Diseñar e implementar un sistema de gestión de inversiones que considere la adquisición, mantenimiento, reposición y mejoramiento de la infraestructura y equipamiento generales de la Universidad.<hr color="#FFFFFF"></div></a></td>
+				<td width="3%">&nbsp;</td>
+			</tr>
+		</table><br />
+    </div>
+    
+  </div>
+<!--End of each accordion item--> 
+
+
+<!--Start of each accordion item-->
+  <div id="test3-header" class="accordion_headings" >
+  		<table width="100%" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="3%"><img width="17" height="16" src="imagenes/estrella_morada.png" border="0"></td>
+				<td width="96%" align="left"><div align="justify">4. Desarrollar un modelo de gestión de personas, que contribuya a consolidar una comunidad académica orientada a alcanzar altos niveles de desempeño.</div></td>
+				<td width="3%">&nbsp;</td>
+			</tr>
+		</table>
+  		
+  </div><!--Heading of the accordion ( clicked to show n hide ) -->
+  
+  <!--Prefix of heading (the DIV above this) and content (the DIV below this) to be same... eg. foo-header & foo-content-->
+  
+  <div id="test3-content"><!--DIV which show/hide on click of header-->
+  
+  	<!--This DIV is for inline styling like padding...-->
+    <div class="accordion_child">
+    	<table width="100%" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="3%">&nbsp;</td>
+				<td width="3%"><img width="17" height="16" src="imagenes/cuadrado_verde.png" border="0"></td>
+				<td width="91%" align="left" onmouseover="colorear('op4.1')" onmouseout="descolorear('op4.1')" id="op4.1"><a href="indicadores_4_1.asp" target="principal"><div align="justify">4.1. Fortalecer un sistema de reclutamiento, selección e inducción que permita incorporar al proyecto educativo de la universidad, personas con talento, habilidades y capacidades pertinentes al perfil de egreso.<hr color="#FFFFFF"></div></a></td>
+				<td width="3%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="3%">&nbsp;</td>
+				<td width="3%"><img width="17" height="16" src="imagenes/cuadrado_rojo.png" border="0"></td>
+				<td width="91%" align="left" onmouseover="colorear('op4.2')" onmouseout="descolorear('op4.2')" id="op4.2"><a href="indicadores_4_2.asp" target="principal"><div align="justify">4.2. Rediseñar e implementar un sistema de evaluación de la actividad académica, directiva y administración de la Universidad.<hr color="#FFFFFF"></div></a></td>
+				<td width="3%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="3%">&nbsp;</td>
+				<td width="3%"><img width="17" height="16" src="imagenes/cuadrado_naranja.png" border="0"></td>
+				<td width="91%" align="left" onmouseover="colorear('op4.3')" onmouseout="descolorear('op4.3')" id="op4.3"><a href="indicadores_4_3.asp" target="principal"><div align="justify">4.3. Implementar un sistema de reconocimiento que potencie el esfuerzo y desempeño destacado.<hr color="#FFFFFF"></div></a></td>
+				<td width="3%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="3%">&nbsp;</td>
+				<td width="3%"><img width="17" height="16" src="imagenes/cuadrado_blanco.png" border="0"></td>
+				<td width="91%" align="left" onmouseover="colorear('op4.4')" onmouseout="descolorear('op4.4')" id="op4.4"><a href="indicadores_4_4.asp" target="principal"><div align="justify">4.4. Implementar un sistema de capacitación del personal.<hr color="#FFFFFF"></div></a></td>
+				<td width="3%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="3%">&nbsp;</td>
+				<td width="3%"><img width="17" height="16" src="imagenes/cuadrado_gris.png" border="0"></td>
+				<td width="91%" align="left"  onmouseover="colorear('op4.5')" onmouseout="descolorear('op4.5')" id="op4.5"><a href="indicadores_4_5.asp" target="principal"><div align="justify">4.5. Implementar mecanismos de gestión del clima organizacional.<hr color="#FFFFFF"></div></a></td>
+				<td width="3%">&nbsp;</td>
+			</tr>
+		</table>
+    </div>
+    
+  </div>
+<!--End of each accordion item--> 
+
+
+
+
+
+
+</div><!--End of accordion parent-->
+
+
+
+
+
+</body>
+</html>

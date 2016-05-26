@@ -1,0 +1,2 @@
+RUT,ID,NombreCliente,TipoMoneda,ValorCuota,ValorMora,MontoRecaudado,FechaVcto,FechaRecaudacion
+171722993,18723,GUZMÁN HENRÍQUEZ JORGE JAVIER,Pesos,153.600,0,153.600,30/03/2015,26/03/2015

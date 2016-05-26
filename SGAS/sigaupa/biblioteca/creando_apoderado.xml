@@ -1,0 +1,104 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>ValidaBusqueda();</funcionValidacion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cancelar">
+         <tipoTexto>Cerrar</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>cerrarVentana()</funcion>
+      </botones>
+	  <botones nombre="guardar">
+	     <accion>javascript</accion>
+         <tipoTexto>DEFINIR</tipoTexto>		 
+		 <texto>Guardar</texto>
+		 <funcion>enviaproc();</funcion>
+      </botones>
+	
+   </parametro>
+   
+   
+   
+   <parametro formulario="buscador" variable="buscador">
+      
+	   <campos nombre="PERS_NCORR">
+         <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+	  
+	  <campos nombre="PERS_TEMAIL">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <script>onBlur="validarEmail(this.value=this.value.toLowerCase());"</script>
+      </campos>
+	  
+	  <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>LN-N</id>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+      </campos>
+	 </parametro>
+   
+      
+   <parametro formulario="datos_alumno" >	  
+	  <campos nombre="nombre">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="rut">
+         <descripcion>Rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  
+   </parametro>
+   
+ <parametro
+  formulario="detalle_ingreso"  variable="datos_ingreso" >
+			
+			<campos nombre="PERS_NCORR">
+			<alineamiento>center</alineamiento>
+			<descripcion>codigo persona</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>
+			</campos>
+			
+			<campos nombre="RUT">
+			<alineamiento>center</alineamiento>
+			<descripcion>rut persona</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>
+			</campos>
+			
+			<campos nombre="PERS_TEMAIL">
+			<alineamiento>center</alineamiento>
+			<descripcion>Email Usuario</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>
+			</campos>
+						
+						
+			 
+   </parametro>
+   
+   
+</Parametros>

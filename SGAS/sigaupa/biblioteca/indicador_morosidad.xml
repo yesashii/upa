@@ -1,0 +1,73 @@
+<Parametros>
+  <parametro formulario="botonera">
+     <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+	 <botones nombre="buscar">
+		  <tipoTexto>BUSCAR</tipoTexto>
+		  <accion>BUSCAR</accion>
+		  <formulario>buscador</formulario>
+ 	  </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>salir()</funcion>
+      </botones>	
+	   <botones nombre="excel2">
+        <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>BUSCAR</accion>
+		 <url>indicador_morosidad_excel.asp</url>
+         <formulario>buscador</formulario>
+     </botones>  
+  </parametro>
+  
+ <parametro formulario="filtros" variable="busqueda">
+    <campos nombre="sede_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>sedes</destino> 
+	  <union>sede_ccod</union>
+	  <salida>sede_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Todas las Sedes</mensajeNulo>	
+	  <filtro>sede_ccod in (1,2,4,7,8)</filtro> 
+	 </campos>
+    <campos nombre="facu_ccod">
+      	<tipo>SELECT</tipo>
+	  	<destino>facultades</destino> 
+	  	<union>facu_ccod</union>
+	  	<salida>facu_tdesc</salida>
+	  	<permiso>LECTURAESCRITURA</permiso>
+	  	<anulable>true</anulable>
+	  	<mensajeNulo>Todas las Facultades</mensajeNulo>	 
+	 </campos>
+    <campos nombre="carr_ccod">
+      	<tipo>SELECT</tipo>
+	  	<destino>carreras</destino> 
+	  	<union>carr_ccod</union>
+	  	<salida>carr_tdesc</salida>
+	  	<permiso>LECTURAESCRITURA</permiso>
+	  	<anulable>true</anulable>
+	  	<mensajeNulo>Todas las Carreras</mensajeNulo>
+		<filtro>tcar_ccod in (1)</filtro>	 
+	 </campos>	 	 	 
+	 <campos nombre="fecha_corte">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+	</campos>
+	<campos nombre="fecha_inicio">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+	</campos>
+	</parametro>
+ 
+ </Parametros>

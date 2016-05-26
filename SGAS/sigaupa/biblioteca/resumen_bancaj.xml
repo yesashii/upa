@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+         <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>salir()</funcion>
+      </botones>
+      <botones nombre="buscar">
+		  <tipoTexto>BUSCAR</tipoTexto>
+		  <accion>BUSCAR</accion>
+		  <formulario>buscador</formulario>
+ 	  </botones>
+	  <botones nombre="excel">
+        <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>BUSCAR</accion>
+         <url>resumen_bancaj_excel.asp</url>
+         <formulario>buscador</formulario>
+     </botones>
+	 <botones nombre="excel_anual">
+        <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>BUSCAR</accion>
+         <url>resumen_anual_cajas_excel.asp</url>
+         <formulario>buscador</formulario>
+     </botones>
+   </parametro>
+ 
+ 
+   	<parametro formulario="busqueda" variable="busqueda">
+	   	<campos nombre="v_anos">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<union>v_anos</union>
+			<salida>anos_tdesc</salida>
+			<anulable>TRUE</anulable>
+			<mensajeNulo>Seleccione Año para analizar</mensajeNulo>
+			<id>TO-N</id>
+	   	</campos>
+		<campos nombre="ding_fdocto">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>12</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>FE-S</id>
+		</campos>
+   	</parametro>
+ 
+ <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="resumen_caja" 
+ 		mensajeError="No se encontraron cajas abiertas para el dia seleccionado" 
+		colorBase="#F1F1E4"  anchoTabla="100%"  resumen="TRUE">  
+		<campos nombre="mes_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Mes</descripcion>
+		</campos>
+		<campos nombre="cheques">
+			<tipo>RESUMEN</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Cheques</descripcion>
+			<formato>Moneda</formato>
+			<resumen>SUMA_JC</resumen>
+			<nowrap>TRUE</nowrap>
+    	</campos>
+		<campos nombre="letras">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Letras</descripcion>
+			<formato>Moneda</formato>
+			<resumen>SUMA_JC</resumen>
+			<nowrap>TRUE</nowrap>			
+    	</campos>
+		<campos nombre="efectivo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Efectivo</descripcion>
+			<formato>Moneda</formato>
+			<resumen>SUMA_JC</resumen>
+			<nowrap>TRUE</nowrap>			
+    	</campos>
+		<campos nombre="vale_vista">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Vale Vista</descripcion>
+			<formato>Moneda</formato>
+			<resumen>SUMA_JC</resumen>
+			<nowrap>TRUE</nowrap>			
+    	</campos>
+		<campos nombre="credito">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>T. Credito</descripcion>
+			<formato>Moneda</formato>
+			<resumen>SUMA_JC</resumen>
+			<nowrap>TRUE</nowrap>			
+    	</campos>
+		<campos nombre="debito">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>T. Debito</descripcion>
+			<formato>Moneda</formato>
+			<resumen>SUMA_JC</resumen>
+			<nowrap>TRUE</nowrap>			
+    	</campos>
+		<campos nombre="pagare">
+			<tipo>Input</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Pagare</descripcion>
+			 <formato>MONEDA</formato>
+			<resumen>SUMA_JC</resumen>
+			<nowrap>TRUE</nowrap>
+    	</campos>
+		<campos nombre="total">
+			<tipo>Input</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Total Caja</descripcion>
+			<formato>MONEDA</formato>
+			<resumen>SUMA_JC</resumen>
+			<nowrap>TRUE</nowrap>
+    	</campos>
+	  </parametro>  
+	
+	 <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9"  formulario="resumen_caja_final" 
+ 		mensajeError="No se encontraron cajas abiertas para el dia seleccionado" 
+		colorBase="#F1F1E4" editar="false" anchoTabla="100%" nuevaVentana="false" variable="a" >  
+		<campos nombre="texto">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion></descripcion>
+		</campos>
+		<campos nombre="cheques">
+			<tipo>RESUMEN</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Cheques</descripcion>
+			<formato>Moneda</formato>
+    	</campos>
+		<campos nombre="letras">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Letras</descripcion>
+			<formato>Moneda</formato>
+    	</campos>
+		<campos nombre="efectivo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Efectivo</descripcion>
+			<formato>Moneda</formato>
+    	</campos>
+		<campos nombre="vale_vista">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Vale Vista</descripcion>
+			<formato>Moneda</formato>
+    	</campos>
+		<campos nombre="credito">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>T. Credito</descripcion>
+			<formato>Moneda</formato>
+    	</campos>
+		<campos nombre="debito">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>T. Debito</descripcion>
+			<formato>Moneda</formato>
+    	</campos>
+		<campos nombre="pagare">
+			<tipo>Input</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Pagare</descripcion>
+			 <formato>MONEDA</formato>
+    	</campos>
+		<campos nombre="total">
+			<tipo>Input</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Total Caja</descripcion>
+			 <formato>MONEDA</formato>
+    	</campos>
+	  </parametro>  
+
+	
+</Parametros>

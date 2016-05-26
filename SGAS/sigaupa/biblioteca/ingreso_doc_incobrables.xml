@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="fbusqueda" variable="busqueda">
+
+	<campos nombre="ding_ndocto">
+     <tipo>INPUT</tipo>
+     <permiso>LECTURAESCRITURA</permiso>
+     <caracteres>10</caracteres>
+     <maxCaracteres>8</maxCaracteres>
+    </campos>
+	
+	 <campos nombre="ting_ccod">
+	 <descripcion>Tipo</descripcion>
+      <tipo>SELECT</tipo>
+	  <destino>tipos_ingresos</destino> 
+	  <union>ting_ccod</union>
+	  <salida>ting_tdesc</salida>
+	   <filtro>ting_ccod in (3,4)</filtro>
+	 <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Tipo</mensajeNulo>
+	  
+	</campos>
+	 <campos nombre="ding_tcuenta_corriente">
+     <tipo>INPUT</tipo>
+     <permiso>LECTURAESCRITURA</permiso>
+     <caracteres>12</caracteres>
+     <maxCaracteres>10</maxCaracteres>
+	 
+    </campos>
+	 <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+	  <campos nombre="code_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="code_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+ </parametro>
+ 
+ 
+ <parametro formulario="btn_doc_incobrable">
+  <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	    <funcionValidacion>Validar();</funcionValidacion>
+	</botones> 
+ <botones nombre="conciliar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Enviar</texto>
+	  <accion>GUARDAR</accion>
+	  <url>Proc_Conciliacion_Incobrables.asp</url>
+	  <formulario>edicion</formulario>
+	  <mensajeConfirmacion>Esta seguro que desea conciliar los documentos seleccionados</mensajeConfirmacion>
+	</botones>
+	<botones nombre="enviar_folio">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Enviar</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+        
+   </botones>
+  <botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>ELIMINAR</accion>
+	  <formulario>edicion</formulario>
+	  
+	</botones>
+<botones nombre="excel"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Generar Excel</texto>
+	  <url>reporte_envios_cobranza_excel.asp</url>
+	  <accion>BUSCAR</accion>
+	   <formulario>buscador</formulario>
+	</botones> 
+  <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones> 
+	<botones nombre="guardar_nuevo_envio"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>Proc_Envios_Cobranza_Nuevo.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>
+	 <botones nombre="cancelar"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+ </parametro>
+ 
+
+ 
+<parametro  formulario="f_listado" clave="ding_ndocto"  variable="doc"  nroRegistros="10" maxLista="10" 
+    eliminar="True" seleccionarTodo="FALSE"  anchoTabla="100%" mensajeError="No se encontraron Documentos...">
+	 <tablas nombre="detalle_ingresos" accion="M"/>
+	
+      	 
+		 	<campos nombre="ting_ccod">
+	          <tipo>INPUT</tipo>
+		     <permiso>OCULTO</permiso>
+	     </campos>
+	 	<campos nombre="ingr_ncorr">
+	       
+		    <tipo>INPUT</tipo>
+		    <permiso>OCULTO</permiso>
+	   </campos>
+	   
+	   
+       <campos nombre="c_ding_ndocto">
+	    <descripcion>Nº Documento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<ancho>50</ancho>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	      <campos nombre="ting_tdesc">
+	 <descripcion>Tipo</descripcion>
+      <tipo>INPUT</tipo>
+	<permiso>LECTURA</permiso>
+	  
+	</campos>
+		 <campos nombre="ding_tcuenta_corriente">
+	    <descripcion>Nº Cuenta Corriente</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+     <campos nombre="edin_tdesc">
+	 <descripcion>Estado</descripcion>
+      <tipo>INPUT</tipo>
+	<permiso>LECTURA</permiso>
+	  
+	</campos>
+	
+	 <campos nombre="fecha_envio">
+	    <descripcion>F. Emision</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="ding_fdocto">
+	    <descripcion>Fecha Vencimiento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+
+	 <campos nombre="rut_alumno">
+	    <descripcion>Rut Alumno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="rut_apoderado">
+	    <descripcion>Rut Apoderado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 
+	 <campos nombre="ding_mdetalle">
+	    <descripcion>Monto</descripcion>
+		<tipo>INPUT</tipo>
+		<formato>MONEDA</formato>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+  </parametro> 
+
+
+</Parametros>
+

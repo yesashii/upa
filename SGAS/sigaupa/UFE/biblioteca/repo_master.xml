@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="botonera">
+     <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+	 <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Generar Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>buscador</formulario>
+     </botones>
+</parametro>
+ 
+ <parametro formulario="f_busqueda" variable="busqueda">
+   <campos nombre="carr_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>carreras</destino> 
+	  <union>carr_ccod</union>
+	  <salida>CARR_TDESC</salida>
+      <orden>CARR_TDESC asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Todas</mensajeNulo>
+	  <mensajeVacio>Todas</mensajeVacio>
+	  <id>TO-S</id>
+   </campos>
+   <campos nombre="peri_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>(select peri_ccod,peri_tdesc from periodos_academicos where anos_ccod=2005) a</destino> 
+	  <union>peri_ccod</union>
+	  <salida>peri_tdesc</salida>
+      <orden>peri_ccod asc</orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Todos los contratos</mensajeNulo>
+	  <mensajeVacio>Todos los contratos</mensajeVacio>
+	  <id>TO-S</id>
+   </campos>
+   <campos nombre="aran_nano_ingreso">
+      <tipo>SELECT</tipo>
+	  <union>aran_nano_ingreso</union>
+	  <salida>aran_nano_ingreso</salida>
+      <orden>aran_nano_ingreso desc</orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <filtro>aran_nano_ingreso>2005</filtro>
+	  <mensajeNulo>Todos</mensajeNulo>
+	  <mensajeVacio>Todos</mensajeVacio>
+	  <id>TO-S</id>
+   </campos>
+   <campos nombre="emat_tdesc">
+      <tipo>SELECT</tipo>
+	  <union>emat_tdesc</union>
+	  <salida>emat_tdesc</salida>
+      <orden>emat_tdesc asc</orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Todos</mensajeNulo>
+	  <mensajeVacio>Todos</mensajeVacio>
+	  <id>TO-S</id>
+   </campos>
+   <campos nombre="post_nano_paa">
+      <tipo>SELECT</tipo>
+	  <union>post_nano_paa</union>
+	  <salida>post_nano_paa</salida>
+      <orden>post_nano_paa asc</orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Todos</mensajeNulo>
+	  <mensajeVacio>Todos</mensajeVacio>
+	  <id>TO-S</id>
+   </campos>
+    <campos nombre="activa">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+		 <valorVerdadero>activa</valorVerdadero>
+		 <valorFalso> </valorFalso>
+         <ancho>100</ancho> 
+		 <script>checked="checked"</script>
+         <alineamiento>center</alineamiento>
+      </campos>
+	   <campos nombre="abandono">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+		 <script>checked="checked"</script>
+         <ancho>100</ancho>
+		 <valorVerdadero>abandono</valorVerdadero>
+		 <valorFalso> </valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	      <campos nombre="anulacion_estudios">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+		 <script>checked="checked"</script>
+         <ancho>100</ancho>
+         <alineamiento>center</alineamiento>
+		 <valorVerdadero>anulacion estudios</valorVerdadero>
+		 <valorFalso> </valorFalso>
+      </campos>
+	  <campos nombre="anulado">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+		 <script>checked="checked"</script>
+         <ancho>100</ancho>
+		 <valorVerdadero>anulado</valorVerdadero>
+		 <valorFalso> </valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="cambio_carrera">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+		 <script>checked="checked"</script>
+         <ancho>100</ancho>
+		 <valorVerdadero>cambio carrera</valorVerdadero>
+		 <valorFalso> </valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="cambio_jornada">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+		 <script>checked="checked"</script>
+         <ancho>100</ancho>
+		 <valorVerdadero>cambio jornada</valorVerdadero>
+		 <valorFalso> </valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="eliminacion_academica">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+		 <script>checked="checked"</script>
+         <ancho>100</ancho>
+		 <valorVerdadero>CAUSAL DE ELIMINACION ACADEMICA</valorVerdadero>
+		 <valorFalso> </valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	   <campos nombre="egresado">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+		 <script>checked="checked"</script>
+         <ancho>100</ancho>
+		 <valorVerdadero>egresado</valorVerdadero>
+		 <valorFalso> </valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="eliminado">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+		 <script>checked="checked"</script>
+         <ancho>100</ancho>
+		 <valorVerdadero>eliminado</valorVerdadero>
+		 <valorFalso> </valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="postergado">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+		 <script>checked="checked"</script>
+         <ancho>100</ancho>
+		 <valorVerdadero>postergado</valorVerdadero>
+		 <valorFalso> </valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="retirado">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+		 <script>checked="checked"</script>
+         <ancho>100</ancho>
+		 <valorVerdadero>retirado</valorVerdadero>
+		 <valorFalso> </valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	   <campos nombre="suspendido">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+		 <script>checked="checked"</script>
+         <ancho>100</ancho>
+		 <valorVerdadero>suspendido</valorVerdadero>
+		 <valorFalso> </valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	  <campos nombre="suspension_estudios">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+		 <script>checked="checked"</script>
+         <ancho>100</ancho>
+		 <valorVerdadero>SUSPENSIÓN DE ESTUDIOS</valorVerdadero>
+		 <valorFalso> </valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+	   <campos nombre="titulado">
+         <tipo>BOLEANO</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <etiqueta>false</etiqueta>
+         <objeto>CHECKBOX</objeto>
+         <deshabilitado>FALSE</deshabilitado>
+         <afirmacion>Habilitado</afirmacion>
+         <negacion>No habilitado</negacion>
+		 <script>checked="checked"</script>
+         <ancho>100</ancho>
+		 <valorVerdadero>titulado</valorVerdadero>
+		 <valorFalso> </valorFalso>
+         <alineamiento>center</alineamiento>
+      </campos>
+  </parametro>
+</Parametros>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+<parametro formulario="salas">
+<campos nombre="sala_ccod">
+			<tipo>select</tipo>
+			<destino>(select a.sala_ccod, a.sede_ccod, esal_ccod, a.sala_ncupo
+       , cast(sala_tdesc as varchar) + '('  + cast(sala_ncupo as varchar) + ')' as sala
+    from salas a, tipos_sala b
+    where a.tsal_ccod=b.tsal_ccod) a</destino>
+			<union>sala_ccod</union>
+			<salida>sala</salida>
+			<permiso>LECTURAESCRITURA</permiso>
+			<columnas>4</columnas>
+			<orden>sala asc</orden>
+		</campos>	
+</parametro>
+<parametro formulario="botonera">
+ <botones nombre="horario">
+  <tipoTexto>DEFINIR</tipoTexto> 
+  <texto>Ver Horario</texto> 
+  <accion>JAVASCRIPT</accion>
+  <funcion>abrir(document.buscador)</funcion>
+  </botones>
+  <botones nombre="horario_periodo">
+  <tipoTexto>DEFINIR</tipoTexto> 
+  <texto>Ver Horario para el Periodo</texto> 
+  <accion>JAVASCRIPT</accion>
+  <funcion>abrir2(document.buscador)</funcion>
+  </botones>
+
+</parametro>
+</Parametros>

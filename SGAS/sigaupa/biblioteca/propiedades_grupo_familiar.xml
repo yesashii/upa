@@ -1,0 +1,412 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>ingresos_grupo_familiar.asp</url>
+      </botones>
+	   <botones nombre="modificar">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Guardar Cambios</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_modificar_propiedad.asp</url>
+      </botones>
+	  <botones nombre="eliminar_propiedad">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_propiedad.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+	  <botones nombre="agregar">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Guardar Nuevo</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion2</formulario>
+		 <funcionValidacion>validar(document.edicion2);</funcionValidacion>
+         <url>proc_agregar_propiedad.asp</url>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	   <botones nombre="siguiente">
+         <tipoTexto>siguiente</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+		 <url>proc_propiedades.asp</url>
+      </botones>
+	  <botones nombre="agregar_familiar">
+         <tipoTexto>agregar</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>agregar_familiar(1)</funcion>
+      </botones>
+	  <botones nombre="agregar_familiar_menor">
+         <tipoTexto>agregar</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>agregar_familiar(2)</funcion>
+      </botones>
+	  <botones nombre="agregar_familiar_padre">
+         <tipoTexto>agregar</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>agregar_familiar(3)</funcion>
+      </botones>
+	  <botones nombre="agregar_familiar_madre">
+         <tipoTexto>agregar</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>agregar_familiar(4)</funcion>
+      </botones>
+	  <botones nombre="cerrar">
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+		 <funcion>CerrarActualizar();</funcion>
+      </botones>
+	  
+	   <botones nombre="copiar_direccion">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>copiar direccion orígen alumno</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>CopiarDireccionParticular();</funcion>
+      </botones>
+   </parametro>
+   
+   <parametro formulario="botonera_vehiculos">
+        <botones nombre="modificar_vehiculo">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Guardar Cambios</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_modificar_vehiculo.asp</url>
+      </botones>
+	  <botones nombre="eliminar_vehiculo">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_vehiculos.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+	  <botones nombre="agregar">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Guardar Nuevo</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion2</formulario>
+		 <funcionValidacion>validar(document.edicion2);</funcionValidacion>
+         <url>proc_agregar_vehiculo.asp</url>
+      </botones>
+      <botones nombre="cerrar">
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+		 <funcion>CerrarActualizar();</funcion>
+      </botones>
+   </parametro>
+   <parametro formulario="ingreso_familiar"  variable="padre">
+ 	  <tablas nombre="antecedentes_personas" accion="M"/>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ing_liquido">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+	  <campos nombre="ret_judicial">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+	  <campos nombre="aportes">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+	  <campos nombre="act_varias">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+	  <campos nombre="arr_bienes">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+	  <campos nombre="arr_vehiculos">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+	  <campos nombre="intereses">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+	  <campos nombre="dividendos">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+   </parametro>
+
+  
+<parametro formulario="direccion_postulante" variable="test">
+ 	 <campos nombre="regi_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	 
+	 <campos nombre="ciud_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+         <id>TO-S</id>
+      </campos>	
+	<campos nombre="dire_tcalle">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tnro">
+         <tipo>INPUT</tipo>
+		 <permiso>OCULTO</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+	  <campos nombre="dire_tblock">
+         <tipo>INPUT</tipo>
+		 <permiso>OCULTO</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>20</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tpoblacion">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <caracteres>30</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+         <id>TO-S</id>
+      </campos>
+      <campos nombre="dire_tfono">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <caracteres>12</caracteres>
+         <maxCaracteres>15</maxCaracteres>
+         <id>TE-S</id>
+      </campos>
+</parametro>
+   
+   <parametro formulario="direcciones">
+      <tablas nombre="direcciones_publica" accion="M"/>
+   </parametro>
+   
+    <parametro formulario="eliminar_familiares" variable="padre">
+      <tablas nombre="grupo_familiar" accion="B"/>
+      <tablas nombre="personas_postulante" accion="B"/>
+      <tablas nombre="direcciones_publica" accion="B"/>
+    </parametro>
+	
+	<parametro formulario="propiedades" variable="propiedad">
+      <tablas nombre="propiedades_personas" accion="E"/>
+   </parametro>
+   
+   <parametro formulario="grilla_bienes" variable="padre" editar="true"  eliminar="false" 
+   paginaEdicion="agregar_propiedad.asp?pers_ncorr=%pers_ncorr%" nuevaVentana="TRUE" clave="pers_ncorr"
+   anchoTabla="100%" maxLista="25" nroRegistros="25" mensajeError="No se han ingresado familiares para el alumno" 
+   nuevaVentanaAncho="450" nuevaVentanaAlto="450">
+      	  <campos nombre="Nom_familiar">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Nombre</descripcion>
+			 <id>TO-N</id>
+		  </campos>
+		  <campos nombre="Parentesco">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Parentesco</descripcion>
+			 <id>NU-S</id>
+		  </campos>
+		  <campos nombre="rut">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Rut</descripcion>
+		  </campos>
+		  <campos nombre="rol">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>ROL</descripcion>
+		  </campos>
+		  <campos nombre="avaluo">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Avalúo Fiscal ($)</descripcion>
+		  </campos>
+   </parametro>
+   <parametro formulario="grilla_propiedades" variable="propiedad" editar="false"  eliminar="true" 
+   paginaEdicion="" nuevaVentana="FALSE" clave="pers_ncorr2" 
+   anchoTabla="100%" maxLista="25" nroRegistros="25" mensajeError="No se han ingresado propiedades para esta persona">
+   <tablas nombre="propiedades_personas" accion="M"/>
+        <campos nombre="prpe_ncorr">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+	    </campos>
+		<campos nombre="pers_ncorr">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+	    </campos>
+		<campos nombre="rol">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+	    </campos>
+		<campos nombre="rut">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Rut</descripcion>
+		  </campos>
+		  <campos nombre="prpe_nrol">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <descripcion>ROL</descripcion>
+			 <caracteres>10</caracteres>
+			 <maxCaracteres>15</maxCaracteres>
+			 <id>TO-N</id>
+		  </campos>
+		  <campos nombre="prpe_navaluo">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <descripcion>Avalúo Fiscal ($)</descripcion>
+			  <caracteres>10</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>NU-N</id>
+		  </campos>
+   </parametro>
+   <parametro formulario="grilla_vehiculos" variable="padre" editar="true"  eliminar="false" 
+   paginaEdicion="agregar_vehiculos.asp?pers_ncorr=%pers_ncorr%" nuevaVentana="TRUE" clave="pers_ncorr"
+   anchoTabla="100%" maxLista="25" nroRegistros="25" mensajeError="No se han ingresado familiares para el alumno" 
+   nuevaVentanaAncho="500" nuevaVentanaAlto="500">
+      	  <campos nombre="Nom_familiar">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Nombre</descripcion>
+			 <id>TO-N</id>
+		  </campos>
+		  <campos nombre="Parentesco">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Parentesco</descripcion>
+			 <id>NU-S</id>
+		  </campos>
+		  <campos nombre="rut">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Rut</descripcion>
+		  </campos>
+		  <campos nombre="ano">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Año</descripcion>
+		  </campos>
+		  <campos nombre="marca">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Marca/Tipo</descripcion>
+		  </campos>
+		  <campos nombre="patente">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Num.Patenete</descripcion>
+		  </campos>
+		  <campos nombre="avaluo">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Avalúo Fiscal ($)</descripcion>
+		  </campos>
+		  <campos nombre="uso">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Uso</descripcion>
+		  </campos>
+   </parametro>
+   <parametro formulario="grilla_datos_vehiculos" variable="propiedad" editar="false"  eliminar="true" 
+   paginaEdicion="" nuevaVentana="FALSE" clave="pers_ncorr2" 
+   anchoTabla="100%" maxLista="25" nroRegistros="25" mensajeError="No se han ingresado vehiculos para esta persona">
+   <tablas nombre="vehiculos_personas" accion="M"/>
+        <campos nombre="pers_ncorr">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+	    </campos>
+		<campos nombre="vepe_ncorr">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+	    </campos>
+		<campos nombre="patente">
+			 <tipo>INPUT</tipo>
+			 <permiso>OCULTO</permiso>
+	    </campos>
+		<campos nombre="vepe_nano">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <descripcion>Año</descripcion>
+			 <caracteres>4</caracteres>
+			 <maxCaracteres>4</maxCaracteres>
+			 <id>NU-N</id>
+		  </campos>
+		  <campos nombre="vepe_tmarca">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <descripcion>Marca/Tipo</descripcion>
+			 <caracteres>20</caracteres>
+			 <maxCaracteres>20</maxCaracteres>
+			 <id>TO-N</id>
+		  </campos>
+		  <campos nombre="vepe_npatente">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <descripcion>Patente</descripcion>
+			 <caracteres>15</caracteres>
+			 <maxCaracteres>15</maxCaracteres>
+		  </campos>
+		  <campos nombre="vepe_navaluo">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <descripcion>Avalúo Fiscal ($)</descripcion>
+			 <caracteres>10</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>NU-N</id>
+		  </campos>
+		  <campos nombre="vepe_cuso">
+			 <tipo>SELECT</tipo>
+			 <destino>usos_vehiculos</destino>
+			 <union>vepe_cuso</union>
+			 <salida>usos_tdesc</salida>
+			 <orden>vepe_cuso</orden>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <anulable>TRUE</anulable>
+			 <descripcion>Uso</descripcion>
+			 <mensajeNulo>Seleccionar</mensajeNulo>
+			 <mensajeVacio>Seleccionar</mensajeVacio>
+			 <id>TO-N</id>
+      </campos>
+   </parametro>
+ </Parametros>

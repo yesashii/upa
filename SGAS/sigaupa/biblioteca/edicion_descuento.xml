@@ -1,0 +1,118 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="aceptar">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>guardar</accion>
+         <url>proc_agregar_descuento.asp</url>
+         <formulario>edicion</formulario>
+         <funcionValidacion>Validar();</funcionValidacion>
+      </botones>
+      <botones nombre="cancelar">
+         <tipoTexto>CANCELAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+   </parametro>
+   <parametro formulario="descuento" variable="descuento" anchoTabla="100%" camposObligatorios="TRUE">
+      <tablas nombre="sdescuentos" accion="M"/>
+      <campos nombre="post_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="ofer_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="stde_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="esde_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="aran_mmatricula">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="aran_mcolegiatura">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c_stde_ccod">
+         <descripcion>Tipo Descuento</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>stipos_descuentos</destino>
+         <union>stde_ccod</union>
+         <salida>stde_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="sep1">
+         <tipo>SEPARADOR</tipo>
+      </campos>
+      <campos nombre="c_aran_mmatricula">
+         <descripcion>Valor Matrícula</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+      </campos>
+      <campos nombre="stde_nptjematricula">
+         <descripcion>% Max. Descuento Matricula</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <soloLectura>TRUE</soloLectura>
+      </campos>
+      <campos nombre="sdes_nporc_matricula">
+         <descripcion>% Descuento Matrícula</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-N</id>
+         <script>onChange="sdes_nporc_matricula_change();"</script>
+      </campos>
+      <campos nombre="sdes_mmatricula">
+         <descripcion>$ Descuento Matrícula</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>IN-N</id>
+         <soloLectura>FALSE</soloLectura>
+         <script>onChange="sdes_mmatricula_change();"</script>
+      </campos>
+      <campos nombre="sep2">
+         <tipo>SEPARADOR</tipo>
+      </campos>
+      <campos nombre="c_aran_mcolegiatura">
+         <descripcion>Valor Arancel (- Seguro)</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+      </campos>
+      <campos nombre="stde_nptjecolegiatura">
+         <descripcion>% Max. Descuento Arancel</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <soloLectura>TRUE</soloLectura>
+      </campos>
+      <campos nombre="sdes_nporc_colegiatura">
+         <descripcion>% Descuento Arancel</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>NU-N</id>
+         <script>onChange="sdes_nporc_colegiatura_change();"</script>
+      </campos>
+      <campos nombre="sdes_mcolegiatura">
+         <descripcion>$ Descuento Arancel</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>IN-N</id>
+         <soloLectura>FALSE</soloLectura>
+         <script>onChange="sdes_mcolegiatura_change();"</script>
+      </campos>
+   </parametro>
+</Parametros>

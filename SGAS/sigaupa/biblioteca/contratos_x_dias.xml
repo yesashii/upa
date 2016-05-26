@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+         <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>salir()</funcion>
+      </botones>
+      <botones nombre="buscar">
+  		<tipoTexto>BUSCAR</tipoTexto> 
+  		<accion>JAVASCRIPT</accion> 
+  		<funcion>enviar();</funcion> 
+  	  </botones>
+	  <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones>
+   </parametro>
+ 
+ <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="list_alumnos" nroRegistros="20"
+		 maxLista="10" mensajeError="No se encontraron alumnos con contrato en la fecha indicada." colorBase="#F1F1E4" editar="false" anchoTabla="100%"	 nuevaVentana="false" variable="a">  
+		<campos nombre="n_contrato">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>N Contrato</descripcion>
+		</campos>
+		<campos nombre="nombre">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Alumno</descripcion>
+    	</campos>
+		<campos nombre="sede">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Sede</descripcion>
+    	</campos>
+		<campos nombre="jornada">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Jornada</descripcion>
+    	</campos>
+		<campos nombre="carrera">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Carrera</descripcion>
+    	</campos>
+		<campos nombre="fecha">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Fecha</descripcion>
+    	</campos>
+	</parametro>  
+    <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="list_alumnos_matriculados" nroRegistros="20" clave="pers_nrut"
+		 maxLista="10" mensajeError="No se encontraron alumnos para los parametros de busqueda ingresados." colorBase="#F1F1E4" editar="false" anchoTabla="100%" 		 nuevaVentana="false" variable="a">  
+		<campos nombre="pers_ncorr">
+			<tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="rut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>RIGHT</alineamiento>
+			<descripcion>RUT</descripcion>
+		</campos>
+		<campos nombre="nombre">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Nombre Persona</descripcion>
+    	</campos>
+		<campos nombre="fono">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Fono</descripcion>
+    	</campos>
+		<campos nombre="email">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Email</descripcion>
+    	</campos>
+		
+		<campos nombre="fecha">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Fecha</descripcion>
+    	</campos>
+		<campos nombre="estado">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Estado</descripcion>
+    	</campos>
+	</parametro>  
+</Parametros>

@@ -1,0 +1,146 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="lanzadera">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="excel_detalle">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>detalle presupuesto</texto>
+         <accion>BUSCAR</accion>
+         <url>reporte_detalle_presupuesto_excel_2010.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+	  <botones nombre="excel_presupuesto">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Presupuesto vs Real</texto>
+         <accion>BUSCAR</accion>
+         <url>reporte_presupuesto_excel_2010.asp</url>
+         <formulario>presupuesto</formulario>
+      </botones>
+	  <botones nombre="excel_presupuestado">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>presupuesto x codigo</texto>
+         <accion>BUSCAR</accion>
+         <url>reporte_presupuesto_excel_2010.asp</url>
+         <formulario>presupuesto</formulario>
+      </botones>
+	  <botones nombre="excel_mensual">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel Presupuesto</texto>
+         <accion>BUSCAR</accion>
+         <url>reporte_presupuesto_excel_2010.asp</url>
+         <formulario>presupuesto</formulario>
+      </botones>
+	  <botones nombre="excel_area">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel Presupuesto x Area</texto>
+         <accion>BUSCAR</accion>
+         <url>reporte_presupuesto_excel_2010.asp</url>
+         <formulario>presupuesto</formulario>
+      </botones>
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>Validar();</funcionValidacion>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+   </parametro>
+   
+	<parametro formulario="busqueda_presupuesto" variable="busqueda">
+		<campos nombre="area_ccod">
+			 <tipo>SELECT</tipo>
+			 <destino>presupuesto_upa.protic.area_presupuestal</destino>
+			 <union>area_ccod</union>
+			 <salida>area_tdesc</salida>
+			 <orden>area_tdesc asc</orden>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <anulable>false</anulable>
+		</campos>
+		<campos nombre="codcaja">
+			 <tipo>SELECT</tipo>
+			 <destino>presupuesto_upa.protic.vis_presupuesto_anual</destino>
+			 <union>cod_pre</union>
+			 <salida>cod_pre</salida>
+			 <orden>cod_pre asc</orden>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <anulable>true</anulable>
+			 <mensajeNulo>Todos los codigos</mensajeNulo>
+			 <script>onChange="CargarCodigo(this.form, this.value)"</script> 
+		</campos>		
+		<campos nombre="inicio">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>12</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>FE-S</id>
+		</campos>
+		<campos nombre="termino">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>12</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>FE-S</id>
+		</campos>
+		<campos nombre="codcaja">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>12</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>TO-N</id>
+		</campos>
+	</parametro>
+   
+   <parametro formulario="f_presupuesto" clave="envi_ncorr" variable="pre" 
+   nroRegistros="15" maxLista="10" anchoTabla="100%" mensajeError="No se encontro presupuesto asociado a los parametros de busqueda...">
+	  <campos nombre="cpbnum">
+         <descripcion>Comp.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="rut">
+         <descripcion>Rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="proveedor">
+         <descripcion>Proveedor</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>	  
+      <campos nombre="fecha_pago">
+         <descripcion>Fecha Pago</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="tipo_doc">
+         <descripcion>Tipo doc</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="num_doc">
+         <descripcion>N° Dcto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>	  
+      <campos nombre="monto">
+         <descripcion>Monto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <nowrap>TRUE</nowrap>
+		 <alineamiento>RIGHT</alineamiento>		 
+      </campos>
+      <campos nombre="detalle">
+         <descripcion>Detalle</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+      </campos>	  
+   </parametro>
+  
+</Parametros>

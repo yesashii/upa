@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+<parametro formulario="botonera">
+ 	<botones nombre="buscar_cajas"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	  <soloUnClick>TRUE</soloUnClick>
+   </botones>
+   <botones nombre="salir"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	<botones nombre="eliminar">
+		 <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Eliminar</texto>
+		 <accion>NAVEGAR</accion>
+		 <url>javascript:EliminaDetalle();</url>
+	</botones>
+	<botones nombre="guardar">
+		 <tipoTexto>GUARDAR</tipoTexto>
+		 <accion>GUARDAR</accion>
+		 <url>solicitud_viaticos_proc.asp</url>
+		 <formulario>datos</formulario>
+		 <funcionValidacion>Enviar();</funcionValidacion>
+	</botones>	
+	  <botones nombre="buscar">
+		 <tipoTexto>BUSCAR</tipoTexto>
+		 <accion>BUSCAR</accion>
+		 <formulario>buscador</formulario>
+		 <soloUnClick>TRUE</soloUnClick>
+	  </botones>
+	<botones nombre="imprimir"> 
+		<tipoTexto>DEFINIR</tipoTexto>
+		<texto>Imprimir</texto>
+		<accion>Navegar</accion>
+		<url>javascript:ImprimirSolicitudViatico();</url>
+	</botones>		  
+</parametro>
+
+<parametro formulario="buscador" variable="busqueda">
+	<campos nombre="ordc_ndocto">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-S</id>
+	</campos>
+	<campos nombre="fren_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-S</id>
+	</campos>	
+</parametro>
+
+<parametro formulario="datos_funcionario" variable="datos" clave="sovi_ncorr">
+ 		<tablas nombre="ocag_solicitud_viatico" accion="M"/>
+	<campos nombre="sovi_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	</campos>
+	<campos nombre="cod_pre">
+		 <tipo>SELECT</tipo>
+		 <destino>presupuesto_upa.protic.presupuesto_upa_2010</destino>
+		 <union>cod_pre</union>
+		 <salida>valor</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+	</campos>		
+	<campos nombre="sovi_tdetalle_presu">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>50</caracteres>
+		 <maxCaracteres>50</maxCaracteres>
+		 <id>TO-N</id>
+	</campos>
+	<campos nombre="pers_tnombre">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>25</caracteres>
+		<maxCaracteres>40</maxCaracteres>
+		<id>TO-N</id>
+    </campos>
+	<campos nombre="v_nombre">
+		 <tipo>INPUT</tipo>
+		 <permiso>OCULTO</permiso>
+		 <id>TO-N</id>
+	</campos>			
+	<campos nombre="pers_nrut">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<script>onBlur="genera_digito(this.value);"</script>
+		<id>NU-N</id>
+    </campos>
+	<campos nombre="pers_xdv">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>2</caracteres>
+		<maxCaracteres>2</maxCaracteres>
+		<id>TO-N</id>
+	</campos>
+	<campos nombre="orvi_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_origen_viatico</destino>
+		 <union>orvi_ccod</union>
+		 <salida>orvi_tdesc</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>orvi_tdesc</orden>
+		 <id>TO-N</id>
+	</campos>
+	<campos nombre="devi_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_destino_viatico</destino>
+		 <union>devi_ccod</union>
+		 <salida>devi_tdesc</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>devi_tdesc</orden>
+		 <script>onChange='llenaDatos();'</script>
+		 <id>TO-N</id>
+	</campos>		
+	<campos nombre="sovi_fpago">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>15</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+	</campos>		
+	<campos nombre="sovi_fsalida">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>15</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <script>onChange='llenaDatos()'</script>
+		 <id>FE-N</id>
+	</campos>
+	<campos nombre="sovi_fllegada">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>15</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <script>onChange='llenaDatos()'</script>
+		 <id>FE-N</id>
+	</campos>
+	<campos nombre="sovi_hsalida">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>10</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <script>onBlur='Eshora(this)'</script>
+	</campos>
+	<campos nombre="sovi_hllegada">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>10</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+		 <script>onBlur='Eshora(this)'</script>
+	</campos>	
+	<campos nombre="sovi_mmonto_dia">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>NU-N</id>
+		 <script>READONLY</script>
+	</campos>
+	<campos nombre="sovi_mmonto_origen">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>NU-N</id>
+		 <script>READONLY</script>
+	</campos>
+	<campos nombre="sovi_mmonto_pesos">
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>20</maxCaracteres>
+		 <id>NU-N</id>
+		 <script>READONLY</script>
+	</campos>		
+	<campos nombre="mes_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>MESES</destino>
+		 <union>mes_ccod</union>
+		 <salida>mes_tdesc</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>mes_ccod</orden>
+	</campos>
+	<campos nombre="anos_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>anos</destino>
+		 <union>anos_ccod</union>
+		 <salida>anos_ccod</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>anos_ccod</orden>
+		 <filtro>anos_ccod >= year(getdate())</filtro>
+	</campos>
+	<campos nombre="sovi_tmotivo">
+		 <tipo>TEXTAREA</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>100</caracteres>
+		 <filas>8</filas>
+	</campos>
+	<campos nombre="tmon_ccod">
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_moneda</destino>
+		 <union>tmon_ccod</union>
+		 <salida>tmon_tdesc</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+		 <orden>tmon_ccod</orden>
+	</campos>			
+</parametro> 
+
+<parametro formulario="buscador_area" variable="datos">
+	<campos nombre="area_ccod">
+			 <tipo>SELECT</tipo>
+			 <destino>presupuesto_upa.protic.area_presupuestal</destino>
+			 <union>area_ccod</union>
+			 <salida>area_tdesc</salida>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <anulable>false</anulable>
+			 <orden>area_tdesc</orden>
+	</campos>
+</parametro>
+
+<parametro formulario="codigo_presupuesto" variable="datos">
+	<campos nombre="cod_pre">
+		 <tipo>SELECT</tipo>
+		 <destino>presupuesto_upa.protic.presupuesto_upa_2010</destino>
+		 <union>cod_pre</union>
+		 <salida>valor</salida>
+		 <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>false</anulable>
+	</campos>
+</parametro> 
+
+</Parametros>

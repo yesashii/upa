@@ -1,0 +1,7 @@
+17007723,OVANDO CARBONELL IVANNA ESTEFANY,,17007723-7,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17514577,OLIVARES LAGUNAS JUAN PABLO ADRIAN,,17514577-K,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17740437,DARROUY GONZALEZ JAVIERA PAZ,,17740437-3,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18021333,SAN JUAN VILLASANTE MARYCARMEN,,18021333-3,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18730375,ESCANDON GUAJARDO PATRICIO ANDRES,,18730375-3,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+60719000,    SUBSECRETARIA DE PESCA,,60719000-3,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+60901000,SUBSECRETARIA DE EDUCACION    ,,60901000-2,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

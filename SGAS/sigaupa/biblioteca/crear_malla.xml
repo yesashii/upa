@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+<parametro colorSeleccionado="99FFFF"
+		 colorResaltado="#DCDCB8" 
+		 formulario="fcrea_malla" nroRegistros="10" agregar="false" eliminar="false"  
+		 maxLista="10" clave="carr_ccod" 
+		 colorBase="#F1F1E4" anchoTabla="80%" editar="false" nuevaVentana="false" variable="m" >
+		<campos nombre="peri_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="ofer_ncorr">
+			<tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="sede_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="carr_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<union>carr_ccod</union>
+			<salida>carr_tdesc</salida>
+			<descripcion>especialidad</descripcion>
+		</campos>
+		<campos nombre="espe_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<union>espe_ccod</union>
+			<salida>espe_tdesc</salida>
+			<descripcion>especialidad</descripcion>
+		</campos>
+		<campos nombre="plan_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<union>plan_ccod</union>
+			<salida>plan_tdesc</salida>
+			<descripcion>plan</descripcion>
+		</campos>
+	</parametro>
+<parametro MensageError="No se encontraron planes de estudios asociados a la carrera y especialidad selecciondados."
+		 colorResaltado="#DCDCB8" colorSeleccionado="99FFFF"  
+		 paginaEdicion="crear_plan.asp?carr=%carr_ccod%&amp;espe=%espe_ccod%&amp;plan=%plan_ccod%&amp;plan_ncorr=%plan_ncorrelativo%" 
+		 formulario="fplanes" agregar="false" nroRegistros="10" eliminar="false" clave="plan_ccod" maxLista="10" 
+		 colorBase="#F1F1E4" editar="true" anchoTabla="99%" nuevaVentana="false" variable="m" >  
+		<tablas nombre="planes_estudio" accion="M"/>
+		<campos nombre="plan_ncorrelativo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Correlativo</descripcion>
+		</campos>
+		<campos nombre="plan_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Descripción</descripcion>
+		</campos>
+		<campos nombre="plan_fcreacion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Fecha Creación</descripcion>
+		</campos>
+		<campos nombre="epes_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Estado Plan</descripcion>
+		</campos>
+		<campos nombre="epes_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="sede_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="espe_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="carr_ccod">
+		    <tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="plan_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+	</parametro>
+	<parametro colorSeleccionado="99FFFF"
+		 colorResaltado="#DCDCB8" 
+		 formulario="fmalla" nroRegistros="10" agregar="false" eliminar="true"  
+		 maxLista="10" clave="plan_ccod" MensageError="No se encontraron asignaturas ingresadas para este plan de estudios." 
+		 colorBase="#F1F1E4" anchoTabla="99%" editar="true" nuevaVentana="false" variable="m" > 
+		<campos nombre="plan_ncorrelativo">
+			<tipo>HIDDEN</tipo>
+			<permiso>oculto</permiso>
+		</campos>
+		<campos nombre="sede_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="carr_ccod">
+		    <tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="espe_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="plan_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		
+		<campos nombre="nive_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>nivel</descripcion>
+		</campos>
+		<campos nombre="codigo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Código</descripcion>
+		</campos>
+		<campos nombre="asig_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Asignatura</descripcion>
+		</campos>
+		<campos nombre="asig_nhoras">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Horas</descripcion>
+		</campos>
+	</parametro>
+	<parametro colorResaltado="#DCDCB8" colorSeleccionado="99FFFF" paginaEdicion="editar_malla.asp?mall_ccod=%mall_ccod%&amp;plan_ccod=%plan_ccod%&amp;asig_ccod=%asig_ccod%&amp;espe_ccod=%espe_ccod%&amp;carr_ccod=%carr_ccod%" formulario="tabla_conv"
+		eliminar="false" clave="mall_ccod" mensajeError="Debe selecionar parametros de búsqueda." colorBase="#F1F1E4" editar="true" 
+		anchoTabla="98%" variable="em">
+		
+		<campos nombre="carr_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>invisible</permiso>
+		</campos>
+		<campos nombre="mall_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>invisible</permiso>
+		</campos>
+		<campos nombre="plan_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>invisible</permiso>
+		</campos>
+
+		<campos nombre="espe_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>invisible</permiso>
+		</campos>	
+		<campos nombre="nivel">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nivel</descripcion>
+			<alineamiento>CENTER</alineamiento>
+			<ancho>50</ancho>
+		</campos>
+	<campos nombre="asig_ccod">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Código</descripcion>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+	
+		<campos nombre="asignatura">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Asignatura</descripcion>
+		</campos>
+		<campos nombre="asig_nhoras">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Horas</descripcion>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="requisito">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Requisitos</descripcion>
+		</campos>
+	</parametro>
+	<parametro colorResaltado="#DCDCB8" colorSeleccionado="99FFFF" paginaEdicion="editar_malla.asp?mall_ccod=%mall_ccod%&amp;plan_ccod=%plan_ccod%&amp;asig_ccod=%asig_ccod%&amp;espe_ccod=%espe_ccod%&amp;carr_ccod=%carr_ccod%" formulario="tabla_conv_elim"
+		eliminar="true" clave="mall_ccod" mensajeError="Debe selecionar parametros de búsqueda." colorBase="#F1F1E4" editar="true" 
+		anchoTabla="98%" variable="em">
+		
+		<campos nombre="carr_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>invisible</permiso>
+		</campos>
+		<campos nombre="mall_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>invisible</permiso>
+		</campos>
+		<campos nombre="plan_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>invisible</permiso>
+		</campos>
+
+		<campos nombre="espe_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>invisible</permiso>
+		</campos>	
+		<campos nombre="nivel">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nivel</descripcion>
+			<alineamiento>CENTER</alineamiento>
+			<ancho>50</ancho>
+		</campos>
+	<campos nombre="asig_ccod">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Código</descripcion>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+	
+		<campos nombre="asignatura">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Asignatura</descripcion>
+		</campos>
+		<campos nombre="asig_nhoras">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Horas</descripcion>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+		<campos nombre="requisito">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Requisitos</descripcion>
+		</campos>
+	</parametro>
+	<parametro formulario="elim_asig"  variable="em">
+		<tablas nombre="malla_curricular" accion="B" />	
+		<campos nombre="mall_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>INVISIBLE</permiso>
+		</campos>
+	</parametro>
+	<parametro formulario="elim_req"   variable="em" >
+		<tablas nombre="requisitos" accion="B" />	
+		<campos nombre="mall_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>INVISIBLE</permiso>
+		</campos>
+		<campos nombre="mall_crequisito">
+			<tipo>HIDDEN</tipo>
+			<permiso>INVISIBLE</permiso>
+		</campos>
+	</parametro>
+	<parametro formulario="tabla"/>
+	<parametro MensageError="No se encontraron planes de estudios asociados a la carrera y especialidad selecciondados."
+		 colorResaltado="#DCDCB8" colorSeleccionado="99FFFF"  
+		 paginaEdicion="crear_plan.asp?carr=%carr_ccod%&amp;espe=%espe_ccod%&amp;plan=%plan_ccod%" 
+		 formulario="fplan" agregar="false" nroRegistros="10" eliminar="false" clave="plan_ccod" maxLista="10" 
+		 colorBase="#F1F1E4" editar="true" anchoTabla="99%" nuevaVentana="false" variable="m" >  
+		<tablas nombre="planes_estudio" accion="M"/>
+		<campos nombre="plan_ncorrelativo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Correlativo</descripcion>
+		</campos>
+		<campos nombre="plan_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Descripción</descripcion>
+		</campos>
+		<campos nombre="plan_fcreacion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Fecha Creación</descripcion>
+		</campos>
+		<campos nombre="epes_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<union>epes_ccod</union>
+			<salida>epes_tdesc</salida>
+			<descripcion>Estado</descripcion>
+		</campos>
+		<campos nombre="sede_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="espe_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="carr_ccod">
+		    <tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="plan_ccod">
+			<tipo>HIDDEN</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+	</parametro>
+</Parametros>

@@ -1,0 +1,26 @@
+<Parametros>
+   <parametro formulario="meses">
+	<campos nombre="mes_ccod">
+         <descripcion>meses</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>meses</destino>
+         <union>mes_ccod</union>
+         <salida>mes_tdesc</salida>
+         <orden>mes_ccod asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Todos</mensajeNulo>
+		 <mensajeVacio>Todos</mensajeVacio>
+         <id>TO-S</id>
+      </campos>
+   </parametro>
+	<parametro formulario="botonera2">
+    <botones nombre="excel">
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Generar Excel</texto>
+		<accion>GUARDAR</accion>
+         <formulario>buscador</formulario>
+         <url>cuotas_profes_mes_excel.asp</url>
+    </botones>
+   </parametro>
+</Parametros>

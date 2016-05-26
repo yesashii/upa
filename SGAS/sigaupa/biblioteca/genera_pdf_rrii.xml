@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	   <botones nombre="imprimir" >
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Generar PDF</texto>
+         <accion>javascript</accion>
+		 <funcion>abre_ventana()</funcion>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+   </parametro>
+   
+   <parametro  formulario="busqueda" variable="b">
+   <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>9</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+		 <deshabilitado>true</deshabilitado>
+      </campos>
+	  <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>2</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+		 <script>onBlur="revisa_activa();" onKeyUp='this.value=this.value.toUpperCase();'</script>
+		 <deshabilitado>true</deshabilitado>
+         <id>TO-S</id>
+      </campos>
+	<campos nombre="peri_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>periodos_academicos</destino>
+		 <filtro>peri_ccod >=218 and peri_tdesc not like 'TERCER%'</filtro>
+		  <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+		 <orden>peri_ccod</orden>
+		<script>onChange="activa_rut();"</script>
+		  <id>NU-N</id>
+      </campos>
+   </parametro>
+   
+</Parametros>

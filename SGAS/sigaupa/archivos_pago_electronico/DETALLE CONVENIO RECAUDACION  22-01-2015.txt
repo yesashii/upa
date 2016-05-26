@@ -1,0 +1,2 @@
+RUT ,ID,NombreCliente,TipoMoneda,ValorCuota,ValorMora,MontoRecaudado,FechaVcto,FechaRecaudacion
+165772180,414168,LEÓN LAMAS JORGE JULIO,Pesos,150714,0,150714,30/01/2015,22/01/2015

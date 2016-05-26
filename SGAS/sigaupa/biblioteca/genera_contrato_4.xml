@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="f_detalle_post" variable="busqueda">
+   <campos nombre="nombre_post">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="rut_post">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="fecha_hoy">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="carrera">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>   	
+ </parametro>
+ 
+  <parametro formulario="imprimir_cheque" variable="busqueda">
+   <campos nombre="monto">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		
+   </campos>
+   <campos nombre="dia">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="mes">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="ano">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>   	
+ </parametro>
+   <parametro formulario="imprimir_pagare" variable="busqueda">
+   <campos nombre="nro_pagare">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		
+   </campos>
+   <campos nombre="valor_pagar">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="dd_hoy">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="mm_hoy">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>  
+      <campos nombre="yy_hoy">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="periodo_academico">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>   
+      <campos nombre="inicio_vencimiento">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		
+   </campos>
+   <campos nombre="final_vencimiento">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="rut_post">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="nombre_alumno">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>  
+      <campos nombre="rut_codeudor">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="nombre_codeudor">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>     
+         <campos nombre="ciudad_codeudor">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="ciudad_postulante">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>    	
+ </parametro>
+ 
+			
+ <parametro formulario="f_detalle_contrato" variable="contrato">
+   <campos nombre="nro_contrato">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="f_contrato">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="estado">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+  	
+ </parametro>
+ 
+ <parametro formulario="f_detalle_pagare" variable="pagare">
+   <campos nombre="monto_anterior">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="monto_actual">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="PAGA_NCORR">
+        <tipo>INPUT</tipo>
+   </campos>
+      <campos nombre="suma">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+ </parametro>
+
+
+ <parametro formulario="f_detalle_multidebito" variable="multidebito">
+   <campos nombre="monto_anterior">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="monto_actual">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="PMUL_NCORR">
+        <tipo>INPUT</tipo>
+   </campos>
+      <campos nombre="suma">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+ </parametro>
+
+ <parametro formulario="f_detalle_pagare_upa" variable="pagare_upa">
+   <campos nombre="monto_anterior">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="monto_actual">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="PUPA_NCORR">
+        <tipo>INPUT</tipo>
+   </campos>
+      <campos nombre="suma">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+ </parametro>
+
+ 
+ <parametro formulario="btn_genera_contrato_4">
+  <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	   <funcionValidacion>Validar();</funcionValidacion>
+	</botones> 
+	
+ 
+	<botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>navegar</accion>
+        
+      </botones>
+	  <botones nombre="activar_contrato"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Activar Contrato</texto>
+	  <accion>NAVEGAR</accion>
+	  
+	</botones> 
+  <botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>ELIMINAR</accion>
+	  <formulario>edicion</formulario>
+	  
+	</botones>
+  <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones> 
+	<botones nombre="salir_2"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>salir()</funcion>
+	</botones> 
+	<botones nombre="aceptar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>Proc_Cambio_Cheque_4.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>
+	 <botones nombre="cancelar"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+	 <botones nombre="imprimir_l"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Imprimir</texto>
+		<accion>GUARDAR</accion>
+		<formulario>edicion_l</formulario>
+		<target>_blank</target>
+	 </botones>
+	 <botones nombre="imprimir_c"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Imprimir</texto>
+		<accion>AGREGAR</accion>
+		<formulario>edicion_c</formulario>
+		<target>_blank</target>
+	 </botones>
+	 <botones nombre="imprimir_contrato"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Imprimir</texto>
+		<accion>AGREGAR</accion>
+		<target>_blank</target>
+	 </botones>	
+	 <botones nombre="imprimir_alumno"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Imprimir Ficha</texto>
+		<accion>AGREGAR</accion>
+		<target>_blank</target>
+	 </botones>	
+	  <botones nombre="imprimir_becainterna"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Beca Interna</texto>
+		<accion>AGREGAR</accion>
+		<target>_blank</target>
+	 </botones>	
+	  <botones nombre="imprimir_pagare"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Imprimir</texto>
+		<accion>AGREGAR</accion>
+		<target>_blank</target>
+	 </botones>
+	 <botones nombre="imprimir_pagare_string"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Pre Imprimir</texto>
+		<accion>AGREGAR</accion>
+		<target>_blank</target>
+	 </botones>
+	 <botones nombre="imprimir_anexo_cae"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Anexo Cae</texto>
+		<accion>AGREGAR</accion>
+		<target>_blank</target>
+	 </botones>
+ </parametro>
+
+  
+  <parametro 
+         colorResaltado="#999999"
+         colorSeleccionado="#CCCCCC" 
+		 paginaEdicion="Ver_Cheque.asp?ting_ccod=%TING_CCOD%&amp;ding_ndocto=%ding_ndocto%&amp;post_ncorr=%post_ncorr%&amp;ingr_ncorr=%ingr_ncorr%" 
+		 formulario="f_detalle_cheque_2" 
+	     nroRegistros="5"
+		 Eliminar="False" clave="post_ncorr" maxLista="10"   
+		 mensajeError="No se encontraron Cheques" seleccionarTodo="False" editar="TRUE" 
+         anchoTabla="100%"  nuevaVentana="TRUE" variable="envios">
+		 
+		 <campos nombre="TING_CCOD">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+
+	 <campos nombre="ding_ndocto">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="post_ncorr">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	  <campos nombre="ingr_ncorr">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 
+	  	   <campos nombre="imprimir_d">
+         <tipo>BOLEANO</tipo>
+         <objeto>checkbox</objeto>
+        <permiso>LECTURAESCRITURA</permiso>
+        <valorVerdadero>1</valorVerdadero>
+		<valorFalso>0</valorFalso>
+		<onClick>Deshabilita(this)</onClick>
+      </campos>
+       <campos nombre="nro_doc">
+	    <descripcion>Documento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<ancho>50</ancho>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+     
+     <campos nombre="tipo_doc">
+	    <descripcion>Descripción</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	      <campos nombre="ding_tcuenta_corriente">
+	    <descripcion>Nº Cuenta Corriente</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	  <campos nombre="banco">
+	    <descripcion>Banco</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="plaza">
+	    <descripcion>Plaza</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="f_emision">
+	    <descripcion>F. Emisión</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="f_vencimiento">
+	    <descripcion>F. Vencimiento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="monto">
+	    <descripcion>Monto</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<formato>MONEDA</formato>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+  </parametro> 
+  
+  <parametro formulario="f_detalle_letra" clave="ding_ndocto" 
+         colorResaltado="#999999"
+         colorSeleccionado="#CCCCCC" 
+	     nroRegistros="15" 
+		 eliminar="True" maxLista="10"   
+		 mensajeError="No se encontraron Letras" 
+         seleccionarTodo="True" editar="false"  anchoTabla="100%"  nuevaVentana="true" variable="envios">
+	
+	  <campos nombre="post_ncorr">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="ting_ccod">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 	 <campos nombre="ingr_ncorr">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	
+       <campos nombre="nro_doc">
+	    <descripcion>Documento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<ancho>50</ancho>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+     
+     <campos nombre="tipo_doc">
+	    <descripcion>Descripción</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 
+	 <campos nombre="f_emision">
+	    <descripcion>F. Emisión</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="f_vencimiento">
+	    <descripcion>F. Vencimiento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="monto">
+	    <descripcion>Monto</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<formato>MONEDA</formato>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+  </parametro> 
+  
+   <parametro formulario="f_impresora">
+   <campos nombre="impr_truta">
+      <tipo>SELECT</tipo>
+	  <destino>impresoras</destino> 
+	  <union>impr_ncorr</union>
+	  <salida>impr_truta</salida>
+	 
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Impresora</mensajeNulo>
+	  
+	</campos>
+	
+</parametro>
+<parametro formulario="f_cheque" variable="envios" >
+	 <campos nombre="pacta_cuota">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+    <campos nombre="ting_ccod">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="pers_ncorr">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="ingr_ncorr">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+   	  <campos nombre="ding_ndocto">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="banc_ccod">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 	 <campos nombre="ding_tcuenta_corriente">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+   <campos nombre="ding_ndocto_c">
+    <tipo>INPUT</tipo>
+     <permiso>LECTURAESCRITURA</permiso>
+     <caracteres>10</caracteres>
+     <maxCaracteres>8</maxCaracteres>
+   </campos>
+   
+   <campos nombre="ding_tcuenta_corriente_c">
+        <tipo>INPUT</tipo>
+		 <permiso>LECTURAESCRITURA</permiso>
+     	<caracteres>15</caracteres>
+   </campos>
+   
+   	<campos nombre="banc_ccod_c">
+         <descripcion>Banco</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>bancos</destino>
+         <union>banc_ccod</union>
+         <salida>banc_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+   	</campos>
+   <campos nombre="monto">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<formato>MONEDA</formato>
+   </campos>
+   <campos nombre="ding_fdocto">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>12</caracteres>
+		<id>FE-N</id>
+   </campos>   	
+ </parametro>
+
+  <parametro formulario="f_detalle_tarjetas" nroRegistros="5" Eliminar="False" clave="post_ncorr" maxLista="10"   
+		 mensajeError="No se encontraron Tarjetas asociadas" seleccionarTodo="False" editar="False" 
+         anchoTabla="100%"  nuevaVentana="TRUE" variable="envios" colorResaltado="#999999" colorSeleccionado="#CCCCCC" >
+		 
+	 <campos nombre="TING_CCOD">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+
+	 <campos nombre="ding_ndocto">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="post_ncorr">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	  <campos nombre="ingr_ncorr">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <!--
+	  	   <campos nombre="imprimir_d">
+         <tipo>BOLEANO</tipo>
+         <objeto>checkbox</objeto>
+        <permiso>LECTURAESCRITURA</permiso>
+        <valorVerdadero>1</valorVerdadero>
+		<valorFalso>0</valorFalso>
+		<onClick>Deshabilita(this)</onClick>
+      </campos>
+	  -->
+     <campos nombre="nro_doc">
+	    <descripcion>Nº Tarjeta</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+     <campos nombre="tipo_tarjeta">
+	    <descripcion>Descripción</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+     <campos nombre="tipo_doc">
+	    <descripcion>Descripción</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	  <campos nombre="banco">
+	    <descripcion>Banco</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <!--
+	 <campos nombre="plaza">
+	    <descripcion>Plaza</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 -->
+	 <campos nombre="f_emision">
+	    <descripcion>F. Emisión</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="f_vencimiento">
+	    <descripcion>F. Vencimiento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="monto">
+	    <descripcion>Monto</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<formato>MONEDA</formato>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+  </parametro> 
+
+
+</Parametros>
+

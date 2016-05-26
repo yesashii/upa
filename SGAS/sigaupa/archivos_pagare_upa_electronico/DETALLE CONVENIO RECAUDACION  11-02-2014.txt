@@ -1,0 +1,3 @@
+RUT ,ID,NombreCliente,TipoMoneda,ValorCuota,ValorMora,MontoRecaudado,FechaVcto,FechaRecaudacion
+177383902,405026,COVARRUBIAS BRITO JORGE ANTONIO,Pesos,60000,0,60000,30/01/2014,11/02/2014
+

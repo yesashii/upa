@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+         <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>salir()</funcion>
+      </botones>
+      <botones nombre="buscar">
+		  <tipoTexto>BUSCAR</tipoTexto>
+		  <accion>BUSCAR</accion>
+		  <formulario>buscador</formulario>
+		  <soloUnClick>True</soloUnClick>
+ 	  </botones>
+	  <botones nombre="excel">
+        <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>BUSCAR</accion>
+         <url>javascript:NoDisponible();</url>
+         <formulario>buscador</formulario>
+     </botones>
+   </parametro>
+ 
+ 
+   <parametro formulario="busqueda" variable="busqueda">
+	   <campos nombre="v_anos">
+		   <tipo>SELECT</tipo>
+		   <permiso>LECTURAESCRITURA</permiso>
+		   <union>v_anos</union>
+		   <salida>anos_tdesc</salida>
+		   <anulable>TRUE</anulable>
+		   <mensajeNulo>Seleccione Año para analizar</mensajeNulo>
+		   <id>TO-N</id>
+	   </campos>
+   </parametro>
+ 
+ <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="resumen_caja_detalle" 
+ 		mensajeError="No se encontraron datos para la busqueda seleccionada" 
+		colorBase="#F1F1E4"  anchoTabla="100%"  resumen="TRUE">  
+		<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<descripcion>carr_ccod</descripcion>
+    	</campos>
+		<campos nombre="jorn_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<descripcion>jorn_ccod</descripcion>
+    	</campos>
+		<campos nombre="sede_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<descripcion>sede_ccod</descripcion>
+    	</campos>
+		<campos nombre="facultad">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Facultad</descripcion>
+		</campos>
+		<campos nombre="carrera">
+			<tipo>RESUMEN</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Carrera</descripcion>
+    	</campos>
+		<campos nombre="arancel">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Arancel</descripcion>
+			<formato>Moneda</formato>
+			<resumen>SUMA_JC</resumen>
+			<nowrap>TRUE</nowrap>			
+    	</campos>
+		<campos nombre="titulacion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Titulacion</descripcion>
+			<formato>Moneda</formato>
+			<resumen>SUMA_JC</resumen>
+			<nowrap>TRUE</nowrap>
+    	</campos>
+	    <campos nombre="total">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Total</descripcion>
+			<formato>Moneda</formato>
+			<resumen>SUMA_JC</resumen>
+			<nowrap>TRUE</nowrap>
+    	</campos>
+	  </parametro>  
+	
+
+	 <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="resumen_detalle_facultad" 
+ 		mensajeError="No se encontraron datos para los parametros especificados" 
+		colorBase="#F1F1E4"  anchoTabla="100%"  resumen="TRUE">  
+		<campos nombre="facu_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<descripcion>carr_ccod</descripcion>
+    	</campos>
+		<campos nombre="sede_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<descripcion>jorn_ccod</descripcion>
+    	</campos>
+		<campos nombre="facultad">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Facultad</descripcion>
+		</campos>
+		<campos nombre="sede_tdesc">
+			<tipo>RESUMEN</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Sede</descripcion>
+    	</campos>
+		<campos nombre="arancel">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Arancel</descripcion>
+			<formato>Moneda</formato>
+			<resumen>SUMA_JC</resumen>
+			<nowrap>TRUE</nowrap>			
+    	</campos>
+		<campos nombre="titulacion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Titulacion</descripcion>
+			<formato>Moneda</formato>
+			<resumen>SUMA_JC</resumen>
+			<nowrap>TRUE</nowrap>			
+    	</campos>
+	    <campos nombre="total">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Total</descripcion>
+			<formato>Moneda</formato>
+			<resumen>SUMA_JC</resumen>
+			<nowrap>TRUE</nowrap>			
+    	</campos>
+	  </parametro>  
+
+	 <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="resumen_detalle_consolidado" 
+ 		mensajeError="No se encontraron datos para los parametros especificados" 
+		colorBase="#F1F1E4"  anchoTabla="100%"  resumen="TRUE">  
+		<campos nombre="sede_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<descripcion>jorn_ccod</descripcion>
+    	</campos>
+		<campos nombre="sede_tdesc">
+			<tipo>RESUMEN</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>LEFT</alineamiento>
+			<descripcion>Sede</descripcion>
+    	</campos>
+		<campos nombre="arancel">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Arancel</descripcion>
+			<formato>Moneda</formato>
+			<resumen>SUMA_JC</resumen>
+			<nowrap>TRUE</nowrap>
+    	</campos>
+		<campos nombre="titulacion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Titulacion</descripcion>
+			<formato>Moneda</formato>
+			<resumen>SUMA_JC</resumen>
+			<nowrap>TRUE</nowrap>
+    	</campos>
+	    <campos nombre="total">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<descripcion>Total</descripcion>
+			<formato>Moneda</formato>
+			<resumen>SUMA_JC</resumen>
+			<nowrap>TRUE</nowrap>
+    	</campos>
+	  </parametro>  
+	
+	
+</Parametros>

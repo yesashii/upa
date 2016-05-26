@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="btn_prueba">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>busca_alumnos</formulario>
+	</botones> 
+   <botones nombre="guardar"> 
+     <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>guardar(document.formu)</funcion>
+	</botones> 
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones> 		 
+</parametro>
+  <parametro formulario="btn_agregar">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>busca_alumnos</formulario>
+	</botones> 
+   <botones nombre="guardar"> 
+     <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>guardar(document.formu_agrega)</funcion>
+	</botones> 
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones> 		 
+</parametro>
+
+  <parametro formulario="btn_edita">
+   <botones nombre="guardar"> 
+     <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>edita(document.formu_edita)</funcion>
+	</botones> 
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones> 		 
+</parametro>
+
+	<parametro formulario="f_prueba" clave="ciud_ccod" variable="m" 
+			mensajeError="No hay registros para los parametros de búsqueda"
+			colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="true" editar="true" agregar="true" nuevaVentana="true" 
+			 anchoTabla="75%"  paginaEdicion="estudio.asp?ciud_ccod=%ciud_ccod%"
+			 maxLista="10" nroRegistros="20" >
+ 		<campos nombre="ciud_tdesc">
+		    <descripcion>Ciudades</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>rigth</alineamiento>
+		</campos>
+ 		<campos nombre="ciud_tcomuna">
+		    <descripcion>Comunas</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>rigth</alineamiento>
+		</campos>
+ 		<campos nombre="regi_tdesc">
+		    <descripcion>Región</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>rigth</alineamiento>
+		</campos>
+
+	</parametro>
+	
+	<parametro formulario="f_campos" clave="ciud_ccod" variable="m" 
+			mensajeError="No hay registros para los parametros de búsqueda"
+			colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="true" editar="true" agregar="true" nuevaVentana="true" 
+			 anchoTabla="75%"  paginaEdicion="estudio.asp?ciud_ccod=%ciud_ccod%"
+			 maxLista="10" nroRegistros="20" >
+ 		<campos nombre="ciud_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>15</caracteres>
+			<maxCaracteres>20</maxCaracteres>
+			<id>TO-S</id>
+			</campos>
+		<campos nombre="ciud_tcomuna">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>15</caracteres>
+			<maxCaracteres>20</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+	</parametro>
+	<parametro formulario="f_campos_agrega" clave="ciud_ccod" variable="m" 
+			mensajeError="No hay registros para los parametros de búsqueda"
+			colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="true" editar="true" agregar="true" nuevaVentana="true" 
+			 anchoTabla="75%"  paginaEdicion="estudio.asp?ciud_ccod=%ciud_ccod%"
+			 maxLista="10" nroRegistros="20" >
+ 		<campos nombre="ciud_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>15</caracteres>
+			<maxCaracteres>20</maxCaracteres>
+			<id>TO-S</id>
+			</campos>
+		<campos nombre="ciud_tcomuna">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>15</caracteres>
+			<maxCaracteres>20</maxCaracteres>
+			<id>TO-S</id>
+		</campos>
+	</parametro>
+	
+	<parametro formulario="f_campos_edita" clave="ciud_ccod" variable="m" 
+			mensajeError="No hay registros para los parametros de búsqueda"
+			colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="true" editar="true" agregar="true" nuevaVentana="true" 
+			 anchoTabla="75%"  paginaEdicion="estudio.asp?ciud_ccod=%ciud_ccod%"
+			 maxLista="10" nroRegistros="20" >
+		<campos nombre="ciud_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			</campos>			 
+ 		<campos nombre="ciud_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>33</caracteres>
+			<maxCaracteres>20</maxCaracteres>
+			<id>TO-N</id>
+			</campos>
+		<campos nombre="ciud_tcomuna">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>33</caracteres>
+			<maxCaracteres>20</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+	</parametro>	
+	
+	<parametro formulario="f_mantiene_tablas" variable="m">
+		<tablas nombre="ciudades" accion="I"/>
+	</parametro>
+
+	<parametro formulario="f_edita_ciudad" variable="m">
+		<tablas nombre="ciudades" accion="M"/>
+	</parametro>
+		
+	<parametro formulario="f_elimina_ciudad" variable="m">
+		<tablas nombre="ciudades" accion="B"/>
+	</parametro>	
+	<parametro formulario="f_select" clave="regi_ccod" variable="m" 
+			mensajeError="No hay registros para los parametros de búsqueda"
+			colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="true" editar="true" agregar="true" nuevaVentana="true" 
+			 anchoTabla="75%"  paginaEdicion="estudio.asp?ciud_ccod=%ciud_ccod%"
+			 maxLista="10" nroRegistros="20" >
+ 		<campos nombre="regi_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<destino>regiones</destino>
+			<union>regi_ccod</union>
+			<salida>regi_tdesc</salida>
+			<anulable>TRUE</anulable>
+			<mensajeNulo>Elija una Región</mensajeNulo>
+			<id>TO-N</id>
+		</campos>		
+
+	</parametro>		 
+	
+	<parametro formulario="f_select_edita" clave="regi_ccod" variable="m" 
+			mensajeError="No hay registros para los parametros de búsqueda"
+			colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" colorBase="#F1F1E4" 
+			eliminar="true" editar="true" agregar="true" nuevaVentana="true" 
+			 anchoTabla="75%"  paginaEdicion="estudio.asp?ciud_ccod=%ciud_ccod%"
+			 maxLista="10" nroRegistros="20" >
+ 		<campos nombre="regi_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<destino>regiones</destino>
+			<union>regi_ccod</union>
+			<salida>regi_tdesc</salida>
+			<anulable>TRUE</anulable>
+			<mensajeNulo>Elija una Región</mensajeNulo>
+			<id>TO-N</id>
+		</campos>		
+
+	</parametro>		 			
+</Parametros>
+
+

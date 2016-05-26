@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<content>
+	<area area="left" header="Ayuda" subheader="Soluciones a tus dudas más comunes.">
+		<element type="small_video_teaser" file="media/hilfe.mp4" previewimage="media/help.jpg" inline="true" header="Vídeo de ayuda" text="En este vídeo, verás cómo navegar por el curso de una manera más eficaz." />
+		<element type="grand_video_teaser" file="" previewimage="media/tasten.png" inline="true" header="Atajos de teclado" text="Navega más fácilmente por el curso con estos atajos:" />
+	</area>
+	
+	<area area="right" header="Soporte" subheader="Si te quedan más dudas,...">
+		<element type="link_teaser" previewimage="media/support_kontakt.jpg" header="Contáctanos" text="Nuestro equipo de Soporte te ayudará a resolver tus dudas. También puedes enviarnos tus comentarios, preguntas o sugerencias, que atenderemos gustosamente." link="mailto:office@video2brain.es" />
+		</area>
+</content>
+

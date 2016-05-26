@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="botonera">
+	 <botones nombre="guardar_correspondencia"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>proc_correspondencia.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>
+    <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+	 <botones nombre="anterior"> 
+      	<tipoTexto>DEFINIR</tipoTexto>
+		<texto>Anterior</texto>
+	  	<accion>NAVEGAR</accion>
+	  	<url>correspondencia.asp</url>
+	</botones>
+	 <botones nombre="siguiente"> 
+      	<tipoTexto>DEFINIR</tipoTexto>
+		<texto>Siguiente</texto>
+	  	<accion>NAVEGAR</accion>
+	  	<url>correspondencia.asp</url>
+	</botones>
+   <botones nombre="imprimir">
+      	<tipoTexto>DEFINIR</tipoTexto>
+		<texto>Imprimir</texto>
+	  	<accion>JAVASCRIPT</accion>
+	    <funcion>imprimir_correspondencia();</funcion>
+   </botones>
+   <botones nombre="imprime_listado">
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Imprimir</texto>
+		<accion>JAVASCRIPT</accion>
+		<formulario>edicion</formulario>		
+		<funcion>imprimir();</funcion>
+   </botones>
+ </parametro>
+
+ <parametro formulario="busqueda_correspondencia" variable="busqueda">
+   <campos nombre="corr_ncorr">
+     <tipo>INPUT</tipo>
+     <permiso>LECTURAESCRITURA</permiso>
+     <caracteres>10</caracteres>
+     <maxCaracteres>8</maxCaracteres>
+   </campos>
+   <campos nombre="teve_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>tipo_evento</destino> 
+	  <union>teve_ccod</union>
+	  <salida>teve_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Tipo</mensajeNulo>
+	</campos>
+	<campos nombre="even_fevento">
+     <tipo>INPUT</tipo>
+     <permiso>LECTURAESCRITURA</permiso>
+     <caracteres>12</caracteres>
+     <maxCaracteres>10</maxCaracteres>
+     <id>FE-S</id>
+	</campos>
+  </parametro>
+ 
+ 
+  <parametro formulario="f_nuevo" variable="envio">
+   <tablas nombre="correspondencia" accion="M"/>
+   
+	   <campos nombre="corr_ncorr">
+		  <tipo>INPUT</tipo>
+		  <permiso>OCULTO</permiso>
+	   </campos>
+     	<campos nombre="corr_frecepcion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>12</caracteres>
+			<maxCaracteres>10</maxCaracteres>
+			<id>FE-N</id>
+		</campos>
+		<campos nombre="corr_desde">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>50</caracteres>
+			<maxCaracteres>100</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+		<campos nombre="corr_para">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>50</caracteres>
+			<maxCaracteres>100</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+		<campos nombre="corr_departamento">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>50</caracteres>
+			<maxCaracteres>100</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+		<campos nombre="corr_contenido">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>50</caracteres>
+			<maxCaracteres>100</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+  </parametro>
+
+</Parametros>

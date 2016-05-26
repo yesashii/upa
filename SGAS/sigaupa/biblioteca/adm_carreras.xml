@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="btn_adm_carreras">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>	 
+	</botones> 
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_carrera.asp</url>
+         <formulario>edicion</formulario>
+      </botones> 
+    <botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agrega_carrera(document.edicion)</funcion>
+	</botones> 
+      <botones nombre="SALIR">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>	
+	  <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones> 
+	 <botones nombre="excel_general">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel Datos Generales</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones> 	
+ </parametro>
+  <parametro formulario="btn_agregar_carrera">
+    <botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agregar(document.editar)</funcion>
+	</botones> 
+    <botones nombre="GUARDAR"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agregar(document.editar)</funcion>
+	</botones> 	
+  <botones nombre="SALIR"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>salir(document.edicion)</funcion>
+	</botones> 
+ </parametro>
+
+ 	<parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8"
+	 paginaEdicion="agregar_carrera.asp?carr_ccod=%carr_ccod%" 
+	 formulario="tabla" eliminar="true" clave="carr_ccod" nroRegistros="10" maxLista="10"
+	 mensajeError="No Existen Datos Para Los Parámetros De Búsqueda." 
+	 colorBase="#F1F1E4" editar="true" 	anchoTabla="98%" variable="em" nuevaVentana="true" nuevaVentanaAlto="500" nuevaVentanaAncho="650" >
+	<tablas nombre="carreras" accion="B"/>
+	<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Código</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	<campos nombre="carr_tdesc">
+			<tipo>IMPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nombre</descripcion>
+			<alineamiento>left</alineamiento>
+	</campos>
+	
+		<campos nombre="area_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Escuela</descripcion>
+			<alineamiento>left</alineamiento>
+		</campos>
+		<campos nombre="facu_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Facultad</descripcion>
+			<alineamiento>left</alineamiento>
+		</campos>
+		<campos nombre="tcar_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Tipo</descripcion>
+			<alineamiento>left</alineamiento>			
+		</campos>		
+		<campos nombre="ecar_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Estado</descripcion>
+			<alineamiento>left</alineamiento>			
+		</campos>
+	</parametro>
+	<parametro colorSeleccionado="99FFFF" variable="em" colorResaltado="#DCDCB8" paginaEdicion="" 
+		 formulario="tabla_valores" eliminar="true" clave="mall_ccod" colorBase="#F1F1E4" editar="true"
+		 mensajeError="No Existen Datos Para Los Parámetros De Búsqueda." 
+			anchoTabla="98%"  nuevaVentana="true">
+		<campos nombre="carr_ccod">
+				<tipo>INPUT</tipo>
+				<permiso>LECTUR</permiso>
+		</campos>
+		<campos nombre="area_ccod">
+			 <tipo>SELECT</tipo>
+			 <destino>AREAS_ACADEMICAS</destino>
+			 <union>area_ccod</union>
+			 <salida>area_tdesc</salida>
+			 <orden>area_ccod asc </orden>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <anulable>TRUE</anulable>
+			 <mensajeNulo>Seleccione Un Área</mensajeNulo>
+			<id>TO-N</id>
+		  </campos>
+		<campos nombre="inst_ccod">
+			 <tipo>SELECT</tipo>
+			 <destino>instituciones</destino>
+			 <union>inst_ccod</union>
+			 <salida>inst_trazon_social</salida>
+			 <orden>inst_ccod asc </orden>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <anulable>TRUE</anulable>
+			 <mensajeNulo>Seleccione institución</mensajeNulo>
+			<id>TO-N</id>		 
+		  </campos>
+		<campos nombre="facu_ccod">
+			 <tipo>SELECT</tipo>
+			 <destino>facultades</destino>
+			 <union>facu_ccod</union>
+			 <salida>facu_tdesc</salida>
+			 <orden>facu_ccod asc </orden>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <anulable>TRUE</anulable>
+			 <mensajeNulo>Seleccione Facultad</mensajeNulo>
+			<id>TO-N</id>		 
+		  </campos>	  	  
+		<campos nombre="ECAR_CCOD">
+			 <tipo>SELECT</tipo>
+			 <destino>estados_de_carreras</destino>
+			 <union>ECAR_CCOD</union>
+			 <salida>ECAR_TDESC</salida>
+			 <orden>ECAR_CCOD asc </orden>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <anulable>TRUE</anulable>
+			 <mensajeNulo>Seleccione Un Estado</mensajeNulo>
+			<id>TO-N</id>
+		  </campos>	  
+		<campos nombre="TCAR_CCOD">
+			 <tipo>SELECT</tipo>
+			 <destino>tipos_carrera</destino>
+			 <union>TCAR_CCOD</union>
+			 <salida>TCAR_TDESC</salida>
+			 <orden>TCAR_TDESC</orden>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <anulable>TRUE</anulable>
+			 <mensajeNulo>Seleccione Un Tipo</mensajeNulo>
+			 <id>TO-N</id>
+		</campos>	
+		<campos nombre="tgra_ccod">
+			 <tipo>SELECT</tipo>
+			 <destino>tipos_grados_carreras</destino>
+			 <union>tgra_ccod</union>
+			 <salida>tgra_tdesc</salida>
+			 <orden>tgra_tdesc</orden>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <anulable>TRUE</anulable>
+			 <mensajeNulo>Seleccione Un Tipo</mensajeNulo>
+			 <id>TO-S</id>
+			 <script>onChange='habilita(this.value, this.form);'</script>
+		</campos>
+		  <campos nombre="carr_bloce">
+			 <tipo>BOLEANO</tipo>
+			 <objeto>CHECKBOX</objeto>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <valorVerdadero>1</valorVerdadero>
+			 <valorFalso>0</valorFalso>
+		  </campos>	    
+		<campos nombre="carr_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<id>TO-N</id>
+			<caracteres>70</caracteres>
+			<maxCaracteres>100</maxCaracteres>
+		</campos>
+		<campos nombre="CARR_FINI_VIGENCIA">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>FE-S</id>
+			<caracteres>12</caracteres>
+			<maxCaracteres>10</maxCaracteres>
+		</campos>
+		<campos nombre="carr_tsigla">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-N</id>
+			<caracteres>8</caracteres>
+			<maxCaracteres>6</maxCaracteres>
+		</campos>	
+		<campos nombre="CARR_FFIN_VIGENCIA">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>FE-S</id>
+			<caracteres>12</caracteres>
+			<maxCaracteres>10</maxCaracteres>
+		</campos>
+		<campos nombre="fecha_oculta_CARR_FINI_VIGENCIA">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="fecha_oculta_CARR_FFIN_VIGENCIA">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>	
+		<campos nombre="titulo_grado">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-S</id>
+			<caracteres>70</caracteres>
+			<maxCaracteres>100</maxCaracteres>
+		</campos>	 
+	</parametro>
+
+  <parametro formulario="mantiene_carreras" variable="em">
+      <tablas nombre="carreras" accion="M"/>
+   </parametro>
+
+  <parametro formulario="eliminar_carreras" variable="em">
+      <tablas nombre="carreras" accion="B"/>
+   </parametro>
+  
+  <parametro formulario="datos_extras" variable="em">
+	    <listas nombre="lBusqueda">
+			<item clave="acar_ccod" valor="acar_tdesc" />
+			<item clave="saca_ccod" valor="saca_tdesc" />
+		</listas>
+		<campos nombre="acar_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="saca_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+	</parametro>
+
+</Parametros>

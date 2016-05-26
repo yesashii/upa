@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>ValidaBusqueda();</funcionValidacion>
+      </botones>
+      <botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>gestion_solicitudes_certificados_proc.asp</url>
+         <mensajeConfirmacion>¿Está seguro que desea agregar la gestión de la solicitud?</mensajeConfirmacion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	 <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Generar Excel Pendientes</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones>
+	 <botones nombre="buscar_periodo">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Buscar Periodo</texto>
+         <accion>BUSCAR</accion>
+         <formulario>edicion</formulario>
+         <funcionValidacion>ValidaBusqueda();</funcionValidacion>
+      </botones>
+	  <botones nombre="cerrar">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>CerrarActualizar();</funcion>
+      </botones>
+	  <botones nombre="guardar_matricula">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_agregar_matricula_ajuste.asp</url>
+         <mensajeConfirmacion>¿Está seguro que desea agregar una nueva matricula?, una vez agregada no podrá hacer cambios en ella</mensajeConfirmacion>
+      </botones>
+   </parametro>
+   <parametro formulario="busqueda" variable="b">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>3</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="listado" variable="certificados" anchoTabla="100%" 
+    mensajeError="No se encuentran registros de solicitudes de certificados pendientes para el(la) alumno(a).">
+      <campos nombre="sctg_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="tctg_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="asterisco">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="codigo">
+         <descripcion>Código</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      
+	  <campos nombre="carrera">
+         <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="tipo">
+         <descripcion>Tipo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="fecha_solicitud">
+         <descripcion>Fecha Solicitud</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="actualizado">
+         <descripcion>Actualizado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="esctg_ccod">
+         <descripcion>Estado solicitud</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>(select esctg_ccod, esctg_tdesc from ESTADOS_SOLICITUD_CERTIFICADOS_TYG)a</destino>
+         <union>esctg_ccod</union>
+         <salida>esctg_tdesc</salida>
+         <orden>esctg_ccod asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <anulable>FALSE</anulable>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="observacion">
+         <descripcion>Comentario</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>20</caracteres>
+		 <maxCaracteres>150</maxCaracteres>
+      </campos>
+   </parametro>
+   
+    <parametro formulario="listado_asignaturas" variable="certificados" anchoTabla="100%" 
+    mensajeError="No se encuentran registros de asignaturas para certificado, solicitadas.">
+	  <campos nombre="codigo">
+         <descripcion>Código</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="carrera">
+         <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="plan_estudio">
+         <descripcion>Plan Estudio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="nivel">
+         <descripcion>Nivel</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="asignatura">
+         <descripcion>Asignatura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="enviada">
+         <descripcion>Enviada</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="historico" variable="certificados" anchoTabla="100%" 
+    mensajeError="No se encuentran historial de solicitudes para el(la) alumno(a).">
+      <campos nombre="carrera">
+         <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="tipo">
+         <descripcion>Tipo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="fecha_solicitud">
+         <descripcion>Fecha Solicitud</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="actualizado">
+         <descripcion>Actualizado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="estado">
+         <descripcion>Estado</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="observacion">
+         <descripcion>Comentario</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   
+   <parametro formulario="asignaturas_cert" variable="certificados" anchoTabla="100%" 
+    mensajeError="No se han encontrado asignaturas para la solicitud.">
+      <campos nombre="nive_ccod">
+         <descripcion>Nivel</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="asig_ccod">
+         <descripcion>Código</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="asig_tdesc">
+         <descripcion>Asignatura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+    
+</parametros>

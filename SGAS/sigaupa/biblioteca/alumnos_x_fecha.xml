@@ -1,0 +1,156 @@
+<Parametros>
+  <parametro formulario="botonera">
+     <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+	 <botones nombre="cancelar"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>CERRAR</accion>
+	 </botones>
+	 <botones nombre="buscar"> 
+        <tipoTexto>BUSCAR</tipoTexto>
+	    <accion>BUSCAR</accion>
+	    <formulario>buscador</formulario>
+		<soloUnClick>TRUE</soloUnClick>
+	 </botones>
+	 <botones nombre="excel"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+		<texto>Generar Listado</texto>
+	    <accion>NAVEGAR</accion>
+	    <url>listados_ceremonia_excel.asp</url>
+	    <formulario>edicion</formulario>
+	</botones>
+  </parametro>
+ 
+ <parametro formulario="f_busqueda" variable="busqueda">
+   <campos nombre="carr_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>(select distinct d.carr_ccod,d.carr_tdesc from salidas_plan a, planes_estudio b, especialidades c, carreras d where a.plan_ccod=b.plan_ccod and b.espe_ccod=c.espe_ccod and c.carr_ccod=d.carr_ccod)aa</destino> 
+	  <union>carr_ccod</union>
+	  <salida>CARR_TDESC</salida>
+      <orden>CARR_TDESC asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>TODAS</mensajeNulo>
+	  <mensajeVacio>TODAS</mensajeVacio>
+	  <id>TO-S</id>
+   </campos>
+   <campos nombre="codigo_fecha">
+      <tipo>SELECT</tipo>
+	  <union>codigo_fecha</union>
+	  <salida>fecha_mostrar</salida>
+      <orden>codigo_fecha desc</orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Fecha Ceremonia</mensajeNulo>
+	  <mensajeVacio>Seleccione Fecha Ceremonia</mensajeVacio>
+	  <id>TO-N</id>
+   </campos>
+  </parametro>
+  
+   <parametro paginaEdicion="" nuevaVentanaAlto="400" formulario="f_lista"
+      nroRegistros="10" nuevaVentanaAncho="770"
+      eliminar="FALSE" clave="espe_ccod" maxLista="20"
+	  mensajeError="No se encontraron alumnos egresados o titulados" seleccionarTodo="false"  anchoTabla="100%" editar="false"  nuevaVentana="false" variable="especialidades" >
+      <campos nombre="carr_tdesc">
+	    <descripcion>Carrera</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="alumno">
+	    <descripcion>Nombre Alumno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="nota">
+	    <descripcion>Calificación</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	<campos nombre="m_fecha_egreso">
+	    <descripcion>Fecha Egreso</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="m_fecha_titulacion">
+	    <descripcion>Fecha Titulación</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="folio">
+	    <descripcion>Folio</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>	 
+   </parametro>
+   
+   <parametro formulario="f_nueva" variable="especialidades">
+    <tablas nombre="especialidades" accion="M"/>
+	 <campos nombre="carr_ccod">
+	 	<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="espe_tdesc">
+	 	<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>60</caracteres>
+	    <maxCaracteres>100</maxCaracteres>
+	    <id>TO-N</id>		
+	 </campos>
+	 <campos nombre="espe_nduracion">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>3</caracteres>
+	    <maxCaracteres>2</maxCaracteres>
+	    <id>NU-N</id>		
+	 </campos>
+	 <campos nombre="ttit_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>tipos_titulos</destino> 
+	  <union>ttit_ccod</union>
+	  <salida>ttit_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Tipo de Titulo</mensajeNulo>	 
+	  <id>TO-N</id>
+   </campos>
+   <campos nombre="espe_ttitulo">
+	 	<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>60</caracteres>
+	    <maxCaracteres>100</maxCaracteres>
+	    <id>TO-N</id>		
+	 </campos>
+	 <campos nombre="espe_fini_vigencia">
+	 	<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>12</caracteres>
+	    <maxCaracteres>10</maxCaracteres>
+	    <id>FE-S</id>		
+	 </campos>
+   <campos nombre="espe_bexamen_adm">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+   </campos>
+   <campos nombre="eesp_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>estados_de_especialidad</destino> 
+	  <union>eesp_ccod</union>
+	  <salida>eesp_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Tipo de Titulo</mensajeNulo>	 
+	  <id>TO-N</id>
+   </campos>			 
+ </parametro>
+   
+ </Parametros>

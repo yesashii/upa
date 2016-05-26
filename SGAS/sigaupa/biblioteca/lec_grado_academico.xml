@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" 
+   paginaEdicion="agregar_experiencia_laboral.asp?cudo_ncorr=%cudo_ncorr%&amp;pers_ncorr=%pers_ncorr%" 
+   formulario="agregar_grado" nroRegistros="10" 
+   agregar="true" eliminar="true" maxLista="10" clave="cudo_ncorr" 
+   mensajeError="No hay experiencias laborales para este docente" 
+   colorBase="#F1F1E4" anchoTabla="98%" editar="true" 
+   nuevaVentana="false" variable="m">
+      <tablas nombre="grados_profesor" accion="M"/>
+      <campos nombre="gpro_tinstitucion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="GPRO_ANO_EGRESO">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>6</caracteres>
+         <maxCaracteres>4</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+       <campos nombre="gpro_tdescripcion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="PAIS_CCOD">
+         <tipo>SELECT</tipo>
+         <destino>PAISES</destino>
+         <union>PAIS_CCOD</union>
+         <salida>PAIS_TDESC</salida>
+         <orden>PAIS_TDESC</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione Un Pais</mensajeNulo>
+	     <id>TO-S</id>
+      </campos>
+      <campos nombre="GRAC_CCOD">
+         <tipo>SELECT</tipo>
+         <destino>(select * from grados_academicos where grac_ccod not in(1,2))t</destino>
+         <union>GRAC_CCOD</union>
+         <salida>GRAC_TDESC</salida>
+         <orden>GRAC_CCOD</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione Grado</mensajeNulo>
+	     <id>TO-N</id>
+      </campos>
+      <campos nombre="EGRA_CCOD">
+         <tipo>SELECT</tipo>
+         <destino>estados_grados_academicos</destino>
+         <union>EGRA_CCOD</union>
+         <salida>egra_tdesc</salida>
+         <orden>EGRA_CCOD</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione Estado</mensajeNulo>
+		 <script>onChange='habilita(this.form)'</script>
+	     <id>TO-N</id>
+      </campos>
+   </parametro>
+
+   <parametro colorResaltado="#DCDCB8" colorSeleccionado="99FFFF" 
+   formulario="eliminar_grados" clave="gpro_ncorr" variable="m" >
+      <tablas nombre="grados_profesor" accion="B"/>
+   </parametro>
+   
+   <parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8"
+	 formulario="grado_academico" nroRegistros="10"   maxLista="10" mensajeError="No hay perfeccionamiento  para este docente." anchoTabla="98%"  nuevaVentana="true"  variable="m">
+      <tablas nombre="curriculum_docente" accion="M"/>
+       <campos nombre="GPRO_TDESCRIPCION">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion> Grado Académico </descripcion>
+      </campos>
+      <campos nombre="GPRO_TINSTITUCION">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion> Institución</descripcion>
+      </campos>
+      <campos nombre="GPRO_ANO_EGRESO">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion> Año Egreso</descripcion>
+      </campos>	 
+      <campos nombre="pais_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion> Pais</descripcion>
+      </campos>	   
+	  <campos nombre="egra_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Estado</descripcion>
+      </campos>	   
+   </parametro>
+   <parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" paginaEdicion="agregar_experiencia_laboral.asp?cudo_ncorr=%cudo_ncorr%&amp;pers_ncorr=%pers_ncorr%" formulario="agregar_experiancia_laboral" nroRegistros="10" agregar="true" eliminar="true" clave="cudo_ncorr" maxLista="10" mensajeError="No hay experiencias laborales para este docente" colorBase="#F1F1E4" anchoTabla="98%" editar="true" nuevaVentana="false" variable="m">
+      <tablas nombre="curriculum_docente" accion="M"/>
+      <campos nombre="cudo_tinstitucion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="cudo_tactividad">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="cudo_finicio">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <tipoDato>fecha</tipoDato>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-N</id>
+      </campos>
+      <campos nombre="cudo_ftermino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <tipoDato>fecha</tipoDato>
+         <caracteres>12</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+         <id>FE-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="botonera">
+      <botones nombre="agregar">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>AGREGAR</accion>
+         <posicionX>100</posicionX>
+         <posicionY>100</posicionY>
+         <ancho>600</ancho>
+         <alto>300</alto>
+      </botones>
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>eliminar_grado.asp</url>
+         <formulario>editar</formulario>
+      </botones>
+      <botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+		  <accion>navegar</accion>
+      </botones>
+      <botones nombre="siguiente">
+         <tipoTexto>SIGUIENTE</tipoTexto>
+		  <accion>navegar</accion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cerrar">
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+      <botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_agregar_grado.asp</url>
+      </botones>
+   </parametro>
+</Parametros>

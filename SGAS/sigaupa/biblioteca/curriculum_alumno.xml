@@ -1,0 +1,984 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+	<parametro formulario="botonera">
+		<botones nombre="lanzadera"> 
+			<tipoTexto>SALIR</tipoTexto>
+			<accion>NAVEGAR</accion>
+			<url>../lanzadera/lanzadera.asp</url>
+		</botones>
+		<botones nombre="buscar">
+			<tipoTexto>BUSCAR</tipoTexto>
+			<accion>BUSCAR</accion>
+			<formulario>buscador</formulario>
+		</botones>
+		<botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>menu_alumno.asp</url>
+      </botones>
+		<botones nombre="imprimir">
+			<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Imprimir</texto>
+			<accion>JAVASCRIPT</accion>
+			<funcion>imprimir()</funcion>
+		</botones>
+		<botones nombre="pagina2">
+			<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Ir a página 2</texto>
+			<accion>navegar</accion>
+			<url>javascript:irPagina2();</url>
+		</botones>
+		<botones nombre="escape">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>mensajes.asp</url>
+        </botones>
+		<botones nombre="guardar"> 
+		  <tipoTexto>GUARDAR</tipoTexto>
+		  <accion>GUARDAR</accion>
+		</botones>
+	</parametro>
+
+	<parametro formulario="busqueda" variable="busqueda">
+		<campos nombre="pers_nrut">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<caracteres>10</caracteres>
+			<maxCaracteres>8</maxCaracteres>
+			<id>NU-N</id>
+		</campos>
+		<campos nombre="pers_xdv">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<caracteres>1</caracteres>
+			<maxCaracteres>1</maxCaracteres>
+			<script>onBlur="this.value=this.value.toUpperCase();"</script>
+			<id>LN-N</id>
+		</campos>
+	</parametro>
+
+	<parametro formulario="f_datos_antecedentes" variable="antec" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" nroRegistros="100" maxLista="100" 
+	eliminar="FALSE" seleccionarTodo="FALSE" anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+		<campos nombre="nombre">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		<campos nombre="rut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		<campos nombre="pasaporte">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		<campos nombre="pers_temail">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>	
+			 <caracteres>50</caracteres>
+         <maxCaracteres>48</maxCaracteres>		
+		</campos>
+		<campos nombre="pers_temail2">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+					 <caracteres>50</caracteres>
+         <maxCaracteres>48</maxCaracteres>		
+		</campos>
+	
+		<campos nombre="dire_tfono">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		<campos nombre="dire_tcelular">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		<campos nombre="nacionalidad">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		<campos nombre="Estado_civil">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		<campos nombre="Direccion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		<campos nombre="ciud_tcomuna">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		<campos nombre="ciud_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		<campos nombre="regi_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		<campos nombre="fnacimiento">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		
+		<campos nombre="estado_civil">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		<campos nombre="sexo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+	</parametro>
+	
+	<parametro formulario="seminario_curso" variable="semi">
+		
+		
+		<campos nombre="cscu_tnombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>60</caracteres>
+         <maxCaracteres>60</maxCaracteres>
+		 <script>onBlur="this.value=this.value.toUpperCase();"</script>
+		 <id>TO-N</id>		
+      </campos>
+	  
+	  <campos nombre="cscu_ano">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>5</caracteres>
+         <maxCaracteres>4</maxCaracteres>
+		 <script>onBlur="this.value=this.value.toUpperCase();"</script>
+		 <id>NU-N</id>		
+      </campos>
+	  
+	    <campos nombre="cscu_tinstitucion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>41</caracteres>
+         <maxCaracteres>40</maxCaracteres>
+		 <script>onBlur="this.value=this.value.toUpperCase();"</script>
+		 <id>TO-N</id>		
+        </campos>
+			   
+	  <campos nombre="ticu_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione el tipo</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		<destino>tipo_curso_seminario</destino>
+		<union>ticu_ccod</union>
+        <salida>ticu_tdesc</salida>
+	    <orden>ticu_tdesc asc</orden>
+		<id>NU-N</id>
+      </campos>
+	    	 	  
+		<campos nombre="cscu_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+		<campos nombre="pers_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+		
+	</parametro>
+	
+		<parametro formulario="seminario_curso_muestra" variable="semu" colorSeleccionado="#CCCCCC"  
+	colorResaltado="#999999" nroRegistros="100" maxLista="100" paginaEdicion="curso_diplomado.asp?cscu_ncorr=%cscu_ncorr%" clave="pers_ncorr"
+	 anchoTabla="100%" editar="true" nuevaVentana="FALSE"  eliminar="true" seleccionarTodo="False"
+	mensajeError="No hay Seminarios o Curso para mostrar">
+		
+		
+		<campos nombre="cscu_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+		
+	 <campos nombre="ticu_ccod" >
+			<descripcion>Tipo</descripcion>
+         <tipo>SELECT</tipo>
+         <permiso>LECTURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione el tipo</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		<destino>tipo_curso_seminario</destino>
+		<union>ticu_ccod</union>
+        <salida>ticu_tdesc</salida>
+	    <orden>ticu_tdesc asc</orden>
+		<id>NU-N</id>
+      </campos>
+	
+		
+		<campos nombre="cscu_tnombre">
+		<descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+		  </campos>
+		  
+		   
+	  
+	  	<campos nombre="cscu_tinstitucion">
+		<descripcion>Institucion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  		
+	</parametro>
+
+<parametro formulario="idioma" variable="idio" >
+
+		 <campos nombre="idio_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Idioma</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>idioma</destino>
+		  <union>idio_ccod</union>
+         <salida>idio_tdesc</salida>
+		 <orden>idio_tdesc asc</orden>
+		 <script>onchange='verifica(this.value)'></script>
+		 
+		 <id>NU-N</id>
+      </campos>
+	  
+	   <campos nombre="nidi_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Nivel</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>niveles_idioma</destino>
+		  <union>nidi_ccod</union>
+         <salida>nidi_tdesc</salida>
+		 <orden>nidi_tdesc asc</orden>
+		 <id>NU-N</id>
+      </campos>
+		
+		 <campos nombre="idal_habla">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <valorVerdadero>SI</valorVerdadero>
+		 <valorFalso>NO</valorFalso>
+      </campos>
+	  
+	   <campos nombre="idal_lee">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		<valorVerdadero>SI</valorVerdadero>
+		 <valorFalso>NO</valorFalso>
+      </campos>
+	  
+	   <campos nombre="idal_escribe">
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		<valorVerdadero>SI</valorVerdadero>
+		 <valorFalso>NO</valorFalso>
+      </campos>
+	   <campos nombre="idal_otro">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>20</caracteres>
+         <maxCaracteres>19</maxCaracteres>
+		 <script>onBlur="this.value=this.value.toUpperCase();"</script>
+		 <id>NU-N</id>		
+      </campos>
+	  
+	  <campos nombre="idal_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+	
+	</parametro>
+	
+	<parametro formulario="idioma_muestra" variable="idiom" colorSeleccionado="#CCCCCC"  
+	colorResaltado="#999999" nroRegistros="100" maxLista="100" paginaEdicion="idioma.asp?idal_ncorr=%idal_ncorr%" clave="idio_ccod"
+	eliminar="true" seleccionarTodo="False" anchoTabla="100%" editar="TRUE" nuevaVentana="FALSE"  
+	mensajeError="No hay Seminarios o Curso para mostrar">
+		<campos nombre="idio_tdesc">
+		<descripcion>Idioma</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="nidi_tdesc">
+		<descripcion>Nivel</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="idal_habla">
+		<descripcion>Habla</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	   <campos nombre="idal_lee">
+		<descripcion>Lee</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	   <campos nombre="idal_escribe">
+		<descripcion>Escribe</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+		<campos nombre="nidi_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+			<campos nombre="idio_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+			<campos nombre="idal_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+	</parametro>
+
+
+	
+	<parametro formulario="trabajo_muestra" variable="trabm" colorSeleccionado="#CCCCCC"  
+	colorResaltado="#999999" nroRegistros="100" maxLista="100" paginaEdicion="laboral_practica_pasantia.asp?dlpr_ncorr=%dlpr_ncorr%&amp;tiea_ccod=1"
+	eliminar="true" seleccionarTodo="false" anchoTabla="100%" editar="TRUE" nuevaVentana="FALSE"  clave="exal_ncorr"
+	mensajeError="No has registrado ningún trabajo">
+	
+		<campos nombre="dlpr_nombre_empresa" >
+		<descripcion>Nombre Empresa</descripcion>
+         <tipo>input</tipo>
+         <permiso>LECTURA</permiso>
+		 </campos>
+		 
+		 <campos nombre="dlpr_cargo_empresa">
+		 <descripcion>Cargo</descripcion>
+		  <tipo>input</tipo>
+         <permiso>LECTURA</permiso>
+		 </campos>
+		 <campos nombre="dlpr_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+		
+	</parametro>
+	
+	<parametro formulario="trabajo_antiguo_muestra" variable="trabma" colorSeleccionado="#CCCCCC"  
+	colorResaltado="#999999" nroRegistros="100" maxLista="100" paginaEdicion="laboral_practica_pasantia.asp?dlpr_ncorr=%dlpr_ncorr%&amp;tiea_ccod=1"
+	eliminar="true" seleccionarTodo="false" anchoTabla="100%" editar="TRUE" nuevaVentana="FALSE"  clave="exal_ncorr"
+	mensajeError="No has registrado ningún trabajo">
+	
+		<campos nombre="dlpr_nombre_empresa" >
+		<descripcion>Nombre Empresa</descripcion>
+         <tipo>input</tipo>
+         <permiso>LECTURA</permiso>
+		 </campos>
+		 
+		 <campos nombre="dlpr_cargo_empresa">
+		 <descripcion>Cargo</descripcion>
+		  <tipo>input</tipo>
+         <permiso>LECTURA</permiso>
+		 </campos>
+		 <campos nombre="dlpr_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+		
+	</parametro>
+
+<parametro formulario="laboral_practica_pasantia" variable="prapa" >
+		 	<campos nombre="tiex_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+		
+		<campos nombre="exal_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+		
+		 <campos nombre="dlpr_nombre_empresa" >
+         <tipo>input</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>50</caracteres>
+         <maxCaracteres>48</maxCaracteres>
+		 <script>onBlur="this.value=this.value.toUpperCase();"</script>
+		 <id>TO-N</id>
+		 
+      </campos>
+	   <campos nombre="dlpr_rubro_empresa" >
+       <tipo>input</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		  <caracteres>25</caracteres>
+         <maxCaracteres>24</maxCaracteres>
+		 <script>onBlur="this.value=this.value.toUpperCase();"</script>
+		 <id>TO-N</id>
+      </campos>
+		
+		 <campos nombre="dlpr_cargo_empresa">
+		  <tipo>input</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <script>onBlur="this.value=this.value.toUpperCase();"</script>
+		 <id>TO-N</id>
+      </campos>
+	  
+	   <campos nombre="dlpr_web_empresa">
+		   <tipo>input</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		  <caracteres>25</caracteres>
+         <maxCaracteres>24</maxCaracteres>
+		 <script>onBlur="this.value=this.value.toUpperCase();"</script>
+		 <id>TO-N</id>
+      </campos>
+	  
+	   <campos nombre="exal_fini">
+		   <tipo>input</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		  <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-N</id>
+      </campos>
+	  
+	   <campos nombre="exal_ffin">
+		   <tipo>input</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		  <caracteres>11</caracteres>
+         <maxCaracteres>10</maxCaracteres>
+		 <id>FE-S</id>
+      </campos>
+	  
+	    <campos nombre="pais_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Pais</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>paises</destino>
+		  <union>pais_ccod</union>
+         <salida>pais_tdesc</salida>
+		 <orden>pais_tdesc asc</orden>
+		 <id>TO-N</id>
+      </campos>
+	  
+	  
+	   <campos nombre="ciud_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione una Ciudad</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>ciudades</destino>
+		  <union>ciud_ccod</union>
+         <salida>ciud_tdesc</salida>
+		 <orden>ciud_tdesc asc</orden>
+		 <id>NU-S</id>
+      </campos>
+	 
+	   
+     <campos nombre="tiea_ccod">
+         <tipo>RADIO</tipo>
+         <destino>(select tiea_ccod, tiea_tdesc from tipo_experiencia_alumno where tiea_ccod in (2,3,4))a</destino>
+         <union>tiea_ccod</union>
+         <salida>tiea_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>2</columnas>
+         <id>TO-N</id>
+         <ancho>90%</ancho>
+      </campos>
+	  
+	  <campos nombre="exal_tactividad">
+        <tipo>TEXTAREA</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <filas>5</filas>
+         <caracteres>80</caracteres>
+		  <id>TO-N</id>
+	   </campos>
+	   
+	   
+		
+			 <campos nombre="dlpr_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+	  
+	</parametro>
+	
+	<parametro formulario="practica_muestra" variable="prpaM" colorSeleccionado="#CCCCCC"  
+	colorResaltado="#999999" nroRegistros="100" maxLista="100" paginaEdicion="laboral_practica_pasantia.asp?dlpr_ncorr=%dlpr_ncorr%&amp;tiea_ccod=2"
+	eliminar="true" seleccionarTodo="false" anchoTabla="100%" editar="TRUE" nuevaVentana="FALSE"  clave="pers_ncorr"
+	mensajeError="No has registrado nada">
+	
+		<campos nombre="dlpr_nombre_empresa" >
+		<descripcion>Nombre Empresa/Institucion</descripcion>
+         <tipo>input</tipo>
+         <permiso>LECTURA</permiso>
+		 </campos>
+		 
+		 <campos nombre="dlpr_cargo_empresa">
+		 <descripcion>Cargo</descripcion>
+		  <tipo>input</tipo>
+         <permiso>LECTURA</permiso>
+		 </campos>
+		 <campos nombre="dlpr_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+	</parametro>
+	
+	
+	
+		<parametro formulario="pasantia_muestra" variable="prpaM" colorSeleccionado="#CCCCCC"  
+	colorResaltado="#999999" nroRegistros="100" maxLista="100" paginaEdicion="laboral_practica_pasantia.asp?dlpr_ncorr=%dlpr_ncorr%&amp;tiea_ccod=2"
+	eliminar="true" seleccionarTodo="false" anchoTabla="100%" editar="TRUE" nuevaVentana="FALSE"  clave="pers_ncorr"
+	mensajeError="No has registrado nada">
+	
+		<campos nombre="dlpr_nombre_empresa" >
+		<descripcion>Nombre Empresa/Institucion</descripcion>
+         <tipo>input</tipo>
+         <permiso>LECTURA</permiso>
+		 </campos>
+		 
+		 <campos nombre="dlpr_cargo_empresa">
+		 <descripcion>Cargo</descripcion>
+		  <tipo>input</tipo>
+         <permiso>LECTURA</permiso>
+		 </campos>
+		 <campos nombre="dlpr_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+	</parametro>
+	
+		<parametro formulario="habilidades" variable="habi" >
+	
+			<campos nombre="chal_thabilidades_tecnica" >
+		<tipo>TEXTAREA</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <filas>5</filas>
+         <caracteres>130</caracteres>
+		 <script>onKeyUp="return maximaLongitud(this,250);"</script>
+		 <id>TO-N</id>
+		 </campos>
+		 
+		   <campos nombre="chal_thabilidades_profesionales">
+		  <tipo>TEXTAREA</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <filas>5</filas>
+         <caracteres>130</caracteres>
+		 <script>onKeyUp="return maximaLongitud(this,250);"</script>
+		  <id>TO-N</id>
+		 </campos>
+		 
+		 <campos nombre="chal_thabilidades_personales">
+		<tipo>TEXTAREA</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <filas>5</filas>
+         <caracteres>130</caracteres>
+		 
+		 <script>onKeyUp="return maximaLongitud(this,250);"</script>
+		  <id>TO-N</id>
+		 </campos>
+		 
+		 
+		 <campos nombre="chal_tarea_trabajo">
+		<tipo>TEXTAREA</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <filas>5</filas>
+         <caracteres>130</caracteres>
+		 <script>onKeyUp="return maximaLongitud(this,250);"</script>
+		  <id>TO-N</id>
+		 </campos>
+		
+		 <campos nombre="chal_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+	</parametro>
+	
+	
+	
+	<parametro formulario="habilidades_programas" variable="hapr" >
+	
+		<campos nombre="cdpa_tprograma" >
+	     <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Programa</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>software</destino>
+		  <union>soft_ncorr</union>
+         <salida>soft_tdesc</salida>
+		 <orden>soft_tdesc asc</orden>
+		 <id>NU-N</id>
+		 </campos>
+		 
+		  <campos nombre="nidi_ccod">
+		 <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Nivel</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>niveles_idioma</destino>
+		  <union>nidi_ccod</union>
+         <salida>nidi_tdesc</salida>
+		 <orden>nidi_tdesc asc</orden>
+		 <id>NU-N</id>
+		</campos>
+				
+		 <campos nombre="cdpa_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+	</parametro>
+	
+	<parametro formulario="habilidades_programas_muestra" variable="hapm" colorSeleccionado="#CCCCCC"  
+	colorResaltado="#999999" nroRegistros="1000" maxLista="10000" paginaEdicion="habilidades_programa.asp?cdpa_ncorr=%cdpa_ncorr%"
+	eliminar="true" seleccionarTodo="false" anchoTabla="100%" editar="TRUE" nuevaVentana="FALSE"  clave="pers_ncorr"
+	mensajeError="No has registrado ningún programa">
+	
+		<campos nombre="cdpa_tprograma" >
+		<descripcion>Programa</descripcion>
+         <tipo>input</tipo>
+         <permiso>LECTURA</permiso>
+		 </campos>
+		 
+		   <campos nombre="nidi_ccod">
+		   <descripcion>Nivel</descripcion>
+		 <tipo>SELECT</tipo>
+         <permiso>LECTURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Nivel</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>niveles_idioma</destino>
+		  <union>nidi_ccod</union>
+         <salida>nidi_tdesc</salida>
+		 <orden>nidi_tdesc asc</orden>
+		 <id>NU-N</id>
+		</campos>
+		
+		 <campos nombre="cdpa_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+	</parametro>
+	
+	<parametro formulario="f_datos_antecedentes_sga" variable="antec" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" nroRegistros="100" maxLista="100" 
+	eliminar="FALSE" seleccionarTodo="FALSE" anchoTabla="100%" editar="FALSE" 
+	mensajeError="No se encontraron datos">
+		<campos nombre="nombre">
+		 <descripcion>Nombre</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		<campos nombre="rut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		<campos nombre="pasaporte">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		<campos nombre="pers_temail">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>	
+			 <caracteres>50</caracteres>
+         <maxCaracteres>48</maxCaracteres>		
+		</campos>
+		<campos nombre="pers_temail2">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+					 <caracteres>50</caracteres>
+         <maxCaracteres>48</maxCaracteres>		
+		</campos>
+	
+		<campos nombre="dire_tfono">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		<campos nombre="dire_tcelular">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		<campos nombre="nacionalidad">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		<campos nombre="Estado_civil">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		<campos nombre="Direccion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		<campos nombre="ciud_tcomuna">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		<campos nombre="ciud_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		<campos nombre="regi_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		<campos nombre="fnacimiento">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		
+		<campos nombre="estado_civil">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+		<campos nombre="sexo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>			
+		</campos>
+	</parametro>
+	<parametro formulario="seminario_curso_muestra_sga" variable="semu" colorSeleccionado="#CCCCCC"  
+	colorResaltado="#999999" nroRegistros="100" maxLista="100"
+	 anchoTabla="100%" editar="false" nuevaVentana="FALSE"  eliminar="false" seleccionarTodo="False"
+	mensajeError="No hay Seminarios o Curso para mostrar">
+		
+		
+		<campos nombre="cscu_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+		
+	 <campos nombre="ticu_ccod" >
+			<descripcion>Tipo</descripcion>
+         <tipo>SELECT</tipo>
+         <permiso>LECTURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione el tipo</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		<destino>tipo_curso_seminario</destino>
+		<union>ticu_ccod</union>
+        <salida>ticu_tdesc</salida>
+	    <orden>ticu_tdesc asc</orden>
+		<id>NU-N</id>
+      </campos>
+	
+		
+		<campos nombre="cscu_tnombre">
+		<descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+		  </campos>
+		  
+		   
+	  
+	  	<campos nombre="cscu_tinstitucion">
+		<descripcion>Institucion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  		
+	</parametro>
+	
+		<parametro formulario="trabajo_muestra_sga" variable="trabm" colorSeleccionado="#CCCCCC"  
+	colorResaltado="#999999"  
+	eliminar="false" seleccionarTodo="false" anchoTabla="100%" editar="false" nuevaVentana="FALSE"  clave="exal_ncorr"
+	mensajeError="No ha registrado ningún trabajo">
+	
+		<campos nombre="dlpr_nombre_empresa" >
+		<descripcion>Nombre Empresa</descripcion>
+         <tipo>input</tipo>
+         <permiso>LECTURA</permiso>
+		 </campos>
+		 
+		 <campos nombre="dlpr_cargo_empresa">
+		 <descripcion>Cargo</descripcion>
+		  <tipo>input</tipo>
+         <permiso>LECTURA</permiso>
+		 </campos>
+		 <campos nombre="dlpr_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+	</parametro>
+	
+		<parametro formulario="practica_muestra_sga" variable="prpaM" colorSeleccionado="#CCCCCC"  
+	colorResaltado="#999999"  
+	eliminar="false" seleccionarTodo="false" anchoTabla="100%" editar="false" nuevaVentana="FALSE"  clave="pers_ncorr"
+	mensajeError="No ha registrado práctica">
+	
+		<campos nombre="dlpr_nombre_empresa" >
+		<descripcion>Nombre Empresa/Institucion</descripcion>
+         <tipo>input</tipo>
+         <permiso>LECTURA</permiso>
+		 </campos>
+		 
+		 <campos nombre="dlpr_cargo_empresa">
+		 <descripcion>Cargo</descripcion>
+		  <tipo>input</tipo>
+         <permiso>LECTURA</permiso>
+		 </campos>
+		 <campos nombre="dlpr_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+	</parametro>
+	
+			<parametro formulario="pasantia_muestra_sga" variable="prpaM" colorSeleccionado="#CCCCCC"  
+	colorResaltado="#999999"  
+	eliminar="false" seleccionarTodo="false" anchoTabla="100%" editar="false" nuevaVentana="FALSE"  clave="pers_ncorr"
+	mensajeError="No ha registrado pasantia">
+	
+		<campos nombre="dlpr_nombre_empresa" >
+		<descripcion>Nombre Empresa/Institucion</descripcion>
+         <tipo>input</tipo>
+         <permiso>LECTURA</permiso>
+		 </campos>
+		 
+		 <campos nombre="dlpr_cargo_empresa">
+		 <descripcion>Cargo</descripcion>
+		  <tipo>input</tipo>
+         <permiso>LECTURA</permiso>
+		 </campos>
+		 <campos nombre="dlpr_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+	</parametro>
+	
+		<parametro formulario="idioma_muestra_sga" variable="idiom" colorSeleccionado="#CCCCCC"  
+	colorResaltado="#999999"  
+	eliminar="false" seleccionarTodo="False" anchoTabla="100%" editar="false" nuevaVentana="FALSE"  
+	mensajeError="No ha registrado idioma">
+		<campos nombre="idio_tdesc">
+		<descripcion>Idioma</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="nidi_tdesc">
+		<descripcion>Nivel</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="idal_habla">
+		<descripcion>Habla</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	   <campos nombre="idal_lee">
+		<descripcion>Lee</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	   <campos nombre="idal_escribe">
+		<descripcion>Escribe</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+		<campos nombre="nidi_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+			<campos nombre="idio_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+			<campos nombre="idal_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+	</parametro>
+
+	<parametro formulario="habilidades_programas_muestra_sga" variable="hapm" colorSeleccionado="#CCCCCC"  
+	colorResaltado="#999999"  
+	eliminar="false" seleccionarTodo="false" anchoTabla="100%" editar="false" nuevaVentana="FALSE"  clave="pers_ncorr"
+	mensajeError="No ha registrado programa">
+	
+		<campos nombre="cdpa_tprograma" >
+		<descripcion>Programa</descripcion>
+         <tipo>input</tipo>
+         <permiso>LECTURA</permiso>
+		 </campos>
+		 
+		   <campos nombre="nidi_ccod">
+		   <descripcion>Nivel</descripcion>
+		 <tipo>SELECT</tipo>
+         <permiso>LECTURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Nivel</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>niveles_idioma</destino>
+		  <union>nidi_ccod</union>
+         <salida>nidi_tdesc</salida>
+		 <orden>nidi_tdesc asc</orden>
+		 <id>NU-N</id>
+		</campos>
+		
+		 <campos nombre="cdpa_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+	</parametro>
+<parametro formulario="habilidades_sga" variable="habi" >
+	
+			<campos nombre="chal_thabilidades_tecnica" >
+		<tipo>TEXTAREA</tipo>
+         <permiso>LECTURA</permiso>
+		 <filas>5</filas>
+         <caracteres>130</caracteres>
+		 <script>onKeyUp="return maximaLongitud(this,250);"</script>
+		 <id>TO-N</id>
+		 </campos>
+		 
+		   <campos nombre="chal_thabilidades_profesionales">
+		  <tipo>TEXTAREA</tipo>
+         <permiso>LECTURA</permiso>
+		 <filas>5</filas>
+         <caracteres>130</caracteres>
+		 <script>onKeyUp="return maximaLongitud(this,250);"</script>
+		  <id>TO-N</id>
+		 </campos>
+		 
+		 <campos nombre="chal_thabilidades_personales">
+		<tipo>TEXTAREA</tipo>
+         <permiso>LECTURA</permiso>
+		 <filas>5</filas>
+         <caracteres>130</caracteres>
+		 
+		 <script>onKeyUp="return maximaLongitud(this,250);"</script>
+		  <id>TO-N</id>
+		 </campos>
+		 
+		 
+		 <campos nombre="chal_tarea_trabajo">
+		<tipo>TEXTAREA</tipo>
+         <permiso>LECTURA</permiso>
+		 <filas>5</filas>
+         <caracteres>130</caracteres>
+		 <script>onKeyUp="return maximaLongitud(this,250);"</script>
+		  <id>TO-N</id>
+		 </campos>
+		
+		 <campos nombre="chal_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>oculto</permiso>			
+		</campos>
+	</parametro>
+ </Parametros>

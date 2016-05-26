@@ -1,0 +1,522 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+		 <soloUnClick>TRUE</soloUnClick>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>portada_encuesta.asp</url>
+      </botones>
+       <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>NAVEGAR</accion>
+         <url>notas_alumno_excel.asp</url>
+      </botones>
+	  <botones nombre="HORARIO"> 
+      	 <tipoTexto>DEFINIR</tipoTexto>
+	     <texto>Horario</texto>
+	     <accion>JAVASCRIPT</accion>
+	     <funcion>horario()</funcion>	  
+	  </botones>
+	  <botones nombre="evaluacion"> 
+      	 <tipoTexto>DEFINIR</tipoTexto>
+	     <texto>Comenzar Evaluaciones</texto>
+	     <accion>NAVEGAR</accion>
+	    <url>asi_soy_yo.asp</url>	  
+	  </botones>
+	  <botones nombre="guardar1">
+         <tipoTexto>Siguiente</tipoTexto>
+         <texto>Guardar Respuestas.</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>encuesta_proc.asp?pag=1</url>
+		  <funcionValidacion>ValidarMarcados();</funcionValidacion>
+	</botones>
+	 <botones nombre="guardar2">
+     <tipoTexto>Siguiente</tipoTexto>
+         <texto>Guardar Respuestas.</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>encuesta_parte2_proc.asp?pag=2</url>
+		 <funcionValidacion>ValidarMarcados();</funcionValidacion>
+	</botones>
+	  <botones nombre="guardar3">
+     <tipoTexto>Siguiente</tipoTexto>
+         <texto>Guardar Respuestas.</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>encuesta_parte3_proc.asp?pag=3</url>
+		<funcionValidacion>validarmarcados();</funcionValidacion>
+		
+	</botones>
+	
+	<botones nombre="guardar4">
+     <tipoTexto>Siguiente</tipoTexto>
+         <texto>Guardar Respuestas.</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>encuesta_parte4_proc.asp?pag=3</url>
+		<funcionValidacion>validarmarcados();</funcionValidacion>
+	</botones>
+   </parametro>
+   <parametro formulario="busqueda" >
+	  <campos nombre="pers_nrut">
+ 		 <tipo>INPUT</tipo> 
+  		 <permiso>OCULTO</permiso> 
+  		 <caracteres>10</caracteres> 
+  		 <maxCaracteres>8</maxCaracteres> 
+  		 <id>NU-N</id> 
+  	  </campos>
+	  <campos nombre="pers_xdv">
+  		 <tipo>INPUT</tipo> 
+  		 <permiso>OCULTO</permiso> 
+         <caracteres>1</caracteres> 
+         <maxCaracteres>1</maxCaracteres> 
+         <script>onBlur="this.value=this.value.toUpperCase();"</script> 
+         <id>LN-N</id> 
+      </campos>
+   </parametro>
+
+   <parametro formulario="encabezado" anchoTabla="100%" columnas="2" variable="enca">
+          <campos nombre="nombres">
+         <descripcion>Nombres</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="apellidos">
+         <descripcion>Apellidos</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  
+	
+        </parametro>
+		
+		
+  <parametro formulario="encuesta" anchoTabla="100%" columnas="2" variable="encu">
+        <campos nombre="sexo_ccod">
+         <tipo>radio</tipo>
+         <destino>(select sexo_ccod,sexo_tdesc from sexos)a</destino>
+         <union>sexo_ccod</union>
+         <salida>sexo_tdesc</salida>
+		 <orden>sexo_ccod desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>2</columnas>
+         <id>TO-N</id>
+         <ancho>90%</ancho>
+      </campos>
+		
+		
+		<campos nombre="edad">
+         <descripcion>Edad</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>2</caracteres>
+		 <maxCaracteres>2</maxCaracteres>
+		 <id>TO-N</id>
+      </campos>
+		
+		  <campos nombre="fecha_ini">
+         <descripcion>Edad</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>4</caracteres>
+		 <maxCaracteres>4</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+		 <campos nombre="fecha_fin">
+         <descripcion>Edad</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>4</caracteres>
+		 <maxCaracteres>4</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+		<campos nombre="preg_1">
+         <tipo>RADIO</tipo>
+         <destino>(select trps_ccod as preg_1, trps_tdesc from tipos_respuestas_psicologia where trps_categoria=12)a</destino>
+         <union>preg_1</union>
+         <salida>trps_tdesc</salida>
+		 <orden>preg_1 desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>5</columnas>
+         <id>TO-N</id>
+         <ancho>90%</ancho>
+      </campos>
+	   <campos nombre="preg_3">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>40</caracteres>
+		 <maxCaracteres>40</maxCaracteres>
+		 <id>TO-N</id>
+      </campos>
+	    <campos nombre="preg_4_otro">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>40</caracteres>
+		 <maxCaracteres>40</maxCaracteres>
+		 <id>TO-N</id>
+      </campos>
+	    <campos nombre="preg_5_otro">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>40</caracteres>
+		 <maxCaracteres>40</maxCaracteres>
+		 <id>TO-N</id>
+      </campos>
+		<campos nombre="preg_6">
+         <tipo>RADIO</tipo>
+         <destino>(select trps_ccod as preg_11, trps_tdesc from tipos_respuestas_psicologia where trps_categoria=11)a</destino>
+         <union>preg_11</union>
+         <salida>trps_tdesc</salida>
+		 <orden>preg_11 desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>10</columnas>
+         <id>TO-N</id>
+         <ancho>90%</ancho>
+      </campos>
+	    <campos nombre="preg_8_otro">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>40</caracteres>
+		 <maxCaracteres>40</maxCaracteres>
+		 <id>TO-N</id>
+      </campos>
+	  <campos nombre="preg_9">
+         <tipo>RADIO</tipo>
+         <destino>(select trps_ccod as preg_09, trps_tdesc from tipos_respuestas_psicologia where trps_categoria=10)a</destino>
+         <union>preg_09</union>
+         <salida>trps_tdesc</salida>
+		 <orden>preg_09 desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+         <id>TO-S</id>
+         <ancho>90%</ancho>
+      </campos>
+	     <campos nombre="preg_10">
+         <tipo>RADIO</tipo>
+         <destino>(select trps_ccod as preg_10, trps_tdesc from tipos_respuestas_psicologia where trps_categoria=13)a</destino>
+         <union>preg_10</union>
+         <salida>trps_tdesc</salida>
+		 <orden>preg_10 desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+         <id>TO-S</id>
+         <ancho>90%</ancho>
+      </campos>
+	   <campos nombre="preg_11">
+         <tipo>RADIO</tipo>
+         <destino>(select trps_ccod as preg_11, trps_tdesc from tipos_respuestas_psicologia where trps_categoria=13)a</destino>
+         <union>preg_11</union>
+         <salida>trps_tdesc</salida>
+		 <orden>preg_11 desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+         <id>TO-S</id>
+         <ancho>90%</ancho>
+      </campos>
+	   <campos nombre="preg_12">
+         <tipo>RADIO</tipo>
+         <destino>(select trps_ccod as preg_12, trps_tdesc from tipos_respuestas_psicologia where trps_categoria=13)a</destino>
+         <union>preg_12</union>
+         <salida>trps_tdesc</salida>
+		 <orden>preg_12 desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+         <id>TO-S</id>
+         <ancho>90%</ancho>
+      </campos>
+	   <campos nombre="preg_13">
+         <tipo>RADIO</tipo>
+         <destino>(select trps_ccod as preg_13, trps_tdesc from tipos_respuestas_psicologia where trps_categoria=13)a</destino>
+         <union>preg_13</union>
+         <salida>trps_tdesc</salida>
+		 <orden>preg_13 desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+         <id>TO-S</id>
+         <ancho>90%</ancho>
+      </campos>
+	   <campos nombre="preg_14">
+         <tipo>RADIO</tipo>
+         <destino>(select trps_ccod as preg_14, trps_tdesc from tipos_respuestas_psicologia where trps_categoria=13)a</destino>
+         <union>preg_14</union>
+         <salida>trps_tdesc</salida>
+		 <orden>preg_14 desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+         <id>TO-S</id>
+         <ancho>90%</ancho>
+      </campos>
+	   <campos nombre="preg_15">
+         <tipo>RADIO</tipo>
+         <destino>(select trps_ccod as preg_15, trps_tdesc from tipos_respuestas_psicologia where trps_categoria=13)a</destino>
+         <union>preg_15</union>
+         <salida>trps_tdesc</salida>
+		 <orden>preg_15 desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+         <id>TO-S</id>
+         <ancho>90%</ancho>
+      </campos>
+	  
+	   <campos nombre="preg_16">
+         <tipo>RADIO</tipo>
+         <destino>(select trps_ccod as preg_16, trps_tdesc from tipos_respuestas_psicologia where trps_categoria=16)a</destino>
+         <union>preg_16</union>
+         <salida>trps_tdesc</salida>
+		 <orden>preg_16 desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+         <id>TO-S</id>
+         <ancho>90%</ancho>
+      </campos>
+	   <campos nombre="preg_17">
+         <tipo>RADIO</tipo>
+         <destino>(select trps_ccod as preg_17, trps_tdesc from tipos_respuestas_psicologia where trps_categoria=13)a</destino>
+         <union>preg_17</union>
+         <salida>trps_tdesc</salida>
+		 <orden>preg_17 desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+         <id>TO-S</id>
+         <ancho>90%</ancho>
+      </campos>
+	   <campos nombre="preg_18">
+         <tipo>RADIO</tipo>
+         <destino>(select trps_ccod as preg_18, trps_tdesc from tipos_respuestas_psicologia where trps_categoria=13)a</destino>
+         <union>preg_18</union>
+         <salida>trps_tdesc</salida>
+		 <orden>preg_18 desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+         <id>TO-S</id>
+         <ancho>90%</ancho>
+      </campos>
+	    <campos nombre="preg_20_otro">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>40</caracteres>
+		 <maxCaracteres>40</maxCaracteres>
+		 <id>TO-N</id>
+      </campos>
+	      <campos nombre="preg_21_otro">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>40</caracteres>
+		 <maxCaracteres>40</maxCaracteres>
+		 <id>TO-N</id>
+      </campos>
+	  <campos nombre="preg_19_a">
+         <tipo>select</tipo>
+         <destino>competencia_encuesta_rr_pp</destino>
+         <union>corp_ncorr</union>
+         <salida>corp_tdesc</salida>
+		 <orden>corp_tdesc desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>TRUE</anulable>
+		 <mensajeNulo>Elije una Opción</mensajeNulo>
+		 <id>NU-N</id>
+        
+         <id>TO-S</id>
+         <ancho>90%</ancho>
+      </campos>
+	    <campos nombre="preg_19_b">
+         <tipo>select</tipo>
+         <destino>competencia_encuesta_rr_pp</destino>
+         <union>corp_ncorr</union>
+         <salida>corp_tdesc</salida>
+		 <orden>corp_tdesc desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+        <anulable>TRUE</anulable>
+		 <mensajeNulo>Elije una Opción</mensajeNulo>
+		 <id>NU-N</id>
+         <id>TO-S</id>
+         <ancho>90%</ancho>
+      </campos>
+	    <campos nombre="preg_19_c">
+         <tipo>select</tipo>
+         <destino>competencia_encuesta_rr_pp</destino>
+         <union>corp_ncorr</union>
+         <salida>corp_tdesc</salida>
+		 <orden>corp_tdesc desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+        <anulable>TRUE</anulable>
+		 <mensajeNulo>Elije una Opción</mensajeNulo>
+		  <id>NU-N</id>
+         <id>TO-S</id>
+         <ancho>90%</ancho>
+      </campos>
+	<campos nombre="preg_22">
+         <tipo>RADIO</tipo>
+         <destino>(select trps_ccod as preg_22, trps_tdesc from tipos_respuestas_psicologia where trps_categoria=9)a</destino>
+         <union>preg_22</union>
+         <salida>trps_tdesc</salida>
+		 <orden>preg_22 desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+		 <script>onClick='ValidaValor_22(this.value)'</script>
+         <id>TO-S</id>
+         <ancho>90%</ancho>
+      </campos>
+	     <campos nombre="preg_23">
+         <tipo>RADIO</tipo>
+         <destino>(select trps_ccod as preg_23, trps_tdesc from tipos_respuestas_psicologia where trps_categoria=9)a</destino>
+         <union>preg_23</union>
+         <salida>trps_tdesc</salida>
+		 <orden>preg_23 desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+		 <script>onClick='ValidaValor_23(this.value)'</script>
+         <id>TO-S</id>
+         <ancho>90%</ancho>
+      </campos>
+	     <campos nombre="preg_24">
+         <tipo>RADIO</tipo>
+         <destino>(select trps_ccod as preg_24, trps_tdesc from tipos_respuestas_psicologia where trps_categoria=9)a</destino>
+         <union>preg_24</union>
+         <salida>trps_tdesc</salida>
+		 <orden>preg_24 desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+		 <script>onClick='ValidaValor_24(this.value)'</script>
+         <id>TO-S</id>
+         <ancho>90%</ancho>
+      </campos>
+	     <campos nombre="preg_25">
+         <tipo>RADIO</tipo>
+         <destino>(select trps_ccod as preg_25, trps_tdesc from tipos_respuestas_psicologia where trps_categoria=9)a</destino>
+         <union>preg_25</union>
+         <salida>trps_tdesc</salida>
+		 <orden>preg_25 desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+		 <script>onClick='ValidaValor_25(this.value)'</script>
+         <id>TO-S</id>
+         <ancho>90%</ancho>
+      </campos>
+	     <campos nombre="preg_26">
+         <tipo>RADIO</tipo>
+         <destino>(select trps_ccod as preg_26, trps_tdesc from tipos_respuestas_psicologia where trps_categoria=9)a</destino>
+         <union>preg_26</union>
+         <salida>trps_tdesc</salida>
+		 <orden>preg_26 desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+		 <script>onClick='ValidaValor_26(this.value)'</script>
+         <id>TO-S</id>
+         <ancho>90%</ancho>
+      </campos>
+	     <campos nombre="preg_27">
+         <tipo>RADIO</tipo>
+         <destino>(select trps_ccod as preg_27, trps_tdesc from tipos_respuestas_psicologia where trps_categoria=9)a</destino>
+         <union>preg_27</union>
+         <salida>trps_tdesc</salida>
+		 <orden>preg_27 desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+         <id>TO-N</id>
+         <ancho>90%</ancho>
+      </campos>
+	    <campos nombre="preg_27_tipo">
+       <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>tipos_perfecionamiento_rr_pp</destino>
+		 <union>tprp_ncorr</union>
+         <salida>tprp_tdesc</salida>
+		 <orden>tprp_tdesc asc</orden>
+		 <id>NU-N</id>
+      </campos>
+	  	     <campos nombre="preg_28">
+         <tipo>RADIO</tipo>
+         <destino>(select trps_ccod as preg_28, trps_tdesc from tipos_respuestas_psicologia where trps_categoria=9)a</destino>
+         <union>preg_28</union>
+         <salida>trps_tdesc</salida>
+		 <orden>preg_28 desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+         <id>TO-N</id>
+         <ancho>90%</ancho>
+      </campos>
+	   <campos nombre="preg_29_otro">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>40</caracteres>
+		 <maxCaracteres>40</maxCaracteres>
+		 <id>TO-N</id>
+      </campos>
+	  	     <campos nombre="preg_30">
+         <tipo>RADIO</tipo>
+         <destino>(select trps_ccod as preg_30, trps_tdesc from tipos_respuestas_psicologia where trps_categoria=9)a</destino>
+         <union>preg_30</union>
+         <salida>trps_tdesc</salida>
+		 <orden>preg_30 desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+         <id>TO-N</id>
+         <ancho>90%</ancho>
+      </campos>
+	  	     <campos nombre="preg_31">
+         <tipo>RADIO</tipo>
+         <destino>(select trps_ccod as preg_31, trps_tdesc from tipos_respuestas_psicologia where trps_categoria=9)a</destino>
+         <union>preg_31</union>
+         <salida>trps_tdesc</salida>
+		 <orden>preg_31 desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+         <id>TO-N</id>
+         <ancho>90%</ancho>
+      </campos>
+	  	     <campos nombre="preg_32">
+         <tipo>RADIO</tipo>
+         <destino>(select trps_ccod as preg_32, trps_tdesc from tipos_respuestas_psicologia where trps_categoria=9)a</destino>
+         <union>preg_32</union>
+         <salida>trps_tdesc</salida>
+		 <orden>preg_32 desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+         <id>TO-N</id>
+         <ancho>90%</ancho>
+      </campos>
+	  	     <campos nombre="preg_33">
+         <tipo>RADIO</tipo>
+         <destino>(select trps_ccod as preg_33, trps_tdesc from tipos_respuestas_psicologia where trps_categoria=9)a</destino>
+         <union>preg_33</union>
+         <salida>trps_tdesc</salida>
+		 <orden>preg_33 desc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>4</columnas>
+         <id>TO-N</id>
+         <ancho>90%</ancho>
+      </campos>
+	   	<campos nombre="preg_34_cual">
+            <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>40</caracteres>
+		 <maxCaracteres>40</maxCaracteres>
+		 <id>TO-N</id>
+      </campos>
+	   	<campos nombre="come_1">
+            <tipo>TEXTAREA</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <filas>5</filas>
+         <caracteres>80</caracteres>
+		  <id>TO-N</id>
+      </campos>
+	   	<campos nombre="come_2">
+         <tipo>TEXTAREA</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <filas>5</filas>
+         <caracteres>80</caracteres>
+		  <id>TO-N</id>
+      </campos>
+ </parametro>
+</Parametros>

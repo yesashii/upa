@@ -1,0 +1,39 @@
+<Parametros>
+  <parametro formulario="botonera">
+     <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+	 <botones nombre="buscar"> 
+        <tipoTexto>BUSCAR</tipoTexto>
+	    <accion>BUSCAR</accion>
+	    <formulario>buscador</formulario>
+		<soloUnClick>TRUE</soloUnClick>
+	 </botones>
+	 <botones nombre="excel">
+       <tipoTexto>DEFINIR</tipoTexto>
+	   <texto>Generar</texto>
+       <accion>GUARDAR</accion>	
+	   <formulario>edicion</formulario>
+	   <funcionValidacion>mostrar_mensaje();</funcionValidacion>
+    </botones>  
+ </parametro>
+ 
+ <parametro formulario="f_busqueda" variable="busqueda">
+   <campos nombre="anos_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>(select anos_ccod,anos_tdesc from anos where anos_ccod >=2006)a</destino> 
+	  <union>anos_ccod</union>
+	  <salida>anos_tdesc</salida>
+      <orden>anos_tdesc asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione</mensajeNulo>
+	  <mensajeVacio>Seleccione</mensajeVacio>
+	  <!--<script>onchange="actualizar_texto(this.value);"</script>-->
+	  <id>TO-N</id>
+   </campos>
+  </parametro>
+     
+ </Parametros>

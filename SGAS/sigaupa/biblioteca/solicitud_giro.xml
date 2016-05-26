@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+<parametro formulario="botonera">
+   <botones nombre="salir"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	<botones nombre="nuevo"> 
+		<tipoTexto>DEFINIR</tipoTexto>
+		<texto>Nuevo</texto>
+		<accion>Navegar</accion>
+		<url>javascript:NuevaSolicitud();</url>
+	</botones>
+	<botones nombre="guardar">
+		 <tipoTexto>GUARDAR</tipoTexto>
+		 <accion>GUARDAR</accion>
+		 <url>orden_compra_proc.asp</url>
+		 <formulario>detalle</formulario>
+		 <funcionValidacion>Enviar();</funcionValidacion>
+	</botones>	
+	  <botones nombre="buscar">
+		 <tipoTexto>BUSCAR</tipoTexto>
+		 <accion>BUSCAR</accion>
+		 <formulario>buscador</formulario>
+		 <funcionValidacion>Validar();</funcionValidacion>
+		 <soloUnClick>TRUE</soloUnClick>
+	  </botones>
+</parametro>
+
+<parametro formulario="buscador2" variable="busqueda">
+	<campos nombre="area_ccod">
+		<tipo>SELECT</tipo>
+		<destino>presupuesto_upa.protic.area_presupuestal</destino>
+		<union>area_ccod</union>
+		<salida>area_tdesc</salida>
+		<permiso>LECTURAESCRITURA</permiso>
+		<anulable>TRUE</anulable>
+		<mensajeNulo>Seleccione área presupuesto</mensajeNulo>
+		<mensajeVacio>No existe área asociada</mensajeVacio>
+		<orden>area_tdesc</orden>
+	</campos>
+</parametro>
+
+<parametro formulario="buscador" variable="busqueda">
+	<campos nombre="cod_solicitud">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-N</id>
+	</campos>
+	<campos nombre="tsol_ccod">
+		<tipo>SELECT</tipo>
+		<destino>ocag_tipo_solicitud</destino>
+		<union>tsol_ccod</union>
+		<salida>tsol_tdesc</salida>
+		<permiso>LECTURAESCRITURA</permiso>
+		<anulable>true</anulable>
+		<orden>tsol_ccod</orden>
+		<filtro>tsol_ccod not in (7,8)</filtro>
+		<mensajeNulo>Seleccione Tipo Solicitud</mensajeNulo>
+	</campos>		
+</parametro>
+
+<parametro formulario="datos_solicitud" variable="solicitud" clave="cod_solicitud" eliminar="true" 
+maxLista="5" anchoTabla="100%" nroRegistros="10" mensajeError="No existen registros de solicitudes disponibles" >
+	<campos nombre="tsol_ccod">
+		<descripcion>Tipo Solicitud</descripcion>
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_tipo_solicitud</destino>
+		 <union>tsol_ccod</union>
+		 <salida>tsol_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <caracteres>10</caracteres>
+	</campos>
+	<campos nombre="vibo_ccod">
+		<descripcion>Estado</descripcion>
+		 <tipo>SELECT</tipo>
+		 <destino>ocag_visto_bueno</destino>
+		 <union>vibo_ccod</union>
+		 <salida>vibo_tsalida</salida>
+		 <permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+	</campos>	
+	<campos nombre="cod_solicitud">
+		<descripcion>N° Solicitud</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<deshabilitado>true</deshabilitado>
+	</campos>	
+	<campos nombre="fecha_solicitud">
+		<descripcion>Fecha Solicitud</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>	  
+	</campos>
+	<campos nombre="monto_solicitud">
+		<descripcion>Monto Solicitud</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+	</campos>
+	<campos nombre="proveedor">
+		<descripcion>Proveedor</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+	</campos>	
+	<campos nombre="audi_tusuario">
+		<descripcion>Solicitante</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<deshabilitado>true</deshabilitado>
+	</campos>
+	<campos nombre="accion">
+		<descripcion>Accion</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<caracteres>15</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<deshabilitado>true</deshabilitado>
+	</campos>	
+</parametro> 
+
+</Parametros>

@@ -1,0 +1,8 @@
+14312310,REYES PLAZA MARIA DE LOS ANGELES,,14312310-3,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+16291914,MIRANDA ZANINOVIC PATRICIO ARTURO,,16291914-8,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+16855206,ALLENDE GUAJARDO JUAN CARLOS,,16855206-8,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+16960972,SAFI AGUILERA KARIMA,,16960972-1,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17397473,MARCHANT GATICA MARIA FRANCISCA,,17397473-6,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17803494,LOYOLA ASENCIO BARBARA DEL PILAR,,17803494-4,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17892476,MANCILLA LECAROS PABLO ERNESTO,,17892476-1,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18611024,BERNAL AYALA JONATHAN ANDRES,,18611024-2,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

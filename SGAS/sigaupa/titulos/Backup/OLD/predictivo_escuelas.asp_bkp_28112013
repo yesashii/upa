@@ -1,0 +1,441 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+
+<%
+Server.ScriptTimeOut = 150000
+set pagina = new CPagina
+pagina.Titulo = "Predictivo por Escuelas"
+'---------------------------------------------------------------------------------------------------
+set conexion = new CConexion
+conexion.Inicializar "upacifico"
+
+set errores = new CErrores
+
+set negocio = new CNegocio
+negocio.Inicializa conexion
+
+periodo = negocio.obtenerPeriodoAcademico("Planificacion")
+peri = negocio.obtenerPeriodoAcademico("CLASES18")
+anos_ccod = conexion.consultaUno("Select anos_ccod from periodos_academicos where cast(peri_ccod as varchar)='"&periodo&"'")
+
+'---------------------------------------------------------------------------------------------------
+sede_ccod   =   request.QueryString("a[0][sede_ccod]")
+carr_ccod   =   request.QueryString("a[0][carr_ccod]")
+jorn_ccod   =   request.QueryString("a[0][jorn_ccod]")
+'response.Write("estado "&estado_prestamo)
+'--------------------------------------------------------------------------
+set botonera = new CFormulario
+botonera.Carga_Parametros "predictivo_escuelas.xml", "botonera"
+'--------------------------------------------------------------------------
+set formulario = new CFormulario
+formulario.Carga_Parametros "predictivo_escuelas.xml", "listado_asignaturas"
+formulario.Inicializar conexion 
+'-------------------------------------------Seleccionar asignatura para equivalencia de una lista sin escribir su código-----
+'-----------------------------------------------------------msandoval 19-02-2005---------------------------------------------
+	set f_filtros = new cFormulario
+	f_filtros.carga_parametros "predictivo_escuelas.xml", "buscador"
+	f_filtros.inicializar conexion
+	consulta="Select '"&carr_ccod&"' as carr_ccod, '"&sede_ccod&"' as sede_ccod, '"&jorn_ccod&"' as jorn_ccod"
+	f_filtros.consultar consulta
+	consulta = " select distinct b.sede_ccod, c.sede_tdesc, e.carr_ccod, e.carr_tdesc, f.jorn_ccod, f.jorn_tdesc  " & vbCrLf & _
+			   " from alumnos a (nolock), ofertas_academicas b, sedes c, especialidades d, carreras e, jornadas f  " & vbCrLf & _
+			   " where a.ofer_ncorr=b.ofer_ncorr and b.sede_ccod=c.sede_ccod  " & vbCrLf & _
+			   " and b.espe_ccod=d.espe_ccod and d.carr_ccod=e.carr_ccod  " & vbCrLf & _
+			   " and b.jorn_ccod=f.jorn_ccod  " & vbCrLf & _
+			   " and a.emat_ccod in (1)  " & vbCrLf & _
+			   " order by sede_tdesc, carr_tdesc, jorn_tdesc  "
+
+	f_filtros.inicializaListaDependiente "filtros", consulta
+	f_filtros.siguiente
+'-----------------------------------------------------------------------------------------------------------------
+sede = conexion.consultaUno("select sede_tdesc from sedes where cast(sede_ccod as varchar)='"&sede_ccod&"'")
+carrera = conexion.consultaUno("select carr_tdesc from carreras where cast(carr_ccod as varchar)='"&carr_ccod&"'")
+jornada = conexion.consultaUno("select jorn_tdesc from jornadas where cast(jorn_ccod as varchar)='"&jorn_ccod&"'")
+
+
+set f_candidatos = new cFormulario
+f_candidatos.carga_parametros "tabla_vacia.xml", "tabla"
+f_candidatos.inicializar conexion
+c_datos = " select *,(total_ramos_malla - total_ramos_aprobados_o_en_curso) as restantes   " & vbCrLf & _
+          " from   " & vbCrLf & _
+		  " (   " & vbCrLf & _
+		  "    select sede, carrera, jornada,espe_tdesc as especialidad,ttt.plan_ccod,plan_tdesc as plan_estudio,pers_ncorr,     " & vbCrLf & _
+		  "    rut, nombres,ap_paterno, ap_materno, ap_paterno + ' ' + ap_materno + ' ' + nombres as nombre_completo,   " & vbCrLf & _
+		  "    ano_ingreso_carrera, ultimo_estado, ultimo_periodo, egresado,titulado,es_cae,   " & vbCrLf & _
+		  "    (select count(*) from malla_curricular tr where tr.plan_ccod = table1.ultimo_plan   " & vbCrLf & _
+		  "     and isnull(tr.mall_npermiso,0) = 0 ) as total_ramos_malla,   " & vbCrLf & _
+		  "    (select count(*) from malla_curricular tr where tr.plan_ccod = table1.ultimo_plan   " & vbCrLf & _
+		  "     and isnull(tr.mall_npermiso,0) = 0    " & vbCrLf & _
+		  "     and isnull(protic.estado_ramo_alumno(table1.pers_ncorr,tr.asig_ccod,table1.carr_ccod,tr.plan_ccod,'"&peri&"'),'') <> '') as total_ramos_aprobados_o_en_curso,   " & vbCrLf & _
+		  "     telefono,celular, email_particular,   " & vbCrLf & _
+		  "     (select top 1 protic.trunc(fecha_cae) from detalles_titulacion_carrera ttt where ttt.pers_ncorr=table1.pers_ncorr and ttt.carr_ccod=table1.carr_ccod order by informar_cae desc ) as fecha_cae,  " & vbCrLf & _
+		  "     (select top 1 observaciones_cae from detalles_titulacion_carrera ttt where ttt.pers_ncorr=table1.pers_ncorr and ttt.carr_ccod=table1.carr_ccod order by informar_cae desc ) as observaciones_cae,  " & vbCrLf & _
+		  "     (select top 1 case isnull(informar_cae,3) when 0 then 'NO' when 1 then 'SI' else '' end from detalles_titulacion_carrera ttt where ttt.pers_ncorr=table1.pers_ncorr and ttt.carr_ccod=table1.carr_ccod order by informar_cae desc ) as informar_cae  " & vbCrLf & _
+		  "    from   " & vbCrLf & _
+		  "    (   " & vbCrLf & _
+		  "    select distinct sede_tdesc as sede, e.carr_ccod, carr_tdesc as carrera, jorn_tdesc as jornada,   " & vbCrLf & _
+		  "    g.pers_ncorr,cast(g.pers_nrut as varchar)+'-'+g.pers_xdv as rut, g.pers_tnombre as nombres,   " & vbCrLf & _
+		  "    g.pers_tape_paterno as ap_paterno, g.pers_tape_materno as ap_materno,   " & vbCrLf & _
+		  "    g.pers_tfono as telefono, g.pers_tcelular as celular, lower(g.pers_temail) as email_particular,   " & vbCrLf & _
+		  "    protic.ano_ingreso_carrera_egresa2(a.pers_ncorr,e.carr_ccod) as ano_ingreso_carrera,   " & vbCrLf & _
+		  "    (select top 1 plan_ccod   " & vbCrLf & _
+		  "         from alumnos tt (nolock), ofertas_academicas t2, especialidades t3   " & vbCrLf & _
+		  "         where tt.ofer_ncorr=t2.ofer_ncorr and t2.espe_ccod=t3.espe_ccod   " & vbCrLf & _
+		  "         and tt.pers_ncorr=a.pers_ncorr and t3.carr_ccod=e.carr_ccod   " & vbCrLf & _
+		  "         and tt.emat_ccod = 1 order by t2.peri_ccod desc) as ultimo_plan,   " & vbCrLf & _
+		  "    (select top 1 emat_tdesc   " & vbCrLf & _
+		  "         from alumnos tt (nolock), ofertas_academicas t2, especialidades t3, estados_matriculas t4   " & vbCrLf & _
+		  "         where tt.ofer_ncorr=t2.ofer_ncorr and t2.espe_ccod=t3.espe_ccod   " & vbCrLf & _
+		  "         and tt.pers_ncorr=a.pers_ncorr and t3.carr_ccod=e.carr_ccod and tt.emat_ccod=t4.emat_ccod   " & vbCrLf & _
+		  "         order by t2.peri_ccod desc, tt.audi_tusuario desc) as ultimo_estado,   " & vbCrLf & _
+		  "    (select top 1 peri_tdesc   " & vbCrLf & _
+		  "         from alumnos tt (nolock), ofertas_academicas t2, especialidades t3, periodos_academicos t4   " & vbCrLf & _
+		  "         where tt.ofer_ncorr=t2.ofer_ncorr and t2.espe_ccod=t3.espe_ccod   " & vbCrLf & _
+		  "         and tt.pers_ncorr=a.pers_ncorr and t3.carr_ccod=e.carr_ccod and t2.peri_ccod=t4.peri_ccod   " & vbCrLf & _
+		  "         order by t2.peri_ccod desc, tt.audi_tusuario desc) as ultimo_periodo,        " & vbCrLf & _
+		  "    (select case count(*) when 0 then 'NO' else 'SI' end from alumnos tt (nolock), ofertas_academicas t2, especialidades t3   " & vbCrLf & _
+		  "                    where tt.ofer_ncorr=t2.ofer_ncorr and t2.espe_ccod=t3.espe_ccod   " & vbCrLf & _
+		  "                    and tt.pers_ncorr=a.pers_ncorr and t3.carr_ccod=e.carr_ccod   " & vbCrLf & _
+		  "                    and tt.emat_ccod in (4) ) as egresado,  " & vbCrLf & _
+		   "    (select case count(*) when 0 then 'NO' else 'SI' end from alumnos tt (nolock), ofertas_academicas t2, especialidades t3   " & vbCrLf & _
+		  "                    where tt.ofer_ncorr=t2.ofer_ncorr and t2.espe_ccod=t3.espe_ccod   " & vbCrLf & _
+		  "                    and tt.pers_ncorr=a.pers_ncorr and t3.carr_ccod=e.carr_ccod   " & vbCrLf & _
+		  "                    and tt.emat_ccod in (8) ) as titulado,  " & vbCrLf & _		  
+		  "   isnull((select top 1 'SI en '+ cast(ttt.anos_ccod as varchar) from ufe_alumnos_cae ttt where esca_ccod=1 and ttt.rut = g.pers_nrut order by ttt.anos_ccod desc),'NO') as es_cae " & vbCrLf & _
+		  "    from alumnos a (nolock), ofertas_academicas b, sedes c, especialidades d, carreras e,   " & vbCrLf & _
+		  "    jornadas f, personas g  (nolock), periodos_academicos h  " & vbCrLf & _
+		  "    where a.ofer_ncorr=b.ofer_ncorr and b.sede_ccod=c.sede_ccod   " & vbCrLf & _
+		  "    and b.espe_ccod=d.espe_ccod and d.carr_ccod=e.carr_ccod   " & vbCrLf & _
+		  "    and b.jorn_ccod=f.jorn_ccod   " & vbCrLf & _
+		  "    and a.pers_ncorr=g.pers_ncorr and b.peri_ccod = h.peri_ccod  " & vbCrLf & _
+		  "    --and not exists (select 1 from alumnos tt (nolock), ofertas_academicas t2, especialidades t3   " & vbCrLf & _
+		  "    --                where tt.ofer_ncorr=t2.ofer_ncorr and t2.espe_ccod=t3.espe_ccod   " & vbCrLf & _
+		  "    --                and tt.pers_ncorr=a.pers_ncorr and t3.carr_ccod=e.carr_ccod   " & vbCrLf & _
+		  "    --                and tt.emat_ccod in (8) )   " & vbCrLf & _
+		  "    and (select count(*)   " & vbCrLf & _
+		  "         from alumnos tt (nolock), ofertas_academicas t2, especialidades t3   " & vbCrLf & _
+		  "         where tt.ofer_ncorr=t2.ofer_ncorr and t2.espe_ccod=t3.espe_ccod   " & vbCrLf & _
+		  "         and tt.pers_ncorr=a.pers_ncorr and t3.carr_ccod=e.carr_ccod   " & vbCrLf & _ 
+		  "         and tt.emat_ccod = 1 and isnull(tt.alum_nmatricula,0) <> 7777 ) >= 2     " & vbCrLf & _              
+		  "    and cast(b.sede_ccod as varchar)='"&sede_ccod&"'   " & vbCrLf & _
+		  "    and cast(b.jorn_ccod as varchar)='"&jorn_ccod&"'   " & vbCrLf & _
+		  "    and cast(d.carr_ccod as varchar)='"&carr_ccod&"'   " & vbCrLf & _
+		  "    )table1, planes_estudio ttt, especialidades tt2   " & vbCrLf & _
+		  "    where table1.ultimo_plan=ttt.plan_ccod   " & vbCrLf & _
+		  "    and ttt.espe_ccod = tt2.espe_ccod   " & vbCrLf & _
+		  " )table2   " & vbCrLf & _
+		  " where (total_ramos_malla - total_ramos_aprobados_o_en_curso) <= 5   " & vbCrLf & _
+		  " order by sede, carrera, jornada, (total_ramos_malla - total_ramos_aprobados_o_en_curso) asc"
+
+f_candidatos.consultar c_datos
+'response.Write("<pre>"&c_datos&"</pre>")
+
+%>
+
+
+<html>
+<head>
+<title><%=pagina.Titulo%></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../estilos/estilos.css" rel="stylesheet" type="text/css">
+<link href="../estilos/tabla.css" rel="stylesheet" type="text/css">
+
+<script language="JavaScript" src="../biblioteca/tabla.js"></script>
+<script language="JavaScript" src="../biblioteca/funciones.js"></script>
+<script language="JavaScript" src="../biblioteca/validadores.js"></script>
+<script language="JavaScript">
+function abrir_datos(codigo,plan)
+{
+    direccion = "predictivo_escuelas_detalle.asp?pers_ncorr="+codigo+"&carr_ccod="+'<%=carr_ccod%>'+"&plan_ccod="+plan;
+    resultado = window.open(direccion, "ventana_aviso","width=500,height=360,scrollbars=yes, left=0, top=0");
+}
+function enviar(formulario)
+{
+            document.getElementById("texto_alerta").style.visibility="visible";
+			formulario.action ="predictivo_escuelas.asp";
+			formulario.submit();
+}
+</script>
+<% f_filtros.generaJS %>
+   
+</head>
+<body bgcolor="#CC6600" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../imagenes/botones/buscar_f2.gif','../images/bot_deshabilitar_f2.gif','../images/agregar2_f2_p.gif','im&amp;#225;genes/marco1_r3_c2_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c4_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c6_f2.gif');MM_preloadImages('im&amp;#225;genes/marco1_r3_c8_f2.gif');MM_preloadImages('../imagenes/botones/cargar_f2.gif','../imagenes/botones/continuar_f2.gif')">
+<table width="750" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><img src="../imagenes/vineta2_r1_c1.gif" width="750" height="72" border="0"></td>
+  </tr>
+  <%pagina.DibujarEncabezado()%>  
+  <tr>
+    <td valign="top" bgcolor="#EAEAEA">
+	<br>
+	<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr> 
+                <td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <!-- fwtable fwsrc="marco contenidos.png" fwbase="top.gif" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" -->
+                    <tr> 
+                      <td><img src="../imagenes/spacer.gif" width="9" height="1" border="0" alt=""></td>
+                      <td><img src="../imagenes/spacer.gif" width="559" height="1" border="0" alt=""></td>
+                      <td><img src="../imagenes/spacer.gif" width="7" height="1" border="0" alt=""></td>
+                    </tr>
+                    <tr> 
+                      <td><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+                      <td height="8"><img name="top_r1_c2" src="../imagenes/top_r1_c2.gif" width="670" height="8" border="0" alt=""></td>
+                      <td><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+                    </tr>
+                    <tr> 
+                      <td><img name="top_r2_c1" src="../imagenes/top_r2_c1.gif" width="9" height="17" border="0" alt=""></td>
+                      <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <tr> 
+                            <td width="12" background="../imagenes/fondo1.gif"><img src="../imagenes/izq_1.gif" width="5" height="17"></td>
+                            <td width="81" valign="bottom" background="../imagenes/fondo1.gif"> 
+                              <div align="left"><font color="#FFFFFF" size="2" face="Verdana, Arial, Helvetica, sans-serif">Buscador 
+                                </font></div></td>
+                            <td width="10"><img src="../imagenes/derech1.gif" width="6" height="17"></td>
+                            <td width="567" bgcolor="#D8D8DE"><font color="#D8D8DE" size="1">.</font></td>
+                          </tr>
+                        </table></td>
+                      <td><img name="top_r2_c3" src="../imagenes/top_r2_c3.gif" width="7" height="17" border="0" alt=""></td>
+                    </tr>
+                    <tr> 
+                      <td><img name="top_r3_c1" src="../imagenes/top_r3_c1.gif" width="9" height="2" border="0" alt=""></td>
+                      <td><img name="top_r3_c2" src="../imagenes/top_r3_c2.gif" width="670" height="2" border="0" alt=""></td>
+                      <td><img name="top_r3_c3" src="../imagenes/top_r3_c3.gif" width="7" height="2" border="0" alt=""></td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr> 
+                      <td width="9" height="62" align="left" background="../imagenes/izq.gif">&nbsp;</td>
+                      <td bgcolor="#D8D8DE"><div align="center"> 
+                          <form name="buscador">
+                            <table width="98%" border="0">
+                                    <tr> 
+                                      <td width="10%">Sede</td>
+                                      <td width="1%">:</td>
+                                      <td width="89%"><%f_filtros.dibujaCampoLista "filtros", "sede_ccod"%></td>
+                                    </tr>
+									<tr> 
+                                      <td width="10%">Carrera</td>
+                                      <td width="1%">:</td>
+                                      <td width="89%"><%f_filtros.dibujaCampoLista "filtros", "carr_ccod"%></td>
+                                    </tr>
+									<tr> 
+                                      <td width="10%">Jornada</td>
+                                      <td width="1%">:</td>
+                                      <td width="89%"><%f_filtros.dibujaCampoLista "filtros", "jorn_ccod"%></td>
+                                    </tr>
+									<tr> 
+                                      <td width="10%">&nbsp;</td>
+                                      <td width="1%">&nbsp;</td>
+                                      <td width="89%" align="right"><div  align="left" id="texto_alerta" style="visibility: hidden;"><font color="#0000FF" size="-1">Buscando...</font></div><%botonera.DibujaBoton "buscar" %></td>
+                                   </tr>
+                            </table>
+                          </form>
+                        </div></td>
+                      <td width="7" align="right" background="../imagenes/der.gif">&nbsp;</td>
+                    </tr>
+                    <tr> 
+                      <td align="left" valign="top"><img src="../imagenes/base1.gif" width="9" height="13"></td>
+                      <td valign="top" bgcolor="#D8D8DE"><img src="../imagenes/base2.gif" width="670" height="13"></td>
+                      <td align="right" valign="top"><img src="../imagenes/base3.gif" width="7" height="13"></td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table></td>
+      </tr>
+    </table>	
+	<br>
+	<%if carr_ccod <> "" then %>		
+	<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+              <!-- fwtable fwsrc="marco contenidos.png" fwbase="top.gif" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" -->
+              <tr>
+                <td><img src="../imagenes/spacer.gif" width="9" height="1" border="0" alt=""></td>
+                <td><img src="../imagenes/spacer.gif" width="559" height="1" border="0" alt=""></td>
+                <td><img src="../imagenes/spacer.gif" width="7" height="1" border="0" alt=""></td>
+              </tr>
+              <tr>
+                <td><img name="top_r1_c1" src="../imagenes/top_r1_c1.gif" width="9" height="8" border="0" alt=""></td>
+                <td><img src="../imagenes/top_r1_c2.gif" alt="" name="top_r1_c2" width="670" height="8" border="0"></td>
+                <td><img name="top_r1_c3" src="../imagenes/top_r1_c3.gif" width="7" height="8" border="0" alt=""></td>
+              </tr>
+              <tr>
+                <td><img name="top_r2_c1" src="../imagenes/top_r2_c1.gif" width="9" height="17" border="0" alt=""></td>
+                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td width="13" background="../imagenes/fondo1.gif"><img src="../imagenes/izq_1.gif" width="5" height="17"></td>
+                      <td width="109" valign="middle" background="../imagenes/fondo1.gif">
+                      <div align="left"><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">Datos 
+                          Encontrados</font></div></td>
+                      <td width="548" bgcolor="#D8D8DE"><img src="../imagenes/derech1.gif" width="6" height="17"></td>
+                    </tr>
+                </table></td>
+                <td><img name="top_r2_c3" src="../imagenes/top_r2_c3.gif" width="7" height="17" border="0" alt=""></td>
+              </tr>
+              <tr>
+                <td><img name="top_r3_c1" src="../imagenes/top_r3_c1.gif" width="9" height="2" border="0" alt=""></td>
+                <td><img name="top_r3_c2" src="../imagenes/top_r3_c2.gif" width="670" height="2" border="0" alt=""></td>
+                <td><img name="top_r3_c3" src="../imagenes/top_r3_c3.gif" width="7" height="2" border="0" alt=""></td>
+              </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" aling="center">
+                <tr>
+                  <td width="9" align="left" background="../imagenes/izq.gif">&nbsp;</td>
+                  <td bgcolor="#D8D8DE" width="670">&nbsp; 
+				  
+					 <div align="center">&nbsp;  
+						<BR>
+						<%pagina.DibujarTituloPagina%>
+						<br><br>
+					  </div>
+					  
+					  <table  width="100%" border="0">
+						<tr> 
+						  <td colspan="6">&nbsp;</td>
+						</tr>
+						<tr> 
+						  <td width="15%" align="left"><font size="3" face="Times New Roman, Times, serif"><strong>Sede</strong></font></td>
+						  <td width="1%" align="center"><font size="3" face="Times New Roman, Times, serif"><strong>:</strong></font></td>
+						  <td colspan="4" align="left"><font  size="3" face="Times New Roman, Times, serif"><%=sede%></font></td>
+						</tr>
+						<tr> 
+						  <td width="15%" align="left"><font size="3" face="Times New Roman, Times, serif"><strong>Carrera</strong></font></td>
+						  <td width="1%" align="center"><font size="3" face="Times New Roman, Times, serif"><strong>:</strong></font></td>
+						  <td colspan="4" align="left"><font  size="3" face="Times New Roman, Times, serif"><%=carrera%></font></td>
+						</tr>
+						<tr> 
+						  <td width="15%" align="left"><font size="3" face="Times New Roman, Times, serif"><strong>Jornada</strong></font></td>
+						  <td width="1%" align="center"><font size="3" face="Times New Roman, Times, serif"><strong>:</strong></font></td>
+						  <td colspan="4" align="left"><font size="3" face="Times New Roman, Times, serif"><%=jornada%></font></td>
+						</tr>
+						<tr> 
+						  <td colspan="6">&nbsp;</td>
+						</tr>
+						<%if f_candidatos.nroFilas > 0 then%>
+						<tr> 
+						  <td colspan="6">
+						  <script language='javaScript1.2'> colores = Array(3);   colores[0] = ''; colores[1] = '#FFECC6'; colores[2] = '#FFECC6'; </script>
+							  <table class=v1 width='98%' border='1' cellpadding='0' cellspacing='0' bordercolor='#999999' bgcolor='#ADADAD' id='tb_em'>
+							  <form name="edicion" method="post">
+										<tr bgcolor='#C4D7FF' bordercolor='#999999' valign="bottom">
+											<th align="center"><font color='#333333'>Rut</font></th>
+											<th align="center"><font color='#333333'>Nombre</font></th>
+											<th align="center"><font color='#333333'>Especialidad</font></th>
+											<th align="center"><font color='#333333'>Plan</font></th>
+											<th align="center"><font color='#333333'>Asig. Malla</font></th>
+											<th align="center"><font color='#333333'>Aprobadas o en curso</font></th>
+											<th align="center"><font color='#333333'>Restantes</font></th>
+										</tr>
+										<%num=1
+										  while f_candidatos.siguiente
+										     pers = f_candidatos.obtenerValor("pers_ncorr")
+											 plan = f_candidatos.obtenerValor("plan_ccod")
+											 sede = f_candidatos.obtenerValor("sede")
+											 carrera = f_candidatos.obtenerValor("carrera")
+											 jornada = f_candidatos.obtenerValor("jornada")
+											 especialidad = f_candidatos.obtenerValor("especialidad")
+											 plan_estudio = f_candidatos.obtenerValor("plan_estudio")
+											 rut = f_candidatos.obtenerValor("rut")
+											 nombres = f_candidatos.obtenerValor("nombres")
+										     ap_paterno = f_candidatos.obtenerValor("ap_paterno")	 
+											 ap_materno = f_candidatos.obtenerValor("ap_materno")
+											 nombre_completo = f_candidatos.obtenerValor("nombre_completo")
+											 ano_ingreso_carrera = f_candidatos.obtenerValor("ano_ingreso_carrera")
+											 ultimo_estado = f_candidatos.obtenerValor("ultimo_estado")
+											 ultimo_periodo = f_candidatos.obtenerValor("ultimo_periodo")
+											 total_ramos_malla = f_candidatos.obtenerValor("total_ramos_malla")
+											 total_ramos_aprobados_o_en_curso = f_candidatos.obtenerValor("total_ramos_aprobados_o_en_curso")
+											 restantes = f_candidatos.obtenerValor("restantes")
+ 										     telefono = f_candidatos.obtenerValor("telefono")
+											 celular = f_candidatos.obtenerValor("celular")
+     										 email_particular = f_candidatos.obtenerValor("email_particular")
+											 egresado = f_candidatos.obtenerValor("egresado")
+											 titulado = f_candidatos.obtenerValor("titulado")
+											 es_cae = f_candidatos.obtenerValor("es_cae")
+											 informar_cae = f_candidatos.obtenerValor("informar_cae")
+											 fecha_cae = f_candidatos.obtenerValor("fecha_cae")
+											 observaciones_cae = f_candidatos.obtenerValor("observaciones_cae")
+									    %>
+										<tr bgcolor="#FFFFFF" onClick="javascript:abrir_datos(<%=pers%>,<%=plan%>)">
+										    <input type="hidden" name="campo_<%=num%>_sede" value="<%=sede%>">
+											<input type="hidden" name="campo_<%=num%>_carrera" value="<%=carrera%>">
+											<input type="hidden" name="campo_<%=num%>_jornada" value="<%=jornada%>">
+											<input type="hidden" name="campo_<%=num%>_especialidad" value="<%=especialidad%>">
+											<input type="hidden" name="campo_<%=num%>_plan" value="<%=plan_estudio%>">
+											<input type="hidden" name="campo_<%=num%>_rut" value="<%=rut%>">
+											<input type="hidden" name="campo_<%=num%>_nombre_completo" value="<%=nombre_completo%>">
+											<input type="hidden" name="campo_<%=num%>_ano" value="<%=ano_ingreso_carrera%>">
+											<input type="hidden" name="campo_<%=num%>_estado" value="<%=ultimo_estado%>">
+											<input type="hidden" name="campo_<%=num%>_periodo" value="<%=ultimo_periodo%>">
+											<input type="hidden" name="campo_<%=num%>_malla" value="<%=total_ramos_malla%>">
+											<input type="hidden" name="campo_<%=num%>_completos" value="<%=total_ramos_aprobados_o_en_curso%>">
+											<input type="hidden" name="campo_<%=num%>_restantes" value="<%=restantes%>">
+											<input type="hidden" name="campo_<%=num%>_telefono" value="<%=telefono%>">
+											<input type="hidden" name="campo_<%=num%>_celular" value="<%=celular%>">
+											<input type="hidden" name="campo_<%=num%>_email" value="<%=email_particular%>">
+											<input type="hidden" name="campo_<%=num%>_egresado" value="<%=egresado%>">
+											<input type="hidden" name="campo_<%=num%>_titulado" value="<%=titulado%>">
+											<input type="hidden" name="campo_<%=num%>_es_cae" value="<%=es_cae%>">
+											<input type="hidden" name="campo_<%=num%>_informar_cae" value="<%=informar_cae%>">
+											<input type="hidden" name="campo_<%=num%>_fecha_cae" value="<%=fecha_cae%>">
+											<input type="hidden" name="campo_<%=num%>_observaciones_cae" value="<%=observaciones_cae%>">
+											
+											<td class='click'align='left' onMouseOver='resaltar(this)' onMouseOut='desResaltar(this)'><%=rut%></td>
+											<td class='click'align='LEFT' onMouseOver='resaltar(this)' onMouseOut='desResaltar(this)'><%=nombre_completo%></td>
+											<td class='click'align='LEFT' onMouseOver='resaltar(this)' onMouseOut='desResaltar(this)'><%=especialidad%></td>
+											<td class='click'align='LEFT' onMouseOver='resaltar(this)' onMouseOut='desResaltar(this)'><%=plan_estudio%></td>
+											<td class='click'align='CENTER' onMouseOver='resaltar(this)' onMouseOut='desResaltar(this)'><%=total_ramos_malla%></td>
+											<td class='click'align='CENTER' onMouseOver='resaltar(this)' onMouseOut='desResaltar(this)'><%=total_ramos_aprobados_o_en_curso%></td>
+											<td class='click'align='CENTER' onMouseOver='resaltar(this)' onMouseOut='desResaltar(this)'><%=restantes%></td>
+										</tr>
+										<%num = num + 1
+										  wend%>
+								    <input type="hidden" name="registros" value="<%=num-1%>">
+							     </form>
+							  </table>
+						  </td>
+						</tr>
+						<%else%>
+						<tr> 
+						  <td colspan="6" bgcolor="#0000FF" align="center"><font size="2" color="#FFFFFF" face="Times New Roman, Times, serif"><strong>...NO SE ENCONTRARON CANDIDATOS PARA LA ESCUELA CONSULTADA...</strong></font></td>
+						</tr>
+						<%end if%>
+						</table> 
+
+				 </td>
+				 <td width="7" align="right" background="../imagenes/der.gif">&nbsp;</td>
+                </tr>
+            </table>
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="9" rowspan="2"><img src="../imagenes/abajo_r1_c1.gif" width="9" height="28"></td>
+                  <td width="95" nowrap bgcolor="#D8D8DE">
+				  <table width="10%" border="0" cellpadding="0" cellspacing="0">
+                    <tr> 
+                      <td width="50%">
+                        <%  botonera.dibujaboton "salir"%>
+                      </td>
+					  <td width="50%"><%botonera.agregaBotonParam "excel","url","predictivo_escuelas_excel.asp"  
+					                    botonera.dibujaboton "excel"%>
+                   </td>
+                  </tr>
+                  </table></td>
+                  <td width="345" rowspan="2" background="../imagenes/abajo_r1_c4.gif"><img src="../imagenes/abajo_r1_c3.gif" width="12" height="28"></td>
+                  <td width="267" rowspan="2" align="right" background="../imagenes/abajo_r1_c4.gif"><img src="../imagenes/abajo_r1_c5.gif" width="7" height="28"></td>
+                </tr>
+                <tr>
+                  <td valign="bottom" bgcolor="#D8D8DE"><img src="../imagenes/abajo_r2_c2.gif" width="100%" height="8"></td>
+                </tr>
+            </table>
+			<BR>
+		  </td>
+        </tr>
+      </table>
+	  <%end if%>	
+   </td>
+  </tr>  
+</table>
+</body>
+</html>

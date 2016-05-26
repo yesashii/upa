@@ -1,0 +1,84 @@
+<Parametros> 
+ <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	  <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>buscador</formulario>
+		 <url>listado_alumonos_matriculados_excel.asp</url>
+     </botones>
+	
+   </parametro>
+
+<parametro formulario="buscador" variable="buscador">
+      <campos nombre="emat_ccod">
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <destino>ESTADOS_MATRICULAS</destino>
+		 <union>emat_ccod</union>
+         <salida>emat_tdesc</salida>
+		 <orden>emat_tdesc asc</orden>
+		 <mensajeNulo>Seleccionar Todos</mensajeNulo>
+	     <mensajeVacio>Seleccionar</mensajeVacio>
+		 <anulable>TRUE</anulable>
+         <id>NU-S</id>
+      </campos>
+   </parametro>
+   
+   
+<parametro formulario="listado" nroRegistros="20" clave="rut" maxLista="10" mensajeError="No se encontraron alumnos para los parametros de busqueda ingresados.">
+ 
+			<campos nombre="rut">
+			<alineamiento>center</alineamiento>
+			<descripcion>Rut</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			</campos>
+						
+			<campos nombre="nombre">
+			<alineamiento>center</alineamiento>
+			<descripcion>Nombre Alumno</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			</campos>
+			
+			<campos nombre="estado">
+			<alineamiento>center</alineamiento>
+			<descripcion>Estado Matricula</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			</campos>
+						
+			<campos nombre="sede_tdesc">
+			<alineamiento>center</alineamiento>
+			<descripcion>Sede</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			</campos>
+			
+			<campos nombre="carr_tdesc">
+			<alineamiento>center</alineamiento>
+			<descripcion>Carrera</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			</campos>
+			
+			<campos nombre="peri_tdesc">
+			<alineamiento>center</alineamiento>
+			<descripcion>Periodo Academico</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			</campos>
+			
+   </parametro>   
+</Parametros> 

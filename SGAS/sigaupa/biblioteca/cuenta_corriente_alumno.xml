@@ -1,0 +1,188 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>menu_alumno.asp</url>
+      </botones>
+	  <botones nombre="imprimir"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Imprimir</texto>
+		<accion>GUARDAR</accion>
+		<formulario>edicion</formulario>
+		<target>_BLANK</target>		
+   </botones>
+   <botones nombre="ficha_alumno"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Ficha alumno</texto>
+		<accion>NAVEGAR</accion>
+		<url>javascript:Ficha_Alumno();</url>		
+   </botones>
+      <botones nombre="cta_cte_periodo"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Ver Cuenta</texto>
+		<accion>NAVEGAR</accion>
+		<url>javascript:periodo_academico(document.periodo);</url>		
+      </botones>
+      <botones nombre="cancelar">
+         <tipoTexto>Cerrar</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>cerrarVentana()</funcion>
+      </botones>
+	  <botones nombre="guardar">
+         <tipoTexto>guardar</tipoTexto>
+         <accion>guardar</accion>
+         <formulario>edicion</formulario>
+         <url>proc_edita_comentario.asp</url>
+      </botones>
+	  <botones nombre="guardar_nuevo">
+         <tipoTexto>guardar</tipoTexto>
+         <accion>guardar</accion>
+         <formulario>edicion</formulario>
+         <url>proc_crea_comentario.asp</url>
+      </botones>
+	  
+	  <botones nombre="nuevo_comentario"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Nuevo comentario</texto>
+		<accion>NAVEGAR</accion>
+		<url>javascript:nuevo_comentario();</url>		
+    </botones>
+	<botones nombre="escape">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>mensajes.asp</url>
+    </botones>
+	<botones nombre="imprimir_morosidad"> 
+ 		<tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Imprimir Morosidad</texto>
+		<accion>NAVEGAR</accion>
+		<url>javascript:ImprimirMorosidad();</url>	
+   </botones>	
+   </parametro>
+   
+   
+   
+   <parametro formulario="buscador" variable="buscador">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>LN-N</id>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+      </campos>
+   </parametro>
+   <parametro formulario="datos_alumno" anchoTabla="100%" columnas="1" separacion="30">
+      <campos nombre="nombre_completo">
+         <descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="nombre_carrera">
+         <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+   </parametro>
+   
+      <parametro formulario="periodos_cta_cte" variable="periodo">
+   		<campos nombre="peri_ccod">
+		 <descripcion>Todos los periodos</descripcion>
+         <tipo>SELECT</tipo>
+		 <destino>periodos_academicos</destino>
+		 <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+		 <permiso>LECTURAEscritura</permiso>
+		 <anulable>TRUE</anulable>
+         <mensajeNulo>Todos los periodos</mensajeNulo>
+		 <script>onchange=periodo_academico(this.value);</script>
+		 <id>TO-N</id>
+		</campos>	
+   </parametro>
+   
+   
+      <parametro formulario="lista_comentarios" anchoTabla="100%" columnas="1" 
+	  separacion="30" variable="comen" nroRegistros="5" maxLista="10"
+	  clave="come_ncorr" paginaEdicion="edita_comentarios.asp?come_ncorr=%come_ncorr%"
+	   editar="true"  nuevaVentana="true" mensajeError="No se encontraron comentarios...">
+	   
+      <tablas nombre="comentarios" accion="M" />
+	  
+	  <campos nombre="COME_FCOMENTARIO">
+         <descripcion>Fecha Comentario</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="COME_TCOMENTARIO">
+         <descripcion>Detalle Comentario</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="TICO_CCOD">
+         <descripcion>Tipo Comentario</descripcion>
+         <tipo>SELECT</tipo>
+		 <destino>tipos_comentarios</destino>
+		 <union>tico_ccod</union>
+         <salida>tico_tdesc</salida>
+		 <permiso>LECTURA</permiso>
+		 <anulable>TRUE</anulable>
+         <mensajeNulo>Elija Tipo </mensajeNulo>
+		 <id>TO-N</id>
+      </campos>
+   </parametro>
+   
+   
+      <parametro formulario="edita_datos_comentario"  variable="comen"  clave="come_ncorr" >
+        <tablas nombre="comentarios" accion="M" />
+	 <campos nombre="come_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="pers_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>	
+	 <campos nombre="COME_FCOMENTARIO">
+         <descripcion>Fecha Comentario</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <tipoDato>FECHA</tipoDato>
+		 <id>FE-N</id>
+      </campos>
+      <campos nombre="COME_TCOMENTARIO">
+         <descripcion>Detalle Comentario</descripcion>
+         <tipo>TEXTAREA</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		<filas>10</filas>
+		<caracteres>80</caracteres>
+		 <id>TO-N</id>
+      </campos>
+	  <campos nombre="TICO_CCOD">
+         <descripcion>Tipo Comentario</descripcion>
+         <tipo>SELECT</tipo>
+		 <destino>tipos_comentarios</destino>
+		 <union>tico_ccod</union>
+         <salida>tico_tdesc</salida>
+		 <permiso>LECTURAEscritura</permiso>
+		 <anulable>TRUE</anulable>
+         <mensajeNulo>Elija Tipo </mensajeNulo>
+		 <id>TO-N</id>
+      </campos>
+    
+   </parametro>
+
+   
+</Parametros>

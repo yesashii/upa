@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+        <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  
+	
+     <botones nombre="siguiente">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Siguiente</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>agrega_taller_proc.asp</url>
+		</botones>
+   
+    <botones nombre="editar">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Editar</texto>
+      </botones>
+  
+   
+   </parametro>
+   
+   
+  <parametro formulario="cheques" variable="a" anchoTabla="100%">
+ 
+      
+	  <campos nombre="peri_ccod">
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Periodo Academico</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>periodos_academicos</destino>
+		 <filtro>anos_ccod > 2005</filtro>
+         <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+		 <orden>peri_ccod asc</orden>
+		 <id>NU-N</id>
+      </campos>
+	    <campos nombre="tasi_ncorr" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Taller</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>talleres_sicologia </destino>
+		 <union>tasi_ncorr</union>
+         <salida>tasi_tdesc</salida>
+		 <orden>tasi_ncorr asc</orden>
+		 <id>NU-N</id>
+      </campos>
+	  
+	   <campos nombre="carr_ccod">
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione una Carrera</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>carreras </destino>
+		 <union>carr_ccod</union>
+		 <filtro>carr_ccod in (11,12,14,16,21,23,25,29,32,33,36,41,43,45,47,49,51,78,8,810,830,840,850,860,870,880,9,900,920,930,940,950,970,980,99,990)</filtro>
+         <salida>carr_tdesc</salida>
+		 <orden>carr_tdesc asc</orden>
+		 
+      </campos>
+	  
+	     <campos nombre="sede_ccod">
+        <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione una Sede</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>sedes </destino>
+		 <filtro>sede_ccod in (1,2,4,7,8)</filtro>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+		  <id>NU-N</id>
+		  </campos>
+		 
+   		<campos nombre="fecha">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>11</caracteres>
+		 <maxCaracteres>10</maxCaracteres>
+          
+      </campos>
+     
+    
+      
+   </parametro>
+   
+   
+   
+</Parametros>

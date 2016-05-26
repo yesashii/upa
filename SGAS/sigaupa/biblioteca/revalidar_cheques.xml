@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+<parametro formulario="botonera">
+ 	<botones nombre="buscar_cajas"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	  <soloUnClick>TRUE</soloUnClick>
+   </botones>
+   <botones nombre="salir"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	<botones nombre="eliminar">
+		 <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Eliminar</texto>
+		 <accion>NAVEGAR</accion>
+		 <url>javascript:EliminaDetalle();</url>
+	</botones>
+	<botones nombre="cheques_pendientes">
+		 <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Cheques Pendientes</texto>
+		 <accion>NAVEGAR</accion>
+		 <url>javascript:EliminaDetalle();</url>
+	</botones>
+	<botones nombre="autorizaciones_pendientes">
+		 <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Autorizaciones Pendientes</texto>
+		 <accion>NAVEGAR</accion>
+		 <url>javascript:EliminaDetalle();</url>
+	</botones>
+	<botones nombre="guardar">
+		 <tipoTexto>GUARDAR</tipoTexto>
+		 <accion>GUARDAR</accion>
+		 <url>revalidar_cheques_proc.asp</url>
+		 <formulario>datos</formulario>
+		 <funcionValidacion>Enviar();</funcionValidacion>
+	</botones>					
+	<botones nombre="buscar">
+		<tipoTexto>BUSCAR</tipoTexto>
+		<accion>BUSCAR</accion>
+		<formulario>buscador</formulario>
+		<soloUnClick>TRUE</soloUnClick>
+	</botones>
+</parametro>
+
+
+<parametro formulario="buscador" variable="busqueda">
+	<campos nombre="eche_ndocto">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-S</id>
+	</campos>
+	<campos nombre="banc_ccod">
+		<tipo>SELECT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<destino>ocag_bancos_softland</destino> 
+		<union>banc_ccod</union>
+		<salida>banc_tdesc</salida>
+		<mensajeNulo>Seleccione un Banco pagador</mensajeNulo>
+		<mensajeVacio>Seleccione un Banco pagador</mensajeVacio>
+		<anulable>true</anulable>
+		<id>NU-S</id>
+	</campos>	
+</parametro>
+
+
+<parametro formulario="revalidar_cheques" variable="datos">
+	<campos nombre="eche_ndocto">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-S</id>
+	</campos>
+	<campos nombre="rech_frevalidacion">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>FE-N</id>
+	</campos>
+	<campos nombre="rech_tobservacion">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>TO-N</id>
+	</campos>			
+</parametro> 
+
+</Parametros>

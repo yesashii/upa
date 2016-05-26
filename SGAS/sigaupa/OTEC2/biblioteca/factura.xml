@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+
+	<parametro formulario="btn_factura">
+   		<botones nombre="facturar"> 
+      		<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Generar Factura</texto>
+	  		<accion>JAVASCRIPT</accion>
+			<funcion>imprimir(document.factura)</funcion>
+		</botones> 
+   </parametro>
+
+   <parametro formulario="botonera">
+   <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	   <funcionValidacion>Validar();</funcionValidacion>
+	</botones>
+   <botones nombre="salir"> 
+      <tipoTexto>CANCELAR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+    <botones nombre="imprimir"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Imprimir</texto>
+	  <accion>GUARDAR</accion>
+	  <target>_BLANK</target>
+	  <funcionValidacion>ValidarImpresion();</funcionValidacion>
+      <formulario>edicion</formulario>
+	</botones> 
+	<botones nombre="guardar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Guardar</texto>
+	  <accion>GUARDAR</accion>
+	  <formulario>edicion</formulario>
+	  <url>proc_guardar_facturas.asp</url>
+	  <funcionValidacion>Guardar_Facturas(document.edicion);</funcionValidacion>
+	</botones>
+	<botones nombre="anular"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Anular</texto>
+	  <accion>GUARDAR</accion>
+	  <formulario>edicion</formulario>
+	  <url>proc_anular_facturas.asp</url>
+	  <funcionValidacion>Anular_Facturas(document.edicion);</funcionValidacion>
+	</botones>
+	<botones nombre="crear_copia"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Crear factura vacia</texto>
+	  <accion>Navegar</accion>
+	  <url>javascript:Crear_Factura_Sola(document.edicion);</url>
+	</botones>
+    <botones nombre="excel"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>BUSCAR</accion>
+         <url>ver_facturas_imprimir.asp</url>
+         <formulario>buscador</formulario>
+	</botones> 
+   </parametro>
+
+	<parametro formulario="busqueda" variable="busqueda">
+		<campos nombre="pers_nrut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>10</caracteres>
+			<maxCaracteres>8</maxCaracteres>
+			<id>NU-S</id>
+		</campos>
+		<campos nombre="pers_xdv">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>1</caracteres>
+			<maxCaracteres>1</maxCaracteres>
+			<script>onBlur="this.value=this.value.toUpperCase();"</script>
+			<id>LN-S</id>
+		</campos>
+		<campos nombre="folio">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>10</caracteres>
+			<maxCaracteres>8</maxCaracteres>
+			<id>NU-S</id>
+		</campos>
+		<campos nombre="fact_nfactura">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>10</caracteres>
+			<maxCaracteres>8</maxCaracteres>
+			<id>NU-S</id>
+		</campos>		 
+		<campos nombre="tfac_ccod">
+			<descripcion>Tipo</descripcion>
+			<tipo>select</tipo>
+			<union>tfac_ccod</union>
+			<salida>tfac_tdesc</salida>
+			<destino>tipos_facturas</destino>
+			<permiso>LECTURAESCRITURA</permiso>
+			<anulable>True</anulable>
+			<mensajeNulo>Tipo Factura</mensajeNulo>
+			<alineamiento>CENTER</alineamiento>
+		</campos>
+	</parametro>
+
+<parametro formulario="f_facturas" clave="fact_ncorr"  variable="factura"  colorSeleccionado="#CCCCCC" colorResaltado="#999999" 
+   		nroRegistros="20" maxLista="10" eliminar="TRUE"  seleccionarTodo="FALSE"  anchoTabla="100%" editar="True"  
+		nuevaVentana="True" nuevaVentanaAncho="800" nuevaVentanaAlto="600" mensajeError="No se encontraron facturas para los criterios de busqueda" 
+		paginaEdicion="facturacion/imprimir_factura.asp?factura=%fact_nfactura%&amp;pers_ncorr=%pers_ncorr%&amp;tipo_factura=%tfac_ccod%&amp;fact_ncorr=%fact_ncorr%&amp;origen=1">
+	 <tablas nombre="facturas" accion="M" />
+	 <campos nombre="pers_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+	 </campos>
+ 	 <campos nombre="fact_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+	 </campos>
+	  <campos nombre="inst_ccod">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+	 </campos>
+	 <campos nombre="c_tfac_ccod">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+	 </campos>
+	 <campos nombre="efac_ccod">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+	 </campos>
+	 <campos nombre="ingr_nfolio_referencia">
+	    <descripcion>Comprobante</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="tfac_ccod">
+	    <descripcion>Tipo Factura</descripcion>
+		<tipo>select</tipo>
+		<union>tfac_ccod</union>
+		<salida>tfac_tdesc</salida>
+		<destino>tipos_facturas</destino>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+		<id>TO-N</id>
+	 </campos>
+	 <campos nombre="fecha_factura">
+	    <descripcion>Fecha Factura</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+      <campos nombre="rut_empresa">
+	    <descripcion>Rut Empresa</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	  <campos nombre="nombre_empresa">
+	    <descripcion>Nombre Empresa</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="fact_nfactura">
+	    <descripcion>N° Factura</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAEscritura</permiso>
+		<alineamiento>CENTER</alineamiento>
+		<maxCaracteres>8</maxCaracteres>
+		<caracteres>9</caracteres>
+		<deshabilitado>true</deshabilitado>
+		<id>NU-N</id>
+	 </campos>
+	 <campos nombre="c_efac_ccod">
+	    <descripcion>Estado</descripcion>
+		<tipo>select</tipo>
+		<union>efac_ccod</union>
+		<salida>efac_tdesc</salida>
+		<destino>estados_facturas</destino>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+		<id>TO-N</id>
+	 </campos>
+  </parametro>   
+
+
+	<parametro formulario="factura" variable="f">
+		<campos nombre="empr_nrut">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="empr_xdv">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="rut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<caracteres>10</caracteres>
+			<maxCaracteres>8</maxCaracteres>
+			<id>IN-N</id>
+		</campos>
+		<campos nombre="dv">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<caracteres>2</caracteres>
+			<maxCaracteres>1</maxCaracteres>
+			<id>LN-N</id>
+		</campos>
+		<campos nombre="empr_trazon_social">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>70</caracteres>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<maxCaracteres>70</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+		<campos nombre="empr_tdireccion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<caracteres>70</caracteres>
+			<maxCaracteres>70</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+		<campos nombre="empr_tgiro">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<caracteres>70</caracteres>
+			<maxCaracteres>70</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+		<campos nombre="ciud_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<destino>(select ciud_ccod,ciud_tdesc+' - '+ciud_tcomuna as comuna from ciudades) a</destino>
+			<union>CIUD_CCOD</union>
+			<salida>comuna</salida>
+			<anulable>TRUE</anulable>
+			<orden>comuna</orden>
+			<mensajeNulo>Elija comuna</mensajeNulo>
+			<id>TO-N</id>
+		</campos>
+		<campos nombre="empr_tfono">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<caracteres>11</caracteres>
+			<maxCaracteres>10</maxCaracteres>
+			<id>TE-N</id>
+		</campos>
+		<campos nombre="empr_tfax">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<caracteres>11</caracteres>
+			<maxCaracteres>10</maxCaracteres>
+			<id>TE-S</id>
+		</campos>
+	</parametro>
+
+
+
+	<parametro formulario="empresas"  variable="f">
+	<tablas nombre="empresas"		accion="M"/>
+		<campos nombre="empr_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="empr_nrut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="empr_xdv">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="pers_trazon_social">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="pers_tgiro">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="pers_tfono">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+	</parametro>
+
+   <parametro formulario="detalle_pagos" variable="cc_compromisos_pendientes" >
+      <campos nombre="comp_ndocto">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+       </campos>
+      <campos nombre="tcom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+       </campos>
+      <campos nombre="inst_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+       </campos>
+      <campos nombre="dcom_ncompromiso">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+       </campos>
+   </parametro>
+
+</Parametros>

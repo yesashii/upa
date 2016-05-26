@@ -1,0 +1,115 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+		 <soloUnClick>TRUE</soloUnClick>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cancelar">
+         <tipoTexto>CANCELAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  <botones nombre="busca">
+		  <tipoTexto>DEFINIR</tipoTexto>
+		  <texto>Buscar</texto>
+		  <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+     <botones nombre="excel">
+        <tipoTexto>DEFINIR</tipoTexto>
+	     <texto>Generar Excel</texto>
+		 <accion>Navegar</accion>
+         <formulario>buscador</formulario>
+		 <url>pagos_por_programa_excel.asp</url>
+    </botones>	  
+   </parametro>
+   
+      <parametro formulario="busqueda" variable="b">
+  	   <campos nombre="mes_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todas las Sedes</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>meses </destino>
+         <union>mes_ccod</union>
+         <salida>mes_tdesc</salida>
+		  <id>NU-N</id>
+      </campos>
+	  
+	  <campos nombre="dcur_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+   </parametro>
+   
+      
+  <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9"  formulario="busqueda_programa" nroRegistros="15"
+		 maxLista="10" mensajeError="No hay registros ." colorBase="#F1F1E4" editar="false" anchoTabla="100%" nuevaVentana="false" variable="b">  
+         <campos nombre="rut">
+		<descripcion>Rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	   <campos nombre="nombre">
+	   	<descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         </campos>
+
+	  <campos nombre="dcur_tdesc">
+		<descripcion>Programa</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	   <campos nombre="ccos_tcompuesto">
+	   	<descripcion>Centro Costo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         </campos>
+	  <campos nombre="duracion">
+		 <descripcion>Duración Programa</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="total_pagar" >
+		 <descripcion>Total A Pagar</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="valor_cuota">
+		 <descripcion>Valor cuota</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+	  </campos>
+            <campos nombre="anot_ncuotas">
+		 <descripcion>N° Cuota</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	     <campos nombre="fechas_cuotas">
+		 <descripcion>Fechas Coutas</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos> 
+   </parametro>
+
+   
+   
+   
+</Parametros>

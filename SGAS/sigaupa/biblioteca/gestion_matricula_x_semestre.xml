@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+	<parametro formulario="botones_rep_matriculados">
+		<botones nombre="cancelar"> 
+      		<tipoTexto>SALIR</tipoTexto>
+			<url>../lanzadera/lanzadera.asp</url>
+	  		<accion>NAVEGAR</accion>
+		</botones>
+		<botones nombre="anterior">
+         	<tipoTexto>ANTERIOR</tipoTexto>
+         	<accion>NAVEGAR</accion>
+			<url>gestion_matricula_x_semestre.asp</url>
+    	</botones>
+     	<botones nombre="siguiente">
+         	<tipoTexto>SIGUIENTE</tipoTexto>
+         	<accion>GUARDAR</accion>
+         	<formulario>edicion</formulario>
+         	<url>proc_postulacion_4.asp</url>
+         	<funcionValidacion>Validar();</funcionValidacion>
+      	</botones>
+		 <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+      </botones>
+	  <botones nombre="cargas"> 
+      	<tipoTexto>DEFINIR</tipoTexto>
+	  	<texto>Resumen toma de Carga</texto>
+	  	<accion>JAVASCRIPT</accion>
+	  	<funcion>ver_resumen()</funcion>	  
+	  </botones>
+	 </parametro>	 
+	 	<parametro formulario="botones_carga">
+		<botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+      </botones>
+	  <botones nombre="salir"> 
+      	<tipoTexto>DEFINIR</tipoTexto>
+	  	<texto>Cerrar</texto>
+	  	<accion>JAVASCRIPT</accion>
+	  	<funcion>salir()</funcion>	  
+	  </botones>
+	 </parametro>
+	<parametro formulario="matriculados" anchoTabla="100%" resumen ="TRUE" editar="TRUE"  paginaEdicion="gestion_matricula_1.asp?sede_ccod=%sede_ccod%" >
+	    <campos nombre="sede_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			</campos>
+			<campos nombre="sede_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Sede</descripcion>
+			<caracteres>10</caracteres>
+		</campos>
+		<campos nombre="EN_PROCESO">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>En Proceso</descripcion>
+			<caracteres>40</caracteres>
+			<alineamiento>RIGHT</alineamiento>
+			<formato>ENTERO</formato>
+			<resumen>SUMA</resumen>
+		</campos>		
+		<campos nombre="ENVIADOS">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Enviados</descripcion>
+			<caracteres>10</caracteres>
+			<alineamiento>RIGHT</alineamiento>
+			<formato>ENTERO</formato>
+			<resumen>SUMA</resumen>
+		</campos>	
+	    <campos nombre="MATRICULADOS">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Matriculados</descripcion>
+			<caracteres>10</caracteres>
+			<alineamiento>RIGHT</alineamiento>
+			<formato>ENTERO</formato>
+			<resumen>SUMA</resumen>
+		</campos>		
+</parametro>
+<parametro formulario="matriculados_1" anchoTabla="98%" resumen ="false" editar="TRUE"  
+paginaEdicion="gestion_matricula_1.asp?sede_ccod=%sede_ccod%" 
+ mensajeError="No se encontraron datos" >
+	    <campos nombre="sede_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<!--<campos nombre="EN_PROCESO">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<formato>ENTERO</formato>
+			<resumen>suma</resumen>
+			<alineamiento>RIGHT</alineamiento>
+		</campos>		
+		<campos nombre="ENVIADOS">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<formato>ENTERO</formato>
+			<resumen>suma</resumen>
+			<alineamiento>RIGHT</alineamiento>
+		</campos>
+		<campos nombre="MATRICULADOS">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+			<formato>ENTERO</formato>
+			<resumen>suma</resumen>
+			<alineamiento>RIGHT</alineamiento>
+		</campos> -->
+	    <campos nombre="espe_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="sede_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Sede</descripcion>
+			<caracteres>10</caracteres>
+			<ancho>100</ancho>
+		</campos>
+		<campos nombre="espe_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Carrera</descripcion>
+			<caracteres>10</caracteres>
+			<ancho>300</ancho>
+		</campos>
+
+		<campos nombre="v_EN_PROCESO">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>En Proceso</descripcion>
+			<alineamiento>RIGHT</alineamiento>
+			<ancho>75</ancho>
+		</campos>
+		<campos nombre="v_ENVIADOS">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Enviados</descripcion>
+			<alineamiento>RIGHT</alineamiento>
+			<ancho>75</ancho>
+		</campos>
+		<campos nombre="v_MATRICULADOS">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Matriculados</descripcion>
+			<alineamiento>RIGHT</alineamiento>
+			<ancho>75</ancho>
+		</campos>
+		
+		
+</parametro>
+<parametro formulario="matriculados_2" anchoTabla="100%" resumen ="TRUE" maxLista="10" nroRegistros="10" 
+ mensajeError="No se encontraron datos ">
+	    <campos nombre="rut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>RUT</descripcion>
+		</campos>
+		<campos nombre="nombre">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nombre</descripcion>
+			<caracteres>10</caracteres>
+		</campos>
+		<campos nombre="pers_fnacimiento">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>F.Nacimiento</descripcion>
+			<caracteres>10</caracteres>
+		</campos>
+		<campos nombre="ano_ingreso">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Ingreso</descripcion>
+			<alineamiento>center</alineamiento>
+		</campos>
+</parametro>
+<parametro formulario="listado_matriculados" anchoTabla="100%" resumen ="TRUE">
+	    <campos nombre="rut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>RUT</descripcion>
+		</campos>
+		<campos nombre="nombre">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nombre</descripcion>
+			<caracteres>10</caracteres>
+		</campos>
+		<campos nombre="pers_fnacimiento">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>F.Nacimiento</descripcion>
+			<caracteres>10</caracteres>
+		</campos>
+		<campos nombre="ano_ingreso">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Ingreso</descripcion>
+		</campos>
+</parametro>
+<parametro formulario="tabla" />
+<parametro formulario="matriculados_carga" anchoTabla="100%" resumen ="TRUE" maxLista="10" nroRegistros="10" 
+ mensajeError="No se encontraron datos ">
+	    <campos nombre="rut">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>RUT</descripcion>
+		</campos>
+		<campos nombre="nombre">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nombre</descripcion>
+			<caracteres>10</caracteres>
+		</campos>
+		<campos nombre="suma_total">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Nro. Asignaturas</descripcion>
+			<alineamiento>center</alineamiento>
+		</campos>
+		<campos nombre="estado">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Observaciones</descripcion>
+			<alineamiento>center</alineamiento>
+		</campos>
+		<campos nombre="ano_ingreso">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Ingreso</descripcion>
+			<alineamiento>center</alineamiento>
+		</campos>
+</parametro>
+</Parametros>

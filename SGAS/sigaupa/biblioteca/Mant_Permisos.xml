@@ -1,0 +1,143 @@
+<Parametros>
+   <parametro formulario="fpermisos" colorResaltado="#999999" colorSeleccionado="#CCCCCC" seleccionarTodo="TRUE"
+     eliminar="TRUE" anchoTabla="100%"  clave = "srol_ncorr" variable="permisos" nroRegistros="10" maxLista="12"
+	 mensajeError = "No existe registros para los parametros dados">
+	 <tablas nombre="sis_permisos" accion="B"/>
+     	<campos nombre="smod_ccod">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+	 </campos>	
+	 <campos nombre="smod_tdesc">
+	    <descripcion>Modulo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<nowrap>TRUE</nowrap>
+	 </campos>
+	 <campos nombre="sfun_ccod">
+	    <descripcion>Cod func</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+	 </campos>
+	<campos nombre="sfun_tdesc">
+	    <descripcion>Funcion</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	<campos nombre="smet_ccod">
+	    <descripcion>cod_met</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="sper_fmodificacion">
+	    <descripcion>Fecha Mod</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	</campos>
+   </parametro>
+      
+   <parametro formulario="fselect" variable="roles">
+   <campos nombre="srol_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>sis_roles</destino> 
+	  <union>srol_ncorr</union>
+	  <salida>srol_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Rol</mensajeNulo>
+	  <script>onchange="cargar();"</script>
+	  <orden>srol_tdesc</orden>
+   </campos>
+   </parametro>
+  
+  <parametro formulario="f2" variable="modulos">
+   <campos nombre="smod_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>sis_modulos </destino> 
+	  <union>smod_ccod</union>
+	  <salida>smod_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Todas las Funciones</mensajeNulo>
+	  <script>onchange="cargar();"</script>
+	  <orden>smod_tdesc</orden>
+   </campos>
+   </parametro>
+  
+ <parametro formulario="botonera">
+   <botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>ELIMINAR</accion>
+	  <url>Mant_Permisos_Eliminar.asp</url>
+	  <formulario>edicion</formulario>
+	</botones> 
+   <botones nombre="cancelar"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+	 <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>CerrarActualizar();</funcion>
+	</botones>
+	<botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>AGREGAR</accion>
+	  <posicionX>50</posicionX>
+	  <posicionY>100</posicionY>
+	  <ancho>767</ancho>
+	  <alto>530</alto>
+	  <scroll>TRUE</scroll>
+	</botones>
+	<botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>Proc_Mant_Permisos_Agregar.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>
+	<botones nombre="lanzadera"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>	 
+	</botones> 
+  </parametro>   
+ <parametro formulario="f1" colorResaltado="#999999" colorSeleccionado="#CCCCCC" eliminar="TRUE" 
+   clave="srol_ncorr" seleccionarTodo="TRUE" anchoTabla="100%" variable="funciones" nroRegistros="10" maxLista="10">
+	 <tablas nombre="sis_permisos" accion="M"/>
+     <!--<campos nombre="srol_ncorr">
+	   	<descripcion>Cod Rol</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+	 </campos>-->
+	 <campos nombre="smod_ccod">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="sfun_ccod">
+	    <descripcion>Codigo funcion</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+ 	<campos nombre="smet_ccod">
+	    <descripcion>Metodo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	<!-- <campos nombre="c_smod_ccod">
+	    <descripcion>Codigo Modulo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>-->
+	 <campos nombre="smod_tdesc">
+	    <descripcion>Modulo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	<campos nombre="sfun_tdesc">
+	    <descripcion>Nombre de la Funcion</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+    </parametro> 
+    
+</Parametros>

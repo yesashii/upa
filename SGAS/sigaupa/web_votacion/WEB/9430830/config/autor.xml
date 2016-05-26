@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<content override_swf="">
+	<area area="left" header="José Dimas Luján Castillo" subheader="Desarrollador de software y docente">
+		<element type="grand_video_teaser" file="media/964_entrevista.mp4" smoothing="true" inline="true" previewimage="media/964_retrato.png" header="" text="" />
+	
+	</area>
+	
+	
+	
+	
+	<area area="right" header="Acerca del curso" subheader="Más contenidos del curso">
+		<element type="link_teaser" folder="" previewimage="media/ihr_trainer.jpg" header="Cursos de José Dimas Luján Castillo" text="" link="https://www.video2brain.com/es/formadores/jose-dimas-lujan-castillo" />
+		<element type="link_teaser" folder="" previewimage="media/video2brain_stellt_sich_vor.jpg" header="¡video2brain se presenta!" text="" link="http://www.video2brain.com/es//page-80.htm" />
+		<element type="link_teaser" folder="" previewimage="media/abo.jpg" header="Las suscripciones de video2brain" text="Acceso indefinido a todos los cursos de video2brain" link="http://www.video2brain.com/es//page-127.htm" />
+
+	</area>
+</content>

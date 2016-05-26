@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="BotoneraSeccionesEQ">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 
+    <botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>guardar(document.edicion);</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+    <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>	
+ </parametro>
+ <parametro formulario="buscador" variable="a">
+	    <listas nombre="lBusqueda">
+			<item clave="carr_ccod" valor="carr_tdesc" />
+			<item clave="asig_ccod" valor="asig_tdesc" />
+			<item clave="secc_ccod" valor="secc_tdesc" />
+			<item clave="jorn_ccod" valor="jorn_tdesc" />
+		</listas>
+		<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="asig_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="secc_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="jorn_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+	</parametro>
+	<parametro formulario="f_alumnos" clave="matr_ncorr"  variable="alumnos" 
+      colorSeleccionado="#CCCCCC" colorResaltado="#999999" 
+	  paginaEdicion="" eliminar="TRUE" 
+      seleccionarTodo="FALSE"  anchoTabla="100%" editar="FALSE"  nuevaVentana="FALSE" 
+	  mensajeError="No se encontraron alumnos para la seccion solicitada">
+	 <tablas nombre="cargas_academicas" accion="M" /> 	
+	 <campos nombre="secc_ccod">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>     
+	 <campos nombre="rut">
+	    <descripcion>RUT</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>	 
+	 <campos nombre="nombre">
+	    <descripcion>Nombre Alumno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<nowrap>TRUE</nowrap>
+	 </campos>
+	  <campos nombre="carr_ccod">
+	    <descripcion>codigo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+		<alineamiento>LEFT</alineamiento>
+	</campos>
+	 <campos nombre="CARR_TDESC">
+	    <descripcion>Carrera</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<nowrap>TRUE</nowrap>
+	</campos>
+	 <campos nombre="ESPE_TDESC">
+	    <descripcion>Especialidad</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<nowrap>TRUE</nowrap>
+	</campos>	 
+ </parametro>  
+ <parametro formulario="nueva_seccion" variable="d">
+		<campos nombre="secc_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<union>secc_ccod</union>
+			<salida>secc_tdesc</salida>
+			<columnas>2</columnas>
+			<anulable>true</anulable>
+			<mensajeNulo>Nueva Sección</mensajeNulo>
+			<mensajeVacio>No hay más secciones disponibles</mensajeVacio>
+			<estilo>anchofijo</estilo>
+			<id>TO-N</id>
+		</campos>
+</parametro>
+</Parametros>

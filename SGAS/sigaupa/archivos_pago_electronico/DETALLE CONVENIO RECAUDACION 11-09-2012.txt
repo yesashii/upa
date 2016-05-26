@@ -1,0 +1,2 @@
+ RUT  , ID, NombreCliente , TipoMoneda , ValorCuota , ValorMora , MontoRecaudado , FechaVcto , Fecharecaudacion 
+15570263K,352218,BRAVO LILLO GABRIELA LORETO,Pesos,104000,0,104000,10/09/2012,11/09/2012

@@ -1,0 +1,209 @@
+<Parametros>
+   <parametro formulario="f1" anchoTabla="100%" 
+   colorResaltado="#CCCCCC"  mensajeError="Ingrese un criterio de busqueda"
+   colorSeleccionado="#CCCCCC" eliminar="TRUE" seleccionarTodo="FALSE"
+    editar="TRUE" 	paginaEdicion="Mant_Usuarios_Buscar.asp?personas[0][pers_nrut]=%pers_nrut%" 
+	clave="pers_ncorr" nuevaVentana="TRUE" nuevaVentanaAncho="556" nuevaVentanaAlto="550" 
+	variable="usuarios" nroRegistros="10" maxLista="10" >
+	 <tablas nombre="sis_usuarios" accion="B"/>
+     <campos nombre="pers_nrut">
+	   <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+	 </campos>
+     <campos nombre="pers_ncorr">
+	    <descripcion>Codigo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<ancho>50</ancho>
+	 </campos>
+	 <campos nombre="nombre_usuario">
+	    <descripcion>Nombre Usuario</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="susu_tlogin">
+	    <descripcion>Login</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="susu_tclave">
+	    <descripcion>Clave</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="rut">
+	    <descripcion>Rut</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="email">
+	    <descripcion>Email Docente Upa</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+    <campos nombre="susu_fmodificacion">
+	    <descripcion>Fecha Modificacion</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>	 	 
+   </parametro>   
+   
+   <parametro formulario="f1_edicion" variable="usuarios" clave="pers_ncorr">
+   <tablas nombre="sis_usuarios" accion="M"/>
+   <tablas nombre="sis_sedes_usuarios" accion="M"/>   
+  <!-- <campos nombre="pers_ncorr">   
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>
+   </campos>-->
+    <campos nombre="c_pers_ncorr">
+      <tipo>INPUT</tipo>
+	  <permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="susu_tlogin">
+      <tipo>INPUT</tipo>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <caracteres>40</caracteres>
+	  <maxCaracteres>30</maxCaracteres>
+	  <id>TO-N</id>
+   </campos>
+    <campos nombre="susu_tclave">
+      <tipo>INPUT</tipo>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <caracteres>40</caracteres>
+	  <maxCaracteres>30</maxCaracteres>
+	  <id>TO-N</id>
+   </campos>
+    <campos nombre="susu_fmodificacion">
+      <tipo>INPUT</tipo>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <soloLectura>true</soloLectura>
+   </campos>
+  </parametro>
+  
+  <parametro formulario="fconsulta" variable="personas">
+    <tablas nombre="personas" accion="M"/>
+	 <campos nombre="pers_ncorr">
+	   <descripcion>Correlativo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="pers_nrut">
+	   <descripcion>Rut</descripcion>
+		<tipo>INPUT</tipo>
+		<caracteres>10</caracteres>
+       <maxCaracteres>8</maxCaracteres>
+	   <permiso>LECTURAESCRITURA</permiso>
+	   <id>NU-N</id>
+	 </campos>
+	 <campos nombre="pers_xdv">
+	   <descripcion>Digito</descripcion>
+		<tipo>INPUT</tipo>
+		<caracteres>1</caracteres>
+        <maxCaracteres>1</maxCaracteres>
+		<permiso>LECTURAESCRITURA</permiso>
+		<id>TO-N</id>
+	 </campos>
+	 <campos nombre="pers_tnombre">
+	   <descripcion>Rut</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+ </parametro>
+  
+  <parametro formulario="botonera">
+   <botones nombre="cancelar"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+	 <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	   <funcionValidacion>Validar();</funcionValidacion>
+	</botones>
+   	<botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>AGREGAR</accion>
+	  <posicionX>100</posicionX>
+	  <posicionY>50</posicionY>
+	  <ancho>495</ancho>
+	  <alto>550</alto>
+	</botones>
+	<botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>Proc_Mant_Usuarios_Buscar.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>
+	<botones nombre="guardar2"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>Proc_Mant_Usuarios_Edicion.asp</url>
+	  <formulario>edicion</formulario>
+	</botones> 
+	<botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>ELIMINAR</accion>
+	  <url>Mant_Usuarios_Eliminar.asp</url>
+	  <formulario>edicion</formulario>
+	</botones> 
+	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>	 
+	</botones>	
+   </parametro>
+
+<parametro formulario="busqueda_usuarios" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+</parametro>
+<parametro formulario="f_sedes_usuario" variable="usuarios"  colorSeleccionado="#CCCCCC" colorResaltado="#999999" 
+          nroRegistros="10" maxLista="10" clave = "pers_ncorr"
+	     eliminar="FALSE" seleccionarTodo="FALSE"  anchoTabla="100%"
+		 mensajeError="Ingrese Criterio de Busqueda">
+     <campos nombre="pers_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="sede_ccod">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="sede_tdesc">
+	    <descripcion>Sede</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="direccion_sede">
+	    <descripcion>Direccion Sede</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>
+	 <campos nombre="tiene_sede">
+	    <descripcion>Asociar Sede</descripcion>
+		<tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+		 <valorVerdadero>1</valorVerdadero>
+	 </campos>
+</parametro>
+
+</Parametros>

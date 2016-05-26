@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="btn_busca_asignaturas">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>buscar(document.buscador)</funcion>
+	</botones> 
+    <botones nombre="agregar"> 
+      <tipoTexto>DEFINIR</tipoTexto> 
+	  <texto>Asociar Electivo</texto> 
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.edicion)</funcion>
+	</botones> 
+    <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>salir()</funcion>
+	</botones> 
+ <botones nombre="eliminar">
+	  <tipoTexto>ELIMINAR</tipoTexto> 
+	  <accion>ELIMINAR</accion> 
+	  <formulario>buscador</formulario> 
+	  <url>Proc_elimina_electivos.asp</url> 
+ </botones>
+ </parametro>
+ <parametro formulario="elimina_electivo" variable="esec">
+  <tablas nombre="electivos" accion="B"/>
+  <tablas nombre="secciones" accion="B"/>
+ </parametro>
+  <parametro formulario="f_electivos" variable="ESEC">
+  <tablas nombre="electivos" accion="M"/>
+ </parametro>
+
+ <parametro formulario="form_busca_asig"
+ clave="secc_ccod" variable="m" 
+ mensajeError="No hay Asignaturas que coincidan con el criterio de búsqueda" 
+ colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" 
+ editar="false" eliminar="true" agregar="true" nuevaVentana="false"
+  paginaEdicion="editar_asignatura.asp?asig_ccod=%asig_ccod%" maxLista="10" nroRegistros="10" anchoTabla="98%">
+  <tablas nombre="electivos" accion="M"/>
+   <campos nombre="asignatura">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Asignatura Planificada</descripcion> 
+	  <alineamiento>left</alineamiento> 
+  </campos>
+ <campos nombre="Hor">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Horario Asignatura</descripcion> 
+	  <alineamiento>left</alineamiento> 
+  </campos>
+ <campos nombre="Profesor">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Profesor De La Asignatura</descripcion> 
+	  <alineamiento>left</alineamiento> 
+  </campos>
+  </parametro>
+ <parametro formulario="asig_electivas"
+ clave="secc_ccod" variable="L" 
+ mensajeError="La Asignatura No Tiene electivos Asociados" 
+ colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" 
+ editar="false" eliminar="true" agregar="true" nuevaVentana="false"
+  paginaEdicion="editar_asignatura.asp?asig_ccod=%asig_ccod%" maxLista="10" nroRegistros="10" anchoTabla="98%">
+  <tablas nombre="electivos" accion="M"/>
+   <campos nombre="asignatura">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Electivos</descripcion> 
+	  <alineamiento>left</alineamiento> 
+  </campos>
+ <campos nombre="Hor">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Horario Electivo</descripcion> 
+	  <alineamiento>left</alineamiento> 
+  </campos>
+ <campos nombre="Profesor">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Profesor Del Electivo</descripcion> 
+	  <alineamiento>left</alineamiento> 
+  </campos>
+  </parametro>
+ <parametro formulario="form_busca_asig_2"
+ clave="secc_ccod" variable="m" 
+ mensajeError="No hay Asignaturas que coincidan con el criterio de búsqueda" 
+ colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" 
+ editar="true" eliminar="false" agregar="true" nuevaVentana="false"
+  paginaEdicion="edicion_secc_asig.asp?sede_ccod=%sede_ccod%&amp;asig_ccod=%asig_ccod%&amp;carr_ccod=%carr_ccod%&amp;periodo=%periodo%&amp;nive_ccod=%nive_ccod%&amp;plan_ccod=%plan_ccod%&amp;espe_ccod=%espe_ccod%&amp;insertar_electivo=1"  maxLista="10" nroRegistros="10" anchoTabla="98%">
+  <tablas nombre="electivos" accion="M"/>
+   <campos nombre="asig_ccod">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Código Asignatura</descripcion> 
+	  <alineamiento>left</alineamiento> 
+  </campos>
+ <campos nombre="asig_tdesc">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Asignatura</descripcion> 
+	  <alineamiento>left</alineamiento> 
+  </campos>
+  </parametro>
+	<parametro formulario="planificacion_elec" variable="esec"
+	 colorSeleccionado="99FFFF" colorResaltado="#DCDCB8"  colorBase="#F1F1E4"
+	  nroRegistros="10" agregar="true"  eliminar="true" maxLista="10" 
+	  clave="secc_ccod" mensajeError="No hay secciones creadas para esta asignatura" 
+	  editar="false" nuevaVentana="false" paginaEdicion="javascript:subsecciones(%secc_ccod%)" anchoTabla="100%" >
+		<campos nombre="asignatura">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Asignaturas ELectivas</descripcion>
+			<alineamiento>left</alineamiento>
+		</campos>
+		<campos nombre="SECC_NCUPO">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Cupo</descripcion>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="SECC_NQUORUM">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Mínimo de Alumnos</descripcion>
+			<alineamiento>right</alineamiento>
+		</campos>
+		<campos nombre="SECC_FINICIO_SEC">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Fecha De Inicio</descripcion>
+			<alineamiento>center</alineamiento>
+		</campos>
+		<campos nombre="SECC_FTERMINO_SEC">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Fecha De Termino</descripcion>
+			<alineamiento>center</alineamiento>
+		</campos>
+		<campos nombre="JORN_TDESC">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Jornada</descripcion>
+			<alineamiento>left</alineamiento>
+		</campos>
+		<campos nombre="asig_elctiva">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Tipo De Asignatura</descripcion>
+			<alineamiento>left</alineamiento>
+		</campos>
+		
+	</parametro>
+
+</Parametros>

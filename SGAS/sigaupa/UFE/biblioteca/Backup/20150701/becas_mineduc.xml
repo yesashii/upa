@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  
+	<botones nombre="excel">
+         <accion>Guardar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Excel</texto>
+	   <formulario>buscador</formulario>
+      </botones>
+	   <botones nombre="crear">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Agregar Alumno</texto>
+      </botones>
+   
+   </parametro>
+   <parametro formulario="busqueda" variable="b" columnas="3" >
+          <campos nombre="pers_nrut" >
+         <descripcion>Nº Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>NU-S</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+      
+      </campos>
+	   <campos nombre="pers_xdv" >
+         <descripcion>Nº Documento</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-S</id>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+      
+      </campos>
+	   <campos nombre="tdet_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione una Beca</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>tipos_detalle </destino>
+		 <filtro>tdet_ccod in (910,1390,1446,1537,1538,1539,1912)</filtro>
+         <union>tdet_ccod</union>
+         <salida>tdet_tdesc</salida>
+		 <orden>tdet_tdesc asc</orden>
+      </campos>
+	  <campos nombre="anos_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Periodo Academico</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>anos</destino>
+		 <filtro>anos_ccod > 2004 </filtro>
+         <union>anos_ccod</union>
+         <salida>anos_tdesc</salida>
+		 <orden>anos_tdesc asc</orden>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="sede_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todas las Sedes</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>sedes </destino>
+		 <filtro>sede_ccod in (1,2,4,7,8)</filtro>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+	 </campos>
+    <campos nombre="facu_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>facultades</destino>
+         <union>facu_ccod</union>
+         <salida>facu_tdesc</salida>
+		 <orden>facu_tdesc asc</orden>
+		 <id>NU-S</id>
+      </campos>
+	  <campos nombre="carr_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todas las Carreras</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>carreras</destino>
+         <union>carr_ccod</union>
+         <salida>carr_tdesc</salida>
+		 <orden>carr_tdesc asc</orden>
+	 </campos>
+	 <campos nombre="ano_adjudicacion" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione </mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>anos</destino>
+		 <filtro>anos_ccod > 2005 </filtro>
+         <union>anos_ccod</union>
+         <salida>anos_ccod</salida>
+		 <!--<orden>anos_ccod asc</orden>-->
+		 <id>NU-S</id>
+      </campos>
+   </parametro>
+   
+  <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="cheques" nroRegistros="15"
+		 maxLista="10" mensajeError="No se encontranron Alumnos ." colorBase="#F1F1E4" editar="false" anchoTabla="100%"	 nuevaVentana="false" variable="a">  
+      <campos nombre="nombre">
+		<descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="rut" >
+		 <descripcion>Rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="facu_tdesc" >
+		 <descripcion>Facultad</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="carrera" >
+		 <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	   <campos nombre="ano_ingreso_carrera" >
+		 <descripcion>Año Ingreso Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="duracion" >
+		 <descripcion>Duración Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="sede">
+		 <descripcion>Sede</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+		<formato>Fecha</formato>
+      </campos>
+	  <campos nombre="tdet_tdesc" >
+		 <descripcion>Beca</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      	   <campos nombre="monto_bene" >
+		 <descripcion>Monto Beneficio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+		 <formato>MONEDA</formato>
+		 <nowrap>true</nowrap>
+      </campos>
+	  <campos nombre="ano_adjudicacion" >
+		 <descripcion>Año Adjudicación</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	 <campos nombre="ano_caducacion" >
+			 <descripcion>Año Caducación</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>CENTER</alineamiento>
+		  </campos>
+		<campos nombre="ano_encurso_beca" >
+			 <descripcion>Año En Curso Beca</descripcion>
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <alineamiento>CENTER</alineamiento>
+		  </campos>  
+   </parametro>
+   
+   
+   
+</Parametros>

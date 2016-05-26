@@ -1,0 +1,98 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+<%
+on error resume next
+set conectar = new cconexion
+conectar.inicializar "upacifico"
+
+set negocio = new CNegocio
+negocio.Inicializa conectar
+
+'for each k in request.form
+'	response.write(k&"="&request.Form(k)&"<br>")
+'next
+
+'response.End()
+
+usuario = negocio.obtenerUsuario
+empr_trazon_social = request.form("o[0][empr_trazon_social]")
+empr_tdireccion = request.form("o[0][empr_tdireccion]")
+empr_nrut = request.Form("o[0][empr_nrut]")
+empr_xdv = request.Form("o[0][empr_xdv]")
+ciud_ccod= request.Form("o[0][ciud_ccod]")
+empr_tfono= request.Form("o[0][empr_tfono]")
+empr_tfax = request.Form("o[0][empr_tfax]")
+empr_tgiro= request.Form("o[0][empr_tgiro]")
+empr_tejecutivo = request.Form("o[0][empr_tejecutivo]")
+empr_temail_ejecutivo = request.Form("o[0][empr_temail_ejecutivo]")
+forma_pago = request.Form("b[0][fpot_ccod]")
+norc_otic = request.Form("o[0][norc_otic]")
+dcur_ncorr = request.Form("b[0][dcur_ncorr]")
+sede_ccod = request.Form("b[0][sede_ccod]")
+nord_compra = request.Form("b[0][nord_compra]")
+
+dgso_ncorr = conectar.consultaUno("select dgso_ncorr from datos_generales_secciones_otec where cast(DCUR_NCORR as varchar)='"&dcur_ncorr&"' and cast(sede_ccod as varchar)='"&sede_ccod&"' and esot_ccod in (1,2)")
+
+	esta_en_empresa = conectar.consultaUno("select isnull((select count(*) from empresas where cast(empr_nrut as varchar)='"&empr_nrut&"'),0)")
+	esta_en_personas = conectar.consultaUno("select isnull((select count(*) from personas where cast(pers_nrut as varchar)='"&empr_nrut&"'),0)")
+	empr_ncorr = conectar.consultaUno("select empr_ncorr from empresas where cast(empr_nrut as varchar)='"&empr_nrut&"'")
+	'response.Write("<br>esta_en_empresa="&esta_en_empresa)
+	'response.Write("<br>esta_en_personas="&esta_en_personas)
+	'response.Write("<br>empr_ncorr="&empr_ncorr)
+'response.End()
+
+'-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+	if esta_en_personas = "0" then
+		pers_ncorr = conectar.consultaUno("exec obtenerSecuencia 'personas'")
+		'----------agregamos datos básicos a tabla persona para que busque pers_ncorr en funciones de morosidad, ingresos y cta. Cte.
+		c_persona = " insert into personas (pers_ncorr,pais_ccod, pers_nrut,pers_xdv, pers_tape_paterno, pers_tape_materno, pers_tnombre, audi_tusuario, audi_fmodificacion)"&_
+		            " values ("&pers_ncorr&",1,"&empr_nrut&",'"&empr_xdv&"','','','"&empr_trazon_social&"','"&usuario&"',getDate())"  
+	else
+		pers_ncorr = conectar.consultaUno("select pers_ncorr from personas where cast(pers_nrut as varchar)='"&empr_nrut&"'")
+		c_persona = " update personas set pers_tnombre = '"&empr_trazon_social&"', audi_tusuario='"&usuario&"',audi_fmodificacion=getDate() where cast(pers_nrut as varchar)='"&empr_nrut&"'"
+	end if	
+'-----------------------------------------------------------------------------------------------------------------------------------------------------------------	
+	if esta_en_empresa = "0" then
+	're
+	    c_empresa = " insert into empresas (empr_ncorr,empr_tnombre,empr_trazon_social,empr_nrut,empr_xdv,empr_tdireccion,ciud_ccod, "&_
+		            " empr_tfono,empr_tfax,empr_tgiro,empr_tejecutivo,empr_temail_ejecutivo,AUDI_TUSUARIO,AUDI_FMODIFICACION)"&_
+		            " values ("&pers_ncorr&",'"&empr_trazon_social&"','"&empr_trazon_social&"',"&empr_nrut&",'"&empr_xdv&"','"&empr_tdireccion&"',"&ciud_ccod&","&_
+					" '"&empr_tfono&"','"&empr_tfax&"','"&empr_tgiro&"','"&empr_tejecutivo&"','"&empr_temail_ejecutivo&"','"&usuario&"',getDate())"
+	    empr_ncorr = pers_ncorr
+	else
+	    c_empresa = " update empresas set empr_trazon_social='"&empr_trazon_social&"',empr_tdireccion='"&empr_tdireccion&"',"&_
+		            " ciud_ccod="&ciud_ccod&",empr_tfono='"&empr_tfono&"',empr_tfax='"&empr_tfax&"',empr_tgiro='"&empr_tgiro&"',"&_
+					" empr_tejecutivo='"&empr_tejecutivo&"',empr_temail_ejecutivo='"&empr_temail_ejecutivo&"', audi_tusuario='"&usuario&"', audi_fmodificacion=getDate() where cast(empr_nrut as varchar)='"&empr_nrut&"'"
+	end if
+'-----------------------------------------------------------------------------------------------------------------------------------------------------------------	
+	esta_en_orden = conectar.consultaUno("select isnull((select count(*) from ordenes_compras_otec where cast(dgso_ncorr as varchar)='"&dgso_ncorr&"' and cast(nord_compra as varchar)='"&nord_compra&"'),0)")
+	
+	if esta_en_orden = "0" then
+			c_orden = " insert into ordenes_compras_otec (dgso_ncorr,empr_ncorr,fpot_ccod,nord_compra,AUDI_TUSUARIO,AUDI_FMODIFICACION)"&_
+	    			  " values ("&dgso_ncorr&",'"&empr_ncorr&"',"&forma_pago&",'"&nord_compra&"','"&usuario&"',getDate())"
+	else
+			c_orden = " update ordenes_compras_otec  set empr_ncorr ="&empr_ncorr&",fpot_ccod="&forma_pago&",AUDI_TUSUARIO='"&usuario&"', AUDI_FMODIFICACION=getDate()"&_
+			          " where cast(dgso_ncorr as varchar)='"&dgso_ncorr&"' and cast(nord_compra as varchar)='"&nord_compra&"'"
+	end if
+
+'-----------------------------------------------------------------------------------------------------------------------------------------------------------------	
+	otic_igual_empresa = 0
+	if forma_pago = "4" then
+		otic_igual_empresa = conectar.consultaUno("select isnull((select count(*) from ordenes_compras_otec where cast(dgso_ncorr as varchar)='"&dgso_ncorr&"' and cast(nord_compra as varchar)='"&nord_compra&"' and cast(empr_ncorr_2 as varchar)='"&empr_ncorr&"'),0)")
+	end if 
+	if otic_igual_empresa = "0" then 
+		'response.Write(c_persona)
+		'response.Write("<br>"&c_empresa)
+		'response.Write("<br>"&c_orden)
+		conectar.ejecutaS c_persona
+		conectar.ejecutaS c_empresa
+		conectar.ejecutaS c_orden    
+	else
+		conexion.MensajeError "Imposible guardar esta empresa Otic a la postulación por que esta registrada como empresa para la misma orden de compra"
+	end if	
+	
+'-----------------------------------------------------------------------------------------------------------------------------------------------------------------		
+'response.End()
+
+response.Redirect("postulacion_masiva_otec.asp?b[0][dcur_ncorr]="&dcur_ncorr&"&b[0][sede_ccod]="&sede_ccod&"&b[0][nord_compra]="&nord_compra&"&b[0][fpot_ccod]="&forma_pago)
+%>

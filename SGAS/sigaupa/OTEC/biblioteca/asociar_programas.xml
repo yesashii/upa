@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="btn_busca_asignaturas">
+    <botones nombre="buscar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Buscar</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 
+	<botones nombre="crear_dcurso"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Agregar Diplomado o Curso</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar2(document.buscador)</funcion>
+	</botones> 
+    <botones nombre="agregar_nuevo_dcurso"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Agregar nuevo Diplomado o Curso</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>abrir()</funcion>
+	</botones> 
+	<botones nombre="agregar_programa_dcurso"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Poblar Malla</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>abrir_programa()</funcion>
+	</botones> 
+    <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	<botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <formulario>edicion</formulario>
+         <url>eliminar_diplomados_curso.asp</url>
+    </botones>
+	<botones nombre="eliminar_malla">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <formulario>edicion_malla</formulario>
+         <url>eliminar_malla_otec.asp</url>
+    </botones>
+	<botones nombre="eliminar_relacion">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <formulario>edicion_relacion</formulario>
+         <url>asociar_programas_eliminar.asp</url>
+    </botones>
+	<botones nombre="enviar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Enviar</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.formu)</funcion>
+	</botones> 
+	<botones nombre="guardar">
+      <tipoTexto>GUARDAR</tipoTexto>
+      <accion>GUARDAR</accion>
+      <formulario>edicion</formulario>
+      <url>asociar_programas_proc.asp</url>
+    </botones>
+ </parametro>
+ <parametro formulario="f_programas"
+ clave="dcur_ncorr" variable="m" 
+ nuevaVentana="true" nuevaVentanaAlto="300" nuevaVentanaAncho="650"
+ mensajeError="No hay programas de cursos o diplomados creados en el sistema" 
+ colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" 
+ editar="true" eliminar="true" agregar="true"
+  paginaEdicion="editar_diplomados_curso.asp?dcur_ncorr=%dcur_ncorr%" maxLista="10" nroRegistros="10" anchoTabla="98%">
+   <campos nombre="codigo">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Código</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+ <campos nombre="dcur_tdesc">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Programa</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+  <campos nombre="tdcu_tdesc">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Tipo</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+</parametro>
+<parametro formulario="f_busqueda" variable="b">
+   <campos nombre="dcur_ncorr">
+      <tipo>SELECT</tipo>
+	  <destino>diplomados_cursos</destino> 
+	  <union>DCUR_NCORR</union>
+	  <salida>DCUR_TDESC</salida>
+      <orden>DCUR_TDESC asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Programa</mensajeNulo>
+	  <mensajeVacio>Seleccione Programa</mensajeVacio>
+	  <id>TO-N</id>
+   </campos>
+  </parametro>
+  <parametro formulario="btn_edita_diplomados_curso">
+    	<botones nombre="guardar"> 
+      		<tipoTexto>GUARDAR</tipoTexto>
+	  		<accion>JAVASCRIPT</accion>
+	  		<funcion>guardar(document.edicion)</funcion>
+		</botones> 
+    
+		<botones nombre="volver"> 
+      		<tipoTexto>DEFINIR</tipoTexto>
+	  		<texto>Cerrar</texto>
+	  		<accion>JAVASCRIPT</accion>
+	  		<funcion>volver()</funcion>
+		</botones> 
+ 	</parametro>
+    <parametro formulario="seleccionar_programa" clave="dcur_ncorr" variable="m" mensajeError="no existen diplomados o cursos creados"
+		 colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="true" 
+		 eliminar="true" agregar="true" nuevaVentana="false" paginaEdicion="editar_diplomados_curso.asp?dcur_ncorr=%dcur_ncorr%" 
+		 maxLista="10" nroRegistros="10">
+		   <campos nombre="dcur_ncorr_a_emular">
+			  <tipo>SELECT</tipo>
+			  <union>dcur_ncorr_a_emular</union>
+			  <salida>DCUR_TDESC</salida>
+			  <orden>DCUR_TDESC asc </orden>	  
+			  <permiso>LECTURAESCRITURA</permiso>
+			  <anulable>true</anulable>
+			  <mensajeNulo>Programa</mensajeNulo>
+			  <mensajeVacio>Programa</mensajeVacio>
+			  <id>TO-N</id>
+		   </campos>
+	</parametro>
+  	<parametro formulario="mantiene_diplomados_curso" variable="m" >
+		<tablas nombre="diplomados_cursos" accion="M" />
+ 	</parametro>	
+	<parametro formulario="mantiene_descuentos" variable="desc" >
+		<tablas nombre="descuentos_diplomados_curso" accion="M" />
+ 	</parametro>	
+ <parametro formulario="f_malla"
+ clave="maot_ncorr" variable="m" 
+ nuevaVentana="true" nuevaVentanaAlto="370" nuevaVentanaAncho="550"
+ mensajeError="No existen modulos ingresados para este programa" 
+ colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" 
+ editar="true" eliminar="true" agregar="true"
+  paginaEdicion="editar_ramo_malla.asp?maot_ncorr=%maot_ncorr%" maxLista="10" nroRegistros="10" anchoTabla="98%">
+   <campos nombre="codigo">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Código</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+ <campos nombre="mote_tdesc">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Programa</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+   <campos nombre="maot_nhoras_programa">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Horas Programa</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+   <campos nombre="maot_npresupuesto_relator">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Presupuesto Relatores</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+	  <formato>MONEDA</formato>
+  </campos>
+  <campos nombre="maot_norden">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Orden</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+</parametro>
+<parametro formulario="f_relaciones"
+ clave="dcur_ncorr_origen" variable="m" 
+ nuevaVentana="true" nuevaVentanaAlto="370" nuevaVentanaAncho="550"
+ mensajeError="No existen relaciones asociadas al programa consultado" 
+ colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" 
+ editar="false" eliminar="true" agregar="true"  paginaEdicion="" maxLista="10" nroRegistros="10" anchoTabla="98%">
+   <campos nombre="dcur_ncorr">
+	  <tipo>INPUT</tipo> 
+	  <permiso>OCULTO</permiso> 
+   </campos>
+   <campos nombre="dcur_tdesc">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Programa destino</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+   </campos>
+   <campos nombre="dcur_tdesc_origen">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Programa origen</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+   <campos nombre="dcur_norden">
+	  <tipo>INPUT</tipo> 
+	  <permiso>OCULTO</permiso> 
+  </campos>
+  <campos nombre="orden_relacion">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Orden</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+</parametro>
+<parametro formulario="form_busca_modulos"
+ clave="mote_ccod" variable="m" 
+ nuevaVentana="true" nuevaVentanaAlto="200" nuevaVentanaAncho="400"
+ mensajeError="No hay módulos que coincidan con el criterio de búsqueda" 
+ colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" 
+ editar="false" eliminar="true" agregar="true"
+  paginaEdicion="" maxLista="10" nroRegistros="10" anchoTabla="98%">
+  <campos nombre="dcur_ncorr">
+	  <tipo>INPUT</tipo> 
+	  <permiso>OCULTO</permiso> 
+  </campos>
+ <campos nombre="mote_tdesc">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Módulo</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+  <campos nombre="maot_nhoras_programa">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURAESCRITURA</permiso> 
+	  <descripcion>Horas Programa</descripcion> 
+	  <maxCaracteres>3</maxCaracteres>
+	  <caracteres>5</caracteres>
+	  <alineamiento>CENTER</alineamiento>
+	  <deshabilitado>TRUE</deshabilitado>
+	  <id>NU-S</id> 
+  </campos>
+  <campos nombre="maot_npresupuesto_relator">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURAESCRITURA</permiso> 
+	  <descripcion>Presupuesto Relatores ($)</descripcion> 
+	  <maxCaracteres>8</maxCaracteres>
+	  <caracteres>10</caracteres>
+	  <alineamiento>CENTER</alineamiento>
+	  <deshabilitado>TRUE</deshabilitado>
+	  <id>NU-S</id> 
+  </campos>
+  <campos nombre="maot_nhoras_ayudantia">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURAESCRITURA</permiso> 
+	  <descripcion>Horas Ayudantia</descripcion> 
+	  <maxCaracteres>3</maxCaracteres>
+	  <caracteres>5</caracteres>
+	  <alineamiento>CENTER</alineamiento>
+	  <deshabilitado>TRUE</deshabilitado>
+	  <id>NU-S</id> 
+  </campos>
+  <campos nombre="maot_npresupuesto_ayudantia">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURAESCRITURA</permiso> 
+	  <descripcion>Presupuesto Ayudantia ($)</descripcion> 
+	  <maxCaracteres>8</maxCaracteres>
+	  <caracteres>10</caracteres>
+	  <alineamiento>CENTER</alineamiento>
+	  <deshabilitado>TRUE</deshabilitado>
+	  <id>NU-S</id> 
+  </campos>
+  <campos nombre="dcur_norden">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURAESCRITURA</permiso> 
+	  <descripcion>Orden</descripcion> 
+	  <maxCaracteres>2</maxCaracteres>
+	  <caracteres>4</caracteres>
+	  <alineamiento>CENTER</alineamiento>
+	  <deshabilitado>TRUE</deshabilitado>
+	  <id>NU-S</id> 
+  </campos>
+</parametro>
+<parametro formulario="botonera_modulos">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 
+    <botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>abrir()</funcion>
+	</botones> 
+    <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	<botones nombre="salir22"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>CerrarActualizar()</funcion>
+	</botones>
+	<botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>guardar_malla_otec.asp</url>
+    </botones>
+	<botones nombre="guardar_edicion_programa">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>guardar_editar_ramo_malla.asp</url>
+    </botones>
+    <botones nombre="enviar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Enviar</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.formu)</funcion>
+	</botones> 
+	
+    <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones>
+ </parametro>
+  <parametro formulario="f_descuentos"
+ clave="tdet_ccod" variable="desc" 
+ nuevaVentana="true" nuevaVentanaAlto="250" nuevaVentanaAncho="550"
+ mensajeError="No existen tipos de descuentos a generar" 
+ colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" 
+ editar="false" eliminar="false" agregar="false"
+  paginaEdicion="" maxLista="10" nroRegistros="10" anchoTabla="98%">
+   <campos nombre="tdet_ccod">
+	  <tipo>INPUT</tipo> 
+	  <permiso>OCULTO</permiso> 
+  </campos>
+ <campos nombre="tdet_tdesc">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURA</permiso> 
+	  <descripcion>Tipo Descuento</descripcion> 
+	  <alineamiento>DERECHA</alineamiento> 
+  </campos>
+  <campos nombre="ddcu_mdescuento">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURAESCRITURA</permiso> 
+	  <descripcion>Porcentaje</descripcion> 
+	  <alineamiento>Center</alineamiento> 
+	  <caracteres>5</caracteres>
+	  <maxCaracteres>3</maxCaracteres>
+	  <id>NU-N</id>
+  </campos>
+</parametro>
+<parametro formulario="f_editar_programa" variable="m">
+   <campos nombre="maot_ncorr">
+	  <tipo>INPUT</tipo> 
+	  <permiso>OCULTO</permiso> 
+  </campos>
+ <campos nombre="maot_nhoras_programa">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURAESCRITURA</permiso> 
+	  <caracteres>5</caracteres>
+	  <maxCaracteres>3</maxCaracteres>
+	  <id>NU-N</id>
+  </campos>
+  <campos nombre="maot_npresupuesto_relator">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURAESCRITURA</permiso> 
+	  <caracteres>15</caracteres>
+	  <maxCaracteres>8</maxCaracteres>
+	  <id>NU-N</id>
+  </campos>
+  <campos nombre="maot_nhoras_ayudantia">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURAESCRITURA</permiso> 
+	  <caracteres>5</caracteres>
+	  <maxCaracteres>3</maxCaracteres>
+	  <id>NU-S</id>
+  </campos>
+  <campos nombre="maot_npresupuesto_ayudantia">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURAESCRITURA</permiso> 
+	  <caracteres>15</caracteres>
+	  <maxCaracteres>8</maxCaracteres>
+	  <id>NU-S</id>
+  </campos>
+  <campos nombre="maot_norden">
+	  <tipo>INPUT</tipo> 
+	  <permiso>LECTURAESCRITURA</permiso> 
+	  <caracteres>5</caracteres>
+	  <maxCaracteres>2</maxCaracteres>
+	  <id>NU-N</id>
+  </campos>
+</parametro>
+<parametro formulario="f_busqueda" variable="b">
+   <campos nombre="dcur_ncorr">
+      <tipo>SELECT</tipo>
+	  <destino>diplomados_cursos</destino> 
+	  <union>DCUR_NCORR</union>
+	  <salida>DCUR_TDESC</salida>
+      <orden>DCUR_TDESC asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Programa</mensajeNulo>
+	  <mensajeVacio>Seleccione Programa</mensajeVacio>
+	  <id>TO-N</id>
+   </campos>
+  </parametro>
+</Parametros>

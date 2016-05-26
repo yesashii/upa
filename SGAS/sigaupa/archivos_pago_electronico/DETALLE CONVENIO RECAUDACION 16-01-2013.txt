@@ -1,0 +1,2 @@
+RUT , ID , NombreCliente , TipoMoneda , ValorCuota , ValorMora , MontoRecaudado , FechaVcto , FechaRecaudacion 
+17107858K,391504,CAMUS AROS PAULA JAVIERA,Pesos,84000,0,84000,30/01/2013,16/01/2013

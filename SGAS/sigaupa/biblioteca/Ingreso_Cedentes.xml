@@ -1,0 +1,196 @@
+<Parametros>
+  <parametro formulario="botonera">
+       <botones nombre="ingresar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Ingresar</texto>
+	  <accion>GUARDAR</accion>
+	  <url>Proc_ingreso_Cedentes.asp</url>
+	  <formulario>edicion</formulario>
+	  <funcionValidacion>comparar_fechas();</funcionValidacion>
+	  <mensajeConfirmacion>Esta seguro que desea ingresar las letras seleccionadas</mensajeConfirmacion>
+	</botones>
+   <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+   <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	   <funcionValidacion>Validar();</funcionValidacion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones>		
+   </parametro>
+
+  <parametro formulario="busqueda" variable="busqueda">
+   	<campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+     <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+	  <campos nombre="code_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-S</id>
+      </campos>
+      <campos nombre="code_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+         <id>LN-S</id>
+      </campos>
+    <campos nombre="ding_ndocto">
+       <tipo>INPUT</tipo>
+       <permiso>LECTURAESCRITURA</permiso>
+       <caracteres>12</caracteres>
+       <maxCaracteres>10</maxCaracteres>
+	   <id>NU-S</id>
+    </campos>	
+  </parametro> 
+ 
+ <parametro formulario="f_letras" clave="ding_ndocto"  variable="letras"  nroRegistros="8" maxLista="10" 
+    anchoTabla="100%" mensajeError="No se encontraron documentos..." eliminar="FALSE">
+ <campos nombre="ting_ccod">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	  <campos nombre="ingr_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	<campos nombre="ding_nsecuencia">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="ding_ndocto">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="c_ding_fdocto">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="oculto">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="check">
+	    <descripcion></descripcion>
+		<tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+		 <script>onClick="procesar_click()"</script>
+	 </campos>		 	
+	<campos nombre="c_ding_ndocto">
+	    <descripcion>N. Letra</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+  	 <campos nombre="edin_ccod">
+        <descripcion>Estado</descripcion>
+		<tipo>SELECT</tipo>
+	    <destino>estados_detalle_ingresos</destino> 
+	    <union>edin_ccod</union>
+	    <salida>edin_tdesc</salida>
+	    <permiso>LECTURAESCRITURA</permiso>
+	    <anulable>false</anulable>
+        <filtro>edin_ccod in (6,7,18,19,20)</filtro>
+		<alineamiento>CENTER</alineamiento>	
+		<script>onChange="procesar_tabla()"</script>
+		<deshabilitado>TRUE</deshabilitado>
+	 </campos>
+	 <campos nombre="edin_tdesc">
+	    <descripcion>Estado Doc.</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="ingr_fpago">
+	    <descripcion>F. Emision</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="ding_fdocto">
+	    <descripcion>F. Vencimiento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+     <campos nombre="rut_alumno">
+	    <descripcion>Rut Alumno</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+		<nowrap>TRUE</nowrap>		
+	 </campos>
+	 <campos nombre="rut_apoderado">
+	    <descripcion>Rut Apoderado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+		<nowrap>TRUE</nowrap>
+	 </campos>
+	 <campos nombre="ding_mdetalle">
+	    <descripcion>Monto</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>RIGHT</alineamiento>
+		<formato>MONEDA</formato>
+		<nowrap>TRUE</nowrap>
+	 </campos>
+	 <campos nombre="nueva_fecha">
+	    <descripcion>Nueva Fecha</descripcion>
+		<tipo>INPUT</tipo>
+        <permiso>LECTURAESCRITURA</permiso>
+        <caracteres>12</caracteres>
+        <maxCaracteres>10</maxCaracteres>
+	    <id>FE-N</id>
+		<deshabilitado>TRUE</deshabilitado>
+	 </campos>
+	 <campos nombre="multa">
+	    <descripcion>Multa ($)</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<alineamiento>RIGHT</alineamiento>
+		<formato>MONEDA</formato>
+		<caracteres>10</caracteres>
+        <maxCaracteres>8</maxCaracteres>
+		<deshabilitado>TRUE</deshabilitado>
+	 </campos>
+	 <campos nombre="saldo_cuota">
+	    <descripcion>Saldo Cuota</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<formato>MONEDA</formato>
+		<nowrap>TRUE</nowrap>
+		<alineamiento>RIGHT</alineamiento>
+	 </campos>
+	  <campos nombre="c_saldo_cuota">	  
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	  <campos nombre="c_monto_total">	  
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>		 
+   </parametro>
+
+ </Parametros>

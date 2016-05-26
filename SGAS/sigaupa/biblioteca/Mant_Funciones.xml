@@ -1,0 +1,110 @@
+<Parametros>
+   <parametro colorSeleccionado="#CCCCCC" colorResaltado="#999999" 
+   paginaEdicion="Mant_Funciones_Edicion.asp?codigo_modulo=%smod_ccod%&amp;codigo_funcion=%sfun_ccod% " 
+   nuevaVentanaAlto="268" formulario="f1"  nroRegistros="12"  nuevaVentanaAncho="568" 
+   eliminar="TRUE" clave="sfun_ccod" maxLista="10"  mensajeError="No existen registros para los parametros dados" seleccionarTodo="FALSE"  editar="TRUE" anchoTabla="100%"
+   nuevaVentana="TRUE" 	variable="funciones">
+	 <tablas nombre="sis_funciones_modulos" accion="B"/>
+	 <tablas nombre="sis_metodos_funciones" accion="B"/>
+   <!--<campos nombre="sfun_ccod">
+	    <descripcion>Codigo funcion</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+		<ancho>65</ancho>
+	 </campos>-->
+	 <campos nombre="smod_ccod">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="c_smod_ccod">
+	    <descripcion>Codigo Modulo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+		<ancho>65</ancho>
+	 </campos>
+	<campos nombre="sfun_tdesc">
+	    <descripcion>Nombre de la Funcion</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<ancho>350</ancho>
+	 </campos>
+	 <campos nombre="sfun_link">
+	    <descripcion>Link</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+   </parametro>
+      
+   <parametro formulario="f2" variable="modulos">
+   <campos nombre="smod_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>sis_modulos</destino> 
+	  <union>smod_ccod</union>
+	  <salida>smod_tdesc</salida>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <orden>smod_tdesc</orden>
+	  <mensajeNulo>Seleccione Modulo</mensajeNulo>
+	  <script>onchange="cargar();"</script>
+   </campos>
+   </parametro>
+  
+  <parametro formulario="f1_edicion" variable="funciones">
+   <tablas nombre="sis_metodos_funciones" accion="M"/>
+   <tablas nombre="sis_funciones_modulos" accion="M"/>
+   <campos nombre="smod_ccod">
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>
+   </campos>
+   <campos nombre="sfun_ccod">
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>
+   </campos>
+   <campos nombre="sfun_tdesc">
+      <tipo>INPUT</tipo>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <caracteres>50</caracteres>
+	  <maxCaracteres>150</maxCaracteres>
+	  <id>TO-N</id>
+   </campos>
+   <campos nombre="sfun_link">
+      <tipo>INPUT</tipo>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <caracteres>50</caracteres>
+	  <maxCaracteres>100</maxCaracteres>
+	  <id>TO-N</id>
+   </campos>
+   </parametro>
+   
+   <parametro formulario="botonera">
+   <botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>ELIMINAR</accion>
+	  <url>Mant_Funciones_Eliminar.asp</url>
+	  <formulario>edicion</formulario>
+	</botones> 
+   <botones nombre="cancelar"> 
+      <tipoTexto>CANCELAR</tipoTexto>
+	  <accion>CERRAR</accion>
+	</botones>
+	<botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>AGREGAR</accion>
+	  <posicionX>100</posicionX>
+	  <posicionY>100</posicionY>
+	  <ancho>530</ancho>
+	  <alto>239</alto>
+	</botones>
+	<botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>Proc_Mant_Funciones_Edicion.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>
+	 <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>	
+   </parametro>   
+</Parametros>

@@ -1,0 +1,34 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+		 <soloUnClick>TRUE</soloUnClick>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>portada_encuesta.asp</url>
+      </botones>
+     
+   </parametro>
+
+		
+		
+  <parametro formulario="encuesta" variable="encu">
+	  <campos nombre="carr_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>carreras</destino>
+		 <filtro>tcar_ccod in (1) and carr_ccod not in('001','820',48)</filtro>
+         <union>carr_ccod</union>
+         <salida>carr_tdesc</salida>
+		 <orden>carr_tdesc asc</orden>
+		 <id>TO-N</id>
+      </campos> 
+ </parametro>
+</Parametros>

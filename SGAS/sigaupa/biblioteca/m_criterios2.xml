@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>	
+	<parametro formulario="botonera">	
+			<botones nombre="limpiar"> 
+      		<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Limpiar</texto>		
+	  		<accion>JAVASCRIPT</accion>
+	  		<funcion>limpiar();</funcion>	   		
+		</botones>		
+		<botones nombre="eliminar"> 
+      		<tipoTexto>ELIMINAR</tipoTexto>
+	  		<accion>eliminar</accion>
+	  		<formulario>f_criterios</formulario>
+			<url>eliminar_criterios.asp</url>
+		</botones>
+		<botones nombre="agregar"> 
+      		<tipoTexto>AGREGAR</tipoTexto>
+	  		<accion>AGREGAR</accion>
+	        <url>edita_criterios2.asp</url>
+			<posicionX>150</posicionX>
+    	    <posicionY>150</posicionY>
+       		<ancho>600</ancho>
+         	<alto>300</alto>
+		</botones>
+		<botones nombre="Volver"> 
+      		<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Volver</texto>		
+	  		<accion>JAVASCRIPT</accion>
+	  		<funcion>volver();</funcion>	   		
+		</botones>
+		<botones nombre="grabar"> 
+      		<tipoTexto>GUARDAR</tipoTexto>
+	  		<accion>JAVASCRIPT</accion>
+			<formulario>edicion</formulario>
+			<funcion>validar();</funcion>
+			<soloUnClick>TRUE</soloUnClick>			
+		</botones>
+	 <botones nombre="cerrar_actualizar"> 
+       <tipoTexto>CANCELAR</tipoTexto>
+       <accion>JAVASCRIPT</accion>
+	   <funcion>Salir();</funcion>	   
+	</botones>
+	</parametro>
+	
+  	<parametro formulario="f_criterios" clave="crit_ncorr"  variable="criterios" colorSeleccionado="#CCCCCC" 
+	colorResaltado="#999999" nroRegistros="10" maxLista="10" editar="FALSE" paginaEdicion="" nuevaVentana="FALSE" 
+	seleccionarTodo="FALSE"  eliminar="True" anchoTabla="98%" mensajeError="No se encontraron críterios"> 
+    <campos nombre="encu_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>		
+		<alineamiento>RIGHT</alineamiento>
+	 </campos>
+	  <campos nombre="crit_ccod">
+	    <descripcion>Código</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>	 		 
+	 <campos nombre="crit_tdesc">
+	    <descripcion>Texto</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	 </campos>	 		 
+	 <campos nombre="crit_norden">
+	    <descripcion>Orden</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="Preguntar">
+	    <descripcion>Preguntar</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>		
+		<alineamiento>LEFT</alineamiento>
+	</campos>	
+ </parametro>
+	
+<parametro formulario="f_nueva" clave="encu_ncorr"  variable="nueva">
+	 <campos nombre="encu_ncorr">
+	  	<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="crit_ncorr">
+	  	<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="crit_ccod">
+	  	<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<maxCaracteres>10</maxCaracteres>
+		<caracteres>15</caracteres>
+		<id>TO-N</id>
+	 </campos>
+    <campos nombre="crit_tdesc">
+	  	<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<maxCaracteres>220</maxCaracteres>
+		<caracteres>200</caracteres>
+		<id>TO-N</id>
+	 </campos>	
+	  <campos nombre="crit_norden">
+	  	<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<maxCaracteres>2</maxCaracteres>
+		<caracteres>2</caracteres>
+		<id>TO-N</id>
+	 </campos> 		 
+	</parametro>
+
+  <parametro  formulario="eliminar_criterios"  clave="crit_ncorr" agregar="true" editar="true" anchoTabla="98%" nuevaVentana="true" variable="criterios">
+      <tablas nombre="criterios" accion="B"/>
+      <campos nombre="encu_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+ </parametro>	
+</Parametros>

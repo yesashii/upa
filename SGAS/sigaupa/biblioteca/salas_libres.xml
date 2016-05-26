@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="f_busqueda" variable="busqueda">
+   <campos nombre="dias_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>(select dias_ccod,dias_tdesc from dias_semana)a</destino> 
+	  <union>dias_ccod</union>
+	  <salida>dias_tdesc</salida>
+      <orden>dias_ccod asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione un día</mensajeNulo>
+	  <mensajeVacio>Seleccione un día</mensajeVacio>
+	  <id>TO-N</id>
+   </campos>
+   <campos nombre="hora_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>(select hora_ccod,hora_tdesc from horarios where hora_ccod in (1,2,3,4,5,6,7,8,9,10,11)) a</destino> 
+	  <union>hora_ccod</union>
+	  <salida>hora_tdesc</salida>
+      <orden>hora_ccod asc</orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione bloque</mensajeNulo>
+	  <mensajeVacio>Seleccione bloque</mensajeVacio>
+	  <id>TO-N</id>
+   </campos>
+    <campos nombre="sede_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>(select sede_ccod,sede_tdesc from sedes where sede_ccod in (1,2,4,7,8)) a</destino> 
+	  <union>sede_ccod</union>
+	  <salida>sede_tdesc</salida>
+      <orden>sede_ccod asc</orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Todas las sedes</mensajeNulo>
+	  <mensajeVacio>Todas las sedes</mensajeVacio>
+	  <id>TO-S</id>
+   </campos>
+   </parametro>
+   <parametro formulario="salas" anchoTabla="100%" 
+   colorResaltado="#CCCCCC"  mensajeError="No existen salas libres para el horario seleccionado"
+   colorSeleccionado="#CCCCCC" eliminar="FALSE" seleccionarTodo="FALSE"
+    editar="FALSE" 	paginaEdicion="" nuevaVentana="FALSE" variable="salas" nroRegistros="25" maxLista="25">
+     <campos nombre="sala">
+	    <descripcion>Sala</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="tipo">
+	    <descripcion>Tipo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 <campos nombre="cupo">
+	    <descripcion>Cupos</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="sede">
+	    <descripcion>Sede</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+   </parametro> 
+  <parametro formulario="botonera">
+   	 <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>
+	</botones>
+   	<botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>	 
+	</botones>	
+	<botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Exportar a Excel</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+     </botones>
+   </parametro>
+
+</Parametros>

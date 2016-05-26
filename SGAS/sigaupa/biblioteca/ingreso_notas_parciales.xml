@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="busqueda" variable="m" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" eliminar="false" agregar="true" nuevaVentana="false" maxLista="10" nroRegistros="10" anchoTabla="98%">
+      <campos nombre="secc_ccod">
+         <tipo>SELECT</tipo>
+         <destino>(SELECT -1 AS secc_ccod, '-- Seleccione Una Asignatura --' AS blanco )s</destino>
+         <union>secc_ccod</union>
+         <salida>blanco</salida>
+         <alineamiento>center</alineamiento>
+		 <orden>s.blanco</orden> 
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+         <alineamiento>center</alineamiento>
+         <script>onChange="CargarSecciones(this.form, this.value)"</script>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="profesores" variable="m" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" eliminar="false" agregar="true" nuevaVentana="false" maxLista="10" nroRegistros="10" anchoTabla="98%">
+      <campos nombre="sede_ccod">
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <union>profesor_sede</union>
+         <salida>sede</salida>
+         <anulable>true</anulable>
+         <mensajeNulo>-- Seleccione Sede --</mensajeNulo>
+         <mensajeVacio>-- Seleccione Sede --</mensajeVacio>
+         <script>onChange="CargarAsignaturas(this.form, this.value)"</script>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="secciones" variable="m" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" eliminar="false" agregar="true" nuevaVentana="false" maxLista="10" nroRegistros="10" anchoTabla="98%">
+      <campos nombre="secc_tdesc">
+         <tipo>SELECT</tipo>
+         <destino>(SELECT -1 AS secc_tdesc, '-- Secciones --' AS blanco )s</destino>
+         <union>secc_tdesc</union>
+         <salida>blanco</salida>
+		 <orden>s.blanco</orden>
+         <alineamiento>center</alineamiento>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+   <parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" paginaEdicion="editar_evaluacion.asp?cali_ncorr=%cali_ncorr%&amp;secc_ccod=%secc_ccod%&amp;cali_fevaluacion=%cali_fevaluacion%" formulario="tabla" eliminar="true" clave="cali_ncorr" mensajeError="Debe seleccionar parametros de búsqueda." colorBase="#F1F1E4" anchoTabla="98%" editar="true" nuevaVentana="true" variable="em">
+      <tablas nombre="calificaciones_seccion" accion="B"/>
+      <campos nombre="nnotas">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c_cali_nevaluacion">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="cali_nevaluacion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nº Evaluación</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="teva_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Tipo De Evaluación</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="cali_fevaluacion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Fecha Evaluación</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="cali_nponderacion">
+         <tipo>IMPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Ponderación (%) </descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro colorSeleccionado="99FFFF" colorResaltado="#DCDCB8" paginaEdicion="editar_evaluacion.asp?cali_ncorr=%cali_ncorr%&amp;secc_ccod=%secc_ccod%" formulario="tablaN" eliminar="false" clave="cali_ncorr" mensajeError="Debe selecionar parametros de búsqueda." colorBase="#F1F1E4" anchoTabla="98%" editar="false" nuevaVentana="true" variable="em">
+      <tablas nombre="calificaciones_seccion" accion="B"/>
+      <campos nombre="teva_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Tipo De Evaluación</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="cali_fevaluacion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Fecha Evaluación</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="cali_nponderacion">
+         <tipo>IMPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Ponderación (%) </descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="btn_eval_asignaturas">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>enviar(document.busqueda)</funcion>
+      </botones>
+      <botones nombre="agregar">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>agregar(document.busqueda)</funcion>
+      </botones>
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>eliminar(document.edicion);_HabilitarBoton(this,false);</funcion>
+      </botones>
+	  <botones nombre="grabar_porcentaje">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Grabar Porcentaje</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>grabar_pocentaje(document.edicion);</funcion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	  <botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>guardar(document.edicion)</funcion>
+      </botones>
+   </parametro>
+</Parametros>

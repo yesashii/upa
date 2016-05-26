@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="botonera">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.busqueda)</funcion>
+	</botones> 
+
+ <botones nombre="Asociar">
+  <tipoTexto>DEFINIR</tipoTexto> 
+  <texto>Asociar Asignatura Otro Plan</texto> 
+  <accion>JAVASCRIPT</accion>
+  <funcion>crearelectivo()</funcion>
+ </botones>
+  <botones nombre="planificar">
+  <tipoTexto>DEFINIR</tipoTexto> 
+  <texto>Asociar Asignatura Libre</texto> 
+  <accion>JAVASCRIPT</accion>
+  <funcion>crearelectivo_2()</funcion>
+ </botones>
+  <botones nombre="eliminar">
+	  <tipoTexto>ELIMINAR</tipoTexto> 
+	  <accion>ELIMINAR</accion> 
+	  <formulario>buscador</formulario> 
+	  <url>Proc_elimina_electivos.asp</url> 
+ </botones>
+    <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>salir()</funcion>
+	</botones>  
+</parametro>
+</Parametros>  

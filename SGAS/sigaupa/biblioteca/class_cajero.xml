@@ -1,0 +1,5 @@
+<Parametros>
+   <parametro formulario="movimientos_cajas" variable="movimiento_caja">
+      <tablas nombre="movimientos_cajas" accion="M"/>
+   </parametro>
+</Parametros>

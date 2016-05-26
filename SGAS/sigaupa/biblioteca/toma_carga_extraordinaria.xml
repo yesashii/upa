@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="siguiente">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Agregar Carga</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>toma_carga_nuevo.asp</url>
+      </botones>
+	  <botones nombre="ELIMINAR"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	   <accion>JAVASCRIPT</accion>
+	  <funcion>eliminar(document.edicion2);</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+	<botones nombre="imprimir">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Imprimir</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>imprimir()</funcion>
+      </botones>
+ </parametro>
+ <parametro formulario="BotoneraTomaCarga">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador);_HabilitarBoton(this,false);</funcion>
+	</botones> 
+    <botones nombre="ELIMINAR"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>elim_asig(document.edicion);_HabilitarBoton(this,false);</funcion>
+	 <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+    <botones nombre="GUARDAR"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>guardar(document.edicion);_HabilitarBoton(this,false);</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones>
+	<botones nombre="GUARDAR2"> 
+       <tipoTexto>DEFINIR</tipoTexto>
+	   <texto>Guardar</texto>
+       <accion>GUARDAR</accion>
+       <formulario>edicion</formulario>
+	   <url>toma_carga_proc.asp</url>
+	</botones> 
+	<botones nombre="HORARIO"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Horario</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>horario()</funcion>	  
+	</botones>
+	<botones nombre="NOTAS"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Ver Notas</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>ver_notas()</funcion>	  
+	</botones>
+	<botones nombre="MALLA"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Ver Malla</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>ver_malla()</funcion>	  
+	</botones>	
+	<botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>inicio_toma_carga.asp</url>
+    </botones>
+    <botones nombre="SALIR">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>	
+ </parametro>
+  <parametro formulario="BotoneraEQ">
+    <botones nombre="ELIMINAR"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	   <accion>JAVASCRIPT</accion>
+	  <funcion>eliminar(document.edicion);_HabilitarBoton(this,false);</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+    <botones nombre="AGREGAR"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>abrir();</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+	<botones nombre="FORZAR"> 
+	  <tipoTexto>DEFINIR</tipoTexto>
+      <texto>Forzar Equivalencias</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>abrir2();</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+ </parametro>
+ <parametro formulario="BotoneraSeccionesEQ">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 
+    <botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>guardar(document.edicion);</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+    <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>salir()</funcion>
+	</botones> 	
+ </parametro>
+
+<parametro formulario="toma_carga" variable="d">
+		<campos nombre="secc_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<union>secc_ccod</union>
+			<salida>horario</salida>
+			<columnas>2</columnas>
+			<anulable>true</anulable>
+			<mensajeNulo>Sin sección asignada</mensajeNulo>
+			<mensajeVacio>No hay secciones disponibles</mensajeVacio>
+			<estilo>anchofijo</estilo>
+			<id>TO-N</id>
+		</campos>
+		<campos nombre="asignatura">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<union>mall_ccod</union>
+			<salida>asignatura</salida>
+			<columnas>2</columnas>
+			<anulable>true</anulable>
+			<mensajeNulo>Seleccione asignatura equivalente</mensajeNulo>
+			<mensajeVacio>No hay asignaturas disponibles</mensajeVacio>
+			<estilo>anchofijo</estilo>
+			<id>TO-N</id>
+		</campos>
+	</parametro>
+	<parametro formulario="buscador" variable="a">
+	    <listas nombre="lBusqueda">
+			<item clave="carr_ccod" valor="carr_tdesc" />
+			<item clave="asig_ccod" valor="asig_tdesc" />
+		</listas>
+		<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="asig_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+	</parametro>
+	<parametro formulario="cargas" variable="d" clave="matr_ncorr" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" eliminar="true" >
+	<tablas nombre="cargas_academicas" accion="I"/>
+		<campos nombre="matr_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="secc_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="acse_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+	</parametro>
+	<parametro formulario="equivalencias" variable="d" clave="matr_ncorr" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" eliminar="true" >
+	<tablas nombre="equivalencias" accion="I"/>
+	<tablas nombre="cargas_academicas" accion="M"/>
+		<campos nombre="matr_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="secc_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="mall_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+		<campos nombre="acse_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+		</campos>
+	</parametro>
+</Parametros>

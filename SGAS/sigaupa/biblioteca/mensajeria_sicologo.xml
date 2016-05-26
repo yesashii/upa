@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	     <botones nombre="redacta">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Escribir Mensaje</texto>
+         <accion>JAVASCRIPT</accion>
+		 <funcion>javascript:redacta_mensaje()</funcion>
+	  </botones>
+      <botones nombre="enviar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Enviar</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>enviar_mensajes_proc.asp</url>
+	 </botones>
+	  <botones nombre="eliminar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Eliminar</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>eliminar_mensajes_proc.asp</url>
+		 <funcionValidacion>Validar_()</funcionValidacion>
+	  </botones>
+	  <botones nombre="responder">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Responder</texto>
+         <accion>NAVEGAR</accion>
+		 <formulario>edicion</formulario>
+	  </botones>
+      <botones nombre="editar">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Editar</texto>
+      </botones>
+  	  <botones nombre="anterior2">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Anterior</texto>
+	     <url>bloques_sicologos_anula.asp</url>
+      </botones>
+   </parametro>
+   
+   
+  <parametro formulario="lee_mensaje" variable="a">
+	  <campos nombre="origen">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  
+   		<campos nombre="mesi_mensaje">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+       </campos>
+	   
+     	<campos nombre="mesi_titulo">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+       </campos>
+	   <campos nombre="pers_ncorr_destino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+       </campos>
+	    <campos nombre="pers_ncorr_origen">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+       </campos>
+   </parametro>
+  
+ 
+   <parametros formulario="mensajeria" variable="mesi" anchoTabla="100%" nroRegistros="15"  maxLista="10" editar="true" nuevaVentana="true" 
+paginaEdicion="lee_mensaje.asp?mesi_ncorr=%mesi_ncorr%" eliminar="true" clave="borrar" mensajeError="No hay Mensajes.">
+	 <campos nombre="mesi_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	 <campos nombre="de">
+	 <descripcion>De</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+     </campos>
+	 
+	  <campos nombre="asunto">
+	 <descripcion>Asunto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  
+	  <campos nombre="fecha">
+	 <descripcion>Fecha</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  
+   </parametros>
+   <parametro formulario="responder_mensaje" variable="a">
+	  <campos nombre="origen">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+     	<campos nombre="asunto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>51</caracteres>
+		 <maxCaracteres>50</maxCaracteres>
+       </campos>
+   </parametro>
+   
+      <parametro formulario="enviar_mensaje" variable="a">
+	  <campos nombre="destino">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+     	<campos nombre="asunto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+       </campos>
+	   <campos nombre="mensaje">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+       </campos>
+   </parametro>
+   
+    <parametro formulario="elimina_mensaje" variable="mesi">
+	  <campos nombre="mesi_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+
+    <parametro formulario="historial" variable="mesi" anchoTabla="100%" nroRegistros="15"  maxLista="10" mensajeError="No hay Mensajes.">
+ 	 <campos nombre="accion">
+		 <descripcion>Accion</descripcion>
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+     </campos>
+	 <campos nombre="mesi_titulo">
+	 	<descripcion>Asunto</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="origen">
+		 <descripcion>De</descripcion>
+		 <tipo>INPUT</tipo>
+		 <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+     </campos>
+	 <campos nombre="fecha_msj">
+	 	<descripcion>Fecha</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+      </campos>
+	 <campos nombre="mensaje">
+	 	<descripcion>Mensaje</descripcion>
+        <tipo>INPUT</tipo>
+        <permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+      </campos>	  
+    </parametro>
+
+   
+</Parametros>

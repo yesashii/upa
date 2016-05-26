@@ -1,0 +1,6 @@
+15406135,GARCIA CEPEDA FELIX ERNESTO,,15406135-5,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17299795,HOFMANN CARDENAS FELIPE ANDRES,,17299795-3,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18167378,LOYOLA RIVAS CONSTANZA DENNIS,,18167378-8,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18537568,POBLETE SEPULVEDA MATIAS NICOLAS,,18537568-4,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18766887,ALDEA MOLINA CONSUELO MACARENA,,18766887-5,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+60805000,TESORERIA GENERAL DE LA REPUBLICA   TESORERIA GENERAL DE LA REPUBLICA,,60805000-0,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

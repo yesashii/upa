@@ -1,0 +1,6 @@
+10100310,LEIVA VALENCIA MARCELA PAZ,,10100310-8,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+15118805,AGUIRRE FIGUEROA YILLIAN MARGARITA,,15118805-2,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+15623436,GUTIERREZ SANCHEZ JENY CAROLINA,,15623436-2,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+15867068,OLGUIN ALVARADO JOSSELINE CRISTINA,,15867068-2,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+16191063,CASANUEVA ARZOLA VICTOR HUGO,,16191063-5,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+16872760,SOTOMAYOR AEDO MARIANGEL,,16872760-7,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

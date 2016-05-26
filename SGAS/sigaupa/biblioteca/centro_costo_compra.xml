@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+		 <funcionValidacion>Validar();</funcionValidacion>
+		 <soloUnClick>TRUE</soloUnClick>		 
+      </botones>
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	<botones nombre="siguiente">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Ver Siguiente</texto>
+      </botones>
+	   <botones nombre="guardar_cc">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       	<texto>Guardar</texto>
+		<formulario>edicion</formulario>
+         <url>agregar_CENTRO_COSTOS_COMPRAS_proc.asp</url>
+      </botones>
+	  <botones nombre="guardar_persmiso_cc">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       	<texto>Guardar</texto>
+		<formulario>edicion</formulario>
+         <url>agregar_PERMISOS_CENTRO_COSTOS_proc.asp</url>
+      </botones>
+	  <botones nombre="agregar_cc">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 	<texto>Agregar C.C.</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>ingresa_cc()</funcion>
+      </botones>
+	  <botones nombre="eliminar">
+         <accion>ELIMINAR</accion>
+         <tipoTexto>ELIMINAR</tipoTexto>
+		 <formulario>edicion</formulario>
+         <url>eliminar_PERMISOS_CENTRO_COSTOS_proc.asp</url>
+      </botones>
+	  <botones nombre="borrar">
+        <accion>ELIMINAR</accion>
+        <tipoTexto>ELIMINAR</tipoTexto>
+		<formulario>edicion</formulario>
+        <url>eliminar_centro_costos_proc.asp</url>
+      </botones>	  
+	  <botones nombre="excel_cc">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel de C.C.</texto>
+         <accion>BUSCAR</accion>
+         <url>centro_costo_compra_excel.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+	  <botones nombre="excel_x_rut">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel C.C. x Rut</texto>
+         <accion>BUSCAR</accion>
+         <url>centro_costo_compra_x_rut_excel.asp</url>
+         <formulario>edicion</formulario>
+      </botones>	  		  
+   </parametro>
+   
+   <parametro formulario="centro_costos_i" variable="b" clave="ccos_ncorr"> 
+	<tablas nombre="ocag_centro_costo" accion="M"/> 
+	   <campos nombre="ccos_tcodigo">
+		<descripcion>Codigo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+ 		 <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+		 <id>TO-N</id>
+      </campos>
+	  <campos nombre="ccos_tdesc">
+		<descripcion>Descripcion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+		<id>TO-N</id>
+      </campos>
+   </parametro>
+   
+  <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion="agregar_centro_costos_compras.asp?ccos_ncorr=%ccos_ncorr%"  formulario="centro_costos" nroRegistros="20"
+		 maxLista="20" mensajeError="No hay centros de costo." seleccionarTodo="false" colorBase="#F1F1E4" editar="true" eliminar="true" anchoTabla="100%"	 nuevaVentana="true" variable="b"  clave="ccos_ncorr" >  
+	   	<campos nombre="v_ccos_ncorr">
+			<descripcion>Codigo</descripcion>
+         	<tipo>INPUT</tipo>
+         	<permiso>oculto</permiso>
+      	</campos>
+	   	<campos nombre="ccos_tcodigo">
+			<descripcion>Codigo</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+      	</campos>
+	  	<campos nombre="ccos_tdesc">
+			<descripcion>Descripcion</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+      	</campos>
+   </parametro>
+   
+       <parametro formulario="busqueda_persona" variable="busqueda" > 
+	   <campos nombre="pers_nrut">
+		<descripcion>Codigo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+         <caracteres>9</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+		 <id>TO-N</id>
+      </campos>
+	  <campos nombre="pers_xdv">
+		<descripcion>Descripcion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+ 		 <script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+         <caracteres>2</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+		<id>TO-N</id>
+      </campos>
+   </parametro>
+    <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="centro_costos_persona" nroRegistros="20"
+		 maxLista="20" mensajeError="No hay centros de costo." seleccionarTodo="true" colorBase="#F1F1E4" editar="false" eliminar="true" anchoTabla="100%"	 nuevaVentana="true" variable="b"  clave="pers_nrut" >  
+	   <campos nombre="ccos_tcodigo">
+		<descripcion>Codigo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>oculto</permiso>
+      </campos>
+	   <campos nombre="ccos_tcodigo2">
+		<descripcion>Codigo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="ccos_tdesc">
+		<descripcion>Descripcion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+     <parametro formulario="agregar_permisos" variable="b" > 
+	   <campos nombre="ccos_tcodigo">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<anulable>true</anulable>
+			<mensajeNulo>Seleccione</mensajeNulo>
+			<mensajeVacio>''</mensajeVacio>
+			<destino>ocag_centro_costo </destino>
+			<union>ccos_tcodigo</union>
+			<salida>ccos_tdesc</salida>
+			<orden>ccos_tdesc asc</orden>
+			<id>TO-N</id>      
+		</campos>
+   </parametro>
+     <parametro formulario="elimina_permiso_cc" variable="b">  
+	   <campos nombre="ccos_tcodigo">
+		<descripcion>Codigo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="pers_nrut">
+		<descripcion>Descripcion</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+</Parametros>

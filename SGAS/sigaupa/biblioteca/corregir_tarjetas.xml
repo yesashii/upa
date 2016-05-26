@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+	  
+ 	<botones nombre="imprimir"> 
+        <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Imprimir</texto>
+		<accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+		<target>_blank</target>
+			
+	 </botones>	
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	  
+	<botones nombre="salir_2"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>salir()</funcion>
+	</botones> 
+	
+	<botones nombre="aceptar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>proc_cambio_tarjeta.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>
+
+   </parametro>
+   
+   
+   
+   <parametro formulario="busqueda" variable="busqueda">
+      <campos nombre="pers_nrut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+      <campos nombre="pers_xdv">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+         <id>LN-N</id>
+         <script>onBlur="this.value=this.value.toUpperCase();"</script>
+      </campos>
+	  <campos nombre="mcaj_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+         <id>NU-N</id>
+      </campos>
+ 
+	     
+   </parametro>
+   
+     <parametro formulario="tabla_valores" clave="matr_ncorr" 
+         colorResaltado="#999999"
+         colorSeleccionado="#CCCCCC" 
+	     nroRegistros="1" 
+		 eliminar="false" maxLista="1"   
+		 mensajeError="Ingrese el RUT de alumnos matriculado." 
+         seleccionarTodo="False" editar="false"  anchoTabla="98%"  nuevaVentana="true" variable="envios">
+	<campos nombre="periodo">
+         <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+      </campos>
+	     <campos nombre="semestre">
+        <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+      </campos>
+       <campos nombre="tipo_certificado">
+         <descripcion>Tipo Certificado</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>TIPOS_DESCRIPCIONES</destino>
+         <union>tdes_tdesc</union>
+         <salida>tdes_tdesc</salida>
+		 <filtro>tdet_ccod=10</filtro>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="c_matr_ncorr">
+         <descripcion>Nº Matrícula</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  
+      <campos nombre="nombre_completo">
+         <descripcion>Nombre Alummno</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+        
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      
+   </parametro>
+   
+   <parametro formulario="f_detalle_post" variable="busqueda">
+   <campos nombre="nombre_post">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+   <campos nombre="rut_post">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>
+
+   <campos nombre="carrera">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+   </campos>   	
+ </parametro>
+  <parametro colorSeleccionado="#CCCCCC" colorResaltado="#999999" 
+	 paginaEdicion="ver_tarjetas.asp?ting_ccod=%ting_ccod%&amp;ding_ndocto=%ding_ndocto%&amp;post_ncorr=%post_ncorr%&amp;ingr_ncorr=%ingr_ncorr%" 
+	 nuevaVentanaAlto='300' formulario="f_detalle_tarjeta" 
+	 nroRegistros="10" nuevaVentanaAncho='450' eliminar="false" maxLista="10" clave="post_ncorr" mensajeError="No se encontraron Cheques" 
+	 seleccionarTodo="False"  anchoTabla="100%" editar="TRUE"  nuevaVentana="TRUE" variable="envios">
+		 
+	 <campos nombre="ting_ccod">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+
+	 <campos nombre="ding_ndocto">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="post_ncorr">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	  <campos nombre="ingr_ncorr">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+     <campos nombre="tipo_doc">
+         <descripcion>Documento</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+	   <campos nombre="banc_ccod">
+			<descripcion>Cod. Banco</descripcion>
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+		</campos> 
+      <campos nombre="num_docto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nº Docto.</descripcion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="ding_fdocto">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Fecha Docto.</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <tipoDato>FECHA</tipoDato>
+      </campos>
+      <campos nombre="ding_mdetalle">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Monto Pagado</descripcion>
+         <alineamiento>RIGHT</alineamiento>
+         <formato>MONEDA</formato>
+      </campos>
+      <campos nombre="rut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Rut Alumno</descripcion>
+         <alineamiento>CENTER</alineamiento>
+         <nowrap>TRUE</nowrap>
+      </campos>
+	  <campos nombre="rut_apoderado">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Rut Apoderado</descripcion>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+  </parametro> 
+  
+  
+  <parametro formulario="f_tarjeta" variable="envios" >
+  
+	 <campos nombre="pers_ncorr">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="ingr_ncorr">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="ding_ndocto_ant">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	  <campos nombre="ting_ccod_ant">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="pacta_cuota">	    
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 
+	 <campos nombre="ding_ndocto">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>4</caracteres>
+		<maxCaracteres>4</maxCaracteres>
+	</campos>
+   	<campos nombre="ding_tcuenta_corriente">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+    	<caracteres>15</caracteres>
+   	</campos>
+   	<campos nombre="banco">
+         <descripcion>Banco</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>bancos</destino>
+         <union>banc_ccod</union>
+         <salida>banc_tdesc</salida>
+         <permiso>LECTURA</permiso>
+   	</campos>
+   <campos nombre="monto">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<formato>MONEDA</formato>
+   </campos>
+   <campos nombre="DING_FDOCTO">
+        <tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<Tipodato>FECHA</Tipodato>
+		<caracteres>12</caracteres>
+		<maxCaracteres>12</maxCaracteres>
+   </campos>  
+   
+   <campos nombre="ting_ccod">
+         <descripcion>Tipo Tarjeta</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_ingresos</destino>
+         <union>ting_ccod</union>
+         <salida>ting_tdesc</salida>
+		 <filtro>ting_ccod in(13,51)</filtro>
+         <permiso>LECTURAESCRITURA</permiso>
+   	</campos>
+
+   
+</parametro>
+
+   
+</Parametros>

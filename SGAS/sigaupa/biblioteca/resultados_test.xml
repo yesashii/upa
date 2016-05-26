@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  
+	<botones nombre="excel">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Excel</texto>
+      </botones>
+	  <botones nombre="listado">
+         <accion>GUARDAR</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Listado de asignaturas</texto>
+	   <formulario>buscador</formulario>
+	   <url>resultados_test_excel_II.asp</url>
+	    <funcionValidacion>validar_select_peri_ccod();</funcionValidacion>
+      </botones>
+   
+   </parametro>
+   <parametro formulario="busqueda" variable="b" columnas="3" >
+          <campos nombre="pers_nrut" >
+         <descripcion>rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>NU-S</id>
+         <caracteres>10</caracteres>
+         <maxCaracteres>8</maxCaracteres>
+      
+      </campos>
+	   <campos nombre="pers_xdv" >
+         <descripcion>xdv</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-S</id>
+         <caracteres>1</caracteres>
+         <maxCaracteres>1</maxCaracteres>
+      
+      </campos>
+	   <campos nombre="carr_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todos las carreras</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		<filtro>carr_ccod  in (113,112,11,12,14,16,17,21,228,23,25,29,301,302,303,304,32,33,36,39,41,43,45,47,49,51,'7',8,800,810,830,840,850,860,870,880,890,9,900,910,920,930,940,950,970,980,99,990,104,106,111,105,1,100,101,102,103,108)</filtro>
+		 <destino>carreras </destino>
+         <union>carr_ccod</union>
+         <salida>carr_tdesc</salida>
+		 <orden>carr_tdesc asc</orden>
+		 
+      </campos>
+	  <campos nombre="sede_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Todas las Sedes</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>sedes </destino>
+		 <filtro>sede_ccod in (1,2,4,7,8)</filtro>
+         <union>sede_ccod</union>
+         <salida>sede_tdesc</salida>
+		 
+      </campos>
+	  	  <campos nombre="peri_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>selecione un periodo</mensajeNulo>
+		<mensajeVacio>'0'</mensajeVacio>
+		 <destino>periodos_academicos </destino>
+		 <filtro>peri_ccod > 208</filtro>
+         <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+		 
+      </campos>
+	    	  <campos nombre="anos_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>selecione un periodo</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>anos </destino>
+		 <filtro>anos_ccod > 2007</filtro>
+         <union>anos_ccod</union>
+         <salida>anos_tdesc</salida>
+		 <script>onchange='javascript:dibujar(document.editar);'</script>
+		 <id>TO-S</id>
+      </campos>
+   </parametro>
+   
+  <parametro colorResaltado="#DCDCB8" colorSeleccionado="#EBEDA9" paginaEdicion=""  formulario="cheques" nroRegistros="15"
+		 maxLista="10" mensajeError="No hay alumnos con test tomado ." colorBase="#F1F1E4" editar="false" anchoTabla="100%"	 nuevaVentana="false" variable="a">  
+      <campos nombre="nombre">
+		<descripcion>Nombre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="rut" >
+		 <descripcion>Rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="carrera" >
+		 <descripcion>Carrera</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+         <campos nombre="Paa_mate">
+		 <descripcion>PSU o PAA Mat</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+		
+      </campos>
+	      <campos nombre="Paa_verbal">
+		 <descripcion> PSU o PAA Verbal</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+		
+      </campos>
+	      <campos nombre="ec">
+		 <descripcion>EC</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+		
+      </campos>
+	     <campos nombre="o_r">
+		 <descripcion>OR</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+		
+      </campos>
+	     <campos nombre="ca">
+		 <descripcion>CA</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+		
+      </campos>
+	     <campos nombre="ea">
+		 <descripcion>EA</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+		
+      </campos>
+	     <campos nombre="ca_ec">
+		 <descripcion>CA-EC</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+		
+      </campos>
+	     <campos nombre="ea_or">
+		 <descripcion>EA-OR</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+		 
+		
+      </campos>
+	   <campos nombre="tipo">
+		 <descripcion>Tipo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+		 
+		
+      </campos>
+	      <campos nombre="fecha">
+		 <descripcion> fecha </descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+		<formato>Fecha</formato>
+      </campos>
+      
+   </parametro>
+   
+   
+   
+</Parametros>

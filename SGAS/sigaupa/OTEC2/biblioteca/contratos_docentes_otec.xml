@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="botonera">
+     <botones nombre="lanzadera"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	 </botones>
+	 <botones nombre="cancelar"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>CERRAR</accion>
+	 </botones>
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+          </botones>
+	<botones nombre="calcular"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Calcular</texto>
+	  <accion>GUARDAR</accion>
+	  <formulario>edicion</formulario>
+	  <url>proc_contratos_docentes_otec.asp</url>
+	  <funcionValidacion>Validar_Calculo(document.edicion);</funcionValidacion>
+	</botones>
+	<botones nombre="imprimir"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Imprimir</texto>
+	  <accion>Navegar</accion>
+	  <url>javascript:Validar_Impresion(document.edicion);</url>
+	</botones>		  
+  </parametro>
+  
+  
+  
+  <parametro formulario="busqueda2" variable="busqueda">
+		
+   <campos nombre="dcur_ncorr">
+      <tipo>SELECT</tipo>
+	  <destino>diplomados_cursos</destino> 
+	  <union>DCUR_NCORR</union>
+	  <salida>DCUR_TDESC</salida>
+      <orden>DCUR_TDESC asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Programa</mensajeNulo>
+	  <mensajeVacio>Seleccione Programa</mensajeVacio>
+	  <id>TO-N</id>
+   </campos>
+   <campos nombre="sede_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>(select sede_ccod,sede_tdesc from sedes where sede_ccod in (1,2,4,7,8))a</destino> 
+	  <union>sede_ccod</union>
+	  <salida>sede_tdesc</salida>
+      <orden>sede_ccod asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Sede</mensajeNulo>
+	  <mensajeVacio>Seleccione Sede</mensajeVacio>
+	  <id>TO-N</id>
+   </campos> 
+	
+    </parametro>
+	
+	
+	
+	   <parametro  colorSeleccionado="#C0C0C0" colorResaltado="#97AAC6" 
+    paginaEdicion="detalles_contratos_otec.asp?pers_ncorr=%pers_ncorr%&amp;dcur_ncorr=%dcur_ncorr%&amp;sede_ccod=%sede_ccod%" 
+	formulario="filtro_docentes2"  
+    nroRegistros="10"  eliminar="true" maxLista="10" clave="pers_ncorr" 
+	mensajeError="No hay docentes que coincidan con el criterio de busqueda" seleccionarTodo="False" editar="true" 
+    anchoTabla="98%" nuevaVentana="False" variable="m" >
+      <campos nombre="cdot_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="dcur_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="z_tcdo_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="calcular">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	   <campos nombre="rut">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Rut Docente</descripcion>
+         <alineamiento>center</alineamiento>
+      </campos>
+      <campos nombre="nombre">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Nombre del Docente</descripcion>
+      </campos>
+      <campos nombre="pendientes">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Anexos Pendientes</descripcion>
+      </campos>	  
+	  <campos nombre="anexos_creados">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Anexos Creados</descripcion>
+      </campos>	  
+      <campos nombre="valor_categoria">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Valor Categoria</descripcion>
+      </campos>
+	   <campos nombre="sede_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>(select sede_ccod,sede_tdesc from sedes where sede_ccod in (1,2,4,7,8))a</destino> 
+	  <union>sede_ccod</union>
+	  <salida>sede_tdesc</salida>
+      <orden>sede_ccod asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Sede</mensajeNulo>
+	  <mensajeVacio>Seleccione Sede</mensajeVacio>
+	  <id>TO-N</id>
+   </campos> 	 
+	  
+	  <campos nombre="tcdo_ccod">
+	  <descripcion>Tipo Contrato</descripcion>
+      <tipo>SELECT</tipo>
+	  <destino>tipos_contratos_docentes</destino> 
+	  <union>tcdo_ccod</union>
+	  <salida>tcdo_tdesc</salida>
+      <orden>tcdo_ccod asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>false</anulable>
+	  <mensajeNulo>Seleccione Tipo Contrato</mensajeNulo>
+	  <id>TO-N</id> 
+      </campos>	
+	 
+   </parametro>
+   
+ 	<parametro formulario="generar_contratos" clave="pers_ncorr"  variable="m" >
+    	<tablas nombre="contratos" accion="M"/>
+	</parametro>
+	
+	
+ 
+</Parametros>
+

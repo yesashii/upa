@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="busqueda" variable="m" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" eliminar="false" agregar="true" nuevaVentana="false" maxLista="10" nroRegistros="10" anchoTabla="98%">
+      <campos nombre="secc_ccod">
+         <tipo>SELECT</tipo>
+         <destino>(SELECT -1 AS secc_ccod, '-- Seleccione Una Asignatura --' AS blanco )s</destino>
+         <union>secc_ccod</union>
+         <salida>blanco</salida>
+         <alineamiento>center</alineamiento>
+		 <orden>s.blanco</orden> 
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+         <alineamiento>center</alineamiento>
+         <script>onChange="CargarSecciones(this.form, this.value)"</script>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="profesores" variable="m" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" eliminar="false" agregar="true" nuevaVentana="false" maxLista="10" nroRegistros="10" anchoTabla="98%">
+      <campos nombre="sede_ccod">
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <union>profesor_sede</union>
+         <salida>sede</salida>
+         <anulable>true</anulable>
+         <mensajeNulo>-- Seleccione Sede --</mensajeNulo>
+         <mensajeVacio>-- Seleccione Sede --</mensajeVacio>
+         <script>onChange="CargarAsignaturas(this.form, this.value)"</script>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="secciones" variable="m" colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF" editar="false" eliminar="false" agregar="true" nuevaVentana="false" maxLista="10" nroRegistros="10" anchoTabla="98%">
+      <campos nombre="secc_tdesc">
+         <tipo>SELECT</tipo>
+         <destino>(SELECT -1 AS secc_tdesc, '-- Secciones --' AS blanco )s</destino>
+         <union>secc_tdesc</union>
+         <salida>blanco</salida>
+		 <orden>s.blanco</orden>
+         <alineamiento>center</alineamiento>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-N</id>
+      </campos>
+   </parametro>
+   <parametro formulario="btn_eval_asignaturas">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>enviar(document.busqueda)</funcion>
+      </botones>
+      <botones nombre="agregar">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>agregar(document.busqueda)</funcion>
+      </botones>
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>eliminar(document.edicion);_HabilitarBoton(this,false);</funcion>
+      </botones>
+	  <botones nombre="grabar_porcentaje">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Grabar Porcentaje</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>grabar_pocentaje(document.edicion);</funcion>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="parciales" anchoTabla="100%" 
+   colorResaltado="#CCCCCC"  mensajeError="No existen evaluaciones parciales registradas"
+   colorSeleccionado="#CCCCCC" eliminar="FALSE" seleccionarTodo="FALSE"
+    editar="FALSE" 	paginaEdicion="" nuevaVentana="FALSE" variable="usuarios">
+     <campos nombre="orden">
+	    <descripcion>Orden</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="tipo">
+	    <descripcion>Tipo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos> 
+	 
+	 <campos nombre="ponderacion">
+	    <descripcion>Ponderación</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="nota">
+	    <descripcion>Nota</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+   </parametro> 
+</Parametros>

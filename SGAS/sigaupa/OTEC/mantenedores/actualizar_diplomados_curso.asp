@@ -1,0 +1,84 @@
+<!-- #include file = "../biblioteca/_conexion.asp" -->
+<!-- #include file = "../biblioteca/_negocio.asp" -->
+<%
+on error resume next
+set conectar = new cconexion
+conectar.inicializar "upacifico"
+
+
+set formulario = new cformulario
+
+
+
+
+set negocio = new CNegocio
+negocio.Inicializa conectar
+
+'for each k in request.form
+'	response.write(k&"="&request.Form(k)&"<br>")
+'next
+
+
+v_dcur_tdesc = request.Form("m[0][dcur_tdesc]")
+v_dcur_ncorr = request.Form("m[0][dcur_ncorr]")
+v_dcur_ncorr_emula = request.Form("m[0][dcur_ncorr_a_emular]")
+mensaje=""
+if v_dcur_tdesc <> "" and v_dcur_ncorr ="" then
+	existe = conectar.consultaUno("select count(*) from diplomados_cursos where dcur_tdesc like '%"&v_dcur_tdesc&"%'")
+	if existe > "0" then
+		mensaje = "Ya existe un diplomado o curso con un nombre similar al ingresado haga el favor de agregar al nombre la versión correspondiente"
+		response.Redirect("editar_diplomados_curso.asp?mensaje="&mensaje)
+	end if
+end if
+
+	formulario.carga_parametros "m_diplomados_curso.xml", "mantiene_diplomados_curso"
+	formulario.inicializar conectar
+	formulario.procesaForm
+	
+	if v_dcur_ncorr = "" then
+		dcur_ncorr = conectar.consultaUno("exec obtenerSecuencia 'diplomados_cursos'")
+		formulario.agregaCampoPost "dcur_ncorr",dcur_ncorr
+	else
+		dcur_ncorr = v_dcur_ncorr
+	end if
+	formulario.mantienetablas false
+	
+
+	if v_dcur_ncorr_emula <> "" then
+	
+		set formulario2 = new cformulario
+		formulario2.carga_parametros "tabla_vacia.xml", "tabla"
+		formulario2.inicializar conectar
+	
+		consulta= "SELECT MOTE_CCOD,isnull(MAOT_NHORAS_PROGRAMA,0) as MAOT_NHORAS_PROGRAMA,0 as MAOT_NPRESUPUESTO_RELATOR,isnull(MAOT_NHORAS_AYUDANTIA,0) as MAOT_NHORAS_AYUDANTIA, 0 as MAOT_NPRESUPUESTO_AYUDANTIA,isnull(MAOT_NORDEN,1) as MAOT_NORDEN " & vbCrlf & _
+				  " FROM mallas_otec " & vbCrlf & _
+				  " WHERE cast(dcur_ncorr as varchar)= '" & v_dcur_ncorr_emula & "'" 
+	
+		formulario2.consultar consulta
+		while formulario2.siguiente
+			mote = formulario2.obtenerValor("MOTE_CCOD")
+			horasp = formulario2.obtenerValor("MAOT_NHORAS_PROGRAMA")
+			presup = formulario2.obtenerValor("MAOT_NPRESUPUESTO_RELATOR")
+			horasa = formulario2.obtenerValor("MAOT_NHORAS_AYUDANTIA")
+			presua = formulario2.obtenerValor("MAOT_NPRESUPUESTO_AYUDANTIA")
+			orden = formulario2.obtenerValor("MAOT_NORDEN")
+			
+			maot_ncorr = conectar.consultaUno("exec obtenerSecuencia 'mallas_otec'")
+			c_insert = " Insert into mallas_otec (MAOT_NCORR,DCUR_NCORR,MOTE_CCOD,MAOT_NHORAS_PROGRAMA,MAOT_NPRESUPUESTO_RELATOR,MAOT_NHORAS_AYUDANTIA,MAOT_NPRESUPUESTO_AYUDANTIA,MAOT_NORDEN,AUDI_TUSUARIO,AUDI_FMODIFICACION) "&_
+					   " values ("&maot_ncorr&","&dcur_ncorr&",'"&mote&"',"&horasp&","&presup&","&horasa&","&presua&","&orden&",'"&negocio.obtenerUsuario&"',getDate() )"
+		    conectar.ejecutaS c_insert
+
+		wend
+
+	end if
+
+	
+	if conectar.obtenerEstadoTransaccion then 
+		conectar.MensajeError "Módulo guardado exitosamente"
+	end if
+
+%>
+<script language="javascript" src="../biblioteca/funciones.js"></script>
+<script language="javascript">
+	CerrarActualizar();
+</script>

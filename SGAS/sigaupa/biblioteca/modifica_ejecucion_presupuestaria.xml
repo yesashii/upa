@@ -1,0 +1,173 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="lanzadera">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="guardar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>guardar</texto>
+         <accion>GUARDAR</accion>
+         <url>proc_guardar_modificacion.asp</url>
+         <formulario>presupuesto</formulario>
+      </botones>
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+         <funcionValidacion>Validar();</funcionValidacion>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+   </parametro>
+   
+	<parametro formulario="busqueda_presupuesto" variable="busqueda">
+		<campos nombre="area_ccod">
+			 <tipo>SELECT</tipo>
+			 <destino>presupuesto_upa.protic.area_presupuestal</destino>
+			 <union>area_ccod</union>
+			 <salida>area_tdesc</salida>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <anulable>false</anulable>
+			 <orden>orden</orden>			 
+		</campos>
+		<campos nombre="codcaja">
+			 <tipo>SELECT</tipo>
+			 <destino>presupuesto_upa.protic.vis_presupuesto_anual</destino>
+			 <union>cod_pre</union>
+			 <salida>desc_cod_pre</salida>
+			 <orden>desc_cod_pre asc</orden>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <anulable>true</anulable>
+			 <mensajeNulo>Todos los codigos</mensajeNulo>
+			 <script>onChange="CargarCodigo(this.form, this.value)"</script> 
+		</campos>		
+		<campos nombre="inicio">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>12</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>FE-S</id>
+		</campos>
+		<campos nombre="termino">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>12</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>FE-S</id>
+		</campos>
+		<campos nombre="codcaja">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURAESCRITURA</permiso>
+			 <caracteres>12</caracteres>
+			 <maxCaracteres>10</maxCaracteres>
+			 <id>TO-N</id>
+		</campos>
+	</parametro>
+   
+   <parametro formulario="f_modifica" clave="envi_ncorr" variable="pre" 
+    anchoTabla="100%" mensajeError="No se encontro presupuesto asociado a los parametros de busqueda...">
+	  <campos nombre="concepto">
+         <descripcion>Comp.</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="detalle">
+         <descripcion>Rut</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="cod_pre">
+         <descripcion>Proveedor</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>	  
+      <campos nombre="enero">
+         <descripcion>Enero</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>		 
+      </campos>
+      <campos nombre="febrero">
+         <descripcion>Febrero</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>		 
+      </campos>
+      <campos nombre="marzo">
+         <descripcion>Marzo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>		 
+      </campos>
+      <campos nombre="abril">
+         <descripcion>Abril</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>		 
+      </campos>
+      <campos nombre="mayo">
+         <descripcion>Mayo</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>		 
+      </campos>
+      <campos nombre="junio">
+         <descripcion>Junio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>		 
+      </campos>
+      <campos nombre="julio">
+         <descripcion>Julio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>		 
+      </campos>
+      <campos nombre="agosto">
+         <descripcion>Agosto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>		 
+      </campos>
+      <campos nombre="septiembre">
+         <descripcion>Septiembre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>		 
+      </campos>
+      <campos nombre="octubre">
+         <descripcion>Octubre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>		 
+      </campos>
+      <campos nombre="noviembre">
+         <descripcion>Noviembre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>		 
+      </campos>	  	  	  	  	  	  	  	  	  
+      <campos nombre="diciembre">
+         <descripcion>Diciembre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>12</caracteres>
+		 <maxCaracteres>10</maxCaracteres>		 
+      </campos>	 
+   </parametro>
+  
+</Parametros>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+<parametro formulario="botonera">
+   <botones nombre="salir"> 
+        <tipoTexto>SALIR</tipoTexto>
+	    <accion>NAVEGAR</accion>
+		<url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	<botones nombre="eliminar">
+		 <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Eliminar</texto>
+		 <accion>NAVEGAR</accion>
+		 <url>javascript:EliminaDetalle();</url>
+	</botones>
+	<botones nombre="cheques_pendientes">
+		 <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Cheques Pendientes</texto>
+		 <accion>JAVASCRIPT</accion>
+		 <funcion>BuscarDocumentos(1);</funcion>
+	</botones>
+	<botones nombre="autorizaciones_pendientes">
+		 <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Autorizaciones Pendientes</texto>
+		 <accion>JAVASCRIPT</accion>
+		 <funcion>BuscarDocumentos(2);</funcion>
+	</botones>
+	<botones nombre="guardar">
+		 <tipoTexto>GUARDAR</tipoTexto>
+		 <accion>GUARDAR</accion>
+		 <url>entrega_cheques_proc.asp</url>
+		 <formulario>datos</formulario>
+		 <funcionValidacion>Enviar();</funcionValidacion>
+	</botones>					
+	<botones nombre="buscar">
+		<tipoTexto>BUSCAR</tipoTexto>
+		<accion>BUSCAR</accion>
+		<formulario>buscador</formulario>
+		<soloUnClick>TRUE</soloUnClick>
+	</botones>
+	   <botones nombre="cerrar">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>CerrarActualizar();</funcion>
+      </botones>	
+</parametro>
+
+
+<parametro formulario="buscador" variable="busqueda">
+	<campos nombre="pers_nrut">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+		<id>NU-S</id>
+	</campos>
+	<campos nombre="pers_xdv">
+		<tipo>INPUT</tipo>
+		<permiso>LECTURAESCRITURA</permiso>
+		<caracteres>1</caracteres>
+		<maxCaracteres>1</maxCaracteres>
+		<id>LN-S</id>
+		<script>onBlur="this.value=this.value.toUpperCase();"</script>
+	</campos>	
+</parametro>
+
+
+<parametro formulario="cheques" variable="datos">
+</parametro> 
+
+<parametro formulario="solicitudes" variable="datos" anchoTabla="100%" mensajeError="No se encuentran solicitudes asociadas al rut ingresado.">
+	<campos nombre="cod_solicitud">
+		<tipo>INPUT</tipo>
+		<descripcion>Codigo</descripcion>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+	</campos>
+	<campos nombre="tsol_tdesc">
+		<tipo>INPUT</tipo>
+		<descripcion>Solicitud</descripcion>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+	</campos>
+	<campos nombre="vibo_ccod">
+		<descripcion>Estado</descripcion> 
+		<tipo>SELECT</tipo> 
+		<destino>ocag_visto_bueno</destino> 
+		<union>vibo_ccod</union> 
+		<salida>vibo_tdesc</salida> 
+		<permiso>LECTURA</permiso> 
+		<alineamiento>CENTER</alineamiento> 
+	</campos>
+	<campos nombre="monto">
+		<tipo>INPUT</tipo>
+		<descripcion>Monto</descripcion>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+	</campos>
+	<campos nombre="fecha_solicitud">
+		<tipo>INPUT</tipo>
+		<descripcion>Fecha solicitud</descripcion>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+	</campos>
+	<campos nombre="ocag_frecepcion_presupuesto">
+		<tipo>INPUT</tipo>
+		<descripcion>Fecha Presupuesto</descripcion>
+		<permiso>LECTURA</permiso>
+		<caracteres>10</caracteres>
+		<maxCaracteres>8</maxCaracteres>
+	</campos>					
+</parametro> 
+
+</Parametros>

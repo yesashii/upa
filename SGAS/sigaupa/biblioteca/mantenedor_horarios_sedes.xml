@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="agregar">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>AGREGAR</accion>
+         <alto>350</alto>
+         <ancho>500</ancho>
+         <posicionX>100</posicionX>
+         <posicionY>100</posicionY>
+         <url>editar_horarios_sedes.asp</url>
+      </botones>
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <formulario>edicion</formulario>
+         <url>eliminar_horario_sede.asp</url>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+   </parametro>
+   <parametro formulario="btn_editar_horarios">
+    <botones nombre="agregar"> 
+      <tipoTexto>agregar</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>agrega_horario(document.editar)</funcion>
+	</botones> 
+    <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>cerrar()</funcion>
+	</botones> 
+   </parametro>
+   
+<parametro formulario="lista_horarios" variable="a_s" clave="hora_ccod" editar="true" eliminar="true"
+	agregar="true" nuevaVentana="true" anchoTabla="98%" maxLista="10" nroRegistros="20" mensajeError="No Existen Horarios asociadas a la sede." paginaEdicion="editar_horarios_sedes.asp?hora_ccod=%hora_ccod%"  colorResaltado="#DCDCB8" colorBase="#F1F1E4" colorSeleccionado="99FFFF">
+		<campos nombre="hora_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Descripción Hora</descripcion>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="hora_hinicio">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Hora Inicio</descripcion>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+		<campos nombre="hora_htermino">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Hora Termino</descripcion>
+			<alineamiento>LEFT</alineamiento>
+		</campos>
+	</parametro>
+	<parametro formulario="agregar_horario" variable="ag_s" clave="sala_ccod" editar="false" eliminar="false"
+	agregar="true" nuevaVentana="false" anchoTabla="98%" maxLista="10" nroRegistros="20" mensajeError="No existen resoluciones asociadas." paginaEdicion="homologaciones.asp?reso_ncorr=%reso_ncorr%" >
+		<campos nombre="hora_hinicio">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>7</caracteres>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<maxCaracteres>5</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+		<campos nombre="hora_htermino">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<caracteres>7</caracteres>
+			<script>onKeyUp='this.value=this.value.toUpperCase();'</script>
+			<maxCaracteres>5</maxCaracteres>
+			<id>TO-N</id>
+		</campos>
+
+		<campos nombre="hora_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<codigo>hora_ccod</codigo>
+			<salida>hora_tdesc</salida>
+			<anulable>TRUE</anulable>
+			<orden>hora_ccod</orden>
+			<mensajeNulo>Elija Un Bloque</mensajeNulo>
+			<id>TO-N</id>
+
+		</campos>		
+	</parametro>
+	<parametro formulario="mantiene_horario" variable="ag_s">
+		<tablas nombre="horarios_sedes" accion="M"/>
+	</parametro>
+	<parametro formulario="eliminar_salas" variable="a_s">
+		<tablas nombre="salas" accion="B"/>
+		<campos nombre="sala_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="sala_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="sala_ncupo">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="tsal_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>		
+		<campos nombre="sala_ciso">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="sala_fini_vigencia">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="sala_ffin_vigencia">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+	</parametro>
+</Parametros>

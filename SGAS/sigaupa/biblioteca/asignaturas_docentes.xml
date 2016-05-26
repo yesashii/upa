@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="BotoneraSeccionesEQ">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador)</funcion>
+	</botones> 
+    <botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>guardar(document.edicion);</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+    <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+	<botones nombre="excel_asignaturas">
+       <tipoTexto>DEFINIR</tipoTexto>
+	   <texto>Reporte Asignaturas</texto>
+       <accion>GUARDAR</accion>	   
+	   <formulario>edicion</formulario>
+   </botones> 
+   <botones nombre="excel_docentes">
+       <tipoTexto>DEFINIR</tipoTexto>
+	   <texto>Reporte Docentes</texto>
+       <accion>GUARDAR</accion>	   
+	   <formulario>edicion</formulario>
+   </botones> 	
+ </parametro>
+ <parametro formulario="buscador" variable="a">
+	    <listas nombre="lBusqueda">
+			<item clave="sede_ccod" valor="sede_tdesc" />
+			<item clave="carr_ccod" valor="carr_tdesc" />
+		</listas>
+		<campos nombre="carr_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+		<campos nombre="sede_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+		</campos>
+	</parametro>
+	<parametro formulario="f_asignaturas"  variable="asignaturas" 
+      colorSeleccionado="#CCCCCC" colorResaltado="#999999" 
+	  paginaEdicion="" eliminar="FALSE" 
+      seleccionarTodo="FALSE"  anchoTabla="100%" editar="FALSE"  nuevaVentana="FALSE" 
+	  mensajeError="No se encontraron asignaturas sin docentes asignados" nroRegistros="10" maxLista="15">
+    <campos nombre="asig_ccod">
+	    <descripcion>Cód. Asig</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>	 
+	 <campos nombre="asig_tdesc">
+	    <descripcion>Asignatura</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<nowrap>TRUE</nowrap>
+	 </campos>
+	  <campos nombre="dia">
+	    <descripcion>Día</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	</campos>
+	 <campos nombre="sala_tdesc">
+	    <descripcion>Sala</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<nowrap>TRUE</nowrap>
+	</campos>
+	 <campos nombre="bloque">
+	    <descripcion>Bloque Horario</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<nowrap>TRUE</nowrap>
+	</campos>	 
+ </parametro>  
+ <parametro formulario="nueva_seccion" variable="d">
+		<campos nombre="secc_ccod">
+			<tipo>SELECT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<union>secc_ccod</union>
+			<salida>secc_tdesc</salida>
+			<columnas>2</columnas>
+			<anulable>true</anulable>
+			<mensajeNulo>Nueva Sección</mensajeNulo>
+			<mensajeVacio>No hay más secciones disponibles</mensajeVacio>
+			<estilo>anchofijo</estilo>
+			<id>TO-N</id>
+		</campos>
+</parametro>
+
+<parametro formulario="f_profesores"  variable="profesores" 
+      colorSeleccionado="#CCCCCC" colorResaltado="#999999" 
+	  paginaEdicion="" eliminar="FALSE" 
+      seleccionarTodo="FALSE"  anchoTabla="100%" editar="FALSE"  nuevaVentana="FALSE" 
+	  mensajeError="No se encontraron Docentes sin profesores sin asignatura" nroRegistros="20" maxLista="15">
+    <campos nombre="rut">
+	    <descripcion>RUT</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>	 
+	 <campos nombre="profesor">
+	    <descripcion>Nombre Profesor</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<nowrap>TRUE</nowrap>
+	 </campos>
+	  <campos nombre="tipo_profesor">
+	    <descripcion>Tipo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	</campos>
+ </parametro>  
+ <parametro formulario="listado_asignaturas"  variable="asignaturas" 
+      colorSeleccionado="#CCCCCC" colorResaltado="#999999" 
+	  paginaEdicion="" eliminar="FALSE" 
+      seleccionarTodo="FALSE"  anchoTabla="100%" editar="FALSE"  nuevaVentana="FALSE" 
+	  mensajeError="No se encontraron asignaturas sin docentes asignados">
+    <campos nombre="asig_ccod">
+	    <descripcion>Cód. Asig</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>	 
+	 <campos nombre="asig_tdesc">
+	    <descripcion>Asignatura</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<nowrap>TRUE</nowrap>
+	 </campos>
+	  <campos nombre="dia">
+	    <descripcion>Día</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	</campos>
+	 <campos nombre="sala_tdesc">
+	    <descripcion>Sala</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<nowrap>TRUE</nowrap>
+	</campos>
+	 <campos nombre="bloque">
+	    <descripcion>Bloque Horario</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<nowrap>TRUE</nowrap>
+	</campos>	 
+ </parametro>  
+ <parametro formulario="listado_profesores"  variable="profesores" 
+      colorSeleccionado="#CCCCCC" colorResaltado="#999999" 
+	  paginaEdicion="" eliminar="FALSE" 
+      seleccionarTodo="FALSE"  anchoTabla="100%" editar="FALSE"  nuevaVentana="FALSE" 
+	  mensajeError="No se encontraron Docentes sin profesores sin asignatura">
+    <campos nombre="rut">
+	    <descripcion>RUT</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	 </campos>	 
+	 <campos nombre="profesor">
+	    <descripcion>Nombre Profesor</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+		<nowrap>TRUE</nowrap>
+	 </campos>
+	  <campos nombre="tipo_profesor">
+	    <descripcion>Tipo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>LEFT</alineamiento>
+	</campos>
+ </parametro>  
+</Parametros>

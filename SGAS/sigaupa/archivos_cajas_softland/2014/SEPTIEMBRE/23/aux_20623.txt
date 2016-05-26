@@ -1,0 +1,7 @@
+16170127,CONTRERAS HERMOSILLA WALTER,,16170127-0,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17290215,FLORES MELLA MARIA JOSE,,17290215-4,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17703785,BASSO PACHECO FRANCISCA,,17703785-0,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18788197,ROJAS MATTA VANNESA ANDREA,,18788197-8,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+60805000,TESORERIA GENERAL DE LA REPUBLICA   TESORERIA GENERAL DE LA REPUBLICA,,60805000-0,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+73315900,  CENTRO INTERMEDIO DE CAPAC. DE ASEXMA,,73315900-6,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+99225000,    ACE SEGUROS S.A.,,99225000-3,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

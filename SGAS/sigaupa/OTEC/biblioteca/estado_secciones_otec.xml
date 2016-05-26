@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+  <parametro formulario="botonera">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+		 <accion>BUSCAR</accion>
+		 <formulario>buscador</formulario>
+		 <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+	<botones nombre="cambio"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	    <texto>Cambiar Estado</texto>
+		<accion>NAVEGAR</accion>
+		<url>javascript:VentanaCambio();</url>	
+	</botones> 
+    <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	<botones nombre="cancelar">
+         <tipoTexto>Cerrar</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>cerrarVentana()</funcion>
+      </botones>
+	  <botones nombre="guardar_nuevo">
+         <tipoTexto>guardar</tipoTexto>
+         <accion>guardar</accion>
+         <formulario>edicion</formulario>
+         <url>proc_crea_cambio_estado.asp</url>
+		 <funcionValidacion>comprobar();</funcionValidacion>
+      </botones>
+ </parametro>
+ 
+ <parametro formulario="f_busqueda" variable="b">
+   <campos nombre="dcur_ncorr">
+      <tipo>SELECT</tipo>
+	  <destino>diplomados_cursos</destino> 
+	  <union>DCUR_NCORR</union>
+	  <salida>DCUR_TDESC</salida>
+      <orden>DCUR_TDESC asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Programa</mensajeNulo>
+	  <mensajeVacio>Seleccione Programa</mensajeVacio>
+	  <id>TO-N</id>
+   </campos>
+   <campos nombre="sede_ccod">
+      <tipo>SELECT</tipo>
+	  <destino>(select sede_ccod,sede_tdesc from sedes where sede_ccod in (1,2,4,7,8))a</destino> 
+	  <union>sede_ccod</union>
+	  <salida>sede_tdesc</salida>
+      <orden>sede_ccod asc </orden>	  
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <anulable>true</anulable>
+	  <mensajeNulo>Seleccione Sede</mensajeNulo>
+	  <mensajeVacio>Seleccione Sede</mensajeVacio>
+	  <id>TO-N</id>
+   </campos>
+  </parametro> 
+ 
+ <parametro formulario="datos_seccion" variable="m" >		
+		<campos nombre="dgso_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso> 
+		</campos>
+		<campos nombre="sede_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso> 
+		</campos>
+		<campos nombre="dcur_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso> 
+		</campos>
+		<campos nombre="dcur_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso> 
+		</campos>
+		<campos nombre="dgso_finicio">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso> 
+		</campos>
+		<campos nombre="dgso_ftermino">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso> 
+		</campos>
+		<campos nombre="esot_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso> 
+		</campos>		
+  </parametro>
+    
+  <parametro formulario="historial_estado" variable="datos" clave="sohe_ncorr" anchoTabla="90%" 
+mensajeError="No se encuentra historial de estados del modulo.." >
+		<!--<tablas nombre="ocag_autoriza_solicitud_giro" accion="M"/>-->
+		<campos nombre="esot_tdesc">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Estados</descripcion>
+			<alineamiento>center </alineamiento>
+		</campos>
+		<campos nombre="sohe_observacion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURA</permiso>
+			<descripcion>Observacion</descripcion>
+			<alineamiento>center</alineamiento>
+		</campos>
+		<campos nombre="audi_tusuario">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Actualizado por</descripcion>
+			 <alineamiento>center </alineamiento>
+		</campos>
+		<campos nombre="audi_fmodificacion">
+			 <tipo>INPUT</tipo>
+			 <permiso>LECTURA</permiso>
+			 <descripcion>Fecha y Hora Actualizacion</descripcion>
+			 <alineamiento>center </alineamiento>
+		</campos>		
+</parametro>   
+
+<parametro formulario="cambio_estado" variable="cambio" clave="sohe_ncorr">
+		<tablas nombre="secciones_otec_historial_estado" accion="M"/>	
+		<tablas nombre="datos_generales_secciones_otec" accion="M"/>		
+		<campos nombre="sohe_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="dgso_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso>
+		</campos>
+		<campos nombre="dcur_ncorr">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso> 
+		</campos>
+		<campos nombre="sohe_observacion">
+			<tipo>INPUT</tipo>
+			<permiso>LECTURAESCRITURA</permiso>
+			<id>TO-N</id>
+		</campos>
+		<campos nombre="sede_ccod">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso> 
+		</campos>		
+		<campos nombre="datos_generales">
+			<tipo>INPUT</tipo>
+			<permiso>OCULTO</permiso> 
+		</campos>
+		<campos nombre="esot_ccod">
+		  <tipo>SELECT</tipo>
+		  <destino>estado_seccion_otec</destino> 
+		  <union>esot_ccod</union>
+		  <salida>esot_tdesc</salida>
+		  <orden>esot_tdesc asc </orden>	  
+		  <permiso>LECTURAESCRITURA</permiso>
+		  <id>TO-N</id>
+       </campos>		
+</parametro> 
+
+</Parametros>

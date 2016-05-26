@@ -1,0 +1,623 @@
+
+      <script type="text/javascript">
+          //two variables Controller and Action have to be initialized in the View HTML code
+          var Controller ='MatrXSexo';
+          var Action = 'List';
+      </script>
+           
+      <%
+	  chequeo_2005="checked='checked'"
+	  chequeo_2006="checked='checked'"
+	  chequeo_2007="checked='checked'"
+	  chequeo_2008="checked='checked'"
+	  chequeo_2009="checked='checked'"
+	  chequeo_2010="checked='checked'"
+	  chequeo_2011="checked='checked'"
+	  chequeo_2012="checked='checked'"
+	  chequeo_2013="checked='checked'"
+	  complemento_url = ""
+	  if request.form("c2005")="" then
+	  	chequeo_2005=""
+	  else
+	    complemento_url = complemento_url&"&e2005=1"
+	  end if
+	  if request.form("c2006")="" then
+	  	chequeo_2006=""
+	  else
+	    complemento_url = complemento_url&"&e2006=1"
+	  end if
+	  if request.form("c2007")="" then
+	  	chequeo_2007=""
+	  else
+	    complemento_url = complemento_url&"&e2007=1"
+	  end if
+	  if request.form("c2008")="" then
+	  	chequeo_2008=""
+	  else
+	    complemento_url = complemento_url&"&e2008=1"
+	  end if
+	  if request.form("c2009")="" then
+	  	chequeo_2009=""
+	  else
+	    complemento_url = complemento_url&"&e2009=1"
+	  end if
+	  if request.form("c2010")="" then
+	  	chequeo_2010=""
+	  else
+	    complemento_url = complemento_url&"&e2010=1"
+	  end if
+	  if request.form("c2011")="" then
+	  	chequeo_2011=""
+	  else
+	    complemento_url = complemento_url&"&e2011=1"
+	  end if
+	  if request.form("c2012")="" then
+	  	chequeo_2012=""
+	  else
+	    complemento_url = complemento_url&"&e2012=1"
+	  end if
+	  if request.form("c2013")="" then
+	  	chequeo_2013=""
+	  else
+	    complemento_url = complemento_url&"&e2013=1"
+	  end if
+	  %>
+      <script type="text/javascript" src="//www.google.com/jsapi"></script>
+	  <script type="text/javascript">
+          google.load('visualization', '1.1', {packages: ['controls']});
+      </script>
+      <script type="text/javascript">
+      function drawVisualization() {
+        // Prepare the data
+        var data = google.visualization.arrayToDataTable([
+          ['Sede', 'Sexo', 'Periodo', 'Total']
+		       <%Dim obj0
+                  if chequeo_2005 <> "" then
+				  For each obj0 in Model.Items%>
+                  ,['<%=Html.Encode(obj0.cabecera)%>','<%=Html.Encode(obj0.sexo)%>', '2005', <%=Html.Encode(obj0.a2005) %>]
+				<%next
+				  end if%>
+			   <%if chequeo_2006 <> "" then
+			     For each obj0 in Model.Items%>
+                  ,['<%=Html.Encode(obj0.cabecera)%>','<%=Html.Encode(obj0.sexo)%>', '2006', <%=Html.Encode(obj0.a2006) %>]
+				<%next
+				  end if%>
+			   <%if chequeo_2007 <> "" then
+			     For each obj0 in Model.Items%>
+                  ,['<%=Html.Encode(obj0.cabecera)%>','<%=Html.Encode(obj0.sexo)%>', '2007', <%=Html.Encode(obj0.a2007) %>]
+			   <%next
+				 end if%>	
+			   <%if chequeo_2008 <> "" then
+			     For each obj0 in Model.Items%>
+                  ,['<%=Html.Encode(obj0.cabecera)%>','<%=Html.Encode(obj0.sexo)%>', '2008', <%=Html.Encode(obj0.a2008) %>]
+			   <%next
+				 end if%>
+			   <%if chequeo_2009 <> "" then
+			     For each obj0 in Model.Items%>
+                  ,['<%=Html.Encode(obj0.cabecera)%>','<%=Html.Encode(obj0.sexo)%>', '2009', <%=Html.Encode(obj0.a2009) %>]
+			   <%next
+				 end if%>
+			   <%if chequeo_2010 <> "" then
+			     For each obj0 in Model.Items%>
+                  ,['<%=Html.Encode(obj0.cabecera)%>','<%=Html.Encode(obj0.sexo)%>', '2010', <%=Html.Encode(obj0.a2010) %>]
+			   <%next
+				 end if%>
+			   <%if chequeo_2011 <> "" then
+			     For each obj0 in Model.Items%>
+                  ,['<%=Html.Encode(obj0.cabecera)%>','<%=Html.Encode(obj0.sexo)%>', '2011', <%=Html.Encode(obj0.a2011) %>]
+			   <%next
+				 end if%>
+			   <%if chequeo_2012 <> "" then
+			     For each obj0 in Model.Items%>
+                  ,['<%=Html.Encode(obj0.cabecera)%>','<%=Html.Encode(obj0.sexo)%>', '2012', <%=Html.Encode(obj0.a2012) %>]
+			   <%next
+				 end if%>
+			   <%if chequeo_2013 <> "" then
+			     For each obj0 in Model.Items%>
+                  ,['<%=Html.Encode(obj0.cabecera)%>','<%=Html.Encode(obj0.sexo)%>', '2013', <%=Html.Encode(obj0.a2013) %>]
+			   <%next
+				 end if%>
+        ]);
+      
+        // Define category pickers for 'Country', 'Region/State' and 'City'
+        var sedePicker = new google.visualization.ControlWrapper({
+          'controlType': 'CategoryFilter',
+          'containerId': 'control1',
+          'options': {
+            'filterColumnLabel': 'Sede',
+            'ui': {
+              'labelStacking': 'horizontal',
+              'allowTyping': false,
+              'allowMultiple': false
+            }
+          }
+        });
+      
+        var sexoPicker = new google.visualization.ControlWrapper({
+          'controlType': 'CategoryFilter',
+          'containerId': 'control2',
+          'options': {
+            'filterColumnLabel': 'Sexo',
+            'ui': {
+              'labelStacking': 'horizontal',
+              'allowTyping': false,
+              'allowMultiple': false
+            }
+          }
+        });
+      
+        var periodoPicker = new google.visualization.ControlWrapper({
+          'controlType': 'CategoryFilter',
+          'containerId': 'control3',
+          'options': {
+            'filterColumnLabel': 'Periodo',
+            'ui': {
+              'labelStacking': 'horizontal',
+              'allowTyping': false,
+              'allowMultiple': true
+            }
+          }
+        });
+      
+        // Define a bar chart to show 'Population' data
+        var pieChart = new google.visualization.ChartWrapper({
+          'chartType': 'ColumnChart',
+          'containerId': 'chart1',
+          'options': {
+            'width': 300,
+            'height': 300,
+			//'isStacked' : true,
+			'legend':'yes',
+            'chartArea': {top: 0, right: 0, bottom: 0}
+          },
+          // Configure the barchart to use columns 2 (City) and 3 (Population)
+          'view': {'columns': [0, 3]}
+        });
+      
+	    // Define a table
+        var table = new google.visualization.ChartWrapper({
+          'chartType': 'Table',
+          'containerId': 'chart2',
+          'options': {
+            'width': '500px'
+          }
+        });
+	     
+        // Create the dashboard.
+        new google.visualization.Dashboard(document.getElementById('dashboard')).
+          // Configure the controls so that:
+          // - the 'Sede' selection drives the 'Sexos' one,
+          // - the 'Sexo' selection drives the 'Periodos' one,
+          // - and finally the 'Periodo' output drives the chart
+          bind(sedePicker, sexoPicker).
+          bind(sexoPicker, periodoPicker).
+          bind(periodoPicker, [pieChart,table]).
+          // Draw the dashboard
+          draw(data);
+      }
+      
+
+      google.setOnLoadCallback(drawVisualization);
+    </script>
+     <!-- <div class='GridViewScrollContainer'>-->
+     <div id="cuadro0">
+     <h3 class="shad">
+               <form name="formu_anos" target="_self" method="post">
+               <table width="60%" align="center" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td colspan="9">Seleccione años a consultar</td>
+                    </tr>
+                    <tr>
+                        <td width="11%" align="center"><input type="checkbox" name="c2005" value="2005" <%=chequeo_2005%> onchange="document.formu_anos.submit();" ></td>
+                        <td width="11%" align="center"><input type="checkbox" name="c2006" value="2006" <%=chequeo_2006%> onchange="document.formu_anos.submit();" ></td>
+                        <td width="11%" align="center"><input type="checkbox" name="c2007" value="2007" <%=chequeo_2007%> onchange="document.formu_anos.submit();" ></td>
+                        <td width="11%" align="center"><input type="checkbox" name="c2008" value="2008" <%=chequeo_2008%> onchange="document.formu_anos.submit();" ></td>
+                        <td width="11%" align="center"><input type="checkbox" name="c2009" value="2009" <%=chequeo_2009%> onchange="document.formu_anos.submit();" ></td>
+                        <td width="11%" align="center"><input type="checkbox" name="c2010" value="2010" <%=chequeo_2010%> onchange="document.formu_anos.submit();" ></td>
+                        <td width="11%" align="center"><input type="checkbox" name="c2011" value="2011" <%=chequeo_2011%> onchange="document.formu_anos.submit();" ></td>
+                        <td width="11%" align="center"><input type="checkbox" name="c2012" value="2012" <%=chequeo_2012%> onchange="document.formu_anos.submit();" ></td>
+                        <td width="12%" align="center"><input type="checkbox" name="c2013" value="2013" <%=chequeo_2013%> onchange="document.formu_anos.submit();" ></td>
+                    </tr>
+                    <tr>
+                        <td width="11%" align="center">2005</td>
+                        <td width="11%" align="center">2006</td>
+                        <td width="11%" align="center">2007</td>
+                        <td width="11%" align="center">2008</td>
+                        <td width="11%" align="center">2009</td>
+                        <td width="11%" align="center">2010</td>
+                        <td width="11%" align="center">2011</td>
+                        <td width="11%" align="center">2012</td>
+                        <td width="12%" align="center">2013</td>
+                    </tr>
+               </table>
+               </form>
+            </h3>
+      </div> 
+      <div id="cuadro1">
+      <p>Los siguientes indicadores dan cuenta del total de matriculados nuevos distribuidos por Sedes, Facultades y jornadas de estudio.</p>
+      <table>
+       	<tr valign="top">
+        	<td width="33%" align="center">
+                <div id="cuadro_chico_1_dashboard">
+            	<br />
+                <div id="dashboard">
+                  <table bgcolor="#FFFFFF" width="90%">
+                    <tr style='vertical-align: top'>
+                      <td  width="40%" style='font-size: 0.6em;'>
+                        <div id="control1" align="left"></div>
+                      </td>
+                      <td  width="30%" style='font-size: 0.6em;'>
+                        <div id="control2" align="left"></div>
+                      </td>
+                      <td  width="30%" style='font-size: 0.6em;'>
+                        <div id="control3" align="left"></div>
+                      </td>
+                    </tr>
+                    <tr style='vertical-align: top'>
+                      <td colspan="3" align="center" style='font-size: 0.6em;'>
+                        <div style="float: center;" id="chart1"></div>
+                        <div style="float: left;" id="chart2"></div>
+                        <div style="float: left;" id="chart3"></div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <br />
+                <table bgcolor="#FFFFFF" class="tabla">
+                    <tr>
+                      <th>Sede</th>
+                      <th>Sexo</th>
+                      <%if chequeo_2005 <> "" then%>
+                      <th>2005</th>
+                      <%end if%>
+                      <%if chequeo_2006 <> "" then%>
+                      <th>2006</th>
+                      <%end if%>
+                      <%if chequeo_2007 <> "" then%>
+                      <th>2007</th>
+                      <%end if%>
+                      <%if chequeo_2008 <> "" then%>
+                      <th>2008</th>
+                      <%end if%>
+                      <%if chequeo_2009 <> "" then%>
+                      <th>2009</th>
+                      <%end if%>
+                      <%if chequeo_2010 <> "" then%>
+                      <th>2010</th>
+                      <%end if%>
+                      <%if chequeo_2011 <> "" then%>
+                      <th>2011</th>
+                      <%end if%>
+                      <%if chequeo_2012 <> "" then%>
+                      <th>2012</th>
+                      <%end if%>
+                      <%if chequeo_2013 <> "" then%>
+                      <th>2013</th>
+                      <%end if%>
+                    </tr>
+            
+                    <%
+                if  IsNothing(Model) then
+                    %> <tr>
+                      <td colspan="4">Sin registros</td>
+                    </tr><%
+                Else
+                    Dim obj
+                    For each obj in Model.Items
+                    %>
+            
+                    <tr>
+                      <td><div align="left"><%=Html.Encode(obj.cabecera) %></div></td>
+                      <td><div align="left"><%=Html.Encode(obj.sexo) %></div></td>
+                      <%if chequeo_2005 <> "" then%>
+                      <td><%=Html.Encode(obj.a2005) %></td>
+                      <%end if%>
+                      <%if chequeo_2006 <> "" then%>
+                      <td><%=Html.Encode(obj.a2006) %></td>
+                      <%end if%>
+                      <%if chequeo_2007 <> "" then%>
+                      <td><%=Html.Encode(obj.a2007) %></td>
+                      <%end if%>
+                      <%if chequeo_2008 <> "" then%>
+                      <td><%=Html.Encode(obj.a2008) %></td>
+                      <%end if%>
+                      <%if chequeo_2009 <> "" then%>
+                      <td><%=Html.Encode(obj.a2009) %></td>
+                      <%end if%>
+                      <%if chequeo_2010 <> "" then%>
+                      <td><%=Html.Encode(obj.a2010) %></td>
+                      <%end if%>
+                      <%if chequeo_2011 <> "" then%>
+                      <td><%=Html.Encode(obj.a2011) %></td>
+                      <%end if%>
+                      <%if chequeo_2012 <> "" then%>
+                      <td><%=Html.Encode(obj.a2012) %></td>
+                      <%end if%>
+                      <%if chequeo_2013 <> "" then%>
+                      <td><%=Html.Encode(obj.a2013) %></td>
+                      <%end if%>
+                    </tr>
+                      <% 
+                    Next
+                 End If
+                 %>
+                  </table>
+                  <%=Html.ActionLink("<div class='btn' align='right'>Obtener Excel</div>","MatrNuevo","List_excel", "partial=excel"&complemento_url)%>
+                 </div>
+            </td>
+            <td width="34%" align="center">
+                 <div id="cuadro_chico_1_n">
+                 <br />
+                 <br />
+                 <table bgcolor="#FFFFFF" class="tabla">
+                     <tr>
+                      <th>Facultad</th>
+                      <th>Sexo</th>
+                      <%if chequeo_2005 <> "" then%>
+                      <th>2005</th>
+                      <%end if%>
+                      <%if chequeo_2006 <> "" then%>
+                      <th>2006</th>
+                      <%end if%>
+                      <%if chequeo_2007 <> "" then%>
+                      <th>2007</th>
+                      <%end if%>
+                      <%if chequeo_2008 <> "" then%>
+                      <th>2008</th>
+                      <%end if%>
+                      <%if chequeo_2009 <> "" then%>
+                      <th>2009</th>
+                      <%end if%>
+                      <%if chequeo_2010 <> "" then%>
+                      <th>2010</th>
+                      <%end if%>
+                      <%if chequeo_2011 <> "" then%>
+                      <th>2011</th>
+                      <%end if%>
+                      <%if chequeo_2012 <> "" then%>
+                      <th>2012</th>
+                      <%end if%>
+                      <%if chequeo_2013 <> "" then%>
+                      <th>2013</th>
+                      <%end if%>
+                    </tr>
+            
+                    <%
+                if  IsNothing(ModelFacultad) then
+                    %> <tr>
+                      <td colspan="4">Sin registros</td>
+                    </tr><%
+                Else
+                    Dim obj2
+                    For each obj2 in ModelFacultad.Items
+                    %>
+            
+                    <tr>
+                      <td><div align="left"><%=Html.Encode(obj2.cabecera) %></div></td>
+                      <td><div align="left"><%=Html.Encode(obj2.sexo) %></div></td>
+                      <%if chequeo_2005 <> "" then%>
+                      <td><%=Html.Encode(obj2.a2005) %></td>
+                      <%end if%>
+                      <%if chequeo_2006 <> "" then%>
+                      <td><%=Html.Encode(obj2.a2006) %></td>
+                      <%end if%>
+                      <%if chequeo_2007 <> "" then%>
+                      <td><%=Html.Encode(obj2.a2007) %></td>
+                      <%end if%>
+                      <%if chequeo_2008 <> "" then%>
+                      <td><%=Html.Encode(obj2.a2008) %></td>
+                      <%end if%>
+                      <%if chequeo_2009 <> "" then%>
+                      <td><%=Html.Encode(obj2.a2009) %></td>
+                      <%end if%>
+                      <%if chequeo_2010 <> "" then%>
+                      <td><%=Html.Encode(obj2.a2010) %></td>
+                      <%end if%>
+                      <%if chequeo_2011 <> "" then%>
+                      <td><%=Html.Encode(obj2.a2011) %></td>
+                      <%end if%>
+                      <%if chequeo_2012 <> "" then%>
+                      <td><%=Html.Encode(obj2.a2012) %></td>
+                      <%end if%>
+                      <%if chequeo_2013 <> "" then%>
+                      <td><%=Html.Encode(obj2.a2013) %></td>
+                      <%end if%>
+                    </tr>
+                      <% 
+                    Next
+                 End If
+                 %>
+                 </table>
+                 <br />
+                 </div>
+            </td>
+            <td width="33%" align="center">
+                 <div id="cuadro_chico_1_v">
+                 <br />
+                 <br />
+                 <table bgcolor="#FFFFFF" class="tabla">
+                     <tr>  
+                      <th>Jornada</th>
+                      <th>Sexo</th>
+                      <%if chequeo_2005 <> "" then%>
+                      <th>2005</th>
+                      <%end if%>
+                      <%if chequeo_2006 <> "" then%>
+                      <th>2006</th>
+                      <%end if%>
+                      <%if chequeo_2007 <> "" then%>
+                      <th>2007</th>
+                      <%end if%>
+                      <%if chequeo_2008 <> "" then%>
+                      <th>2008</th>
+                      <%end if%>
+                      <%if chequeo_2009 <> "" then%>
+                      <th>2009</th>
+                      <%end if%>
+                      <%if chequeo_2010 <> "" then%>
+                      <th>2010</th>
+                      <%end if%>
+                      <%if chequeo_2011 <> "" then%>
+                      <th>2011</th>
+                      <%end if%>
+                      <%if chequeo_2012 <> "" then%>
+                      <th>2012</th>
+                      <%end if%>
+                      <%if chequeo_2013 <> "" then%>
+                      <th>2013</th>
+                      <%end if%>
+                    </tr>
+            
+                    <%
+                if  IsNothing(ModelJornada) then
+                    %> <tr>
+                      <td colspan="4">Sin registros</td>
+                    </tr><%
+                Else
+                    Dim obj3
+                    For each obj3 in ModelJornada.Items
+                    %>
+            
+                    <tr>
+                      <td><div align="left"><%=Html.Encode(obj3.cabecera) %></div></td>
+                      <td><div align="left"><%=Html.Encode(obj3.sexo) %></div></td>
+                      <%if chequeo_2005 <> "" then%>
+                      <td><%=Html.Encode(obj3.a2005) %></td>
+                      <%end if%>
+                      <%if chequeo_2006 <> "" then%>
+                      <td><%=Html.Encode(obj3.a2006) %></td>
+                      <%end if%>
+                      <%if chequeo_2007 <> "" then%>
+                      <td><%=Html.Encode(obj3.a2007) %></td>
+                      <%end if%>
+                      <%if chequeo_2008 <> "" then%>
+                      <td><%=Html.Encode(obj3.a2008) %></td>
+                      <%end if%>
+                      <%if chequeo_2009 <> "" then%>
+                      <td><%=Html.Encode(obj3.a2009) %></td>
+                      <%end if%>
+                      <%if chequeo_2010 <> "" then%>
+                      <td><%=Html.Encode(obj3.a2010) %></td>
+                      <%end if%>
+                      <%if chequeo_2011 <> "" then%>
+                      <td><%=Html.Encode(obj3.a2011) %></td>
+                      <%end if%>
+                      <%if chequeo_2012 <> "" then%>
+                      <td><%=Html.Encode(obj3.a2012) %></td>
+                      <%end if%>
+                      <%if chequeo_2013 <> "" then%>
+                      <td><%=Html.Encode(obj3.a2013) %></td>
+                      <%end if%>
+                    </tr>
+                      <% 
+                    Next
+                 End If
+                 %>
+                 </table>
+                 <br/>
+                 </div>
+            </td>
+        </tr>
+        
+      </table>
+      </div>
+      <br />
+      <div id="cuadro2">
+      <p>El siguiente indicador da cuenta del total de matriculados nuevos por carrera.</p>
+      <table width="95%" align="center">
+       	<tr valign="top">
+        	<td width="49%" align="center">
+                 <div id="cuadro_chico_carr">
+                 <br />
+                 <br />
+                 <table bgcolor="#FFFFFF" class="tabla">
+                     <tr>
+                      <th>Carrera</th>
+                      <th>Sexo</th>
+                      <%if chequeo_2005 <> "" then%>
+                      <th>2005</th>
+                      <%end if%>
+                      <%if chequeo_2006 <> "" then%>
+                      <th>2006</th>
+                      <%end if%>
+                      <%if chequeo_2007 <> "" then%>
+                      <th>2007</th>
+                      <%end if%>
+                      <%if chequeo_2008 <> "" then%>
+                      <th>2008</th>
+                      <%end if%>
+                      <%if chequeo_2009 <> "" then%>
+                      <th>2009</th>
+                      <%end if%>
+                      <%if chequeo_2010 <> "" then%>
+                      <th>2010</th>
+                      <%end if%>
+                      <%if chequeo_2011 <> "" then%>
+                      <th>2011</th>
+                      <%end if%>
+                      <%if chequeo_2012 <> "" then%>
+                      <th>2012</th>
+                      <%end if%>
+                      <%if chequeo_2013 <> "" then%>
+                      <th>2013</th>
+                      <%end if%>
+                    </tr>
+            
+                    <%
+                    Dim obj4
+                    For each obj4 in ModelCarrera.Items
+                    %>
+            
+                    <tr>
+                      <td><div align="left"><%=Html.Encode(obj4.cabecera) %></div></td>
+                      <td><div align="left"><%=Html.Encode(obj4.sexo) %></div></td>
+                      <%if chequeo_2005 <> "" then%>
+                      <td><%=Html.Encode(obj4.a2005) %></td>
+                      <%end if%>
+                      <%if chequeo_2006 <> "" then%>
+                      <td><%=Html.Encode(obj4.a2006) %></td>
+                      <%end if%>
+                      <%if chequeo_2007 <> "" then%>
+                      <td><%=Html.Encode(obj4.a2007) %></td>
+                      <%end if%>
+                      <%if chequeo_2008 <> "" then%>
+                      <td><%=Html.Encode(obj4.a2008) %></td>
+                      <%end if%>
+                      <%if chequeo_2009 <> "" then%>
+                      <td><%=Html.Encode(obj4.a2009) %></td>
+                      <%end if%>
+                      <%if chequeo_2010 <> "" then%>
+                      <td><%=Html.Encode(obj4.a2010) %></td>
+                      <%end if%>
+                      <%if chequeo_2011 <> "" then%>
+                      <td><%=Html.Encode(obj4.a2011) %></td>
+                      <%end if%>
+                      <%if chequeo_2012 <> "" then%>
+                      <td><%=Html.Encode(obj4.a2012) %></td>
+                      <%end if%>
+                      <%if chequeo_2013 <> "" then%>
+                      <td><%=Html.Encode(obj4.a2013) %></td>
+                      <%end if%>
+                    </tr>
+                    <% 
+                    Next
+                    %>
+                 </table>
+                 <br />
+                 </div>
+            </td>
+            <td width="2%">&nbsp;</td>
+            <td width="49%" align="center">
+                 <div id="cuadro_chico_carr">
+                 <br />
+                 <br/>
+                 </div>
+            </td>
+        </tr>
+        
+      </table>
+      </div>
+           <!--</div>-->
+
+
+    

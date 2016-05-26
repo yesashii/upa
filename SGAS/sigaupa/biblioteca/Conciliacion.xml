@@ -1,0 +1,141 @@
+<Parametros>
+  <parametro formulario="botonera">
+    <botones nombre="conciliar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Conciliar</texto>
+	  <accion>GUARDAR</accion>
+	  <url>Proc_Conciliacion.asp</url>
+	  <formulario>edicion</formulario>
+	  <mensajeConfirmacion>Esta seguro que desea conciliar los documentos seleccionados</mensajeConfirmacion>
+	  <soloUnClick>TRUE</soloUnClick>
+	</botones>
+    <botones nombre="cancelar"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Salir</texto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>
+	<botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>BUSCAR</accion>
+	  <formulario>buscador</formulario>	
+	  <soloUnClick>TRUE</soloUnClick>  
+	</botones>
+  </parametro>
+
+ <parametro formulario="busqueda_cheques" variable="busqueda">
+    <campos nombre="ding_ndocto">
+       <tipo>INPUT</tipo>
+       <permiso>LECTURAESCRITURA</permiso>
+       <caracteres>12</caracteres>
+       <maxCaracteres>10</maxCaracteres>
+	   <id>NU-N</id>
+    </campos>
+	<campos nombre="ding_tcuenta_corriente">
+       <tipo>INPUT</tipo>
+       <permiso>LECTURAESCRITURA</permiso>
+       <caracteres>15</caracteres>
+       <maxCaracteres>15</maxCaracteres>
+	   <id>TO-S</id>
+    </campos>
+  </parametro> 
+  
+  <parametro formulario="f_ingresos" variable="cheques">
+      <tablas nombre="ingresos" accion="M"/>
+	  <campos nombre="ingr_ncorr"/>
+  </parametro>
+  
+  <parametro formulario="f_cheques" clave="ding_ndocto"  variable="cheques" 
+    colorSeleccionado="#CCCCCC" colorResaltado="#999999" nroRegistros="15" maxLista="10" 
+    eliminar="TRUE" seleccionarTodo="FALSE"  anchoTabla="100%" 
+	mensajeError="No se encontraron documentos...">
+	<tablas nombre="detalle_ingresos" accion="M"/>	
+	<campos nombre="ting_ccod">
+	    <descripcion>tipo envio</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="ding_ncorrelativo">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos> 
+	 <campos nombre="ding_tcuenta_corriente">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 
+	 <campos nombre="ting_ccod_ingreso">
+	    <descripcion>tipo envio</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="ingr_ncorr">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="edin_ccod">
+		<tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="c_ting_ccod">
+	    <tipo>SELECT</tipo>
+		<descripcion>Tipo</descripcion>
+		<destino>tipos_ingresos</destino>
+		<union>ting_ccod</union>
+		<salida>ting_tdesc</salida>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="c_ding_ndocto">
+	    <descripcion>N. Cheque</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="banc_ccod">
+ 	     <tipo>INPUT</tipo>
+		<permiso>OCULTO</permiso>
+	 </campos>
+	 <campos nombre="banc_tdesc">
+	    <descripcion>Banco</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="c_ding_tcuenta_corriente">
+	    <descripcion>Cuenta Corriente</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>
+	 <campos nombre="vencimiento">
+	    <descripcion>F. Vencimiento</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	    <alineamiento>CENTER</alineamiento>
+	 </campos>     
+	 <campos nombre="edin_tdesc">
+	    <descripcion>Estado</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="rut_apoderado">
+	    <descripcion>Rut Titular</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>CENTER</alineamiento>
+	 </campos>
+	 <campos nombre="ding_mdocto">
+	    <descripcion>Monto</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>RIGHT</alineamiento>
+		<formato>MONEDA</formato>
+	 </campos>
+	<!-- <campos nombre="saldo">
+	    <descripcion>saldo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<alineamiento>RIGHT</alineamiento>
+		<formato>MONEDA</formato>
+	 </campos>-->
+   </parametro>
+  </Parametros>

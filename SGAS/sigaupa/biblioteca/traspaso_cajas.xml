@@ -1,0 +1,83 @@
+<Parametros>
+   <parametro formulario="cajas" anchoTabla="100%" nroRegistros="20" maxLista="10" variable="cajas" 
+   eliminar="TRUE" clave="mcaj_ncorr" seleccionarTodo="TRUE"
+   mensajeError="No se encontraron cajas disponibles para traspasar..." >
+      <campos nombre="c_mcaj_ncorr">
+         <descripcion>Folio</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="mcaj_finicio">
+         <descripcion>Fecha Apertura</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <tipoDato>FECHA</tipoDato>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="cajero">
+         <descripcion>Cajero</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="sede_ccod">
+         <descripcion>Sede</descripcion>
+         <tipo>Select</tipo>
+		 <destino>sedes</destino>
+		 <union>sede_ccod</union>
+		 <salida>sede_tdesc</salida>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="ecua_tdesc">
+         <descripcion>Estado Cuadre</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="eren_tdesc">
+         <descripcion>Estado Rendición</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="tcaj_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+   </parametro>
+   <parametro formulario="botonera">
+      <botones nombre="traspasar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Traspasar</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_traspaso_cajas.asp</url>
+         <mensajeConfirmacion>¿Está seguro de traspasar las cajas seleccionadas?</mensajeConfirmacion>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+	  
+	  <botones nombre="salir"> 
+     	 <tipoTexto>SALIR</tipoTexto>
+	 	 <accion>NAVEGAR</accion>
+	  	 <url>../lanzadera/lanzadera.asp</url>
+	  </botones>
+	  
+	  <botones nombre="traspasar_softland">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Traspasar Softland</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_traspaso_softland.asp</url>
+         <mensajeConfirmacion>¿Está seguro de traspasar las cajas seleccionadas?</mensajeConfirmacion>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+
+	  <botones nombre="traspasar_softland_anula">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Traspasar Softland</texto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_traspaso_anulaciones_cajas.asp</url>
+         <mensajeConfirmacion>¿Está seguro de traspasar las cajas seleccionadas?</mensajeConfirmacion>
+         <soloUnClick>TRUE</soloUnClick>
+      </botones>
+
+   </parametro>
+</Parametros>

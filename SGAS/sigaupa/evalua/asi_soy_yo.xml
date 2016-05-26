@@ -1,0 +1,90 @@
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+		 <soloUnClick>TRUE</soloUnClick>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>portada_alumno.asp</url>
+      </botones>
+       <botones nombre="excel">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Excel</texto>
+         <accion>NAVEGAR</accion>
+         <url>notas_alumno_excel.asp</url>
+      </botones>
+	  <botones nombre="HORARIO"> 
+      	 <tipoTexto>DEFINIR</tipoTexto>
+	     <texto>Horario</texto>
+	     <accion>JAVASCRIPT</accion>
+	     <funcion>horario()</funcion>	  
+	  </botones>
+	  <botones nombre="guardar">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Guardar Respuestas.</texto>
+         <accion>GUARDAR</accion>
+		 <formulario>edicion</formulario>
+         <url>asi_soy_yo_proc.asp</url>
+		 <funcionValidacion>verifica_respuestas(document.edicion);</funcionValidacion>
+      </botones>
+   </parametro>
+   <parametro formulario="busqueda" variable="b">
+	  <campos nombre="pers_nrut">
+ 		 <tipo>INPUT</tipo> 
+  		 <permiso>OCULTO</permiso> 
+  		 <caracteres>10</caracteres> 
+  		 <maxCaracteres>8</maxCaracteres> 
+  		 <id>NU-N</id> 
+  	  </campos>
+	  <campos nombre="pers_xdv">
+  		 <tipo>INPUT</tipo> 
+  		 <permiso>OCULTO</permiso> 
+         <caracteres>1</caracteres> 
+         <maxCaracteres>1</maxCaracteres> 
+         <script>onBlur="this.value=this.value.toUpperCase();"</script> 
+         <id>LN-N</id> 
+      </campos>
+   </parametro>
+
+   <parametro formulario="encabezado" anchoTabla="100%" columnas="2" variable="encu">
+      <campos nombre="rut">
+         <descripcion>RUT</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+       
+        <campos nombre="peri_ccod23" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione el periodo</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>periodos_academicos </destino>
+         <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+		 <filtro>peri_ccod in (206,208,210)</filtro>
+		 <id>TO-N</id>
+      </campos>
+	  
+
+	    <campos nombre="trps_ccod">
+         <tipo>SELECT</tipo>
+		 <destino>tipos_respuestas_psicologia</destino>
+         <permiso>LECTURAESCRITURA</permiso>
+         <union>trps_ccod</union>
+         <salida>trps_tdesc</salida>
+         <orden>trps_tdesc desc</orden>
+         <anulable>TRUE</anulable>
+		 <mensajeVacio>''</mensajeVacio>
+		 <mensajeNulo>puntaje</mensajeNulo>
+		 <id>TO-S</id>
+      </campos>
+	  
+   </parametro>
+  
+  
+</Parametros>

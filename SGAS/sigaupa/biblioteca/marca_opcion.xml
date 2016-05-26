@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+      <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+       <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>
+      <botones nombre="cerrar" >
+         <tipoTexto>CERRAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  
+		  
+	<botones nombre="excel">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Excel</texto>
+      </botones>
+	  
+	  <botones nombre="ir">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>opciones</formulario>
+         <url>inserta_registros_proc.asp</url>
+       </botones>
+	  
+	   <botones nombre="crear">
+         <accion>navegar</accion>
+         <tipoTexto>DEFINIR</tipoTexto>
+       <texto>Agregar Alumno</texto>
+      </botones>
+   </parametro>
+   
+   <parametro  formulario="formu" variable="b" columnas="3" >
+	 <campos nombre="arancel" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione una Beca</mensajeNulo>
+		<mensajeVacio>'1'</mensajeVacio>
+		 <destino>tipos_detalle </destino>
+		 <filtro>tdet_ccod in (910,1390,1446,1537,1538,1539,1912)</filtro>
+         <union>tdet_ccod</union>
+         <salida>tdet_tdesc</salida>
+		 <orden>tdet_tdesc asc</orden>
+		 <script>onChange="enviar2();"</script>
+		 <id>NU-N</id>
+      </campos>
+	  
+	  <campos nombre="peri_ccod" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Periodo Académico</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>periodos_academicos </destino>
+		 <filtro>anos_ccod > 2007 </filtro>
+         <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+		 <orden>peri_ccod </orden>
+		 <id>NU-N</id>
+      </campos>
+	   <campos nombre="peri_ccod2" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Periodo Académico</mensajeNulo>
+		<mensajeVacio>''</mensajeVacio>
+		 <destino>periodos_academicos </destino>
+		 <filtro>anos_ccod > 2009 </filtro>
+         <union>peri_ccod</union>
+         <salida>peri_tdesc</salida>
+		 <orden>peri_ccod </orden>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="mantencion" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione una Beca</mensajeNulo>
+		<mensajeVacio>'1'</mensajeVacio>
+		 <destino>tipos_detalle </destino>
+	 <filtro>tdet_ccod in (601,1475,1540,1541)</filtro>
+         <union>tdet_ccod</union>
+         <salida>tdet_tdesc</salida>
+		 <orden>tdet_tdesc asc</orden>
+		 	 <script>onChange="enviar2();"</script>
+		 <id>NU-N</id>
+      </campos>
+	  	<campos nombre="becas" >
+         <tipo>SELECT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <anulable>true</anulable>
+	    <mensajeNulo>Seleccione un Credito</mensajeNulo>
+		<mensajeVacio>'1'</mensajeVacio>
+		 <destino>tipos_detalle </destino>
+		 <filtro>tdet_ccod in (1402)</filtro>
+         <union>tdet_ccod</union>
+         <salida>tdet_tdesc</salida>
+		 <orden>tdet_tdesc asc</orden>
+		 <script>onChange="enviar2();"</script>
+		 <id>NU-N</id>
+      </campos>
+   </parametro>
+
+
+ 
+
+   
+   
+</Parametros>

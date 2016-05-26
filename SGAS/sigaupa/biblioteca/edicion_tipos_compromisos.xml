@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera">
+      <botones nombre="anterior">
+         <tipoTexto>ANTERIOR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>adm_tipos_compromisos.asp</url>
+      </botones>
+      <botones nombre="agregar">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>AGREGAR</accion>
+         <url>agregar_tipos_detalle.asp</url>
+         <ancho>600</ancho>
+         <alto>350</alto>
+         <posicionX>100</posicionX>
+         <posicionY>100</posicionY>
+      </botones>
+      <botones nombre="agregar_beneficio">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <accion>AGREGAR</accion>
+         <url>agregar_tipos_beneficios.asp</url>
+         <ancho>600</ancho>
+         <alto>300</alto>
+         <posicionX>100</posicionX>
+         <posicionY>100</posicionY>
+      </botones>
+      <botones nombre="eliminar">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_tipos_detalle.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="aceptar">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <url>proc_agregar_tipo_detalle.asp</url>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="aceptar_beneficio">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <url>proc_agregar_tipo_beneficio.asp</url>
+		 <funcionValidacion>VerificaPorcentajes();</funcionValidacion>
+         <formulario>edicion</formulario>
+      </botones>
+      <botones nombre="cancelar">
+         <tipoTexto>CANCELAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+   </parametro>
+   <parametro formulario="tipos_detalle" variable="tipos_detalle" anchoTabla="100%" eliminar="TRUE"
+    clave="tdet_ccod" mensajeError="No hay ítemes de este tipo." editar="TRUE" 
+	paginaEdicion="agregar_tipos_detalle.asp?tdet_ccod=%tdet_ccod%" nuevaVentana="TRUE" 
+	nroRegistros="15" maxLista="10">
+      <tablas nombre="tipos_detalle" accion="B"/>
+      <campos nombre="c_tdet_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c2_tdet_ccod">
+         <descripcion>Código</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="tdet_tdesc">
+         <descripcion>Nombre Ítem</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="tdet_mvalor_unitario">
+         <descripcion>Valor</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <formato>MONEDA</formato>
+         <alineamiento>RIGHT</alineamiento>
+      </campos>
+	  <campos nombre="tdet_cuenta_softland">
+         <descripcion>Cuenta Asociada</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+	  <campos nombre="tdet_detalle_softland">
+         <descripcion>Detalle Gasto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+      <campos nombre="tdet_bvigente">
+         <descripcion>Vigente</descripcion>
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURA</permiso>
+         <valorVerdadero>S</valorVerdadero>
+         <valorValso>N</valorValso>
+         <afirmacion>SI</afirmacion>
+         <negacion>NO</negacion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	   <campos nombre="tdet_bdescuento">
+         <descripcion>Descuento</descripcion>
+		 <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURA</permiso>
+         <valorVerdadero>S</valorVerdadero>
+         <valorValso>N</valorValso>
+         <afirmacion>SI</afirmacion>
+         <negacion>NO</negacion>
+		 <alineamiento>Center</alineamiento>
+      </campos>
+	  <campos nombre="tdet_bboleta">
+         <descripcion>Boleta</descripcion>
+		 <tipo>BOLEANO</tipo>
+         <objeto>RADIO</objeto>
+         <permiso>LECTURA</permiso>
+         <valorVerdadero>S</valorVerdadero>
+         <valorValso>N</valorValso>
+         <afirmacion>SI</afirmacion>
+         <negacion>NO</negacion>
+		 <alineamiento>Center</alineamiento>
+      </campos>
+	  <campos nombre="tbol_ccod">
+         <descripcion>Clase Concepto</descripcion>
+		 <tipo>Input</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>Center</alineamiento>
+      </campos>
+  	  <campos nombre="tdet_institucion">
+	     <tipo>SELECT</tipo>
+     	 <descripcion>Institucion</descripcion>
+         <destino>instituciones</destino>
+         <union>inst_ccod</union>
+         <salida>inst_trazon_social</salida>
+         <orden>inst_ccod asc</orden>
+         <permiso>LECTURA</permiso>
+      </campos>	  
+   </parametro>
+
+   <parametro formulario="agregar_tipos_detalle" variable="tipos_detalle" 
+     anchoTabla="100%" camposObligatorios="TRUE"  >
+      <tablas nombre="tipos_detalle" accion="M"/>
+      <campos nombre="tdet_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <tipoDato>SECUENCIA</tipoDato>
+         <secuencia>tipos_detalle</secuencia>
+      </campos>
+      <campos nombre="tcom_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tdet_bcargo">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tdet_tdesc">
+         <descripcion>Nombre Ítem</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="tdet_mvalor_unitario">
+         <descripcion>Valor</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <formato>MONEDA</formato>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="tdet_cuenta_softland">
+         <descripcion>Cuenta Asociada</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>22</caracteres>
+		 <maxCaracteres>18</maxCaracteres>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+	  <campos nombre="tdet_detalle_softland">
+         <descripcion>Detalle Gasto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>10</caracteres>
+		 <maxCaracteres>8</maxCaracteres>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+	  <campos nombre="tdet_bvigente">
+         <descripcion>Vigente</descripcion>
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="tdet_bdescuento">
+         <descripcion>Descuento</descripcion>
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+  	  <campos nombre="tdet_institucion">
+	     <tipo>SELECT</tipo>
+     	 <descripcion>Institucion</descripcion>
+         <destino>instituciones</destino>
+         <union>inst_ccod</union>
+         <salida>inst_trazon_social</salida>
+         <orden>inst_ccod asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>	 
+       <campos nombre="tdet_bboleta">
+         <tipo>RADIO</tipo>
+     	 <descripcion>Usa Boleta</descripcion>
+		 <nombre>lala</nombre>
+         <destino>usa_boleta</destino>
+         <union>tdet_bboleta</union>
+         <salida>usa_boleta</salida>
+         <orden>tdet_bboleta asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>2</columnas>
+         <ancho>50%</ancho>
+      </campos>	  
+	  <campos nombre="tbol_ccod">
+		  <tipo>RADIO</tipo>
+     	 <descripcion>Clase Concepto</descripcion>
+         <destino>tipos_boletas</destino>
+         <union>tbol_ccod</union>
+         <salida>tbol_tdesc</salida>
+         <orden>tbol_ccod asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <columnas>2</columnas>
+         <ancho>50%</ancho>
+      </campos>
+  </parametro>
+
+<parametro formulario="tipos_beneficios" variable="tipos_detalle" anchoTabla="100%" eliminar="TRUE"
+    clave="tdet_ccod" mensajeError="No hay ítemes de este tipo." editar="TRUE" 
+	paginaEdicion="agregar_tipos_beneficios.asp?tdet_ccod=%tdet_ccod%&amp;tben_ccod=%tben_ccod%" nuevaVentana="TRUE" 
+	nroRegistros="15" maxLista="10">
+      <tablas nombre="tipos_detalle" accion="B"/>
+      <campos nombre="tben_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="c_tdet_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="c2_tdet_ccod">
+         <descripcion>Código</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+      <campos nombre="tdet_tdesc">
+         <descripcion>Nombre Ítem</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <campos nombre="tdet_cuenta_softland">
+         <descripcion>Cuenta Asociada</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+	  <campos nombre="tdet_detalle_softland">
+         <descripcion>Detalle Gasto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+      <campos nombre="tdet_bvigente">
+         <descripcion>Vigente</descripcion>
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <permiso>LECTURA</permiso>
+         <valorVerdadero>S</valorVerdadero>
+         <valorValso>N</valorValso>
+         <afirmacion>SI</afirmacion>
+         <negacion>NO</negacion>
+         <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="tdet_nptjematricula">
+         <descripcion>Porcentaje Matricula</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+	  <campos nombre="tdet_nptjecolegiatura">
+         <descripcion>Porcentaje Arancel</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+      </campos>
+  	  <campos nombre="udes_ccod">
+	     <tipo>SELECT</tipo>
+     	 <descripcion>Uso</descripcion>
+         <destino>usos_descuentos</destino>
+         <union>udes_ccod</union>
+         <salida>udes_tdesc</salida>
+         <orden>udes_ccod asc</orden>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  
+   </parametro>
+
+   <parametro formulario="agregar_tipos_beneficios" variable="tipos_detalle" 
+     anchoTabla="100%" camposObligatorios="TRUE"  >
+      <tablas nombre="tipos_detalle" accion="M"/>
+      <campos nombre="tdet_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+         <tipoDato>SECUENCIA</tipoDato>
+         <secuencia>tipos_detalle</secuencia>
+      </campos>
+      <campos nombre="tben_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="tdet_tdesc">
+         <descripcion>Nombre Ítem</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>50</caracteres>
+         <maxCaracteres>50</maxCaracteres>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="tdet_cuenta_softland">
+         <descripcion>Cuenta Asociada</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>22</caracteres>
+		 <maxCaracteres>18</maxCaracteres>
+         <alineamiento>LEFT</alineamiento>
+		 <id>TO-N</id>
+      </campos>
+	  <campos nombre="tdet_detalle_softland">
+         <descripcion>Detalle Gasto</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <caracteres>10</caracteres>
+		 <maxCaracteres>8</maxCaracteres>
+         <alineamiento>LEFT</alineamiento>
+		 <id>TO-N</id>
+      </campos>
+	  <campos nombre="tdet_bvigente">
+         <descripcion>Vigente</descripcion>
+         <tipo>BOLEANO</tipo>
+         <objeto>CHECKBOX</objeto>
+         <valorVerdadero>S</valorVerdadero>
+         <valorFalso>N</valorFalso>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+	  <campos nombre="tdet_nptjematricula">
+         <descripcion>Porcentaje Matricula</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+		 <caracteres>6</caracteres>
+		 <maxCaracteres>6</maxCaracteres>
+		 <id>NU-S</id>
+      </campos>
+	  <campos nombre="tdet_nptjecolegiatura">
+         <descripcion>Porcentaje Arancel</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <alineamiento>LEFT</alineamiento>
+		 <caracteres>6</caracteres>
+		 <maxCaracteres>6</maxCaracteres>
+		 <id>NU-S</id>
+      </campos>
+  	  <campos nombre="udes_ccod">
+	     <tipo>SELECT</tipo>
+     	 <descripcion>Uso Beneficio</descripcion>
+         <destino>usos_descuentos</destino>
+         <union>udes_ccod</union>
+         <salida>udes_tdesc</salida>
+         <orden>udes_ccod asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+      </campos>
+   </parametro>
+
+</Parametros>

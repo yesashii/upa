@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+ <parametro formulario="BotoneraTomaCarga">
+    <botones nombre="buscar"> 
+      <tipoTexto>BUSCAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>enviar(document.buscador);</funcion>
+	</botones> 
+    <botones nombre="ELIMINAR"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>eliminar(document.edicion)</funcion>
+	 <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+	<botones nombre="ELIMINAR_CARGA"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Eliminar</texto>
+	  <accion>GUARDAR</accion>
+	  <formulario>edicion</formulario>
+	  <url>eliminar_carga_alumno.asp</url>
+	</botones> 
+    <botones nombre="GUARDAR"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>guardar(document.edicion);_HabilitarBoton(this,false);</funcion>
+	   <soloUnClick>TRUE</soloUnClick>
+	</botones> 
+	<botones nombre="HORARIO"> 
+      <tipoTexto>DEFINIR</tipoTexto>
+	  <texto>Horario</texto>
+	  <accion>JAVASCRIPT</accion>
+	  <funcion>horario()</funcion>	  
+	</botones>	
+    <botones nombre="SALIR">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>NAVEGAR</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+      </botones>	
+ </parametro>
+   <parametro formulario="tabla_carga" clave="secc_ccod" variable="m" mensajeError="No Existe Carga Académica" 
+   editar="false" eliminar="true" nuevaVentana="false" paginaEdicion="" maxLista="10" nroRegistros="10" anchoTabla="98%" >
+   <tablas nombre="cargas_eliminadas" accion="M"/>
+	  <campos nombre="matr_ncorr">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="asig_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Código Asignatura</descripcion>
+      </campos>
+        <campos nombre="asig_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Asignatura</descripcion>
+      </campos>
+	  <campos nombre="secc_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Sección</descripcion>
+      </campos>
+      <campos nombre="notas">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Tiene Notas Parciales</descripcion>
+      </campos>
+      <campos nombre="sitf_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Tiene Una Situación Final</descripcion>
+      </campos>
+	  <campos nombre="cael_nresolucion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Num. Resolución</descripcion>
+		 <caracteres>10</caracteres>
+		 <maxCaracteres>60</maxCaracteres>
+		 <deshabilitado>TRUE</deshabilitado>
+		 <id>TO-N</id>
+      </campos>
+	  <campos nombre="cael_tobservacion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <descripcion>Observación</descripcion>
+		 <caracteres>10</caracteres>
+		 <maxCaracteres>60</maxCaracteres>
+		 <deshabilitado>TRUE</deshabilitado>
+		 <id>TO-N</id>
+      </campos>
+
+   </parametro>
+<parametro formulario="carga_eliminada"   mensajeError="No Existe Carga Académica eliminada para este alumno" 
+    maxLista="10" nroRegistros="10" anchoTabla="98%" >
+    <campos nombre="asig_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Código Asignatura</descripcion>
+      </campos>
+        <campos nombre="asig_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Asignatura</descripcion>
+      </campos>
+	  <campos nombre="secc_tdesc">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Sección</descripcion>
+      </campos>
+      <campos nombre="resolucion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Num. Resolucion</descripcion>
+      </campos>
+      <campos nombre="comentario">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Motivo</descripcion>
+      </campos>
+	  <campos nombre="rut_encargado">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>rut encargado</descripcion>
+      </campos>
+	  <campos nombre="encargado">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Encargado</descripcion>
+      </campos>
+	  <campos nombre="fecha_eliminacion">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+         <descripcion>Fecha eliminación</descripcion>
+      </campos>
+   </parametro>
+</Parametros>

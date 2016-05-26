@@ -1,0 +1,66 @@
+<Parametros>
+   <parametro formulario="f1" anchoTabla="100%" eliminar="TRUE" seleccionarTodo="FALSE"
+    editar="TRUE" paginaEdicion="Mant_Modulos_Edicion.asp?modulos[0][smod_ccod]=%smod_ccod%" 
+	clave="smod_ccod" nuevaVentana="TRUE" nuevaVentanaAncho="557" nuevaVentanaAlto="215"
+	variable="modulos" nroRegistros="10" maxLista="10">
+	 <tablas nombre="sis_modulos" accion="B"/>
+	  <campos nombre="c_smod_ccod">
+	    <descripcion>Codigo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+		<ancho>50</ancho>
+	 </campos>
+	 <campos nombre="smod_tdesc">
+	    <descripcion>Nombre del Modulo</descripcion>
+		<tipo>INPUT</tipo>
+		<permiso>LECTURA</permiso>
+	 </campos>	 
+   </parametro>
+   
+   <parametro formulario="f1_edicion" variable="modulos" >
+   <tablas nombre="sis_modulos" accion="M"/>
+   <campos nombre="smod_ccod">
+      <tipo>INPUT</tipo>
+	  <permiso>OCULTO</permiso>
+   </campos>
+   <campos nombre="smod_tdesc">
+      <tipo>INPUT</tipo>
+	  <permiso>LECTURAESCRITURA</permiso>
+	  <caracteres>40</caracteres>
+	  <maxCaracteres>40</maxCaracteres>
+	  <id>TO-N</id>
+   </campos>
+   </parametro>
+  
+  <parametro formulario="botonera">
+  <botones nombre="eliminar"> 
+      <tipoTexto>ELIMINAR</tipoTexto>
+	  <accion>ELIMINAR</accion>
+	  <url>Mant_Modulos_Eliminar.asp</url>
+	  <formulario>edicion</formulario>
+	</botones> 
+  	<botones nombre="agregar"> 
+      <tipoTexto>AGREGAR</tipoTexto>
+	  <accion>AGREGAR</accion>
+	  <posicionX>100</posicionX>
+	  <posicionY>100</posicionY>
+	  <ancho>530</ancho>
+	  <alto>200</alto>
+	</botones>
+   <botones nombre="salir"> 
+      <tipoTexto>SALIR</tipoTexto>
+	  <accion>NAVEGAR</accion>
+	  <url>../lanzadera/lanzadera.asp</url>
+	</botones>	
+	<botones nombre="cancelar"> 
+      <tipoTexto>CANCELAR</tipoTexto>
+	  <accion>CERRAR</accion>	  
+	</botones>
+	<botones nombre="guardar"> 
+      <tipoTexto>GUARDAR</tipoTexto>
+	  <accion>GUARDAR</accion>
+	  <url>Proc_Mant_Modulos_Edicion.asp</url>
+	  <formulario>edicion</formulario>
+	</botones>	
+  </parametro>
+</Parametros>

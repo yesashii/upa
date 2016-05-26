@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>
+   <parametro formulario="botonera" >
+     <botones nombre="salir" >
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>navegar</accion>
+         <url>../lanzadera/lanzadera.asp</url>
+     </botones>
+	<botones nombre="agregar">
+         <tipoTexto>DEFINIR</tipoTexto>
+		 <texto>Agregar Curso</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>ingresa_cc()</funcion>
+    </botones>
+	<botones nombre="anular">
+        <accion>ELIMINAR</accion>
+		<tipoTexto>DEFINIR</tipoTexto>
+       	<texto>Anular</texto>
+		<formulario>edicion</formulario>
+        <url>eliminar_condicion_pago_proc.asp</url>
+    </botones>
+	<botones nombre="guardar_curso">
+        <accion>GUARDAR</accion>
+        <tipoTexto>DEFINIR</tipoTexto>
+       	<texto>Guardar</texto>
+		<formulario>edicion</formulario>
+        <url>proc_agregar_curos_diplomado.asp</url>
+    </botones>
+	<botones nombre="cerrar">
+         <tipoTexto>CANCELAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+	  <botones nombre="buscar">
+         <tipoTexto>BUSCAR</tipoTexto>
+         <accion>BUSCAR</accion>
+         <formulario>buscador</formulario>
+      </botones>
+   </parametro>
+   
+   
+      <parametro formulario="buscador" variable="buscador">
+      <campos nombre="buscar">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+         <caracteres>20</caracteres>
+         <maxCaracteres>18</maxCaracteres>
+      </campos>
+   </parametro>
+   
+<parametro formulario="diplomado_cursos" variable="datos" clave="mdcu_ncorr" eliminar="true" nroRegistros="20" maxLista="20"
+mensajeError="No existen Cursos disponibles" anchoTabla="100%" editar="true" paginaEdicion="agrega_curso_diplomado.asp?mdcu_ncorr=%mdcu_ncorr%" nuevaVentana="true">
+		<campos nombre="dcur_ncorr">
+		  <descripcion>Cursos</descripcion>
+		  <permiso>OCULTO</permiso> 
+		</campos>
+		<campos nombre="dcur_tdesc">
+		  <descripcion>Cursos</descripcion>
+		  <tipo>INPUT</tipo>
+		  <permiso>LECTURA</permiso> 
+		  <alineamiento>CENTER</alineamiento>
+		</campos>		
+		<campos nombre="AUDI_TUSUARIO">
+		  <descripcion>Agregada Por</descripcion>
+          <tipo>INPUT</tipo>
+          <permiso>LECTURA</permiso>
+		  <alineamiento>CENTER</alineamiento>
+		  <caracteres>90</caracteres>
+		</campos>
+		<campos nombre="MDCU_ESTADO">
+			<tipo>INPUT</tipo>
+			<descripcion>Estado</descripcion>
+			<permiso>LECTURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<caracteres>2</caracteres>
+		</campos>		
+	</parametro>  
+	
+	<parametro formulario="agrega_cursos" variable="datos" eliminar="true" nroRegistros="20" maxLista="20" clave="mdcu_ncorr"
+mensajeError="No existen Cursos disponibles" anchoTabla="80%">
+	   <tablas nombre="mantenedor_diplomados_cursos" accion="M"/>  
+
+		<campos nombre="dcur_ncorr">
+		  <tipo>SELECT</tipo>
+		  <destino>diplomados_cursos</destino> 
+		  <union>dcur_ncorr</union>
+		  <salida>dcur_tdesc</salida>
+		  <permiso>LECTURAESCRITURA</permiso> 
+		  <filtro>DCUR_NCORR NOT IN (select m.DCUR_NCORR from mantenedor_diplomados_cursos m )</filtro>
+		  <orden>dcur_tdesc</orden>
+		</campos>	
+		<campos nombre="dcur_ncorr2">
+		  <descripcion>Cursos</descripcion>
+		  <tipo>SELECT</tipo>
+		  <destino>diplomados_cursos</destino> 
+		  <union>dcur_ncorr</union>
+		  <salida>dcur_tdesc</salida>
+		  <permiso>LECTURA</permiso> 
+		</campos>
+		<campos nombre="MDCU_ESTADO">
+			<tipo>INPUT</tipo>
+			<descripcion>agregar curso</descripcion>
+			<permiso>LECTURAESCRITURA</permiso>
+			<alineamiento>CENTER</alineamiento>
+			<caracteres>50</caracteres>
+		</campos>	
+	</parametro>  
+	   
+</Parametros>

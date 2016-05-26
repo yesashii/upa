@@ -1,0 +1,7 @@
+70072502,  ESC. BASICA N°97 TERESIANA DE SAN GABRIEL,,70072502-2,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+70417500,  CORP. CAPACITACION Y EMPLEO SOFOFA,,70417500-0,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+71450500,  CORPORACION EDUCACIONAL PEDRO POVEDA,,71450500-9,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+74701100,    CTRO. DE INTER.EL DESARROLLO DE LAS PERS. EN TRAB.,,74701100-1,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+74805100,  FUNDACION EDUCACIONAL BELEN EDUCA,,74805100-7,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+88319900,  COLEGIO SAN BENITO LTDA,,88319900-6,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+96588670,  COLEGIO SAN ISIDRO S.A.,,96588670-2,S,,,,,,,,,,,,S,N,N,N,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

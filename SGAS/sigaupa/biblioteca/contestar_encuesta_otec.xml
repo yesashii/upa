@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Parametros>	
+	<parametro formulario="botonera">	
+		<botones nombre="Volver"> 
+      		<tipoTexto>DEFINIR</tipoTexto>
+			<texto>Volver</texto>		
+	  		<accion>JAVASCRIPT</accion>
+	  		<funcion>volver();</funcion>	   		
+		</botones>
+		 <botones nombre="guardar_encuesta">
+			 <tipoTexto>GUARDAR</tipoTexto>
+			 <accion>GUARDAR</accion>
+			 <funcionValidacion>validar();</funcionValidacion>
+			 <url>encuesta_otec_proc.asp</url>
+			 <formulario>edicion</formulario>
+      </botones>
+	</parametro>
+	<parametro formulario="guardar_encuesta" variable="p">
+      <tablas nombre="encuestas_otec" accion="M"/>
+   </parametro>
+   <parametro formulario="guardar_evaluacion_docente" variable="p">
+      <tablas nombre="evaluacion_docente" accion="M"/>
+   </parametro>
+   <parametro formulario="guardar_encuesta_infraestructura" variable="p">
+      <tablas nombre="encuesta_infraestructura_otec" accion="M"/>
+   </parametro>
+</Parametros>
