@@ -1,0 +1,207 @@
+<?php
+require('/home/administrador/alertas/alarmas_pg/BD/conexion.php');
+require('/home/administrador/alertas/PHPMailer/class.phpmailer.php');
+require('/home/administrador/alertas/Mail/configuracion.php');
+require('/home/administrador/alertas/Classes/PHPExcel.php');
+require('/home/administrador/alertas/Classes/PHPExcel/Writer/Excel2007.php');
+
+//---------------------------------conexion--
+//	function Conectarse($base)
+//	{
+//		if($base == 'delpa')
+//		{
+//			mysql_connect("localhost","delpadmin","ixIWhjr5KKpK");
+//	  		mysql_select_db("delpa",$link);
+//		}
+//		if($base == 'softnet')
+//		{
+//			mysql_connect("http://delpa.softnet.cl/myadmin","delpasof_user","19000");
+//	  		mysql_select_db("delpa",$link);
+//		}
+//	  
+//	}
+//---------------------------------conexion--
+
+function codPais($nombre)
+{
+	$VAR = "";
+	$p_destino = $nombre;
+	if ($p_destino=='ARGENTINA'){$VAR="AR";} 
+	if ($p_destino=='BRASIL'){$VAR="BR";}
+	if ($p_destino=='CHILE'){$VAR="CL";}
+	if ($p_destino=='PERU'){$VAR="PE";}
+	if ($p_destino=='BOLIVIA'){$VAR="BO";}
+	if ($p_destino=='URUGUAY'){$VAR="UY";}
+	if ($p_destino=='PARAGUAY'){$VAR="PY";}
+	return $VAR;
+}
+
+/** Error reporting */
+error_reporting(E_ALL);
+
+/** Include path **/
+ini_set('include_path', ini_get('include_path').';../Classes/');
+
+/** PHPExcel */
+include 'PHPExcel.php';
+
+/** PHPExcel_Writer_Excel2007 */
+include 'PHPExcel/Writer/Excel2007.php';
+
+// Create new PHPExcel object
+echo date('H:i:s') . " Create new PHPExcel object\n";
+$objPHPExcel = new PHPExcel();
+
+// Set properties
+echo date('H:i:s') . " Set properties\n";
+$objPHPExcel->getProperties()->setCreator("Luis Herrera");
+$objPHPExcel->getProperties()->setLastModifiedBy("Luis Herrera");
+$objPHPExcel->getProperties()->setTitle("alarma_detalle_ventas");
+$objPHPExcel->getProperties()->setSubject("Alarma detalle ventas");
+$objPHPExcel->getProperties()->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.");
+
+
+// Add some data
+//	echo date('H:i:s') . " Add some data\n";
+//-----------ENCABEZADO------------------------------------------------->>
+	$objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Nº Cierre'); 
+	$objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Total Venta'); 
+	$objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Total Costo'); 
+	$objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Profit'); 
+	$objPHPExcel->getActiveSheet()->SetCellValue('E1', '% Venta'); 
+	$objPHPExcel->getActiveSheet()->SetCellValue('F1', 'KB'); 
+	$objPHPExcel->getActiveSheet()->SetCellValue('G1', 'M3'); 
+	$objPHPExcel->getActiveSheet()->SetCellValue('H1', 'Tipo Servicio'); 
+	$objPHPExcel->getActiveSheet()->SetCellValue('I1', 'Pais Origen'); 
+	$objPHPExcel->getActiveSheet()->SetCellValue('J1', 'Pais Destino'); 
+	$objPHPExcel->getActiveSheet()->SetCellValue('K1', 'Fecha'); 
+	$objPHPExcel->getActiveSheet()->SetCellValue('L1', 'Mes Año'); 
+	$objPHPExcel->getActiveSheet()->SetCellValue('M1', 'Mes'); 
+	$objPHPExcel->getActiveSheet()->SetCellValue('N1', 'Contrato'); 
+	$objPHPExcel->getActiveSheet()->SetCellValue('O1', 'Mic'); 
+	$objPHPExcel->getActiveSheet()->SetCellValue('P1', '% 50'); 
+	$objPHPExcel->getActiveSheet()->SetCellValue('Q1', 'Costo Pre'); 
+	$objPHPExcel->getActiveSheet()->SetCellValue('R1', 'Venta Pre'); 
+	$objPHPExcel->getActiveSheet()->SetCellValue('S1', 'Tipo Rampla'); 
+	$objPHPExcel->getActiveSheet()->SetCellValue('T1', 'Estado'); 
+	$objPHPExcel->getActiveSheet()->SetCellValue('U1', 'Debito - Credito'); 
+
+	$objPHPExcel->getActiveSheet()->getStyle('A1:U1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setRGB('FA6422');// COLOR FONDO 	
+//-----------ENCABEZADO-------------------------------------------------<<
+
+//-----------CONSULTA--------------------------------------------------->>
+function Conectarse()
+{
+   if (!($link=mysql_connect("localhost","delpadmin","ixIWhjr5KKpK")))
+   {
+      echo "Error conectando a la base de datos.";
+      exit();
+   }
+   if (!mysql_select_db("delpa",$link))
+   {
+      echo "Error seleccionando la base de datos.";
+      exit();
+   }
+   return $link;
+}
+Conectarse();
+
+
+		$query = "SELECT * from reporte_costo_venta where fecha_cierre > '2014-12-31'";
+
+		$sql=mysql_query($query); 
+
+		$filaAux = 2; // desde donde comenzarán los datos
+		while($row = mysql_fetch_array($sql))
+		{
+			$n_cierre 		=$row['id_pais']."-".codPais($row['p_destino'])."-".$row['id_mic']; 
+			$t_venta 		=$row['venta'];
+			$t_costo		=$row['costos']; 
+			$Profit			=$row['profit'];
+			$x_venta		=$row['porcen_venta'];
+			$KB		 		=$row['peso_total'];
+			$M3				=$row['volumen_total'];
+			$t_Servicio		=$row['tipo_servicio'];
+			$p_origen 		=$row['p_origen'];
+			$p_destino 		=$row['p_destino'];
+			$fecha 			=$row['fecha_cierre'];
+			$mes_anio 		=$row['mes_ano_cierre'];
+			$mes 			=$row['mes_cierre'];
+			$Contrato 		=$row['id_cf'];
+			$Mic 			=$row['mic_concat'];
+			$x_50 			=$row['porcent_50'];
+			$Costo_Pre 		=$row['tot_costo_prepaid'];
+			$Venta_Pre 		=$row['tot_venta_prep']; 
+			$Tipo_Rampla 	=$row['tipo']; 
+			$Estado 		=$row['estado']; 
+			$Debito_Credito =$row['debito_credito'];	
+
+			mysql_free_result($sql2); 
+			$objPHPExcel->getActiveSheet()->SetCellValue('A'.$filaAux, $n_cierre); 
+			$objPHPExcel->getActiveSheet()->SetCellValue('B'.$filaAux, $t_venta); 
+			$objPHPExcel->getActiveSheet()->SetCellValue('C'.$filaAux, $t_costo); 
+			$objPHPExcel->getActiveSheet()->SetCellValue('D'.$filaAux, $Profit); 
+			$objPHPExcel->getActiveSheet()->SetCellValue('E'.$filaAux, $x_venta); 
+			$objPHPExcel->getActiveSheet()->SetCellValue('F'.$filaAux, $KB); 
+			$objPHPExcel->getActiveSheet()->SetCellValue('G'.$filaAux, $M3); 
+			$objPHPExcel->getActiveSheet()->SetCellValue('H'.$filaAux, $t_Servicio); 
+			$objPHPExcel->getActiveSheet()->SetCellValue('I'.$filaAux, $p_origen); 
+			$objPHPExcel->getActiveSheet()->SetCellValue('J'.$filaAux, $p_destino); 
+			$objPHPExcel->getActiveSheet()->SetCellValue('K'.$filaAux, $fecha); 
+			$objPHPExcel->getActiveSheet()->SetCellValue('L'.$filaAux, $mes_anio); 
+			$objPHPExcel->getActiveSheet()->SetCellValue('M'.$filaAux, $mes); 
+			$objPHPExcel->getActiveSheet()->SetCellValue('N'.$filaAux, $Contrato);  
+			$objPHPExcel->getActiveSheet()->SetCellValue('O'.$filaAux, $Mic); 
+			$objPHPExcel->getActiveSheet()->SetCellValue('P'.$filaAux, $x_50); 
+			$objPHPExcel->getActiveSheet()->SetCellValue('Q'.$filaAux, $Costo_Pre); 
+			$objPHPExcel->getActiveSheet()->SetCellValue('R'.$filaAux, $Venta_Pre); 
+			$objPHPExcel->getActiveSheet()->SetCellValue('S'.$filaAux, $Tipo_Rampla); 
+			$objPHPExcel->getActiveSheet()->SetCellValue('T'.$filaAux, $Estado); 
+			$objPHPExcel->getActiveSheet()->SetCellValue('U'.$filaAux, $Debito_Credito); 
+		$filaAux ++;
+		}	  
+		mysql_free_result($sql); 				
+//-----------CONSULTA---------------------------------------------------<<
+
+// Rename sheet
+echo date('H:i:s') . " Rename sheet\n";
+$objPHPExcel->getActiveSheet()->setTitle('Simple');
+
+		
+// Save Excel 2007 file
+$archivo = "/home/administrador/alertas/reportes/00008_alarma_detalle_ventas.xlsx";
+echo date('H:i:s') . " Write to Excel2007 format\n";
+$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+//$objWriter->save(str_replace('.php', '.xlsx', __FILE__));
+$objWriter->save($archivo);
+// Echo done
+echo date('H:i:s') . " Done writing file.\r\n";
+
+//Parte correo electrónico___>>>
+	$maildelpa = new PHPMailer();
+	$maildelpa->IsHTML(true);
+	$maildelpa->Subject="alarma_detalle_ventas";
+	$maildelpa->MsgHTML('mensaje');
+	$maildelpa->AddAttachment($archivo);
+	$maildelpa->From='avisos@delpacorp.cl';
+	$maildelpa->FromName='Avisos Delpa';	
+
+	$maildelpa->AddAddress ('lherrera@delpa.cl');
+//	$maildelpa->AddAddress ('fgutierrez@delpa.cl');
+//	$maildelpa->AddAddress ('controller@delpa.cl');
+//	$maildelpa->AddAddress ('gerencia@delpa.cl');
+//	$maildelpa->AddAddress ('durra@delpa.cl');
+//	$maildelpa->AddAddress ('marketing@delpa.cl');
+
+	$maildelpa->IsSMTP();
+	$maildelpa->SMTPAuth='true';
+	$maildelpa->Host='smtp.mandrillapp.com';
+	$maildelpa->Username='pgonzalez@delpa.cl';
+	$maildelpa->Password='LZUa_DFRdILKe0sjkR35Dw';
+	$maildelpa->Port=587;
+	
+	while(!$maildelpa->Send()){
+		echo $maildelpa->ErrorInfo;
+		sleep(5);
+	}
+//Parte correo electrónico___<<<

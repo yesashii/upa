@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "envios_notaria_pagare", "http://127.0.0.1/reportes/envios_notaria_pagare/envios_notaria_pagare.csproj", "{9B098573-874F-4EC7-961B-A7B2A4ADDA54}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{9B098573-874F-4EC7-961B-A7B2A4ADDA54}.Debug.ActiveCfg = Debug|.NET
+		{9B098573-874F-4EC7-961B-A7B2A4ADDA54}.Debug.Build.0 = Debug|.NET
+		{9B098573-874F-4EC7-961B-A7B2A4ADDA54}.Release.ActiveCfg = Release|.NET
+		{9B098573-874F-4EC7-961B-A7B2A4ADDA54}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

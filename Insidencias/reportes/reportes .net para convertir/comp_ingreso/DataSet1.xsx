@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Este archivo lo genera de forma automática el diseñador de esquemas XML. Contiene información de diseño para componentes de la superficie de diseño.-->
+<XSDDesignerLayout layoutVersion="1" viewPortLeft="16759" viewPortTop="2111">
+    <T_Beneficios_XmlElement left="11801" top="662" width="6244" height="4763" selected="0" zOrder="0" index="0" />
+    <T_Contrato_XmlElement left="25533" top="1005" width="5980" height="11060" selected="0" zOrder="4" index="1" />
+    <T_Cuotas_XmlElement left="18468" top="715" width="6138" height="5662" selected="0" zOrder="2" index="2" />
+    <T_Folio_Ref_XmlElement left="32438" top="1000" width="5292" height="2963" selected="0" zOrder="6" index="3" />
+</XSDDesignerLayout>

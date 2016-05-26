@@ -1,0 +1,95 @@
+/* 
+ se asigna el rol a los directores.
+ Los directores deben tener el rol 
+ este rol está definido en la tabla "sis_roles" 
+ campos: 
+	srol_tdesc=ASIGNACIÓN DOCENTES
+	srol_ncorr=342
+*/
+
+
+/* ******************************  */
+/* LISTA DE DIRECCTORES 03-12-2015 */
+/*
+
+8474919 - 2		SERGIO MIGUEL HERNAN	ENRIQUEZ	ANDUEZA
+7139878 - 1		BERNARDITA LORETO	CONTRERAS	AREVALO
+8001318 - 3		JORGE RICARDO	OBERG	REYES
+13721634 - 5	JOSÉ FRANCISCO	RUZ	DUARTE
+13670470 - 2	LUZ MARIA	SEPULVEDA	GUTIERREZ
+9498228 - 6		PABLO MIGUEL ANGEL	BALZO	GIL
+14255933 - 1	CLAUDIA CRISTINA	BRITO 	REYES
+12799369 - 6	VIVIANA	CORNEJO	MIRANDA
+12136197 - 3	ANDREA LORENA	ALFARO	LAY
+8685700 - 6		PAULINA	ROMERO	SOLIMANO
+8516097 - 4		REGINA	VILLOUTA	DATTOLI
+8695670 - 5		LUIS TORRES	PIZARRO
+15350600 - 0	NICOLAS MATIAS AVILES VERA
+
+
+*/
+
+/* para esto se agrega un campo x cada profesor den la tabla sis_roles_usuarios con el srol_ncorr correspondiente */
+
+
+INSERT INTO sis_roles_usuarios (pers_ncorr, srol_ncorr, srus_fmodificacion) values ( (select pers_ncorr from personas where pers_nrut = 8474919		 ),342, GETDATE ())
+INSERT INTO sis_roles_usuarios (pers_ncorr, srol_ncorr, srus_fmodificacion) values ( (select pers_ncorr from personas where pers_nrut = 7139878      ),342, GETDATE ())
+INSERT INTO sis_roles_usuarios (pers_ncorr, srol_ncorr, srus_fmodificacion) values ( (select pers_ncorr from personas where pers_nrut = 8001318      ),342, GETDATE ())
+INSERT INTO sis_roles_usuarios (pers_ncorr, srol_ncorr, srus_fmodificacion) values ( (select pers_ncorr from personas where pers_nrut = 13721634     ),342, GETDATE ())
+INSERT INTO sis_roles_usuarios (pers_ncorr, srol_ncorr, srus_fmodificacion) values ( (select pers_ncorr from personas where pers_nrut = 13670470     ),342, GETDATE ())
+INSERT INTO sis_roles_usuarios (pers_ncorr, srol_ncorr, srus_fmodificacion) values ( (select pers_ncorr from personas where pers_nrut = 9498228      ),342, GETDATE ())
+INSERT INTO sis_roles_usuarios (pers_ncorr, srol_ncorr, srus_fmodificacion) values ( (select pers_ncorr from personas where pers_nrut = 14255933	 ),342, GETDATE ())
+INSERT INTO sis_roles_usuarios (pers_ncorr, srol_ncorr, srus_fmodificacion) values ( (select pers_ncorr from personas where pers_nrut = 12799369     ),342, GETDATE ())
+INSERT INTO sis_roles_usuarios (pers_ncorr, srol_ncorr, srus_fmodificacion) values ( (select pers_ncorr from personas where pers_nrut = 12136197     ),342, GETDATE ())
+INSERT INTO sis_roles_usuarios (pers_ncorr, srol_ncorr, srus_fmodificacion) values ( (select pers_ncorr from personas where pers_nrut = 8685700      ),342, GETDATE ())
+INSERT INTO sis_roles_usuarios (pers_ncorr, srol_ncorr, srus_fmodificacion) values ( (select pers_ncorr from personas where pers_nrut = 8516097      ),342, GETDATE ())
+INSERT INTO sis_roles_usuarios (pers_ncorr, srol_ncorr, srus_fmodificacion) values ( (select pers_ncorr from personas where pers_nrut = 8695670      ),342, GETDATE ())
+INSERT INTO sis_roles_usuarios (pers_ncorr, srol_ncorr, srus_fmodificacion) values ( (select pers_ncorr from personas where pers_nrut = 15350600     ),342, GETDATE ())
+
+
+/* Luego se le otorga los permisos a Regina 
+En la tabla sis_roles campos:
+
+srol_tdesc: BLOQUES HORARIOS
+
+srol_ncorr: 341
+
+*/
+INSERT INTO sis_roles_usuarios (pers_ncorr, srol_ncorr, srus_fmodificacion) values ( (select pers_ncorr from personas where pers_nrut = 8516097      ),341, GETDATE ())
+
+
+/* 
+
+con esta consulta se verifica si el usuario posee el permiso correspondiente.
+
+*/
+
+SELECT Count (srol_ncorr) AS conteo 
+FROM   sis_roles_usuarios 
+WHERE  pers_ncorr = (SELECT pers_ncorr 
+                     FROM   personas 
+                     WHERE  pers_nrut = '15350600') 
+       AND srol_ncorr = 343333 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

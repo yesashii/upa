@@ -1,0 +1,28 @@
+<?xml version="1.0" standalone="yes" ?>
+<xs:schema id="DataSet1" targetNamespace="http://www.tempuri.org/DataSet1.xsd" xmlns:mstns="http://www.tempuri.org/DataSet1.xsd" xmlns="http://www.tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+	<xs:element name="DataSet1" msdata:IsDataSet="true" msdata:Locale="es-CL">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="Table">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ENVI_NCORR" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="ENVI_FENVIO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="INEN_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TING_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="INGR_NCORR" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="DING_NDOCTO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="DING_MDOCTO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="INGR_FPAGO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="DING_FDOCTO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="EDIN_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="RUT_ALUMNO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="RUT_APODERADO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="NOMBRE_APODERADO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

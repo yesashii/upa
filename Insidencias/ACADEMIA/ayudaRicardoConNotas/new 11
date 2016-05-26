@@ -1,0 +1,210 @@
+<?php
+
+//header('Content-type: application/vnd.ms-excel');
+//header("Content-Disposition: attachment; filename=reporte_notas_parciales.xls");
+//header("Pragma: no-cache");
+header("Expires: 0");
+set_time_limit(3000);
+
+
+//max_execution_time(630) ;
+//max_input_time(60) ;
+//memory_limit("256M");
+//echo "OK2";
+//exit;
+require ("../include/negocio_inicio.php");
+
+//## Contenidos Principales
+$page_estilos_w3c[]="estilos.css";
+
+$periodo = "240";
+
+
+$c_maxima_evaluacion = "  select max(b.cali_nevaluacion) as maximo
+                                                                                                from secciones a, calificaciones_Seccion b 
+                                                                                                where a.secc_ccod=b.secc_ccod 
+                                                                                                and cast(a.peri_ccod as varchar) = '$periodo' ";
+
+$f_datos = $obj_consulta->RetornaRegistro($c_maxima_evaluacion);
+
+$maxima_evolucion = $f_datos["maximo"];
+//echo $f_datos["maximo"];
+//exit;
+
+//*****************************Listado de Cargas asignadas al alumno*****************************************
+$consulta = " select distinct g.facu_tdesc as facultad,sede_tdesc as sede,carr_tdesc as carrera, jorn_tdesc as jornada, 
+                                                e.asig_ccod as cod_asignatura, e.asig_tdesc as asignatura, 
+                                                a.secc_tdesc as seccion, a.secc_ccod, h.matr_ncorr, cast(j.pers_nrut as varchar)+'-'+j.pers_xdv as rut, 
+                                                j.pers_tape_paterno + ' ' + j.pers_tape_materno + ', ' + j.pers_tnombre as alumno,
+                                               (select count(*) from calificaciones_seccion tt where tt.secc_ccod = a.secc_ccod ) as calificaciones,
+                                               h.carg_nnota_final as promedio_final, h.sitf_ccod as situacion, h.carg_nasistencia as asistencia 
+                                                from alumnos i (nolock), personas j, ofertas_academicas k, especialidades l,secciones a, sedes b, carreras c, jornadas d, asignaturas e, areas_academicas f, facultades g,cargas_academicas h (nolock) 
+                                                where i.pers_ncorr=j.pers_ncorr and i.ofer_ncorr=k.ofer_ncorr 
+                                                and cast(k.peri_ccod as varchar)='$periodo' 
+                                                and i.matr_ncorr=h.matr_ncorr 
+                                                and h.secc_ccod=a.secc_ccod and k.espe_ccod=l.espe_ccod 
+                                                and k.sede_ccod=b.sede_ccod and l.carr_ccod=c.carr_ccod 
+                                                and k.jorn_ccod=d.jorn_ccod and a.asig_ccod=e.asig_ccod 
+                                                and c.area_ccod=f.area_ccod and f.facu_ccod=g.facu_ccod 
+                                                order by sede, carrera, jornada, alumno";
+                                               
+//echo $consulta;                           
+//die();
+$tabla = $obj_consulta->RetornaArreglo($consulta);                                    
+//var_dump($tabla);
+//die();
+//echo $consulta;                           
+//die();
+
+$consulta_e = " select a.secc_ccod, b.cali_nevaluacion, c.matr_ncorr, cast(c.cala_nnota as decimal(2,1)) as cala_nnota, d.teva_tdesc, b.cali_nponderacion 
+                                                from secciones a, calificaciones_seccion b (nolock), calificaciones_alumnos c (nolock), tipos_evaluacion d  
+                                                where a.secc_ccod=b.secc_ccod  
+                                                and b.secc_ccod=c.secc_ccod   
+                                                and b.cali_ncorr = c.cali_ncorr 
+                                                and b.teva_ccod = d.teva_ccod 
+                                                and cast(a.peri_ccod as varchar)='$periodo'  
+                                                order by c.matr_ncorr, b.cali_nevaluacion ";
+
+//echo $consulta_e;
+//die();
+$tabla_e = $obj_consulta->RetornaArreglo($consulta_e);
+//echo $tabla_e;
+//die();
+var_dump($tabla_e);
+die();
+if (is_array($tabla_e))
+{
+                
+                $indice=0;
+    foreach($tabla_e as $key=>$valor)
+                {
+                               //echo $teva_tdesc ."<br>";
+                               $secc_ccod        = $valor['secc_ccod'];
+                               $matr_ncorr       = $valor['matr_ncorr'];
+                               $cali_nevaluacion = $valor['cali_nevaluacion'];
+                               $cala_nnota         = $valor['cala_nnota'];
+                               $teva_tdesc       = $valor['teva_tdesc'];
+                               $cali_nponderacion = $valor['cali_nponderacion'];
+                               
+                               $notas[$matr_ncorr][$secc_ccod.'_'.$cali_nevaluacion] = $cala_nnota;
+        $tipos[$matr_ncorr][$secc_ccod.'_'.$cali_nevaluacion] = $teva_tdesc;
+                               $porce[$matr_ncorr][$secc_ccod.'_'.$cali_nevaluacion] = $cali_nponderacion;
+    }
+}
+?>
+<html>
+<head>
+<title>Listado de Calificaciones parciales por alumno</title>
+<meta http-equiv="Content-Type" content="text/html;">
+</head>
+<body >
+<table width="100%" border="0">
+  <tr> 
+    <td colspan="4"><div align="center"><font size="+2" face="Arial, Helvetica, sans-serif">Listado de Calificaciones parciales por alumno</font></div></td>
+  </tr>
+  <tr> 
+    <td colspan="4">&nbsp;</td>
+  </tr>
+  <tr>
+    <td><strong>Fecha</strong></td>
+    <td colspan="3"> <strong>:</strong> <? echo date("d/m/y"); ?></td>
+  </tr>
+</table>
+
+<p>&nbsp;</p><table width="100%" border="1">
+  <tr> 
+    <td><div align="center"><strong>Fila</strong></div></td>
+    <td><div align="center"><strong>Facultad</strong></div></td>
+    <td><div align="center"><strong>Sede</strong></div></td>
+                <td><div align="center"><strong>Carrera</strong></div></td>
+    <td><div align="center"><strong>Jornada</strong></div></td>
+                <td><div align="center"><strong>Código</strong></div></td>
+    <td><div align="center"><strong>Asignatura</strong></div></td>
+                <td><div align="center"><strong>Sección</strong></div></td>
+                <td><div align="center"><strong>Rut</strong></div></td>
+                <td><div align="left"><strong>Alumno</strong></div></td>
+                <?
+                  $posicion = 1;
+                  while ($posicion <= $maxima_evolucion)
+                  {
+                ?>  
+                    <td colspan="3"><div align="center"><strong><?=$posicion?></strong></div></td>
+                <?  $posicion = $posicion + 1;
+                  }
+                ?>
+                <td bgcolor="#6666FF"><div align="center"><strong>Promedio Final</strong></div></td>
+                <td bgcolor="#6666FF"><div align="center"><strong>Estado</strong></div></td>
+                <td bgcolor="#6666FF"><div align="center"><strong>Asistencia</strong></div></td>
+  </tr>
+  <?  
+  $fila=1;  
+  foreach($tabla as $key=>$valor2)
+                {
+                               //echo $key;
+                               $seccion        = $valor2['secc_ccod'];
+        $matricula      = $valor2['matr_ncorr'];
+                               $calificaciones = $valor2['calificaciones'];
+                               $facultad         = $valor2['facultad'];
+                               $sede             = $valor2['sede'];
+                               $carrera          = $valor2['carrera'];
+                               $jornada          = $valor2['jornada'];
+                               $cod_asignatura   = $valor2['cod_asignatura'];
+                               $asignatura       = $valor2['asignatura'];
+                               $seccion2         = $valor2['seccion'];
+                               $rut              = $valor2['rut'];
+                               $alumno           = $valor2['alumno'];
+                               $promedio_final   = $valor2['promedio_final'];
+                               $situacion        = $valor2['situacion'];
+                               $asistencia       = $valor2['asistencia'];
+  ?>
+  <tr> 
+    <td><div align="center"><?=$fila?></div></td>
+    <td><div align="left"><?=$facultad?></div></td>
+    <td><div align="left"><?=$sede?></div></td>
+                <td><div align="left"><?=$carrera?></div></td>
+    <td><div align="left"><?=$jornada?></div></td>
+    <td><div align="center"><?=$cod_asignatura?></div></td>
+    <td><div align="left"><?=$asignatura?></div></td>
+                <td><div align="left"><?=$seccion2?></div></td>
+                <td><div align="left"><?=$rut?></div></td>
+                <td><div align="left"><?=$alumno?></div></td>
+                <?
+                  $posicion = 1;
+                  while ($posicion <= $maxima_evolucion)
+                  {
+                               //echo $matricula.'_'.$seccion.'_'.$posicion;
+                               // echo $posicion;
+                               $nota                     = $notas[$matricula][$seccion.'_'.$posicion];
+                               $tipo     = $tipos[$matricula][$seccion.'_'.$posicion];
+                               $ponderacion = $porce[$matricula][$seccion.'_'.$posicion];
+                               
+                                $color = "#FFFFFF";
+                               if ( ($tipo == "Prueba Solemne 1") || ($tipo == "Prueba Solemne 2") || ($tipo == "Prueba Solemne 3"))
+                               {
+                                              $color = "#FFCC00";
+                               }
+                ?>  
+                    <td align="center" bgcolor="<?=$color?>"><font size="2">&nbsp;<?=$nota?></font></td>
+                    <td align="left"   bgcolor="<?=$color?>"><font size="2">&nbsp;<?=$tipo?></font></td>
+                    <td align="center" bgcolor="<?=$color?>"><font size="2">&nbsp;<?=$ponderacion?></font></td>
+                <?  
+                    $posicion = $posicion + 1;
+                    $nota = "";
+                    $tipo = "";
+                    $ponderacion =  "";
+                }
+                ?>
+                <td bgcolor="#6666FF"><div align="left"><?=$promedio_final?></div></td>
+                <td bgcolor="#6666FF"><div align="left"><?=$situacion?></div></td>
+                <td bgcolor="#6666FF"><div align="left"><?=$asistencia?></div></td>
+  </tr>
+  <? $fila=$fila +1; 
+   }
+?>
+</table>
+</body>
+</html>
+
+ 
+
+

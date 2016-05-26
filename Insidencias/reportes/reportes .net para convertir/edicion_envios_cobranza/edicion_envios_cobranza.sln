@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "edicion_envios_cobranza", "http://localhost/reportes/edicion_envios_cobranza/edicion_envios_cobranza.csproj", "{49F3B032-A31B-4148-A950-F3C3E5503FD8}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{49F3B032-A31B-4148-A950-F3C3E5503FD8}.Debug.ActiveCfg = Debug|.NET
+		{49F3B032-A31B-4148-A950-F3C3E5503FD8}.Debug.Build.0 = Debug|.NET
+		{49F3B032-A31B-4148-A950-F3C3E5503FD8}.Release.ActiveCfg = Release|.NET
+		{49F3B032-A31B-4148-A950-F3C3E5503FD8}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

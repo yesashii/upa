@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "otros_ingresos", "http://localhost/reportes/otros_ingresos/otros_ingresos.csproj", "{3A880ED1-F2CB-43C1-AFF3-80F3C7E351B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{3A880ED1-F2CB-43C1-AFF3-80F3C7E351B3}.Debug.ActiveCfg = Debug|.NET
+		{3A880ED1-F2CB-43C1-AFF3-80F3C7E351B3}.Debug.Build.0 = Debug|.NET
+		{3A880ED1-F2CB-43C1-AFF3-80F3C7E351B3}.Release.ActiveCfg = Release|.NET
+		{3A880ED1-F2CB-43C1-AFF3-80F3C7E351B3}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

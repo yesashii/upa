@@ -1,0 +1,76 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="DataSet1" targetNamespace="http://www.tempuri.org/DataSet1.xsd" xmlns:mstns="http://www.tempuri.org/DataSet1.xsd" xmlns="http://www.tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:Locale="es-CL">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="T_detalles">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PERS_NCORR" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="INST_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="COMP_NDOCTO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="TCOM_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="DCOM_NCOMPROMISO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="NCUOTA" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="COMP_FDOCTO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="DCOM_FCOMPROMISO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="DCOM_MCOMPROMISO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="TING_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="DING_NDOCTO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="ABONOS" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="SALDO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="EDIN_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="EDIN_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="TCOM_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="TING_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="DOCUMENTADO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Comentarios">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="COME_NCORR" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="COME_TCOMENTARIO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="COME_FCOMENTARIO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="TICO_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="PERS_NCORR_AUTOR" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="T_Alumno">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PERS_NCORR" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="RUT" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="NOMBRE" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="CARR_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="SEDE_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="ANO_INGRESO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="ESTADO_MATRICULA" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="ESTADO_ALUMNO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="ingreso_u" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="PERI_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="T_Creditos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="contrato" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="CONT_NCORR" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="STDE_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="STDE_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="BENE_MMONTO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="MONE_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="BENE_NPORCENTAJE_MATRICULA" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="BENE_NPORCENTAJE_COLEGIATURA" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="TBEN_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="BENE_FBENEFICIO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

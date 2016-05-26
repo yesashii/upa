@@ -1,0 +1,1 @@
+select * from CONTRATOS_DOCENTES_UPA where ANO_CONTRATO = 2016

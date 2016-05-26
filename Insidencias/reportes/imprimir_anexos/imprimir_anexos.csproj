@@ -1,0 +1,237 @@
+<VisualStudioProject>
+    <CSHARP
+        ProjectType = "Web"
+        ProductVersion = "7.0.9466"
+        SchemaVersion = "1.0"
+        ProjectGuid = "{46648910-6FF5-49D9-A855-9FB4071F50F5}"
+    >
+        <Build>
+            <Settings
+                ApplicationIcon = ""
+                AssemblyKeyContainerName = ""
+                AssemblyName = "imprimir_anexos"
+                AssemblyOriginatorKeyFile = ""
+                DefaultClientScript = "JScript"
+                DefaultHTMLPageLayout = "Grid"
+                DefaultTargetSchema = "IE50"
+                DelaySign = "false"
+                OutputType = "Library"
+                RootNamespace = "imprimir_anexos"
+                StartupObject = ""
+            >
+                <Config
+                    Name = "Debug"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "DEBUG;TRACE"
+                    DocumentationFile = ""
+                    DebugSymbols = "true"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "true"
+                    Optimize = "false"
+                    OutputPath = "bin\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+                <Config
+                    Name = "Release"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "TRACE"
+                    DocumentationFile = ""
+                    DebugSymbols = "false"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    Optimize = "true"
+                    OutputPath = "bin\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+            </Settings>
+            <References>
+                <Reference
+                    Name = "System"
+                    AssemblyName = "System"
+                    HintPath = "..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.0.3705\System.dll"
+                />
+                <Reference
+                    Name = "System.Data"
+                    AssemblyName = "System.Data"
+                    HintPath = "..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.0.3705\System.Data.dll"
+                />
+                <Reference
+                    Name = "System.XML"
+                    AssemblyName = "System.Xml"
+                    HintPath = "..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.0.3705\System.XML.dll"
+                />
+                <Reference
+                    Name = "System.Web"
+                    AssemblyName = "System.Web"
+                    HintPath = "..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.0.3705\System.Web.dll"
+                />
+                <Reference
+                    Name = "System.Drawing"
+                    AssemblyName = "System.Drawing"
+                    HintPath = "..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.0.3705\System.Drawing.dll"
+                />
+                <Reference
+                    Name = "CrystalDecisions.Shared"
+                    AssemblyName = "CrystalDecisions.Shared"
+                    HintPath = "..\..\..\..\Archivos de programa\Archivos comunes\Crystal Decisions\1.0\Managed\CrystalDecisions.Shared.dll"
+                />
+                <Reference
+                    Name = "CrystalDecisions.ReportSource"
+                    AssemblyName = "CrystalDecisions.ReportSource"
+                    HintPath = "..\..\..\..\Archivos de programa\Archivos comunes\Crystal Decisions\1.0\Managed\CrystalDecisions.ReportSource.dll"
+                />
+                <Reference
+                    Name = "CrystalDecisions.CrystalReports.Engine"
+                    AssemblyName = "CrystalDecisions.CrystalReports.Engine"
+                    HintPath = "..\..\..\..\Archivos de programa\Archivos comunes\Crystal Decisions\1.0\Managed\CrystalDecisions.CrystalReports.Engine.dll"
+                />
+                <Reference
+                    Name = "crystaldecisions.web"
+                    AssemblyName = "CrystalDecisions.Web"
+                    HintPath = "..\..\..\..\windows\assembly\gac\crystaldecisions.web\9.1.3300.0__692fbea5521e1304\crystaldecisions.web.dll"
+                />
+                <Reference
+                    Name = "System.Web.Services"
+                    AssemblyName = "System.Web.Services"
+                    HintPath = "..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.0.3705\System.Web.Services.dll"
+                />
+                <Reference
+                    Name = "CrystalEnterpriseLib"
+                    AssemblyName = "CrystalEnterpriseLib"
+                    HintPath = "..\..\..\..\Archivos de programa\Archivos comunes\Crystal Decisions\1.0\Managed\CrystalEnterpriseLib.dll"
+                />
+                <Reference
+                    Name = "CrystalReportPluginLib"
+                    AssemblyName = "CrystalReportPluginLib"
+                    HintPath = "..\..\..\..\Archivos de programa\Archivos comunes\Crystal Decisions\1.0\Managed\CrystalReportPluginLib.dll"
+                />
+                <Reference
+                    Name = "CrystalInfoStoreLib"
+                    AssemblyName = "CrystalInfoStoreLib"
+                    HintPath = "..\..\..\..\Archivos de programa\Archivos comunes\Crystal Decisions\1.0\Managed\CrystalInfoStoreLib.dll"
+                />
+            </References>
+        </Build>
+        <Files>
+            <Include>
+                <File
+                    RelPath = "ContratoHonorario.rpt"
+                    BuildAction = "EmbeddedResource"
+                    Generator = "CrystalDecisions.VSShell.CodeGen.ReportCodeGenerator"
+                    LastGenOutput = "ContratoHonorario.cs"
+                />
+                <File
+                    RelPath = "ContratoHonorario.cs"
+                    DependentUpon = "ContratoHonorario.rpt"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                    DesignTime = "True"
+                    AutoGen = "True"
+                />
+                <File
+                    RelPath = "ContratoHonorario.resx"
+                    DependentUpon = "ContratoHonorario.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "ContratoHonorarioService.asmx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "ContratoHonorarioService.asmx.cs"
+                    DependentUpon = "ContratoHonorarioService.asmx"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ContratoIndefinido.rpt"
+                    BuildAction = "EmbeddedResource"
+                    Generator = "CrystalDecisions.VSShell.CodeGen.ReportCodeGenerator"
+                    LastGenOutput = "ContratoIndefinido.cs"
+                />
+                <File
+                    RelPath = "ContratoIndefinido.cs"
+                    DependentUpon = "ContratoIndefinido.rpt"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                    DesignTime = "True"
+                    AutoGen = "True"
+                />
+                <File
+                    RelPath = "ContratoPlazoFijo.rpt"
+                    BuildAction = "EmbeddedResource"
+                    Generator = "CrystalDecisions.VSShell.CodeGen.ReportCodeGenerator"
+                    LastGenOutput = "ContratoPlazoFijo.cs"
+                />
+                <File
+                    RelPath = "ContratoPlazoFijo.cs"
+                    DependentUpon = "ContratoPlazoFijo.rpt"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                    DesignTime = "True"
+                    AutoGen = "True"
+                />
+                <File
+                    RelPath = "contratos.xsd"
+                    BuildAction = "Content"
+                    Generator = "MSDataSetGenerator"
+                    LastGenOutput = "contratos.cs"
+                />
+                <File
+                    RelPath = "contratos.cs"
+                    DependentUpon = "contratos.xsd"
+                    SubType = "code"
+                    BuildAction = "Compile"
+                    DesignTime = "True"
+                    AutoGen = "True"
+                />
+                <File
+                    RelPath = "contratos.xsx"
+                    DependentUpon = "contratos.xsd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Global.asax.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "imprimir_anexos.aspx"
+                    SubType = "Form"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "imprimir_anexos.aspx.cs"
+                    DependentUpon = "imprimir_anexos.aspx"
+                    SubType = "ASPXCodeBehind"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "imprimir_anexos.aspx.resx"
+                    DependentUpon = "imprimir_anexos.aspx.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Web.config"
+                    BuildAction = "Content"
+                />
+            </Include>
+        </Files>
+        <StartupServices>
+            <Service ID = "{CF845C55-C321-4742-B673-E6212D061ED9}" />
+        </StartupServices>
+    </CSHARP>
+</VisualStudioProject>
+

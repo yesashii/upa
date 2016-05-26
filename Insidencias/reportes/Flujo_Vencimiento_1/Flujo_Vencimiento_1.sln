@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flujo_Vencimiento_1", "http://localhost/reportes/Flujo_Vencimiento_1/Flujo_Vencimiento_1.csproj", "{4F21D356-CE23-460B-8DAE-D0837C2EC306}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{4F21D356-CE23-460B-8DAE-D0837C2EC306}.Debug.ActiveCfg = Debug|.NET
+		{4F21D356-CE23-460B-8DAE-D0837C2EC306}.Debug.Build.0 = Debug|.NET
+		{4F21D356-CE23-460B-8DAE-D0837C2EC306}.Release.ActiveCfg = Release|.NET
+		{4F21D356-CE23-460B-8DAE-D0837C2EC306}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

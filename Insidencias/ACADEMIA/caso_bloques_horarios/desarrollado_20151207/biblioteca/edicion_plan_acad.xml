@@ -1,0 +1,150 @@
+<Parametros>
+   <parametro formulario="btn_edicion_plan_acad">
+      <botones nombre="guardar">
+         <tipoTexto>GUARDAR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>enviar(document.buscador)</funcion>
+      </botones>
+      <botones nombre="nuevo">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Nuevo</texto>
+         <accion>NAVEGAR</accion>
+         <url>edicion_plan_acad.asp</url>
+      </botones>
+      <botones nombre="salir">
+         <tipoTexto>SALIR</tipoTexto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>cerrar()</funcion>
+      </botones>
+   </parametro>
+   <parametro formulario="botonera">
+      <botones nombre="crear_bloque">
+         <tipoTexto>DEFINIR</tipoTexto>
+         <texto>Crear</texto>
+         <accion>JAVASCRIPT</accion>
+         <funcion>CrearBloque(document.buscador);</funcion>
+      </botones>
+      <botones nombre="agregar_profesor">
+         <tipoTexto>AGREGAR</tipoTexto>
+         <texto>Agregar prof.</texto>
+         <accion>AGREGAR</accion>
+         <url>agregar_profesor_subseccion.asp</url>
+         <posicionX>200</posicionX>
+         <posicionY>200</posicionY>
+         <alto>300</alto>
+         <ancho>500</ancho>
+      </botones>
+      <botones nombre="eliminar_profesor">
+         <tipoTexto>ELIMINAR</tipoTexto>
+         <accion>ELIMINAR</accion>
+         <url>proc_eliminar_profesor_subseccion.asp</url>
+         <formulario>buscador</formulario>
+      </botones>
+   </parametro>
+   <parametro formulario="botonera_agregar_profesor">
+      <botones nombre="aceptar">
+         <tipoTexto>ACEPTAR</tipoTexto>
+         <accion>GUARDAR</accion>
+         <formulario>edicion</formulario>
+         <url>proc_agregar_profesor_subseccion.asp</url>
+		 <funcionValidacion>validar_horas(document.edicion)</funcionValidacion>
+      </botones>
+      <botones nombre="cancelar">
+         <tipoTexto>CANCELAR</tipoTexto>
+         <accion>CERRAR</accion>
+      </botones>
+   </parametro>
+   <parametro formulario="profesores" variable="profesores" anchoTabla="100%" eliminar="TRUE" clave="pers_ncorr" mensajeError="No se han definido profesores para este bloque.">
+      <tablas nombre="bloques_profesores" accion="B"/>
+      <campos nombre="bloq_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="nombre_profesor">
+         <descripcion>Nombre Profesor</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+	  <campos nombre="tipo">
+         <descripcion>tipo Profesor</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+      </campos>
+      <!--<campos nombre="tpro_ccod">
+         <descripcion>Tipo Profesor</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_profesores</destino>
+         <union>tpro_ccod</union>
+         <salida>tpro_tdesc</salida>
+         <permiso>LECTURA</permiso>
+         <id>TO-N</id>
+      </campos>-->
+	  <campos nombre="bloq_anexo">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+	  <campos nombre="horas">
+         <descripcion>Horas Ayudante</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+	  <campos nombre="nivel">
+         <descripcion>Nivel Ayudante</descripcion>
+         <tipo>INPUT</tipo>
+         <permiso>LECTURA</permiso>
+		 <alineamiento>CENTER</alineamiento>
+      </campos>
+   </parametro>
+   <parametro formulario="agregar_profesor" camposObligatorios="TRUE" variable="profesor">
+      <tablas nombre="bloques_profesores" accion="M"/>
+      <campos nombre="bloq_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="sede_ccod">
+         <tipo>INPUT</tipo>
+         <permiso>OCULTO</permiso>
+      </campos>
+      <campos nombre="pers_ncorr">
+         <descripcion>Profesor</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>(select pers_ncorr, protic.obtener_nombre_completo(pers_ncorr, 'PM,N') as nombre_profesor, sede_ccod from profesores)s</destino>
+         <union>pers_ncorr</union>
+         <salida>nombre_profesor</salida>
+         <orden>nombre_profesor asc</orden>
+         <permiso>LECTURAESCRITURA</permiso>
+         <anulable>TRUE</anulable>
+         <mensajeNulo>Seleccione profesor</mensajeNulo>
+         <mensajeVacio>No puede seguir agregando profesores a este bloque.</mensajeVacio>
+         <id>TO-N</id>
+      </campos>
+      <campos nombre="tpro_ccod">
+         <descripcion>Tipo de profesor</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>tipos_profesores</destino>
+         <union>tpro_ccod</union>
+         <salida>tpro_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <script>onChange="corregir(this.name,this.value)"</script>
+         <id>TO-N</id>
+      </campos>
+	  <campos nombre="blpr_nhoras_ayudante">
+         <tipo>INPUT</tipo>
+         <permiso>LECTURAESCRITURA</permiso>
+		 <alineamiento>center</alineamiento>
+		 <caracteres>3</caracteres>
+		 <maxCaracteres>3</maxCaracteres>
+		 <id>NU-N</id>
+      </campos>
+	  <campos nombre="niay_ccod">
+         <descripcion>Nivel Ayudante</descripcion>
+         <tipo>SELECT</tipo>
+         <destino>niveles_ayudante</destino>
+         <union>niay_ccod</union>
+         <salida>niay_tdesc</salida>
+         <permiso>LECTURAESCRITURA</permiso>
+         <id>TO-S</id>
+      </campos>
+     </parametro>
+</Parametros>

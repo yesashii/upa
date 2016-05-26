@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rep_det_cob", "http://127.0.0.1/reportes/rep_det_cob/rep_det_cob.csproj", "{071FCC8F-C4CE-43CD-9160-1BC64C35F471}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{071FCC8F-C4CE-43CD-9160-1BC64C35F471}.Debug.ActiveCfg = Debug|.NET
+		{071FCC8F-C4CE-43CD-9160-1BC64C35F471}.Debug.Build.0 = Debug|.NET
+		{071FCC8F-C4CE-43CD-9160-1BC64C35F471}.Release.ActiveCfg = Release|.NET
+		{071FCC8F-C4CE-43CD-9160-1BC64C35F471}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

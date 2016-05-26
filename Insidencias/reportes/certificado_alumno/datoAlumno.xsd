@@ -1,0 +1,35 @@
+<?xml version="1.0" standalone="yes" ?>
+<xs:schema id="datoAlumno" targetNamespace="http://www.tempuri.org/datoAlumno.xsd" xmlns:mstns="http://www.tempuri.org/datoAlumno.xsd" xmlns="http://www.tempuri.org/datoAlumno.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+	<xs:element name="datoAlumno" msdata:IsDataSet="true" msdata:Locale="es-ES">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="alumno">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="SEMESTRE" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="PERIODO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="NOMBRE_ENC_C" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="SEC_GENERAL" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="CIUDAD_SEDE" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="CCOD_ALUMNO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="NOMBRE_ALUMNO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="RUT_POST" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="CARRERA" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="DIA" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MES" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="ANO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="N_DIA" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TIPO_CERTIFICADO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="DUAS_TDESC" type="xs:string" minOccurs="0" />
+							<xs:element name="SEDE_SECRET" type="xs:string" minOccurs="0" />
+							<xs:element name="JORN_TDESC" type="xs:string" minOccurs="0" />
+							<xs:element name="TXT1" type="xs:string" minOccurs="0" />
+							<xs:element name="PARRAFO_ADICIONAL" type="xs:string" minOccurs="0" />
+							<xs:element name="ESPE_TCERTIFIC" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

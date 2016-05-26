@@ -1,0 +1,28 @@
+<?xml version="1.0" standalone="yes" ?>
+<xs:schema id="datosEnvios" targetNamespace="http://www.tempuri.org/datosEnvios.xsd" xmlns:mstns="http://www.tempuri.org/datosEnvios.xsd" xmlns="http://www.tempuri.org/datosEnvios.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+	<xs:element name="datosEnvios" msdata:IsDataSet="true" msdata:Locale="es-ES">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="envios_cobranza">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ESTADO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="NRO_DOCTO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="RUT_ALUMNO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="RUT_APODERADO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="NOMBRE_APODERADO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="FECHA_EMISION" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MONTO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TIPO_DOCTO" type="xs:string" minOccurs="0" />
+							<xs:element name="NOMBRE_EMPRESA" type="xs:string" minOccurs="0" />
+							<xs:element name="FECHA_REPORTE" type="xs:string" minOccurs="0" />
+							<xs:element name="NRO_FOLIO" type="xs:string" minOccurs="0" />
+							<xs:element name="c_corriente" type="xs:string" minOccurs="0" />
+							<xs:element name="multa_protesto" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

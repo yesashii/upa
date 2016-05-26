@@ -1,0 +1,41 @@
+<?xml version="1.0" standalone="yes" ?>
+<xs:schema id="FlujoEfectivo" targetNamespace="http://www.tempuri.org/FlujoEfectivo.xsd" xmlns:mstns="http://www.tempuri.org/FlujoEfectivo.xsd" xmlns="http://www.tempuri.org/FlujoEfectivo.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+	<xs:element name="FlujoEfectivo" msdata:IsDataSet="true" msdata:Locale="es-ES">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="Table">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CARR_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="CARR_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_CHEQUE_A" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_LETRA_A" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_CHEQUE_N" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_LETRA_N" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="EFECTIVO_A" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="EFECTIVO_N" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_CREDITO_A" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_BECA_A" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_DESCUENTO_A" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_CREDITO_N" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_BECA_N" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_DESCUENTO_N" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_MATR_CHEQUE_A" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_MATR_LETRA_A" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_COL_LETRA_A" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_COL_CHEQUE_A" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_MATR_CHEQUE_N" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_MATR_LETRA_N" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_COL_LETRA_N" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_COL_CHEQUE_N" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_MATR_EFECTIVO_A" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_COL_EFECTIVO_A" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_MATR_EFECTIVO_N" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_COL_EFECTIVO_N" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

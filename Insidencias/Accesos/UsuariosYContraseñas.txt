@@ -1,0 +1,7 @@
+============ Moodle ============ 
+Perfil administrador.
+
+Usuario		: admin
+Contraseña	: M00dl3.dt1
+
+================================

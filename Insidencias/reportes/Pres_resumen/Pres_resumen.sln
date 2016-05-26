@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pres_resumen", "http://localhost/reportes/Pres_resumen/Pres_resumen.csproj", "{FAF3CB7D-9A64-47E1-96C8-F7AF050DF147}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{FAF3CB7D-9A64-47E1-96C8-F7AF050DF147}.Debug.ActiveCfg = Debug|.NET
+		{FAF3CB7D-9A64-47E1-96C8-F7AF050DF147}.Debug.Build.0 = Debug|.NET
+		{FAF3CB7D-9A64-47E1-96C8-F7AF050DF147}.Release.ActiveCfg = Release|.NET
+		{FAF3CB7D-9A64-47E1-96C8-F7AF050DF147}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Res_Morosidad", "http://127.0.0.1/reportes/Res_Morosidad/Res_Morosidad.csproj", "{7EEDFE4C-3E1A-4E47-81CA-16D1C9F76702}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{7EEDFE4C-3E1A-4E47-81CA-16D1C9F76702}.Debug.ActiveCfg = Debug|.NET
+		{7EEDFE4C-3E1A-4E47-81CA-16D1C9F76702}.Debug.Build.0 = Debug|.NET
+		{7EEDFE4C-3E1A-4E47-81CA-16D1C9F76702}.Release.ActiveCfg = Release|.NET
+		{7EEDFE4C-3E1A-4E47-81CA-16D1C9F76702}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

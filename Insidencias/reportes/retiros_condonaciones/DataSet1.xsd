@@ -1,0 +1,39 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="DataSet1" targetNamespace="http://www.tempuri.org/DataSet1.xsd" xmlns:mstns="http://www.tempuri.org/DataSet1.xsd" xmlns="http://www.tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:Locale="es-CL">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="DETALLES">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CARR_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="TING_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="TOTAL_01" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_02" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_03" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_04" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_05" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_06" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_07" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_08" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_09" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_10" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_11" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_12" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ORDEN" type="xs:string" minOccurs="0" />
+              <xs:element name="TOTAL" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ENCABEZADO">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ANOS_CCOD" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SEDE_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

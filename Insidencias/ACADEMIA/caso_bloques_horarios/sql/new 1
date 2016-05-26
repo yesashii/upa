@@ -1,0 +1,44 @@
+-- Con el nombre y apellido, se encuentra a la persona.
+
+SELECT
+	*
+FROM
+	personas
+WHERE
+	PERSONAS.PERS_TNOMBRE LIKE '%hilda%'
+AND PERSONAS.PERS_TAPE_PATERNO LIKE '%araya%'
+
+
+
+select * from SIS_USUARIOS where pers_ncorr = 255864
+
+
+
+
+select * from SIS_USUARIOS where pers_ncorr = 110474 -- regina
+
+select top 1 ssec_ncorr from sub_secciones
+
+
+SELECT *                 							
+FROM   sis_roles_usuarios                           							
+WHERE  srol_ncorr = 342
+
+select top 1 ssec_ncorr from secciones
+
+select * from personas where pers_nrut = 15350600
+
+select * from SIS_USUARIOS where pers_ncorr = 255864 -- SERGIO MIGUEL HERNAN	ENRIQUEZ	ANDUEZA
+
+-- --------------------------------------------------------------------------------------------------------
+select * from personas where pers_nrut = 15350600
+
+select * from SIS_USUARIOS where pers_ncorr = 156955 -- SERGIO MIGUEL HERNAN	ENRIQUEZ	ANDUEZA
+
+
+
+
+
+
+
+

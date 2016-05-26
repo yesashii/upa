@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aviso_vencimiento", "http://localhost/reportes/aviso_vencimiento/aviso_vencimiento.csproj", "{CB64AB17-2747-469F-9B64-8B8144163959}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{CB64AB17-2747-469F-9B64-8B8144163959}.Debug.ActiveCfg = Debug|.NET
+		{CB64AB17-2747-469F-9B64-8B8144163959}.Debug.Build.0 = Debug|.NET
+		{CB64AB17-2747-469F-9B64-8B8144163959}.Release.ActiveCfg = Release|.NET
+		{CB64AB17-2747-469F-9B64-8B8144163959}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

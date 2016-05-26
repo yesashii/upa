@@ -1,0 +1,32 @@
+<?xml version="1.0" standalone="yes" ?>
+<xs:schema id="DataSet2" targetNamespace="http://www.tempuri.org/DataSet2.xsd" xmlns:mstns="http://www.tempuri.org/DataSet2.xsd" xmlns="http://www.tempuri.org/DataSet2.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+	<xs:element name="DataSet2" msdata:IsDataSet="true" msdata:Locale="es-CL">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="T_Creditos">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PERS_NCORR" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="CONT_NCORR" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="PAGA_NCORR" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="PAGA_NPAGARE" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="STDE_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="STDE_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="BENE_MMONTO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MONE_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="BENE_NPORCENTAJE" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="UFOM_NCORR" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TBEN_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="BENE_FBENEFICIO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="SDES_MCOLEGIATURA" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="UFOM_MVALOR" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MONTO_CREDITO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="EPAG_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="BENE_MMONTO_ACUM_COLEGIATURA" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

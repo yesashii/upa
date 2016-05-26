@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "acta_final", "http://localhost/reportes/acta_final/acta_final.csproj", "{E5F5E78A-6B4B-42FF-BBE3-9BCB0BC0F24D}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{E5F5E78A-6B4B-42FF-BBE3-9BCB0BC0F24D}.Debug.ActiveCfg = Debug|.NET
+		{E5F5E78A-6B4B-42FF-BBE3-9BCB0BC0F24D}.Debug.Build.0 = Debug|.NET
+		{E5F5E78A-6B4B-42FF-BBE3-9BCB0BC0F24D}.Release.ActiveCfg = Release|.NET
+		{E5F5E78A-6B4B-42FF-BBE3-9BCB0BC0F24D}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

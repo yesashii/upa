@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "retiros_condonaciones", "http://localhost/reportes/retiros_condonaciones/retiros_condonaciones.csproj", "{B58F502E-0AB3-45D7-9CCA-4916DD7E4BA4}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{B58F502E-0AB3-45D7-9CCA-4916DD7E4BA4}.Debug.ActiveCfg = Debug|.NET
+		{B58F502E-0AB3-45D7-9CCA-4916DD7E4BA4}.Debug.Build.0 = Debug|.NET
+		{B58F502E-0AB3-45D7-9CCA-4916DD7E4BA4}.Release.ActiveCfg = Release|.NET
+		{B58F502E-0AB3-45D7-9CCA-4916DD7E4BA4}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

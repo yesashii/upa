@@ -1,0 +1,36 @@
+select cast((cast(isnull(verbal,0) as numeric)+cast(isnull(matematicas,0) as numeric))/2 as numeric) as promedio,* 
+from (
+    select 
+    isnull((select top 1 post_npaa_verbal from postulantes tt where tt.pers_ncorr=a.pers_ncorr and isnull(post_npaa_verbal,0) > 0 and isnull(post_npaa_matematicas,0) > 0  order by POST_NANO_PAA desc),
+           (select case psu_leng when 0 then paa_verbal else psu_leng end from puntajes_psu_rrcc_2010 tt where tt.rut=a.pers_nrut) ) as verbal,
+    isnull((select top 1 post_npaa_matematicas from postulantes tt where tt.pers_ncorr=a.pers_ncorr and isnull(post_npaa_matematicas,0) > 0 and isnull(post_npaa_verbal,0) > 0 order by POST_NANO_PAA desc),
+           (select case psu_mate when 0 then paa_mate else psu_mate end from puntajes_psu_rrcc_2010 tt where tt.rut=a.pers_nrut) )  as matematicas,
+    c.jorn_ccod, g.jorn_tdesc as jornada,
+     cast(pers_nrut as varchar)+'-'+cast(pers_xdv as varchar) as rut,d.post_ncorr,a.pers_ncorr, f.carr_tdesc as carrera, h.sede_tdesc as sede, c.sede_ccod, f.area_ccod, c.peri_ccod,
+    (select facu_tdesc from areas_academicas aa, facultades fa where aa.facu_ccod=fa.facu_ccod and aa.area_ccod=f.area_ccod )  as facultad,  
+       pers_tape_paterno + ' ' + pers_tape_materno + ', '+ pers_tnombre as nombre,  
+       pers_fnacimiento,protic.es_nuevo_carrera(a.pers_ncorr,e.carr_ccod,c.peri_ccod) as nuevo,  
+       isnull(protic.ANO_INGRESO_CARRERA(a.pers_ncorr, (select protic.obtener_nombre_carrera((select top 1 ofer_ncorr   
+       From alumnos where matr_ncorr=d.matr_ncorr order by matr_ncorr desc),'CC'))) ,    
+       protic.ANO_INGRESO_UNIVERSIDAD(a.pers_ncorr) )as ano_ingreso  
+     from personas a, ofertas_academicas c, alumnos d,especialidades e, carreras f, jornadas g, sedes h, postulantes i    
+     where a.pers_ncorr = d.pers_ncorr   
+       and c.ofer_ncorr= d.ofer_ncorr   
+       and c.espe_ccod = e.espe_ccod
+       and c.jorn_ccod = g.jorn_ccod 
+       and c.sede_ccod= h.sede_ccod 
+       and d.post_ncorr=i.post_ncorr
+       and POST_NANO_PAA=2011
+       --and c.jorn_ccod='1'   
+       --and e.carr_ccod='800'  
+       --and c.sede_ccod='1'  
+       and d.emat_ccod in (1,4,8,2,15,16)  
+       and d.audi_tusuario not like '%ajunte matricula%'  
+       and protic.afecta_estadistica(d.matr_ncorr) > 0   
+       and c.peri_ccod=protic.retorna_max_periodo_matricula(a.pers_ncorr,'228',e.carr_ccod)  
+       and isnull(d.alum_nmatricula,0) not in (7777) 
+       and e.carr_ccod=f.carr_ccod
+       --and i.post_bnuevo='S'
+     group by a.pers_ncorr, f.carr_tdesc, e.carr_ccod,f.area_ccod, c.peri_ccod,pers_nrut, pers_xdv, pers_tnombre,jorn_tdesc, sede_tdesc,
+              pers_tape_paterno,pers_tape_materno,pers_fnacimiento,d.matr_ncorr, d.post_ncorr, c.sede_ccod, d.emat_ccod,d.audi_fmodificacion,c.jorn_ccod
+) as tabla

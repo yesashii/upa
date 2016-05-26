@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "repactaciones", "http://localhost/reportes/repactaciones/repactaciones.csproj", "{56A81F02-618C-44BF-BD8F-0EB8DBB05198}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56A81F02-618C-44BF-BD8F-0EB8DBB05198}.Debug|Default.ActiveCfg = Debug|.NET
+		{56A81F02-618C-44BF-BD8F-0EB8DBB05198}.Debug|Default.Build.0 = Debug|.NET
+		{56A81F02-618C-44BF-BD8F-0EB8DBB05198}.Release|Default.ActiveCfg = Release|.NET
+		{56A81F02-618C-44BF-BD8F-0EB8DBB05198}.Release|Default.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

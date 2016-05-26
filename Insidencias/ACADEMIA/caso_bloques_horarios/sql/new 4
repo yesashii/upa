@@ -1,0 +1,19 @@
+select a.bloq_ccod                                        
+from   bloques_horarios as a                                           
+       left outer join personas as b                                   
+                    on a.pers_ncorr = b.pers_ncorr                     
+       inner join salas as d                                           
+               on a.sala_ccod = d.sala_ccod                            
+       inner join horarios as e                                        
+               on a.hora_ccod = e.hora_ccod                            
+       inner join sub_secciones as f1                                  
+               on a.ssec_ncorr = f1.ssec_ncorr                         
+                  and f1.ssec_ncorr = 61966                   
+       inner join secciones as f                                       
+               on f1.secc_ccod = f.secc_ccod                           
+                  and f.sede_ccod = 1                      
+       inner join asignaturas as g                                     
+               on f.asig_ccod = g.asig_ccod                            
+       inner join dias_semana as h                                     
+               on a.dias_ccod = h.dias_ccod                            
+  

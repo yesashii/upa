@@ -1,0 +1,62 @@
+<?xml version="1.0" standalone="yes" ?>
+<xs:schema id="DataSet1" targetNamespace="http://www.tempuri.org/DataSet1.xsd" xmlns:mstns="http://www.tempuri.org/DataSet1.xsd" xmlns="http://www.tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+	<xs:element name="DataSet1" msdata:IsDataSet="true" msdata:Locale="es-CL">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="Table">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CDOt_NCORR" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="pers_ncorr" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="Nombre_Docente" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Rut_Docente" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="DV" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Fecha_Nac" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Estado_Civil" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Direccion" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Comuna" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Ciudad" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="PROFESION" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Bhot_ANEXO" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="dcurr_CCOD" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="dcurr_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="mote_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="daot_NHORA" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="mote_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="daot_mhora" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="anot_ncorr" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="INST_TRAZON_SOCIAL" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="NombreRepLeg" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="tcat_tdesc" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Nacionalidad" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="cdot_finicio" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="cdot_ffin" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="SEot_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="sede_tdesc" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="anot_ncuotas" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="anot_inicio" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="anot_fin" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="institucion_t" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TipoDocente" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="ano_contrato" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="seot_ncorr" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="daot_ncorr" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="valorI" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="Mes" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Dia" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Año" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="valoII" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="anot_ncodigo" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="mes_fin_contrato" type="xs:string" minOccurs="0" />
+							<xs:element name="mes_ini_contrato" type="xs:string" minOccurs="0" />
+							<xs:element name="anio_ini_contrato" type="xs:string" minOccurs="0" />
+							<xs:element name="anio_fin_contrato" type="xs:string" minOccurs="0" />
+							<xs:element name="grado" type="xs:string" minOccurs="0" />
+							<xs:element name="institucion_t1" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

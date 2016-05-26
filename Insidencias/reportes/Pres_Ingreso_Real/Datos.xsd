@@ -1,0 +1,26 @@
+<?xml version="1.0" standalone="yes" ?>
+<xs:schema id="Datos" targetNamespace="http://www.tempuri.org/Datos.xsd" xmlns:mstns="http://www.tempuri.org/Datos.xsd" xmlns="http://www.tempuri.org/Datos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+	<xs:element name="Datos" msdata:IsDataSet="true" msdata:Locale="es-ES">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="ProsupuestadoReal">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CARR_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="CARR_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_MATR_COMPROMETIDA" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_COL_COMPROMETIDA" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_MATR_REAL" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TOTAL_COL_REAL" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="SALDO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="SEDE_TDESC" type="xs:string" minOccurs="0" />
+							<xs:element name="periodo" type="xs:string" minOccurs="0" />
+							<xs:element name="fecha_inicio" type="xs:string" minOccurs="0" />
+							<xs:element name="fecha_termino" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rep_credito_por_estado", "http://localhost/reportes/rep_credito_por_estado/rep_credito_por_estado.csproj", "{23BED683-3E2F-4AA0-8C06-402BFB1AF8FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{23BED683-3E2F-4AA0-8C06-402BFB1AF8FA}.Debug.ActiveCfg = Debug|.NET
+		{23BED683-3E2F-4AA0-8C06-402BFB1AF8FA}.Debug.Build.0 = Debug|.NET
+		{23BED683-3E2F-4AA0-8C06-402BFB1AF8FA}.Release.ActiveCfg = Release|.NET
+		{23BED683-3E2F-4AA0-8C06-402BFB1AF8FA}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

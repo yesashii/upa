@@ -1,0 +1,57 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="datos_comprobante" targetNamespace="http://www.tempuri.org/datos_comprobante.xsd" xmlns:mstns="http://www.tempuri.org/datos_comprobante.xsd" xmlns="http://www.tempuri.org/datos_comprobante.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:element name="datos_comprobante" msdata:IsDataSet="true" msdata:Locale="es-ES">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="t_alumno">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CODIGO_ALUMNO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="NOMBRE_CARRERA" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="OFERTA" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="NOMBRE_ALUMNO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="RUT_ALUMNO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="FECHA_DIA" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="NOMBRE_CODEUDOR" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="RUT_CODEUDOR" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="pers_ncorr" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="t_compromisos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NRO_DOCUMENTO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="FECHA_VENCIMIENTO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="TIPO_COMPROMISO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="MONTO_ABONO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="TING_TDESC" type="xs:string" minOccurs="0" />
+              <xs:element name="DING_NDOCTO" type="xs:string" minOccurs="0" />
+              <xs:element name="tipo_detalle" type="xs:string" minOccurs="0" />
+              <xs:element name="detalle" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="t_documento">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NRO_DOCUMENTO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="FECHA_DOCUMENTO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="NOMBRE_BANCO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="NFOLIO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="TIPO_PAGO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="MONTO_DOC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="DETALLES_COMPROMISO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="TOTAL" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="TDOCUMENTO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="pers_ncorr" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="INGR_FPAGO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="OTRO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="ingr_ncorrelativo_caja" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,7 @@
+http://fangorn.upacifico.cl/sigaupa/FINANZAS/REPORTE_CHEQUES.ASP?busqueda%5B0%5D%5Bsede_ccod%5D=&busqueda%5B0%5D%5Bting_ccod%5D=&busqueda%5B0%5D%5Binicio%5D=&fecha_oculta_inicio=&busqueda%5B0%5D%5Btermino%5D=&fecha_oculta_termino=&busqueda%5B0%5D%5Bding_ndocto%5D=640&busqueda%5B0%5D%5Bding_tcuenta_corriente%5D=&busqueda%5B0%5D%5Bpers_nrut%5D=17085007&busqueda%5B0%5D%5Bpers_xdv%5D=6&busqueda%5B0%5D%5Bcode_nrut%5D=&busqueda%5B0%5D%5Bcode_xdv%5D=&busqueda%5B0%5D%5Bedin_ccod%5D=
+
+
+
+
+
+Finanzas - > reporte de cheque.

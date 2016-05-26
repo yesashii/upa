@@ -1,0 +1,37 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="ds" targetNamespace="http://www.tempuri.org/ds.xsd" xmlns:mstns="http://www.tempuri.org/ds.xsd" xmlns="http://www.tempuri.org/ds.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:element name="ds" msdata:IsDataSet="true" msdata:Locale="es-CL">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="CURSOS">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TDET_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="IGAS_TCODIGO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="CCOS_TCODIGO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="SEMESTRE" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="COMP_01" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="COMP_02" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="COMP_03" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="COMP_04" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="COMP_05" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="COMP_06" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="REAL_01" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="REAL_02" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="REAL_03" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="REAL_04" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="REAL_05" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="REAL_06" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="VARIACION_01" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="VARIACION_02" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="VARIACION_03" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="VARIACION_04" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="VARIACION_05" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="VARIACION_06" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

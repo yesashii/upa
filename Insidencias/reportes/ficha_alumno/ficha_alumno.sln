@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ficha_alumno", "http://127.0.0.1/reportes/ficha_alumno/ficha_alumno.csproj", "{122C131C-5F8D-49DE-985A-2343AA249CDB}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{122C131C-5F8D-49DE-985A-2343AA249CDB}.Debug.ActiveCfg = Debug|.NET
+		{122C131C-5F8D-49DE-985A-2343AA249CDB}.Debug.Build.0 = Debug|.NET
+		{122C131C-5F8D-49DE-985A-2343AA249CDB}.Release.ActiveCfg = Release|.NET
+		{122C131C-5F8D-49DE-985A-2343AA249CDB}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

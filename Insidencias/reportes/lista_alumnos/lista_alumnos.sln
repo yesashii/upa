@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lista_alumnos", "http://127.0.0.1/reportes/lista_alumnos/lista_alumnos.csproj", "{7534CA6A-6027-4667-96A6-FC19B31D9EFC}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{7534CA6A-6027-4667-96A6-FC19B31D9EFC}.Debug.ActiveCfg = Debug|.NET
+		{7534CA6A-6027-4667-96A6-FC19B31D9EFC}.Debug.Build.0 = Debug|.NET
+		{7534CA6A-6027-4667-96A6-FC19B31D9EFC}.Release.ActiveCfg = Release|.NET
+		{7534CA6A-6027-4667-96A6-FC19B31D9EFC}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

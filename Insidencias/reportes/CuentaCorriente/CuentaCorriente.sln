@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CuentaCorriente", "http://localhost/reportes/CuentaCorriente/CuentaCorriente.csproj", "{6E4D31E5-B60D-4811-BDA0-2CD3C25ABE46}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{6E4D31E5-B60D-4811-BDA0-2CD3C25ABE46}.Debug.ActiveCfg = Debug|.NET
+		{6E4D31E5-B60D-4811-BDA0-2CD3C25ABE46}.Debug.Build.0 = Debug|.NET
+		{6E4D31E5-B60D-4811-BDA0-2CD3C25ABE46}.Release.ActiveCfg = Release|.NET
+		{6E4D31E5-B60D-4811-BDA0-2CD3C25ABE46}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

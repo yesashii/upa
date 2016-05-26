@@ -1,0 +1,35 @@
+
+
+
+-- ------------------------------------------------
+
+
+update reserva_horas_laboratorios set fecha_reserva = '2015-12-26' where rhla_ncorr = 2666
+
+
+
+
+-- Para el laboratorio de computacion 2
+
+update reserva_horas_laboratorios set fecha_reserva = '2015-12-08' where rhla_ncorr = 2560
+update reserva_horas_laboratorios set fecha_reserva = '2015-12-08' where rhla_ncorr = 2561
+update reserva_horas_laboratorios set fecha_reserva = '2015-12-08' where rhla_ncorr = 2562
+update reserva_horas_laboratorios set fecha_reserva = '2015-12-05' where rhla_ncorr = 2563
+update reserva_horas_laboratorios set fecha_reserva = '2015-12-05' where rhla_ncorr = 2564
+update reserva_horas_laboratorios set fecha_reserva = '2015-12-05' where rhla_ncorr = 2565
+update reserva_horas_laboratorios set fecha_reserva = '2015-11-19' where rhla_ncorr = 2645
+update reserva_horas_laboratorios set fecha_reserva = '2015-11-19' where rhla_ncorr = 2646
+update reserva_horas_laboratorios set fecha_reserva = '2015-11-19' where rhla_ncorr = 2647
+update reserva_horas_laboratorios set fecha_reserva = '2015-11-20' where rhla_ncorr = 2648
+update reserva_horas_laboratorios set fecha_reserva = '2015-11-20' where rhla_ncorr = 2660
+update reserva_horas_laboratorios set fecha_reserva = '2015-11-23' where rhla_ncorr = 2661
+update reserva_horas_laboratorios set fecha_reserva = '2015-11-23' where rhla_ncorr = 2662
+update reserva_horas_laboratorios set fecha_reserva = '2015-11-23' where rhla_ncorr = 2663
+
+-- Para SALA 412 SALA 412 LAS CONDES PISO 4
+update bloques_horarios set bloq_ftermino_modulo = '2015-11-13' where bloq_ccod = 84950
+update bloques_horarios set bloq_ftermino_modulo = '2015-11-13' where bloq_ccod = 84951
+update bloques_horarios set bloq_ftermino_modulo = '2015-11-13' where bloq_ccod = 84952
+update bloques_horarios set bloq_ftermino_modulo = '2015-11-29' where bloq_ccod = 84953
+update bloques_horarios set bloq_ftermino_modulo = '2015-11-29' where bloq_ccod = 84954
+update bloques_horarios set bloq_ftermino_modulo = '2015-11-29' where bloq_ccod = 84955

@@ -1,0 +1,77 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="DataSet1" targetNamespace="http://www.tempuri.org/DataSet1.xsd" xmlns:mstns="http://www.tempuri.org/DataSet1.xsd" xmlns="http://www.tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:Locale="es-MX">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="ASIGNATURAS">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="GRUPO" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NASIGNATURA" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="COD_ASIGNATURA" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="ASIG_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="ASIG_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="ASIG_NHORAS" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="EGRESADOS">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="N" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GRUPO" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PERS_NCORR" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NOMBRE" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="RUT" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="PERIODO_INGRESO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="PERIODO_EGRESO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="N1" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="N2" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="N3" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="N4" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="N5" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="N6" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="N7" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="N8" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="N9" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="N10" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="N11" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="N12" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="N13" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="N14" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="N15" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="N16" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="N17" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="N18" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="N19" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="N20" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="N21" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="N22" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="N23" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="N24" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="N25" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="NEGRESO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ENCABEZADO">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LINEA1" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="LINEA2" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="LINEA3" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="LINEA4" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="CARR_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="ACTI_FEMISION" msdata:ReadOnly="true" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ESPE_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="CODIGO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="ACTI_NCORR" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ESPE_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="CARR_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

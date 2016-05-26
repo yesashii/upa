@@ -1,0 +1,223 @@
+<!-- BEGIN: main -->
+<div id='popCal' style='position:absolute;visibility:hidden;border:2px ridge;width:10'>
+	<iframe name="popFrame" frameborder="0" scrolling="no" width=164 height=172 src="calendario.html">
+	</iframe>
+</div>
+<script language="JavaScript" src="js/validadores.js"></script>
+<script language="JavaScript">
+function enviar(form)
+{ 
+  if(preValidaFormulario(form))
+  { 
+     form.submit();
+   } 
+}
+</script>
+<style type="text/css">
+<!--
+#pie {
+	text-align: center;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	color:#FFFFFF;
+	font-size:10px;
+}
+a {
+	text-align: center;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	color:#FFFFFF;
+	font-size:10px;
+	font-style: normal;
+	font-weight: normal;
+	
+}
+a:hover {
+	text-align: center;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	color:#FFFF00;
+	font-size:10px;
+	font-weight: normal;
+}
+-->
+</style>
+<table id=Table1 cellspacing=0 cellpadding=0 width="750" border=0>
+	  <tbody>
+	     <tr valign="top">
+		   <td align="center" bgcolor="#0000" width="750">
+				<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+					<tr>
+					  <td>
+					  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+						  <tr>
+							<td><img src="img/spacer.gif" width="9" height="10" border="0" alt=""></td>
+							<td><img src="img/spacer.gif" width="100%" height="10" border="0" alt=""></td>
+							<td><img src="img/spacer.gif" width="7" height="10" border="0" alt=""></td>
+						  </tr>
+						  <tr valign="bottom">
+							<td width="9" height="8"><img name="top_r1_c1" src="img/top_r1_c1.jpg" width="9" height="8" border="0" alt=""></td>
+						    <td height="8"><img name="top_r1_c2" src="img/top_r1_c2.jpg" width="100%" height="8" border="0" alt=""></td>
+						    <td width="7" height="8"><img name="top_r1_c3" src="img/top_r1_c3.jpg" width="7" height="8" border="0" alt=""></td>
+						  </tr>
+						</table>
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+							  <td width="9" align="left" background="img/izq.jpg">&nbsp;</td>
+							  <td bgcolor="#FFFFFF" >
+							    &nbsp;
+								<div align="right"><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#CC0000">Paso 3/3</font>
+								</div>
+				    			<form action="registrar_carreras_proc.php" method="post" name="formulario1">
+								     <table width="100%" border="0" cellspacing="0" cellpadding="0">
+										<tr>
+										  <td width="100%"><div align="center"><b><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#CC0000">FICHA DE POSTULACIÓN {titulo_ext}</font></b></div></td>
+										</tr>
+										<tr>
+										  <td width="100%" align="center">&nbsp;</td>
+										</tr>
+										<tr>
+										  <td width="100%" align="center">{mensaje}&nbsp;</td>
+										</tr>
+										<tr>
+										  <td width="100%">&nbsp;</td>
+										</tr>
+										<tr>
+												<td width="100%">
+													<table width="100%" cellpadding="0" cellspacing="0">
+													     <tr>
+															<td width="10%" align="right"><font size="2"><strong>Rut :</strong></font></td>
+															<td width="90%" align="left"><font size="2">&nbsp;{rut}</font></td>
+														</tr>
+														<tr>
+															<td width="10%" align="right"><font size="2"><strong>Nombre :</strong></font></td>
+															<td width="90%" align="left"><font size="2">&nbsp;{nombre}</font></td>
+														</tr>
+														<tr>
+														  <td width="100%" colspan="2" align="left"><font size="2"><strong>&nbsp;</strong></font></td>
+														</tr>
+														<tr>
+														  <td width="100%" colspan="2" align="center"><font size="2"><strong>Agrega las carreras a las que deseas postular:</strong></font></td>
+														</tr>
+														<tr>
+														  <td width="100%" colspan="2" align="left"><font size="2"><strong>&nbsp;</strong></font></td>
+														</tr>
+														<tr>
+															<td width="10%" align="left"><font size="2"><strong>Carrera :</strong></font></td>
+															<td width="90%" align="left"><select name="ofer_ncorr" id='TO-N'>
+																							<!-- BEGIN: carreras -->
+																							<option value="{carrera.ofer_ncorr}">{carrera.carrera_ofertada} 
+																							</option>
+																							<!-- END: carreras -->
+																						 </select>
+															  </td>
+														</tr>
+														<tr>
+														  <td width="100%" colspan="2" align="right"><font face="Times New Roman, Times, serif" size="-1">* El orden de tu selecci&oacute;n indicar&aacute; la preferencia.</font></td>
+														</tr>
+													</table>
+												</td>
+										</tr>
+										<tr valign="bottom">
+										   <td width="100%" align="right">&nbsp;</td>
+									    </tr>
+										<tr valign="bottom">
+										   <td width="100%" align="center"><input type="button" value="Agregar" onClick="enviar(document.formulario1)"></td>
+									    </tr>
+										<tr valign="bottom">
+										   <td width="100%" align="right">&nbsp;</td>
+									    </tr>
+										<tr valign="bottom">
+										   <td width="100%" align="right">&nbsp;</td>
+									    </tr>
+										<tr valign="top">
+											<td width="100%" align="center">
+													<table align="center" border="0" width="90%">
+														<tr valign="top">
+															<td bgcolor="#f7b84f" align="center"><strong>Sede</strong></td>
+															<td bgcolor="#f7b84f" align="center"><strong>Carrera</strong></td>
+															<td bgcolor="#f7b84f" align="center"><strong>Jornada</strong></td>
+															<td bgcolor="#f7b84f" align="center"><strong>Fecha</strong></td>
+															<td bgcolor="#f7b84f" align="center"><strong>Preferencia</strong></td>
+															<td bgcolor="#FFFFFF" align="center">&nbsp;</td>
+														</tr>
+														<!-- BEGIN: carteras -->
+														<tr>
+															<td bgcolor="#FFFFFF" align="center">{cartera.sede}</td>
+															<td bgcolor="#FFFFFF" align="left">{cartera.carrera}</td>
+															<td bgcolor="#FFFFFF" align="center">{cartera.jornada}</td>
+															<td bgcolor="#FFFFFF" align="center">{cartera.fecha}</td>
+															<td bgcolor="#FFFFFF" align="center">{cartera.preferencia}</td>
+															<td bgcolor="#FFFFFF" align="center">
+															<input type="button" name="elimina_{cartera.ofer_ncorr}" value="Quitar" onClick="javascript: location.href='registrar_carreras_eliminar.php?ofer_ncorr={cartera.ofer_ncorr}';" {deshabilita_borrar} ></td>
+														</tr>
+														<!-- END: carteras -->
+														<tr><td colspan="5" align="center"><font size="2">{mensaje_listado}</font></td></tr>
+													</table>
+											
+											</td>
+										</tr>
+										<tr valign="bottom">
+										   <td width="100%" align="right">&nbsp;</td>
+									    </tr>
+										<tr valign="bottom">
+										   <td width="100%" align="left"><p>(D) = Diurno<br>
+										     (V) = Vespertino<br>
+										     (TNS) = T&eacute;cnico de Nivel  Superior<br>
+									       P.C.E. = Programa de Continuidad  de Estudios</p></td>
+									    </tr>
+										<tr valign="bottom">
+										   <td width="100%" align="right">&nbsp;</td>
+									    </tr>
+									    <tr valign="bottom">
+										   <td width="100%" align="right">&nbsp;</td>
+										</tr>
+									  </table>
+
+								</form>
+							  </td>
+							  <td width="7" align="right" background="img/der.jpg">&nbsp;</td>
+							</tr>
+						</table>
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+							  <td width="9" rowspan="2"><img src="img/abajo_r1_c1.jpg" width="9" height="28"></td>
+							  <td width="204" bgcolor="#FFFFFF"><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="0">
+								<tr>
+								  <td><div align="center"><input type="button" value="{texto_boton}" {deshabilita_borrar} onClick="javascript: location.href='{siguiente}';"></div></td>
+								  <td><div align="center"><input type="button" value="Volver" onClick="javascript: location.href='registrarse.php';"></div></td>
+								</tr>
+							  </table>                    
+							  </td>
+							  <td width="171" rowspan="2" background="img/abajo_r1_c4.jpg" align="left"><img src="img/abajo_r1_c3.jpg" width="12" height="28"></td>
+							  <td width="329" rowspan="2" align="right" background="img/abajo_r1_c4.jpg"><img src="img/abajo_r1_c5.gif" width="7" height="28"></td>
+							</tr>
+							<tr>
+							  <td valign="bottom" bgcolor="#D8D8DE"><img src="img/abajo_r2_c2.gif" width="100%" height="8"></td>
+							</tr>
+						</table>
+						<p><br>
+					  </td>
+					</tr>
+				  </table>	      
+		  </td>
+		 </tr>
+		  <tr valign="top">
+			
+      <td width="750" height="20" align="center" bgcolor="#0000" > <span class="Direcciones"><font face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF" size="1">Sede 
+        Las Condes 28625315 &#8226; Sede Melipilla 23524900 <!--&#8226; Campus Lyon 
+        3306400 &#8226; Campus Baquedano 23526900--> &#8226; <a href="mailto:admision@upacifico.cl?subject=Consulta de Admisión 2014&body=Hola mi consulta es la siguiente:%0D%0A %0D%0A">admision@upacifico.cl</a></font></span></td>
+		</tr>
+		<!--<tr>
+			<td colspan="5"><img src="img/postulacion-abajo.png" width="750" height="70" alt=""></td>
+		</tr>-->
+ 	   </tbody>
+	</table>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+		try {
+		var pageTracker = _gat._getTracker("UA-190665-3");
+		pageTracker._trackPageview();
+		} catch(err) {}
+	</script>
+<!-- END: main -->

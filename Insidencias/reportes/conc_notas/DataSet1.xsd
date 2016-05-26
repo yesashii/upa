@@ -1,0 +1,61 @@
+<?xml version="1.0" standalone="yes" ?>
+<xs:schema id="DataSet1" targetNamespace="http://www.tempuri.org/DataSet1.xsd" xmlns:mstns="http://www.tempuri.org/DataSet1.xsd" xmlns="http://www.tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+	<xs:element name="DataSet1" msdata:IsDataSet="true" msdata:Locale="es-CL">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="DETALLE">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="T" msdata:ReadOnly="true" type="xs:integer" minOccurs="0" />
+							<xs:element name="ASIG_TDESC" type="xs:string" minOccurs="0" />
+							<xs:element name="CARG_NNOTA_FINAL" type="xs:decimal" minOccurs="0" />
+							<xs:element name="ANOS_CCOD" type="xs:string" minOccurs="0" />
+							<xs:element name="PLEC_CCOD" type="xs:string" minOccurs="0" />
+							<xs:element name="P1" type="xs:decimal" minOccurs="0" />
+							<xs:element name="P2" type="xs:decimal" minOccurs="0" />
+							<xs:element name="ASIG_CCOD" type="xs:string" minOccurs="0" />
+							<xs:element name="ANO_CURSADO" type="xs:string" minOccurs="0" />
+							<xs:element name="PERIODO" type="xs:string" minOccurs="0" />
+							<xs:element name="ESTADO" type="xs:string" minOccurs="0" />
+							<xs:element name="cantidad" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ENCABEZADO">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="T" msdata:ReadOnly="true" type="xs:integer" minOccurs="0" />
+							<xs:element name="RUT" type="xs:string" minOccurs="0" />
+							<xs:element name="NOMBRE" type="xs:string" minOccurs="0" />
+							<xs:element name="CARRERA" type="xs:string" minOccurs="0" />
+							<xs:element name="ANO_INGRESO_PLAN" type="xs:string" minOccurs="0" />
+							<xs:element name="DUAS_TDESC" type="xs:string" minOccurs="0" />
+							<xs:element name="SEDE_SECRET" type="xs:string" minOccurs="0" />
+							<xs:element name="SEDE_TREGISTR" type="xs:string" minOccurs="0" />
+							<xs:element name="DESC_PERIODO" type="xs:string" minOccurs="0" />
+							<xs:element name="TITULO" type="xs:string" minOccurs="0" />
+							<xs:element name="POR_PERIODO" type="xs:string" minOccurs="0" />
+							<xs:element name="SEDE" type="xs:string" minOccurs="0" />
+							<xs:element name="TDES_TDESC" type="xs:string" minOccurs="0" />
+							<xs:element name="JORNADA" type="xs:string" minOccurs="0" />
+							<xs:element name="CONCEPTO_NOTAS" type="xs:string" minOccurs="0" />
+							<xs:element name="CALCULO_NOTAS" type="xs:string" minOccurs="0" />
+							<xs:element name="RESULTADO_NOTAS" type="xs:string" minOccurs="0" />
+							<xs:element name="CONCEPTO_TESIS" type="xs:string" minOccurs="0" />
+							<xs:element name="CALCULO_TESIS" type="xs:string" minOccurs="0" />
+							<xs:element name="RESULTADO_TESIS" type="xs:string" minOccurs="0" />
+							<xs:element name="CONCEPTO_PRACTICA" type="xs:string" minOccurs="0" />
+							<xs:element name="CALCULO_PRACTICA" type="xs:string" minOccurs="0" />
+							<xs:element name="RESULTADO_PRACTICA" type="xs:string" minOccurs="0" />
+							<xs:element name="CONCEPTO_FINAL" type="xs:string" minOccurs="0" />
+							<xs:element name="NOTA_FINAL" type="xs:string" minOccurs="0" />
+							<xs:element name="CONCEPTO_NOTA_TESIS" type="xs:string" minOccurs="0" />
+							<xs:element name="CALCULO_NOTA_TESIS" type="xs:string" minOccurs="0" />
+							<xs:element name="RESULTADO_NOTA_TESIS" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

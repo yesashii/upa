@@ -1,0 +1,55 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="DataSet1" targetNamespace="http://www.tempuri.org/DataSet1.xsd" xmlns:mstns="http://www.tempuri.org/DataSet1.xsd" xmlns="http://www.tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:Locale="es-CL">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="CARRERAS">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CARR_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="NPAGARES" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NPAGARES_ASIGNADOS" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NPAGARES_ACUMULADOS" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MONTO_PERIODO_UF_NUEVOS" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MONTO_PERIODO_UF_ANTIGUOS" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MONTO_PERIODO_UF" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MONTO_ANTERIOR_UF_NUEVOS" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MONTO_ANTERIOR_UF_ANTIGUOS" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MONTO_ANTERIOR_UF" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MONTO_PERIODO_PESOS_NUEVOS" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MONTO_PERIODO_PESOS_ANTIGUOS" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MONTO_PERIODO_PESOS" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MONTO_ANTERIOR_PESOS_NUEVOS" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MONTO_ANTERIOR_PESOS_ANTIGUOS" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MONTO_ANTERIOR_PESOS" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NPAGARES_PACTADO" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NPAGARES_PRORROGADO" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NPAGARES_PAC_PARCIAL" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MONTO_UF_NUEVOS_PACTADO" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MONTO_UF_NUEVOS_PRORROGADO" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MONTO_UF_NUEVOS_PAC_PARCIAL" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MONTO_UF_ANTIGUOS_PACTADO" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MONTO_UF_ANTIGUOS_PRORROGADO" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MONTO_UF_ANTIGUOS_PAC_PARCIAL" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MONTO_PSS_NUEVOS_PACTADO" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MONTO_PSS_NUEVOS_PRORROGADO" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MONTO_PSS_NUEVOS_PAC_PARCIAL" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MONTO_PSS_ANTIGUOS_PACTADO" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MONTO_PSS_ANTIGUOS_PRORROGADO" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MONTO_PSS_ANTIGUOS_PAC_PARCIAL" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SEDES">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SEDE_TDESC" type="xs:string" minOccurs="0" />
+              <xs:element name="ANOS_CCOD" type="xs:decimal" />
+              <xs:element name="SEDE_CCOD" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

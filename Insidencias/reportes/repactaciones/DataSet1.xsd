@@ -1,0 +1,39 @@
+<?xml version="1.0" standalone="yes" ?>
+<xs:schema id="DataSet1" targetNamespace="http://www.tempuri.org/DataSet1.xsd" xmlns:mstns="http://www.tempuri.org/DataSet1.xsd" xmlns="http://www.tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+	<xs:element name="DataSet1" msdata:IsDataSet="true" msdata:Locale="es-ES">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="DETALLES">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ORDEN" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="ENCABEZADO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="TING_CCOD" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="INGR_NCORR" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="DING_NDOCTO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="BANC_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="DING_FDOCTO" msdata:ReadOnly="true" type="xs:dateTime" minOccurs="0" />
+							<xs:element name="BANC_CCOD" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="TING_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MONTO1" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="MONTO2" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="MONTO3" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ENCABEZADO">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="NOMBRE_COMPLETO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="RUT" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="REPA_NCORR" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="REPA_FREPACTACION" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MREP_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="correlativo" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pagare_detallado", "http://127.0.0.1/reportes/pagare_detallado/pagare_detallado.csproj", "{31F03430-47AD-4716-9240-00C3652D10DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{31F03430-47AD-4716-9240-00C3652D10DA}.Debug.ActiveCfg = Debug|.NET
+		{31F03430-47AD-4716-9240-00C3652D10DA}.Debug.Build.0 = Debug|.NET
+		{31F03430-47AD-4716-9240-00C3652D10DA}.Release.ActiveCfg = Release|.NET
+		{31F03430-47AD-4716-9240-00C3652D10DA}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

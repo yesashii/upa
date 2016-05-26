@@ -1,0 +1,43 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="DataSetListado" targetNamespace="http://www.tempuri.org/DataSetListado.xsd" xmlns:mstns="http://www.tempuri.org/DataSetListado.xsd" xmlns="http://www.tempuri.org/DataSetListado.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:element name="DataSetListado" msdata:IsDataSet="true" msdata:Locale="es-CL">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="T_Listado">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SECC_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="MATR_NCORR" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="ALUM_NMATRICULA" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="PERS_TAPE_PATERNO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="PERS_TAPE_MATERNO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="PERS_TNOMBRE" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="CARR_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="CARR_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="ESPE_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="T_Seccion">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CARR_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="ASIG_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="ASIG_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="ASIG_NHORAS" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="SECC_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="MATR_NCORR" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="ALUM_NMATRICULA" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="PERS_TAPE_PATERNO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="PERS_TAPE_MATERNO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="PERS_TNOMBRE" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="CARR_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="CARR_TDESC1" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="ESPE_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

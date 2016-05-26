@@ -1,0 +1,83 @@
+<?xml version="1.0" standalone="yes" ?>
+<xs:schema id="datos" targetNamespace="http://www.tempuri.org/datos.xsd" xmlns:mstns="http://www.tempuri.org/datos.xsd" xmlns="http://www.tempuri.org/datos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+	<xs:element name="datos" msdata:IsDataSet="true" msdata:Locale="es-ES">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="meses">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CARR_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="CARR_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MATR_COMPR_01" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MATR_COMPR_02" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MATR_COMPR_03" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MATR_COMPR_04" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MATR_COMPR_05" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MATR_COMPR_06" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MATR_COMPR_07" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MATR_COMPR_08" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MATR_COMPR_09" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MATR_COMPR_10" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MATR_COMPR_11" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MATR_COMPR_12" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="COL_COMPR_01" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="COL_COMPR_02" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="COL_COMPR_03" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="COL_COMPR_04" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="COL_COMPR_05" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="COL_COMPR_06" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="COL_COMPR_07" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="COL_COMPR_08" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="COL_COMPR_09" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="COL_COMPR_10" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="COL_COMPR_11" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="COL_COMPR_12" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MATR_REALR_01" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MATR_REALR_02" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MATR_REALR_03" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MATR_REALR_04" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MATR_REALR_05" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MATR_REALR_06" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MATR_REALR_07" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MATR_REALR_08" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MATR_REALR_09" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MATR_REALR_10" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MATR_REALR_11" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="MATR_REALR_12" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="COL_REALR_01" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="COL_REALR_02" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="COL_REALR_03" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="COL_REALR_04" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="COL_REALR_05" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="COL_REALR_06" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="COL_REALR_07" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="COL_REALR_08" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="COL_REALR_09" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="COL_REALR_10" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="COL_REALR_11" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="COL_REALR_12" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="SALDO_01" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="SALDO_02" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="SALDO_03" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="SALDO_04" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="SALDO_05" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="SALDO_06" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="SALDO_07" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="SALDO_08" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="SALDO_09" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="SALDO_10" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="SALDO_11" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="SALDO_12" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="nro_informe" type="xs:string" minOccurs="0" />
+							<xs:element name="periodo" type="xs:string" minOccurs="0" />
+							<xs:element name="ano" type="xs:string" />
+							<xs:element name="fecha_inicio" type="xs:string" minOccurs="0" />
+							<xs:element name="fecha_termino" type="xs:string" minOccurs="0" />
+							<xs:element name="sede_tdesc" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

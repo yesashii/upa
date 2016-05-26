@@ -1,0 +1,96 @@
+
+
+
+Acceso sistema : PLANIFICACIÓN ACADÉMICA -> REPORTE PLANIFICACION GENERAL [las condes - planificación - primer semestre 2016]
+
+-- Consulta que lista las carreras:
+
+select distinct c.carr_ccod, 
+                c.carr_tdesc 
+from   secciones a, 
+       periodos_academicos b, 
+       carreras c 
+where  a.peri_ccod = b.peri_ccod 
+       and b.anos_ccod = '2016' 
+       and a.carr_ccod = c.carr_ccod 
+       and exists (select 1 
+                   from   especialidades aa, 
+                          sis_especialidades_usuario bb 
+                   where  aa.carr_ccod = c.carr_ccod 
+                          and aa.espe_ccod = bb.espe_ccod 
+                          and Cast(bb.pers_ncorr as varchar) = '256114') 
+						  
+						  
+MANTENEDORES - > MANTENEDOR PERMISOS DE ESPECIALIDAD POR PERSONA
+
+faltaba asignar la especialidad es por ello que no podían ver la asignatura		
+
+
+
+
+
+
+
+
+-- -------------------
+
+select pers_ncorr from PERSONAS where PERS_NRUT = 8695670
+
+
+
+select distinct c.carr_ccod, 
+                c.carr_tdesc 
+from   secciones a, 
+       periodos_academicos b, 
+       carreras c 
+where  a.peri_ccod = b.peri_ccod 
+       and b.anos_ccod = '2016' 
+       and a.carr_ccod = c.carr_ccod 
+       and exists (select 1 
+                   from   especialidades aa, 
+                          sis_especialidades_usuario bb 
+                   where  aa.carr_ccod = c.carr_ccod 
+                          and aa.espe_ccod = bb.espe_ccod 
+                          and Cast(bb.pers_ncorr as varchar) = '277606') 
+                          
+                          
+                          
+                          
+
+select pers_ncorr from PERSONAS where PERS_NRUT = 10282990
+
+
+
+select distinct c.carr_ccod, 
+                c.carr_tdesc 
+from   secciones a, 
+       periodos_academicos b, 
+       carreras c 
+where  a.peri_ccod = b.peri_ccod 
+       and b.anos_ccod = '2016' 
+       and a.carr_ccod = c.carr_ccod 
+       and exists (select 1 
+                   from   especialidades aa, 
+                          sis_especialidades_usuario bb 
+                   where  aa.carr_ccod = c.carr_ccod 
+                          and aa.espe_ccod = bb.espe_ccod 
+                          and Cast(bb.pers_ncorr as varchar) = '12436')   
+                          
+
+select * from sis_especialidades_usuario where PERS_NCORR = 12436   
+
+select * from sis_especialidades_usuario where PERS_NCORR = 277606     
+
+
+
+select * from 
+
+insert into sis_especialidades_usuario 
+select '277606', ESPE_CCOD, JORN_CCOD,'15370707',GETDATE() 
+  from   sis_especialidades_usuario 
+  where  pers_ncorr = 12436 
+	and espe_ccod not in (select espe_ccod 
+                            from   sis_especialidades_usuario 
+                               where  pers_ncorr = 277606)                                
+                          
+-- (159 filas afectadas)   				  

@@ -1,0 +1,29 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="DataSetPagares" targetNamespace="http://www.tempuri.org/DataSetPagares.xsd" xmlns:mstns="http://www.tempuri.org/DataSetPagares.xsd" xmlns="http://www.tempuri.org/DataSetPagares.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:element name="DataSetPagares" msdata:IsDataSet="true" msdata:Locale="es-CL">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="T_Pagares">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ANO_PERIODO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="SEDE_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="CARRERA" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="ALUMNO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="RUT_ALUMNO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="AVAL" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="RUT_AVAL" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="UF_BENEFICIO_PERIODO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="MONTO_PERIODO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="UF_BENEFICIO_ANTERIOR" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="MONTO_ACUMULADO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="EMAT_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="ANO_INGRESO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="ANO_EGRESO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

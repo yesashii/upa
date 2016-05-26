@@ -1,0 +1,17 @@
+
+
+
+SELECT a.srol_ncorr, 
+       a.srol_ncorr                                 AS c_srol_ncorr, 
+       a.srol_tdesc, 
+       CONVERT(DATETIME, b.srus_fmodificacion, 103) AS srus_fmodificacion, 
+       CASE Isnull(b.srol_ncorr, 0) 
+         WHEN 0 THEN 0 
+         ELSE 1 
+       END                                          AS tiene_rol 
+FROM   sis_roles AS a 
+       LEFT OUTER JOIN sis_roles_usuarios AS b 
+                    ON a.srol_ncorr = b.srol_ncorr 
+                       AND b.pers_ncorr = 256114 
+ORDER  BY tiene_rol DESC, 
+          a.srol_tdesc ASC 

@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "conc_notas", "http://localhost/reportes/conc_notas/conc_notas.csproj", "{53775605-5628-49AF-B529-68AA881B2ABA}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{53775605-5628-49AF-B529-68AA881B2ABA}.Debug.ActiveCfg = Debug|.NET
+		{53775605-5628-49AF-B529-68AA881B2ABA}.Debug.Build.0 = Debug|.NET
+		{53775605-5628-49AF-B529-68AA881B2ABA}.Release.ActiveCfg = Release|.NET
+		{53775605-5628-49AF-B529-68AA881B2ABA}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "comp_ingreso", "http://localhost/reportes/comp_ingreso/comp_ingreso.csproj", "{F4566287-FDFA-4474-A848-AF7D9676213D}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{F4566287-FDFA-4474-A848-AF7D9676213D}.Debug.ActiveCfg = Debug|.NET
+		{F4566287-FDFA-4474-A848-AF7D9676213D}.Debug.Build.0 = Debug|.NET
+		{F4566287-FDFA-4474-A848-AF7D9676213D}.Release.ActiveCfg = Release|.NET
+		{F4566287-FDFA-4474-A848-AF7D9676213D}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

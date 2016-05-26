@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Listado_Morosos", "http://127.0.0.1/reportes/Listado_Morosos/Listado_Morosos.csproj", "{BB3EB694-5029-440B-ABE7-388BCA30B13C}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{BB3EB694-5029-440B-ABE7-388BCA30B13C}.Debug.ActiveCfg = Debug|.NET
+		{BB3EB694-5029-440B-ABE7-388BCA30B13C}.Debug.Build.0 = Debug|.NET
+		{BB3EB694-5029-440B-ABE7-388BCA30B13C}.Release.ActiveCfg = Release|.NET
+		{BB3EB694-5029-440B-ABE7-388BCA30B13C}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

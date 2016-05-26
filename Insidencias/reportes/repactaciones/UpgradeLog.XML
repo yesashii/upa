@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="repactaciones">
+</Property><Property Name="Archivo de la solución" Value="W:\repactaciones\repactaciones.sln">
+</Property><Property Name="Archivo de opciones de usuario" Value="W:\repactaciones\repactaciones.suo">
+</Property><Property Name="Date" Value="miércoles, 02 de diciembre de 2015">
+</Property><Property Name="Time" Value="10:53">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="repactaciones.sln" Description="La copia W:\repactaciones\Backup\repactaciones.sln del archivo se ha realizado correctamente">
+</Event><Event ErrorLevel="0" Project="" Source="repactaciones.suo" Description="La copia W:\repactaciones\Backup\repactaciones.suo del archivo se ha realizado correctamente">
+</Event><Event ErrorLevel="1" Project="repactaciones" Source="http://localhost/reportes/repactaciones/repactaciones.csproj" Description="Advertencia: se está haciendo una copia de seguridad del archivo de proyecto en una ruta de acceso relativa que es diferente de la ruta de acceso relativa de la solución original. La diferencia en la jerarquía de carpetas puede crear problemas al abrir o gene">
+</Event><Event ErrorLevel="2" Project="http://localhost/reportes/repactaciones/repactaciones.csproj" Source="http://localhost/reportes/repactaciones/repactaciones.csproj" Description="ERROR: error al crear una copia de seguridad del sitio web http://localhost/reportes/repactaciones">
+</Event><Event ErrorLevel="0" Project="" Source="repactaciones.sln" Description="La solución se convirtió correctamente">
+</Event><Event ErrorLevel="3" Project="" Source="repactaciones.sln" Description="Converted">
+</Event></UpgradeLog>

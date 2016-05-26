@@ -1,0 +1,34 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="DataSet_Contratos" targetNamespace="http://www.tempuri.org/DataSet_Contratos.xsd" xmlns:mstns="http://www.tempuri.org/DataSet_Contratos.xsd" xmlns="http://www.tempuri.org/DataSet_Contratos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:element name="DataSet_Contratos" msdata:IsDataSet="true" msdata:Locale="es-CL">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="T_Contratos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SEDE_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="CARR_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="ESPE_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="CONT_NCORR" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="CONT_FCONTRATO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="RUT_ALUMNO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="NOMBRE_ALUMNO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="INGR_NFOLIO_REFERENCIA" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="INGR_FPAGO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="MONTO_MATRICULA" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="MONTO_COLEGIATURA" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="TOTAL" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="JORN_CCOD" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="JORN_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="CREDITO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="BECA" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="DESCUENTO" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="INTERESES" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="SEDE_TDESC" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

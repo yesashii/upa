@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Este archivo lo genera de forma automática el diseñador de esquemas XML. Contiene información de diseño para componentes de la superficie de diseño.-->
+<XSDDesignerLayout layoutVersion="1" viewPortLeft="0" viewPortTop="0">
+    <PERSONAS_XmlElement left="370" top="714" width="5292" height="6562" selected="0" zOrder="2" index="0" />
+    <ENCABEZADO_XmlElement left="14658" top="767" width="8784" height="7911" selected="0" zOrder="3" index="1" />
+    <ALUMNOS_XmlElement left="5928" top="688" width="8413" height="6112" selected="0" zOrder="4" index="2" />
+</XSDDesignerLayout>

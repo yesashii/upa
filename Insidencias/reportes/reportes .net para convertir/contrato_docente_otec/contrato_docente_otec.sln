@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "contrato_docente_otec", "http://localhost/reportes/contrato_docente_otec/contrato_docente_otec.csproj", "{864CBE7E-0010-403B-A122-7B2BCE67F9D0}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{864CBE7E-0010-403B-A122-7B2BCE67F9D0}.Debug.ActiveCfg = Debug|.NET
+		{864CBE7E-0010-403B-A122-7B2BCE67F9D0}.Debug.Build.0 = Debug|.NET
+		{864CBE7E-0010-403B-A122-7B2BCE67F9D0}.Release.ActiveCfg = Release|.NET
+		{864CBE7E-0010-403B-A122-7B2BCE67F9D0}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

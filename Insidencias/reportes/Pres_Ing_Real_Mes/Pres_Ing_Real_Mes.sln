@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pres_Ing_Real_Mes", "http://localhost/reportes/Pres_Ing_Real_Mes/Pres_Ing_Real_Mes.csproj", "{56117E3E-B133-44CF-B312-6BED92CE1477}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{56117E3E-B133-44CF-B312-6BED92CE1477}.Debug.ActiveCfg = Debug|.NET
+		{56117E3E-B133-44CF-B312-6BED92CE1477}.Debug.Build.0 = Debug|.NET
+		{56117E3E-B133-44CF-B312-6BED92CE1477}.Release.ActiveCfg = Release|.NET
+		{56117E3E-B133-44CF-B312-6BED92CE1477}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presupuesto_Ingreso", "http://localhost/reportes/Presupuesto_Ingreso/Presupuesto_Ingreso.csproj", "{74B24720-024A-49AD-813C-E261C745158E}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{74B24720-024A-49AD-813C-E261C745158E}.Debug.ActiveCfg = Debug|.NET
+		{74B24720-024A-49AD-813C-E261C745158E}.Debug.Build.0 = Debug|.NET
+		{74B24720-024A-49AD-813C-E261C745158E}.Release.ActiveCfg = Release|.NET
+		{74B24720-024A-49AD-813C-E261C745158E}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

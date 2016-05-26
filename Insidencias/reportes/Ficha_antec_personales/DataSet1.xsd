@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:element name="DataSet1" msdata:IsDataSet="true">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="Table2">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="nombre" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="rut" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="pasaporte" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="fecha_nac" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="fono" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="nacionalidad" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Estado_civil" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Direccion" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="comuna" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="ciudad" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="region" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="colegio_egreso" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="ano_egreso" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="proced_educ" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="inst_educ_sup" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Carrera" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="ano_ingr" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="FinanciaEst" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="ultimo_post_ncorr" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="nombre_sost_ec" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="RUT_sost_ec" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="fnac_sost_ec" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="edad_sost" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="fono_sost_ec" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="pare_sost_ec" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="dire_tdesc_sost_ec" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="comu_sost_ec" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="ciud_sost_ec" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="regi_sost_ec" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "imprimir_anexos", "http://localhost/reportes/imprimir_anexos/imprimir_anexos.csproj", "{46648910-6FF5-49D9-A855-9FB4071F50F5}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{46648910-6FF5-49D9-A855-9FB4071F50F5}.Debug.ActiveCfg = Debug|.NET
+		{46648910-6FF5-49D9-A855-9FB4071F50F5}.Debug.Build.0 = Debug|.NET
+		{46648910-6FF5-49D9-A855-9FB4071F50F5}.Release.ActiveCfg = Release|.NET
+		{46648910-6FF5-49D9-A855-9FB4071F50F5}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
